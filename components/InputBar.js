@@ -4,7 +4,7 @@ import LoginSignButton from "./generale/LoginSignButton";
 import InputLg from "./generale/InputLg";
 import HeaderBar from "./inscription/HeaderBar";
 import SearcheIcone from "./generale/SearcheIcone";
-import ResponsiveMenu from "./inscription/header/ResponsiveMenu";
+import ResponsiveMenu from "./generale/ResponsiveMenu";
 
 
 const InputBar = () => {

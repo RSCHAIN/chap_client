@@ -12,7 +12,7 @@ export default function Home() {
       {/* <BarBleu /> */}
       <InputBar/>
       <SliderComponents/>
-      {/* <LadingCorps/> */}
+      <LadingCorps/>
       {/* <Footer/> */}
     </>
   );

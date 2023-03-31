@@ -1,4 +1,4 @@
-import { Box, Button, Center, Flex, Input, InputGroup, InputLeftElement, InputRightElement, Stack, Text } from '@chakra-ui/react';
+import { Box, Button, Center, Input, InputGroup, InputLeftElement, InputRightElement, Stack, Text } from '@chakra-ui/react';
 // fontawesone Icone 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAdd, faPhone, faHome, faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons'

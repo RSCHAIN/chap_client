@@ -15,11 +15,11 @@ const MenuItem_Link = () => {
                     align={'center'} justify={'space-between'}
                     direction={{ base: 'column', md: 'row' }}
                 >
-                    <Link>Home</Link>
-                    <Link>Categories</Link>
-                    <Link>Panier</Link>
-                    <Link>Service</Link>
-                    <Link>Paiement</Link>
+                    <Link href='/'>Home</Link>
+                    <Link href=''>Categories</Link>
+                    <Link href=''>Panier</Link>
+                    <Link href=''>Service</Link>
+                    <Link href=''>Paiement</Link>
                 </Flex>
 
                 <Flex

@@ -1,7 +1,7 @@
 import { Center, Flex, HStack, Link, Text, useMediaQuery } from '@chakra-ui/react';
 import React from 'react';
-import ResponsiveMenu from './header/ResponsiveMenu';
-import MenuItem_Link from './header/MenuItem_Link';
+import ResponsiveMenu from '../generale/ResponsiveMenu';
+import MenuItem_Link from '../generale/MenuItem_Link';
 
 const HeaderBar = () => {
     const [isLagerThan768] = useMediaQuery('(min-width: 768px)')

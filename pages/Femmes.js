@@ -143,6 +143,7 @@ export default function Carousel() {
         <Slider {...settings} ref={(slider) => setSlider(slider)}>
           {Data.map((data, index) => (
             <Box
+            key={index}
               maxW="sm"
               width={"sm"}
               height={"fit-content"}
