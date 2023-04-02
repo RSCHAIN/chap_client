@@ -9,7 +9,7 @@ const InputLg = () => {
                 <Input
                     type='text' placeholder='Que recherhcer vous ?'
                     _placeholder={{ color: 'black' }} variant={'filled'}
-                    borderRadius={'full'} w={'30em'}
+                    borderRadius={'full'} w={{md:'20em', lg:'30em'}}
                 />
                 <InputRightElement>
                     <Search2Icon color={'blue'} />

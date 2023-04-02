@@ -1,4 +1,4 @@
-import { Flex, Input, InputGroup, InputRightElement, Link, Text, useMediaQuery } from "@chakra-ui/react";
+import { Flex, Heading, Input, InputGroup, InputRightElement, Link, Text, useMediaQuery } from "@chakra-ui/react";
 import { Search2Icon } from '@chakra-ui/icons';
 import LoginSignButton from "./generale/LoginSignButton";
 import InputLg from "./generale/InputLg";
@@ -21,9 +21,9 @@ const InputBar = () => {
                 <Flex
                     color={"#fbb614"} width={"auto"} height={'100%'}
                     align={'center'} justifyContent={'center'}
-                    fontWeight={'bold'} fontSize={'2em'} ml={'.5em'}
+                    fontWeight={'bold'} ml={'.5em'}
                 >
-                    FripChap
+                    <Heading>FripChap</Heading>
                 </Flex>
 
                 {/* l'input et les button  */}

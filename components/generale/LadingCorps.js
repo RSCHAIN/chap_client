@@ -1,5 +1,5 @@
-import { ChevronRightIcon } from '@chakra-ui/icons';
-import { Box, Center, Flex, Heading, Link, SimpleGrid, Text } from '@chakra-ui/react';
+import { ArrowForwardIcon, ChevronRightIcon } from '@chakra-ui/icons';
+import { Box, Button, Center, Flex, Heading, Link, SimpleGrid, Text } from '@chakra-ui/react';
 
 // les items de la cartegorie children
 const ChildrenItem = [
@@ -30,11 +30,12 @@ const ChildrenItem = [
     },
 ]
 
+// item de la cartegorie femme 
 const WomanItem = [
     {
         productName: "T-shirt",
         backgroundUrl: 'url(./images/t-shirt/shirt2.png)',
-        link: "",
+        link: "#",
     },
     {
         productName: "Chemise Femme",
@@ -63,7 +64,7 @@ const WomanItem = [
     },
 ]
 
-
+// item de la cartegorie homme 
 const ManItem = [
     {
         productName: "T-shirt",
@@ -92,13 +93,34 @@ const ManItem = [
     },
 ]
 
-export function ItemCardChildren({ item }) {
+// les titre des differentes cartegorie ainsi que les items avec la clé corp 
+const cartegorieTitle = [
+    {
+        title: 'Enfant',
+        corp: ChildrenItem,
+        link: './Enfants'
+    },
+    {
+        title: 'Femme',
+        corp: WomanItem,
+        link: './Femmes'
+    },
+    {
+        title: 'Homme',
+        corp: ManItem,
+        link: './Hommes'
+    }
+]
+
+// les card des differntes cartegories qui seront mapés
+export function ItemCard({ item }) {
     return (
         <>
             {/* card  */}
             <Link
-                height={'40vh'} width={'30%'} mt={'5'} mr={'3.3%'}
-                _hover={{ textDecoration: 'none' }}
+                height={'40vh'} width={{ base: '70%', md: '30%' }}
+                mt={'5'} mr={{ base: '0%', md: '0%' }}
+                _hover={{ textDecoration: 'none' }} href={item.link}
             >
                 <Flex
                     height={'100%'} width={'100%'}
@@ -125,6 +147,56 @@ export function ItemCardChildren({ item }) {
     )
 }
 
+export function ContainerCard({ card }) {
+    return (
+        <>
+            {/* cartegorie*/}
+            <Flex
+                width={'95%'} height={'auto'}
+                direction={'column'} alignItems={'center'}
+                justifyContent={'space-between'}
+            >
+
+                {/* la box de l'entete de la cartegorie  */}
+                <Flex
+                    height={'auto'} width={'100%'} mt={5}
+                    alignItems={'center'} justifyContent={'space-between'}
+                >
+                    <Heading
+                        height={'auto'} width={'100%'} display={'flex'}
+                        alignItems={'center'} justifyContent={'space-between'}
+                    >
+                        {card.title}
+                    </Heading>
+                    <Link
+                        href={card.link}
+                        _hover={{textDecoration : 'none'}}
+                    >
+                        <Button rightIcon={<ArrowForwardIcon />} colorScheme='yellow' variant='outline'>
+                            Voir Plus
+                        </Button>
+                    </Link>
+                </Flex>
+
+                {/* contient les card's  */}
+                <Flex
+                    height={'auto'} width={'100%'}
+                    flexWrap={'wrap'} direction={'row'}
+                    alignItems={{ base: 'center', md: 'normal' }} justifyContent={{ base: 'center', md: 'space-between' }}
+                >
+                    {/* um map de toute les sous cartegorie  */}
+                    {
+                        card.corp.map((item, key) => (
+                            <ItemCard key={key} item={item}></ItemCard>
+                        ))
+                    }
+                </Flex>
+            </Flex>
+        </>
+    )
+}
+
+// le rendu final qui sera affiché 
 const LadingCorps = () => {
     return (
         <>
@@ -147,97 +219,11 @@ const LadingCorps = () => {
                         direction={'column'} alignItems={'center'}
                         justifyContent={'center'}
                     >
-                        {/* cartegorie Enfants */}
-                        <Flex
-                            width={'95%'} height={'auto'}
-                            direction={'column'} alignItems={'center'} justifyContent={'space-between'}
-                        >
-                            <Flex
-                                alignItems={'center'} justifyContent={'center'}
-                            >
-                                <Heading
-                                    height={'auto'} width={'100%'} display={'flex'}
-                                    alignItems={'center'} justifyContent={'space-between'}
-                                >
-                                    Enfants
-                                </Heading>
-                            </Flex>
-
-
-                            <Flex
-                                height={'auto'} width={'100%'}
-                                flexWrap={'wrap'}
-                                direction={'row'}
-                            >
-                                {
-                                    ChildrenItem.map((item, key) => (
-                                        <ItemCardChildren key={key} item={item}></ItemCardChildren>
-                                    ))
-                                }
-                            </Flex>
-                        </Flex>
-
-                        {/* cartegorie femme */}
-                        <Flex
-                            width={'95%'} height={'auto'} mt={10}
-                            direction={'column'} alignItems={'center'} justifyContent={'space-between'}
-                        >
-                            <Flex
-                                alignItems={'center'} justifyContent={'center'}
-                            >
-                                <Heading
-                                    height={'auto'} width={'100%'} display={'flex'}
-                                    alignItems={'center'} justifyContent={'space-between'}
-                                >
-                                    Femme
-                                </Heading>
-                            </Flex>
-
-
-                            <Flex
-                                height={'auto'} width={'100%'}
-                                flexWrap={'wrap'}
-                                direction={'row'}
-                            >
-                                {
-                                    WomanItem.map((item, key) => (
-                                        <ItemCardChildren key={key} item={item}></ItemCardChildren>
-                                    ))
-                                }
-                            </Flex>
-                        </Flex>
-
-                        {/* cartegorie femme */}
-                        <Flex
-                            width={'95%'} height={'auto'} mt={10}
-                            direction={'column'} alignItems={'center'} justifyContent={'space-between'}
-                        >
-                            <Flex
-                                alignItems={'center'} justifyContent={'center'}
-                            >
-                                <Heading
-                                    height={'auto'} width={'100%'} display={'flex'}
-                                    alignItems={'center'} justifyContent={'space-between'}
-                                >
-                                    Homme
-                                </Heading>
-                            </Flex>
-
-
-                            <Flex
-                                height={'auto'} width={'100%'}
-                                flexWrap={'wrap'}
-                                direction={'row'}
-                            >
-                                {
-                                    ManItem.map((item, key) => (
-                                        <ItemCardChildren key={key} item={item}></ItemCardChildren>
-                                    ))
-                                }
-                            </Flex>
-                        </Flex>
-
-
+                        {
+                            cartegorieTitle.map((card, key) => (
+                                <ContainerCard key={key} card={card}></ContainerCard>
+                            ))
+                        }
                     </Flex>
 
                 </Box>
