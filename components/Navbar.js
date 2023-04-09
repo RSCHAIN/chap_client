@@ -3,6 +3,8 @@ import {
   Flex,
   Text,
   IconButton,
+  Wrap,
+  WrapItem,
   Button,
   Stack,
   Collapse,
@@ -12,9 +14,16 @@ import {
   PopoverTrigger,
   PopoverContent,
   useColorModeValue,
-  useBreakpointValue,
   useDisclosure,
-  Center,
+  Simplegrid,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuItemOption,
+  MenuGroup,
+  MenuOptionGroup,
+  MenuDivider,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -23,13 +32,48 @@ import {
   ChevronRightIcon,
 } from "@chakra-ui/icons";
 import React from "react";
-import ReactDOM from "react-dom";
+
+import { getAuth, signOut } from "firebase/auth";
+import { app } from "@/FIREBASE/clientApp";
+import { useRouter } from "next/router";
+import { db2 } from "@/FIREBASE/clientApp";
+import { ref, onValue } from "firebase/database";
+import { useState, useEffect } from "react";
 
 export default function Navbar() {
+  const [data, setData] = useState([]);
+  const [dataos, setDatos] = useState([]);
+  useEffect(() => {
+    const starCountRef = ref(db2, "products/items/");
+    onValue(starCountRef, (snapshot) => {
+      const donnes = snapshot.val();
+      const newProducts = Object.keys(donnes).map((key) => ({
+        id: key,
+        ...donnes[key],
+      }));
+
+      setData(newProducts);
+    });
+    console.log("data", data);
+
+    data.map((index, key) => {
+      dataos.map((data, key) => {
+        if (index.category === dataos[key]) {
+          console.log("deja enregistrer");
+        } else {
+          setDataos(index.category);
+          console.log(index.description)
+        }
+      });
+      console.log('data2',dataos)
+    });
+  }, []);
   const { isOpen, onToggle } = useDisclosure();
-
+  const auth = getAuth(app);
+  const logout = () => {
+    signOut(auth);
+  };
   return (
-
     <Box>
       <Flex
         bg={useColorModeValue("white", "gray.800")}
@@ -50,11 +94,7 @@ export default function Navbar() {
           <IconButton
             onClick={onToggle}
             icon={
-              isOpen ? (
-                <CloseIcon w={3} h={3} />
-              ) : (
-                <HamburgerIcon w={5} h={5} />
-              )
+              isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
             }
             variant={"ghost"}
             aria-label={"Toggle Navigation"}
@@ -69,7 +109,22 @@ export default function Navbar() {
             </Text> */}
 
           <Flex display={{ base: "none", md: "flex" }} ml={10}>
-            <DesktopNav />
+            {/* <DesktopNav /> */}
+            <Link href={"/"}>Accueil</Link>
+            <Menu isLazy>
+              <MenuButton>Categories</MenuButton>
+              <MenuList>
+                {/* MenuItems are not rendered unless Menu is open */}
+                <Wrap spacing="30px" align="center" w={"sm"}>
+                  {console.log('dataos',dataos)}
+                </Wrap>
+              </MenuList>
+            </Menu>
+            <Link href={"/"}>Accueil</Link>
+            <Link href={"/"}>Accueil</Link>
+            <Link href={"/"}>Accueil</Link>
+
+            <Button onClick={() => logout()}> Deconnexion</Button>
           </Flex>
         </Flex>
 
@@ -106,7 +161,6 @@ Se connecter
         <MobileNav />
       </Collapse>
     </Box>
-
   );
 }
 

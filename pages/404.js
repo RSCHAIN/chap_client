@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import FooterR from '@/components/footerResponsif'
 import {
   Badge,
@@ -26,21 +26,23 @@ import Navbar from "@/components/Navbar";
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 // And react-slick as our Carousel Lib
 import Slider from "react-slick";
-import Data from "@/data/data";
+
 import Image from "next/image";
 import { ChevronRightIcon, StarIcon } from "@chakra-ui/icons";
 // import FirstNav from "@/components/firstNav";
 // import Navbar from "@/components/navbar";
 import { useRouter } from "next/router";
+import { db2 } from "@/FIREBASE/clientApp";
+import { ref , onValue} from 'firebase/database'
 
 // Settings for the slider
 const settings = {
   dots: false,
   infinite: false,
   speed: 2000,
-  slidesToShow: 4,
-  slidesToScroll: 4,
-  initialSlide: 0,
+  slidesToShow: 3,
+  slidesToScroll: 2,
+  initialSlide: 2,
   responsive: [
     {
       breakpoint: 1024,
@@ -68,8 +70,38 @@ const settings = {
     }
   ]
 };
+/////////////fetch des datas
+
+
+
+
+
+
+
+
 
 export default function Carousel() {
+  const [data,setData]=useState([])
+  const [data2,setData2]=useState([])
+  const router =useRouter()
+  const[page,setPage]=useState('')
+  
+  useEffect(() => {
+    setPage(router.asPath.replace('/',' '))
+    const starCountRef = ref(db2,'products/items/');
+    onValue(starCountRef , (snapshot)=> {
+      const donnes = snapshot.val();
+      const newProducts = Object.keys(donnes).map(key=>({
+        id:key,
+        ...donnes[key]
+      }));
+      
+      setData(newProducts)
+    })
+    
+  
+  }, [])
+  
   // As we have used custom buttons, we need a reference variable to
   // change the state
   const [slider, setSlider] = useState(null);
@@ -85,9 +117,10 @@ export default function Carousel() {
     "https://images.unsplash.com/photo-1627875764093-315831ac12f7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60",
     "https://images.unsplash.com/photo-1571432248690-7fd6980a1ae2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDl8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60",
   ];
-  const router =useRouter()
+
   const [isLagerThan768] = useMediaQuery('(min-width: 768px)')
   const { isOpen, onToggle } = useDisclosure()
+ 
   return (
     <>
     {/* <FirstNav/>
@@ -105,7 +138,8 @@ export default function Carousel() {
       
     </Flex>
       <Flex  justifyContent={'space-between'} py={10}>
-      <Text  py={0} ml={20} fontSize={25}>{router.pathname.replace('/','')}</Text>
+      {/* {router.asPath.replace('/','')} */}
+      <Text  py={0} ml={20} fontSize={25}>{page}</Text>
     
      
         {/* CSS files for react-slick */}
@@ -160,24 +194,24 @@ export default function Carousel() {
      
       </Flex>
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
-        {Data.map((data, index) => (
+        {data.map((data, index) => (
           <Center>
           <Box
-            // maxW="fu"
-            width={"full"}
+            maxW="sm"
+            width={"sm"}
             height={"fit-content"}
             borderWidth="1px"
             borderRadius="lg"
             // overflow="hidden"
             px={10}
-            boxShadow={"2xl"}
+            // boxShadow={"2xl"}
             mx={10}
             mb={20}
             pb={5}
             
           >
             <Box width={'150px'} height={'170px'} pt={10} pl={10}>
-            <img src={data.images[0]} alt={data.title} />
+            <img src={data.url} alt={data.name} />
             </Box>
             
 
@@ -191,7 +225,7 @@ export default function Carousel() {
                 w={'fit-content'}
                 height={'50px'}
               >
-                {data.title}
+                {data.name}
               </Box>
 
               <Box
@@ -203,12 +237,12 @@ export default function Carousel() {
                 w={'fit-content'}
                 height={'50px'}
               >
-                <Text>{data.description.toString()}</Text>
+                <Text>{data.description}</Text>
               </Box>
               <Box>
                 {data.price}
-                <Box as="span" color="gray.600" pl={2} fontSize="sm">
-                  XOF
+                <Box as="span" color="gray.100" pl={2} fontSize="sm">
+                  EUR
                 </Box>
               </Box>
 
@@ -220,11 +254,12 @@ export default function Carousel() {
                   ))}
               </Box>
               <Box>
-                <Button bgColor={'blue'} mt={3} borderRadius={'66px'} color={'white'}> Ajouter au panier</Button>
+                <Button bgColor={'blue'} mt={3} borderRadius={'66px'} as={'a'} href={'/Cart'}color={'white'}> Ajouter au panier</Button>
               </Box>
             </Box>
           </Box>
           </Center>
+          
         ))}
         {/* </SimpleGrid> */}
       </Slider>
@@ -235,7 +270,7 @@ export default function Carousel() {
         
        <SimpleGrid columns={[2,2,2,4,4]}>
 
-       {Data.map((data, index) => (
+       {data.map((data, index) => (
           <Box
             maxW="sm"
             width={"fit-content"}
@@ -251,7 +286,7 @@ export default function Carousel() {
             
           >
             <Box width={'150px'} height={'170px'} pt={10} pl={10}>
-            <img src={data.images[0]} alt={data.title} />
+            <img src={data.url} alt={data.name} />
             </Box>
             
 
@@ -265,7 +300,7 @@ export default function Carousel() {
                 w={'179px'}
                 height={'50px'}
               >
-                {data.title}
+                {data.name}
               </Box>
 
               <Box
@@ -277,12 +312,12 @@ export default function Carousel() {
                 w={'fit-content'}
                 height={'50px'}
               >
-                <Text>{data.description.toString()}</Text>
+                <Text>{data.description}</Text>
               </Box>
               <Box>
                 {data.price}
                 <Box as="span" color="gray.600" pl={2} fontSize="sm">
-                  XOF
+                  EUR
                 </Box>
               </Box>
 
@@ -290,7 +325,7 @@ export default function Carousel() {
                 {Array(5)
                   .fill("")
                   .map((_, i) => (
-                    <StarIcon key={i} color={i < data.rating ? "teal.500" : "gray.300"} />
+                    <StarIcon key={i} color={i < 4 ? "teal.500" : "gray.300"} />
                   ))}
               </Box>
               <Box>

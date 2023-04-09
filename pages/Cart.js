@@ -1,42 +1,58 @@
 import Navbar from "@/components/Navbar";
 import { ChevronRightIcon } from "@chakra-ui/icons";
-import { Box, Button, Center, Flex, Image, Input, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Center,
+  Flex,
+  Image,
+  Input,
+  Text,
+} from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { BiStar } from "react-icons/bi";
+import InputBar from "@/components/InputBar";
+import { useMediaQuery } from "@chakra-ui/react";
+import { useRouter } from "next/router";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { app } from "@/FIREBASE/clientApp";
+
 
 export default function Cart() {
-  const data = [10, 20, 30];
-  const [data2, setData2] = useState()
-  useEffect(() => {
-    setData2(0)
-    console.log(data2)
+  const router = useRouter();
+  const auth = getAuth(app)
+  useEffect(()=>{
+    onAuthStateChanged(auth,(user)=>{
+      if(!user){
+        router.push("/Connexion")
+      }
+      else{
+        console.log(user)
+      }
+    })
   })
-  const decrement = () => {
-    if (data2 < 0) {
-      const dim = data2 - 1
-      setData2(dim)
-      console.log(data2)
-    }
 
-  }
-  const increment = () => {
-    if (data2 <= 0) {
-      const sup = data2 + 1
-      setData2(sup)
-      console.log(data2)
-    }
-
-  }
+  const data = [10, 20, 30];
+  const [data2, setData2] = useState();
+  useEffect(() => {
+    setData2(0);
+    console.log(data2);
+  });
+ 
+  const [isLagerThan768] = useMediaQuery("(min-width: 768px)");
   return (
     <>
-      <Navbar />
-      <Flex pb={20}>
-        <Text fontSize={20}> Catégories</Text>
-        <ChevronRightIcon h={8} fontSize={25} />
-        <Text fontSize={20} color={"blue"}>
-          Panier
-        </Text>
-      </Flex>
+      {/* <Navbar />
+       */}
+      <InputBar />
+      {isLagerThan768 ? <Navbar></Navbar> : <></>}
+      <Center>
+        <Flex pb={20}>
+          <Text fontSize={40} fontWeight={"bold"}>
+            Panier
+          </Text>
+        </Flex>
+      </Center>
       {data.map((data, index) => (
         <Center>
           <Flex
@@ -71,34 +87,36 @@ export default function Cart() {
               </Flex>
               <Text pt={5}>Robe Blazer</Text>
               <Flex
-
                 borderColor={"#E37611"}
                 borderStyle={"solid"}
                 borderWidth={"0,5px"}
-                width={'full'}
-
+                width={"full"}
                 borderRadius={"4px"}
-              // justifyContent={'space-between'}
+                // justifyContent={'space-between'}
               >
                 <Flex>
-                  <Button onclick={() => decrement()} >-</Button>
-                  <Input type={'number'} color={'#E37611'} w={'70px'} value={data2} borderColor={'#F7C29E'} />
+                  <Button onclick={() => decrement()}>-</Button>
+                  <Input
+                    type={"number"}
+                    color={"#E37611"}
+                    w={"70px"}
+                    value={data2}
+                    borderColor={"#F7C29E"}
+                  />
                   <Button onclick={() => increment()}>+</Button>
                 </Flex>
-                <Text color={'#E37611'} ml={'90%'}>3500frs</Text>
-
-
+                <Text color={"#E37611"} ml={"90%"}>
+                  3500frs
+                </Text>
               </Flex>
             </Box>
           </Flex>
         </Center>
       ))}
-      <Flex
-        mt={-10}
-        ml={'65%'}
-        mb={'70px'}>
-
-        <Button bgColor={'#816acd'} borderRadius={50} width={100}>Valider</Button>
+      <Flex mt={-10} ml={"65%"} mb={"70px"}>
+        <Button bgColor={"#816acd"} borderRadius={50} width={100}>
+          Valider
+        </Button>
       </Flex>
     </>
   );

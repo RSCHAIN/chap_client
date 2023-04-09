@@ -1,4 +1,4 @@
-import Footer from "@/components/footer";
+import FooterR from "@/components/footerResponsif";
 import BarBleu from "@/components/generale/BarBleu";
 import LadingCorps from "@/components/generale/LadingCorps";
 import SliderComponents from "@/components/generale/SliderComponents";
@@ -16,7 +16,8 @@ export default function Home() {
       {isLagerThan768 ? <Navbar></Navbar> : <></>}
       <SliderComponents />
       <LadingCorps />
-      {/* <Footer/> */}
+
+      <FooterR/>
     </>
   );
 }

@@ -13,7 +13,7 @@ const InputBar = () => {
         <>
 
             <Flex
-                width={'100%'} height={'4em'}
+                width={'full'} height={'4em'}
                 align={'center'} justifyContent={'space-between'}
             >
 
@@ -29,7 +29,7 @@ const InputBar = () => {
                 {/* l'input et les button  */}
                 <Flex
                     align={'center'} justifyContent={'center'}
-                    width={"auto"} height={'100%'}
+                    width={"auto"} height={'full'}
                 >
                     {isLagerThan768 ? <InputLg /> : <SearcheIcone />}
                 </Flex>
@@ -37,7 +37,7 @@ const InputBar = () => {
                 {/* butons se connecter et s'inscrire  */}
                 <Flex
                     align={'center'} justifyContent={'center'}
-                    width={"auto"} height={'100%'}
+                    width={"auto"} height={'full'}
                 >
                     {isLagerThan768 ? <LoginSignButton /> : <ResponsiveMenu />}
                 </Flex>

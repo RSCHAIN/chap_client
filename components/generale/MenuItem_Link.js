@@ -17,9 +17,9 @@ const MenuItem_Link = () => {
                 >
                     <Link href='/'>Home</Link>
                     <Link href=''>Categories</Link>
-                    <Link href=''>Panier</Link>
-                    <Link href=''>Service</Link>
-                    <Link href=''>Paiement</Link>
+                    <Link href='/Cart'>Panier</Link>
+                    <Link href='#'>Service</Link>
+                    <Link href='#'>Paiement</Link>
                 </Flex>
 
                 <Flex
@@ -28,8 +28,8 @@ const MenuItem_Link = () => {
                     align={'center'} 
                     justify={{ base: 'space-around', md: 'space-between' }}
                 >
-                    <Link mr={'1em'}>Se connecter</Link>
-                    <Link color={'#4361ee'}>Inscription</Link>
+                    <Link mr={'1em'}href={'/Connexion'}>Se connecter</Link>
+                    <Link color={'#4361ee'} href={'/Inscription'}>Inscription</Link>
                 </Flex>
             </Flex>
         </>
