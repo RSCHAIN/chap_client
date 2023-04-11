@@ -15,6 +15,7 @@ import {
   Show,
   SimpleGrid,
   Stack,
+  Image,
   Text,
   useBreakpointValue,
   useDisclosure,
@@ -27,7 +28,7 @@ import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 // And react-slick as our Carousel Lib
 import Slider from "react-slick";
 
-import Image from "next/image";
+// import Image from "next/image";
 import { ChevronRightIcon, StarIcon } from "@chakra-ui/icons";
 // import FirstNav from "@/components/firstNav";
 // import Navbar from "@/components/navbar";
@@ -82,25 +83,34 @@ const settings = {
 
 export default function Carousel() {
   const [data,setData]=useState([])
-  const [data2,setData2]=useState([])
+  const [cat,setCat]=useState([])
   const router =useRouter()
   const[page,setPage]=useState('')
   
   useEffect(() => {
+    const link = router.asPath.replace('/','').toString()
     setPage(router.asPath.replace('/',' '))
-    const starCountRef = ref(db2,'products/items/');
+    const starCountRef = ref(db2,'/');
     onValue(starCountRef , (snapshot)=> {
+      console.log('snapshot',snapshot)
       const donnes = snapshot.val();
-      const newProducts = Object.keys(donnes).map(key=>({
+     
+      const categorie = Object.keys(donnes).map(key=>({
         id:key,
         ...donnes[key]
-      }));
+      }))
+      setCat(categorie)
+     
+      // const newProducts = Object.keys(donnes).map(key=>({
+      //  key,
+       
+      // }));
       
-      setData(newProducts)
+      // setData(newProducts)
     })
     
   
-  }, [])
+  }, [router])
   
   // As we have used custom buttons, we need a reference variable to
   // change the state
@@ -207,11 +217,12 @@ export default function Carousel() {
             // boxShadow={"2xl"}
             mx={10}
             mb={20}
+            // key={}
             pb={5}
             
           >
             <Box width={'150px'} height={'170px'} pt={10} pl={10}>
-            <img src={data.url} alt={data.name} />
+            <Image src={data.img} alt={data.name} />
             </Box>
             
 
@@ -240,7 +251,7 @@ export default function Carousel() {
                 <Text>{data.description}</Text>
               </Box>
               <Box>
-                {data.price}
+                {data.real_price}
                 <Box as="span" color="gray.100" pl={2} fontSize="sm">
                   EUR
                 </Box>
@@ -270,7 +281,7 @@ export default function Carousel() {
         
        <SimpleGrid columns={[2,2,2,4,4]}>
 
-       {data.map((data, index) => (
+       {data.map((data, key) => (
           <Box
             maxW="sm"
             width={"fit-content"}
@@ -286,7 +297,7 @@ export default function Carousel() {
             
           >
             <Box width={'150px'} height={'170px'} pt={10} pl={10}>
-            <img src={data.url} alt={data.name} />
+            <Image src={data.img} alt={data.name} />
             </Box>
             
 
@@ -315,7 +326,7 @@ export default function Carousel() {
                 <Text>{data.description}</Text>
               </Box>
               <Box>
-                {data.price}
+                {data.real_price}
                 <Box as="span" color="gray.600" pl={2} fontSize="sm">
                   EUR
                 </Box>

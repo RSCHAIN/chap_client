@@ -39,6 +39,7 @@ import { useRouter } from "next/router";
 import { app } from "@/FIREBASE/clientApp";
 import cookies from "js-cookie";
 import { useEffect } from "react";
+import TransitionExample from "@/components/forgetPassword";
 
 export default function Connexion() {
   const [isLagerThan768] = useMediaQuery("(min-width: 768px)");
@@ -95,7 +96,7 @@ export default function Connexion() {
           mx={[5, 5, 5, 5, 12]}
           my={20}
           boxShadow={"0px 4px 24px "}
-          box
+  
         >
           <Box h={500}>
             <Image
@@ -131,11 +132,15 @@ export default function Connexion() {
                   borderRadius={"50px"}
                   bgColor={"blue.400"}
                   color={"white"}
+                  _hover={{
+                    bg: 'blue.500',
+                  }}
                   onClick={() => loginUSer()}
                 >
                   Connexion{" "}
                 </Button>
               </Stack>
+              <TransitionExample/>
             </Box>
           </Center>
         </Flex>

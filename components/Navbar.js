@@ -42,32 +42,32 @@ import { useState, useEffect } from "react";
 
 export default function Navbar() {
   const [data, setData] = useState([]);
+  const [cat,setCat]=useState([])
   const [dataos, setDatos] = useState([]);
   useEffect(() => {
-    const starCountRef = ref(db2, "products/items/");
-    onValue(starCountRef, (snapshot) => {
+    
+    
+    const starCountRef = ref(db2,'/');
+    onValue(starCountRef , (snapshot)=> {
+      console.log('snapshot',snapshot)
       const donnes = snapshot.val();
-      const newProducts = Object.keys(donnes).map((key) => ({
-        id: key,
-        ...donnes[key],
-      }));
-
-      setData(newProducts);
-    });
-    console.log("data", data);
-
-    data.map((index, key) => {
-      dataos.map((data, key) => {
-        if (index.category === dataos[key]) {
-          console.log("deja enregistrer");
-        } else {
-          setDataos(index.category);
-          console.log(index.description)
-        }
-      });
-      console.log('data2',dataos)
-    });
-  }, []);
+     
+      const categorie = Object.keys(donnes).map(key=>({
+        id:key,
+        ...donnes[key]
+      }))
+      setCat(categorie)
+     
+      // const newProducts = Object.keys(donnes).map(key=>({
+      //  key,
+       
+      // }));
+      
+      // setData(newProducts)
+    })
+    
+  
+  }, [])
   const { isOpen, onToggle } = useDisclosure();
   const auth = getAuth(app);
   const logout = () => {
@@ -116,7 +116,12 @@ export default function Navbar() {
               <MenuList>
                 {/* MenuItems are not rendered unless Menu is open */}
                 <Wrap spacing="30px" align="center" w={"sm"}>
-                  {console.log('dataos',dataos)}
+                  {cat.map((index,key)=>(
+                    <Link href={'/'+index.id}>
+                      <WrapItem>{index.id}</WrapItem>
+                      
+                    </Link>
+                  ))}
                 </Wrap>
               </MenuList>
             </Menu>
