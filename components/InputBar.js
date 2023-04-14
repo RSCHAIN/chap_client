@@ -19,11 +19,11 @@ const InputBar = () => {
 
                 {/* la logo  */}
                 <Flex
-                    color={"#fbb614"} width={"auto"} height={'100%'}
+                    color={"yellow.400"} width={"auto"} height={'100%'}
                     align={'center'} justifyContent={'center'}
-                    fontWeight={'bold'} ml={'.5em'}
+                    fontWeight={'bold'} ml={'5em'}
                 >
-                    <Heading>FripChap</Heading>
+                    <Heading>Chap</Heading>
                 </Flex>
 
                 {/* l'input et les button  */}

@@ -37,7 +37,7 @@ export default function Cart() {
   useEffect(() => {
     setData2(0);
     console.log(data2);
-  });
+  },[data2]);
  
   const [isLagerThan768] = useMediaQuery("(min-width: 768px)");
   return (
@@ -54,7 +54,7 @@ export default function Cart() {
         </Flex>
       </Center>
       {data.map((data, index) => (
-        <Center>
+        <Center key={data.id}>
           <Flex
             bgColor={"#F7C29E"}
             width={"621px"}
@@ -69,6 +69,7 @@ export default function Cart() {
             <Box>
               <Image
                 src="./images/robe.png"
+                alt='robe'
                 width={"117px"}
                 height={"139px"}
                 ml={15}
@@ -80,7 +81,7 @@ export default function Cart() {
                 Zarha
               </Text>
               <Flex>
-                <Image src="./images/Star.svg" />
+                <Image src="./images/Star.svg" alt='robe'/>
                 <Text as={"sup"} fontSize={12}>
                   (59)
                 </Text>

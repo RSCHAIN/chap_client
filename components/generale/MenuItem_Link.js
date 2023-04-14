@@ -1,5 +1,6 @@
 import { Flex, Link, Text } from '@chakra-ui/react';
 import React from 'react';
+import Showconnex from '../ShowConnexion';
 
 const MenuItem_Link = () => {
     return (
@@ -18,8 +19,8 @@ const MenuItem_Link = () => {
                     <Link href='/'>Home</Link>
                     <Link href=''>Categories</Link>
                     <Link href='/Cart'>Panier</Link>
-                    <Link href='#'>Service</Link>
-                    <Link href='#'>Paiement</Link>
+                    {/* <Link href='#'>Service</Link>
+                    <Link href='#'>Paiement</Link> */}
                 </Flex>
 
                 <Flex
@@ -28,8 +29,7 @@ const MenuItem_Link = () => {
                     align={'center'} 
                     justify={{ base: 'space-around', md: 'space-between' }}
                 >
-                    <Link mr={'1em'}href={'/Connexion'}>Se connecter</Link>
-                    <Link color={'#4361ee'} href={'/Inscription'}>Inscription</Link>
+                    <Showconnex/>
                 </Flex>
             </Flex>
         </>

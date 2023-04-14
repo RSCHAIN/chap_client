@@ -24,6 +24,7 @@ import {
   MenuGroup,
   MenuOptionGroup,
   MenuDivider,
+  Center,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -42,37 +43,23 @@ import { useState, useEffect } from "react";
 
 export default function Navbar() {
   const [data, setData] = useState([]);
-  const [cat,setCat]=useState([])
+  const [cat, setCat] = useState([]);
   const [dataos, setDatos] = useState([]);
   useEffect(() => {
-    
-    
-    const starCountRef = ref(db2,'/');
-    onValue(starCountRef , (snapshot)=> {
-      console.log('snapshot',snapshot)
+    const starCountRef = ref(db2, "/");
+    onValue(starCountRef, (snapshot) => {
       const donnes = snapshot.val();
-     
-      const categorie = Object.keys(donnes).map(key=>({
-        id:key,
-        ...donnes[key]
-      }))
-      setCat(categorie)
-     
-      // const newProducts = Object.keys(donnes).map(key=>({
-      //  key,
-       
-      // }));
-      
-      // setData(newProducts)
-    })
-    
-  
-  }, [])
+
+      const categorie = Object.keys(donnes).map((key) => ({
+        id: key,
+        ...donnes[key],
+      }));
+      setCat(categorie);
+    });
+  }, []);
   const { isOpen, onToggle } = useDisclosure();
   const auth = getAuth(app);
-  const logout = () => {
-    signOut(auth);
-  };
+
   return (
     <Box>
       <Flex
@@ -100,7 +87,7 @@ export default function Navbar() {
             aria-label={"Toggle Navigation"}
           />
         </Flex>
-        <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
+        <Flex flex={{ base: 1 }} justify={{ base: "center", md: "center" }}>
           {/* <Text
               textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
               fontFamily={'heading'}
@@ -108,28 +95,71 @@ export default function Navbar() {
               Logo
             </Text> */}
 
-          <Flex display={{ base: "none", md: "flex" }} ml={10}>
+          <Flex
+            display={{ base: "none", md: "flex" }}
+            // ml={"25%"}
+            fontSize={20}
+            color={"black"}
+          >
             {/* <DesktopNav /> */}
-            <Link href={"/"}>Accueil</Link>
+
+            <Link
+              href={"/"}
+              mr={3}
+              _hover={{ textDecoration: "none", color: "yellow.300" }}
+            >
+              Accueil
+            </Link>
             <Menu isLazy>
-              <MenuButton>Categories</MenuButton>
+              <MenuButton
+                // mr={3}
+                _hover={{ textDecoration: "none", color: "yellow.300" }}
+              >
+                <Button rightIcon={<ChevronDownIcon />} border={'none'} bgColor={'inherit'} mt='-5px' fontWeight={'normal'} fontSize={20}>Categories</Button>
+              </MenuButton>
               <MenuList>
                 {/* MenuItems are not rendered unless Menu is open */}
-                <Wrap spacing="30px" align="center" w={"sm"}>
-                  {cat.map((index,key)=>(
-                    <Link href={'/'+index.id}>
-                      <WrapItem>{index.id}</WrapItem>
-                      
+                {/* <Wrap spacing="30px" align="center" w={"sm"}> */}
+                  {/* <Simplegrid > */}
+                  
+                  {cat.map((index, key) => (
+                    <Link
+                      key={index.id}
+                      href={"/" + index.id}
+                      _hover={{ textDecoration: "none", color: "yellow.300" }}
+                    >
+
+                      {index.id} <br/>
+                      {/* <WrapItem></WrapItem> */}
                     </Link>
+                   
                   ))}
-                </Wrap>
+                 
+                  {/* </Simplegrid> */}
+                {/* </Wrap> */}
               </MenuList>
             </Menu>
-            <Link href={"/"}>Accueil</Link>
-            <Link href={"/"}>Accueil</Link>
-            <Link href={"/"}>Accueil</Link>
-
-            <Button onClick={() => logout()}> Deconnexion</Button>
+            <Link
+              href={"/Cart"}
+              mr={3}
+              _hover={{ textDecoration: "none", color: "yellow.300" }}
+            >
+              Panier
+            </Link>
+            {/* <Link
+              href={"#"}
+              mr={3}
+              _hover={{ textDecoration: "none", color: "yellow.300" }}
+            >
+              Paiement
+            </Link>
+            <Link
+              href={"#"}
+              mr={3}
+              _hover={{ textDecoration: "none", color: "yellow.300" }}
+            >
+              Services
+            </Link> */}
           </Flex>
         </Flex>
 
@@ -163,7 +193,7 @@ Se connecter
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>
-        <MobileNav />
+        {/* <MobileNav /> */}
       </Collapse>
     </Box>
   );
@@ -255,115 +285,116 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
   );
 };
 
-const MobileNav = () => {
-  return (
-    <Stack
-      bg={useColorModeValue("white", "gray.800")}
-      p={4}
-      display={{ md: "none" }}
-    >
-      {NAV_ITEMS.map((navItem) => (
-        <MobileNavItem key={navItem.label} {...navItem} />
-      ))}
-    </Stack>
-  );
-};
+// const MobileNav = () => {
+//   return (
+//     <Stack
+//       bg={useColorModeValue("white", "gray.800")}
+//       p={4}
+//       display={{ md: "none" }}
+//     >
+//       {NAV_ITEMS.map((navItem) => (
+//         <MobileNavItem key={navItem.label} {...navItem} />
+//       ))}
+//     </Stack>
+//   );
+// };
 
-const MobileNavItem = ({ label, children, href }) => {
-  const { isOpen, onToggle } = useDisclosure();
+// const MobileNavItem = ({ label, children, href }) => {
+//   const { isOpen, onToggle } = useDisclosure();
 
-  return (
-    <Stack spacing={4} onClick={children && onToggle}>
-      <Flex
-        py={2}
-        as={Link}
-        href={href ?? "#"}
-        justify={"space-between"}
-        align={"center"}
-        _hover={{
-          textDecoration: "none",
-        }}
-      >
-        <Text
-          fontWeight={600}
-          color={useColorModeValue("gray.600", "gray.200")}
-        >
-          {label}
-        </Text>
-        {children && (
-          <Icon
-            as={ChevronDownIcon}
-            transition={"all .25s ease-in-out"}
-            transform={isOpen ? "rotate(180deg)" : ""}
-            w={6}
-            h={6}
-          />
-        )}
-      </Flex>
+//   return (
+//     <Stack spacing={4} onClick={children && onToggle}>
+//       <Flex
+//         py={2}
+//         as={Link}
+//         href={href ?? "#"}
+//         justify={"space-between"}
+//         align={"center"}
+//         _hover={{
+//           textDecoration: "none",
+//         }}
+//       >
+//         <Text
+//           fontWeight={600}
+//           color={useColorModeValue("gray.600", "gray.200")}
+//         >
+//           {label}
+//         </Text>
+//         {children && (
+//           <Icon
+//             as={ChevronDownIcon}
+//             transition={"all .25s ease-in-out"}
+//             transform={isOpen ? "rotate(180deg)" : ""}
+//             w={6}
+//             h={6}
+//           />
+//         )}
+//       </Flex>
 
-      <Collapse in={isOpen} animateOpacity style={{ marginTop: "0!important" }}>
-        <Stack
-          mt={2}
-          pl={4}
-          borderLeft={1}
-          borderStyle={"solid"}
-          borderColor={useColorModeValue("gray.200", "gray.700")}
-          align={"start"}
-        >
-          {children &&
-            children.map((child) => (
-              <Link key={child.label} py={2} href={child.href}>
-                {child.label}
-              </Link>
-            ))}
-        </Stack>
-      </Collapse>
-    </Stack>
-  );
-};
+//       <Collapse in={isOpen} animateOpacity style={{ marginTop: "0!important" }}>
+//         <Stack
+//           mt={2}
+//           pl={4}
+//           borderLeft={1}
+//           borderStyle={"solid"}
+//           borderColor={useColorModeValue("gray.200", "gray.700")}
+//           align={"start"}
+//         >
+//           {children &&
+//             children.map((child) => (
+//               <Link key={child.label} py={2} href={child.href}>
+//                 {child.label}
+//               </Link>
+//             ))}
+//         </Stack>
+//       </Collapse>
+//     </Stack>
+//   );
+// };
 
-const NAV_ITEMS = [
-  {
-    label: "Accueil",
-    href: "/",
-  },
-  {
-    label: "Catégories",
-    children: [
-      {
-        label: "Hommes",
-        href: "/Hommes",
-      },
-      {
-        label: "Femmes",
-        href: "/Femmes",
-      },
-      {
-        label: "Enfants",
-        href: "/Enfants",
-      },
-    ],
-  },
+// const NAV_ITEMS =
+//  [
+//   {
+//     label: "Accueil",
+//     href: "/",
+//   },
+//   {
+//     label: "Catégories",
+//     children: [
+//       {
+//         label: "Hommes",
+//         href: "/Hommes",
+//       },
+//       {
+//         label: "Femmes",
+//         href: "/Femmes",
+//       },
+//       {
+//         label: "Enfants",
+//         href: "/Enfants",
+//       },
+//     ],
+//   },
 
-  {
-    label: "Panier",
-    href: "/Cart",
-  },
-  {
-    label: "Services",
-    href: "#",
-  },
-  {
-    label: "Paiements",
-    children: [
-      {
-        label: "Ajouter moyen de paiements",
-        href: "#",
-      },
-      {
-        label: "Voir les moyens de paiements",
-        href: "#",
-      },
-    ],
-  },
-];
+//   {
+//     label: "Panier",
+//     href: "/Cart",
+//   },
+//   {
+//     label: "Services",
+//     href: "#",
+//   },
+//   {
+//     label: "Paiements",
+//     children: [
+//       {
+//         label: "Ajouter moyen de paiements",
+//         href: "#",
+//       },
+//       {
+//         label: "Voir les moyens de paiements",
+//         href: "#",
+//       },
+//     ],
+//   },
+// ];

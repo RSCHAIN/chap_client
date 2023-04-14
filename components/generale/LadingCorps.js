@@ -4,28 +4,28 @@ import { Box, Button, Center, Flex, Heading, Link, SimpleGrid, Text } from '@cha
 // les items de la cartegorie children
 const ChildrenItem = [
     {
-        productName: "T-shirt",
-        backgroundUrl: 'url(./images/t-shirt/shirt-1.png)',
+        productName: "KFC",
+        backgroundUrl: 'url(./Slider/images4.jpg)',
+        link: "/KFC",
+    },
+    {
+        productName: "AUTRE",
+        backgroundUrl: 'url(./Slider/images3.jpg)',
         link: "",
     },
     {
-        productName: "Chemise Enfant",
-        backgroundUrl: 'url(./images/t-shirt/chemise.png)',
+        productName: "AUTRE",
+        backgroundUrl: 'url(./Slider/images5.jpg)',
         link: "",
     },
     {
-        productName: "Robe",
-        backgroundUrl: 'url(./images/t-shirt/robe-enfant.png)',
+        productName: "AUTRE",
+        backgroundUrl: 'url(./Slider/images6.jpg)',
         link: "",
     },
     {
-        productName: "Short Enfant",
-        backgroundUrl: 'url(./images/t-shirt/short.png)',
-        link: "",
-    },
-    {
-        productName: "Pull Over ",
-        backgroundUrl: 'url(./images/t-shirt/pullOver.png)',
+        productName: "AUTRE ",
+        backgroundUrl: 'url(./Slider/images8.jpg)',
         link: "",
     },
 ]
@@ -33,33 +33,33 @@ const ChildrenItem = [
 // item de la cartegorie femme 
 const WomanItem = [
     {
-        productName: "T-shirt",
-        backgroundUrl: 'url(./images/t-shirt/shirt2.png)',
-        link: "#",
+        productName: "UBER",
+        backgroundUrl: 'url(./images/VTC/taxi4.jpg)',
+        link: "/UBER",
     },
     {
-        productName: "Chemise Femme",
-        backgroundUrl: 'url(./images/t-shirt/chemise2.png)',
+        productName: "AUTRE",
+        backgroundUrl: 'url(./images/VTC/taxi4.jpg)',
         link: "",
     },
     {
-        productName: "Short Femme",
-        backgroundUrl: 'url(./images/t-shirt/short2.png)',
+        productName: "AUTRE",
+        backgroundUrl: 'url(./images/VTC/taxi4.jpg)',
         link: "",
     },
     {
-        productName: "Pentalon",
-        backgroundUrl: 'url(./images/t-shirt/pentalon.png)',
+        productName: "AUTRE",
+        backgroundUrl: 'url(./images/VTC/taxi4.jpg)',
         link: "",
     },
     {
-        productName: "Robe",
-        backgroundUrl: 'url(./images/t-shirt/robe.png)',
+        productName: "AUTRE",
+        backgroundUrl: 'url(./images/VTC/taxi4.jpg)',
         link: "",
     },
     {
-        productName: "Pull Over ",
-        backgroundUrl: 'url(./images/t-shirt/pullOver2.png)',
+        productName: "AUTRE",
+        backgroundUrl: 'url(./images/VTC/taxi4.jpg)',
         link: "",
     },
 ]
@@ -67,28 +67,28 @@ const WomanItem = [
 // item de la cartegorie homme 
 const ManItem = [
     {
-        productName: "T-shirt",
-        backgroundUrl: 'url(./images/t-shirt/shirt3.png)',
+        productName: "AMAZON",
+        backgroundUrl: 'url(./images/Other/images.png)',
+        link: "/AMAZON",
+    },
+    {
+        productName: "AUTRE",
+        backgroundUrl: 'url(./images/Other/barber.jpg)',
         link: "",
     },
     {
-        productName: "Chemise Homme",
-        backgroundUrl: 'url(./images/t-shirt/chemise3.png)',
+        productName: "AUTRE",
+        backgroundUrl: 'url(./images/Other/delivery2.jpg)',
         link: "",
     },
     {
-        productName: "Short Homme",
-        backgroundUrl: 'url(./images/t-shirt/short.png)',
+        productName: "AUTRE",
+        backgroundUrl: 'url(./images/Other/delivery3.jpg)',
         link: "",
     },
     {
-        productName: "Pentalon",
-        backgroundUrl: 'url(./images/t-shirt/pentalon2.png)',
-        link: "",
-    },
-    {
-        productName: "Pull Over ",
-        backgroundUrl: 'url(./images/t-shirt/pullOver.png)',
+        productName: "AUTRE",
+        backgroundUrl: 'url(../images/Other/hypermarket.jpg)',
         link: "",
     },
 ]
@@ -96,19 +96,19 @@ const ManItem = [
 // les titre des differentes cartegorie ainsi que les items avec la clé corp 
 const cartegorieTitle = [
     {
-        title: 'Enfant',
+        title: 'ALIMENTATION',
         corp: ChildrenItem,
-        link: './Enfants'
+        link: '#'
     },
     {
-        title: 'Femme',
+        title: 'TRANSPORT',
         corp: WomanItem,
-        link: './Femmes'
+        link: '#'
     },
     {
-        title: 'Homme',
+        title: 'AUTRE',
         corp: ManItem,
-        link: './Hommes'
+        link: '#'
     }
 ]
 
@@ -126,7 +126,7 @@ export function ItemCard({ item }) {
                     height={'100%'} width={'100%'}
                     alignItems={'center'} justifyContent={'center'}
                     backgroundImage={item.backgroundUrl}
-                    backgroundPosition={'center'} backgroundSize={'contain'} backgroundRepeat={'no-repeat'}
+                    backgroundPosition={'center'} backgroundSize={'cover'} backgroundRepeat={'no-repeat'}
                 >
                     <Flex
                         alignItems={'center'} justifyContent={'center'}
@@ -210,7 +210,7 @@ const LadingCorps = () => {
                     <Heading
                         textAlign={'start'} color={"#fbb614"} mb={5}
                     >
-                        Nos Articles
+                        Nos Services
                     </Heading>
 
                     {/* la box de toutes les cartegorie */}

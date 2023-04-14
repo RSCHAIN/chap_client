@@ -27,7 +27,7 @@ const Logo = () => {
     fontWeight={700}
     ml={"80px"}
   >
-    FripChap
+    Chap
   </Heading>
   );
 };
@@ -74,7 +74,7 @@ export default function FooterR() {
       color={useColorModeValue('gray.700', 'gray.200')}>
       <Container as={Stack} maxW={'6xl'} py={10}>
         <SimpleGrid
-          templateColumns={{ sm: '1fr 1fr', md: '2fr 1fr 1fr 2fr' }}
+          templateColumns={{ sm: '1fr 1fr', md: '2fr 2fr 2fr' }}
           spacing={8}>
           <Stack spacing={6}>
             <Box>
@@ -90,12 +90,10 @@ export default function FooterR() {
             mt={'20px'}
             textAlign='justify'
           >
-            Abidjan 01 Bp , Contre allée Côte d’Ivoire Telecom, Immeuble Western
-            Union, Aile droite 2ème et 3ème étages 10 BP 991 Abidjan, Côte
-            d’Ivoire
+            Abidjan 01 Bp 
             <br /> Tel : (225)xxx-xxx-xxx
             <br />
-            E-mail : infos@fripchap.com
+            E-mail : infos@chap.com
           </Text>
           <Text>
             {/* {new Date} */}
@@ -122,13 +120,6 @@ export default function FooterR() {
           
           </Stack>
           <Stack align={'flex-start'}>
-            <ListHeader>Categories</ListHeader>
-            <Link href={'/Hommes'}>Hommes</Link>
-            <Link href={'/Femmes'}>Femmes</Link>
-            <Link href={'/Enfants'}>Enfant</Link>
-
-          </Stack>
-          <Stack align={'flex-start'}>
             <ListHeader>    Recevez des codes promo!</ListHeader>
             <Stack direction={'Column'}>
             <Text width={"250px"} fontWeight={"700"} fontSize={"20px"}>
@@ -136,7 +127,7 @@ export default function FooterR() {
           </Text>
           <Input
             type={"text"}
-            placeholder="infos@fripchap.com"
+            placeholder="infos@chap.com"
             background={"#D9d9d9"}
             // width={"317px"}
           

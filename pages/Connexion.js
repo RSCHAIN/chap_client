@@ -102,7 +102,7 @@ export default function Connexion() {
             <Image
               height={500}
               width={650}
-              src="./images/Banniere.png"
+              src="./logo2.png"
               display={["none", "none", "flex", "flex", "flex"]}
             />
           </Box>
@@ -128,6 +128,7 @@ export default function Connexion() {
                   onChange={(e) => setPassword(e.target.value)}
                   width={"350px"}
                 />
+                <TransitionExample/>
                 <Button
                   borderRadius={"50px"}
                   bgColor={"blue.400"}
@@ -140,7 +141,6 @@ export default function Connexion() {
                   Connexion{" "}
                 </Button>
               </Stack>
-              <TransitionExample/>
             </Box>
           </Center>
         </Flex>

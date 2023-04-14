@@ -16,6 +16,7 @@ import {
     ModalBody,
     ModalCloseButton,
     useDisclosure,
+    useToast,
   } from '@chakra-ui/react'
 import { getAuth, sendPasswordResetEmail } from 'firebase/auth'
   import {useState} from 'react'
@@ -23,13 +24,35 @@ export default function TransitionExample() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [email,setEmail] = useState()
     const auth = getAuth(app);
+    const toast = useToast();
 
     const Reset=async ()=>{
-       await sendPasswordResetEmail(auth,email).then(()=>{console.log('success')}).catch((error)=> {console.log('error',error)})
+       await sendPasswordResetEmail(auth,email).then(()=>{
+        toast({
+          title: "Mail envoyé",
+          description: "Veuillez verifiez vos mails!!",
+          status: "success",
+          duration: 10000,
+          isClosable: true,
+        });
+       }).catch((error)=>{
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        if (errorMessage == "Firebase: Error (auth/user-not-found).") {
+          
+          toast({
+            title: "E-MAIL INTROUVABLE",
+            description: "VEUILLEZ VERIFIER VOTRE SAISIE",
+            status: "error",
+            duration: 5000,
+            isClosable: true,
+          });
+        }
+       })
     }
     return (
       <>
-        <Text onClick={onOpen} cursor={'pointer'} pt={20} fontSize={30}  _hover={{
+        <Text onClick={onOpen} cursor={'pointer'} mt={20} fontSize={20}  _hover={{
                 color: 'blue',
               }}>Mot de passe Oublié ? </Text>
         <Modal
@@ -81,7 +104,7 @@ export default function TransitionExample() {
               _hover={{
                 bg: 'blue.500',
               }}
-              onclick={()=>Reset()}>
+              onClick={()=>Reset()}>
               Demander lien de reinitialisation
             </Button>
           </Stack>

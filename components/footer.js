@@ -13,7 +13,7 @@ export default function Footer() {
             fontWeight={700}
             ml={"80px"}
           >
-            FripChap
+            Chap
           </Heading>
           <Text
             width="350px"
@@ -25,12 +25,10 @@ export default function Footer() {
             mt={'20px'}
             textAlign='justify'
           >
-            Abidjan 01 Bp , Contre allée Côte d’Ivoire Telecom, Immeuble Western
-            Union, Aile droite 2ème et 3ème étages 10 BP 991 Abidjan, Côte
-            d’Ivoire
+            Abidjan 01 Bp , 
             <br /> Tel : (225)xxx-xxx-xxx
             <br />
-            E-mail : infos@fripchap.com
+            E-mail : infos@chap.com
           </Text>
         </Box>
         <Box>
@@ -54,7 +52,7 @@ export default function Footer() {
           </Text>
           <Input
             type={"text"}
-            placeholder="infos@fripchap.com"
+            placeholder="infos@chap.com"
             background={"#D9d9d9"}
             width={"317px"}
             mr="50px"

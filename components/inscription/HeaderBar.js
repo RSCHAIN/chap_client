@@ -20,7 +20,7 @@ const HeaderBar = () => {
                         color={'#ffc300'} fontSize={'2em'}
                         fontWeight={'bold'}
                     >
-                        FripChap
+                        Chap
                     </Text>
                 </Center>
                 {isLagerThan768 ? <MenuItem_Link /> : <ResponsiveMenu />}

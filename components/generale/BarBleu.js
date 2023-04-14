@@ -18,7 +18,7 @@ const BarBleu = () => {
                 >
 
                     <Text mr={'5'}>
-                        <EmailIcon /> contact@FripChap.com
+                        <EmailIcon /> contact@Chap.com
                     </Text>
 
                     <Text >
