@@ -17,7 +17,7 @@ const MenuItem_Link = () => {
                     direction={{ base: 'column', md: 'row' }}
                 >
                     <Link href='/'>Home</Link>
-                    <Link href=''>Categories</Link>
+                    <Link href=''>Services</Link>
                     <Link href='/Cart'>Panier</Link>
                     {/* <Link href='#'>Service</Link>
                     <Link href='#'>Paiement</Link> */}

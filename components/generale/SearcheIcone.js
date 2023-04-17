@@ -22,7 +22,7 @@ const SearcheIcone = () => {
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
-                    <ModalHeader color={"#fbb614"}>Recharcher un article</ModalHeader>
+                    <ModalHeader color={"#fbb614"}>Rechercher un article</ModalHeader>
                     <ModalCloseButton color={"#fbb614"} />
                     <ModalBody>
                         <InputGroup>

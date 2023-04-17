@@ -115,7 +115,7 @@ export default function Navbar() {
                 // mr={3}
                 _hover={{ textDecoration: "none", color: "yellow.300" }}
               >
-                <Button rightIcon={<ChevronDownIcon />} border={'none'} bgColor={'inherit'} mt='-5px' fontWeight={'normal'} fontSize={20}>Categories</Button>
+                <Button rightIcon={<ChevronDownIcon />} border={'none'} bgColor={'inherit'} mt='-5px' fontWeight={'normal'} fontSize={20}>Services</Button>
               </MenuButton>
               <MenuList>
                 {/* MenuItems are not rendered unless Menu is open */}
