@@ -15,7 +15,7 @@ export default function Home() {
       <InputBar />
       {isLagerThan768 ? <Navbar></Navbar> : <></>}
       <SliderComponents />
-      <LadingCorps />
+      <LadingCorps/>
 
       <FooterR/>
     </>
