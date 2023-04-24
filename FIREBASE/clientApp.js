@@ -8,17 +8,19 @@ import { getFirestore} from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const appCLient = {
-  apiKey: "AIzaSyC45trCJz6Cl3BSedB2Zm0SnAc5Suox8OM",
-  authDomain: "okaycool-19167.firebaseapp.com",
-  projectId: "okaycool-19167",
-  storageBucket: "okaycool-19167.appspot.com",
-  messagingSenderId: "320095317483",
-  appId: "1:320095317483:web:02816f1c7c9d53e4d2bdae",
-  databaseURL: "https://okaycool-19167-default-rtdb.europe-west1.firebasedatabase.app/",
+  apiKey: "AIzaSyC_HoYUjryM6eEB0x5Rs9sn-AU70YfqU4M",
+  authDomain: "emarket-a6858.firebaseapp.com",
+  databaseURL: "https://emarket-a6858-default-rtdb.firebaseio.com",
+  projectId: "emarket-a6858",
+  storageBucket: "emarket-a6858.appspot.com",
+  messagingSenderId: "1083209775253",
+  appId: "1:1083209775253:web:3629b15e8f79a7e2dc439c",
+  measurementId: "G-HNGF5RBC9T",
+
 };
 
 // Initialize Firebase
 const app = initializeApp(appCLient);
-const db2 = getDatabase()
+const db2 = getDatabase(app)
 const db = getFirestore(app)
 export {app,db,db2}

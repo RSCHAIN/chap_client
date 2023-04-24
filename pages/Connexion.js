@@ -52,7 +52,7 @@ export default function Connexion() {
   const loginUSer = async () => {
     await signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        console.log(userCredential.user);
+        
         setEmail(userCredential.user.email);
         // router.back()
         toast({
@@ -77,6 +77,38 @@ export default function Connexion() {
             duration: 9000,
             isClosable: true,
           });
+       
+         if (error.code== "auth/too-many-requests") {
+          toast({
+            title: "TROP DE TENTATIVES.",
+            description: "VEUILLEZ REESAYER PLUS TARD",
+            status: "error",
+            duration: 9000,
+            isClosable: true,
+          });
+         } else {
+            if (error.code == "auth/wrong-password") {
+              toast({
+                title: "MOT DE PASSE/IDENTIFIANT INCORRECT",
+                description: "VEUILLEZ VERIFIER VOS ACCES",
+                status: "error",
+                duration: 9000,
+                isClosable: true,
+              });
+            }else{
+              if (error.code == "auth/invalid-email") {
+                toast({
+                  title: "MOT DE PASSE/IDENTIFIANT INCORRECT",
+                  description: "VEUILLEZ VERIFIER VOS ACCES",
+                  status: "error",
+                  duration: 9000,
+                  isClosable: true,
+                });
+              }else{
+                console.log(error);
+              };
+            }
+         }
         }
       });
   };
@@ -107,7 +139,7 @@ export default function Connexion() {
             />
           </Box>
           <Center>
-            <Box width={"full"} color={"black"} ml={20}>
+            <Box width={"full"} color={"black"} ml={[10, 10, 10, 20, 20]}>
               <Stack spacing={4}>
                 <Heading>Bienvenue</Heading>
                 <Text>Connectez-vous á votre compte</Text>
@@ -116,7 +148,7 @@ export default function Connexion() {
                   placeholder="Email"
                   border={"2px solid gray"}
                   borderRadius={"50px"}
-                  width={"350px"}
+                  width={["200px", "200px", "350px", "350px", "350px"]}
                   onChange={(ev) => setEmail(ev.target.value)}
                   color={"gray.500"}
                 />
@@ -126,7 +158,7 @@ export default function Connexion() {
                   border={"2px solid gray"}
                   borderRadius={"50px"}
                   onChange={(e) => setPassword(e.target.value)}
-                  width={"350px"}
+                  width={["200px", "200px", "350px", "350px", "350px"]}
                 />
                 <TransitionExample/>
                 <Button

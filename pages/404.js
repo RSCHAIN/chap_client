@@ -68,6 +68,39 @@ const settings = {
 };
 /////////////fetch des datas
 
+///fonction du panier 
+function saveCart(product){
+  localStorage.setItem("Cart",JSON.stringify(product));
+}
+function getCart(){
+  let Cart = localStorage.getItem("Cart");
+  if (Cart == null){
+    return []
+  }else{
+    return JSON.parse(Cart)
+  }
+}
+function AddToCart(Product){
+  let Cart=getCart();
+  let foundit = Cart.find(p=>p.name == Product.name);
+  if(foundit != undefined){
+    foundit.quantity++
+    foundit.price = foundit.quantity* parseInt(Product.price)
+  }
+  else{
+    Product.quantity = 1;
+    Cart.push(Product)
+  }
+   
+  saveCart(Cart)
+}
+////ffin fonction de la cart
+
+
+
+
+
+
 export default function Carousel() {
   const [data, setData] = useState([]);
   const [cat, setCat] = useState([]);
@@ -75,6 +108,7 @@ export default function Carousel() {
   const [page, setPage] = useState("");
   const [check, setCheck] = useState("");
   const [checker, setChecker] = useState(1);
+  const [product,setProduct]=useState()
 
   useEffect(  () => {
     //attribution du link
@@ -236,8 +270,8 @@ export default function Carousel() {
                   // key={}
                   pb={5}
                 >
-                  <Box width={"150px"} height={"170px"} pt={10} pl={10}>
-                    <Image src={data.img} alt={data.name} />
+                  <Box width={"270px"} height={"200px"} pt={10} pl={10}>
+                    <Image src={data.imageUrl} alt={data.name} maxW={'150px'} />
                   </Box>
 
                   <Box p="6">
@@ -264,9 +298,9 @@ export default function Carousel() {
                       <Text>{data.description}</Text>
                     </Box>
                     <Box>
-                      {data.real_price}
-                      <Box as="span" color="gray.100" pl={2} fontSize="sm">
-                        EUR
+                      {data.price}
+                      <Box as="span" pl={2} fontSize="sm">
+                        XOF
                       </Box>
                     </Box>
 
@@ -286,7 +320,7 @@ export default function Carousel() {
                         mt={3}
                         borderRadius={"66px"}
                         as={"a"}
-                        href={"/Cart"}
+                          onClick={()=>AddToCart(data)}
                         color={"white"}
                       >
                         {" "}
@@ -306,13 +340,13 @@ export default function Carousel() {
               </Text>
             </Center>
 
-            <SimpleGrid columns={[2, 2, 2, 4, 4]}>
+            <SimpleGrid columns={[2, 2, 2, 3, 4]}>
               {console.log("data", data)}
               {data.map((data, key) => (
                 <Box
                   key={data.id}
-                  maxW="sm"
-                  width={"fit-content"}
+                  maxW="lg"
+                  width={"sm"}
                   height={"fit-content"}
                   borderWidth="1px"
                   borderRadius="lg"
@@ -323,8 +357,8 @@ export default function Carousel() {
                   mb={20}
                   pb={5}
                 >
-                  <Box width={"150px"} height={"170px"} pt={10} pl={10}>
-                    <Image src={data.img} alt={data.name}  width='150px' height='170px'/>
+                  <Box width={"300px"} height={"200px"} pt={10} pl={10}>
+                    <Image src={data.imageUrl} alt={data.name} maxW={'150px'}  />
                   </Box>
 
                   <Box p="6">
@@ -340,7 +374,7 @@ export default function Carousel() {
                       {data.name}
                     </Box>
 
-                    {/* <Box
+                    <Box
                       
                       fontWeight="normal"
                       lineHeight="tight"
@@ -349,11 +383,11 @@ export default function Carousel() {
                       height={"50px"}
                     >
                       <Text>{data.description}</Text>
-                    </Box> */}
+                    </Box>
                     <Box>
-                      {data.real_price}
+                      {data.price}
                       <Box as="span" color="gray.600" pl={2} fontSize="sm">
-                        EUR
+                        XOF
                       </Box>
                     </Box>
 

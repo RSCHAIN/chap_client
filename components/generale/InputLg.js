@@ -7,7 +7,7 @@ const InputLg = () => {
         <>
             <InputGroup>
                 <Input
-                    type='text' placeholder='Que recherhcer vous ?'
+                    type='text' placeholder='Que recherchez-vous ?'
                     _placeholder={{ color: 'black' }} variant={'filled'}
                     borderRadius={'full'} w={{md:'20em', lg:'30em'}}
                 />

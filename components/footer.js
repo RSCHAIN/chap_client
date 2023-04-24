@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <>
       <Flex justifyContent={"space-between"}>
-        <Box>
+        {/* <Box>
           <Heading
             color={"#fbb614"}
             width={"152px"}
@@ -30,7 +30,7 @@ export default function Footer() {
             <br />
             E-mail : infos@chap.com
           </Text>
-        </Box>
+        </Box> */}
         <Box>
           <Text fontWeight={500} fontSize="20px">
             Information

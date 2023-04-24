@@ -12,6 +12,7 @@ import {
   useColorModeValue,
   Heading,
   Button,
+  Center,
 } from '@chakra-ui/react';
 import { ReactNode } from 'react';
 import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
@@ -69,10 +70,11 @@ const ListHeader = ({ children }) => {
 
 export default function FooterR() {
   return (
+    <Center>
     <Box
       bg={useColorModeValue('gray.50', 'gray.900')}
-      color={useColorModeValue('gray.700', 'gray.200')}>
-      <Container as={Stack} maxW={'6xl'} py={10}>
+      color={useColorModeValue('gray.700', 'gray.200')} w='full'>
+      <Container as={Stack} maxW={'full'} py={10}>
         <SimpleGrid
           templateColumns={{ sm: '1fr 1fr', md: '2fr 2fr 2fr' }}
           spacing={8}>
@@ -81,7 +83,7 @@ export default function FooterR() {
               <Logo color={useColorModeValue('gray.700', 'white')} />
             </Box>
             <Text
-            width="350px"
+            
             height={"105px"}
             ml={"56px"}
             fontSize={"15px"}
@@ -122,9 +124,9 @@ export default function FooterR() {
           <Stack align={'flex-start'}>
             <ListHeader>    Recevez des codes promo!</ListHeader>
             <Stack direction={'Column'}>
-            <Text width={"250px"} fontWeight={"700"} fontSize={"20px"}>
+            {/* <Text width={"250px"} fontWeight={"700"} fontSize={"20px"}>
         
-          </Text>
+          </Text> */}
           <Input
             type={"text"}
             placeholder="infos@chap.com"
@@ -151,5 +153,6 @@ export default function FooterR() {
         </SimpleGrid>
       </Container>
     </Box>
+    </Center>
   );
 }

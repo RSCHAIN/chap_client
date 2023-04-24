@@ -101,15 +101,15 @@ const cartegorieTitle = [
         link: '#'
     },
     {
-        title: 'TRANSPORT',
+        title: 'RESTAURATION',
         corp: WomanItem,
         link: '#'
     },
-    {
-        title: 'AUTRE',
-        corp: ManItem,
-        link: '#'
-    }
+    // {
+    //     title: 'AUTRE',
+    //     corp: ManItem,
+    //     link: '#'
+    // }
 ]
 
 // les card des differntes cartegories qui seront mapés
@@ -217,6 +217,7 @@ const LadingCorps = () => {
                     <Flex
                         height={'auto'} width={'100%'} mt={10}
                         direction={'column'} alignItems={'center'}
+                        pb={20}
                         justifyContent={'center'}
                     >
                         {

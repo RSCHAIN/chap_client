@@ -35,7 +35,7 @@ import {
 import React from "react";
 
 import { getAuth, signOut } from "firebase/auth";
-import { app } from "@/FIREBASE/clientApp";
+import { app, db } from "@/FIREBASE/clientApp";
 import { useRouter } from "next/router";
 import { db2 } from "@/FIREBASE/clientApp";
 import { ref, onValue } from "firebase/database";
@@ -49,12 +49,14 @@ export default function Navbar() {
     const starCountRef = ref(db2, "/");
     onValue(starCountRef, (snapshot) => {
       const donnes = snapshot.val();
-
-      const categorie = Object.keys(donnes).map((key) => ({
-        id: key,
-        ...donnes[key],
-      }));
-      setCat(categorie);
+      if (donnes != null) {
+        const categorie = Object.keys(donnes).map((key) => ({
+          id: key,
+          ...donnes[key],
+        }));
+        setCat(categorie);
+      }
+      
     });
   }, []);
   const { isOpen, onToggle } = useDisclosure();
