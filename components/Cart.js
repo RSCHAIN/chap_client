@@ -66,7 +66,7 @@ export default function Carte() {
           <Center key={data.id}>
             <Flex
               bgColor={"#F7C29E"}
-              width={"full"}
+              width={"621px"}
               height={"205px"}
               border={"1px solid #e6e6e6"}
               boxShadow={"0px 2px 10px"}
