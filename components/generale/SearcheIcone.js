@@ -22,7 +22,7 @@ const SearcheIcone = () => {
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
-                    <ModalHeader color={"#fbb614"}>Rechercher un article</ModalHeader>
+                    <ModalHeader  color={"#fbb614"}>Rechercher un article</ModalHeader>
                     <ModalCloseButton color={"#fbb614"} />
                     <ModalBody>
                         <InputGroup>
@@ -32,7 +32,9 @@ const SearcheIcone = () => {
                                 <FontAwesomeIcon icon={faSearch} color={"#fbb614"} />
                             </InputLeftElement>
                             <Input
-                                type='text'
+                            
+                                type='search'
+                                
                                 placeholder='Nom'
                                 _placeholder={{ color: '#000' }}
                                 variant={'outline'}

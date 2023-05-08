@@ -131,6 +131,8 @@ export default function Carousel() {
         .trimStart()
         .replace("%20", " ")
     );
+
+    
     //connexion et fetch des datas depuis notre db
     const starCountRef = ref(db2, link);
     onValue(starCountRef,  (snapshot) => {
@@ -406,6 +408,7 @@ export default function Carousel() {
                         bgColor={"blue"}
                         mt={3}
                         borderRadius={"66px"}
+                        onClick={()=>AddToCart(data)}
                         color={"white"}
                       >
                         {" "}

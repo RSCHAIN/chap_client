@@ -3,8 +3,7 @@ import {
   Flex,
   Text,
   IconButton,
-  Wrap,
-  WrapItem,
+ 
   Button,
   Stack,
   Collapse,
@@ -15,16 +14,11 @@ import {
   PopoverContent,
   useColorModeValue,
   useDisclosure,
-  Simplegrid,
+  
   Menu,
   MenuButton,
   MenuList,
-  MenuItem,
-  MenuItemOption,
-  MenuGroup,
-  MenuOptionGroup,
-  MenuDivider,
-  Center,
+
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -40,25 +34,10 @@ import { useRouter } from "next/router";
 import { db2 } from "@/FIREBASE/clientApp";
 import { ref, onValue } from "firebase/database";
 import { useState, useEffect } from "react";
-
+import { CSSTransition } from 'react-transition-group';
+import Menucat from "./menucat";
 export default function Navbar() {
-  const [data, setData] = useState([]);
-  const [cat, setCat] = useState([]);
-  const [dataos, setDatos] = useState([]);
-  useEffect(() => {
-    const starCountRef = ref(db2, "/");
-    onValue(starCountRef, (snapshot) => {
-      const donnes = snapshot.val();
-      if (donnes != null) {
-        const categorie = Object.keys(donnes).map((key) => ({
-          id: key,
-          ...donnes[key],
-        }));
-        setCat(categorie);
-      }
-      
-    });
-  }, []);
+ 
   const { isOpen, onToggle } = useDisclosure();
   const auth = getAuth(app);
 
@@ -112,7 +91,8 @@ export default function Navbar() {
             >
               Accueil
             </Link>
-            <Menu isLazy>
+            <Menucat/>
+            {/* <Menu isLazy>
               <MenuButton
                 // mr={3}
                 _hover={{ textDecoration: "none", color: "yellow.300" }}
@@ -124,7 +104,7 @@ export default function Navbar() {
                 {/* <Wrap spacing="30px" align="center" w={"sm"}> */}
                   {/* <Simplegrid > */}
                   
-                  {cat.map((index, key) => (
+                  {/* {cat.map((index, key) => (
                     <Link
                       key={index.id}
                       href={"/" + index.id}
@@ -133,14 +113,14 @@ export default function Navbar() {
 
                       {index.id} <br/>
                       {/* <WrapItem></WrapItem> */}
-                    </Link>
+                    {/* </Link>
                    
-                  ))}
+                  ))} */}
                  
                   {/* </Simplegrid> */}
                 {/* </Wrap> */}
-              </MenuList>
-            </Menu>
+              {/* </MenuList>
+            </Menu>  */}
             <Link
               href={"/Cart"}
               mr={3}

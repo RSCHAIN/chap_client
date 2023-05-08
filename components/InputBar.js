@@ -1,4 +1,4 @@
-import { Flex, Heading, Input, InputGroup, InputRightElement, Link, Text, useMediaQuery } from "@chakra-ui/react";
+import { Flex, Heading, Image, Input, InputGroup, InputRightElement, Link, Text, useMediaQuery } from "@chakra-ui/react";
 import { Search2Icon } from '@chakra-ui/icons';
 import LoginSignButton from "./generale/LoginSignButton";
 import InputLg from "./generale/InputLg";
@@ -23,7 +23,7 @@ const InputBar = () => {
                     align={'center'} justifyContent={'center'}
                     fontWeight={'bold'} ml={'5em'}
                 >
-                    <Heading>Chap</Heading>
+                   <Image src="./logo1.png" width={{base:95,md:150}} mt={{base:0,md:10}}/>
                 </Flex>
 
                 {/* l'input et les button  */}

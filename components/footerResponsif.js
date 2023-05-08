@@ -13,6 +13,7 @@ import {
   Heading,
   Button,
   Center,
+  Image
 } from '@chakra-ui/react';
 import { ReactNode } from 'react';
 import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
@@ -80,7 +81,7 @@ export default function FooterR() {
           spacing={8}>
           <Stack spacing={6}>
             <Box>
-              <Logo color={useColorModeValue('gray.700', 'white')} />
+              <Image src={"./logo1.png"} width={{base:200,md:300}}/>
             </Box>
             <Text
             
@@ -138,7 +139,7 @@ export default function FooterR() {
           />
           <br />
           <Button
-            background="#3e82d7"
+            background="#08566e"
             borderRadius={50}
           
             color="white"

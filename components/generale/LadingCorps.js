@@ -6,7 +6,7 @@ const ChildrenItem = [
     {
         productName: "KFC",
         backgroundUrl: 'url(./Slider/images4.jpg)',
-        link: "/KFC",
+        link: "/Restauration/kkkl",
     },
     {
         productName: "AUTRE",
@@ -28,6 +28,11 @@ const ChildrenItem = [
         backgroundUrl: 'url(./Slider/images8.jpg)',
         link: "",
     },
+    {
+        productName: "AUTRE",
+        backgroundUrl: 'url(./Slider/images3.jpg)',
+        link: "",
+    }
 ]
 
 // item de la cartegorie femme 
@@ -172,7 +177,7 @@ export function ContainerCard({ card }) {
                         href={card.link}
                         _hover={{textDecoration : 'none'}}
                     >
-                        <Button rightIcon={<ArrowForwardIcon />} colorScheme='yellow' variant='outline'>
+                        <Button rightIcon={<ArrowForwardIcon />} colorScheme='#08566f' variant='outline'>
                             Voir Plus
                         </Button>
                     </Link>
@@ -208,7 +213,7 @@ const LadingCorps = () => {
                 >
                     {/* l'entet principale */}
                     <Heading
-                        textAlign={'start'} color={"#fbb614"} mb={5}
+                        textAlign={'start'} color={"#08566e"} mb={5}
                     >
                         Nos Services
                     </Heading>
