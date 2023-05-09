@@ -118,7 +118,7 @@ export default function Carousel() {
       .replace("#fade", "")
       .trimEnd()
       .trimStart()
-      .replace("%20", " ");
+      .replace("%20", " ")
     console.log(link);
     setChecker(router.asPath.replace("/", "").toString());
     //attribution du link de la page
@@ -129,7 +129,7 @@ export default function Carousel() {
         .replace("#fade", "")
         .trimEnd()
         .trimStart()
-        .replace("%20", " ")
+        .replace("%20", " ").replace("/",">")
     );
 
     

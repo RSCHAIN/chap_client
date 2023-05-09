@@ -59,8 +59,12 @@ function DropdownMenu() {
         setCat(categorie);
       }
     });
-    cat.map((index, key) => {
-      const starCountRef2 = ref(db2, index.id + "/");
+   
+  }, []);
+
+  const updateLink =(index) => {
+  
+      const starCountRef2 = ref(db2, index+ "/");
       onValue(starCountRef2, (snapshot) => {
         const donnees = snapshot.val();
         if (donnees != null) {
@@ -74,8 +78,8 @@ function DropdownMenu() {
 
     });
      
-  })   
-  }, []);
+  } 
+  
 
 
 
@@ -104,7 +108,7 @@ function DropdownMenu() {
             <div className="main-menu">
             {cat.map((index, key) => (
                <MenuItem 
-              //  onClick={() => {setActiveMenu(`${index.id}`)},setGinks(`${index.id}`)}
+               onClick={() => {setActiveMenu(`${index.id}`),setGinks(`${index.id}`),updateLink(index.id)}}
                >
                 <Text>{index.id}</Text>
                 <Box pos="absolute" ml="80%">
@@ -123,11 +127,11 @@ function DropdownMenu() {
           >
             <div className="menu-container">
             <MenuItem onClick={() => setActiveMenu('main')}>retourner</MenuItem>
-             {/* {datos.map((data,key)=>( */}
-              {/* //  <MenuItem as={Link} >
-               //   {data.id}
-             // </MenuItem> */}
-               {/* ))} */}
+             {datos.map((data,key)=>( 
+                <MenuItem  >
+                 <Link href={"/"+ginks+"/"+data.id}>{data.id}</Link>
+            </MenuItem> 
+              ))}
             </div>
           </CSSTransition>
 
