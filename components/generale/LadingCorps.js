@@ -6,9 +6,17 @@ import {
   Flex,
   Heading,
   Link,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
   SimpleGrid,
   Text,
   useDisclosure,
+  useToast,
 } from "@chakra-ui/react";
 import React, { useState, useEffect, useRef } from "react";
 
@@ -17,41 +25,13 @@ import { ref, onValue } from "firebase/database";
 import Location from "../location";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
+import { BiCurrentLocation } from "react-icons/bi";
 
 // les card des differntes cartegories qui seront mapés
 export function ItemCard({ item, card }) {
   const location = localStorage.getItem("location").length;
-  const locator = () => {
-    return (
-      <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>RECHERCHE DE LOCALISATION</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <Button
-              borderLeft={0}
-              leftIcon={<BiCurrentLocation />}
-              colorScheme="teal"
-              onClick={() => {
-                geoloc(), onClose;
-              }}
-              variant="solid"
-            >
-              Recupérer ma position
-            </Button>
-          </ModalBody>
+  const toast = useToast();
 
-          <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
-              Close
-            </Button>
-            <Button variant="ghost">Secondary Action</Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
-    );
-  };
   if (location > 2) {
     return (
       <>
@@ -105,7 +85,13 @@ export function ItemCard({ item, card }) {
           mt={"5"}
           mr={{ base: "0%", md: "0%" }}
           _hover={{ textDecoration: "none" }}
-          onClick={() => locator()}
+          onClick={() =>  toast({
+            title: 'POSITION REQUISE',
+            description: "Nous vous prions de fournir votre position",
+            status: 'info',
+            duration: 9000,
+            isClosable: true,
+          })}
         >
           <Flex
             height={"100%"}
@@ -149,10 +135,10 @@ export function ContainerCard({ card }) {
     const datos = localStorage.getItem(card.id+"Datos");
    setDatas(JSON.parse(datos))
   },[])
-  // if (datas == null) {
-  //   setDatas(JSON.parse(localStorage.getItem(card.id+"Datos")))
-  //   // router.reload()
-  // }
+  if (datas == null) {
+   
+    router.reload()
+  }
  
     return (
       <>
@@ -202,10 +188,10 @@ export function ContainerCard({ card }) {
             justifyContent={{ base: "center", md: "space-between" }}
           >
             {
-         console.log(datas)     
-            // datas.map((item, key) => (
-            //   <ItemCard key={key} item={item} card={card.id}></ItemCard>
-            // ))
+        //  console.log(datas)     
+            datas.map((item, key) => (
+              <ItemCard key={key} item={item} card={card.id}></ItemCard>
+            ))
             }
           </Flex>
         </Flex>
@@ -237,28 +223,28 @@ const LadingCorps = () => {
 
     })
   }
-  const updateAll = () => {
-    console.log("okay")
-    cat.map((index, key) => {
-      const starCountRef2 = ref(db2, index.id + "/");
-      onValue(starCountRef2, (snapshot) => {
-        const donnees = snapshot.val();
-        if (donnees != null) {
-          const categorie = Object.keys(donnees).map((key) => ({
-            id: key,
-            ...donnees[key],
-          }))
-          setDatos(categorie);
+  // const updateAll = () => {
+  //   console.log("okay")
+  //   cat.map((index, key) => {
+  //     const starCountRef2 = ref(db2, index.id + "/");
+  //     onValue(starCountRef2, (snapshot) => {
+  //       const donnees = snapshot.val();
+  //       if (donnees != null) {
+  //         const categorie = Object.keys(donnees).map((key) => ({
+  //           id: key,
+  //           ...donnees[key],
+  //         }))
+  //         setDatos(categorie);
           
-          localStorage.setItem(index.id + "Datos", JSON.stringify(categorie));
-        }
-      })
-    })
-  }
+  //         localStorage.setItem(index.id + "Datos", JSON.stringify(categorie));
+  //       }
+  //     })
+  //   })
+  // }
   useEffect(() => {
    
     update()
-    updateAll()
+    //updateAll()
 
   }, []);
  

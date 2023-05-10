@@ -31,7 +31,31 @@ export default function Location(){
     const [local,setLocal] =useState() 
     const toast = useToast();
     const [ville, setVille] = useState([]);
+    const geoloc = async () => {
+      console.log("ingeoloc");
+  
+      await axios
+        .get(
+          `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=975de90e9b63426da3ac641fe43acd73`
+        )
+        .then((response) => {
+          console.log(response.data.results[0].components);
+          
+            localStorage.setItem("location",JSON.stringify(response.data.results[0].components))
+            setLocal((response.data.results[0].components))
+        })
+        .catch((error) => {
+          toast({
+            title: "position introuvable",
+            // description: "Bon Achat",
+            status: "error",
+            duration: 3000,
+            isClosable: true,
+          });
+        });
+    };
     useEffect(() => {
+      
       function success(position) {
         setLongitude(position.coords.longitude);
         setLatitude(position.coords.latitude);
@@ -52,81 +76,60 @@ export default function Location(){
         error,
         options
       );
-    }, [longitude, latitude, local]);
-    const geoloc = async () => {
-      console.log("ingeoloc");
-  
-      await axios
-        .get(
-          `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=975de90e9b63426da3ac641fe43acd73`
-        )
-        .then((response) => {
-          console.log(response.data.results[0].components);
-          
-            localStorage.setItem("location",JSON.stringify(response.data.results[0].components))
-            setLocal(JSON.parse(localStorage.getItem("location")))
-        })
-        .catch((error) => {
-          toast({
-            title: "position introuvable",
-            // description: "Bon Achat",
-            status: "error",
-            duration: 3000,
-            isClosable: true,
-          });
-        });
-    };
-    if (local != undefined ) {
-      console.log("okay")
-      return(
-        <Box>
-        <Center>
-          <Text fontWeight={"semibold"} fontSize={"2xl"}>
+      geoloc()
+    }, [longitude, latitude ]);
+    
+    console.log("local",local)
+    // if (local != undefined || local != null ) {
+    //   console.log("okay")
+    //   return(
+    //     <Box>
+    //     <Center>
+    //       <Text fontWeight={"semibold"} fontSize={"2xl"}>
             
-              Vous etes en :  {local.country},{local.city}
+    //           Vous etes en : {local.country},{local.city}
             
          
-          </Text>
-        </Center>
+    //       </Text>
+    //     </Center>
 
-        <Modal isOpen={isOpen} onClose={onClose}>
-          <ModalOverlay />
-          <ModalContent>
-            <ModalHeader>RECHERCHE DE LOCALISATION</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody>
-              <Button
-                borderLeft={0}
-                leftIcon={<BiCurrentLocation />}
-                colorScheme="teal"
-                onClick={() => {geoloc(),onClose}}
-                variant="solid"
-              >
-                Recupérer ma position
-              </Button>
-            </ModalBody>
+    //     <Modal isOpen={isOpen} onClose={onClose}>
+    //       <ModalOverlay />
+    //       <ModalContent>
+    //         <ModalHeader>RECHERCHE DE LOCALISATION</ModalHeader>
+    //         <ModalCloseButton />
+    //         <ModalBody>
+    //           <Button
+    //             borderLeft={0}
+    //             leftIcon={<BiCurrentLocation />}
+    //             colorScheme="teal"
+    //             onClick={() => {geoloc(),onClose}}
+    //             variant="solid"
+    //           >
+    //             Recupérer ma position
+    //           </Button>
+    //         </ModalBody>
 
-            <ModalFooter>
-              <Button colorScheme="blue" mr={3} onClick={onClose}>
-                Close
-              </Button>
-              <Button variant="ghost">Secondary Action</Button>
-            </ModalFooter>
-          </ModalContent>
-        </Modal>
-      </Box>
-      )
-    }else{
+    //         <ModalFooter>
+    //           <Button colorScheme="blue" mr={3} onClick={onClose}>
+    //             Close
+    //           </Button>
+    //           <Button variant="ghost">Secondary Action</Button>
+    //         </ModalFooter>
+    //       </ModalContent>
+    //     </Modal>
+    //   </Box>
+    //   )
+    // }else{
       return(
         <Box>
         <Center>
-          <Text fontWeight={"semibold"} fontSize={"2xl"}>
-            {local ? (<Text>
-              Vous etes en :  {local.country},{local.city}
-            </Text>
+         {local ?   (<Text fontWeight={"semibold"} fontSize={"2xl"}>
             
-            ) : (
-              <InputGroup width={"lg"}>
+            Vous etes en : {local.country},{local.city}
+          
+       
+        </Text>) : (<InputGroup width={"lg"}>
                 <InputLeftElement
                   borderLeftRadius={50}
                   pointerEvents="none"
@@ -150,9 +153,11 @@ export default function Location(){
                 >
                   Recupérer ma position
                 </Button>
-              </InputGroup>
-            )}
-          </Text>
+              </InputGroup>)}
+            
+              
+            
+        
         </Center>
 
         <Modal isOpen={isOpen} onClose={onClose}>
@@ -182,6 +187,6 @@ export default function Location(){
         </Modal>
       </Box>
     )
-    }
+      // }
    
 }

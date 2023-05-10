@@ -273,7 +273,7 @@ export default function Carousel() {
                   pb={5}
                 >
                   <Box width={"270px"} height={"200px"} pt={10} pl={10}>
-                    <Image src={data.imageUrl} alt={data.name} maxW={'150px'} />
+                    <Image src={data.imageUrl} alt={data.nom} maxW={'150px'} />
                   </Box>
 
                   <Box p="6">
@@ -286,7 +286,7 @@ export default function Carousel() {
                       w={"fit-content"}
                       height={"50px"}
                     >
-                      {data.name}
+                      {data.nom}
                     </Box>
 
                     <Box
@@ -360,7 +360,7 @@ export default function Carousel() {
                   pb={5}
                 >
                   <Box width={"300px"} height={"200px"} pt={10} pl={10}>
-                    <Image src={data.imageUrl} alt={data.name} maxW={'150px'}  />
+                    <Image src={data.imageUrl} alt={data.nom} maxW={'150px'}  />
                   </Box>
 
                   <Box p="6">
@@ -373,7 +373,7 @@ export default function Carousel() {
                       w={"179px"}
                       height={"50px"}
                     >
-                      {data.name}
+                      {data.nom}
                     </Box>
 
                     <Box
