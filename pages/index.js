@@ -62,11 +62,12 @@ export default function Home() {
     })
   }
   const updateAll = () => {
-    console.log("okay")
+  
     cat.map((index, key) => {
       const starCountRef2 = ref(db2, index.id + "/");
       onValue(starCountRef2, (snapshot) => {
         const donnees = snapshot.val();
+        console.log(snapshot.val())
         if (donnees != null) {
           const categorie = Object.keys(donnees).map((key) => ({
             id: key,

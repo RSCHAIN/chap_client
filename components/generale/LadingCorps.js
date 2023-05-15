@@ -29,10 +29,10 @@ import { BiCurrentLocation } from "react-icons/bi";
 
 // les card des differntes cartegories qui seront mapés
 export function ItemCard({ item, card }) {
-  const location = localStorage.getItem("location").length;
-  const toast = useToast();
+  // const location = localStorage.getItem("location").length;
+  // const toast = useToast();
 
-  if (location > 2) {
+  // if (location > 2) {
     return (
       <>
         {/* card  */}
@@ -75,56 +75,56 @@ export function ItemCard({ item, card }) {
         </Link>
       </>
     );
-  } else {
-    return (
-      <>
-        {/* card  */}
-        <Link
-          height={"40vh"}
-          width={{ base: "70%", md: "30%" }}
-          mt={"5"}
-          mr={{ base: "0%", md: "0%" }}
-          _hover={{ textDecoration: "none" }}
-          onClick={() =>  toast({
-            title: 'POSITION REQUISE',
-            description: "Nous vous prions de fournir votre position",
-            status: 'info',
-            duration: 9000,
-            isClosable: true,
-          })}
-        >
-          <Flex
-            height={"100%"}
-            width={"100%"}
-            alignItems={"center"}
-            justifyContent={"center"}
-            backgroundImage={item.imageUrl}
-            backgroundPosition={"center"}
-            backgroundSize={"cover"}
-            backgroundRepeat={"no-repeat"}
-          >
-            <Flex
-              alignItems={"center"}
-              justifyContent={"center"}
-              borderRadius={"10px"}
-              height={"100%"}
-              width={"100%"}
-              bg={"rgba(0, 0, 0, 0.277)"}
-            >
-              <Text
-                fontWeight={"bold"}
-                fontSize={"2xl"}
-                color={"#fff"}
-                textAlign={"center"}
-              >
-                {item.id}
-              </Text>
-            </Flex>
-          </Flex>
-        </Link>
-      </>
-    );
-  }
+  // } else {
+  //   return (
+  //     <>
+  //       {/* card  */}
+  //       <Link
+  //         height={"40vh"}
+  //         width={{ base: "70%", md: "30%" }}
+  //         mt={"5"}
+  //         mr={{ base: "0%", md: "0%" }}
+  //         _hover={{ textDecoration: "none" }}
+  //         // onClick={() =>  toast({
+  //         //   title: 'POSITION REQUISE',
+  //         //   description: "Nous vous prions de fournir votre position",
+  //         //   status: 'info',
+  //         //   duration: 9000,
+  //         //   isClosable: true,
+  //         // })}
+  //       >
+  //         <Flex
+  //           height={"100%"}
+  //           width={"100%"}
+  //           alignItems={"center"}
+  //           justifyContent={"center"}
+  //           backgroundImage={item.imageUrl}
+  //           backgroundPosition={"center"}
+  //           backgroundSize={"cover"}
+  //           backgroundRepeat={"no-repeat"}
+  //         >
+  //           <Flex
+  //             alignItems={"center"}
+  //             justifyContent={"center"}
+  //             borderRadius={"10px"}
+  //             height={"100%"}
+  //             width={"100%"}
+  //             bg={"rgba(0, 0, 0, 0.277)"}
+  //           >
+  //             <Text
+  //               fontWeight={"bold"}
+  //               fontSize={"2xl"}
+  //               color={"#fff"}
+  //               textAlign={"center"}
+  //             >
+  //               {item.id}
+  //             </Text>
+  //           </Flex>
+  //         </Flex>
+  //       </Link>
+  //     </>
+  //   );
+  // }
 }
 
 export function ContainerCard({ card }) {
@@ -253,7 +253,7 @@ const LadingCorps = () => {
     
 
     <>
-      <Location />
+      {/* <Location /> */}
       <Center width={"100%"} height={"auto"}>
         <Box height={"95%"} width={"95%"}>
           {/* l'entet principale */}

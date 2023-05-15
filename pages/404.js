@@ -82,7 +82,7 @@ function getCart(){
 }
 function AddToCart(Product){
   let Cart=getCart();
-  let foundit = Cart.find(p=>p.name == Product.name);
+  let foundit = Cart.find(p=>p.id == Product.id);
   if(foundit != undefined){
     foundit.quantity++
     foundit.price = foundit.quantity* parseInt(Product.price)
