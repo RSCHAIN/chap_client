@@ -29,8 +29,11 @@ import { db2 } from "@/FIREBASE/clientApp";
 
 export default function Carte() {
   const [cart, setCart] = useState();
-  const [long, setLong] = useState();
+  const [lieu, setLieu] = useState();
+  const [numero, setNumero] = useState();
+  const [nom, setNom] = useState();
   const [prix, setPrix] = useState();
+
   const router = useRouter();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -38,7 +41,7 @@ export default function Carte() {
     let PrixT = 0;
     const Cart = localStorage.getItem("Cart");
     const All = JSON.parse(Cart);
-    
+
     setCart(JSON.parse(Cart));
     if (All != null) {
       All.map((data, index) => {
@@ -48,28 +51,31 @@ export default function Carte() {
     }
 
     localStorage.setItem("prix", PrixT);
-    
   }, []);
 
-  if (cart != undefined && cart.length!=0) {
-    console.log(cart)
+  if (cart != undefined && cart.length != 0) {
+    console.log(cart);
     //liste des fonctions en rapport avec le produit et la commande
     function saveCommande() {
       let Cart = JSON.parse(localStorage.getItem("Cart"));
-      Cart.map((data, index) => (
-        set(ref(db2, 'Commandes'), {
-          productID:data.id,
-          nom:data.nom,
-          price:data.price,
-          description:data.description,
-          quantity:data.quantity,
-          imageUrl:data.imageUrl,
-          organisation:data.organisation,
-          totalPrice:data.price,
-          Status:"En Cours"
-         
+      Cart.map((data, index) =>
+        set(ref(db2, "Commandes"), {
+          productID: data.id,
+          nom: data.nom,
+          price: data.price,
+          description: data.description,
+          quantity: data.quantity,
+          imageUrl: data.imageUrl,
+          organisation: data.organisation,
+          totalPrice: data.price,
+          Status: "En Cours",
+          infoLivraison: {
+            lieu: lieu,
+            receveur: nom,
+            numero: numero,
+          },
         })
-      ))
+      );
       // localStorage.removeItem("Cart")
     }
     function saveCart(product) {
@@ -210,15 +216,28 @@ export default function Carte() {
                 <InputGroup isRequired>
                   <FormLabel>Le nom du receveur : </FormLabel>
                   <Input type={"text"} placeholder={"NOM DU RECEVEUR"} />
-                </InputGroup><InputGroup isRequired>
+                </InputGroup>
+                <InputGroup isRequired>
                   <FormLabel>Le numero du receveur : </FormLabel>
-                  <Input type="" placeholder={"LIEU DE LIVRAISON"}  />
+                  <Input type="" placeholder={"LIEU DE LIVRAISON"} />
                 </InputGroup>
               </FormControl>
             </ModalBody>
 
             <ModalFooter>
-              <Button colorScheme="blue" mr={3} onClick={()=>saveCommande()}>
+              <Button
+                colorScheme="blue"
+                mr={3}
+                onClick={() => saveCommande()}
+                _disabled={
+                  lieu == null ||
+                  lieu == undefined ||
+                  numero == null ||
+                  numero == undefined ||
+                  nom == null ||
+                  nom == undefined
+                }
+              >
                 CONFIRMER
               </Button>
               <Button variant="ghost" onClick={onClose}>
