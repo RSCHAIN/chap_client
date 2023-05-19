@@ -17,7 +17,7 @@ import {
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { ChevronDownIcon } from "@chakra-ui/icons";
-import { Firestore, collection, doc, getDocs } from "firebase/firestore";
+import { Firestore, collection, doc, getDocs, where } from "firebase/firestore";
 import { query } from "@firebase/database";
 export default function Showconnex() {
   const [users, setUsers] = useState("");
@@ -30,7 +30,9 @@ export default function Showconnex() {
   };
  
   const getData = async () => {
-    const constraints = [];
+    const constraints = [
+      
+    ];
 
     const livings = await collection(db, "Utilisateurs");
     let q = query(livings, ...constraints);
@@ -38,12 +40,14 @@ export default function Showconnex() {
     const qSnapshot = await getDocs(q);
 
     const dataQ = await qSnapshot.docs.map((doc) => ({
+      // console.log("doc data",doc.id)
       ...doc.data(),
       id: doc.id,
+   
     }));
    
   setData(dataQ)
-
+ 
     // console.log("first datas");
     // console.log(datas);
   };
@@ -54,6 +58,7 @@ export default function Showconnex() {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setUsers(user);
+        localStorage.setItem("email",user.email) 
         getData()
       }
     });
@@ -76,6 +81,7 @@ export default function Showconnex() {
                 <Text pb={3} _hover={{color:'blue'}}>{users.email.toString()}</Text>
                 {/* <Text pb={3} textAlign={'center'} cursor={'auto'}fontSize={20}>Bienvenue,{data[0].name}</Text> */}
                   <Link pb={2} _hover={{color:'blue'}} href="/profiles">Profiles</Link><br/><br/>
+                  <Link pb={2} _hover={{color:'blue'}} href="/Mybuy">Mes Commandes</Link><br/><br/>
                   <Link pb={2} _hover={{color:'blue'}} href="/#">Moyen de paeiments</Link><br/><br/>
                   <Link pb={2} _hover={{color:'blue'}} href="/historique">Historique</Link><br/><br/>
                 </Box>

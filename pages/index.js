@@ -67,7 +67,7 @@ export default function Home() {
       const starCountRef2 = ref(db2, index.id + "/");
       onValue(starCountRef2, (snapshot) => {
         const donnees = snapshot.val();
-        console.log(snapshot.val())
+        // console.log(snapshot.val())
         if (donnees != null) {
           const categorie = Object.keys(donnees).map((key) => ({
             id: key,

@@ -8,6 +8,7 @@ import {
   Input,
   Heading,
   Icon,
+  useToast,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -19,24 +20,35 @@ import {
   InputGroup,
   FormControl,
   FormLabel,
+  Switch,
+  Checkbox,
+  Radio,
+  RadioGroup,
+  Stack,
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionIcon,
+  AccordionPanel,
 } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import FooterR from "./footerResponsif";
 import { useRouter } from "next/router";
 import { FaTrashAlt } from "react-icons/fa";
-import { ref, set } from "@firebase/database";
+import { ref, set, push } from "@firebase/database";
 import { db2 } from "@/FIREBASE/clientApp";
 
 export default function Carte() {
   const [cart, setCart] = useState();
-  const [lieu, setLieu] = useState();
-  const [numero, setNumero] = useState();
-  const [nom, setNom] = useState();
+  const [lieu, setLieu] = useState(" ");
+  const [numero, setNumero] = useState(" ");
+  const [nom, setNom] = useState(" ");
   const [prix, setPrix] = useState();
-
+  const toast = useToast();
   const router = useRouter();
   const { isOpen, onOpen, onClose } = useDisclosure();
-
+  const [value, setValue] = useState();
+  const [day, setDay] = useState();
   useEffect(() => {
     let PrixT = 0;
     const Cart = localStorage.getItem("Cart");
@@ -54,29 +66,43 @@ export default function Carte() {
   }, []);
 
   if (cart != undefined && cart.length != 0) {
-    console.log(cart);
     //liste des fonctions en rapport avec le produit et la commande
     function saveCommande() {
+      let email = localStorage.getItem("email");
       let Cart = JSON.parse(localStorage.getItem("Cart"));
-      Cart.map((data, index) =>
-        set(ref(db2, "Commandes"), {
-          productID: data.id,
-          nom: data.nom,
-          price: data.price,
-          description: data.description,
-          quantity: data.quantity,
-          imageUrl: data.imageUrl,
-          organisation: data.organisation,
-          totalPrice: data.price,
-          Status: "En Cours",
-          infoLivraison: {
+
+      if (lieu != undefined && lieu != null && lieu.length > 3) {
+        Cart.map((data, index) =>
+          push(ref(db2, "Commandes"), {
+            productID: data.id,
+            nom: data.nom,
+            description: data.description,
+            quantity: data.quantity,
+            imageUrl: data.imageUrl,
+            organisation: data.organisation,
+            totalPrice: data.price,
+            initiateur: email,
+            Status: "En Cours",
             lieu: lieu,
             receveur: nom,
             numero: numero,
-          },
-        })
-      );
-      // localStorage.removeItem("Cart")
+            date: new Date(),
+          })
+        );
+        localStorage.removeItem("Cart");
+        setLieu("");
+        setNom("");
+        setNumero("");
+        router.reload();
+      } else {
+        toast({
+          title: "PLS, veuillez renseigner les champs",
+          // description: "We've created your account for you.",
+          status: "error",
+          duration: 9000,
+          isClosable: true,
+        });
+      }
     }
     function saveCart(product) {
       localStorage.setItem("Cart", JSON.stringify(product));
@@ -92,7 +118,6 @@ export default function Carte() {
     }
     function DeleteProduct(Product) {
       let Cart = getCart();
-      console.log(Product.id);
       let foundit = Cart.filter((p) => p.id != Product.id);
       saveCart(foundit);
       router.reload();
@@ -100,6 +125,9 @@ export default function Carte() {
     const decrement = (Product, quantity) => {
       let Cart = getCart();
       let foundit = Cart.find((p) => p.id == Product.id);
+      foundit.price =
+        parseInt(foundit.price) -
+        parseInt(foundit.price) / parseInt(foundit.quantity);
       foundit.quantity -= quantity;
       saveCart(Cart);
       router.reload();
@@ -107,7 +135,9 @@ export default function Carte() {
     const increment = (Product, quantity) => {
       let Cart = getCart();
       let foundit = Cart.find((p) => p.id == Product.id);
-      foundit.price = foundit.price / foundit.quantity + foundit.price;
+      foundit.price =
+        parseInt(foundit.price) / parseInt(foundit.quantity) +
+        parseInt(foundit.price);
       foundit.quantity += quantity;
       saveCart(Cart);
       router.reload();
@@ -208,36 +238,56 @@ export default function Carte() {
             <ModalHeader>CONFIRMATION DE LIVRAISON</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
-              <FormControl isRequired>
-                <InputGroup>
-                  <FormLabel>Renseigner le lieu de la livraison : </FormLabel>
-                  <Input type={"text"} placeholder={"LIEU DE LIVRAISON"} />
-                </InputGroup>
-                <InputGroup isRequired>
-                  <FormLabel>Le nom du receveur : </FormLabel>
-                  <Input type={"text"} placeholder={"NOM DU RECEVEUR"} />
-                </InputGroup>
-                <InputGroup isRequired>
-                  <FormLabel>Le numero du receveur : </FormLabel>
-                  <Input type="" placeholder={"LIEU DE LIVRAISON"} />
-                </InputGroup>
-              </FormControl>
+              <Text marginBottom={5}> JOURS DE LIVRAISON</Text>
+              <Box display={"flex"} marginBottom={20}>
+                <RadioGroup onChange={setDay} value={day}>
+                  <Radio value="Mercredi">Mercredi</Radio>
+                  <Radio value="Vendredi">Vendredi</Radio>
+                </RadioGroup>
+              </Box>
+              <Text marginBottom={5}> OPTIONS DE LIVRAISON</Text>
+              <Stack marginBottom={5}>
+                <RadioGroup>
+                  <Accordion>
+                    <AccordionItem>
+                        {" "}
+                      <h2>
+                            {" "}
+                        <AccordionButton>
+                          <Radio value="1"> UTILISER MON ADRESSE</Radio>
+                          <AccordionIcon />
+                        </AccordionButton>
+                      </h2>
+                      <AccordionPanel pb={4} backgroundColor={"#cecece"}>
+                        <Box>
+                          
+                        </Box>
+                      </AccordionPanel>
+                    </AccordionItem>
+
+                    <AccordionItem>
+                      <h2>
+                        <AccordionButton>
+                          <Radio value="2"> UTILISER UNE AUTRE ADRESSE</Radio>
+                          <AccordionIcon />
+                        </AccordionButton>
+                      </h2>
+
+                      <AccordionPanel pb={4} backgroundColor={"#f0f0f2"}>
+                             Lorem ipsum dolor sit amet, consectetur adipiscing
+                        elit, sed do eiusmod      tempor incididunt ut labore et
+                        dolore magna aliqua. Ut enim ad minim      veniam, quis
+                        nostrud exercitation ullamco laboris nisi ut aliquip ex
+                        ea      commodo consequat.   {" "}
+                      </AccordionPanel>
+                    </AccordionItem>
+                  </Accordion>
+                </RadioGroup>
+              </Stack>
             </ModalBody>
 
             <ModalFooter>
-              <Button
-                colorScheme="blue"
-                mr={3}
-                onClick={() => saveCommande()}
-                _disabled={
-                  lieu == null ||
-                  lieu == undefined ||
-                  numero == null ||
-                  numero == undefined ||
-                  nom == null ||
-                  nom == undefined
-                }
-              >
+              <Button colorScheme="blue" mr={3} onClick={() => saveCommande()}>
                 CONFIRMER
               </Button>
               <Button variant="ghost" onClick={onClose}>

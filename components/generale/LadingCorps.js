@@ -128,13 +128,13 @@ export function ItemCard({ item, card }) {
 }
 
 export function ContainerCard({ card }) {
-  console.log("card",card.id+"Datos")
+ 
   const router = useRouter()
   const [datas,setDatas]=useState([])
   useEffect(()=>{
     const datos = localStorage.getItem(card.id+"Datos");
    setDatas(JSON.parse(datos))
-  },[])
+  },[card.id])
   if (datas == null) {
    
     router.reload()
@@ -210,6 +210,7 @@ const LadingCorps = () => {
     const starCountRef = ref(db2, "/");
     onValue(starCountRef, (snapshot) => {
       const donnes = snapshot.val();
+      
       if (donnes != null) {
         const categorie = Object.keys(donnes).map((key) => ({
           id: key,
@@ -217,9 +218,9 @@ const LadingCorps = () => {
         }))
         setCat(categorie);
         localStorage.setItem("women", JSON.stringify(categorie));
-        Cookies.set("woman",JSON.stringify(categorie))
+        
       }
-        console.log("cat",cat)
+        
 
     })
   }
@@ -271,9 +272,17 @@ const LadingCorps = () => {
             pb={20}
             justifyContent={"center"}
           >
-            {cat.map((card, key) => (
-              <ContainerCard key={key} card={card}></ContainerCard>
-            ))}
+            {cat.map((card, key) => 
+            {
+              
+              if (card.id!="Commandes") {
+               return (
+                  <ContainerCard key={key} card={card}></ContainerCard>
+                )
+            }
+          }
+            
+            )}
           </Flex>
         </Box>
       </Center>

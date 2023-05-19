@@ -14,6 +14,7 @@ import {
   Text,
   useBreakpointValue,
   useDisclosure,
+  useToast
 } from "@chakra-ui/react";
 import { useMediaQuery } from "@chakra-ui/react";
 import InputBar from "@/components/InputBar";
@@ -81,6 +82,7 @@ function getCart(){
   }
 }
 function AddToCart(Product){
+  
   let Cart=getCart();
   let foundit = Cart.find(p=>p.id == Product.id);
   if(foundit != undefined){
@@ -104,11 +106,16 @@ function AddToCart(Product){
 export default function Carousel() {
   const [data, setData] = useState([]);
   const [cat, setCat] = useState([]);
+  const toast = useToast()
   const router = useRouter();
   const [page, setPage] = useState("");
   const [check, setCheck] = useState("");
   const [checker, setChecker] = useState(1);
   const [product,setProduct]=useState()
+
+ 
+
+
 
   useEffect(  () => {
     //attribution du link
@@ -119,7 +126,7 @@ export default function Carousel() {
       .trimEnd()
       .trimStart()
       .replace("%20", " ")
-    console.log(link);
+    // console.log(link);
     setChecker(router.asPath.replace("/", "").toString());
     //attribution du link de la page
     setPage(
@@ -174,7 +181,7 @@ export default function Carousel() {
   const { isOpen, onToggle } = useDisclosure();
 
   if (data.length > 0) {
-    console.log(data.length);
+    // console.log(data.length);
     return (
       <>
         {/* <FirstNav/>
@@ -306,24 +313,22 @@ export default function Carousel() {
                       </Box>
                     </Box>
 
-                    <Box display="flex" mt="2" alignItems="center">
-                      {Array(5)
-                        .fill("")
-                        .map((_, i) => (
-                          <StarIcon
-                            key={i}
-                            color={i < 4 ? "teal.500" : "gray.300"}
-                          />
-                        ))}
-                    </Box>
+                      
                     <Box>
                       <Button
                         bgColor={"blue"}
                         mt={3}
                         borderRadius={"66px"}
                         as={"a"}
-                          onClick={()=>AddToCart(data)}
+                          onClick={()=>{AddToCart(data), toast({
+                            title: 'PRODUIT AJOUTE',
+                           
+                            status: 'success',
+                            duration: 9000,
+                            isClosable: true,
+                          })}}
                         color={"white"}
+                        HOVER
                       >
                         {" "}
                         Ajouter au panier
@@ -343,7 +348,7 @@ export default function Carousel() {
             </Center>
 
             <SimpleGrid columns={[2, 2, 2, 3, 4]}>
-              {console.log("data", data)}
+              {/* {console.log("data", data)} */}
               {data.map((data, key) => (
                 <Box
                   key={data.id}
@@ -393,22 +398,19 @@ export default function Carousel() {
                       </Box>
                     </Box>
 
-                    <Box display="flex" mt="2" alignItems="center">
-                      {Array(5)
-                        .fill("")
-                        .map((_, i) => (
-                          <StarIcon
-                            key={i}
-                            color={i < 4 ? "teal.500" : "gray.300"}
-                          />
-                        ))}
-                    </Box>
+                    
                     <Box>
                       <Button
                         bgColor={"blue"}
                         mt={3}
                         borderRadius={"66px"}
-                        onClick={()=>AddToCart(data)}
+                        onClick={()=>{AddToCart(data), toast({
+                          title: 'PRODUIT AJOUTE',
+                         
+                          status: 'success',
+                          duration: 9000,
+                          isClosable: true,
+                        })}}
                         color={"white"}
                       >
                         {" "}

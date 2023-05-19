@@ -33,7 +33,7 @@ export default function Cart() {
         router.push("/Connexion");
       } 
     });
-  });
+  },[auth,router]);
 
   const data = [10, 20, 30];
   const [data2, setData2] = useState();

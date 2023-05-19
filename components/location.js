@@ -32,14 +32,14 @@ export default function Location(){
     const toast = useToast();
     const [ville, setVille] = useState([]);
     const geoloc = async () => {
-      console.log("ingeoloc");
+      
   
       await axios
         .get(
           `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=975de90e9b63426da3ac641fe43acd73`
         )
         .then((response) => {
-          console.log(response.data.results[0].components);
+          // console.log(response.data.results[0].components);
           
             localStorage.setItem("location",JSON.stringify(response.data.results[0].components))
             setLocal((response.data.results[0].components))

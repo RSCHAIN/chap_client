@@ -37,8 +37,7 @@ import {
 } from "firebase/auth";
 import { useRouter } from "next/router";
 import { app } from "@/FIREBASE/clientApp";
-import cookies from "js-cookie";
-import { useEffect } from "react";
+
 import TransitionExample from "@/components/forgetPassword";
 
 export default function Connexion() {
@@ -128,7 +127,7 @@ export default function Connexion() {
           h={500}
           mx={[5, 5, 5, 5, 12]}
           my={20}
-          boxShadow={"0px 4px 24px "}
+          // boxShadow={"0px 4px 24px "}
   
         >
           <Box h={500}>

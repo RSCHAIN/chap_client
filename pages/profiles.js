@@ -15,7 +15,7 @@ export default function Profiles() {
         setUsers(user);
       }
     });
-  });
+  },[auth]);
     const [isLagerThan768] = useMediaQuery("(min-width: 768px)");
   return( <>
 

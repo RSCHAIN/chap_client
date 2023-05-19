@@ -30,8 +30,7 @@ const SignUpForm = () => {
     
 
     const createUSer = async () => {
-        console.log("password", password)
-        console.log("password2", password2)
+      
         if(password==password2){
            
              

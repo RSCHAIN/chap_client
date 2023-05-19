@@ -106,8 +106,10 @@ function DropdownMenu() {
             onEnter={calcHeight}
           >
             <div className="main-menu">
-            {cat.map((index, key) => (
-               <MenuItem 
+            {cat.map((index, key) => {if(index.id!="Commandes"){
+              return(
+                <MenuItem 
+                key={index.id}
                onClick={() => {setActiveMenu(`${index.id}`),setGinks(`${index.id}`),updateLink(index.id)}}
                >
                 <Text>{index.id}</Text>
@@ -115,7 +117,10 @@ function DropdownMenu() {
                   <MdChevronRight />
                 </Box>
                </MenuItem>
-                  ))} 
+              )
+            }})}
+               
+                 
             </div>
           </CSSTransition>
           <CSSTransition

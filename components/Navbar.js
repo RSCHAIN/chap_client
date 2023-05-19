@@ -33,7 +33,7 @@ import { app, db } from "@/FIREBASE/clientApp";
 import { useRouter } from "next/router";
 import { db2 } from "@/FIREBASE/clientApp";
 import { ref, onValue } from "firebase/database";
-import { useState, useEffect } from "react";
+
 import { CSSTransition } from 'react-transition-group';
 import Menucat from "./menucat";
 export default function Navbar() {

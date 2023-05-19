@@ -20,7 +20,7 @@ export default function SignInScreen() {
   const auth = getAuth()
   const loginUSer=async ()=>{
         await signInWithEmailAndPassword(auth,user,password).then((userCredential)=>{
-        console.log(userCredential.user);
+   
         setEmail(userCredential.user.email)
     }).catch((error)=>{
         const errorCode =error.code;
