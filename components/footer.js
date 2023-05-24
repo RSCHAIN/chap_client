@@ -1,78 +1,42 @@
-import { Box, Button, Flex, Heading, Input, Text } from "@chakra-ui/react";
+import { Box, Center, Flex, Heading, Text } from "@chakra-ui/react";
 
-export default function Footer() {
-  return (
-    <>
-      <Flex justifyContent={"space-between"}>
-        {/* <Box>
-          <Heading
-            color={"#fbb614"}
-            width={"152px"}
-            fontSize={"32px"}
-            lineHeight={"24px"}
-            fontWeight={700}
-            ml={"80px"}
-          >
-            Chap
-          </Heading>
-          <Text
-            width="350px"
-            height={"105px"}
-            ml={"56px"}
-            fontSize={"15px"}
-            lineHeight={"24px"}
-            fontWeight={700}
-            mt={'20px'}
-            textAlign='justify'
-          >
-            Abidjan 01 Bp , 
-            <br /> Tel : (225)xxx-xxx-xxx
-            <br />
-            E-mail : infos@chap.com
-          </Text>
-        </Box> */}
-        <Box>
-          <Text fontWeight={500} fontSize="20px">
-            Information
-          </Text>
-          <Text mt={'10px'}>Home</Text>
-          <Text>Services</Text>
-        </Box>
-        <Box>
-          <Text fontWeight={500} fontSize="20px">
-            Categories
-          </Text>
-          <Text mt={'10px'}>Homme</Text>
-          <Text>Femme</Text>
-          <Text>Enfants</Text>
-        </Box>
-        <Box>
-          <Text width={"250px"} fontWeight={"700"} ml="30px" fontSize={"20px"}>
-            Recevez des codes promo!
-          </Text>
-          <Input
-            type={"text"}
-            placeholder="infos@chap.com"
-            background={"#D9d9d9"}
-            width={"317px"}
-            mr="50px"
-            height="40px"
-            mt="10px"
-          />
-          <br />
-          <Button
-            background="#3e82d7"
-            borderRadius={50}
-            padding={"8px 30px"}
-            color="white"
-            ml={"25%"}
-            mt={"10px"}
-          >
-            {" "}
-            valider
-          </Button>
-        </Box>
-      </Flex>
-    </>
-  );
+export default function Footer2(){
+  return(
+    <Center>
+    <Flex w={'70%'}>
+      <Box w={'20%'} mr={20}>
+        <Heading mb={10}>CONTACT</Heading>
+        <Text textAlign={'justify'} mb={10}>Lorem ipsum dolor sit amet, consectet adipis cing elit.Curabitur venenatis.</Text>
+        <Text fontWeight={'bold'} textAlign={'justify'}>1528 BROADWAY, NEW YORK,NY 10036,UNITED STATES +12 34 567 891 EMAIL@YOUR.DOMAIN</Text>
+      </Box>
+      <Box w={'20%'}  mr={20}>
+        <Heading mb={10}>
+          JOURS DE LIVRAISON
+        </Heading>
+        <ul>
+          <li>Mardi</li>
+          <li>Vendredi</li>
+        </ul>
+      </Box>
+      <Box w={'20%'}  mr={20}>
+      <Heading mb={10}>
+          AIDE
+        </Heading>
+        <ul>
+          <li>FAQ</li>
+          <li>Politique de confidentialite</li>
+          <li>Support</li>
+        </ul>
+      </Box>
+      <Box w={'25%'}>
+      <Heading mb={10}>
+          DECOUVREZ NOS RESEAUX
+        </Heading>
+        <Flex>
+          liste des reseaux sociaux
+        </Flex>
+      </Box>
+    </Flex>
+    </Center>
+  )
 }

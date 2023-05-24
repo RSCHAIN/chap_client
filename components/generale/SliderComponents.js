@@ -26,10 +26,10 @@ const SliderComponents = () => {
   const top = useBreakpointValue({ base: "90%", md: "50%" });
   const side = useBreakpointValue({ base: "30%", md: "10px" });
   const cards = [
-    "https://images.unsplash.com/photo-1512152272829-e3139592d56f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZmFzdCUyMGZvb2R8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
-    "./images/VTC/taxi4.jpg",
-    "https://images.unsplash.com/photo-1426869981800-95ebf51ce900?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGZhc3QlMjBmb29kfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-    "./images/Other/images.png",
+    "galerie 1.jpg",
+    "galerie 2.jpg",
+    "galerie 3.jpg",
+    "galerie 4.jpg",
   ];
   const [isLagerThan768] = useMediaQuery("(min-width: 768px)");
 
@@ -102,7 +102,7 @@ const SliderComponents = () => {
               backgroundPosition="center"
               backgroundRepeat="no-repeat"
               backgroundSize="cover"
-              backgroundImage={`url(${url})`}
+              backgroundImage={url}
             ></Box>
           ))}
         </Slider>

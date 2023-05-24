@@ -29,17 +29,25 @@ import { BiCurrentLocation } from "react-icons/bi";
 
 // les card des differntes cartegories qui seront mapés
 export function ItemCard({ item, card }) {
+  const [imageUrl,setImageUrl]= useState()
   // const location = localStorage.getItem("location").length;
   // const toast = useToast();
-
+  useEffect(()=>{
+    Object.values(item).map((data,index)=>{
+      setImageUrl(data.imageUrl)
+    })
+  })
+ 
   // if (location > 2) {
     return (
+      
       <>
         {/* card  */}
         <Link
           height={"40vh"}
           width={{ base: "70%", md: "30%" }}
           mt={"5"}
+          
           mr={{ base: "0%", md: "0%" }}
           _hover={{ textDecoration: "none" }}
           href={"/" + card + "/" + item.id}
@@ -49,7 +57,7 @@ export function ItemCard({ item, card }) {
             width={"100%"}
             alignItems={"center"}
             justifyContent={"center"}
-            backgroundImage={item.imageUrl}
+            backgroundImage={imageUrl}
             backgroundPosition={"center"}
             backgroundSize={"cover"}
             backgroundRepeat={"no-repeat"}
@@ -57,7 +65,7 @@ export function ItemCard({ item, card }) {
             <Flex
               alignItems={"center"}
               justifyContent={"center"}
-              borderRadius={"10px"}
+              borderRadius={50}
               height={"100%"}
               width={"100%"}
               bg={"rgba(0, 0, 0, 0.277)"}

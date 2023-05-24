@@ -14,13 +14,18 @@ import {
   Text,
   useBreakpointValue,
   useDisclosure,
-  useToast
+  useToast,
 } from "@chakra-ui/react";
 import { useMediaQuery } from "@chakra-ui/react";
 import InputBar from "@/components/InputBar";
 import Navbar from "@/components/Navbar";
 // Here we have used react-icons package for the icons
-import { BiLeftArrowAlt, BiLoaderCircle, BiRightArrowAlt } from "react-icons/bi";
+import {
+  BiLeftArrowAlt,
+  BiLoaderCircle,
+  BiRightArrowAlt,
+} from "react-icons/bi";
+import {IoMdAddCircleOutline} from 'react-icons/io'
 // And react-slick as our Carousel Lib
 import Slider from "react-slick";
 
@@ -69,55 +74,44 @@ const settings = {
 };
 /////////////fetch des datas
 
-///fonction du panier 
-function saveCart(product){
-  localStorage.setItem("Cart",JSON.stringify(product));
+///fonction du panier
+function saveCart(product) {
+  localStorage.setItem("Cart", JSON.stringify(product));
 }
-function getCart(){
+function getCart() {
   let Cart = localStorage.getItem("Cart");
-  if (Cart == null){
-    return []
-  }else{
-    return JSON.parse(Cart)
+  if (Cart == null) {
+    return [];
+  } else {
+    return JSON.parse(Cart);
   }
 }
-function AddToCart(Product){
-  
-  let Cart=getCart();
-  let foundit = Cart.find(p=>p.id == Product.id);
-  if(foundit != undefined){
-    foundit.quantity++
-    foundit.price = foundit.quantity* parseInt(Product.price)
-  }
-  else{
+function AddToCart(Product) {
+  let Cart = getCart();
+  let foundit = Cart.find((p) => p.id == Product.id);
+  if (foundit != undefined) {
+    foundit.quantity++;
+    foundit.price = foundit.quantity * parseInt(Product.price);
+  } else {
     Product.quantity = 1;
-    Cart.push(Product)
+    Cart.push(Product);
   }
-   
-  saveCart(Cart)
+
+  saveCart(Cart);
 }
 ////ffin fonction de la cart
-
-
-
-
-
 
 export default function Carousel() {
   const [data, setData] = useState([]);
   const [cat, setCat] = useState([]);
-  const toast = useToast()
+  const toast = useToast();
   const router = useRouter();
   const [page, setPage] = useState("");
   const [check, setCheck] = useState("");
   const [checker, setChecker] = useState(1);
-  const [product,setProduct]=useState()
+  const [product, setProduct] = useState();
 
- 
-
-
-
-  useEffect(  () => {
+  useEffect(() => {
     //attribution du link
     const link = router.asPath
       .replace("/", "")
@@ -125,7 +119,7 @@ export default function Carousel() {
       .replace("#fade", "")
       .trimEnd()
       .trimStart()
-      .replace("%20", " ")
+      .replace("%20", " ");
     // console.log(link);
     setChecker(router.asPath.replace("/", "").toString());
     //attribution du link de la page
@@ -136,14 +130,14 @@ export default function Carousel() {
         .replace("#fade", "")
         .trimEnd()
         .trimStart()
-        .replace("%20", " ").replace("/",">")
+        .replace("%20", " ")
+        .replace("/", ">")
     );
 
-    
     //connexion et fetch des datas depuis notre db
     const starCountRef = ref(db2, link);
-    onValue(starCountRef,  (snapshot) => {
-      const donnes =   snapshot.val();
+    onValue(starCountRef, (snapshot) => {
+      const donnes = snapshot.val();
 
       // const categorie = Object.keys(donnes).map(key=>({
       //   id:key,
@@ -151,7 +145,7 @@ export default function Carousel() {
       // }))
       // setCat(categorie)
       if (donnes != null) {
-        const newProducts =  Object.keys(donnes).map((key) => ({
+        const newProducts = Object.keys(donnes).map((key) => ({
           id: key,
           ...donnes[key],
         }));
@@ -191,7 +185,7 @@ export default function Carousel() {
         <Box>
           <Flex fontSize={25} ml={35}>
             <Text>Home</Text>
-            <ChevronRightIcon h={10} />
+            <ChevronRightIcon h={10}/>
 
             <Text color={"blue"}>Categories</Text>
             <br />
@@ -219,11 +213,11 @@ export default function Carousel() {
                 onClick={onToggle}
                 as={Link}
                 href={"#fade"}
-                bgColor={"messenger.400"}
+                bgColor={"#08566E"}
                 color={"white"}
                 mt={[10, 10, 10, 0, 0]}
                 w={"150px"}
-	_hover={{bgColor:'yellow.400'}}
+                _hover={{textDecoration:'none',bgColor:'#006C47' }}
               >
                 Tous Nos Articles
               </Button>
@@ -241,6 +235,7 @@ export default function Carousel() {
                 transform={"translate(0%, -50%)"}
                 zIndex={2}
                 onClick={() => slider?.slickPrev()}
+                display={{base:"none",md:'grid'}}
               >
                 <BiLeftArrowAlt />
               </IconButton>
@@ -249,6 +244,7 @@ export default function Carousel() {
                 aria-label="right-arrow"
                 colorScheme="messenger"
                 borderRadius="full"
+                display={{base:"none",md:'grid'}}
                 ml={20}
                 right={side}
                 top={top}
@@ -280,7 +276,7 @@ export default function Carousel() {
                   pb={5}
                 >
                   <Box width={"270px"} height={"200px"} pt={10} pl={10}>
-                    <Image src={data.imageUrl} alt={data.nom} maxW={'150px'} />
+                    <Image src={data.imageUrl} alt={data.nom} maxW={"150px"} />
                   </Box>
 
                   <Box p="6">
@@ -290,10 +286,18 @@ export default function Carousel() {
                       as="h5"
                       lineHeight="tight"
                       noOfLines={2}
-                      w={"fit-content"}
+                      minWidth={'280px'}
                       height={"50px"}
+                      display={'flex'} 
+                      justifyContent={'space-between'}
                     >
-                      {data.nom}
+                      <Text>{data.nom}</Text>
+                      <Box position>
+                        {data.price}
+                        <Box as="span" pl={2} fontSize="sm">
+                          Eur
+                        </Box>
+                      </Box>
                     </Box>
 
                     <Box
@@ -306,29 +310,29 @@ export default function Carousel() {
                     >
                       <Text>{data.description}</Text>
                     </Box>
-                    <Box>
-                      {data.price}
-                      <Box as="span" pl={2} fontSize="sm">
-                        XOF
-                      </Box>
-                    </Box>
 
-                      
                     <Box>
                       <Button
                         bgColor={"blue"}
                         mt={3}
                         borderRadius={"66px"}
                         as={"a"}
-                          onClick={()=>{AddToCart(data), toast({
-                            title: 'PRODUIT AJOUTE',
-                           
-                            status: 'success',
-                            duration: 9000,
-                            isClosable: true,
-                          })}}
+                        onClick={() => {
+                          AddToCart(data),
+                            toast({
+                              title: "PRODUIT AJOUTE",
+
+                              status: "success",
+                              duration: 9000,
+                              isClosable: true,
+                            });
+                        }}
                         color={"white"}
-                        HOVER
+                       _hover={{
+                        backgroundColor:' #00FFEF',
+                        color:'#080904 '
+                       }}
+                       leftIcon={<IoMdAddCircleOutline/>}
                       >
                         {" "}
                         Ajouter au panier
@@ -365,12 +369,12 @@ export default function Carousel() {
                   pb={5}
                 >
                   <Box width={"300px"} height={"200px"} pt={10} pl={10}>
-                    <Image src={data.imageUrl} alt={data.nom} maxW={'150px'}  />
+                    <Image src={data.imageUrl} alt={data.nom} maxW={"150px"} />
                   </Box>
 
                   <Box p="6">
                     <Box
-                      mt='15'
+                      mt="15"
                       fontWeight="semibold"
                       as="h5"
                       lineHeight="tight"
@@ -382,7 +386,6 @@ export default function Carousel() {
                     </Box>
 
                     <Box
-                      
                       fontWeight="normal"
                       lineHeight="tight"
                       noOfLines={2}
@@ -398,19 +401,21 @@ export default function Carousel() {
                       </Box>
                     </Box>
 
-                    
                     <Box>
                       <Button
                         bgColor={"blue"}
                         mt={3}
                         borderRadius={"66px"}
-                        onClick={()=>{AddToCart(data), toast({
-                          title: 'PRODUIT AJOUTE',
-                         
-                          status: 'success',
-                          duration: 9000,
-                          isClosable: true,
-                        })}}
+                        onClick={() => {
+                          AddToCart(data),
+                            toast({
+                              title: "PRODUIT AJOUTE",
+
+                              status: "success",
+                              duration: 9000,
+                              isClosable: true,
+                            });
+                        }}
                         color={"white"}
                       >
                         {" "}
@@ -430,24 +435,26 @@ export default function Carousel() {
     return (
       <Center>
         <Box>
-        
           <Heading mt="50%">CHARGEMENT</Heading>
-          <Flex  mt={10}
+          <Flex mt={10}>
+            <Image
+              src="./loading.gif"
+              alt="circle loader"
+              width={30}
+              height={10}
+              mr={10}
+            />
+            <Link
+              href="/"
+              fontSize={30}
+              _hover={{
+                color: "blue.500",
+              }}
             >
-          <Image src='./loading.gif' alt='circle loader'  width={30} height={10} mr={10}/>      
-        <Link
-            href="/"
-            fontSize={30}
-            _hover={{
-              color: "blue.500",
-              
-            }}
-          >
-            {" "}
-            Revenir á l'accueil
-          </Link>
+              {" "}
+              Revenir á l'accueil
+            </Link>
           </Flex>
-         
         </Box>
       </Center>
     );

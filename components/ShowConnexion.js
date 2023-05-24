@@ -22,14 +22,14 @@ import { query } from "@firebase/database";
 export default function Showconnex() {
   const [users, setUsers] = useState("");
   const router = useRouter();
-  const [data,setData] = useState([])
+  
 
   const logout = () => {
     signOut(auth);
     router.reload();
   };
  
-  const getData = async () => {
+  const getData = async (email) => {
     const constraints = [
       
     ];
@@ -45,11 +45,22 @@ export default function Showconnex() {
       id: doc.id,
    
     }));
-   
-  setData(dataQ)
+  for (let index = 0; index < dataQ.length; index++) {
+    console.log(dataQ[index].email,email,dataQ[index].email==email )
+    if (dataQ[index].email == email) {
+      localStorage.setItem('addresse',dataQ[index].address)
+      localStorage.setItem('name',dataQ[index].name)
+      localStorage.setItem('number',dataQ[index].number)
+    }
+    else{
+      // console.log("echec")
+    }
+    
+  }
+
  
     // console.log("first datas");
-    // console.log(datas);
+    // console.log(dataQ);
   };
   const auth = getAuth(app);
   useEffect(  () => {
@@ -59,11 +70,11 @@ export default function Showconnex() {
       if (user) {
         setUsers(user);
         localStorage.setItem("email",user.email) 
-        getData()
+        getData(user.email)
       }
     });
    
-  },[]);
+  },[auth]);
   if (users) {
    
     return (

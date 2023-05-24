@@ -30,6 +30,7 @@ import {
   AccordionButton,
   AccordionIcon,
   AccordionPanel,
+  Code,
 } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import FooterR from "./footerResponsif";
@@ -49,6 +50,7 @@ export default function Carte() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [value, setValue] = useState();
   const [day, setDay] = useState();
+  const [hours, setHours] = useState();
   useEffect(() => {
     let PrixT = 0;
     const Cart = localStorage.getItem("Cart");
@@ -70,9 +72,9 @@ export default function Carte() {
     function saveCommande() {
       let email = localStorage.getItem("email");
       let Cart = JSON.parse(localStorage.getItem("Cart"));
-
+      
       if (lieu != undefined && lieu != null && lieu.length > 3) {
-        Cart.map((data, index) =>
+        Cart.map((data, index) =>{
           push(ref(db2, "Commandes"), {
             productID: data.id,
             nom: data.nom,
@@ -86,8 +88,13 @@ export default function Carte() {
             lieu: lieu,
             receveur: nom,
             numero: numero,
+            jour:day,
+            moment:hours,
             date: new Date(),
           })
+        }
+        
+         
         );
         localStorage.removeItem("Cart");
         setLieu("");
@@ -217,7 +224,7 @@ export default function Carte() {
         <Center>
           <Flex width={"621px"} mb={"70px"} justifyContent={"space-between"}>
             <Heading>Total</Heading>
-            <Text fontSize={30}>{prix}</Text>
+            <Text fontSize={30}>{prix} Euros</Text>
             <Button
               bgColor={"#08566E"}
               color={"white"}
@@ -240,9 +247,20 @@ export default function Carte() {
             <ModalBody>
               <Text marginBottom={5}> JOURS DE LIVRAISON</Text>
               <Box display={"flex"} marginBottom={20}>
-                <RadioGroup onChange={setDay} value={day}>
-                  <Radio value="Mercredi">Mercredi</Radio>
+                <RadioGroup  onChange={setDay} value={day}>
+                  <Radio value="Mardi" mr={10}>
+                    Mardi
+                  </Radio>
                   <Radio value="Vendredi">Vendredi</Radio>
+                </RadioGroup>
+              </Box>
+              <Text marginBottom={5}> Heure de Livraison</Text>
+              <Box display={"flex"} marginBottom={20}>
+                <RadioGroup onChange={setHours} value={hours}>
+                  <Radio value="Matin" mr={10}>
+                    Matin(de 09h30 ----- 12h)
+                  </Radio>
+                  <Radio value="Soir">Soir(de 14h30 ----- 19h30)</Radio>
                 </RadioGroup>
               </Box>
               <Text marginBottom={5}> OPTIONS DE LIVRAISON</Text>
@@ -250,17 +268,23 @@ export default function Carte() {
                 <RadioGroup>
                   <Accordion>
                     <AccordionItem>
-                        {" "}
                       <h2>
-                            {" "}
-                        <AccordionButton>
+                        <AccordionButton  onClick={()=>{setLieu(localStorage.getItem('addresse')),setNumero(localStorage.getItem('number')),setNom(localStorage.getItem('name'))}}>
                           <Radio value="1"> UTILISER MON ADRESSE</Radio>
-                          <AccordionIcon />
                         </AccordionButton>
                       </h2>
-                      <AccordionPanel pb={4} backgroundColor={"#cecece"}>
-                        <Box>
-                          
+                      <AccordionPanel pb={4} backgroundColor={" #B2FFFF"}>
+                        <Box m={5}>
+                          <Button
+                            colorScheme="blue"
+                            mr={3}
+                            onClick={() => saveCommande()}
+                          >
+                            CONFIRMER
+                          </Button>
+                          <Button variant="ghost" onClick={onClose}>
+                            FERMER
+                          </Button>
                         </Box>
                       </AccordionPanel>
                     </AccordionItem>
@@ -273,19 +297,57 @@ export default function Carte() {
                         </AccordionButton>
                       </h2>
 
-                      <AccordionPanel pb={4} backgroundColor={"#f0f0f2"}>
-                             Lorem ipsum dolor sit amet, consectetur adipiscing
-                        elit, sed do eiusmod      tempor incididunt ut labore et
-                        dolore magna aliqua. Ut enim ad minim      veniam, quis
-                        nostrud exercitation ullamco laboris nisi ut aliquip ex
-                        ea      commodo consequat.   {" "}
+                      <AccordionPanel pb={4} backgroundColor={"#f"}>
+                        <Box display={"flex"}>
+                          <Box>
+                          setLieu(localStorage.getItem('addresse')),setNumero(localStorage.getItem('number')),setNom(localStorage.getItem('name'))
+                            <FormControl>
+                              <FormLabel>Nom du Receveur</FormLabel>
+                              <Input onChange={(e)=>setNom(e.target.value)}/>
+                            </FormControl>
+                            <FormControl>
+                              <FormLabel>Numero du Receveur</FormLabel>
+                              <Input type="number" onChange={(e)=>setNumero(e.target.value)}/>
+                            </FormControl>
+                            <FormControl>
+                              <FormLabel>ville</FormLabel>
+                              <Input onChange={(e)=>setVille(e.target.value)} />
+                            </FormControl>
+                          </Box>
+                          <Box ml={3}>
+                            <FormControl>
+                              <FormLabel>Nom de la Rue</FormLabel>
+                              <Input onChange={(e)=>setRue(e.target.value)} />
+                            </FormControl>
+                            <FormControl>
+                              <FormLabel>Numero du batiment</FormLabel>
+                              <Input type="number" onChange={(e)=>setBatiment(e.target.value)} />
+                            </FormControl>
+                            <FormControl>
+                              <FormLabel>Code Postal</FormLabel>
+                              <Input onChange={(e)=>setPostal(e.target.value)}/>
+                            </FormControl>
+                          </Box>
+                        </Box>
+                        <Box m={5}>
+                          <Button
+                            colorScheme="blue"
+                            mr={3}
+                            onClick={() => saveCommande()}
+                          >
+                            CONFIRMER
+                          </Button>
+                          <Button variant="ghost" onClick={onClose}>
+                            FERMER
+                          </Button>
+                        </Box>
                       </AccordionPanel>
                     </AccordionItem>
                   </Accordion>
                 </RadioGroup>
               </Stack>
             </ModalBody>
-
+            {/* 
             <ModalFooter>
               <Button colorScheme="blue" mr={3} onClick={() => saveCommande()}>
                 CONFIRMER
@@ -293,7 +355,7 @@ export default function Carte() {
               <Button variant="ghost" onClick={onClose}>
                 FERMER
               </Button>
-            </ModalFooter>
+            </ModalFooter> */}
           </ModalContent>
         </Modal>
       </>

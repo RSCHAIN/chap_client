@@ -35,7 +35,7 @@ const SignUpForm = () => {
            
              
              // create a pointer to our Document
-            const _user = doc(firestore, `Admin/${email}`);
+            const _user = doc(firestore, `Utilisateurs/${email}`);
             // structure the todo data
             const Users = {
                    name,
@@ -48,37 +48,37 @@ const SignUpForm = () => {
                 };
             await setDoc(_user, Users);
             
-            // await createUserWithEmailAndPassword(auth, email, password)
-            // .then((userCredential) => {
-            //   console.log(userCredential.user);
-            //   setEmail(userCredential.user.email);
-            //   // router.back()
-            //   toast({
-            //     title: 'SUCCES.',
-            //     description: "INSCRIPTION VALIDEE",
-            //     status: 'success',
-            //     duration: 3000,
-            //     isClosable: true,
-            //   })
-            // //   router.push("/")
-            // })
-            // .catch((error) => {
-            //   // throw error;
-            //   const errorCode = error.code;
-            //   const errorMessage = error.message;
-            // //   console.log(errorMessage)
-            // //   console.log(errorCode)
-            //   if (errorCode == "auth/email-already-in-use") {
-            //     // console.log("VEUILLEZ VERIFIER VOS INFOS DE CONNEXION");
-            //     toast({
-            //       title: 'VEUILLEZ VOUS CONNECTER',
-            //       description: "CET EMAIL EXISTE DEJA DANS NOTRE BASE DE DONNEE",
-            //       status: 'error',
-            //       duration: 5000,
-            //       isClosable: true,
-            //     })
-            //   }
-            // });
+            await createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+              console.log(userCredential.user);
+              setEmail(userCredential.user.email);
+              // router.back()
+              toast({
+                title: 'SUCCES.',
+                description: "INSCRIPTION VALIDEE",
+                status: 'success',
+                duration: 3000,
+                isClosable: true,
+              })
+              router.push("/")
+            })
+            .catch((error) => {
+              // throw error;
+              const errorCode = error.code;
+              const errorMessage = error.message;
+            //   console.log(errorMessage)
+            //   console.log(errorCode)
+              if (errorCode == "auth/email-already-in-use") {
+                // console.log("VEUILLEZ VERIFIER VOS INFOS DE CONNEXION");
+                toast({
+                  title: 'VEUILLEZ VOUS CONNECTER',
+                  description: "CET EMAIL EXISTE DEJA DANS NOTRE BASE DE DONNEE",
+                  status: 'error',
+                  duration: 5000,
+                  isClosable: true,
+                })
+              }
+            });
         }
         else{
             console.log("okay la")
