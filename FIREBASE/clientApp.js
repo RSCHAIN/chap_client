@@ -21,6 +21,6 @@ const appCLient = {
 
 // Initialize Firebase
 const app = initializeApp(appCLient);
-const db2 = getDatabase(app)
+const db2 = getDatabase()
 const db = getFirestore(app)
 export {app,db,db2}

@@ -155,28 +155,32 @@ export default function Carte() {
         {cart.map((data, index) => (
           <Center key={data.id}>
             <Flex
-              bgColor={"#F7C29E"}
-              width={{ base: "fit-content", lg: "621px", md: "621px" }}
-              height={"205px"}
+              bgColor={"#fbfbfbfc"}
+              width={{ base: "fit-content", lg: "800px", md: "800px" }}
+              height={""}
               border={"1px solid #e6e6e6"}
-              boxShadow={"0px 2px 10px"}
-              boxSizing={"border-box"}
+              // boxShadow={"0px 2px 10px"}
+              boxSizing={"border-box"}b
               borderRadius={"9px"}
               // pb={10}
               mb={20}
             >
-              <Box pr={5}>
+              <Box pr={5}  >
                 <Image
                   src={data.imageUrl}
                   alt={data.name}
                   width={"117px"}
                   height={"139px"}
                   ml={15}
-                  mt={10}
+                  my={3}
                 />
               </Box>
-              <Box>
-                <Text pb={5} pt={5} fontWeight={"bold"}>
+              <Box display={'flex'} mt={10}>
+                <Text pb={5} pt={5} fontWeight={"bold"}
+                 mt={2}
+                mr={10}
+
+                 >
                   {data.nom}
                 </Text>
                 {/* <Flex>
@@ -185,37 +189,37 @@ export default function Carte() {
                     (59)
                   </Text>
                 </Flex> */}
-                <Text pt={5}>{data.description}</Text>
+                {/* <Text pt={5}>{data.description}</Text> */}
                 <Flex
                   borderColor={"#E37611"}
                   borderStyle={"solid"}
                   borderWidth={"0,5px"}
-                  width={"full"}
+                  width={"3/4"}
                   borderRadius={"4px"}
                   justifyContent={"space-between"}
+                  mt={5}
                   // justifyContent={'space-between'}
                 >
-                  <Flex>
+                  <Flex mr={20}>
                     <Button onClick={() => decrement(data, 1)}>-</Button>
                     <Input
                       type={"number"}
-                      color={"#E37611"}
-                      w={"70px"}
+                       w={"70px"} 
                       value={data.quantity}
-                      borderColor={"#F7C29E"}
                     />
                     <Button onClick={() => increment(data, 1)}>+</Button>
                   </Flex>
-                  <Flex mx={5}>
-                    <Icon
+                  <Box mr={20}>
+                    <Text mt={1} color={"#E37611"} fontSize={20}>€{data.price}</Text>
+                  </Box>
+                  <Flex mx={2} mt={2}>
+                    <Icon color={'#DE2916'}
                       as={FaTrashAlt}
                       fontSize={30}
                       onClick={() => DeleteProduct(data)}
                     />
                   </Flex>
-                  <Box>
-                    <Text color={"#E37611"}>{data.price}</Text>
-                  </Box>
+                 
                 </Flex>
               </Box>
             </Flex>
@@ -260,7 +264,9 @@ export default function Carte() {
                   <Radio value="Matin" mr={10}>
                     Matin(de 09h30 ----- 12h)
                   </Radio>
-                  <Radio value="Soir">Soir(de 14h30 ----- 19h30)</Radio>
+                  <Radio value="Soir(13h-16h)">Apres-Midi(de 13h ----- 16h)</Radio><br/>
+                  <Radio value="Soir(16h-20h)">Soir(de 16h ----- 20h)</Radio><br/>
+                  <Radio value="Soir(20h-00h)">Nuit(de 20h ----- 00h)</Radio>
                 </RadioGroup>
               </Box>
               <Text marginBottom={5}> OPTIONS DE LIVRAISON</Text>
@@ -300,7 +306,7 @@ export default function Carte() {
                       <AccordionPanel pb={4} backgroundColor={"#f"}>
                         <Box display={"flex"}>
                           <Box>
-                          setLieu(localStorage.getItem('addresse')),setNumero(localStorage.getItem('number')),setNom(localStorage.getItem('name'))
+                          
                             <FormControl>
                               <FormLabel>Nom du Receveur</FormLabel>
                               <Input onChange={(e)=>setNom(e.target.value)}/>

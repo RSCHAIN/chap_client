@@ -26,20 +26,38 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from "@chakra-ui/icons";
+import {AiOutlineShoppingCart, AiTwotoneAlert} from 'react-icons/ai'
 import React from "react";
-
-import { getAuth, signOut } from "firebase/auth";
-import { app, db } from "@/FIREBASE/clientApp";
-import { useRouter } from "next/router";
-import { db2 } from "@/FIREBASE/clientApp";
-import { ref, onValue } from "firebase/database";
-
-import { CSSTransition } from 'react-transition-group';
+import {useState,useEffect} from 'react'
+import { getAuth } from "firebase/auth";
+import { app} from "@/FIREBASE/clientApp";
 import Menucat from "./menucat";
 export default function Navbar() {
  
   const { isOpen, onToggle } = useDisclosure();
   const auth = getAuth(app);
+  const [total,setTotal]=useState('')
+ const numb=()=>{
+
+
+  const Cart = localStorage.getItem("Cart");
+  const All = JSON.parse(Cart);
+  let tot=0
+  if (All != null) {
+    All.map((data, index) => {
+      tot = parseInt(data.quantity) + tot;
+    });
+    setTotal(tot);
+  }
+
+  localStorage.setItem("total", total);
+};
+
+useEffect(()=>{
+  numb()
+})
+
+
 
   return (
     <Box>
@@ -126,7 +144,11 @@ export default function Navbar() {
               mr={3}
               _hover={{ textDecoration: "none", color: "yellow.300" }}
             >
-              Panier
+              <Box display={'flex'}>
+              <Icon as={AiOutlineShoppingCart} fontSize={30} color={'#303030'}/>
+             <Text bgColor={'blue'} h={'fit-content'} padding={1} borderRadius={50} color={'white'}fontSize={20}>{total}</Text>
+              </Box>
+             
             </Link>
             {/* <Link
               href={"#"}

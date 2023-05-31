@@ -73,7 +73,7 @@ export default function FooterR() {
   return (
     <Center>
     <Box
-      bg={useColorModeValue('gray.50', 'gray.900')}
+      bg={'#B0C4DE'}
       color={useColorModeValue('gray.700', 'gray.200')} w='full'>
       <Container as={Stack} maxW={'full'} py={10}>
         <SimpleGrid

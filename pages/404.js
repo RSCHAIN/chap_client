@@ -136,7 +136,9 @@ export default function Carousel() {
 
     //connexion et fetch des datas depuis notre db
     const starCountRef = ref(db2, link);
+   
     onValue(starCountRef, (snapshot) => {
+      console.log(snapshot.val())
       const donnes = snapshot.val();
 
       // const categorie = Object.keys(donnes).map(key=>({

@@ -46,7 +46,7 @@ export default function Showconnex() {
    
     }));
   for (let index = 0; index < dataQ.length; index++) {
-    console.log(dataQ[index].email,email,dataQ[index].email==email )
+    // console.log(dataQ[index].email,email,dataQ[index].email==email )
     if (dataQ[index].email == email) {
       localStorage.setItem('addresse',dataQ[index].address)
       localStorage.setItem('name',dataQ[index].name)

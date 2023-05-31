@@ -20,21 +20,36 @@ import {
 } from "@chakra-ui/react";
 import React, { useState, useEffect, useRef } from "react";
 
-import { db2 } from "@/FIREBASE/clientApp";
+import { db, db2 } from "@/FIREBASE/clientApp";
 import { ref, onValue } from "firebase/database";
 import Location from "../location";
 import { useRouter } from "next/router";
-import Cookies from "js-cookie";
-import { BiCurrentLocation } from "react-icons/bi";
+import { collection, query, where, getDocs } from "firebase/firestore";
 
 // les card des differntes cartegories qui seront mapés
-export function ItemCard({ item, card }) {
+export  function ItemCard ({ item, card }) {
   const [imageUrl,setImageUrl]= useState()
+  const [adresse,setAdresse]= useState()
   // const location = localStorage.getItem("location").length;
   // const toast = useToast();
+  const update = async ()=>{
+    // console.log('item',item.id)
+    const q = query(collection(db, "Admin"), where("organisation", "==",item.id ));
+
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach( (doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      setAdresse(doc.data().adresse);
+      setImageUrl(doc.data().imageUrl)
+    });
+  }
+
+// console.log(item.id)
   useEffect(()=>{
     Object.values(item).map((data,index)=>{
-      setImageUrl(data.imageUrl)
+     
+      update()
+     
     })
   })
  
@@ -43,6 +58,8 @@ export function ItemCard({ item, card }) {
       
       <>
         {/* card  */}
+        <Box height={"40vh"}
+          width={{ base: "70%", md: "30%" }}>
         <Link
           height={"40vh"}
           width={{ base: "70%", md: "30%" }}
@@ -57,6 +74,7 @@ export function ItemCard({ item, card }) {
             width={"100%"}
             alignItems={"center"}
             justifyContent={"center"}
+          borderRadius={50}
             backgroundImage={imageUrl}
             backgroundPosition={"center"}
             backgroundSize={"cover"}
@@ -81,6 +99,9 @@ export function ItemCard({ item, card }) {
             </Flex>
           </Flex>
         </Link>
+        <Text fontSize={20} my={3} fontWeight={'semibold'} align={'center'}  >{adresse}</Text>
+        </Box>
+      
       </>
     );
   // } else {
@@ -154,6 +175,7 @@ export function ContainerCard({ card }) {
         <Flex
           width={"95%"}
           height={"auto"}
+          mb={10}
           direction={"column"}
           alignItems={"center"}
           justifyContent={"space-between"}
@@ -199,6 +221,7 @@ export function ContainerCard({ card }) {
         //  console.log(datas)     
             datas.map((item, key) => (
               <ItemCard key={key} item={item} card={card.id}></ItemCard>
+              
             ))
             }
           </Flex>
@@ -282,6 +305,7 @@ const LadingCorps = () => {
           >
             {cat.map((card, key) => 
             {
+              // console.log('card',card)
               
               if (card.id!="Commandes") {
                return (

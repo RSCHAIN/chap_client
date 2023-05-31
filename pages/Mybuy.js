@@ -17,7 +17,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 function Cancel({ items, email }) {
-  console.log(items.Status);
+  // console.log(items.Status);
   if (items.Status == "ANNULE" && items.initiateur == email) {
     return (
       <>
@@ -57,7 +57,7 @@ function Cancel({ items, email }) {
 }
 
 function Valide({ items, email }) {
-  console.log(items.Status);
+  // console.log(items.Status);
   if (items.Status == "VALIDE" && items.initiateur == email) {
     return (
       <>
@@ -97,7 +97,7 @@ function Valide({ items, email }) {
 }
 
 function Launch({ items, email }) {
-  console.log(items.Status);
+  // console.log(items.Status);
   if (items.Status == "En Cours" && items.initiateur == email) {
     return (
       <>
@@ -144,7 +144,7 @@ export default function Buy() {
     const starCountRef = ref(db2, "Commandes/");
     onValue(starCountRef, (snapshot) => {
       setCommandeListe(snapshot.val());
-      console.log(snapshot.val())
+      // console.log(snapshot.val())
     });
   };
 

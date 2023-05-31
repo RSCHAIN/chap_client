@@ -20,10 +20,10 @@ export default async function checkout(req, res) {
     (error, result) => {
       if (result) {
         res.status(201).json({ result: "success" });
-        console.log("succeesss");
+        // console.log("succeesss");
       } else {
         res.status(500).send(error);
-        console.log("error");
+        // console.log("error");
       }
     }
   );
