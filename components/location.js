@@ -134,7 +134,7 @@ export default function Location(){
                   borderLeftRadius={50}
                   pointerEvents="none"
                   bgColor={"#1a94da"}
-                  children={<BsGeoAlt color="gray.300" />}
+                 
                 />
 
                 <Input
