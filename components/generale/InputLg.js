@@ -126,6 +126,7 @@ const InputLg = () => {
                     if(data.nom != null || data.nom !=undefined){
                         return (
                             <Flex
+                            key={index}
                               bgColor={"#fbfbfbfc"}
                               width={{
                                 base: "fit-content",
@@ -197,7 +198,7 @@ const InputLg = () => {
                           );
                     }
                     else{
-                        return(<Box>PRODUIT INTROUVABLE</Box>)
+                        return(<Box key={index}>PRODUIT INTROUVABLE</Box>)
                     }
                    
                   })}

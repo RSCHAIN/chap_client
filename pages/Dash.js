@@ -121,7 +121,7 @@ export default function CaptionCarousel() {
       <Slider  {...settings} ref={(slider) => setSlider(slider)}>
         {Object.values(cards).map((card, index) => (
           // {console.log(card.imageUrl)}
-          <Box>
+          <Box key={index}>
             <Box
             display={{base:"none"}}
               key={index}
@@ -140,7 +140,7 @@ export default function CaptionCarousel() {
                   alignContent={"center"}
                   w={"full"}
                 >
-                  <Image src="/logo1.png" w={"10%"} mt={"-0.5"} />
+                  <Image alt={'logo'} src="/logo1.png" w={"10%"} mt={"-0.5"} />
                   <Flex mt={"12"} w={"50%"} ml={"20%"}>
                     <Link mr={5}> ACCUEIL</Link>
                     <Link mr={5}> ALIMENTATION</Link>

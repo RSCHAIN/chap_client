@@ -81,7 +81,7 @@ export default function FooterR() {
           spacing={8}>
           <Stack spacing={6}>
             <Box>
-              <Image src={"/logo1.png"} width={{base:200,md:300}}/>
+              <Image alt={'logo'} src={"/logo1.png"} width={{base:200,md:300}}/>
             </Box>
             <Text
             

@@ -18,8 +18,8 @@ export default function Slide(){
         <Carousel showThumbs={true} autoPlay>
           {Object.values(carde).map((card, index) =>
           (
-            <Box>
-                <Image src={card.imageUrl}/>
+            <Box key={index}>
+                <Image alt={'image du slider'} src={card.imageUrl}/>
                 <Text>{card.nom}</Text>
             </Box>  
           )

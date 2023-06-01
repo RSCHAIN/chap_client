@@ -133,6 +133,7 @@ export default function Connexion() {
           <Box h={500}>
             <Image
               height={500}
+              alt={'logo'}
               width={650}
               src="./logo2.png"
               display={["none", "none", "flex", "flex", "flex"]}

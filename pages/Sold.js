@@ -11,7 +11,7 @@ state = {
         clientToken: null,
         purchaseComplete: false  
 };
-    
+   
     async buy() {
         const Cart = localStorage.prix
        
@@ -44,12 +44,13 @@ state = {
     }
         
     render() {
+      const message = "revenir a l'accueil";
         if (this.state.purchaseComplete) {
           
             return (
               <div>
                 <h1>Completed.</h1>
-            <Button as={Link} href={"/"}>revenir a l'accueil</Button>
+            <Button as={Link} href={"/"}>{message}</Button>
               </div>
             );
           } else {

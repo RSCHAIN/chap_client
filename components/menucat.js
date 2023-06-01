@@ -133,7 +133,7 @@ function DropdownMenu() {
             <div className="menu-container">
             <MenuItem onClick={() => setActiveMenu('main')}>retourner</MenuItem>
              {datos.map((data,key)=>( 
-                <MenuItem  >
+                <MenuItem key={key} >
                  <Link href={"/"+ginks+"/"+data.id}>{data.id}</Link>
             </MenuItem> 
               ))}
