@@ -90,7 +90,7 @@ const InputLg = () => {
             snapshot.forEach((childsnapsho) => {
               setData([childsnapsho.val()]);
             });
-          });
+          }).catch((error)=>console.log(error));
       
           console.log("recherche");
     }
@@ -119,7 +119,7 @@ const InputLg = () => {
             <Modal isOpen={isOpen} onClose={onClose}>
               <ModalOverlay />
               <ModalContent>
-                <ModalHeader>Modal Title</ModalHeader>
+                <ModalHeader>ZONE DE RECHERCHE</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
                   {data.map((data, index) => {

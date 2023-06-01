@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import DropIn from "braintree-web-drop-in-react";
 
 import { Button, Link, useToast } from '@chakra-ui/react';
-import { useNavigate } from 'react-router-dom';
+
 
 export default class Subscriptions extends Component {
 instance;
@@ -36,7 +36,7 @@ state = {
                 purchaseComplete: true
             });
             alert("votre achat de "+ Cart+ " a ete completer")
-            localStorage.clear()
+            localStorage.removeItem('Cart')
 
             
 

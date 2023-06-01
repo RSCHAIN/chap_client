@@ -1,22 +1,12 @@
 import { ArrowForwardIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import {
   Box,
-  Button,
   Center,
   Flex,
   Heading,
   Link,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-  SimpleGrid,
   Text,
-  useDisclosure,
-  useToast,
+
 } from "@chakra-ui/react";
 import React, { useState, useEffect, useRef } from "react";
 
@@ -248,7 +238,7 @@ const LadingCorps = () => {
           ...donnes[key],
         }))
         setCat(categorie);
-        localStorage.setItem("women", JSON.stringify(categorie));
+       
         
       }
         

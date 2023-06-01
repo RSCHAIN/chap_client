@@ -175,7 +175,7 @@ export default function Carousel() {
 
   const [isLagerThan768] = useMediaQuery("(min-width: 768px)");
   const { isOpen, onToggle } = useDisclosure();
-
+  const message ="Revenir á l'accueil"
   if (data.length > 0) {
     // console.log(data.length);
     return (
@@ -297,7 +297,7 @@ export default function Carousel() {
                       <Box position>
                         {data.price}
                         <Box as="span" pl={2} fontSize="sm">
-                          Eur
+                          €
                         </Box>
                       </Box>
                     </Box>
@@ -453,8 +453,8 @@ export default function Carousel() {
                 color: "blue.500",
               }}
             >
-              {" "}
-              Revenir á l'accueil
+              {message}
+              
             </Link>
           </Flex>
         </Box>

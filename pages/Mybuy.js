@@ -9,10 +9,11 @@ import {
   TabList,
   TabPanel,
   TabPanels,
-  Tabs,
+  Tabs,Button,
+  SimpleGrid,
   useMediaQuery,
 } from "@chakra-ui/react";
-import { onValue, ref } from "@firebase/database";
+import { onValue, ref, update } from "@firebase/database";
 import { useState } from "react";
 import { useEffect } from "react";
 
@@ -44,7 +45,7 @@ function Cancel({ items, email }) {
             <Box>
               {items.totalPrice + " "}
               <Box as="span" color="gray.600" fontSize="sm">
-                EUR
+                €
               </Box>
             </Box>
           </Box>
@@ -84,7 +85,7 @@ function Valide({ items, email }) {
             <Box>
               {items.totalPrice + " "}
               <Box as="span" color="gray.600" fontSize="sm">
-                EUR
+                €
               </Box>
             </Box>
           </Box>
@@ -95,13 +96,24 @@ function Valide({ items, email }) {
     return <></>;
   }
 }
+function Cancel2(id, state) {
+  update(ref(db2, "Commandes/" + String(id)), {
+    Status: state,
+  });
+}
 
-function Launch({ items, email }) {
+function Launch({ items, email,id }) {
   // console.log(items.Status);
   if (items.Status == "En Cours" && items.initiateur == email) {
     return (
       <>
-        <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden">
+        <Box
+          maxW="fit-content"
+          display={"flex"}
+          borderWidth="1px"
+          borderRadius="lg"
+          overflow="hidden"
+        >
           <Image src={items.imageUrl} alt={items.nom} />
 
           <Box p="6">
@@ -124,8 +136,15 @@ function Launch({ items, email }) {
             <Box>
               {items.totalPrice + " "}
               <Box as="span" color="gray.600" fontSize="sm">
-                EUR
+                €
               </Box>
+            </Box>
+            <Box>
+              <Button bgColor={'red'} _hover={{
+                bgColor:'#FF6969'
+              }} color={'white'} onClick={() => Cancel2(id, "ANNULE")}>
+                ANNULER COMMANDE
+              </Button>
             </Box>
           </Box>
         </Box>
@@ -140,10 +159,15 @@ export default function Buy() {
   const [isLagerThan768] = useMediaQuery("(min-width: 768px)");
   const [commandeListe, setCommandeListe] = useState([]);
   const [email, setEmail] = useState();
+  const [id,setId] =useState()
   const Getall = async () => {
     const starCountRef = ref(db2, "Commandes/");
     onValue(starCountRef, (snapshot) => {
       setCommandeListe(snapshot.val());
+      if (snapshot.val()!=undefined || snapshot.val()!=null) {
+        setId(Object.keys(snapshot.val()))
+      }
+     
       // console.log(snapshot.val())
     });
   };
@@ -151,11 +175,9 @@ export default function Buy() {
   useEffect(() => {
     Getall();
     setEmail(localStorage.getItem("email"));
-   
-  },[setCommandeListe]);
- 
+  }, [setCommandeListe]);
+
   return (
-   
     <>
       <InputBar />
       {isLagerThan768 ? <Navbar></Navbar> : <></>}
@@ -167,19 +189,33 @@ export default function Buy() {
         </TabList>
         <TabPanels>
           <TabPanel>
-            {Object.values(commandeListe).map((items) => (
-              <Valide key={items.key} items={items} email={email} />
-            ))}
+            {commandeListe ? (
+              Object.values(commandeListe).map((items) => (
+                <Valide key={items.key} items={items} email={email} />
+              ))
+            ) : (
+              <Box>Aucune donnee</Box>
+            )}
           </TabPanel>
           <TabPanel>
-            {Object.values(commandeListe).map((items) => (
-              <Launch key={items.key} items={items} email={email} />
-            ))}
+            <Box as={SimpleGrid} columns={2} spacing={10}>
+              {commandeListe ? (
+                Object.values(commandeListe).map((items) => (
+                  <Launch key={items.key} items={items} id={id} email={email} />
+                ))
+              ) : (
+                <Box>Aucune donnee</Box>
+              )}
+            </Box>
           </TabPanel>
           <TabPanel>
-            {Object.values(commandeListe).map((items) => (
-              <Cancel key={items.key} items={items} email={email} />
-            ))}
+            {commandeListe ? (
+              Object.values(commandeListe).map((items) => (
+                <Cancel key={items.key} items={items} email={email} />
+              ))
+            ) : (
+              <Box>Aucune donnee</Box>
+            )}
           </TabPanel>
         </TabPanels>
       </Tabs>

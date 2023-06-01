@@ -55,7 +55,7 @@ export default function Home() {
           ...donnes[key],
         }))
         setCat(categorie)
-        localStorage.setItem("women", JSON.stringify(categorie));
+       
         
       }
         
