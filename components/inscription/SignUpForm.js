@@ -93,7 +93,7 @@ const SignUpForm = () => {
        
       };
 
-    
+    const welcome = "BIENVENUE SUR LA PAGE D'INSCRIPTION"
 
 
 
@@ -114,7 +114,7 @@ const SignUpForm = () => {
                 <Text
                     fontWeight={'light'}
                 >
-                    BIENVENUE SUR LA PAGE D'INSCRIPTION
+                    {welcome}
                 </Text>
                 <Stack
                     spacing={5} mt={'1em'}

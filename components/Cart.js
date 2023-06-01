@@ -148,7 +148,7 @@ export default function Carte() {
       }
     }
     localStorage.setItem("prix", PrixT);
-  }, []);
+  }, [prix]);
 
   if (cart != undefined && cart.length != 0) {
     //liste des fonctions en rapport avec le produit et la commande
