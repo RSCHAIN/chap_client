@@ -77,7 +77,7 @@ export default function Location(){
         options
       );
       geoloc()
-    }, [longitude, latitude,geoloc ]);
+    }, [longitude, latitude ]);
     
     // console.log("local",local)
     // if (local != undefined || local != null ) {
