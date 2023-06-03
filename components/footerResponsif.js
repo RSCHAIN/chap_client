@@ -116,9 +116,9 @@ export default function FooterR() {
           <Stack align={'flex-start'}>
             <ListHeader>Information</ListHeader>
             <Link href={'/'}>Home</Link>
-            <Link href={'/services'}>Services</Link>
+            {/* <Link href={'/services'}>Services</Link> */}
             <Link>Terms of service</Link>
-            <Link>Privacy Policy</Link>
+            {/* <Link>Privacy Policy</Link> */}
             <Link>Manage Cookies</Link>
           
           </Stack>
