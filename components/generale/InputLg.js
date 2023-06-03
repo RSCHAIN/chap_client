@@ -35,13 +35,15 @@ import {
   child,
   equalTo,
   get,
+  onValue,
   orderByChild,
   query,
   ref,
   startAt,
+  update,
 } from "@firebase/database";
 import { db2 } from "@/FIREBASE/clientApp";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { IoMdAddCircleOutline } from "react-icons/io";
 
@@ -74,17 +76,75 @@ const InputLg = () => {
   const [inputContent, setInputContent] = useState([]);
   const [resutl, setResult] = useState([]);
   const [categories, setCategories] = useState("Alimentation");
-  const [fournisseur, setFournisseur] = useState("Garba");
+  const [cat,setCat] = useState([])
+  const [datos,setDatos]=useState([])
+  const [fournisseur, setFournisseur] = useState("EasyShop");
   const [data, setData] = useState([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const handleSearch = () => {
+  const update = () =>{
+    const starCountRef = ref(db2, "/");
+    onValue(starCountRef, (snapshot) => {
+      const donnes = snapshot.val();
+      if (donnes != null) {
+        const categorie = Object.keys(donnes).map((key) => ({
+          id: key,
+          ...donnes[key],
+        }))
+       
+        setCat(categorie)
+       
+        
+      }
+        
+    })
+  }
+
+  const updateLink =(index) => {
+    
+    const starCountRef2 = ref(db2, index+ "/");
+    onValue(starCountRef2, (snapshot) => {
+      const donnees = snapshot.val();
+      if (donnees != null) {
+        const categorie = Object.keys(donnees).map((key) => ({
+          id: key,
+          ...donnees[key],
+        }));
+        
+        setDatos(categorie);
+      }
+
+
+  });
+   
+} 
+
+  useEffect(()=>{
+    update()
+    updateLink(categories)
+  })
+
+
+
+
+
+
+
+  const handleSearch =  () => {
+
+   
+  
+    
+  
+
+
+
     if (
       categories != null ||
       (categories != undefined && fournisseur != null) ||
       fournisseur != undefined
     ) {
-      const rec = query(
+      const rec =  query(
         ref(db2, categories + "/" + fournisseur),
         orderByChild("nom"),
         equalTo(inputContent)
@@ -102,8 +162,11 @@ const InputLg = () => {
       setData([]);
     }
   };
+
   return (
+   
     <>
+    
       <Box>
         <InputGroup>
           <Input
@@ -123,7 +186,7 @@ const InputLg = () => {
               <ModalOverlay />
               <ModalContent>
                 <ModalHeader>ZONE DE RECHERCHE</ModalHeader>
-                <ModalCloseButton />
+                <ModalCloseButton onClick={()=>setData([])}/>
                 <ModalBody>
                   {data.map((data, index) => {
                     if (data.nom != null || data.nom != undefined) {
@@ -133,8 +196,8 @@ const InputLg = () => {
                           bgColor={"#fbfbfbfc"}
                           width={{
                             base: "fit-content",
-                            lg: "400px",
-                            md: "400px",
+                            lg: "fit-content",
+                            md: "fit-content",
                           }}
                           height={""}
                           border={"1px solid #e6e6e6"}
@@ -149,8 +212,8 @@ const InputLg = () => {
                             <Image
                               src={data.imageUrl}
                               alt={data.nom}
-                              width={"117px"}
-                              height={"139px"}
+                              width={"80px"}
+                              height={"20px"}
                               ml={15}
                               my={3}
                             />
@@ -219,14 +282,21 @@ const InputLg = () => {
             name="colors"
             defaultValue={"Alimentation"}
             closeMenuOnSelect={true}
+          
             onChange={(e) => {
               setCategories(e.target.value);
             }}
             size="sm"
           >
-            <option>Alimentation</option>
-            <option>Restauration</option>
-            <option>Esthetique</option>
+            {cat.map((index,item)=>{
+              if (index.id!= 'Commandes') {
+                return(
+
+                  <option>{index.id}</option>
+               )
+              }
+            })}
+           
           </Select>
           <Select
             name="colors"
@@ -236,9 +306,12 @@ const InputLg = () => {
             }}
             size="sm"
           >
-            <option>Garba</option>
-            <option>MAGASIN 2</option>
-            <option>SEVEN 7</option>
+            {datos.map((index,item)=>(
+             
+               <option>{index.id}</option>
+            ))}
+           
+           
           </Select>
         </Box>
       </Box>
