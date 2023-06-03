@@ -135,7 +135,7 @@ export default function Connexion() {
               height={500}
               alt={'logo'}
               width={650}
-              src="./logo2.png"
+              src="/logo1.png"
               display={["none", "none", "flex", "flex", "flex"]}
             />
           </Box>
