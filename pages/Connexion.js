@@ -173,6 +173,9 @@ export default function Connexion() {
                 >
                   Connexion{" "}
                 </Button>
+                <Link href={'/Inscription'}>
+                  Inscription
+                </Link>
               </Stack>
             </Box>
           </Center>

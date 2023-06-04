@@ -82,47 +82,7 @@ const InputLg = () => {
   const [data, setData] = useState([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const update = () =>{
-    const starCountRef = ref(db2, "/");
-    onValue(starCountRef, (snapshot) => {
-      const donnes = snapshot.val();
-      if (donnes != null) {
-        const categorie = Object.keys(donnes).map((key) => ({
-          id: key,
-          ...donnes[key],
-        }))
-       
-        setCat(categorie)
-       
-        
-      }
-        
-    })
-  }
 
-  const updateLink =(index) => {
-    
-    const starCountRef2 = ref(db2, index+ "/");
-    onValue(starCountRef2, (snapshot) => {
-      const donnees = snapshot.val();
-      if (donnees != null) {
-        const categorie = Object.keys(donnees).map((key) => ({
-          id: key,
-          ...donnees[key],
-        }));
-        
-        setDatos(categorie);
-      }
-
-
-  });
-   
-} 
-
-  useEffect(()=>{
-    update()
-    updateLink(categories)
-  })
 
 
 
@@ -277,43 +237,7 @@ const InputLg = () => {
             </Modal>
           </InputRightElement>
         </InputGroup>
-        <Box display={"flex"}>
-          <Select
-            name="colors"
-            defaultValue={"Alimentation"}
-            closeMenuOnSelect={true}
-          
-            onChange={(e) => {
-              setCategories(e.target.value);
-            }}
-            size="sm"
-          >
-            {cat.map((index,item)=>{
-              if (index.id!= 'Commandes') {
-                return(
-
-                  <option>{index.id}</option>
-               )
-              }
-            })}
-           
-          </Select>
-          <Select
-            name="colors"
-            closeMenuOnSelect={true}
-            onChange={(e) => {
-              setFournisseur(e.target.value);
-            }}
-            size="sm"
-          >
-            {datos.map((index,item)=>(
-             
-               <option>{index.id}</option>
-            ))}
-           
-           
-          </Select>
-        </Box>
+      
       </Box>
     </>
   );
