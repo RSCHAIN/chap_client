@@ -92,11 +92,12 @@ export default function FooterR() {
             fontWeight={700}
             mt={'20px'}
             textAlign='justify'
+            
           >
-            Abidjan 01 Bp 
-            <br /> Tel : (225)xxx-xxx-xxx
+            14,Avenue De Bourgogne,91300,Massy
+            <br /> Tel : (33)060-057-990-59
             <br />
-            E-mail : infos@chap.com
+            E-mail : support@rschain.net
           </Text>
           <Text>
             {/* {new Date} */}
@@ -117,10 +118,11 @@ export default function FooterR() {
             <ListHeader>Information</ListHeader>
             <Link href={'/'}>Home</Link>
             {/* <Link href={'/services'}>Services</Link> */}
-            <Link>Termes et Condition</Link>
+            <Link href='/Terms'>Termes et Conditions</Link>
             {/* <Link>Privacy Policy</Link> */}
             <Link>Manage Cookies</Link>
-          
+            <Link >Devenir Fournisseur</Link>
+            <Link >Devenir Livreur</Link>
           </Stack>
           <Stack align={'flex-start'}>
             <ListHeader>    Recevez des codes promo!</ListHeader>
