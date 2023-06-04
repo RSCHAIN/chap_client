@@ -121,7 +121,7 @@ export default function FooterR() {
             <Link href='/Terms'>Termes et Conditions</Link>
             {/* <Link>Privacy Policy</Link> */}
             <Link>Manage Cookies</Link>
-            <Link href={'chapbackofficefournisseur.vercel.app'}  isExternal>Devenir Fournisseur</Link>
+            <Link href={'https://chapbackofficefournisseur.vercel.app/'}  isExternal>Devenir Fournisseur</Link>
             <Link href={'https://chapbackofficelivreur-regz6oep6-josiassehi-rschainnet.vercel.app/'}   isExternal>Devenir Livreur</Link>
           </Stack>
           <Stack align={'flex-start'}>
