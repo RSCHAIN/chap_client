@@ -174,7 +174,7 @@ export default function Buy() {
 
   useEffect(() => {
     Getall();
-    setEmail(localStorage.getItem("email"));
+    setEmail(sessionStorage.getItem("email"));
   }, [setCommandeListe]);
 
   return (

@@ -132,7 +132,7 @@ export default function FooterR() {
           </Text> */}
           <Input
             type={"text"}
-            placeholder="infos@chap.com"
+            placeholder="support@rschain.net"
             background={"#D9d9d9"}
             // width={"317px"}
           

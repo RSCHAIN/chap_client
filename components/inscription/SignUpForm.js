@@ -7,7 +7,7 @@ import { faAdd, faPhone, faHome, faEnvelope, faLock } from '@fortawesome/free-so
 import { } from 'react-icons/fa';
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
-import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth, sendEmailVerification } from 'firebase/auth';
 import { app } from '@/FIREBASE/clientApp';
 import { getFirestore } from 'firebase/firestore';
 import { doc } from '@firebase/firestore'; // for creating a pointer to our Document
@@ -50,6 +50,7 @@ const SignUpForm = () => {
             
             await createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
+                sendEmailVerification(auth.currentUser)
               console.log(userCredential.user);
               setEmail(userCredential.user.email);
               // router.back()
@@ -117,7 +118,7 @@ const SignUpForm = () => {
                     {welcome}
                 </Text>
                 <Stack
-                    spacing={5} mt={'1em'}
+                    spacing={5} marginTop={'1em'}
                     width={{ base: '100%' }}
                 >
                     {/* le nom  */}

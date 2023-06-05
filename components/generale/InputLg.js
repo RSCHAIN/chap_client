@@ -105,7 +105,7 @@ const InputLg = () => {
       fournisseur != undefined
     ) {
       const rec =  query(
-        ref(db2, categories + "/" + fournisseur),
+        ref(db2,   "Alimentation/" ),
         orderByChild("nom"),
         equalTo(inputContent)
       );

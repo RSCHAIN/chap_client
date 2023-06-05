@@ -53,7 +53,7 @@ export default function Connexion() {
       .then((userCredential) => {
         
         setEmail(userCredential.user.email);
-        localStorage.setItem("email",userCredential.user.email)
+        sessionStorage.setItem("email",userCredential.user.email)
         // router.back()
         toast({
           title: "ACCES AUTORISE.",

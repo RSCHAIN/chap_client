@@ -69,7 +69,7 @@ export default function Showconnex() {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setUsers(user);
-        localStorage.setItem("email",user.email) 
+        sessionStorage.setItem("email",user.email) 
         getData(user.email)
       }
     });

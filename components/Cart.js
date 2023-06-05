@@ -121,7 +121,7 @@ export default function Carte() {
       });
       setPrix(PrixT);
     }
-    if (PrixT < 40) {
+    if (PrixT < 40 && PrixT>19) {
       console.log(40 < prix < 60);
       setFrais((PrixT * 10) / 100);
     } else {
@@ -153,7 +153,7 @@ export default function Carte() {
   if (cart != undefined && cart.length != 0) {
     //liste des fonctions en rapport avec le produit et la commande
     function saveCommande() {
-      let email = localStorage.getItem("email");
+      let email = sessionStorage.getItem("email");
       let Cart = JSON.parse(localStorage.getItem("Cart"));
 
       if (lieu != undefined && lieu != null && lieu.length > 3 || ville != undefined && ville != null && ville.length > 3) {
@@ -199,7 +199,7 @@ export default function Carte() {
 
 
     function saveCommande2() {
-      let email = localStorage.getItem("email");
+      let email = sessionStorage.getItem("email");
       let Cart = JSON.parse(localStorage.getItem("Cart"));
      
       if (email != undefined && email != null && email.length > 3) {
@@ -289,7 +289,7 @@ export default function Carte() {
             {cart.map((data, index) => (
               <Center key={data.id}>
                 <Flex
-                  bgColor={"#fbfbfbfc"}
+                  backgroundColor={"#fbfbfbfc"}
                   width={{ base: "fit-content", lg: "800px", md: "800px" }}
                   height={""}
                   border={"1px solid #e6e6e6"}
@@ -297,7 +297,7 @@ export default function Carte() {
                   boxSizing={"border-box"}
                   borderRadius={"9px"}
                   // pb={10}
-                  mb={20}
+                  marginBottom={20}
                 >
                   <Box pr={5}>
                     <Image
@@ -305,12 +305,12 @@ export default function Carte() {
                       alt={data.name}
                       width={"117px"}
                       height={"139px"}
-                      ml={15}
-                      my={3}
+                      marginLeft={15}
+                      marginY={3}
                     />
                   </Box>
-                  <Box display={"flex"} mt={10}>
-                    <Text pb={5} pt={5} fontWeight={"bold"} mt={2} mr={10}>
+                  <Box display={"flex"} marginTop={10}>
+                    <Text paddingBottom={5} pt={5} fontWeight={"bold"} marginTop={2} marginRight={10}>
                       {data.nom}
                     </Text>
                     {/* <Flex>
@@ -327,24 +327,24 @@ export default function Carte() {
                       width={"3/4"}
                       borderRadius={"4px"}
                       justifyContent={"space-between"}
-                      mt={5}
+                      marginTop={5}
                       // justifyContent={'space-between'}
                     >
-                      <Flex mr={20}>
+                      <Flex marginRight={20}>
                         <Button onClick={() => decrement(data, 1)}>-</Button>
                         <Input
                           type={"number"}
-                          w={"70px"}
+                          width={"70px"}
                           value={data.quantity}
                         />
                         <Button onClick={() => increment(data, 1)}>+</Button>
                       </Flex>
                       <Box mr={20}>
-                        <Text mt={1} color={"#E37611"} fontSize={20}>
+                        <Text marginTop={1} color={"#E37611"} fontSize={20}>
                           €{data.price}
                         </Text>
                       </Box>
-                      <Flex mx={2} mt={2}>
+                      <Flex marginX={2} marginTop={2}>
                         <Icon
                           color={"#DE2916"}
                           as={FaTrashAlt}
@@ -364,14 +364,14 @@ export default function Carte() {
             boxSizing={"border-box"}
             borderRadius={"9px"}
             width={"fit-content"}
-            bgColor={"#E3F4F4"}
-            h={"fit-content"}
-            pb={5}
-            mt={0}
+            backgroundColor={"#E3F4F4"}
+            height={"fit-content"}
+            paddingBottom={5}
+            marginTop={0}
             justifyContent={"space-between"}
           >
-            <Box mx={5}>
-              <Heading m={2}>VALIDATION DE LA COMMANDE</Heading>
+            <Box marginX={5}>
+              <Heading margin={2}>VALIDATION DE LA COMMANDE</Heading>
               <RadioGroup>
               <Accordion>
                     <AccordionItem>
@@ -386,8 +386,8 @@ export default function Carte() {
                           <Radio value="4"> LIVRAISON A DOMICILE</Radio>
                         </AccordionButton>
                       </h2>
-                      <AccordionPanel pb={4} >
-                        <Box m={5}>
+                      <AccordionPanel paddingBottom={4} >
+                        <Box margin={5}>
                         <Text marginBottom={5} fontWeight={"semibold"}>
                 {" "}
                 JOURS DE LIVRAISON
@@ -490,15 +490,15 @@ export default function Carte() {
                           <Radio value="1"> UTILISER MON ADRESSE</Radio>
                         </AccordionButton>
                       </h2>
-                      <AccordionPanel pb={4} >
-                        <Box m={5}>
+                      <AccordionPanel paddingBottom={4} >
+                        <Box margin={5}>
                           <Button
                             bgColor="#E57C23"
                             color={'white'}
                             _hover={{
-                              bgColor:'#db6d0fad'
+                              backgroundColor:'#db6d0fad'
                             }}
-                            mr={3}
+                            marginRight={3}
                             onClick={() => saveCommande()}
                           >
                             CONFIRMER
@@ -516,7 +516,7 @@ export default function Carte() {
                         </AccordionButton>
                       </h2>
 
-                      <AccordionPanel pb={4} backgroundColor={"#f"}>
+                      <AccordionPanel paddingBottom={4} backgroundColor={"#f"}>
                         <Box display={"flex"}>
                           <Box>
                             <FormControl>
@@ -537,7 +537,7 @@ export default function Carte() {
                               />
                             </FormControl>
                           </Box>
-                          <Box ml={3}>
+                          <Box marginLeft={3}>
                             <FormControl>
                               <FormLabel>Nom de la Rue</FormLabel>
                               <Input onChange={(e) => setRue(e.target.value)} />
@@ -557,14 +557,14 @@ export default function Carte() {
                             </FormControl>
                           </Box>
                         </Box>
-                        <Box m={5}>
+                        <Box margin={5}>
                           <Button
-                             bgColor="#E57C23"
+                             backgroundColor="#E57C23"
                              color={'white'}
                              _hover={{
-                               bgColor:'#db6d0fad'
+                              backgroundColor:'#db6d0fad'
                              }}
-                            mr={3}
+                            marginRight={3}
                             onClick={() => saveCommande()}
                           >
                             CONFIRMER
@@ -580,17 +580,17 @@ export default function Carte() {
                 <Text fontSize={20} fontWeight={"bold"}>
                   PRIX DE LA COMMANDE
                 </Text>
-                <Text fontWeight={"bold"} mx={"40%"} mb={10} mt={5}>
+                <Text fontWeight={"bold"} marginX={"40%"} marginBottom={10} marginTop={5}>
                 
                   {prix} €
                 </Text>
                 <Text fontSize={20} fontWeight={"bold"}>
                   PRIX DE LA LIVRAISON
                 </Text>
-                <Text fontWeight={"bold"} mx={"40%"} mb={10} mt={5}>
+                <Text fontWeight={"bold"} marginX={"40%"} marginBottom={10} marginTop={5}>
                   {frais} €
                 </Text>
-                <Text fontSize={20} w={'full'} borderTop={'1px solid black'} fontWeight={"bold"} mb={5}>
+                <Text fontSize={20} width={'full'} borderTop={'1px solid black'} fontWeight={"bold"} marginBottom={5}>
                   TOTAL : {prix + frais} €
                 </Text>
               </Box>
@@ -609,7 +609,7 @@ export default function Carte() {
                       </h2>
 
                       <AccordionPanel pb={4} backgroundColor={"#f"}>
-                      <Box m={5}>
+                      <Box margin={5}>
                         <Text marginBottom={5} fontWeight={"semibold"}>
                 {" "}
                 JOURS DE RECUPERATION
@@ -801,7 +801,7 @@ export default function Carte() {
               <Box> 
                              
                 
-                <Text fontSize={20} w={'full'} borderTop={'1px solid black'} fontWeight={"bold"} mb={5}>
+                <Text fontSize={20} width={'full'} borderTop={'1px solid black'} fontWeight={"bold"} marginBottom={5}>
                   TOTAL : {prix} €
                 </Text>
               </Box>
@@ -851,9 +851,9 @@ export default function Carte() {
             fontSize={30}
             justifyContent={"center"}
             // pb={10}
-            mb={20}
+            marginBottom={20}
           >
-            <Text mt={20}>VOTRE PANIER EST VIDE</Text>
+            <Text marginTop={20}>VOTRE PANIER EST VIDE</Text>
           </Flex>
         </Center>
       </>
