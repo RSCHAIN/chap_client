@@ -117,7 +117,7 @@ const InputLg = () => {
         })
         .catch((error) => console.log(error));
 
-      console.log("recherche");
+      
     } else {
       setData([]);
     }

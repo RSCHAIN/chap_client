@@ -195,6 +195,54 @@ export default function Carte() {
         });
       }
     }
+
+
+
+    function saveCommande2() {
+      let email = localStorage.getItem("email");
+      let Cart = JSON.parse(localStorage.getItem("Cart"));
+     
+      if (email != undefined && email != null && email.length > 3) {
+        Cart.map((data, index) => {
+          push(ref(db2, "Commandes"), {
+            productID: data.id,
+            nom: data.nom,
+            description: data.description,
+            quantity: data.quantity,
+            imageUrl: data.imageUrl,
+            organisation: data.organisation,
+            totalPrice: data.price,
+            initiateur: email,
+            Status: "En Cours",
+            ville:"sur place",
+            rue:"sur place",
+            code_postal:"sur place",
+            batiment:"sur place",
+            lieu: "sur place",
+            receveur: nom,
+            numero: numero,
+            jour: day,
+            moment: hours,
+            date: new Date(),
+          });
+        });
+        localStorage.removeItem("Cart");
+        setLieu("");
+        setNom("");
+        setNumero("");
+        router.reload();
+      } else {
+        toast({
+          title: "PLS, veuillez renseigner les champs",
+          // description: "We've created your account for you.",
+          status: "error",
+          duration: 9000,
+          isClosable: true,
+        });
+      }
+    }
+
+
     function saveCart(product) {
       localStorage.setItem("Cart", JSON.stringify(product));
     }
@@ -323,9 +371,24 @@ export default function Carte() {
             justifyContent={"space-between"}
           >
             <Box mx={5}>
-              <Heading m={2}>FORMULAIRE DE LIVRAISON</Heading>
-
-              <Text marginBottom={5} fontWeight={"semibold"}>
+              <Heading m={2}>VALIDATION DE LA COMMANDE</Heading>
+              <RadioGroup>
+              <Accordion>
+                    <AccordionItem>
+                      <h2>
+                        <AccordionButton
+                          onClick={() => {
+                            setLieu(localStorage.getItem("addresse")),
+                              setNumero(localStorage.getItem("number")),
+                              setNom(localStorage.getItem("name"));
+                          }}
+                        >
+                          <Radio value="4"> LIVRAISON A DOMICILE</Radio>
+                        </AccordionButton>
+                      </h2>
+                      <AccordionPanel pb={4} >
+                        <Box m={5}>
+                        <Text marginBottom={5} fontWeight={"semibold"}>
                 {" "}
                 JOURS DE LIVRAISON
               </Text>
@@ -411,7 +474,7 @@ export default function Carte() {
                 </Tabs>
               </Box>
 
-              <Text marginBottom={5} fontWeight={'semibold'}> OPTIONS DE LIVRAISON</Text>
+              <Text marginBottom={5} fontWeight={'semibold'}> LIEU DE LIVRAISON</Text>
               <Stack marginBottom={5}>
                 <RadioGroup>
                   <Accordion>
@@ -531,7 +594,238 @@ export default function Carte() {
                   TOTAL : {prix + frais} €
                 </Text>
               </Box>
+              
+                         
+                        </Box>
+                      </AccordionPanel>
+                    </AccordionItem>
 
+                    <AccordionItem>
+                      <h2>
+                        <AccordionButton>
+                          <Radio value="3"> EN MAGASIN</Radio>
+                          <AccordionIcon />
+                        </AccordionButton>
+                      </h2>
+
+                      <AccordionPanel pb={4} backgroundColor={"#f"}>
+                      <Box m={5}>
+                        <Text marginBottom={5} fontWeight={"semibold"}>
+                {" "}
+                JOURS DE RECUPERATION
+              </Text>
+              <Box display={"flex"} marginBottom={2}>
+               
+                <Tabs>
+                  <TabList>
+                    <Tab onClick={() => setDay("Mardi")}>Mardi</Tab>
+                    <Tab onClick={() => setDay("Vendredi")}>Vendredi</Tab>
+                    <Tab onClick={() => setDay("Samedi")}>Samedi</Tab>
+                  </TabList>
+
+                  <TabPanels>
+                    <TabPanel>
+                      <Text marginBottom={5} fontWeight={"semibold"}>
+                        {" "}
+                        HEURE DE LIVRAISON
+                      </Text>
+                      <Box display={"flex"} marginBottom={5}>
+                        <RadioGroup onChange={setHours} value={hours}>
+                        
+                          <Radio value="Soir(13h-16h)">
+                            Apres-Midi(de 13h ----- 16h)
+                          </Radio>
+                          <br />
+                          <Radio value="Soir(16h-20h)">
+                            Soir(de 16h ----- 20h)
+                          </Radio>
+                          <br />
+                          <Radio value="Soir(20h-00h)">
+                            Nuit(de 20h ----- 00h)
+                          </Radio>
+                        </RadioGroup>
+                      </Box>
+                    </TabPanel>
+                    <TabPanel>
+                    <Text marginBottom={5} fontWeight={"semibold"}>
+                        {" "}
+                        HEURE DE LIVRAISON
+                      </Text>
+                      <Box display={"flex"} marginBottom={5}>
+                        <RadioGroup onChange={setHours} value={hours}>
+                         
+                          <Radio value="Soir(13h-16h)">
+                            Apres-Midi(de 13h ----- 16h)
+                          </Radio>
+                          <br />
+                          <Radio value="Soir(16h-20h)">
+                            Soir(de 16h ----- 20h)
+                          </Radio>
+                          <br />
+                          <Radio value="Soir(20h-00h)">
+                            Nuit(de 20h ----- 00h)
+                          </Radio>
+                        </RadioGroup>
+                      </Box>
+                    </TabPanel>
+                    <TabPanel>
+                    <Text marginBottom={5} fontWeight={"semibold"}>
+                        {" "}
+                        HEURE DE LIVRAISON
+                      </Text>
+                      <Box display={"flex"} marginBottom={5}>
+                        <RadioGroup onChange={setHours} value={hours}>
+                          <Radio value="Matin" mr={10}>
+                            Matin(de 09h30 ----- 12h)
+                          </Radio><br/>
+                          <Radio value="Soir(13h-16h)">
+                            Apres-Midi(de 13h ----- 16h)
+                          </Radio>
+                          <br />
+                          <Radio value="Soir(16h-20h)">
+                            Soir(de 16h ----- 20h)
+                          </Radio>
+                          <br />
+                          <Radio value="Soir(20h-00h)">
+                            Nuit(de 20h ----- 00h)
+                          </Radio>
+                        </RadioGroup>
+                      </Box>
+                    </TabPanel>
+                  </TabPanels>
+                </Tabs>
+              </Box>
+
+              {/* <Text marginBottom={5} fontWeight={'semibold'}> LIEU DE LIVRAISON</Text>
+              <Stack marginBottom={5}>
+                <RadioGroup>
+                  <Accordion>
+                    <AccordionItem>
+                      <h2>
+                        <AccordionButton
+                          onClick={() => {
+                            setLieu(localStorage.getItem("addresse")),
+                              setNumero(localStorage.getItem("number")),
+                              setNom(localStorage.getItem("name"));
+                          }}
+                        >
+                          <Radio value="1"> UTILISER MON ADRESSE</Radio>
+                        </AccordionButton>
+                      </h2>
+                      <AccordionPanel pb={4} >
+                        <Box m={5}>
+                          <Button
+                            bgColor="#E57C23"
+                            color={'white'}
+                            _hover={{
+                              bgColor:'#db6d0fad'
+                            }}
+                            mr={3}
+                            onClick={() => saveCommande()}
+                          >
+                            CONFIRMER
+                          </Button>
+                         
+                        </Box>
+                      </AccordionPanel>
+                    </AccordionItem>
+
+                    <AccordionItem>
+                      <h2>
+                        <AccordionButton>
+                          <Radio value="2"> UTILISER UNE AUTRE ADRESSE</Radio>
+                          <AccordionIcon />
+                        </AccordionButton>
+                      </h2>
+
+                      <AccordionPanel pb={4} backgroundColor={"#f"}>
+                        <Box display={"flex"}>
+                          <Box>
+                            <FormControl>
+                              <FormLabel>Nom du Receveur</FormLabel>
+                              <Input onChange={(e) => setNom(e.target.value)} />
+                            </FormControl>
+                            <FormControl>
+                              <FormLabel>Numero du Receveur</FormLabel>
+                              <Input
+                                type="number"
+                                onChange={(e) => setNumero(e.target.value)}
+                              />
+                            </FormControl>
+                            <FormControl>
+                              <FormLabel>ville</FormLabel>
+                              <Input
+                                onChange={(e) => setVille(e.target.value)}
+                              />
+                            </FormControl>
+                          </Box>
+                          <Box ml={3}>
+                            <FormControl>
+                              <FormLabel>Nom de la Rue</FormLabel>
+                              <Input onChange={(e) => setRue(e.target.value)} />
+                            </FormControl>
+                            <FormControl>
+                              <FormLabel>Numero du batiment</FormLabel>
+                              <Input
+                                type="number"
+                                onChange={(e) => setBatiment(e.target.value)}
+                              />
+                            </FormControl>
+                            <FormControl>
+                              <FormLabel>Code Postal</FormLabel>
+                              <Input
+                                onChange={(e) => setPostal(e.target.value)}
+                              />
+                            </FormControl>
+                          </Box>
+                        </Box>
+                        <Box m={5}>
+                          <Button
+                             bgColor="#E57C23"
+                             color={'white'}
+                             _hover={{
+                               bgColor:'#db6d0fad'
+                             }}
+                            mr={3}
+                            onClick={() => saveCommande()}
+                          >
+                            CONFIRMER
+                          </Button>
+                         
+                        </Box>
+                      </AccordionPanel>
+                    </AccordionItem>
+                  </Accordion>
+                </RadioGroup>
+              </Stack>*/}
+              <Box> 
+                             
+                
+                <Text fontSize={20} w={'full'} borderTop={'1px solid black'} fontWeight={"bold"} mb={5}>
+                  TOTAL : {prix} €
+                </Text>
+              </Box>
+                         
+                        </Box>
+                        <Box m={5}>
+                          <Button
+                             bgColor="#E57C23"
+                             color={'white'}
+                             _hover={{
+                               bgColor:'#db6d0fad'
+                             }}
+                            mr={3}
+                            onClick={() => saveCommande2()}
+                          >
+                            CONFIRMER
+                          </Button>
+                         
+                        </Box>
+                      </AccordionPanel>
+                    </AccordionItem>
+                  </Accordion>
+             
+                  </RadioGroup>
             
             </Box>
           </Flex>
