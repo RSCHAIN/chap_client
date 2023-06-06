@@ -173,7 +173,9 @@ export default function Connexion() {
                 >
                   Connexion{" "}
                 </Button>
-                <Link href={'/Inscription'}>
+                <Link mt={20} fontSize={20} textAlign={'center'}  _hover={{
+                color: 'blue',
+              }} href={'/Inscription'}>
                   Inscription
                 </Link>
               </Stack>
