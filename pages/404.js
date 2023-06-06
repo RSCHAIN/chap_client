@@ -352,7 +352,7 @@ export default function Carousel() {
           </Slider>
           <Collapse in={isOpen} id={"fade"} animateOpacity>
             <Center>
-              <Text color={"black"} fontSize={50}>
+              <Text color={"black"} fontSize={[20,20,30,50,50]}>
                 Listes de tous nos produits
               </Text>
             </Center>
@@ -362,8 +362,8 @@ export default function Carousel() {
               {data.map((data, key) => (
                 <Box
                   key={data.id}
-                  maxW="lg"
-                  width={"70%"}
+                  maxW={["100%","70%","70%","70%","70%"]}
+                  width={"full"}
                   height={"fit-content"}
                   borderWidth="1px"
                   borderRadius="lg"
