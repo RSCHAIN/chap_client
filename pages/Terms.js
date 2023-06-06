@@ -96,6 +96,9 @@ export default function Terms() {
   const d6 = "d'examen";
   const d7 = "n'entre";
   const d8 = "d'avoir";
+  const d9 = "d'un"
+  const d10 = "qu'un"
+  const d11 = "l'adresse"
   const [isLagerThan768] = useMediaQuery("(min-width: 768px)");
   return (
     <>
@@ -152,7 +155,7 @@ export default function Terms() {
         2. Votre compte 
       </Text>
       <Text as={"h2"} fontWeight={"bold"}>
-        a. Création d'un compte 
+        a. Création {d9} compte 
       </Text>
       Vous allez devoir créer un compte chez nous avant de pouvoir passer une
       Commande. Afin de créer un compte, vous devez remplir les conditions
@@ -345,7 +348,7 @@ export default function Terms() {
       <Text as={"h2"} fontWeight={"bold"}>
         b. Possibilité {c6} de votre Commande par vos soins  
       </Text>
-      Vous pouvez annuler une Commande à tout moment, avant qu'un Partenaire ait
+      Vous pouvez annuler une Commande à tout moment, avant {d10} Partenaire ait
       commencé à la préparer (tel que cela vous est indiqué dans l’application),
       via  notre Application. Dans ce cas, nous vous rembourserons votre
       paiement (à {c7} de toute réduction ou Bon d’achat qui a été appliqué à la
@@ -623,7 +626,7 @@ export default function Terms() {
       </Text>
       Lorsque notre Application contient des liens vers {a20} sites et
       ressources fournis par des tiers, ces liens sont fournis pour votre
-      information uniquement. Nous n'avons aucun contrôle sur le contenu de ces
+      information uniquement. Nous {c16} aucun contrôle sur le contenu de ces
       sites ou ressources.      
       <Text as={"h2"} fontWeight={"bold"}>
         d. Classement 
@@ -640,7 +643,7 @@ export default function Terms() {
       communications et avis que nous fournissons en relation avec notre
       application. Nous pouvons être amenés à vous fournir des communications
       sous forme écrite, que vous acceptez de recevoir par voie électronique
-      plutôt que sous forme papier, notamment en les envoyant à l'adresse
+      plutôt que sous forme papier, notamment en les envoyant à {d11}
       électronique enregistrée dans votre compte, ou en publiant un avis ou en
       communiquant avec vous via notre site. Les communications comprennent les
       présentes Conditions Générales et tous les autres accords ou politiques

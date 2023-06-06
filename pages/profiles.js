@@ -53,7 +53,7 @@ export default function Profiles() {
         router.push("/Connexion");
       }
     });
-  }, [auth]);
+  }, [auth,router]);
   const createNew=async ()=>{
     await deleteDoc(doc(db, "Utilisateurs", email));
         const _user = doc(firestore, `Utilisateurs/${users}`);
