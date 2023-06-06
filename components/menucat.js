@@ -63,10 +63,12 @@ function DropdownMenu() {
   }, []);
 
   const updateLink =(index) => {
-  
+    
+    
       const starCountRef2 = ref(db2, index+ "/");
       onValue(starCountRef2, (snapshot) => {
         const donnees = snapshot.val();
+        console.log('index')
         if (donnees != null) {
           const categorie = Object.keys(donnees).map((key) => ({
             id: key,
@@ -93,12 +95,47 @@ function DropdownMenu() {
 
   return (
     <>
-      <Menu className="dropdown" closeOnSelect={false}>
+
+{cat.map((index, key) => {if(index.id!="Commandes"){
+              return(
+                <Menu className="dropdown" closeOnSelect={false}
+                key={index.id}
+              
+               >
+                <MenuButton   onClick={() => {setActiveMenu(`${index.id}`),setGinks(`${index.id}`),updateLink(index.id)}} _hover={{ textDecoration: "none", color: "yellow.300" }}  as={Button} rightIcon={<ChevronDownIcon />} border={'none'} bgColor={'white'} mt='-5px' fontWeight={'normal'} fontSize={20}>
+                <Text>{index.id}</Text>
+                </MenuButton>
+
+                <MenuList style={{ height: menuHeight }} className="dropdown">
+                {/* <CSSTransition
+            in={activeMenu === 'main'}
+            timeout={500}
+            classNames="menu-primary"
+            unmountOnExit
+            onEnter={calcHeight}
+          > */}
+            <div className="main-menu">
+            {/* <MenuItem onClick={() => setActiveMenu('main')}>retourner</MenuItem> */}
+             {datos.map((data,key)=>( 
+                <MenuItem key={key} >
+                 <Link href={"/"+ginks+"/"+data.id}>{data.id}</Link>
+            </MenuItem> 
+              ))}
+            </div>
+          {/* </CSSTransition> */}
+                </MenuList>
+               </Menu>
+              )
+            }})}
+
+
+      {/* <Menu className="dropdown" closeOnSelect={false}>
         <MenuButton   _hover={{ textDecoration: "none", color: "yellow.300" }}  as={Button} rightIcon={<ChevronDownIcon />} border={'none'} bgColor={'white'} mt='-5px' fontWeight={'normal'} fontSize={20}>
         Services
         </MenuButton>
+    
         <MenuList style={{ height: menuHeight }} className="dropdown">
-          {/* {/* <CSSTransition
+           <CSSTransition
             in={activeMenu === 'main'}
             timeout={500}
             classNames="menu-primary"
@@ -122,7 +159,7 @@ function DropdownMenu() {
                
                  
             </div>
-          </CSSTransition> */}
+          </CSSTransition>
           <CSSTransition 
             in={activeMenu === ginks}
             timeout={500}
@@ -142,7 +179,8 @@ function DropdownMenu() {
 
          
         </MenuList>
-      </Menu>
+        
+      </Menu> */}
     </>
   );
 }

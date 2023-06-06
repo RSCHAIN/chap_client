@@ -1,7 +1,7 @@
 import { Flex, Link, Text } from '@chakra-ui/react';
 import React from 'react';
 import Showconnex from '../ShowConnexion';
-
+import Menucat from "../menucat";
 const MenuItem_Link = () => {
     return (
         <>
@@ -17,7 +17,7 @@ const MenuItem_Link = () => {
                     direction={{ base: 'column', md: 'row' }}
                 >
                     <Link href='/'>Home</Link>
-                    <Link href=''>Services</Link>
+                   <Menucat/>
                     <Link href='/Cart'>Panier</Link>
                     {/* <Link href='#'>Service</Link>
                     <Link href='#'>Paiement</Link> */}
