@@ -58,7 +58,7 @@ const settings = {
     {
       breakpoint: 600,
       settings: {
-        slidesToShow: 2,
+        slidesToShow: 1,
         slidesToScroll: 2,
         initialSlide: 2,
       },
@@ -70,6 +70,7 @@ const settings = {
         slidesToScroll: 1,
       },
     },
+   
   ],
 };
 /////////////fetch des datas
@@ -192,7 +193,7 @@ export default function Carousel() {
             <Text color={"blue"}>Categories</Text>
             <br />
           </Flex>
-          <Flex justifyContent={"space-between"} py={10}>
+          <SimpleGrid columns={[1,1,1,2,3]} spacing={10}>
             {/* {router.asPath.replace('/','')} */}
             <Text py={0} ml={20} fontSize={25}>
               {page}
@@ -210,7 +211,8 @@ export default function Carousel() {
               type="text/css"
               href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
             />
-            <Box>
+            <Box
+            >
               <Button
                 onClick={onToggle}
                 as={Link}
@@ -218,6 +220,7 @@ export default function Carousel() {
                 bgColor={"#08566E"}
                 color={"white"}
                 mt={[10, 10, 10, 0, 0]}
+                ml={[10,10,10,0,0]}
                 w={"150px"}
                 _hover={{textDecoration:'none',bgColor:'#006C47' }}
               >
@@ -259,20 +262,20 @@ export default function Carousel() {
             </Flex>
 
             {/* Slider */}
-          </Flex>
+          </SimpleGrid>
           <Slider {...settings} ref={(slider) => setSlider(slider)}>
             {data.map((data, index) => (
-              <Center key={data.id}>
+             <Center key={data.id}>
                 <Box
-                  maxW="sm"
-                  width={"sm"}
+                  maxW="70%"
+                  width={"full"}
                   height={"fit-content"}
                   borderWidth="1px"
                   borderRadius="lg"
                   // overflow="hidden"
-                  px={10}
+                
                   // boxShadow={"2xl"}
-                  mx={10}
+                  ml={5}
                   mb={20}
                   // key={}
                   pb={5}
@@ -287,7 +290,7 @@ export default function Carousel() {
                       fontWeight="semibold"
                       as="h5"
                       lineHeight="tight"
-                      noOfLines={2}
+                      noOfLines={3}
                       minWidth={'280px'}
                       height={"50px"}
                       display={'flex'} 
@@ -306,9 +309,9 @@ export default function Carousel() {
                       mt="1"
                       fontWeight="normal"
                       lineHeight="tight"
-                      noOfLines={2}
+                      noOfLines={9}
                       w={"fit-content"}
-                      height={"50px"}
+                      height={"250px"}
                     >
                       <Text>{data.description}</Text>
                     </Box>
@@ -342,7 +345,7 @@ export default function Carousel() {
                     </Box>
                   </Box>
                 </Box>
-              </Center>
+              </Center> 
             ))}
             {/* </SimpleGrid> */}
           </Slider>
@@ -353,7 +356,7 @@ export default function Carousel() {
               </Text>
             </Center>
 
-            <SimpleGrid columns={[1, 1, 1, 3, 4]}>
+            <SimpleGrid columns={[1, 1, 1, 3, 4]} spacing={5}>
               {/* {console.log("data", data)} */}
               {data.map((data, key) => (
                 <Box
