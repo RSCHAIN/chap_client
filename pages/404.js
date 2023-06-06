@@ -267,7 +267,7 @@ export default function Carousel() {
             {data.map((data, index) => (
              <Center key={data.id}>
                 <Box
-                  maxW="70%"
+                  maxW={["100%","70%","70%","70%","70%"]}
                   width={"full"}
                   height={"fit-content"}
                   borderWidth="1px"
