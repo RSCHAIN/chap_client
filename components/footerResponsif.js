@@ -71,8 +71,8 @@ const ListHeader = ({ children }) => {
 
 export default function FooterR() {
   return (
-    <Center w="full">
-    <Box w="full"
+    <Center w={"100%"}>
+    <Box 
       bg={'#B0C4DE'}
       color={useColorModeValue('gray.700', 'gray.200')} w='full'>
       <Container as={Stack} maxW={'full'} py={10}>
