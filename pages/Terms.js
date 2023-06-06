@@ -99,6 +99,7 @@ export default function Terms() {
   const d9 = "d'un"
   const d10 = "qu'un"
   const d11 = "l'adresse"
+  const d13 = '("Marque Chap.")'
   const [isLagerThan768] = useMediaQuery("(min-width: 768px)");
   return (
     <>
@@ -448,7 +449,7 @@ export default function Terms() {
         Utilisation de la marque Chap. 
       </Text>
       Vous ne pouvez utiliser aucun(e) signe distinctif, marque, logo,
-      dénomination, ou nom commercial de Chap. ("Marque Chap.") sans notre
+      dénomination, ou nom commercial de Chap. {d13} sans notre
       accord écrit préalable. Nous pouvons retirer ce consentement à tout moment
       en vous en informant.  Politique de confidentialité  La politique de
       confidentialité et protection des données de Chap, disponible à l’adresse
