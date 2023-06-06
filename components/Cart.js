@@ -8,6 +8,7 @@ import {
   Input,
   Heading,
   Icon,
+  SimpleGrid,
   useToast,
   Modal,
   ModalOverlay,
@@ -284,13 +285,14 @@ export default function Carte() {
 
     return (
       <>
-        <Box display={"flex"} justifyContent={"space-around"}>
+        <SimpleGrid  columns={[1,1,1,2,2]} spacing={10} justifyContent={"space-around"}>
           <Box>
             {cart.map((data, index) => (
               <Center key={data.id}>
-                <Flex
+                <SimpleGrid columns={[2,2,2,4,4]}
+                  // spacing={10}
                   backgroundColor={"#fbfbfbfc"}
-                  width={{ base: "fit-content", lg: "800px", md: "800px" }}
+                  width={{ base: "fit-content", lg: "800px", md: "fit-content" }}
                   height={""}
                   border={"1px solid #e6e6e6"}
                   // boxShadow={"0px 2px 10px"}
@@ -299,18 +301,18 @@ export default function Carte() {
                   // pb={10}
                   marginBottom={20}
                 >
-                  <Box pr={5}>
+                  <Box >
                     <Image
                       src={data.imageUrl}
                       alt={data.name}
                       width={"117px"}
                       height={"139px"}
-                      marginLeft={15}
+                      marginLeft={5}
                       marginY={3}
                     />
                   </Box>
-                  <Box display={"flex"} marginTop={10}>
-                    <Text paddingBottom={5} pt={5} fontWeight={"bold"} marginTop={2} marginRight={10}>
+                 
+                    <Text paddingBottom={5} pt={5} fontWeight={"bold"} marginTop={10} >
                       {data.nom}
                     </Text>
                     {/* <Flex>
@@ -324,10 +326,12 @@ export default function Carte() {
                       borderColor={"#E37611"}
                       borderStyle={"solid"}
                       borderWidth={"0,5px"}
-                      width={"3/4"}
+                      
                       borderRadius={"4px"}
                       justifyContent={"space-between"}
-                      marginTop={5}
+                      marginTop={10}
+                      mb={[10,10,10,0,0]}
+                      ml={[10,10,10,0,0]}
                       // justifyContent={'space-between'}
                     >
                       <Flex marginRight={20}>
@@ -353,8 +357,8 @@ export default function Carte() {
                         />
                       </Flex>
                     </Flex>
-                  </Box>
-                </Flex>
+                  
+                </SimpleGrid>
               </Center>
             ))}
           </Box>
@@ -367,6 +371,8 @@ export default function Carte() {
             backgroundColor={"#E3F4F4"}
             height={"fit-content"}
             paddingBottom={5}
+            marginBottom={[5,5,5,0,0]}
+            ml={[10,10,20,0,0]}
             marginTop={0}
             justifyContent={"space-between"}
           >
@@ -829,7 +835,7 @@ export default function Carte() {
             
             </Box>
           </Flex>
-        </Box>
+        </SimpleGrid>
 
         <FooterR />
 

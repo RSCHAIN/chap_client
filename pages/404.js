@@ -195,7 +195,7 @@ export default function Carousel() {
           </Flex>
           <SimpleGrid columns={[1,1,1,2,3]} spacing={10}>
             {/* {router.asPath.replace('/','')} */}
-            <Text py={0} ml={20} fontSize={25}>
+            <Text py={0} ml={10} fontSize={25}>
               {page}
             </Text>
 
