@@ -353,13 +353,13 @@ export default function Carousel() {
               </Text>
             </Center>
 
-            <SimpleGrid columns={[2, 2, 2, 3, 4]}>
+            <SimpleGrid columns={[, 1, 1, 3, 4]}>
               {/* {console.log("data", data)} */}
               {data.map((data, key) => (
                 <Box
                   key={data.id}
                   maxW="lg"
-                  width={"sm"}
+                  width={"full"}
                   height={"fit-content"}
                   borderWidth="1px"
                   borderRadius="lg"
@@ -399,7 +399,7 @@ export default function Carousel() {
                     <Box>
                       {data.price}
                       <Box as="span" color="gray.600" pl={2} fontSize="sm">
-                        XOF
+                       €
                       </Box>
                     </Box>
 
