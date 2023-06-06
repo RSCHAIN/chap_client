@@ -275,13 +275,14 @@ export default function Carousel() {
                   // overflow="hidden"
                 
                   // boxShadow={"2xl"}
-                  ml={5}
+                  mx={10}
+                 ml={5}
                   mb={20}
                   // key={}
                   pb={5}
                 >
                   <Box width={"270px"} height={"200px"} pt={10} pl={10}>
-                    <Image src={data.imageUrl} alt={data.nom} maxW={"150px"} />
+                    <Image src={data.imageUrl} alt={data.nom} maxH={'150px'}maxW={"150px"} />
                   </Box>
 
                   <Box p="6">
@@ -362,7 +363,7 @@ export default function Carousel() {
                 <Box
                   key={data.id}
                   maxW="lg"
-                  width={"full"}
+                  width={"70%"}
                   height={"fit-content"}
                   borderWidth="1px"
                   borderRadius="lg"
@@ -374,7 +375,7 @@ export default function Carousel() {
                   pb={5}
                 >
                   <Box width={"300px"} height={"200px"} pt={10} pl={10}>
-                    <Image src={data.imageUrl} alt={data.nom} maxW={"150px"} />
+                    <Image src={data.imageUrl} alt={data.nom} maxH={'175px'}maxW={"150px"} />
                   </Box>
 
                   <Box p="6">
@@ -399,7 +400,7 @@ export default function Carousel() {
                     >
                       <Text>{data.description}</Text>
                     </Box>
-                    <Box>
+                    <Box fontWeight={'bold'}>
                       {data.price}
                       <Box as="span" color="gray.600" pl={2} fontSize="sm">
                        €
