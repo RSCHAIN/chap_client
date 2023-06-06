@@ -49,10 +49,10 @@ export  function ItemCard ({ item, card }) {
       <>
         {/* card  */}
         <Box height={"40vh"}
-          width={{ base: "70%", md: "30%" }}>
+          width={{ base: "100%", md: "30%" }} marginBottom={{base:"5em",md:"0px"}}>
         <Link
           height={"40vh"}
-          width={{ base: "70%", md: "30%" }}
+          width={{ base: "100%", md: "30%" }}
           mt={"5"}
           
           mr={{ base: "0%", md: "0%" }}
@@ -64,7 +64,7 @@ export  function ItemCard ({ item, card }) {
             width={"100%"}
             alignItems={"center"}
             justifyContent={"center"}
-          borderRadius={50}
+             borderRadius={50}
             backgroundImage={imageUrl}
             backgroundPosition={"center"}
             backgroundSize={"cover"}
@@ -88,8 +88,12 @@ export  function ItemCard ({ item, card }) {
               </Text>
             </Flex>
           </Flex>
+         
         </Link>
-        <Text fontSize={20} my={3} fontWeight={'semibold'} align={'center'}  >{adresse}</Text>
+        <Box>
+        <Text fontSize={20}  fontWeight={'semibold'} align={'center'}  >{adresse}</Text>
+        </Box>
+        
         </Box>
       
       </>
@@ -288,6 +292,7 @@ const LadingCorps = () => {
             height={"auto"}
             width={"100%"}
             mt={10}
+            mb={10}
             direction={"column"}
             alignItems={"center"}
             pb={20}

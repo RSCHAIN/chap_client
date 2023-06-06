@@ -353,7 +353,7 @@ export default function Carousel() {
               </Text>
             </Center>
 
-            <SimpleGrid columns={[, 1, 1, 3, 4]}>
+            <SimpleGrid columns={[1, 1, 1, 3, 4]}>
               {/* {console.log("data", data)} */}
               {data.map((data, key) => (
                 <Box

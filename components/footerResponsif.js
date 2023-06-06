@@ -71,13 +71,13 @@ const ListHeader = ({ children }) => {
 
 export default function FooterR() {
   return (
-    <Center w={"100%"}>
+    <Center w={"100%"} >
     <Box 
       bg={'#B0C4DE'}
       color={useColorModeValue('gray.700', 'gray.200')} w='full'>
       <Container as={Stack} maxW={'full'} py={10}>
         <SimpleGrid
-          templateColumns={{ sm: '1fr 1fr', md: '2fr 2fr 2fr' }}
+          templateColumns={{ sm: '2fr 2fr', md: '2fr 2fr 2fr' }}
           spacing={8}>
           <Stack spacing={6}>
             <Box>
