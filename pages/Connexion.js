@@ -126,7 +126,7 @@ export default function Connexion() {
           w={"90%"}
           h={500}
           mx={[5, 5, 5, 5, 12]}
-          my={10}
+          my={5}
           // boxShadow={"0px 4px 24px "}
   
         >
