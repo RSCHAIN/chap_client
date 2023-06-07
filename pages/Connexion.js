@@ -120,7 +120,7 @@ export default function Connexion() {
       {/* <Navbar /> */}
       <Center>
         <Flex
-          bgColor={["#dee2e6","#dee2e6","none","none","none"]}
+          bgColor={["#dee2e6","#dee2e6","white","white","white"]}
           borderRadius={5}
          
           w={"90%"}
