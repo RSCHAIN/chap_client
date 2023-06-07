@@ -122,11 +122,11 @@ export default function Connexion() {
         <Flex
           bgColor={"#dee2e6"}
           borderRadius={5}
-          mt={5}
+         
           w={"90%"}
           h={500}
           mx={[5, 5, 5, 5, 12]}
-          my={20}
+          my={10}
           // boxShadow={"0px 4px 24px "}
   
         >
