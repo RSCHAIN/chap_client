@@ -11,7 +11,7 @@ const SearcheIcone = () => {
         <>
             <IconButton
                 variant='outline'
-                color={"#fbb614"}
+                color={"#08566E"}
                 fontSize={'2xl'}
                 aria-label='Send email'
                 icon={<Search2Icon />}
@@ -22,14 +22,14 @@ const SearcheIcone = () => {
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
-                    <ModalHeader  color={"#fbb614"}>Rechercher un article</ModalHeader>
-                    <ModalCloseButton color={"#fbb614"} />
+                    <ModalHeader  color={"#08566E"}>Rechercher un article</ModalHeader>
+                    <ModalCloseButton color={"#08566E"} />
                     <ModalBody>
                         <InputGroup>
                             <InputLeftElement
                                 pointerEvents='none'
                             >
-                                <FontAwesomeIcon icon={faSearch} color={"#fbb614"} />
+                                <FontAwesomeIcon icon={faSearch} color={"#08566E"} />
                             </InputLeftElement>
                             <Input
                             
