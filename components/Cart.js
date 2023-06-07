@@ -372,7 +372,7 @@ export default function Carte() {
             height={"fit-content"}
             paddingBottom={5}
             marginBottom={[5,5,5,0,0]}
-            ml={[5,5,10,0,0]}
+           
             marginTop={0}
             justifyContent={"space-between"}
           >
@@ -393,7 +393,7 @@ export default function Carte() {
                         </AccordionButton>
                       </h2>
                       <AccordionPanel paddingBottom={4} >
-                        <Box margin={5}>
+                        <Box margin={2}>
                         <Text marginBottom={5} fontWeight={"semibold"}>
                 {" "}
                 JOURS DE LIVRAISON
@@ -459,7 +459,7 @@ export default function Carte() {
                       </Text>
                       <Box display={"flex"} marginBottom={5}>
                         <RadioGroup onChange={setHours} value={hours}>
-                          <Radio value="Matin" mr={10}>
+                          <Radio value="Matin" >
                             Matin(de 09h30 ----- 12h)
                           </Radio><br/>
                           <Radio value="Soir(13h-16h)">
@@ -497,7 +497,7 @@ export default function Carte() {
                         </AccordionButton>
                       </h2>
                       <AccordionPanel paddingBottom={4} >
-                        <Box margin={5}>
+                        <Box margin={2}>
                           <Button
                             bgColor="#E57C23"
                             color={'white'}
@@ -563,7 +563,7 @@ export default function Carte() {
                             </FormControl>
                           </Box>
                         </Box>
-                        <Box margin={5}>
+                        <Box margin={2}>
                           <Button
                              backgroundColor="#E57C23"
                              color={'white'}
@@ -615,7 +615,7 @@ export default function Carte() {
                       </h2>
 
                       <AccordionPanel pb={4} backgroundColor={"#f"}>
-                      <Box margin={5}>
+                      <Box margin={2}>
                         <Text marginBottom={5} fontWeight={"semibold"}>
                 {" "}
                 JOURS DE RECUPERATION
@@ -681,7 +681,7 @@ export default function Carte() {
                       </Text>
                       <Box display={"flex"} marginBottom={5}>
                         <RadioGroup onChange={setHours} value={hours}>
-                          <Radio value="Matin" mr={10}>
+                          <Radio value="Matin" >
                             Matin(de 09h30 ----- 12h)
                           </Radio><br/>
                           <Radio value="Soir(13h-16h)">
