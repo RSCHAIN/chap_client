@@ -372,7 +372,7 @@ export default function Carte() {
             height={"fit-content"}
             paddingBottom={5}
             marginBottom={[5,5,5,0,0]}
-            ml={[10,10,20,0,0]}
+            ml={[5,5,10,0,0]}
             marginTop={0}
             justifyContent={"space-between"}
           >
