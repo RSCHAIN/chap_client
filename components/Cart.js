@@ -292,7 +292,7 @@ export default function Carte() {
                 <SimpleGrid columns={[2,2,2,4,4]}
                   // spacing={10}
                   backgroundColor={"#fbfbfbfc"}
-                  width={{ base: "fit-content", lg: "800px", md: "fit-content" }}
+                  width={{ base: "100%", lg: "800px", md: "fit-content" }}
                   height={""}
                   border={"1px solid #e6e6e6"}
                   // boxShadow={"0px 2px 10px"}
@@ -334,7 +334,7 @@ export default function Carte() {
                       ml={[10,10,10,0,0]}
                       // justifyContent={'space-between'}
                     >
-                      <Flex marginRight={20}>
+                      <Flex>
                         <Button onClick={() => decrement(data, 1)}>-</Button>
                         <Input
                           type={"number"}
