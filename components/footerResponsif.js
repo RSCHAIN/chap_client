@@ -128,7 +128,7 @@ export default function FooterR() {
             <ListHeader>    Recevez des codes promo!</ListHeader>
             <Stack direction={'Column'}>
             {/* <Text width={"250px"} fontWeight={"700"} fontSize={"20px"}>
-        
+                  
           </Text> */}
           <Input
             type={"text"}
