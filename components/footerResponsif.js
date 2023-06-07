@@ -136,7 +136,7 @@ export default function FooterR() {
             background={"#D9d9d9"}
             // width={"317px"}
           
-            height="40px"
+            height="40px"     
             mt="10px"
           />
           <br />
