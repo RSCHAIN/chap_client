@@ -141,7 +141,7 @@ const InputLg = () => {
             }}
           />
           <InputRightElement>
-            <Search2Icon color={"blue"} onClick={onOpen} />
+            <Search2Icon color={"#08566E"} onClick={onOpen} />
             <Modal isOpen={isOpen} onClose={onClose}>
               <ModalOverlay />
               <ModalContent>

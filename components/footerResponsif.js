@@ -145,7 +145,9 @@ export default function FooterR() {
             borderRadius={50}
             mt={5}
             color="white"
-           
+           _hover={{
+            background:"#1108ba"
+           }}
            
           >
             {" "}

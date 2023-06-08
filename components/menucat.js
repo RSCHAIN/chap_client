@@ -102,8 +102,8 @@ function DropdownMenu() {
                 key={index.id}
               
                >
-                <MenuButton   onClick={() => {setActiveMenu(`${index.id}`),setGinks(`${index.id}`),updateLink(index.id)}} _hover={{ textDecoration: "none", color: "yellow.300" }}  as={Button} rightIcon={<ChevronDownIcon />} border={'none'} bgColor={'white'} mt='-5px' fontWeight={'normal'} fontSize={20}>
-                <Text>{index.id}</Text>
+                <MenuButton   onClick={() => {setActiveMenu(`${index.id}`),setGinks(`${index.id}`),updateLink(index.id)}} _hover={{ textDecoration: "none", color: "#068DA9" }}  as={Button} rightIcon={<ChevronDownIcon />} border={'none'} bgColor={'white'} mt='-5px' fontWeight={'normal'} fontSize={20}>
+                <Text >{index.id}</Text>
                 </MenuButton>
 
                 <MenuList style={{ height: menuHeight }} className="dropdown">

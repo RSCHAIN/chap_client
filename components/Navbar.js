@@ -105,7 +105,7 @@ useEffect(()=>{
             <Link
               href={"/"}
               mr={3}
-              _hover={{ textDecoration: "none", color: "yellow.300" }}
+              _hover={{ textDecoration: "none", color: "#068DA9" }}
             >
               Accueil
             </Link>
@@ -139,17 +139,7 @@ useEffect(()=>{
                 {/* </Wrap> */}
               {/* </MenuList>
             </Menu>  */}
-            <Link
-              href={"/Cart"}
-              mr={3}
-              _hover={{ textDecoration: "none", color: "yellow.300" }}
-            >
-              <Box display={'flex'}>
-              <Icon as={AiOutlineShoppingCart} fontSize={30} color={'#303030'}/>
-             <Text bgColor={'blue'} h={'fit-content'} padding={1} borderRadius={50} color={'white'}fontSize={20}>{total}</Text>
-              </Box>
-             
-            </Link>
+           
             {/* <Link
               href={"#"}
               mr={3}
