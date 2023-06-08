@@ -58,7 +58,7 @@ const InputBar = () => {
                 {/* butons se connecter et s'inscrire  */}
                 <Flex
                     align={'center'} justifyContent={'center'}
-                    width={"auto"} height={'full'} mt={5}
+                    width={"auto"} height={'full'} 
                 >
                     
                     {isLagerThan768 ? <LoginSignButton /> : <ResponsiveMenu />}
