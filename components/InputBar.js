@@ -41,8 +41,9 @@ const InputBar = () => {
                     color={"yellow.400"} width={"auto"} height={'100%'}
                     align={'center'} justifyContent={'center'}
                     fontWeight={'bold'} ml={[0,0,'5em','5em','5em']}
+                    
                 >
-                   <Image src={"/logo1.png"} alt={"Chap"} width={{base:95,md:150}} mt={{base:0,md:10}}/>
+                   <Image src={"/logo1.png"} alt={"Chap"} width={{base:95,md:150}} mt={{base:0,md:10}} mr={['5px','5px',0,0,0]}/>
                     {/* <Ok src={"./logo1.png"} /> */}
                 </Flex>
 
