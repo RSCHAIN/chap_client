@@ -51,8 +51,8 @@ export  function ItemCard ({ item, card }) {
         <Box height={"40vh"}
           width={{ base: "100%", md: "30%" }} marginBottom={{base:"5em",md:"0px"}}>
         <Link
-          height={"25vh"}
-          width={{ base: "800%", md: "30%" }}
+          height={"15vh"}
+          width={{ base: "80%", md: "30%" }}
           mt={"5"}
           
           mr={{ base: "0%", md: "0%" }}
