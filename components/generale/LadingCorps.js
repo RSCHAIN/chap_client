@@ -49,7 +49,7 @@ export  function ItemCard ({ item, card }) {
       <>
         {/* card  */}
         <Box height={"30vh"}
-          width={{ base: "100%", md: "30%" }} marginBottom={{base:"5em",md:"0px"}}>
+          width={{ base: "60%", md: "30%" }} marginBottom={{base:"5em",md:"0px"}}>
         <Link
           height={"15vh"}
           width={{ base: "80%", md: "30%" }}
