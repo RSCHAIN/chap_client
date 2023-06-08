@@ -271,7 +271,7 @@ const SignUpForm = () => {
                     onClick={()=>createUSer()}
                     bgColor={"#08566e"}
                     _hover={{
-                        bgColor:{"#08566e"}
+                        bgColor:"#08566e"
                     }}
                 >
                     Inscription
