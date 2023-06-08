@@ -35,13 +35,13 @@ export  function ItemCard ({ item, card }) {
   }
 
 // console.log(item.id)
-  useEffect(()=>{
+
     Object.values(item).map((data,index)=>{
      
       update()
      
     })
-  })
+ 
  
   // if (location > 2) {
     return (
