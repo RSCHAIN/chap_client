@@ -8,7 +8,7 @@ const ResponsiveMenu = () => {
     return (
         <>
             <Button
-                onClick={onOpen} variant='outline' colorScheme='yellow'
+                onClick={onOpen} variant='outline' colorScheme='#08566e'
                 rightIcon={<HamburgerIcon />} mr={{ base: 4, md: 0 }}
             >
                 Menu
