@@ -269,6 +269,10 @@ const SignUpForm = () => {
                     colorScheme='blue' variant='solid' mt={'2em'}
                     borderRadius={'full'} width={'100%'}
                     onClick={()=>createUSer()}
+                    bgColor={"#08566e"}
+                    _hover={{
+                        bgColor:{"#08566e"}
+                    }}
                 >
                     Inscription
                 </Button>

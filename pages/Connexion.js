@@ -164,10 +164,10 @@ export default function Connexion() {
                 <TransitionExample/>
                 <Button
                   borderRadius={"50px"}
-                  bgColor={"blue.400"}
+                  bgColor={"#08566e"}
                   color={"white"}
                   _hover={{
-                    bg: 'blue.500',
+                    bg: '#08566e',
                   }}
                   onClick={() => loginUSer()}
                 >
