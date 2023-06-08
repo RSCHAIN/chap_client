@@ -46,7 +46,7 @@ const SearcheIcone = () => {
                     </ModalBody>
 
                     <ModalFooter>
-                        <Button background={'#fbb614'} color={'#fff'} mr={3} onClick={onClose}>
+                        <Button background={'#08566E'} color={'#fff'} mr={3} onClick={onClose}>
                             Annuler
                         </Button>
                     </ModalFooter>
