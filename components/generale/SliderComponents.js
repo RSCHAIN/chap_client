@@ -96,7 +96,7 @@ const SliderComponents = () => {
           {cards.map((url, index) => (
             <Box
               key={index}
-              height={{ base: "50vh", md: "70vh" }}
+              height={{ base: "30vh", md: "70vh" }}
               width={"100%"}
               position="relative"
               backgroundPosition="center"

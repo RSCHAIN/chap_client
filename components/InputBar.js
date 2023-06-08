@@ -12,6 +12,7 @@ import { useState } from "react";
 
 const InputBar = () => {
     const [total,setTotal]=useState('')
+    
 //     const numb=()=>{
    
    
@@ -34,6 +35,7 @@ const InputBar = () => {
             <Flex
                 width={'full'} height={'4em'}
                 align={'center'} justifyContent={'space-evenly'}
+                onMouseMove={(event)=>console.log('bouge')}
             >
 
                 {/* le logo  */}
@@ -71,7 +73,7 @@ const InputBar = () => {
               _hover={{ textDecoration: "none", color: "#3a07c4" }}
             >
            
-           <Box display={['none','none','grid','grid','grid']}>
+           <Box display={['none','none','none','grid','grid']}>
               
               <Icon as={TfiHelpAlt} fontSize={40} fontWeight={'thin'} color={'#303030'}/>
                 <Text textAlign={'center'} alignContent={'center'} alignItems={'center'}>AIDE</Text>
@@ -87,7 +89,7 @@ const InputBar = () => {
               _hover={{ textDecoration: "none", color: "#3a07c4" }}
             >
            
-              <Box display={['none','none','grid','grid','grid']}>
+              <Box display={['none','none','none','grid','grid']}>
               
               <Icon as={HiOutlineShoppingBag} fontSize={40} fontWeight={'thin'} color={'#303030'}/>
               <Text textAlign={'center'} alignContent={'center'} alignItems={'center'}>PANIER</Text>

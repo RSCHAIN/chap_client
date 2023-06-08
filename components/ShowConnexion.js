@@ -94,7 +94,7 @@ export default function Showconnex() {
                   <Link pb={2} _hover={{color:'blue'}} href="/profiles">Profiles</Link><br/><br/>
                   <Link pb={2} _hover={{color:'blue'}} href="/Mybuy">Mes Commandes</Link><br/><br/>
                   <Link pb={2} _hover={{color:'blue'}} href="/#">Moyen de paeiments</Link><br/><br/>
-                  <Link pb={2} _hover={{color:'blue'}} href="/historique">Historique</Link><br/><br/>
+                  
                 </Box>
               </Center>
 

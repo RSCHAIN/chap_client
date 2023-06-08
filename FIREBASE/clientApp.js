@@ -23,4 +23,5 @@ const appCLient = {
 const app = initializeApp(appCLient);
 const db2 = getDatabase()
 const db = getFirestore(app)
-export {app,db,db2}
+const authentic= getAuth(app)
+export {app,db,db2,authentic}

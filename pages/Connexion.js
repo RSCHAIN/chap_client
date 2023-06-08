@@ -48,10 +48,19 @@ export default function Connexion() {
   const router = useRouter();
   const toast = useToast();
 
+  const getTime = () =>{
+    const currentTime = new Date()
+    const timestanp = currentTime.getTime()
+    localStorage.setItem("time",timestanp)
+    console.log("okay")
+  }
+
+
+
   const loginUSer = async () => {
     await signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        
+        getTime()
         setEmail(userCredential.user.email);
         sessionStorage.setItem("email",userCredential.user.email)
         // router.back()
