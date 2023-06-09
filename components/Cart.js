@@ -122,7 +122,7 @@ export default function Carte() {
       });
       setPrix(PrixT);
     }
-    if (PrixT < 40 && PrixT>19) {
+    if (PrixT < 40 || PrixT>19) {
       console.log(40 < prix < 60);
       setFrais((PrixT * 10) / 100);
     } else {
@@ -202,7 +202,9 @@ export default function Carte() {
     function saveCommande2() {
       let email = sessionStorage.getItem("email");
       let Cart = JSON.parse(localStorage.getItem("Cart"));
-     
+      let adress = localStorage.addresse
+      let nom2 = localStorage.name
+      let date = new Date()
       if (email != undefined && email != null && email.length > 3) {
         Cart.map((data, index) => {
           push(ref(db2, "Commandes"), {
@@ -215,16 +217,16 @@ export default function Carte() {
             totalPrix: data.prix,
             initiateur: email,
             Status: "En Cours",
-            ville:"sur place",
-            rue:"sur place",
-            code_postal:"sur place",
-            batiment:"sur place",
-            lieu: "sur place",
-            receveur: nom,
+            ville:adress,
+            rue:adress,
+            code_postal:adress,
+            batiment:adress,
+            lieu: adress,
+            receveur: nom2,
             numero: numero,
             jour: day,
             moment: hours,
-            date: new Date(),
+            date
           });
         });
         localStorage.removeItem("Cart");
