@@ -48,7 +48,7 @@ export  function ItemCard ({ item, card }) {
       
       <>
         {/* card  */}
-        <Box height={"30vh"}
+        <Box height={["10vh","10vh","10vh","40vh","40vh"]}
           width={{ base: "60%", md: "30%" }} marginBottom={{base:"5em",md:"0px"}}>
         <Link
           height={"15vh"}

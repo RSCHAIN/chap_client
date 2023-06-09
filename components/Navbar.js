@@ -110,6 +110,13 @@ useEffect(()=>{
               Accueil
             </Link>
             <Menucat/>
+            <Link
+              href={"#"}
+              mr={3}
+              _hover={{ textDecoration: "none", color: "#068DA9" }}
+            >
+              Qui Sommes-Nous?
+            </Link>
             {/* <Menu isLazy>
               <MenuButton
                 // mr={3}
