@@ -204,6 +204,7 @@ export default function Carte() {
       let Cart = JSON.parse(localStorage.getItem("Cart"));
       let adress = localStorage.addresse
       let nom2 = localStorage.name
+      let numero = localStorage.number
       let date = new Date()
       if (email != undefined && email != null && email.length > 3) {
         Cart.map((data, index) => {
