@@ -91,10 +91,10 @@ function AddToCart(Product) {
   let Cart = getCart();
   let foundit = Cart.find((p) => p.id == Product.id);
   if (foundit != undefined) {
-    foundit.quantity++;
-    foundit.price = foundit.quantity * parseInt(Product.price);
+    foundit.quantite++;
+    foundit.prix = foundit.quantite * parseInt(Product.prix);
   } else {
-    Product.quantity = 1;
+    Product.quantite = 1;
     Cart.push(Product);
   }
 
@@ -299,7 +299,7 @@ export default function Carousel() {
                     >
                       <Text>{data.nom}</Text>
                       <Box position>
-                        {data.price}
+                        {data.prix}
                         <Box as="span" pl={2} fontSize="sm">
                           €
                         </Box>
@@ -401,7 +401,7 @@ export default function Carousel() {
                       <Text>{data.description}</Text>
                     </Box>
                     <Box fontWeight={'bold'}>
-                      {data.price}
+                      {data.prix}
                       <Box as="span" color="gray.600" pl={2} fontSize="sm">
                        €
                       </Box>

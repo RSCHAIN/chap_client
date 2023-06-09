@@ -121,7 +121,7 @@ export default function CatH() {
                   <Text>{data.description.toString()}</Text>
                 </Box>
                 <Box>
-                  {data.price}
+                  {data.prix}
                   <Box as="span" color="gray.600" pl={2} fontSize="sm">
                     XOF
                   </Box>

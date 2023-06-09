@@ -118,7 +118,7 @@ export default function Carte() {
     setCart(JSON.parse(Cart));
     if (All != null) {
       All.map((data, index) => {
-        PrixT = parseInt(data.price) + PrixT;
+        PrixT = parseInt(data.prix) + PrixT;
       });
       setPrix(PrixT);
     }
@@ -163,10 +163,10 @@ export default function Carte() {
             productID: data.id,
             nom: data.nom,
             description: data.description,
-            quantity: data.quantity,
+            quantity: data.quantite,
             imageUrl: data.imageUrl,
             organisation: data.organisation,
-            totalPrice: data.price,
+            totalPrix: data.prix,
             initiateur: email,
             Status: "En Cours",
             ville:ville,
@@ -209,10 +209,10 @@ export default function Carte() {
             productID: data.id,
             nom: data.nom,
             description: data.description,
-            quantity: data.quantity,
+            quantity: data.quantite,
             imageUrl: data.imageUrl,
             organisation: data.organisation,
-            totalPrice: data.price,
+            totalPrix: data.prix,
             initiateur: email,
             Status: "En Cours",
             ville:"sur place",
@@ -265,20 +265,20 @@ export default function Carte() {
     const decrement = (Product, quantity) => {
       let Cart = getCart();
       let foundit = Cart.find((p) => p.id == Product.id);
-      foundit.price =
-        parseInt(foundit.price) -
-        parseInt(foundit.price) / parseInt(foundit.quantity);
-      foundit.quantity -= quantity;
+      foundit.prix =
+        parseInt(foundit.prix) -
+        parseInt(foundit.prix) / parseInt(foundit.quantite);
+      foundit.quantite -= quantite;
       saveCart(Cart);
       router.reload();
     };
     const increment = (Product, quantity) => {
       let Cart = getCart();
       let foundit = Cart.find((p) => p.id == Product.id);
-      foundit.price =
-        parseInt(foundit.price) / parseInt(foundit.quantity) +
-        parseInt(foundit.price);
-      foundit.quantity += quantity;
+      foundit.prix =
+        parseInt(foundit.prix) / parseInt(foundit.quantite) +
+        parseInt(foundit.prix);
+      foundit.quantite += quantite;
       saveCart(Cart);
       router.reload();
     };
@@ -345,7 +345,7 @@ export default function Carte() {
                       </Flex>
                       <Box mr={20}>
                         <Text marginTop={1} color={"#E37611"} fontSize={20}>
-                          €{data.price}
+                          €{data.prix}
                         </Text>
                       </Box>
                       <Flex marginX={2} marginTop={2}>

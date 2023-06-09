@@ -62,10 +62,10 @@ function AddToCart(Product) {
   let Cart = getCart();
   let foundit = Cart.find((p) => p.id == Product.id);
   if (foundit != undefined) {
-    foundit.quantity++;
-    foundit.price = foundit.quantity * parseInt(Product.price);
+    foundit.quantite++;
+    foundit.prix = foundit.quantite * parseInt(Product.pricprixe);
   } else {
-    Product.quantity = 1;
+    Product.quantite = 1;
     Cart.push(Product);
   }
 
@@ -198,7 +198,7 @@ const InputLg = () => {
                               fontSize={"lg"}
                               pr={2}
                             >
-                              {data.price}€
+                              {data.prix}€
                             </Text>
                             <Button
                               bgColor={"blue"}

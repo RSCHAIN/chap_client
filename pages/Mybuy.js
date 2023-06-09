@@ -43,7 +43,7 @@ function Cancel({ items, email }) {
             </Box>
 
             <Box>
-              {items.totalPrice + " "}
+              {items.totalPrix + " "}
               <Box as="span" color="gray.600" fontSize="sm">
                 €
               </Box>
@@ -83,7 +83,7 @@ function Valide({ items, email }) {
             </Box>
 
             <Box>
-              {items.totalPrice + " "}
+              {items.totalPrix + " "}
               <Box as="span" color="gray.600" fontSize="sm">
                 €
               </Box>
@@ -134,7 +134,7 @@ function Launch({ items, email,id }) {
             </Box>
 
             <Box>
-              {items.totalPrice + " "}
+              {items.totalPrix + " "}
               <Box as="span" color="gray.600" fontSize="sm">
                 €
               </Box>

@@ -159,7 +159,7 @@ export default function Connexion() {
                   border={"2px solid gray"}
                   borderRadius={"50px"}
                   width={["200px", "200px", "350px", "350px", "350px"]}
-                  onChange={(ev) => setEmail(ev.target.value)}
+                  onChange={(ev) => setEmail(ev.target.value.trim().toLowerCase())}
                   color={"gray.500"}
                 />
                 <Input

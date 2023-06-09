@@ -32,28 +32,28 @@ const InputBar = () => {
   const [total, setTotal] = useState("");
   const [lastTime, setLastTime] = useState();
 
-  const handleMove = () => {
+  // const handleMove = () => {
     
-    const currentDate = new Date();
-    const newTime = currentDate.getTime();
-    const define = parseInt(lastTime) + 4500000;
-    if (total ==2) {
-        if (define <newTime) {
-            signOut(auth);
-            sessionStorage.removeItem("email")
-            router.reload();
-          }
-    }
+  //   const currentDate = new Date();
+  //   const newTime = currentDate.getTime();
+  //   const define = parseInt(lastTime) + 4500000;
+  //   if (total ==2) {
+  //       if (define <newTime) {
+  //           signOut(auth);
+  //           sessionStorage.removeItem("email")
+  //           router.reload();
+  //         }
+  //   }
    
-  };
+  // };
   useEffect(()=>{
     onAuthStateChanged(auth, (user) => {
         if (user) {
           setTotal(2)
         }
       });
-    setLastTime(localStorage.time)
-    handleMove()
+    // setLastTime(localStorage.time)
+    // handleMove()
   })
   //     const numb=()=>{
 
