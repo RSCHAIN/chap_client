@@ -163,7 +163,7 @@ export default function Carte() {
             productID: data.id,
             nom: data.nom,
             description: data.description,
-            quantity: data.quantite,
+            quantite: data.quantite,
             imageUrl: data.imageUrl,
             organisation: data.organisation,
             totalPrix: data.prix,
@@ -209,7 +209,7 @@ export default function Carte() {
             productID: data.id,
             nom: data.nom,
             description: data.description,
-            quantity: data.quantite,
+            quantite: data.quantite,
             imageUrl: data.imageUrl,
             organisation: data.organisation,
             totalPrix: data.prix,
@@ -262,7 +262,7 @@ export default function Carte() {
       saveCart(foundit);
       router.reload();
     }
-    const decrement = (Product, quantity) => {
+    const decrement = (Product, quantite) => {
       let Cart = getCart();
       let foundit = Cart.find((p) => p.id == Product.id);
       foundit.prix =
@@ -272,7 +272,7 @@ export default function Carte() {
       saveCart(Cart);
       router.reload();
     };
-    const increment = (Product, quantity) => {
+    const increment = (Product, quantite) => {
       let Cart = getCart();
       let foundit = Cart.find((p) => p.id == Product.id);
       foundit.prix =
@@ -339,7 +339,7 @@ export default function Carte() {
                         <Input
                           type={"number"}
                           width={"70px"}
-                          value={data.quantity}
+                          value={data.quantite}
                         />
                         <Button onClick={() => increment(data, 1)}>+</Button>
                       </Flex>

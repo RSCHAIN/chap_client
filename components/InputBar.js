@@ -62,7 +62,7 @@ const InputBar = () => {
   //      let tot=0
   //      if (All != null) {
   //        All.map((data, index) => {
-  //          tot = parseInt(data.quantity) + tot;
+  //          tot = parseInt(data.quantite) + tot;
   //        });
   //        setTotal(tot);
   //      }
