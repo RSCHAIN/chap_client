@@ -176,6 +176,7 @@ export function ContainerCard({ card }) {
         >
           {/* la box de l'entete de la cartegorie  */}
           <Flex
+          id={card.id}
             height={"auto"}
             width={"100%"}
             mt={5}
@@ -184,6 +185,7 @@ export function ContainerCard({ card }) {
           >
             <Heading
               height={"auto"}
+              id={card.id}
               width={"100%"}
               display={"flex"}
               alignItems={"center"}

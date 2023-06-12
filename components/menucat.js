@@ -98,33 +98,17 @@ function DropdownMenu() {
 
 {cat.map((index, key) => {if(index.id!="Commandes"){
               return(
-                <Menu className="dropdown" closeOnSelect={false}
-                key={index.id}
+                <Text _hover={{textDecoration:'none',color:'#068DA9' }} mr={2} as={Link} href={`#${index.id}`}>{index.id}</Text>
+              //   <Menu href={index.id}  closeOnSelect={false}
+              //   key={index.id}
               
-               >
-                <MenuButton   onClick={() => {setActiveMenu(`${index.id}`),setGinks(`${index.id}`),updateLink(index.id)}} _hover={{ textDecoration: "none", color: "#068DA9" }}  as={Button} rightIcon={<ChevronDownIcon />} border={'none'} bgColor={'white'} mt='-5px' fontWeight={'normal'} fontSize={20}>
-                <Text >{index.id}</Text>
-                </MenuButton>
+              //  >
+                
+              //   <MenuButton href={index.id} as={Button} _hover={{ textDecoration: "none", color: "#068DA9" }}  as={Button}  border={'none'} bgColor={'white'} mt='-5px' fontWeight={'normal'} fontSize={20}>
+              //  <Text>{index.id}</Text>
+              //   </MenuButton>
 
-                <MenuList style={{ height: menuHeight }} className="dropdown">
-                {/* <CSSTransition
-            in={activeMenu === 'main'}
-            timeout={500}
-            classNames="menu-primary"
-            unmountOnExit
-            onEnter={calcHeight}
-          > */}
-            <div className="main-menu">
-            {/* <MenuItem onClick={() => setActiveMenu('main')}>retourner</MenuItem> */}
-             {datos.map((data,key)=>( 
-                <MenuItem key={key} >
-                 <Link href={"/"+ginks+"/"+data.id}>{data.id}</Link>
-            </MenuItem> 
-              ))}
-            </div>
-          {/* </CSSTransition> */}
-                </MenuList>
-               </Menu>
+              //  </Menu>
               )
             }})}
 

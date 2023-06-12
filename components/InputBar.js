@@ -124,7 +124,8 @@ const InputBar = () => {
           {isLagerThan768 ? <LoginSignButton /> : <ResponsiveMenu />}
 
           <Link
-            href={"/Cart"}
+          mt={5}
+            href={"#"}
             mr={3}
             _hover={{ textDecoration: "none", color: "#3a07c4" }}
           >
@@ -147,6 +148,7 @@ const InputBar = () => {
           </Link>
 
           <Link
+             mt={5}
             href={"/Cart"}
             mr={3}
             _hover={{ textDecoration: "none", color: "#3a07c4" }}
