@@ -28,6 +28,8 @@ import {
   Center,
   Heading,
   Text,
+  FormHelperText,
+  FormErrorMessage
 } from "@chakra-ui/react";
 import { useState } from "react";
 import {
@@ -121,6 +123,7 @@ export default function Connexion() {
         }
       });
   };
+  const isError = email === ''
 
   return (
     <>
@@ -150,6 +153,45 @@ export default function Connexion() {
           </Box>
           <Center>
             <Box width={"full"} color={"black"} ml={[10, 10, 10, 20, 20]}>
+              {/* <Stack spacing={4}>
+                <Heading>Bienvenue</Heading>
+                <Text>Connectez-vous á votre compte</Text>
+                <Input
+                  type={"text"}
+                  placeholder="Email"
+                  border={"2px solid gray"}
+                  borderRadius={"50px"}
+                  width={["200px", "200px", "350px", "350px", "350px"]}
+                  onChange={(ev) => setEmail(ev.target.value.trim().toLowerCase())}
+                  color={"gray.500"}
+                />
+                <Input
+                  type={"password"}
+                  placeholder={"Mot de passe"}
+                  border={"2px solid gray"}
+                  borderRadius={"50px"}
+                  onChange={(e) => setPassword(e.target.value)}
+                  width={["200px", "200px", "350px", "350px", "350px"]}
+                />
+                <TransitionExample/>
+                <Button
+                  borderRadius={"50px"}
+                  bgColor={"#08566e"}
+                  color={"white"}
+                  _hover={{
+                    bg: '#08566e',
+                  }}
+                  onClick={() => loginUSer()}
+                >
+                  Connexion{" "}
+                </Button>
+                <Link mt={20} fontSize={20} textAlign={'center'}  _hover={{
+                color: 'blue',
+              }} href={'/Inscription'}>
+                  Inscription
+                </Link>
+              </Stack> */}
+              <FormControl isInvalid={isError}>
               <Stack spacing={4}>
                 <Heading>Bienvenue</Heading>
                 <Text>Connectez-vous á votre compte</Text>
@@ -188,6 +230,14 @@ export default function Connexion() {
                   Inscription
                 </Link>
               </Stack>
+      {!isError ? (
+        <FormHelperText>
+          Enter the email you'd like to receive the newsletter on.
+        </FormHelperText>
+      ) : (
+        <FormErrorMessage>Email is required.</FormErrorMessage>
+      )}
+    </FormControl>
             </Box>
           </Center>
         </Flex>

@@ -190,14 +190,14 @@ export default function Carousel() {
             <Text>Home</Text>
             <ChevronRightIcon h={10}/>
 
-            <Text color={"blue"}>Categories</Text>
+            <Text py={0} fontSize={25}>
+              {page}
+            </Text>
             <br />
           </Flex>
           <SimpleGrid columns={[1,1,1,2,3]} spacing={10}>
             {/* {router.asPath.replace('/','')} */}
-            <Text py={0} ml={10} fontSize={25}>
-              {page}
-            </Text>
+           
 
             {/* CSS files for react-slick */}
             <link
@@ -287,17 +287,17 @@ export default function Carousel() {
 
                   <Box p="6">
                     <Box
-                      mt="1"
+                      // mt="1"
                       fontWeight="semibold"
                       as="h5"
                       lineHeight="tight"
                       noOfLines={3}
                       minWidth={'280px'}
-                      height={"50px"}
+                      height={"70px"}
                       // display={'flex'} 
                       // justifyContent={'space-between'}
                     >
-                      <Text>{data.nom}</Text>
+                      <Text noOfLines={2} width={'200px'}>{data.nom}</Text>
                       <Box position>
                         {data.prix}
                         <Box as="span" pl={2} fontSize="sm">
@@ -314,7 +314,7 @@ export default function Carousel() {
                       w={"fit-content"}
                       height={"250px"}
                     >
-                      <Text>{data.description}</Text>
+                      {/* <Text>{data.description}</Text> */}
                       <Button
                         bgColor={"blue"}
                         // mt={3}
