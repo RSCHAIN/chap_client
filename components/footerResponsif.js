@@ -13,7 +13,8 @@ import {
   Heading,
   Button,
   Center,
-  Image
+  Image,
+  Flex
 } from '@chakra-ui/react';
 import { ReactNode } from 'react';
 import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
@@ -77,7 +78,7 @@ export default function FooterR() {
       color={useColorModeValue('gray.700', 'gray.200')} w='full'>
       <Container as={Stack} maxW={'full'} py={10}>
         <SimpleGrid
-          templateColumns={{ sm: '2fr 2fr', md: '2fr 2fr 2fr' }}
+          templateColumns={{ sm: '2fr 2fr', md: '2fr 2fr 2fr 2fr' }}
           spacing={8}>
           <Stack spacing={6}>
             <Box>
@@ -94,7 +95,7 @@ export default function FooterR() {
             textAlign='justify'
             
           >
-            14,Avenue De Bourgogne,91300,Massy
+            14,Avenue De Bourgogne 91300 Massy
             <br /> Tel : (33)060-057-990-59
             <br />
             E-mail : support@rschain.net
@@ -120,7 +121,21 @@ export default function FooterR() {
             {/* <Link href={'/services'}>Services</Link> */}
             <Link href='/Terms'>Termes et Conditions</Link>
             {/* <Link>Privacy Policy</Link> */}
-            <Link>Manage Cookies</Link>
+       
+            <Link href={'https://chapbackofficefournisseur.vercel.app/'}  isExternal>Devenir Fournisseur</Link>
+            <Link href={'https://chapbackofficelivreur-regz6oep6-josiassehi-rschainnet.vercel.app/'}   isExternal>Devenir Livreur</Link>
+          </Stack>
+          <Stack align={'flex-start'}>
+            <ListHeader>MODE DE PAIEMENT</ListHeader>
+            <Flex>
+            <Image  src="VISA MASTERCARD.png" alt='visa mastercard' width={'100px'} heigth={'50px'} mr={2} è/>
+          <Image  src="PAYPAL.png" width={'100px'} heigth={'50px'} alt='paypal'/>
+            </Flex>
+          
+            {/* <Link href={'/services'}>Services</Link> */}
+            <Link href='/Terms'>Termes et Conditions</Link>
+            {/* <Link>Privacy Policy</Link> */}
+       
             <Link href={'https://chapbackofficefournisseur.vercel.app/'}  isExternal>Devenir Fournisseur</Link>
             <Link href={'https://chapbackofficelivreur-regz6oep6-josiassehi-rschainnet.vercel.app/'}   isExternal>Devenir Livreur</Link>
           </Stack>
@@ -143,7 +158,7 @@ export default function FooterR() {
           <Button
             background="#08566e"
             borderRadius={50}
-            mt={5}
+            mt={1}
             color="white"
            _hover={{
             background:"#1108ba"
