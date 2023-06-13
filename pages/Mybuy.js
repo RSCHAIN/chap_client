@@ -185,7 +185,7 @@ export default function Buy() {
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
       if (!user) {
-        router.push("/Connexion");
+        router.push("/Choose");
       } 
     });
     Getall();
