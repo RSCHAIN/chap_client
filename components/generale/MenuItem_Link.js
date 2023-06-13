@@ -16,7 +16,7 @@ const MenuItem_Link = () => {
                     align={'center'} justify={'space-between'}
                     direction={{ base: 'column', md: 'row' }}
                 >
-                    <Link href='/'>Home</Link>
+                    <Link href='/'>Accueil</Link>
                    <Menucat/>
                     <Link href='/Cart'>Panier</Link>
                     {/* <Link href='#'>Service</Link>
