@@ -1,5 +1,6 @@
 import InputBar from "@/components/InputBar";
 import Navbar from "@/components/Navbar";
+import FooterR from "@/components/footerResponsif";
 import { Button, Center, Flex, Link, useMediaQuery } from "@chakra-ui/react";
 
 export default function Intermediary() {
@@ -9,7 +10,7 @@ export default function Intermediary() {
     <>
       <InputBar />
       {isLagerThan768 ? <Navbar></Navbar> : <></>}
-      <Center mt={"15%"}>
+      <Center mt={"15%"} mb="20%">
         <Flex>
           <Link
             href={"/Connexion"}
@@ -49,6 +50,7 @@ export default function Intermediary() {
           </Link>
         </Flex>
       </Center>
+      <FooterR/>
     </>
   );
 }

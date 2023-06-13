@@ -129,7 +129,7 @@ export default function FooterR() {
             <ListHeader>Mode de paiement</ListHeader>
             <Flex>
             <Image  src="/VISA MASTERCARD.png" alt='visa mastercard' width={'50px'} heigth={'25px'} mr={2} è/>
-          <Image  src="/PAYPAL.png" width={'50px'} heigth={'40px'} alt='paypal'/>
+          <Image  src="/PAYPAL.png" width={'50px'} heigth={'50px'} alt='paypal'/>
             </Flex>
           
          
