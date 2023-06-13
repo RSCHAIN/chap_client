@@ -232,7 +232,7 @@ export default function Connexion() {
               </Stack>
       {!isError ? (
         <FormHelperText>
-          Enter the email you'd like to receive the newsletter on.
+         
         </FormHelperText>
       ) : (
         <FormErrorMessage>Email is required.</FormErrorMessage>
