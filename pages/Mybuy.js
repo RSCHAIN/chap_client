@@ -121,7 +121,7 @@ function Launch({ items, email,id }) {
           display={"flex"}
           borderWidth="1px"
           borderRadius="lg"
-          overflow="hidden"
+          overflow="hidden" 
         >
           <Image src={items.imageUrl} alt={items.nom} h="75px" w="150px"/>
 
