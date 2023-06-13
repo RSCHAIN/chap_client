@@ -24,7 +24,7 @@ export default function Cart() {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (!user) {
-        router.push("/Connexion");
+        router.push("/Choose");
       }
     });
   }, [auth, router]);

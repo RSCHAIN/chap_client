@@ -245,7 +245,7 @@ export default function Showconnex() {
               <Center>
                 <Button
                   as={Link}
-                  href="/Connexion"
+                  href="/Choose"
                   bgColor="#08566E"
                   color={"white"}
                   _hover={{

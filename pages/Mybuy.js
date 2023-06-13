@@ -16,6 +16,14 @@ import {
 import { onValue, ref, update } from "@firebase/database";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useRouter } from "next/router";
+import { app, db } from "@/FIREBASE/clientApp";
+import {
+  getAuth,
+  onAuthStateChanged,
+  signOut,
+  updateEmail,
+} from "firebase/auth";
 
 function Cancel({ items, email }) {
   // console.log(items.Status);
@@ -158,6 +166,8 @@ function Launch({ items, email,id }) {
 export default function Buy() {
   const [isLagerThan768] = useMediaQuery("(min-width: 768px)");
   const [commandeListe, setCommandeListe] = useState([]);
+  const auth = getAuth(app);
+  const router = useRouter();
   const [email, setEmail] = useState();
   const [id,setId] =useState()
   const Getall = async () => {
@@ -173,6 +183,11 @@ export default function Buy() {
   };
 
   useEffect(() => {
+    onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        router.push("/Connexion");
+      } 
+    });
     Getall();
     setEmail(sessionStorage.getItem("email"));
   }, [setCommandeListe]);

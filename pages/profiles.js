@@ -50,7 +50,7 @@ export default function Profiles() {
           setSurname(docSnap.data().surname);
         }
       } else {
-        router.push("/Connexion");
+        router.push("/Choose");
       }
     });
   }, [auth,router]);
