@@ -13,26 +13,36 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
-  Center
+  Center,
+  Icon,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverHeader,
+  PopoverBody,
+  PopoverFooter,
+  PopoverArrow,
+  PopoverCloseButton,
+  PopoverAnchor,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Firestore, collection, doc, getDocs, where } from "firebase/firestore";
 import { query } from "@firebase/database";
+import { AiOutlineUser } from "react-icons/ai";
+
 export default function Showconnex() {
   const [users, setUsers] = useState("");
+  const [name, setName] = useState("");
   const router = useRouter();
-  
 
   const logout = () => {
     signOut(auth);
     router.reload();
   };
- 
+
   const getData = async (email) => {
-    const constraints = [
-      
-    ];
+    const constraints = [];
 
     const livings = await collection(db, "Utilisateurs");
     let q = query(livings, ...constraints);
@@ -43,87 +53,240 @@ export default function Showconnex() {
       // console.log("doc data",doc.id)
       ...doc.data(),
       id: doc.id,
-   
     }));
-  for (let index = 0; index < dataQ.length; index++) {
-    // console.log(dataQ[index].email,email,dataQ[index].email==email )
-    if (dataQ[index].email == email) {
-      localStorage.setItem('addresse',dataQ[index].address)
-      localStorage.setItem('name',dataQ[index].name)
-      localStorage.setItem('number',dataQ[index].number)
+    for (let index = 0; index < dataQ.length; index++) {
+      // console.log(dataQ[index].email,email,dataQ[index].email==email )
+      if (dataQ[index].email == email) {
+        localStorage.setItem("addresse", dataQ[index].address);
+        setName(dataQ[index].name);
+        localStorage.setItem("name", dataQ[index].name);
+        localStorage.setItem("number", dataQ[index].number);
+      } else {
+        // console.log("echec")
+      }
     }
-    else{
-      // console.log("echec")
-    }
-    
-  }
 
- 
     // console.log("first datas");
     // console.log(dataQ);
   };
   const auth = getAuth(app);
-  useEffect(  () => {
-   
-    
+  useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setUsers(user);
-        sessionStorage.setItem("email",user.email) 
-        getData(user.email)
+        sessionStorage.setItem("email", user.email);
+        getData(user.email);
       }
     });
-   
-  },[auth]);
+  }, [auth]);
   if (users) {
-   
     return (
-      <Flex mr={{ base: 1, md: 10 }}>
+      <>
+        <Flex
+          align={"center"}
+          justifyContent={"center"}
+          width={"auto"}
+          height={"100%"}
+        >
+          {/* <Link display={'flex'} mr={{ base: "3", md: "3" }} fontSize={20} href={"/Connexion"}>
+          <Icon as={AiOutlineUser} fontSize={30} mr={2}/> Se connecter
+        </Link> */}
+          <Popover>
+            <PopoverTrigger>
+              <Button
+               _hover={{
+                color: "cyan.700",
+                textDecoration: "none",
+              }}
+                leftIcon={
+                  <Icon
+                    as={AiOutlineUser}
+                   
+                    fontSize={30}
+                  />
+                }
+                rightIcon={<ChevronDownIcon />}
+                bgColor={"white"}
+              >
+                Bon retour,{name}
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent width={"210px"}>
+              <PopoverArrow />
+
+              {/* <PopoverBody>
+              <Center><Button as={Link} href="/Connexion" bgColor="#08566E" color={"white"}_hover={{
+                bgColor:"#0f7493",
+                textDecoration: "none"
+              }}> SE CONNECTER</Button></Center>
+            </PopoverBody> */}
+              <PopoverBody>
+                <Link
+                  href="/Mybuy"
+                  width={"full"}
+                  _hover={{
+                    textDecoration: "none",
+                  }}
+                >
+                  <Button width={"full"} bgColor={"white"}>
+                    {" "}
+                    Mes commandes
+                  </Button>
+                </Link>
+                <Link
+                  href="/profiles"
+                  width={"full"}
+                  _hover={{
+                    textDecoration: "none",
+                  }}
+                >
+                  <Button width={"full"} bgColor={"white"}>
+                    {" "}
+                    Mon profils
+                  </Button>
+                </Link>
+                {/* <Link href="/Mybuy" ><Button>Mes commandes</Button></Link> */}
+              </PopoverBody>
+              <PopoverFooter>
+                <Center>
+                  <Button
+                    border={"none"}
+                    bgColor={"white"}
+                    _hover={{ bgcolor: "white", color: "#0d6995" }}
+                    onClick={() => logout()}
+                  >
+                    {" "}
+                    Deconnexion
+                  </Button>
+                </Center>
+              </PopoverFooter>
+            </PopoverContent>
+          </Popover>
+        </Flex>
+
+        {/* <Flex mr={{ base: 1, md: 10 }}>
         <Box flexDirection={"column"}>
           <Menu>
-            <MenuButton rightIcon={<ChevronDownIcon/>}>
-            <Avatar />
-
+            <MenuButton rightIcon={<ChevronDownIcon />}>
+              <Avatar />
             </MenuButton>
             <MenuList>
               <Center>
-             
-                <Box textTransform={'capitalize'} cursor={'pointer'} flexDirection={'column'} >
-                <Text pb={3} _hover={{color:'blue'}}>{users.email.toString()}</Text>
-                {/* <Text pb={3} textAlign={'center'} cursor={'auto'}fontSize={20}>Bienvenue,{data[0].name}</Text> */}
-                  <Link pb={2} _hover={{color:'blue'}} href="/profiles">Profiles</Link><br/><br/>
-                  <Link pb={2} _hover={{color:'blue'}} href="/Mybuy">Mes Commandes</Link><br/><br/>
-                  <Link pb={2} _hover={{color:'blue'}} href="/#">Moyen de paeiments</Link><br/><br/>
+                <Box
+                  textTransform={"capitalize"}
+                  cursor={"pointer"}
+                  flexDirection={"column"}
+                >
+                  <Text pb={3} _hover={{ color: "blue" }}>
+                    {users.email.toString()}
+                  </Text>
                   
+                  <Link pb={2} _hover={{ color: "blue" }} href="/profiles">
+                    Profiles
+                  </Link>
+                  <br />
+                  <br />
+                  <Link pb={2} _hover={{ color: "blue" }} href="/Mybuy">
+                    Mes Commandes
+                  </Link>
+                  <br />
+                  <br />
+                  <Link pb={2} _hover={{ color: "blue" }} href="/#">
+                    Moyen de paiements
+                  </Link>
+                  <br />
+                  <br />
                 </Box>
               </Center>
 
-
-             <Center><Button border={'none'} bgColor={'white'} _hover={{bgcolor:'white'}} onClick={() => logout()}> Deconnexion</Button></Center> 
+              <Center>
+                <Button
+                  border={"none"}
+                  bgColor={"white"}
+                  _hover={{ bgcolor: "white" }}
+                  onClick={() => logout()}
+                >
+                  {" "}
+                  Deconnexion
+                </Button>
+              </Center>
             </MenuList>
           </Menu>
-          
-       
         </Box>
-        {/* 
-        
-        */}
-      </Flex>
+      
+      </Flex> */}
+      </>
     );
   } else {
-
     return (
       <Flex
         align={"center"}
         justifyContent={"center"}
         width={"auto"}
         height={"100%"}
-        mr={"1em"}
       >
-        <Link mr={{ base: "3", md: "3" }} href={"/Connexion"}>
-          Se connecter
-        </Link>
-        <Link href={"/Inscription"}>Inscription</Link>
+        {/* <Link display={'flex'} mr={{ base: "3", md: "3" }} fontSize={20} href={"/Connexion"}>
+          <Icon as={AiOutlineUser} fontSize={30} mr={2}/> Se connecter
+        </Link> */}
+        <Popover>
+          <PopoverTrigger>
+            <Button
+              leftIcon={<Icon as={AiOutlineUser} fontSize={30} mr={2} />}
+              rightIcon={<ChevronDownIcon />}
+              bgColor={"white"}
+            >
+              Se connecter
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent width={"210px"}>
+            <PopoverArrow />
+
+            <PopoverBody>
+              <Center>
+                <Button
+                  as={Link}
+                  href="/Connexion"
+                  bgColor="#08566E"
+                  color={"white"}
+                  _hover={{
+                    bgColor: "#0f7493",
+                    textDecoration: "none",
+                  }}
+                >
+                  {" "}
+                  SE CONNECTER
+                </Button>
+              </Center>
+            </PopoverBody>
+            <PopoverFooter>
+              <Link
+                href="/Mybuy"
+                width={"full"}
+                _hover={{
+                  textDecoration: "none",
+                }}
+              >
+                <Button width={"full"} bgColor={"white"}>
+                  {" "}
+                  Mes commandes
+                </Button>
+              </Link>
+              <Link
+                href="/profiles"
+                width={"full"}
+                _hover={{
+                  textDecoration: "none",
+                }}
+              >
+                <Button width={"full"} bgColor={"white"}>
+                  {" "}
+                  Mon profils
+                </Button>
+              </Link>
+              {/* <Link href="/Mybuy" ><Button>Mes commandes</Button></Link> */}
+            </PopoverFooter>
+          </PopoverContent>
+        </Popover>
       </Flex>
     );
   }

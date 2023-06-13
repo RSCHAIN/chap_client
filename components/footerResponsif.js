@@ -126,10 +126,10 @@ export default function FooterR() {
             <Link href={'https://chapbackofficelivreur-regz6oep6-josiassehi-rschainnet.vercel.app/'}   isExternal>Devenir Livreur</Link>
           </Stack>
           <Stack align={'flex-start'}>
-            <ListHeader>MODE DE PAIEMENT</ListHeader>
+            <ListHeader>Mode de paiement</ListHeader>
             <Flex>
-            <Image  src="/VISA MASTERCARD.png" alt='visa mastercard' width={'100px'} heigth={'50px'} mr={2} è/>
-          <Image  src="/PAYPAL.png" width={'100px'} heigth={'50px'} alt='paypal'/>
+            <Image  src="/VISA MASTERCARD.png" alt='visa mastercard' width={'50px'} heigth={'25px'} mr={2} è/>
+          <Image  src="/PAYPAL.png" width={'50px'} heigth={'40px'} alt='paypal'/>
             </Flex>
           
          

@@ -10,8 +10,17 @@ import {
   useMediaQuery,
   Box,
   Icon,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverArrow,
+  PopoverBody,
+  PopoverFooter,
+  Button,
+  Center,
 } from "@chakra-ui/react";
 import { Search2Icon } from "@chakra-ui/icons";
+import { ChevronDownIcon } from "@chakra-ui/icons";
 import LoginSignButton from "./generale/LoginSignButton";
 import InputLg from "./generale/InputLg";
 import HeaderBar from "./inscription/HeaderBar";
@@ -28,12 +37,12 @@ import { useRouter } from "next/router";
 const InputBar = () => {
   const auth = getAuth(app);
   const router = useRouter();
- 
+
   const [total, setTotal] = useState("");
   const [lastTime, setLastTime] = useState();
 
   // const handleMove = () => {
-    
+
   //   const currentDate = new Date();
   //   const newTime = currentDate.getTime();
   //   const define = parseInt(lastTime) + 4500000;
@@ -44,17 +53,17 @@ const InputBar = () => {
   //           router.reload();
   //         }
   //   }
-   
+
   // };
-  useEffect(()=>{
+  useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-        if (user) {
-          setTotal(2)
-        }
-      });
+      if (user) {
+        setTotal(2);
+      }
+    });
     // setLastTime(localStorage.time)
     // handleMove()
-  })
+  });
   //     const numb=()=>{
 
   //      const Cart = localStorage.getItem("Cart");
@@ -70,13 +79,11 @@ const InputBar = () => {
   //      localStorage.setItem("total", total);
   //    };
 
- 
-
   const [isLagerThan768] = useMediaQuery("(min-width: 768px)");
   return (
     <>
       <Flex
-        width={"full"}
+        width={"100%"}
         height={"4em"}
         align={"center"}
         justifyContent={"space-evenly"}
@@ -89,7 +96,7 @@ const InputBar = () => {
           align={"center"}
           justifyContent={"center"}
           fontWeight={"bold"}
-          ml={[0, 0, "5em", "5em", "5em"]}
+          ml={[0, 0, 0, "5em", "5em"]}
         >
           <Link href={"/"}>
             <Image
@@ -97,7 +104,7 @@ const InputBar = () => {
               alt={"Chap"}
               width={{ base: 95, md: 150 }}
               mt={{ base: 0, md: 10 }}
-              mr={["5px", "5px", 0, 0, 0]}
+              mr={["2px", "2px", 0, 0, 0]}
             />
           </Link>
 
@@ -123,7 +130,53 @@ const InputBar = () => {
         >
           {isLagerThan768 ? <LoginSignButton /> : <ResponsiveMenu />}
 
-          <Link
+          <Flex
+          display={["none","none","none","flex","flex"]}
+            align={"center"}
+            justifyContent={"center"}
+            width={"auto"}
+            height={"100%"}
+            mr={"1em"}
+          >
+            {/* <Link display={'flex'} mr={{ base: "3", md: "3" }} fontSize={20} href={"/Connexion"}>
+          <Icon as={AiOutlineUser} fontSize={30} mr={2}/> Se connecter
+        </Link> */}
+            <Popover>
+              <PopoverTrigger>
+                <Button
+                  leftIcon={<Icon as={TfiHelpAlt} fontSize={30} />}
+                  _hover={{
+                    color: "cyan.700",
+                    textDecoration: "none",
+                  }}
+                  rightIcon={<ChevronDownIcon />}
+                  bgColor={"white"}
+                >
+                  Aide
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent width={"210px"}>
+                {/* <PopoverArrow />
+           
+            <PopoverBody>
+              <Center><Button as={Link} href="/Connexion" bgColor="#08566E" color={"white"}_hover={{
+                bgColor:"#0f7493",
+                textDecoration: "none"
+              }}> SE CONNECTER</Button></Center>
+            </PopoverBody>
+            <PopoverFooter>
+             <Link href="/Mybuy" width={"full"}  _hover={{
+                textDecoration: "none"
+              }} ><Button width={"full"} bgColor={"white"}> Mes commandes</Button></Link>
+             <Link href="/profiles" width={"full"} _hover={{
+                textDecoration: "none"
+              }}><Button width={"full"} bgColor={"white"} >  Mon profils</Button></Link>
+             
+            </PopoverFooter> */}
+              </PopoverContent>
+            </Popover>
+          </Flex>
+          {/* <Link
           mt={5}
             href={"#"}
             mr={3}
@@ -143,33 +196,46 @@ const InputBar = () => {
               >
                 AIDE
               </Text>
-              {/* <Text bgColor={'#08566E'} h={'fit-content'} padding={1} borderRadius={50} color={'white'}fontSize={20}>{total}</Text> */}
+              
             </Box>
-          </Link>
+          </Link> */}
 
-          <Link
-             mt={5}
-            href={"/Cart"}
-            mr={3}
-            _hover={{ textDecoration: "none", color: "#3a07c4" }}
+          <Flex
+          display={["none","none","none","flex","flex"]}
+            align={"center"}
+            justifyContent={"center"}
+            width={"auto"}
+            height={"100%"}
+            mr={"1em"}
           >
-            <Box display={["none", "none", "none", "grid", "grid"]}>
-              <Icon
-                as={HiOutlineShoppingBag}
-                fontSize={40}
-                fontWeight={"thin"}
-                color={"#303030"}
-              />
-              <Text
-                textAlign={"center"}
-                alignContent={"center"}
-                alignItems={"center"}
-              >
-                PANIER
-              </Text>
-              {/* <Text bgColor={'#08566E'} h={'fit-content'} padding={1} borderRadius={50} color={'white'}fontSize={20}>{total}</Text> */}
-            </Box>
-          </Link>
+            {/* <Link display={'flex'} mr={{ base: "3", md: "3" }} fontSize={20} href={"/Connexion"}>
+          <Icon as={AiOutlineUser} fontSize={30} mr={2}/> Se connecter
+        </Link> */}
+            <Popover>
+              <PopoverTrigger>
+                <Link
+                  href={"/Cart"}
+                  _hover={{
+                    bgColor: "white",
+                    textDecoration: "none",
+                  }}
+                >
+                  {" "}
+                  <Button
+                    _hover={{
+                      bgColor: "white",
+                      color: "cyan.700",
+                      textDecoration: "none",
+                    }}
+                    leftIcon={<Icon as={HiOutlineShoppingBag} fontSize={30} />}
+                    bgColor={"white"}
+                  >
+                    Panier
+                  </Button>
+                </Link>
+              </PopoverTrigger>
+            </Popover>
+          </Flex>
         </Flex>
       </Flex>
     </>

@@ -254,8 +254,8 @@ export default function Carte() {
     const decrement = (Product, quantite) => {
       let Cart = getCart();
       let foundit = Cart.find((p) => p.id == Product.id);
-      if (foundit.quantite == 0) {
-        DeleteProduct(Product)
+      if (foundit.quantite <= 0) {
+        DeleteProduct(foundit)
       }
       foundit.prix =
         parseInt(foundit.prix) -

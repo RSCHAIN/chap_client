@@ -5,6 +5,7 @@ import {
   Button,
   Center,
   Collapse,
+  Spacer,
   Flex,
   Heading,
   IconButton,
@@ -42,14 +43,14 @@ const settings = {
   dots: false,
   infinite: false,
   speed: 2000,
-  slidesToShow: 3,
+  slidesToShow: 4,
   slidesToScroll: 2,
   initialSlide: 0,
   responsive: [
     {
       breakpoint: 1024,
       settings: {
-        slidesToShow: 2,
+        slidesToShow: 4,
         slidesToScroll: 2,
         infinite: false,
         dots: false,
@@ -58,7 +59,7 @@ const settings = {
     {
       breakpoint: 600,
       settings: {
-        slidesToShow: 1,
+        slidesToShow: 2,
         slidesToScroll: 2,
         initialSlide: 2,
       },
@@ -186,20 +187,22 @@ export default function Carousel() {
         <InputBar />
         {isLagerThan768 ? <Navbar></Navbar> : <></>}
         <Box>
-          <Flex fontSize={25} ml={35}>
-            <Text>Home</Text>
+          <Flex  w={"100%"} justifyContent={"space-between"}>
+            <Flex>
+            <Text fontSize={25}>Home</Text>
             <ChevronRightIcon h={10}/>
 
             <Text py={0} fontSize={25}>
               {page}
             </Text>
-            <br />
-          </Flex>
-          <SimpleGrid columns={[1,1,1,2,3]} spacing={10}>
-            {/* {router.asPath.replace('/','')} */}
+            
+            </Flex>
            
-
-            {/* CSS files for react-slick */}
+            
+         
+       
+            <SimpleGrid columns={[1]} spacing={10} alignItems={""}>
+           
             <link
               rel="stylesheet"
               type="text/css"
@@ -211,25 +214,10 @@ export default function Carousel() {
               type="text/css"
               href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
             />
-            <Box
-            >
-              <Button
-                onClick={onToggle}
-                as={Link}
-                href={"#fade"}
-                bgColor={"#08566E"}
-                color={"white"}
-                mt={[10, 10, 10, 0, 0]}
-                ml={[10,10,10,0,0]}
-                w={"150px"}
-                _hover={{textDecoration:'none',bgColor:'#006C47' }}
-              >
-                VOIR PLUS
-              </Button>
-            </Box>
+      
 
-            {/* Left Icon */}
             <Flex>
+
               <IconButton
                 aria-label="left-arrow"
                 colorScheme="messenger"
@@ -244,7 +232,7 @@ export default function Carousel() {
               >
                 <BiLeftArrowAlt />
               </IconButton>
-              {/* Right Icon */}
+      
               <IconButton
                 aria-label="right-arrow"
                 colorScheme="messenger"
@@ -259,98 +247,131 @@ export default function Carousel() {
               >
                 <BiRightArrowAlt />
               </IconButton>
+              <Button
+              display={{base:"none",md:'grid'}}
+                onClick={onToggle}
+                as={Link}
+                href={"#fade"}
+                bgColor={"#08566E"}
+                color={"white"}
+                mt={[10, 10, 10, 0, 0]}
+              
+                w={"150px"}
+                _hover={{textDecoration:'none',bgColor:'#006C47' }}
+              >
+                VOIR PLUS
+              </Button>
             </Flex>
 
-            {/* Slider */}
+            
           </SimpleGrid>
-          <Slider {...settings} ref={(slider) => setSlider(slider)}>
+          </Flex>
+          <Center > <Button
+              display={{base:"grid",md:'none'}}
+                onClick={onToggle}
+                as={Link}
+                href={"#fade"}
+                bgColor={"#08566E"}
+                color={"white"}
+              
+                mb={5}
+                w={"150px"}
+                _hover={{textDecoration:'none',bgColor:'#006C47' }}
+              >
+                VOIR PLUS
+              </Button>
+              </Center>
+          <Slider  {...settings} ref={(slider) => setSlider(slider)}>
             {data.map((data, index) => (
-             <Center key={data.id}>
+            //  <Center key={data.id}>
+            <Box
+            key={data.id}
+              maxW={["70%","70%","70%","70%","70%"]}
+              width={"300px"}
+              height={"400px"}
+              borderWidth="1px"
+              borderRadius="lg"
+              // overflow="hidden"
+            
+              // boxShadow={"2xl"}
+             
+             mt={4}
+              mb={20}
+              // key={}
+              pb={5}
+            >
+              <Box width={"270px"} height={"fit-content"} pt={10} pl={10}>
+                <Image src={data.imageUrl} alt={data.nom} width={"190px"} height={"150px"} maxH={'519px'}maxW={"208px"} />
+              </Box>
+
+              <Box p="6">
                 <Box
-                  maxW={["100%","70%","70%","70%","70%"]}
-                  width={"270px"}
-                  height={"400px"}
-                  borderWidth="1px"
-                  borderRadius="lg"
-                  // overflow="hidden"
-                
-                  // boxShadow={"2xl"}
-                 
-                 mt={4}
-                  mb={20}
-                  // key={}
-                  // pb={5}
+                  mt="1"
+                  fontWeight="semibold"
+                  as="h5"
+                  lineHeight="tight"
+                  noOfLines={3}
+                  minWidth={'280px'}
+                  height={"50px"}
+                  // display={'flex'} 
+                  // justifyContent={'space-between'}
                 >
-                  <Box width={"270px"} height={"fit-content"} pt={10} pl={10}>
-                    <Image src={data.imageUrl} alt={data.nom} width={"208px"} height={"208px"} maxH={'519px'}maxW={"208px"} />
-                  </Box>
-
-                  <Box p="6">
-                    <Box
-                      // mt="1"
-                      fontWeight="semibold"
-                      as="h5"
-                      lineHeight="tight"
-                      noOfLines={3}
-                      minWidth={'280px'}
-                      height={"70px"}
-                      // display={'flex'} 
-                      // justifyContent={'space-between'}
-                    >
-                      <Text noOfLines={2} width={'200px'}>{data.nom}</Text>
-                      <Box position>
-                        {data.prix}
-                        <Box as="span" pl={2} fontSize="sm">
-                          €
-                        </Box>
-                      </Box>
+                  <Text>{data.nom}</Text>
+                  <Box position>
+                    {data.prix}
+                    <Box as="span" pl={2} fontSize="sm">
+                      €
                     </Box>
-
-                    <Box
-                      mt="1"
-                      fontWeight="normal"
-                      lineHeight="tight"
-                      noOfLines={9}
-                      w={"fit-content"}
-                      height={"250px"}
-                    >
-                      {/* <Text>{data.description}</Text> */}
-                      <Button
-                        bgColor={"blue"}
-                        // mt={3}
-                        borderRadius={"66px"}
-                        as={"a"}
-                        onClick={() => {
-                          AddToCart(data),
-                            toast({
-                              title: "PRODUIT AJOUTE",
-
-                              status: "success",
-                              duration: 9000,
-                              isClosable: true,
-                            });
-                        }}
-                        color={"white"}
-                       _hover={{
-                        backgroundColor:' #00FFEF',
-                        color:'#080904 '
-                       }}
-                       leftIcon={<IoMdAddCircleOutline/>}
-                      >
-                        {" "}
-                        Ajouter au panier
-                      </Button>
-                    </Box>
-
                   </Box>
                 </Box>
-              </Center> 
+
+                <Box
+                  mt="1"
+                  fontWeight="normal"
+                  lineHeight="tight"
+                  noOfLines={9}
+                  w={"fit-content"}
+                  height={"250px"}
+                >
+                  <Text>{data.description}</Text>
+                  <Button
+                    bgColor={"blue"}
+                    // mt={3}
+                    borderRadius={"66px"}
+                    as={"a"}
+                    onClick={() => {
+                      AddToCart(data),
+                        toast({
+                          title: "PRODUIT AJOUTE",
+
+                          status: "success",
+                          duration: 9000,
+                          isClosable: true,
+                        });
+                    }}
+                    color={"white"}
+                   _hover={{
+                    backgroundColor:' #00FFEF',
+                    color:'#080904 '
+                   }}
+                   leftIcon={<IoMdAddCircleOutline/>}
+                  >
+                    {" "}
+                    Ajouter au panier
+                  </Button>
+                </Box>
+
+              </Box>
+            </Box>
+              // </Center> 
             ))}
+          
             {/* </SimpleGrid> */}
           </Slider>
-          <Collapse in={isOpen} id={"fade"} animateOpacity>
+         
+          <Collapse in={isOpen} id={"fade"} mt={20} animateOpacity>
             <Center>
-              <Text color={"black"} fontSize={[20,20,30,50,50]}>
+              <Text mb={20}color={"black"} fontSize={[20,20,30,50,50]}>
                 Listes de tous nos produits
               </Text>
             </Center>
@@ -429,6 +450,7 @@ export default function Carousel() {
                 //   </Box>
                 // </Box>
                 <Box
+                key={data.id}
                   maxW={["100%","70%","70%","70%","70%"]}
                   width={"270px"}
                   height={"400px"}
@@ -444,7 +466,7 @@ export default function Carousel() {
                   // pb={5}
                 >
                   <Box width={"270px"} height={"fit-content"} pt={10} pl={10}>
-                    <Image src={data.imageUrl} alt={data.nom} width={"208px"} height={"208px"} maxH={'519px'}maxW={"208px"} />
+                    <Image src={data.imageUrl} alt={data.nom} width={"190px"} height={"150px"} maxH={'519px'}maxW={"208px"} />
                   </Box>
 
                   <Box p="6">
@@ -520,7 +542,7 @@ export default function Carousel() {
           <Heading mt="50%">CHARGEMENT</Heading>
           <Flex mt={10}>
             <Image
-              src="./loading.gif"
+              src="/loading.gif"
               alt="circle loader"
               width={30}
               height={10}
