@@ -105,6 +105,7 @@ useEffect(()=>{
             <Link
               href={"/"}
               mr={3}
+              fontSize={"1rem"}
               _hover={{ textDecoration: "none", color: "#068DA9" }}
             >
               Accueil
@@ -113,6 +114,7 @@ useEffect(()=>{
             <Link
               href={"#"}
               mr={3}
+              fontSize={"1rem"}
               _hover={{ textDecoration: "none", color: "#068DA9" }}
             >
               Qui Sommes-Nous?
@@ -120,6 +122,7 @@ useEffect(()=>{
             <Link
               href={"#"}
               mr={3}
+              fontSize={"1rem"}
               _hover={{ textDecoration: "none", color: "#068DA9" }}
             >
              Nous-Contactez

@@ -98,7 +98,7 @@ function DropdownMenu() {
 
 {cat.map((index, key) => {if(index.id!="Commandes"){
               return(
-                <Text key={index.id}_hover={{textDecoration:'none',color:'#068DA9' }} mr={2} as={Link} href={`/#${index.id}`}>{index.id}</Text>
+                <Text fontSize={"1rem"} key={index.id}_hover={{textDecoration:'none',color:'#068DA9' }} mr={2} as={Link} href={`/#${index.id}`}>{index.id}</Text>
               //   <Menu href={index.id}  closeOnSelect={false}
               //   key={index.id}
               

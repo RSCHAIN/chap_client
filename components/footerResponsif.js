@@ -8,6 +8,7 @@ import {
   Text,
   VisuallyHidden,
   Input,
+  Icon,
   IconButton,
   useColorModeValue,
   Heading,
@@ -17,7 +18,7 @@ import {
   Flex
 } from '@chakra-ui/react';
 import { ReactNode } from 'react';
-import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
+import { FaCcPaypal, FaFacebookF, FaInstagram, FaTwitter, FaYoutube,FaCcVisa, FaCcMastercard } from 'react-icons/fa';
 import { BiMailSend } from 'react-icons/bi';
 
 const Logo = () => {
@@ -128,8 +129,9 @@ export default function FooterR() {
           <Stack align={'flex-start'}>
             <ListHeader>Mode de paiement</ListHeader>
             <Flex>
-            <Image  src="/VISA MASTERCARD.png" alt='visa mastercard' width={'50px'} heigth={'25px'} mr={2} è/>
-          <Image  src="/PAYPAL.png" width={'50px'} heigth={'50px'} alt='paypal'/>
+          <Icon as={FaCcPaypal}  fontSize={50} mr={5}/>
+          <Icon as={FaCcVisa}  fontSize={50} mr={5}/>
+          <Icon as={FaCcMastercard}  fontSize={50} mr={5}/>
             </Flex>
           
          
@@ -156,7 +158,7 @@ export default function FooterR() {
             mt={1}
             color="white"
            _hover={{
-            background:"#1108ba"
+            background:"#08566f"
            }}
            
           >

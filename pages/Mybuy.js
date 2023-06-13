@@ -116,13 +116,14 @@ function Launch({ items, email,id }) {
     return (
       <>
         <Box
-          maxW="fit-content"
+          maxW="300px"
+          maxH={"150px"}
           display={"flex"}
           borderWidth="1px"
           borderRadius="lg"
           overflow="hidden"
         >
-          <Image src={items.imageUrl} alt={items.nom} />
+          <Image src={items.imageUrl} alt={items.nom} h="75px" w="150px"/>
 
           <Box p="6">
             <Box display="flex" alignItems="baseline">

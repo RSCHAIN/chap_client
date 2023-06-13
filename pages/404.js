@@ -26,7 +26,7 @@ import {
   BiLoaderCircle,
   BiRightArrowAlt,
 } from "react-icons/bi";
-import {IoMdAddCircleOutline} from 'react-icons/io'
+import { IoMdAddCircleOutline } from "react-icons/io";
 // And react-slick as our Carousel Lib
 import Slider from "react-slick";
 
@@ -43,7 +43,7 @@ const settings = {
   dots: false,
   infinite: false,
   speed: 2000,
-  slidesToShow: 4,
+  slidesToShow: 8 ,
   slidesToScroll: 2,
   initialSlide: 0,
   responsive: [
@@ -71,7 +71,6 @@ const settings = {
         slidesToScroll: 1,
       },
     },
-   
   ],
 };
 /////////////fetch des datas
@@ -138,9 +137,9 @@ export default function Carousel() {
 
     //connexion et fetch des datas depuis notre db
     const starCountRef = ref(db2, link);
-   
+
     onValue(starCountRef, (snapshot) => {
-      console.log(snapshot.val())
+      console.log(snapshot.val());
       const donnes = snapshot.val();
 
       // const categorie = Object.keys(donnes).map(key=>({
@@ -177,7 +176,7 @@ export default function Carousel() {
 
   const [isLagerThan768] = useMediaQuery("(min-width: 768px)");
   const { isOpen, onToggle } = useDisclosure();
-  const message ="Revenir á l'accueil"
+  const message = "Revenir á l'accueil";
   if (data.length > 0) {
     // console.log(data.length);
     return (
@@ -187,191 +186,214 @@ export default function Carousel() {
         <InputBar />
         {isLagerThan768 ? <Navbar></Navbar> : <></>}
         <Box>
-          <Flex  w={"100%"} justifyContent={"space-between"}>
-            <Flex>
-            <Text fontSize={25}>Home</Text>
-            <ChevronRightIcon h={10}/>
+          <Flex w={"100%"} justifyContent={"space-between"}>
+            <Flex fontSize={"1rem"}>
+              <Text ml={5}>Home</Text>
+              <ChevronRightIcon h={6} />
 
-            <Text py={0} fontSize={25}>
-              {page}
-            </Text>
-            
+              <Text py={0}>{page}</Text>
             </Flex>
-           
-            
-         
-       
+
             <SimpleGrid columns={[1]} spacing={10} alignItems={""}>
-           
-            <link
-              rel="stylesheet"
-              type="text/css"
-              charSet="UTF-8"
-              href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
-            />
-            <link
-              rel="stylesheet"
-              type="text/css"
-              href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
-            />
-      
+              <link
+                rel="stylesheet"
+                type="text/css"
+                charSet="UTF-8"
+                href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+              />
+              <link
+                rel="stylesheet"
+                type="text/css"
+                href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+              />
 
-            <Flex>
-
-              <IconButton
-                aria-label="left-arrow"
-                colorScheme="messenger"
-                borderRadius="full"
-                mr={10}
-                left={side}
-                top={top}
-                transform={"translate(0%, -50%)"}
-                zIndex={2}
-                onClick={() => slider?.slickPrev()}
-                display={{base:"none",md:'grid'}}
-              >
-                <BiLeftArrowAlt />
-              </IconButton>
-      
-              <IconButton
-                aria-label="right-arrow"
-                colorScheme="messenger"
-                borderRadius="full"
-                display={{base:"none",md:'grid'}}
-                ml={20}
-                right={side}
-                top={top}
-                transform={"translate(0%, -50%)"}
-                zIndex={2}
-                onClick={() => slider?.slickNext()}
-              >
-                <BiRightArrowAlt />
-              </IconButton>
-              <Button
-              display={{base:"none",md:'grid'}}
-                onClick={onToggle}
-                as={Link}
-                href={"#fade"}
-                bgColor={"#08566E"}
-                color={"white"}
-                mt={[10, 10, 10, 0, 0]}
-              
-                w={"150px"}
-                _hover={{textDecoration:'none',bgColor:'#006C47' }}
-              >
-                VOIR PLUS
-              </Button>
-            </Flex>
-
-            
-          </SimpleGrid>
-          </Flex>
-          <Center > <Button
-              display={{base:"grid",md:'none'}}
-                onClick={onToggle}
-                as={Link}
-                href={"#fade"}
-                bgColor={"#08566E"}
-                color={"white"}
-              
-                mb={5}
-                w={"150px"}
-                _hover={{textDecoration:'none',bgColor:'#006C47' }}
-              >
-                VOIR PLUS
-              </Button>
-              </Center>
-          <Slider  {...settings} ref={(slider) => setSlider(slider)}>
-            {data.map((data, index) => (
-            //  <Center key={data.id}>
-            <Box
-            key={data.id}
-              maxW={["70%","70%","70%","70%","70%"]}
-              width={"300px"}
-              height={"400px"}
-              borderWidth="1px"
-              borderRadius="lg"
-              // overflow="hidden"
-            
-              // boxShadow={"2xl"}
-             
-             mt={4}
-              mb={20}
-              // key={}
-              pb={5}
-            >
-              <Box width={"270px"} height={"fit-content"} pt={10} pl={10}>
-                <Image src={data.imageUrl} alt={data.nom} width={"190px"} height={"150px"} maxH={'519px'}maxW={"208px"} />
-              </Box>
-
-              <Box p="6">
-                <Box
-                  mt="1"
-                  fontWeight="semibold"
-                  as="h5"
-                  lineHeight="tight"
-                  noOfLines={3}
-                  minWidth={'280px'}
-                  height={"50px"}
-                  // display={'flex'} 
-                  // justifyContent={'space-between'}
+              <Flex mr={10} fontSize={"1rem"}>
+                {/* <Button
+                  display={{ base: "none", md: "grid" }}
+                  onClick={onToggle}
+                  // as={Link}
+                  // opacity={0.5}
+                  href={"#fade"}
+                  bgColor={"cyan.700"}
+                  color={"red"}
+                  mt={[10, 10, 10, 0, 0]}
+                  w={"150px"}
+                  _hover={{ textDecoration: "none", bgColor: "#006C47" }}
+                  leftIcon={<chevronRightIcon fontSize={30}color={"red"} />}
                 >
-                  <Text>{data.nom}</Text>
-                  <Box position>
-                    {data.prix}
-                    <Box as="span" pl={2} fontSize="sm">
-                      €
+                  VOIR PLUS
+                </Button> */}
+               Voir Plus <ChevronRightIcon h={6}/>
+              </Flex>
+            </SimpleGrid>
+          </Flex>
+          <Center>
+            {" "}
+            <Button
+              display={{ base: "grid", md: "none" }}
+              onClick={onToggle}
+              as={Link}
+              href={"#fade"}
+              bgColor={"#08566E"}
+              color={"white"}
+              mb={5}
+              w={"150px"}
+              _hover={{ textDecoration: "none", bgColor: "#006C47" }}
+            >
+              VOIR PLUS
+            </Button>
+          </Center>
+          <Box
+        position={"relative"}
+        height={"fit-content"}
+        width={"100%"}
+        overflow={"hidden"}
+        mb={"2em"}
+      >
+
+<IconButton
+              aria-label="left-arrow"
+              colorScheme="messenger"
+              borderRadius="full"
+              position="absolute"
+              left={side}
+              top={top}
+              transform={"translate(0%, -50%)"}
+              zIndex={2}
+              onClick={() => slider?.slickPrev()}
+              bg={"#fff"}
+            >
+              <BiLeftArrowAlt color="#000" />
+            </IconButton>
+
+            <IconButton
+              aria-label="right-arrow"
+              colorScheme="messenger"
+              borderRadius="full"
+              position="absolute"
+              right={side}
+              top={top}
+              transform={"translate(0%, -50%)"}
+              zIndex={2}
+              onClick={() => slider?.slickNext()}
+              bg={"#fff"}
+            >
+              <BiRightArrowAlt color="#000" />
+            </IconButton>
+
+<Box ml={20}>
+            <Slider {...settings} ref={(slider) => setSlider(slider)}>
+              {data.map((data, index) => (
+                //  <Center key={data.id}>
+                <Box
+                  key={data.id}
+                  maxW={["50%", "50%", "50%", "50%", "50%"]}
+                  width={"300px"}
+                  height={"400px"}
+                  // pr={20}
+                  // borderWidth="1px"
+                  // borderRadius="lg"
+                  // overflow="hidden"
+                  // paddingLeft={20}
+                  // _hover={{
+                  //   borderWidth:"1px",
+                  // borderRadius:"lg",
+                  //  boxShadow:"2xl"
+
+                  // }}
+                  // boxShadow={"2xl"}
+                  mr={10}
+                  mt={4}
+                  mb={20}
+                  // key={}
+                  pb={5}
+                >
+                  <Box width={"270px"} height={"fit-content"} pt={10} pl={10}>
+                    <Image
+                      src={data.imageUrl}
+                      alt={data.nom}
+                      width={"150px"}
+                      height={"150px"}
+                      maxH={"519px"}
+                      maxW={"208px"}
+                    />
+                  </Box>
+
+                  <Box p="6">
+                    <Box
+                    position={"relative"}
+                      mt="1"
+                      fontWeight="semibold"
+                      as="h5"
+                      lineHeight="tight"
+                      noOfLines={3}
+                      minWidth={"180px"}
+                      height={"100px"}
+                      // display={'flex'}
+                      // justifyContent={'space-between'}
+                    >
+                      <Text mb={3} >{data.nom}</Text>
+                      <Box mt={5}   >
+                        {data.prix}
+                        <Box as="span" pl={2} fontSize="sm">
+                          €
+                        </Box>
+                      </Box>
+                    </Box>
+
+                    <Box
+                      mt="1"
+                      fontWeight="normal"
+                      lineHeight="tight"
+                      noOfLines={9}
+                      w={"fit-content"}
+                      height={"250px"}
+                    >
+                      {/* <Text>{data.description}</Text> */}
+                      <Button
+                        
+                        bgColor={"cyan.700"}
+                        mt={10}
+                        borderRadius={"66px"}
+                        as={"a"}
+                        onClick={() => {
+                          AddToCart(data),
+                            toast({
+                              title: "PRODUIT AJOUTE",
+
+                              status: "success",
+                              duration: 9000,
+                              isClosable: true,
+                            });
+                        }}
+                        color={"white"}
+                        _hover={{
+                          backgroundColor: " cyan.900",
+                          color: "white ",
+                        }}
+                        leftIcon={<IoMdAddCircleOutline />}
+                      >
+                        {" "}
+                        Ajouter au panier
+                      </Button>
                     </Box>
                   </Box>
                 </Box>
+                // </Center>
+              ))}
 
-                <Box
-                  mt="1"
-                  fontWeight="normal"
-                  lineHeight="tight"
-                  noOfLines={9}
-                  w={"fit-content"}
-                  height={"250px"}
-                >
-                  <Text>{data.description}</Text>
-                  <Button
-                    bgColor={"blue"}
-                    // mt={3}
-                    borderRadius={"66px"}
-                    as={"a"}
-                    onClick={() => {
-                      AddToCart(data),
-                        toast({
-                          title: "PRODUIT AJOUTE",
-
-                          status: "success",
-                          duration: 9000,
-                          isClosable: true,
-                        });
-                    }}
-                    color={"white"}
-                   _hover={{
-                    backgroundColor:' #00FFEF',
-                    color:'#080904 '
-                   }}
-                   leftIcon={<IoMdAddCircleOutline/>}
-                  >
-                    {" "}
-                    Ajouter au panier
-                  </Button>
-                </Box>
-
-              </Box>
+              {/* </SimpleGrid> */}
+            </Slider>
             </Box>
-              // </Center> 
-            ))}
-          
-            {/* </SimpleGrid> */}
-          </Slider>
-         
+          </Box>
+
           <Collapse in={isOpen} id={"fade"} mt={20} animateOpacity>
             <Center>
-              <Text mb={20}color={"black"} fontSize={[20,20,30,50,50]}>
+              <Text
+                mb={20}
+                color={"black"}
+                fontSize={[20, 20, 15, 20, "1.5rem"]}
+              >
                 Listes de tous nos produits
               </Text>
             </Center>
@@ -450,23 +472,30 @@ export default function Carousel() {
                 //   </Box>
                 // </Box>
                 <Box
-                key={data.id}
-                  maxW={["100%","70%","70%","70%","70%"]}
+                  key={data.id}
+                  maxW={["100%", "70%", "70%", "70%", "70%"]}
                   width={"270px"}
                   height={"400px"}
                   borderWidth="1px"
                   borderRadius="lg"
                   // overflow="hidden"
-                
+
                   // boxShadow={"2xl"}
-                 
-                 mt={4}
+
+                  mt={4}
                   mb={20}
                   // key={}
                   // pb={5}
                 >
                   <Box width={"270px"} height={"fit-content"} pt={10} pl={10}>
-                    <Image src={data.imageUrl} alt={data.nom} width={"190px"} height={"150px"} maxH={'519px'}maxW={"208px"} />
+                    <Image
+                      src={data.imageUrl}
+                      alt={data.nom}
+                      width={"190px"}
+                      height={"150px"}
+                      maxH={"519px"}
+                      maxW={"208px"}
+                    />
                   </Box>
 
                   <Box p="6">
@@ -476,9 +505,9 @@ export default function Carousel() {
                       as="h5"
                       lineHeight="tight"
                       noOfLines={3}
-                      minWidth={'280px'}
+                      minWidth={"280px"}
                       height={"50px"}
-                      // display={'flex'} 
+                      // display={'flex'}
                       // justifyContent={'space-between'}
                     >
                       <Text>{data.nom}</Text>
@@ -498,7 +527,7 @@ export default function Carousel() {
                       w={"fit-content"}
                       height={"250px"}
                     >
-                      <Text>{data.description}</Text>
+                      {/* <Text>{data.description}</Text> */}
                       <Button
                         bgColor={"blue"}
                         // mt={3}
@@ -515,17 +544,16 @@ export default function Carousel() {
                             });
                         }}
                         color={"white"}
-                       _hover={{
-                        backgroundColor:' #00FFEF',
-                        color:'#080904 '
-                       }}
-                       leftIcon={<IoMdAddCircleOutline/>}
+                        _hover={{
+                          backgroundColor: " #00FFEF",
+                          color: "#080904 ",
+                        }}
+                        leftIcon={<IoMdAddCircleOutline />}
                       >
                         {" "}
                         Ajouter au panier
                       </Button>
                     </Box>
-
                   </Box>
                 </Box>
               ))}
@@ -556,7 +584,6 @@ export default function Carousel() {
               }}
             >
               {message}
-              
             </Link>
           </Flex>
         </Box>

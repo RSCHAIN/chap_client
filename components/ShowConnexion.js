@@ -152,7 +152,7 @@ export default function Showconnex() {
                   <Button
                     border={"none"}
                     bgColor={"white"}
-                    _hover={{ bgcolor: "white", color: "#0d6995" }}
+                    _hover={{ bgcolor: "white", color: "red.800" }}
                     onClick={() => logout()}
                   >
                     {" "}
