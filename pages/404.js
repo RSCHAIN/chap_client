@@ -227,7 +227,7 @@ export default function Carousel() {
                   color={"red"}
                   mt={[10, 10, 10, 0, 0]}
                   w={"150px"}
-                  _hover={{ textDecoration: "none", bgColor: "#006C47" }}
+                  _hover={{ textDecoration: "none", bgColor: "#006C47" }} 
                   leftIcon={<chevronRightIcon fontSize={30}color={"red"} />}
                 >
                   VOIR PLUS
