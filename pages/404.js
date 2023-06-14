@@ -48,9 +48,18 @@ const settings = {
   initialSlide: 0,
   responsive: [
     {
+      breakpoint: 1450,
+      settings: {
+        slidesToShow: 5,
+        slidesToScroll: 2,
+        infinite: false,
+        dots: false,
+      },
+    },
+    {
       breakpoint: 1024,
       settings: {
-        slidesToShow: 4,
+        slidesToShow: 3,
         slidesToScroll: 2,
         infinite: false,
         dots: false,
@@ -207,7 +216,7 @@ export default function Carousel() {
                 href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
               />
 
-              <Flex mr={10} fontSize={"1rem"}>
+              <Flex mr={10} fontSize={"1rem"} display={{ base: "none", md: "flex" }}>
                 {/* <Button
                   display={{ base: "none", md: "grid" }}
                   onClick={onToggle}
@@ -229,7 +238,7 @@ export default function Carousel() {
           </Flex>
           <Center>
             {" "}
-            <Button
+            {/* <Button
               display={{ base: "grid", md: "none" }}
               onClick={onToggle}
               as={Link}
@@ -241,7 +250,25 @@ export default function Carousel() {
               _hover={{ textDecoration: "none", bgColor: "#006C47" }}
             >
               VOIR PLUS
-            </Button>
+            </Button> */}
+             <Flex mr={10} fontSize={"1rem"} display={{ base: "flex", md: "none" }}>
+                {/* <Button
+                  display={{ base: "none", md: "grid" }}
+                  onClick={onToggle}
+                  // as={Link}
+                  // opacity={0.5}
+                  href={"#fade"}
+                  bgColor={"cyan.700"}
+                  color={"red"}
+                  mt={[10, 10, 10, 0, 0]}
+                  w={"150px"}
+                  _hover={{ textDecoration: "none", bgColor: "#006C47" }}
+                  leftIcon={<chevronRightIcon fontSize={30}color={"red"} />}
+                >
+                  VOIR PLUS
+                </Button> */}
+               Voir Plus <ChevronRightIcon h={6}/>
+              </Flex>
           </Center>
           <Box
         position={"relative"}
@@ -252,6 +279,7 @@ export default function Carousel() {
       >
 
 <IconButton
+display={{ base: "none", md: "grid" }}
               aria-label="left-arrow"
               colorScheme="messenger"
               borderRadius="full"
@@ -267,6 +295,7 @@ export default function Carousel() {
             </IconButton>
 
             <IconButton
+            display={{ base: "none", md: "grid" }}
               aria-label="right-arrow"
               colorScheme="messenger"
               borderRadius="full"
@@ -281,7 +310,7 @@ export default function Carousel() {
               <BiRightArrowAlt color="#000" />
             </IconButton>
 
-<Box ml={20}>
+<Box ml={{base:0,md:20}}>
             <Slider {...settings} ref={(slider) => setSlider(slider)}>
               {data.map((data, index) => (
                 //  <Center key={data.id}>
@@ -302,7 +331,7 @@ export default function Carousel() {
 
                   // }}
                   // boxShadow={"2xl"}
-                  mr={10}
+                  mx={10}
                   mt={4}
                   mb={20}
                   // key={}
