@@ -38,6 +38,7 @@ export default function Home() {
   const [isLagerThan768] = useMediaQuery("(min-width: 768px)");
   const [cat, setCat] = useState([]);
   useEffect(()=>{
+    localStorage.setItem("index",0)
     const verifPos = localStorage.getItem("location")
     if (verifPos== undefined) {
       localStorage.setItem("location","")

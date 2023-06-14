@@ -113,11 +113,9 @@ export default function Profiles() {
         });
       });
   };
-  const [isLagerThan768] = useMediaQuery("(min-width: 768px)");
   return (
     <>
-     <InputBar />
-        {isLagerThan768 ? <Navbar></Navbar> : <></>}
+    
       <Box
         bgColor={"#FFDEE9"}
         bgGradient={"linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%);"}
@@ -193,7 +191,6 @@ export default function Profiles() {
             </Center>
           </Box>
         </Center>
-        <FooterR />
       </Box>
     </>
   );

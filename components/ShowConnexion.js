@@ -122,7 +122,8 @@ export default function Showconnex() {
             </PopoverBody> */}
               <PopoverBody>
                 <Link
-                  href="/Mybuy"
+                onClick={()=>localStorage.setItem("index",0)}
+                  href="/Commandes/#1"
                   width={"full"}
                   _hover={{
                     textDecoration: "none",
@@ -134,8 +135,9 @@ export default function Showconnex() {
                   </Button>
                 </Link>
                 <Link
-                  href="/profiles"
-                  width={"full"}
+                onClick={()=>localStorage.setItem("index",1)}
+                href="/Commandes/#2"
+                width={"full"}
                   _hover={{
                     textDecoration: "none",
                   }}
