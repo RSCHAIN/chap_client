@@ -188,7 +188,7 @@ export default function Buy() {
       if (!user) {
         router.push("/Choose");
       } 
-    });
+    },[auth,router]);
     Getall();
     setEmail(sessionStorage.getItem("email"));
   }, [setCommandeListe]);
