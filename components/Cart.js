@@ -96,6 +96,7 @@ export default function Carte() {
   const [hours, setHours] = useState();
   const [batiment, setBatiment] = useState("NON DEFINI");
   const [frais, setFrais] = useState();
+  const [dis, setDis] = useState("grid");
   useEffect(() => {
     let PrixT = 0;
     const Cart = localStorage.getItem("Cart");
@@ -108,32 +109,38 @@ export default function Carte() {
       });
       setPrix(PrixT);
     }
-    if (PrixT < 40 || PrixT > 19) {
-      console.log(40 < prix < 60);
-      setFrais((PrixT * 10) / 100);
-    } else {
-      if (PrixT < 51) {
-        setFrais((PrixT * 9) / 100);
+    if (PrixT <20) {
+      setDis("none")
+      
+    }
+    else{
+      setDis("grid")
+      if (PrixT < 40 && PrixT > 19) {
+        console.log(40 < prix < 60);
+        setFrais((PrixT * 10) / 100);
       } else {
-        if (PrixT < 71) {
-          setFrais((PrixT * 8) / 100);
+        if (PrixT < 51) {
+          setFrais((PrixT * 9) / 100);
         } else {
-          if (PrixT < 81) {
-            setFrais((PrixT * 7) / 100);
+          if (PrixT < 71) {
+            setFrais((PrixT * 8) / 100);
           } else {
-            if (PrixT < 91) {
-              setFrais((PrixT * 6) / 100);
+            if (PrixT < 81) {
+              setFrais((PrixT * 7) / 100);
             } else {
-              if (90 < PrixT) {
-                setFrais((PrixT * 5) / 100);
+              if (PrixT < 91) {
+                setFrais((PrixT * 6) / 100);
               } else {
-                setFrais("SOMME INSUFFISANT POUR UNE LIVRAISON");
+                if (90 < PrixT) {
+                  setFrais((PrixT * 5) / 100);
+                } 
               }
             }
           }
         }
       }
     }
+   
     localStorage.setItem("prix", PrixT);
   }, [prix]);
 
@@ -254,15 +261,18 @@ export default function Carte() {
     const decrement = (Product, quantite) => {
       let Cart = getCart();
       let foundit = Cart.find((p) => p.id == Product.id);
-      if (foundit.quantite <= 0) {
+      if (foundit.quantite <= 1) {
         DeleteProduct(foundit)
-      }
-      foundit.prix =
+        console.log("inferieur a 1")
+      }else{
+        foundit.prix =
         parseInt(foundit.prix) -
         parseInt(foundit.prix) / parseInt(foundit.quantite);
       foundit.quantite -= quantite;
       saveCart(Cart);
       router.reload();
+      }
+     
     };
     const increment = (Product, quantite) => {
       let Cart = getCart();
@@ -345,13 +355,13 @@ export default function Carte() {
                       <Button onClick={() => increment(data, 1)}>+</Button>
                     </Flex>
                     <Box mr={20}>
-                      <Text marginTop={1} color={"#E37611"} fontSize={20}>
+                      <Text marginTop={1} color={"red.500"} fontSize={20}>
                         €{data.prix}
                       </Text>
                     </Box>
                     <Flex marginX={2} marginTop={2}>
                       <Icon
-                        color={"#DE2916"}
+                        color={"red.500"}
                         as={FaTrashAlt}
                         fontSize={30}
                         onClick={() => DeleteProduct(data)}
@@ -368,7 +378,7 @@ export default function Carte() {
             boxSizing={"border-box"}
             borderRadius={"9px"}
             width={"fit-content"}
-            backgroundColor={"#E3F4F4"}
+            backgroundColor={"#fff"}
             height={"fit-content"}
             paddingBottom={5}
             marginBottom={[5, 5, 5, 0, 0]}
@@ -376,10 +386,10 @@ export default function Carte() {
             justifyContent={"space-between"}
           >
             <Box marginX={5}>
-              <Heading margin={2}>VALIDATION DE LA COMMANDE</Heading>
+              <Heading margin={2} fontSize={"28px"} fontWeight={700}>VALIDATION DE LA COMMANDE</Heading>
               <RadioGroup>
                 <Accordion>
-                  <AccordionItem>
+                  <AccordionItem display={dis}>
                     <h2>
                       <AccordionButton
                         onClick={() => {
@@ -506,11 +516,11 @@ export default function Carte() {
                                 <AccordionPanel paddingBottom={4}>
                                   <Box margin={2}>
                                     <Button
-                                      bgColor="#E57C23"
+                                      bgColor="cyan.700"
                                       color={"white"}
-                                      _hover={{
-                                        backgroundColor: "#db6d0fad",
-                                      }}
+                                      // _hover={{
+                                      //   backgroundColor: "#db6d0fad",
+                                      // }}
                                       marginRight={3}
                                       onClick={() => saveCommande()}
                                     >
@@ -597,11 +607,11 @@ export default function Carte() {
                                   </Box>
                                   <Box margin={2}>
                                     <Button
-                                      backgroundColor="#E57C23"
+                                      backgroundColor="cyan.700"
                                       color={"white"}
-                                      _hover={{
-                                        backgroundColor: "#db6d0fad",
-                                      }}
+                                      // _hover={{
+                                      //   backgroundColor: "#db6d0fad",
+                                      // }}
                                       marginRight={3}
                                       onClick={() => saveCommande()}
                                     >
@@ -862,11 +872,11 @@ export default function Carte() {
                       </Box>
                       <Box m={5}>
                         <Button
-                          bgColor="#E57C23"
+                          bgColor="cyan.700"
                           color={"white"}
-                          _hover={{
-                            bgColor: "#db6d0fad",
-                          }}
+                          // _hover={{
+                          //   bgColor: "#db6d0fad",
+                          // }}
                           mr={3}
                           onClick={() => saveCommande2()}
                         >
@@ -889,7 +899,7 @@ export default function Carte() {
       <>
         <Center>
           <Flex
-            bgColor={"#F7C29E"}
+            bgColor={"#fff"}
             width={"621px"}
             height={"205px"}
             border={"1px solid #e6e6e6"}

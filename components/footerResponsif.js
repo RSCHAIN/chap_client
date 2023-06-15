@@ -96,7 +96,7 @@ export default function FooterR() {
             textAlign='justify'
             
           >
-            14,Avenue De Bourgogne 91300 Massy
+            14 Avenue, De Bourgogne 91300 Massy
             <br /> Tel : (33)060-057-990-59
             <br />
             E-mail : support@rschain.net
@@ -118,7 +118,7 @@ export default function FooterR() {
           </Stack>
           <Stack align={'flex-start'}>
             <ListHeader>Information</ListHeader>
-            <Link href={'/'}>Home</Link>
+            <Link href={'/'}>Accueil</Link>
             {/* <Link href={'/services'}>Services</Link> */}
             <Link href='/Terms'>Termes et Conditions</Link>
             {/* <Link>Privacy Policy</Link> */}

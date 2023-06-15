@@ -163,10 +163,10 @@ function Launch({ items, email,id }) {
               </Box>
             </Box>
             <Box>
-              <Button bgColor={'red'} _hover={{
+              <Button bgColor={'red.500'} _hover={{
                 bgColor:'#FF6969'
               }} color={'white'} onClick={() => Cancel2(id, "ANNULE")}>
-                ANNULER COMMANDE
+                Annuler
               </Button>
             </Box>
           </Box>

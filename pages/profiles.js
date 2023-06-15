@@ -117,8 +117,9 @@ export default function Profiles() {
     <>
     
       <Box
-        bgColor={"#FFDEE9"}
-        bgGradient={"linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%);"}
+        
+
+      
       >
        
         <Center >
@@ -142,8 +143,8 @@ export default function Profiles() {
                 ml={5}
               />
             </Flex>
-            <Button onClick={() => updatEmail()}>Mise A Jour Email</Button>
-            <Heading pt={5}>Informations Personnelles</Heading>
+         <Center>   <Button onClick={() => updatEmail()} mt={2}bgColor={"cyan.800"} color="white">Enregistrer</Button></Center>
+            <Heading pt={5} fontSize={"28px"} fontWeight={700}>Informations Personnelles</Heading>
             <Flex pt={5}>
               <Text pt={2}>Nom</Text>
               <Input
@@ -151,17 +152,7 @@ export default function Profiles() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 w={"xs"}
-                ml={5}
-              />
-            </Flex>
-            <Flex pt={5}>
-              <Text pt={2}>Addresse</Text>
-              <Input
-                type={"text"}
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-                w={"xs"}
-                ml={5}
+                ml={10}
               />
             </Flex>
             <Flex pt={5}>
@@ -173,9 +164,9 @@ export default function Profiles() {
                 w={"xs"}
                 ml={5}
               />
-            </Flex>
+            </Flex>            
             <Flex pt={5}>
-              <Text pt={2}>Numero De Telephone</Text>
+              <Text pt={2}>Numéro</Text>
               <Input
                 type={"text"}
                 value={number}
@@ -184,9 +175,19 @@ export default function Profiles() {
                 ml={5}
               />
             </Flex>
+            <Flex pt={5}>
+              <Text pt={2}>Addresse</Text>
+              <Input
+                type={"text"}
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                w={"xs"}
+                ml={2}
+              />
+            </Flex>
             <Center>
               <Flex mt={10}>
-                <Button onClick={()=>updateLang()}>Mettre a jour les donnees</Button>
+                <Button onClick={()=>updateLang()} bgColor={"cyan.800"} color="white">Enregistrer</Button>
               </Flex>
             </Center>
           </Box>
