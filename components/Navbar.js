@@ -112,7 +112,8 @@ useEffect(()=>{
             </Link>
             <Menucat/>
             <Link
-              href={"#"}
+
+              href={"/Whoami"}
               mr={3}
               fontSize={"1rem"}
               _hover={{ textDecoration: "none", color: "#068DA9" }}

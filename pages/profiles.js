@@ -75,6 +75,7 @@ export default function Profiles() {
           isClosable: true,
         });
         signOut(auth);
+        localStorage.clear()
   }
 
   const updateLang=async ()=>{
