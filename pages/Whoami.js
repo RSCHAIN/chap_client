@@ -24,7 +24,7 @@ export default function Who() {
           <Image src="logo1.png" width={"500px"} />
           <Box ml={10} mt={20}>
             <Heading>Qui Sommes Nous?</Heading>
-            <Text textAlign={"justify"} fontSize={"1em"}>
+            <Text textAlign={"justify"} fontSize={"1em"} mt={5}>
               {a1} Chap est un produit français qui a été conçu en France et
               développé en Côte d’Ivoire par notre partenaire RSCHAIN. Née(crée)
               dans l’objectif d’améliorer le quotidien des africains de la

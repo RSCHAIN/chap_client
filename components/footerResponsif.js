@@ -129,9 +129,10 @@ export default function FooterR() {
           <Stack align={'flex-start'}>
             <ListHeader>Mode de paiement</ListHeader>
             <Flex>
-          <Icon as={FaCcPaypal}  fontSize={50} mr={5}/>
+          <Icon as={FaCcPaypal} fontSize={50} mr={5}/>
           <Icon as={FaCcVisa}  fontSize={50} mr={5}/>
           <Icon as={FaCcMastercard}  fontSize={50} mr={5}/>
+          
             </Flex>
           
          
