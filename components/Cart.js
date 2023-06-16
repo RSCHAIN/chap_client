@@ -42,6 +42,7 @@ import { useRouter } from "next/router";
 import { FaTrashAlt } from "react-icons/fa";
 import { ref, set, push } from "@firebase/database";
 import { db2 } from "@/FIREBASE/clientApp";
+import { PayPalButtons } from "@paypal/react-paypal-js";
 
 export default function Carte() {
   //braintree
@@ -79,7 +80,13 @@ export default function Carte() {
 
   //   }
   // }
-
+  const [dele, setDele] = useState();
+  // const [conf1, setConf1] = useState();
+  const [conf2, setConf2] = useState();
+  const [conf3, setConf3] = useState();
+  const [conf4, setConf4] = useState();
+  const [conf5, setConf5] = useState("none");
+  const [conf6, setConf6] = useState("none");
   const [cart, setCart] = useState();
   const [lieu, setLieu] = useState(" NON DEFINI");
   const [numero, setNumero] = useState("NON DEFINI ");
@@ -109,12 +116,10 @@ export default function Carte() {
       });
       setPrix(PrixT);
     }
-    if (PrixT <20) {
-      setDis("none")
-      
-    }
-    else{
-      setDis("grid")
+    if (PrixT < 20) {
+      setDis("none");
+    } else {
+      setDis("grid");
       if (PrixT < 40 && PrixT > 19) {
         console.log(40 < prix < 60);
         setFrais((PrixT * 10) / 100);
@@ -133,14 +138,14 @@ export default function Carte() {
               } else {
                 if (90 < PrixT) {
                   setFrais((PrixT * 5) / 100);
-                } 
+                }
               }
             }
           }
         }
       }
     }
-   
+
     localStorage.setItem("prix", PrixT);
   }, [prix]);
 
@@ -151,8 +156,9 @@ export default function Carte() {
       let Cart = JSON.parse(localStorage.getItem("Cart"));
 
       if (
-        (lieu != undefined && lieu != null && lieu.length > 3) ||
-        (ville != undefined && ville != null && ville.length > 3)
+        (lieu != undefined && lieu != null && lieu.length > 3) &&
+        (ville != undefined && ville != null && ville.length > 3)&&
+        ( hours!=undefined && hours != null)
       ) {
         Cart.map((data, index) => {
           push(ref(db2, "Commandes"), {
@@ -200,7 +206,7 @@ export default function Carte() {
       let nom2 = localStorage.name;
       let numero = localStorage.number;
       let date = new Date();
-      if (email != undefined && email != null && email.length > 3) {
+      if (email != undefined && email != null && email.length > 3 &&  hours!=undefined && hours != null) {
         Cart.map((data, index) => {
           push(ref(db2, "Commandes"), {
             productID: data.id,
@@ -262,17 +268,16 @@ export default function Carte() {
       let Cart = getCart();
       let foundit = Cart.find((p) => p.id == Product.id);
       if (foundit.quantite <= 1) {
-        DeleteProduct(foundit)
-        console.log("inferieur a 1")
-      }else{
+        DeleteProduct(foundit);
+        console.log("inferieur a 1");
+      } else {
         foundit.prix =
-        parseInt(foundit.prix) -
-        parseInt(foundit.prix) / parseInt(foundit.quantite);
-      foundit.quantite -= quantite;
-      saveCart(Cart);
-      router.reload();
+          parseInt(foundit.prix) -
+          parseInt(foundit.prix) / parseInt(foundit.quantite);
+        foundit.quantite -= quantite;
+        saveCart(Cart);
+        router.reload();
       }
-     
     };
     const increment = (Product, quantite) => {
       let Cart = getCart();
@@ -386,7 +391,9 @@ export default function Carte() {
             justifyContent={"space-between"}
           >
             <Box marginX={5}>
-              <Heading margin={2} fontSize={"28px"} fontWeight={700}>VALIDATION DE LA COMMANDE</Heading>
+              <Heading margin={2} fontSize={"28px"} fontWeight={700}>
+                VALIDATION DE LA COMMANDE
+              </Heading>
               <RadioGroup>
                 <Accordion>
                   <AccordionItem display={dis}>
@@ -499,6 +506,7 @@ export default function Carte() {
                               <AccordionItem>
                                 <h2>
                                   <AccordionButton
+                                  display={conf3}
                                     onClick={() => {
                                       setLieu(localStorage.getItem("addresse")),
                                         setNumero(
@@ -515,12 +523,47 @@ export default function Carte() {
                                 </h2>
                                 <AccordionPanel paddingBottom={4}>
                                   <Box margin={2}>
+                                    <PayPalButtons
+                                      disabled={dele}
+                                      createOrder={(data, actions) => {
+                                        return actions.order.create({
+                                          purchase_units: [
+                                            {
+                                              amount: {
+                                                value: `${prix + frais}`,
+                                              },
+                                            },
+                                          ],
+                                        });
+                                      }}
+                                      onApprove={(data, actions) => {
+                                        return actions.order
+                                          .capture()
+                                          .then((details) => {
+                                            const name =
+                                              details.payer.name.given_name;
+                                            setDele(true);
+                                            setDis("grid");
+                                            setConf2("none");
+                                            setConf3("grid");
+                                            setConf4("none");
+                                            setConf5("grid");
+                                            setConf6("grid");
+
+                                            alert(
+                                              `Transaction Validée par ${name} \n veuillez CONFIRMER svp `
+                                            );
+                                          });
+                                      }}
+                                    />
                                     <Button
+                                    display={conf6}
                                       bgColor="cyan.700"
                                       color={"white"}
                                       // _hover={{
                                       //   backgroundColor: "#db6d0fad",
                                       // }}
+
                                       marginRight={3}
                                       onClick={() => saveCommande()}
                                     >
@@ -532,7 +575,7 @@ export default function Carte() {
 
                               <AccordionItem>
                                 <h2>
-                                  <AccordionButton>
+                                  <AccordionButton display={conf4}>
                                     <Radio value="2">
                                       {" "}
                                       UTILISER UNE AUTRE ADRESSE
@@ -542,10 +585,11 @@ export default function Carte() {
                                 </h2>
 
                                 <AccordionPanel
+                                
                                   paddingBottom={4}
                                   backgroundColor={"#f"}
                                 >
-                                  <Box display={"flex"}>
+                                  <Box display={conf5}>
                                     <Box>
                                       <FormControl>
                                         <FormLabel>Nom du Receveur</FormLabel>
@@ -606,12 +650,46 @@ export default function Carte() {
                                     </Box>
                                   </Box>
                                   <Box margin={2}>
+                                  <PayPalButtons
+                                      disabled={dele}
+                                      createOrder={(data, actions) => {
+                                        return actions.order.create({
+                                          purchase_units: [
+                                            {
+                                              amount: {
+                                                value: `${prix + frais}`,
+                                              },
+                                            },
+                                          ],
+                                        });
+                                      }}
+                                      onApprove={(data, actions) => {
+                                        return actions.order
+                                          .capture()
+                                          .then((details) => {
+                                            const name =
+                                              details.payer.name.given_name;
+                                            setDele(true);
+                                            setDis("grid");
+                                            setConf2("none");
+                                            setConf3("grid");
+                                            setConf4("grid");
+                                            setConf5("grid");
+                                            setConf6("grid");
+                                            alert(
+                                              `Transaction Validée par ${name} \n veuillez CONFIRMER svp `
+                                            );
+                                          });
+                                      }}
+                                    />
                                     <Button
+                                    display={conf6}
                                       backgroundColor="cyan.700"
                                       color={"white"}
                                       // _hover={{
                                       //   backgroundColor: "#db6d0fad",
                                       // }}
+
                                       marginRight={3}
                                       onClick={() => saveCommande()}
                                     >
@@ -662,7 +740,7 @@ export default function Carte() {
 
                   <AccordionItem>
                     <h2>
-                      <AccordionButton>
+                      <AccordionButton display={conf2}>
                         <Radio value="3"> EN MAGASIN</Radio>
                         <AccordionIcon />
                       </AccordionButton>
@@ -871,7 +949,41 @@ export default function Carte() {
                         </Box>
                       </Box>
                       <Box m={5}>
+                      <PayPalButtons
+                                      disabled={dele}
+                                      createOrder={(data, actions) => {
+                                        return actions.order.create({
+                                          purchase_units: [
+                                            {
+                                              amount: {
+                                                value: `${prix}`,
+                                              },
+                                            },
+                                          ],
+                                        });
+                                      }}
+                                      onApprove={(data, actions) => {
+                                        return actions.order
+                                          .capture()
+                                          .then((details) => {
+                                            const name =
+                                              details.payer.name.given_name;
+                                            setDele(true);
+                                            setDis("none");
+                                            setConf2("none");
+                                            setConf3("none");
+                                            setConf4("none");
+                                            setConf5("none");
+                                            setConf6("grid");
+
+                                            alert(
+                                              `Transaction Validée par ${name} \n veuillez CONFIRMER svp `
+                                            );
+                                          });
+                                      }}
+                                    />
                         <Button
+                        display={conf6}
                           bgColor="cyan.700"
                           color={"white"}
                           // _hover={{
