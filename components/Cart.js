@@ -43,6 +43,7 @@ import { FaTrashAlt } from "react-icons/fa";
 import { ref, set, push } from "@firebase/database";
 import { db2 } from "@/FIREBASE/clientApp";
 import { PayPalButtons } from "@paypal/react-paypal-js";
+import axios from "axios";
 
 export default function Carte() {
   //braintree
@@ -183,6 +184,7 @@ export default function Carte() {
             date: new Date(),
           });
         });
+        
         localStorage.removeItem("Cart");
         setLieu("");
         setNom("");
@@ -207,7 +209,7 @@ export default function Carte() {
       let numero = localStorage.number;
       let date = new Date();
       if (email != undefined && email != null && email.length > 3 &&  hours!=undefined && hours != null) {
-        Cart.map((data, index) => {
+        Cart.map(async (data, index) => {
           push(ref(db2, "Commandes"), {
             productID: data.id,
             nom: data.nom,
@@ -229,7 +231,16 @@ export default function Carte() {
             moment: hours,
             date,
           });
+          await axios.post('/api/sendmail', {
+            message:data.description ,
+            email: email.toString(),
+            subject: data.nom,
+            image:data.imageUrl,
+            price:data.prix,
+            quantity:data.quantite,
+          }).then((response)=>{alert("okay")})
         });
+        
         localStorage.removeItem("Cart");
         setLieu("");
         setNom("");

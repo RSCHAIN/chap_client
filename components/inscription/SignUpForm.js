@@ -28,6 +28,7 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   sendEmailVerification,
+  signOut,
 } from "firebase/auth";
 import { app } from "@/FIREBASE/clientApp";
 import { getFirestore } from "firebase/firestore";
@@ -66,11 +67,13 @@ const SignUpForm = () => {
       await setDoc(_user, Users);
 
       await createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          sendEmailVerification(auth.currentUser);
+        .then(async (userCredential) => {
+          await sendEmailVerification(userCredential.user);
           console.log(userCredential.user);
           setEmail(userCredential.user.email);
           // router.back()
+          signOut(auth);
+          alert("Email sent")
           toast({
             title: "SUCCES.",
             description: "INSCRIPTION VALIDEE",

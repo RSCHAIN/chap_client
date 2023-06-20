@@ -124,7 +124,7 @@ export default function FooterR() {
             {/* <Link>Privacy Policy</Link> */}
        
             <Link href={'https://chapbackofficefournisseur.vercel.app/'}  isExternal>Devenir Fournisseur</Link>
-            <Link href={'https://chapbackofficelivreur-regz6oep6-josiassehi-rschainnet.vercel.app/'}   isExternal>Devenir Livreur</Link>
+            {/* <Link href={'https://chapbackofficelivreur-regz6oep6-josiassehi-rschainnet.vercel.app/'}   isExternal>Devenir Livreur</Link> */}
           </Stack>
           <Stack align={'flex-start'}>
             <ListHeader>Mode de paiement</ListHeader>

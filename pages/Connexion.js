@@ -1,7 +1,7 @@
 "use client";
 import Navbar from "@/components/Navbar";
 import InputBar from "@/components/InputBar";
-import { useMediaQuery } from "@chakra-ui/react";
+import { AlertDescription, AlertIcon, AlertTitle, CloseButton, useMediaQuery } from "@chakra-ui/react";
 import {
   Modal,
   ModalOverlay,
@@ -36,6 +36,7 @@ import {
   getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signOut,
 } from "firebase/auth";
 import { useRouter } from "next/router";
 import { app } from "@/FIREBASE/clientApp";
@@ -43,9 +44,15 @@ import { app } from "@/FIREBASE/clientApp";
 import TransitionExample from "@/components/forgetPassword";
 
 export default function Connexion() {
+  const {
+    isOpen: isVisible,
+    onClose,
+    onOpen,
+  } = useDisclosure({ defaultIsOpen: true })
   const [isLagerThan768] = useMediaQuery("(min-width: 768px)");
   const [password, setPassword] = useState();
   const [email, setEmail] = useState();
+  const [verif,setVerif] = useState();
   const auth = getAuth(app);
   const router = useRouter();
   const toast = useToast();
@@ -54,7 +61,7 @@ export default function Connexion() {
     const currentTime = new Date()
     const timestanp = currentTime.getTime()
     localStorage.setItem("time",timestanp)
-    console.log("okay")
+    // console.log("okay")
   }
 
 
@@ -63,17 +70,34 @@ export default function Connexion() {
     await signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         getTime()
-        setEmail(userCredential.user.email);
-        sessionStorage.setItem("email",userCredential.user.email)
-        // router.back()
-        toast({
-          title: "ACCES AUTORISE.",
-          description: "Bon Achat",
-          status: "success",
-          duration: 3000,
-          isClosable: true,
-        });
-        router.back();
+        if(userCredential.user.emailVerified){
+
+          setEmail(userCredential.user.email);
+          sessionStorage.setItem("email",userCredential.user.email)
+          // router.back()
+          toast({
+            title: "ACCES AUTORISE.",
+            description: "Bon Achat",
+            status: "success",
+            duration: 3000,
+            isClosable: true,
+          });
+          router.back();
+        }else{
+          // sendEmailVerification(auth.currentUser)
+          signOut(auth)
+          // toast({
+          //   title: "Email Non Verifié.",
+          //   description: "Verifier Vos Mails Afin De Confirmer La Transaction",
+          //   status: "error",
+          //   duration: 200000,
+          //   // isClosable: true,
+          // });
+          setVerif(true)
+          // setTimeout( router.reload(), "10000")
+          // router.reload()
+        }
+       
       })
       .catch((error) => {
         // throw error;
@@ -130,7 +154,28 @@ export default function Connexion() {
       <InputBar />
       {isLagerThan768 ? <Navbar></Navbar> : <></>}
       {/* <Navbar /> */}
-      <Center>
+    
+      <Center display={"grid"}>
+      {verif ? ( <Alert status='error' w={'fit-content'}>
+      <AlertIcon />
+      <Box>
+        <AlertTitle>Mail Pas Verifié!</AlertTitle>
+        <AlertDescription>
+         <p> Merci de bien vouloir consulter vos   mails afin de confirmer votre inscription sur notre site </p>
+       
+        </AlertDescription>
+      </Box>
+      <CloseButton
+        alignSelf='flex-start'
+        position='relative'
+        right={-1}
+        top={-1}
+        onClick={onClose}
+      />
+    </Alert>
+  ) : (<></>
+   // <Button onClick={onOpen}>Show Alert</Button>
+  )}
         <Flex
           bgColor={["#dee2e6","#dee2e6","white","white","white"]}
           borderRadius={5}

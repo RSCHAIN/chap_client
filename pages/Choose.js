@@ -48,7 +48,7 @@ export default function Intermediary() {
           
 
 
-          <Box mr={5} _hover={{color:"cyan.700"}}>
+          {/* <Box mr={5} _hover={{color:"cyan.700"}}>
           <Link
            href="https://chapbackofficelivreur-regz6oep6-josiassehi-rschainnet.vercel.app/"
            isExternal
@@ -62,7 +62,7 @@ export default function Intermediary() {
               <Center><Text fontSize={20} fontWeight={'semibold'}>Livreur</Text></Center>
             </Box>
           </Link>
-          </Box>
+          </Box> */}
           <Box  _hover={{color:"cyan.700"}}>
         
           <Link

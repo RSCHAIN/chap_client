@@ -17,6 +17,7 @@ import { app, db } from "@/FIREBASE/clientApp";
 import {
   getAuth,
   onAuthStateChanged,
+  sendEmailVerification,
   signOut,
   updateEmail,
 } from "firebase/auth";
@@ -38,6 +39,7 @@ export default function Profiles() {
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
       if (user) {
+        console.log()
         setUsers(user);
         setEmail(user.email);
         const docRef = doc(db, "Utilisateurs/" + user.email);
@@ -114,6 +116,20 @@ export default function Profiles() {
         });
       });
   };
+  const sendVerif = () => {
+    sendEmailVerification(auth.currentUser)
+  .then(() => {
+    toast({
+      title: "Erreur",
+      description: "Veuillez reesayer apres vous etes reconnecté(e)",
+      status: "error",
+      duration: 10000,
+      isClosable: true,
+    });
+  });
+  }
+ 
+
   return (
     <>
     
@@ -189,6 +205,12 @@ export default function Profiles() {
             <Center>
               <Flex mt={10}>
                 <Button onClick={()=>updateLang()} bgColor={"cyan.800"} color="white">Enregistrer</Button>
+              </Flex>
+            </Center>
+
+            <Center>
+              <Flex mt={10}>
+                <Button onClick={()=>sendVerif()} bgColor={"cyan.800"} color="white">Verifier</Button>
               </Flex>
             </Center>
           </Box>
