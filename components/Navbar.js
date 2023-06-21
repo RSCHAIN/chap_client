@@ -118,7 +118,7 @@ useEffect(()=>{
               fontSize={"1rem"}
               _hover={{ textDecoration: "none", color: "#068DA9" }}
             >
-              Qui Sommes-Nous?
+              Qui sommes-nous?
             </Link>
             <Link
               href={"#"}
@@ -126,7 +126,7 @@ useEffect(()=>{
               fontSize={"1rem"}
               _hover={{ textDecoration: "none", color: "#068DA9" }}
             >
-             Nous-Contactez
+             Nous-contacter
             </Link>
             {/* <Menu isLazy>
               <MenuButton

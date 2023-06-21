@@ -37,7 +37,7 @@ export default function Showconnex() {
   const router = useRouter();
 
   const logout = () => {
-    signOut(auth.currentUser);
+    signOut(auth);
     localStorage.clear()
     router.reload();
   };

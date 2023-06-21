@@ -43,7 +43,7 @@ const settings = {
   dots: false,
   infinite: false,
   speed: 2000,
-  slidesToShow: 8 ,
+  slidesToShow: 8,
   slidesToScroll: 2,
   initialSlide: 0,
   responsive: [
@@ -123,13 +123,18 @@ export default function Carousel() {
 
   useEffect(() => {
     //attribution du link
+    
     const link = router.asPath
       .replace("/", "")
       .toString()
+      .replace("%20", " ")
       .replace("#fade", "")
       .trimEnd()
-      .trimStart()
-      .replace("%20", " ");
+      .replace("%20", " ")
+      .replace("%20", " ")
+      .replace("%C3%A9", "é")
+      .replace("%C3%A9", "é")
+      .replace("%C3%A9", "é");
     // console.log(link);
     setChecker(router.asPath.replace("/", "").toString());
     //attribution du link de la page
@@ -146,7 +151,7 @@ export default function Carousel() {
 
     //connexion et fetch des datas depuis notre db
     const starCountRef = ref(db2, link);
-
+    console.log(link)
     onValue(starCountRef, (snapshot) => {
       console.log(snapshot.val());
       const donnes = snapshot.val();
@@ -216,7 +221,11 @@ export default function Carousel() {
                 href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
               />
 
-              <Flex mr={10} fontSize={"1rem"} display={{ base: "none", md: "flex" }}>
+              <Flex
+                mr={10}
+                fontSize={"1rem"}
+                display={{ base: "none", md: "flex" }}
+              >
                 {/* <Button
                   display={{ base: "none", md: "grid" }}
                   onClick={onToggle}
@@ -232,7 +241,7 @@ export default function Carousel() {
                 >
                   VOIR PLUS
                 </Button> */}
-               Voir Plus <ChevronRightIcon h={6}/>
+                Voir Plus <ChevronRightIcon h={6} />
               </Flex>
             </SimpleGrid>
           </Flex>
@@ -251,8 +260,12 @@ export default function Carousel() {
             >
               VOIR PLUS
             </Button> */}
-             <Flex mr={10} fontSize={"1rem"} display={{ base: "flex", md: "none" }}>
-                {/* <Button
+            <Flex
+              mr={10}
+              fontSize={"1rem"}
+              display={{ base: "flex", md: "none" }}
+            >
+              {/* <Button
                   display={{ base: "none", md: "grid" }}
                   onClick={onToggle}
                   // as={Link}
@@ -267,19 +280,18 @@ export default function Carousel() {
                 >
                   VOIR PLUS
                 </Button> */}
-               Voir Plus <ChevronRightIcon h={6}/>
-              </Flex>
+              Voir Plus <ChevronRightIcon h={6} />
+            </Flex>
           </Center>
           <Box
-        position={"relative"}
-        height={"fit-content"}
-        width={"100%"}
-        overflow={"hidden"}
-        mb={"2em"}
-      >
-
-<IconButton
-display={{ base: "none", md: "grid" }}
+            position={"relative"}
+            height={"fit-content"}
+            width={"100%"}
+            overflow={"hidden"}
+            mb={"2em"}
+          >
+            <IconButton
+              display={{ base: "none", md: "grid" }}
               aria-label="left-arrow"
               colorScheme="messenger"
               borderRadius="full"
@@ -295,7 +307,7 @@ display={{ base: "none", md: "grid" }}
             </IconButton>
 
             <IconButton
-            display={{ base: "none", md: "grid" }}
+              display={{ base: "none", md: "grid" }}
               aria-label="right-arrow"
               colorScheme="messenger"
               borderRadius="full"
@@ -310,109 +322,108 @@ display={{ base: "none", md: "grid" }}
               <BiRightArrowAlt color="#000" />
             </IconButton>
 
-<Box ml={{base:0,md:20}}>
-            <Slider {...settings} ref={(slider) => setSlider(slider)}>
-              {data.map((data, index) => (
-                //  <Center key={data.id}>
-                <Box
-                  key={data.id}
-                  maxW={["50%", "50%", "50%", "50%", "50%"]}
-                  width={"300px"}
-                  height={"400px"}
-                  // pr={20}
-                  // borderWidth="1px"
-                  // borderRadius="lg"
-                  // overflow="hidden"
-                  // paddingLeft={20}
-                  // _hover={{
-                  //   borderWidth:"1px",
-                  // borderRadius:"lg",
-                  //  boxShadow:"2xl"
+            <Box ml={{ base: 0, md: 20 }}>
+              <Slider {...settings} ref={(slider) => setSlider(slider)}>
+                {data.map((data, index) => (
+                  //  <Center key={data.id}>
+                  <Box
+                    key={data.id}
+                    maxW={["50%", "50%", "50%", "50%", "50%"]}
+                    width={"300px"}
+                    height={"400px"}
+                    // pr={20}
+                    // borderWidth="1px"
+                    // borderRadius="lg"
+                    // overflow="hidden"
+                    // paddingLeft={20}
+                    // _hover={{
+                    //   borderWidth:"1px",
+                    // borderRadius:"lg",
+                    //  boxShadow:"2xl"
 
-                  // }}
-                  // boxShadow={"2xl"}
-                  mx={10}
-                  mt={4}
-                  mb={20}
-                  // key={}
-                  pb={5}
-                >
-                  <Box width={"270px"} height={"fit-content"} pt={10} pl={10}>
-                    <Image
-                      src={data.imageUrl}
-                      alt={data.nom}
-                      width={"150px"}
-                      height={"150px"}
-                      maxH={"519px"}
-                      maxW={"208px"}
-                    />
-                  </Box>
+                    // }}
+                    // boxShadow={"2xl"}
+                    mx={10}
+                    mt={4}
+                    mb={20}
+                    // key={}
+                    pb={5}
+                  >
+                    <Box width={"270px"} height={"fit-content"} pt={10} pl={10}>
+                      <Image
+                        src={data.imageUrl}
+                        alt={data.nom}
+                        width={"150px"}
+                        height={"150px"}
+                        maxH={"519px"}
+                        maxW={"208px"}
+                      />
+                    </Box>
 
-                  <Box p="6">
-                    <Box
-                    position={"relative"}
-                      mt="1"
-                      fontWeight="semibold"
-                      as="h5"
-                      lineHeight="tight"
-                      noOfLines={3}
-                      minWidth={"180px"}
-                      height={"100px"}
-                      // display={'flex'}
-                      // justifyContent={'space-between'}
-                    >
-                      <Text mb={3} >{data.nom}</Text>
-                      <Box mt={5}   >
-                        {data.prix}
-                        <Box as="span" pl={2} fontSize="sm">
-                          €
+                    <Box p="6">
+                      <Box
+                        position={"relative"}
+                        mt="1"
+                        fontWeight="semibold"
+                        as="h5"
+                        lineHeight="tight"
+                        noOfLines={3}
+                        minWidth={"180px"}
+                        height={"100px"}
+                        // display={'flex'}
+                        // justifyContent={'space-between'}
+                      >
+                        <Text mb={3}>{data.nom}</Text>
+                        <Box mt={5}>
+                          {data.prix}
+                          <Box as="span" pl={2} fontSize="sm">
+                            €
+                          </Box>
                         </Box>
                       </Box>
-                    </Box>
 
-                    <Box
-                      mt="1"
-                      fontWeight="normal"
-                      lineHeight="tight"
-                      noOfLines={9}
-                      w={"fit-content"}
-                      height={"250px"}
-                    >
-                      {/* <Text>{data.description}</Text> */}
-                      <Button
-                        
-                        bgColor={"cyan.700"}
-                        mt={10}
-                        borderRadius={"66px"}
-                        as={"a"}
-                        onClick={() => {
-                          AddToCart(data),
-                            toast({
-                              title: "PRODUIT AJOUTE",
-
-                              status: "success",
-                              duration: 9000,
-                              isClosable: true,
-                            });
-                        }}
-                        color={"white"}
-                        _hover={{
-                          backgroundColor: " cyan.900",
-                          color: "white ",
-                        }}
-                        leftIcon={<IoMdAddCircleOutline />}
+                      <Box
+                        mt="1"
+                        fontWeight="normal"
+                        lineHeight="tight"
+                        noOfLines={9}
+                        w={"fit-content"}
+                        height={"250px"}
                       >
-                        {" "}
-                        Ajouter au panier
-                      </Button>
+                        {/* <Text>{data.description}</Text> */}
+                        <Button
+                          bgColor={"cyan.700"}
+                          mt={10}
+                          borderRadius={"66px"}
+                          as={"a"}
+                          onClick={() => {
+                            AddToCart(data),
+                              toast({
+                                title: "PRODUIT AJOUTE",
+
+                                status: "success",
+                                duration: 9000,
+                                isClosable: true,
+                              });
+                          }}
+                          color={"white"}
+                          _hover={{
+                            backgroundColor: " cyan.900",
+                            color: "white ",
+                          }}
+                          leftIcon={<IoMdAddCircleOutline />}
+                        >
+                          {" "}
+                          Ajouter au panier
+                        </Button>
+                      </Box>
                     </Box>
                   </Box>
-                </Box>
-                // </Center>
-              ))}
+                  // </Center>
+                ))}
 
-              {/* </SimpleGrid> */}
-            </Slider>
+                {/* </SimpleGrid> */}
+              </Slider>
             </Box>
           </Box>
 
