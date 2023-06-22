@@ -26,10 +26,9 @@ const SliderComponents = () => {
   const top = useBreakpointValue({ base: "90%", md: "50%" });
   const side = useBreakpointValue({ base: "30%", md: "10px" });
   const cards = [
-    "galerie 1.jpg",
-    "galerie 2.jpg",
-    "galerie 3.jpg",
-    "galerie 4.jpg",
+    "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/slide%2FSac-attieke.jpg?alt=media&token=80064c15-2de7-480f-a760-01971cd91f74",
+    "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/slide%2FFB_IMG_1687365402653.jpg?alt=media&token=a6a9a293-5609-4f9a-a058-8164ad48146c",
+    "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/slide%2Fboules.jpg?alt=media&token=06833bbb-fabe-4b94-a212-60f020e157fe",
   ];
   const [isLagerThan768] = useMediaQuery("(min-width: 768px)");
 
@@ -96,7 +95,7 @@ const SliderComponents = () => {
           {cards.map((url, index) => (
             <Box
               key={index}
-              height={{ base: "30vh", md: "70vh" }}
+              height={{ base: "30vh", md: "50vh" }}
               width={"100%"}
               position="relative"
               backgroundPosition="center"

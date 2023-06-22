@@ -123,7 +123,7 @@ export default function Carousel() {
 
   useEffect(() => {
     //attribution du link
-    
+
     const link = router.asPath
       .replace("/", "")
       .toString()
@@ -151,7 +151,7 @@ export default function Carousel() {
 
     //connexion et fetch des datas depuis notre db
     const starCountRef = ref(db2, link);
-    console.log(link)
+    console.log(link);
     onValue(starCountRef, (snapshot) => {
       console.log(snapshot.val());
       const donnes = snapshot.val();
@@ -225,6 +225,8 @@ export default function Carousel() {
                 mr={10}
                 fontSize={"1rem"}
                 display={{ base: "none", md: "flex" }}
+                onClick={onToggle}
+                href={"#fade"}
               >
                 {/* <Button
                   display={{ base: "none", md: "grid" }}
@@ -264,6 +266,8 @@ export default function Carousel() {
               mr={10}
               fontSize={"1rem"}
               display={{ base: "flex", md: "none" }}
+              onClick={onToggle}
+              href={"#fade"}
             >
               {/* <Button
                   display={{ base: "none", md: "grid" }}
@@ -374,7 +378,12 @@ export default function Carousel() {
                         // justifyContent={'space-between'}
                       >
                         <Text mb={3}>{data.nom}</Text>
-                        <Box mt={5}>
+                        <Box
+                          mt={5}
+                          alignItems={"flex-start"}
+                          textColor={"blue"}
+                          color={"blue.400"}
+                        >
                           {data.prix}
                           <Box as="span" pl={2} fontSize="sm">
                             €
@@ -438,7 +447,7 @@ export default function Carousel() {
               </Text>
             </Center>
 
-            <SimpleGrid columns={[1, 1, 1, 3, 4]} spacing={5}>
+            <SimpleGrid columns={[1, 2, 3, 4, 6]} spacing={2}>
               {/* {console.log("data", data)} */}
               {data.map((data, key) => (
                 // <Box
@@ -513,10 +522,9 @@ export default function Carousel() {
                 // </Box>
                 <Box
                   key={data.id}
-                  maxW={["100%", "70%", "70%", "70%", "70%"]}
+                  maxW={["70%", "70%", "70%", "70%", "70%"]}
                   width={"270px"}
                   height={"400px"}
-                  borderWidth="1px"
                   borderRadius="lg"
                   // overflow="hidden"
 
@@ -545,13 +553,15 @@ export default function Carousel() {
                       as="h5"
                       lineHeight="tight"
                       noOfLines={3}
-                      minWidth={"280px"}
+                      width={"270px"}
                       height={"50px"}
+                      
+                      pb={20}
                       // display={'flex'}
                       // justifyContent={'space-between'}
                     >
-                      <Text>{data.nom}</Text>
-                      <Box position>
+                      <Text width={"200px"}>{data.nom}</Text>
+                      <Box textColor={"blue"} color={"blue.400"}  h={5}>
                         {data.prix}
                         <Box as="span" pl={2} fontSize="sm">
                           €
@@ -567,9 +577,9 @@ export default function Carousel() {
                       w={"fit-content"}
                       height={"250px"}
                     >
-                      {/* <Text>{data.description}</Text> */}
+                      <Text>{data.description}</Text>
                       <Button
-                        bgColor={"blue"}
+                        bgColor={"cyan.700"}
                         // mt={3}
                         borderRadius={"66px"}
                         as={"a"}
@@ -585,8 +595,8 @@ export default function Carousel() {
                         }}
                         color={"white"}
                         _hover={{
-                          backgroundColor: " #00FFEF",
-                          color: "#080904 ",
+                          backgroundColor: " cyan.900",
+                          color: "white ",
                         }}
                         leftIcon={<IoMdAddCircleOutline />}
                       >
