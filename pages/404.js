@@ -50,7 +50,7 @@ const settings = {
     {
       breakpoint: 1900,
       settings: {
-        slidesToShow: 4,
+        slidesToShow: 5,
         slidesToScroll: 2,
         infinite: false,
         dots: false,
