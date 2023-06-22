@@ -140,12 +140,16 @@ export default function Carousel() {
     //attribution du link de la page
     setPage(
       router.asPath
-        .replace("/", "")
-        .toString()
-        .replace("#fade", "")
-        .trimEnd()
-        .trimStart()
-        .replace("%20", " ")
+      .replace("/", "")
+      .toString()
+      .replace("%20", " ")
+      .replace("#fade", "")
+      .trimEnd()
+      .replace("%20", " ")
+      .replace("%20", " ")
+      .replace("%C3%A9", "é")
+      .replace("%C3%A9", "é")
+      .replace("%C3%A9", "é")
         .replace("/", ">")
     );
 
