@@ -97,6 +97,7 @@ const SliderComponents = () => {
               key={index}
               height={{ base: "30vh", md: "50vh" }}
               width={"100%"}
+              my={10}
               position="relative"
               backgroundPosition="center"
               backgroundRepeat="no-repeat"

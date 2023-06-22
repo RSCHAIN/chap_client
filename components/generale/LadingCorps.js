@@ -91,7 +91,8 @@ export  function ItemCard ({ item, card }) {
          
         </Link>
         <Box>
-        <Text fontSize={20}  fontWeight={'semibold'} align={'center'}  >{adresse}</Text>
+        <Text fontSize={20}  mb={10}
+          pb={20} fontWeight={'semibold'} align={'center'}  >{adresse}</Text>
         </Box>
         
         </Box>
@@ -170,6 +171,7 @@ export function ContainerCard({ card }) {
           width={"95%"}
           height={"auto"}
           mb={10}
+          pb={10}
           direction={"column"}
           alignItems={"center"}
           justifyContent={"space-between"}
