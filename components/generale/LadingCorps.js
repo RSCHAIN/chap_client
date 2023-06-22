@@ -91,7 +91,7 @@ export  function ItemCard ({ item, card }) {
          
         </Link>
         <Box>
-        <Text fontSize={10}  mb={10}
+        <Text as={"h2"} mb={10}
           pb={20} fontWeight={'semibold'} align={'center'}  >{adresse}</Text>
         </Box>
         
