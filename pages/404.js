@@ -376,15 +376,17 @@ export default function Carousel() {
                         as="h5"
                         lineHeight="tight"
                         noOfLines={3}
-                        minWidth={"180px"}
+                        minWidth={"200px"}
                         height={"100px"}
                         // display={'flex'}
                         // justifyContent={'space-between'}
                       >
                         <Text mb={3}>{data.nom}</Text>
                         <Box
-                          mt={5}
-                          alignItems={"flex-start"}
+                          mt={2}
+                          mb={3}
+                          pb={3}
+                         ml={"80%"}
                           textColor={"blue"}
                           color={"blue.400"}
                         >
@@ -408,6 +410,7 @@ export default function Carousel() {
                           bgColor={"cyan.700"}
                           mt={10}
                           borderRadius={"66px"}
+                          width={"160px"}
                           as={"a"}
                           onClick={() => {
                             AddToCart(data),

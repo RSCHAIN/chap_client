@@ -79,8 +79,8 @@ export  function ItemCard ({ item, card }) {
               bg={"rgba(0, 0, 0, 0.277)"}
             >
               <Text
-                fontWeight={"bold"}
-                fontSize={"2xl"}
+               
+                fontSize={"xl"}
                 color={"#fff"}
                 textAlign={"center"}
               >
@@ -91,7 +91,7 @@ export  function ItemCard ({ item, card }) {
          
         </Link>
         <Box>
-        <Text fontSize={20}  mb={10}
+        <Text fontSize={10}  mb={10}
           pb={20} fontWeight={'semibold'} align={'center'}  >{adresse}</Text>
         </Box>
         
