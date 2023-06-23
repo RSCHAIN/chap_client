@@ -36,7 +36,9 @@ import { ChevronRightIcon, StarIcon } from "@chakra-ui/icons";
 // import Navbar from "@/components/navbar";
 import { useRouter } from "next/router";
 import { db2 } from "@/FIREBASE/clientApp";
-import { ref, onValue } from "firebase/database";
+import { ref, onValue, push } from "firebase/database";
+import { BsTelephoneOutboundFill } from "react-icons/bs";
+import axios from "axios";
 
 // Settings for the slider
 const settings = {
@@ -111,6 +113,48 @@ function AddToCart(Product) {
 }
 ////ffin fonction de la cart
 
+async function saveCommande2(data) {
+  let email = sessionStorage.getItem("email");
+
+  let adress = localStorage.addresse;
+  let nom2 = localStorage.name;
+  let numero = localStorage.number;
+  let date = new Date();
+
+  push(ref(db2, "Commandes"), {
+    productID: data.id,
+    nom: data.nom,
+    description: data.description,
+    quantite: data.quantite,
+    imageUrl: data.imageUrl,
+    organisation: data.organisation,
+    totalPrix: data.prix,
+    initiateur: email,
+    Status: "Demande de Reservation",
+    ville: adress,
+    rue: adress,
+    code_postal: adress,
+    batiment: adress,
+    lieu: adress,
+    receveur: nom2,
+    numero: numero,
+    jour: "A définir",
+    moment: "",
+    date,
+  });
+   axios.post("/api/sendmail", {
+      message: data.description,
+      email: email.toString(),
+      subject: data.nom,
+      image: data.imageUrl,
+      price: data.prix,
+      quantity: "A Definir",
+    })
+    .then((response) => {
+      alert("Vous Allez recevoir un email");
+    }).catch((error)=>{console.log(error) });
+}
+
 export default function Carousel() {
   const [data, setData] = useState([]);
   const [cat, setCat] = useState([]);
@@ -142,23 +186,23 @@ export default function Carousel() {
     //attribution du link de la page
     setPage(
       router.asPath
-      .replace("/", "")
-      .toString()
-      .replace("%20", " ")
-      .replace("#fade", "")
-      .trimEnd()
-      .replace("%20", " ")
-      .replace("%20", " ")
-      .replace("%C3%A9", "é")
-      .replace("%C3%A9", "é")
-      .replace("%C3%A9", "é")
+        .replace("/", "")
+        .toString()
+        .replace("%20", " ")
+        .replace("#fade", "")
+        .trimEnd()
+        .replace("%20", " ")
+        .replace("%20", " ")
+        .replace("%C3%A9", "é")
+        .replace("%C3%A9", "é")
+        .replace("%C3%A9", "é")
         .replace("/", ">")
     );
 
     //connexion et fetch des datas depuis notre db
     console.log(link);
     const starCountRef = ref(db2, link);
-   
+
     onValue(starCountRef, (snapshot) => {
       console.log(snapshot.val());
       const donnes = snapshot.val();
@@ -198,7 +242,7 @@ export default function Carousel() {
   const [isLagerThan768] = useMediaQuery("(min-width: 768px)");
   const { isOpen, onToggle } = useDisclosure();
   const message = "Revenir á l'accueil";
-  if(check !=-1|| checker !=-1  && data.length > 0){ 
+  if (check != -1 && data.length > 0) {
     // console.log(data.length);
     return (
       <>
@@ -389,7 +433,7 @@ export default function Carousel() {
                           mt={2}
                           mb={3}
                           pb={3}
-                         ml={"80%"}
+                          ml={"80%"}
                           textColor={"blue"}
                           color={"blue.400"}
                         >
@@ -565,13 +609,12 @@ export default function Carousel() {
                       noOfLines={3}
                       width={"270px"}
                       height={"50px"}
-                      
                       pb={20}
                       // display={'flex'}
                       // justifyContent={'space-between'}
                     >
                       <Text width={"200px"}>{data.nom}</Text>
-                      <Box textColor={"blue"} color={"blue.400"}  h={5}>
+                      <Box textColor={"blue"} color={"blue.400"} h={5}>
                         {data.prix}
                         <Box as="span" pl={2} fontSize="sm">
                           €
@@ -623,7 +666,7 @@ export default function Carousel() {
         <FooterR />
       </>
     );
-  }else if(product !=-1 && data.length > 0){ 
+  } else if (product != -1 || (checker != -1 && data.length > 0)) {
     // console.log(data.length);
     return (
       <>
@@ -814,7 +857,7 @@ export default function Carousel() {
                           mt={2}
                           mb={3}
                           pb={3}
-                         ml={"80%"}
+                          ml={"80%"}
                           textColor={"blue"}
                           color={"blue.400"}
                         >
@@ -838,27 +881,28 @@ export default function Carousel() {
                           bgColor={"cyan.700"}
                           mt={10}
                           borderRadius={"66px"}
-                          width={"160px"}
+                          width={"fit-content"}
                           as={"a"}
+                          href={`tel:${sessionStorage.getItem("savefrom")}`}
                           onClick={() => {
-                            AddToCart(data),
-                              toast({
-                                title: "PRODUIT AJOUTE",
+                            saveCommande2(data);
+                            toast({
+                              title: "Reservation En Cours De Validation",
 
-                                status: "success",
-                                duration: 9000,
-                                isClosable: true,
-                              });
+                              status: "success",
+                              duration: 10000,
+                              isClosable: true,
+                            });
                           }}
                           color={"white"}
                           _hover={{
                             backgroundColor: " cyan.900",
                             color: "white ",
                           }}
-                          leftIcon={<IoMdAddCircleOutline />}
+                          leftIcon={<BsTelephoneOutboundFill />}
                         >
                           {" "}
-                          Prendre Rendez-vous
+                          Reserver
                         </Button>
                       </Box>
                     </Box>
@@ -990,13 +1034,12 @@ export default function Carousel() {
                       noOfLines={3}
                       width={"270px"}
                       height={"50px"}
-                      
                       pb={20}
                       // display={'flex'}
                       // justifyContent={'space-between'}
                     >
                       <Text width={"200px"}>{data.nom}</Text>
-                      <Box textColor={"blue"} color={"blue.400"}  h={5}>
+                      <Box textColor={"blue"} color={"blue.400"} h={5}>
                         {data.prix}
                         <Box as="span" pl={2} fontSize="sm">
                           €
@@ -1015,28 +1058,30 @@ export default function Carousel() {
                       <Text>{data.description}</Text>
                       <Button
                         bgColor={"cyan.700"}
-                        // mt={3}
+                        mt={10}
                         borderRadius={"66px"}
+                        width={"fit-content"}
                         as={"a"}
+                        href={`tel:${sessionStorage.getItem("savefrom")}`}
                         onClick={() => {
-                          AddToCart(data),
-                            toast({
-                              title: "PRODUIT AJOUTE",
+                          saveCommande2(data);
+                          toast({
+                            title: "Reservation En Cours De Validation",
 
-                              status: "success",
-                              duration: 9000,
-                              isClosable: true,
-                            });
+                            status: "success",
+                            duration: 10000,
+                            isClosable: true,
+                          });
                         }}
                         color={"white"}
                         _hover={{
                           backgroundColor: " cyan.900",
                           color: "white ",
                         }}
-                        leftIcon={<IoMdAddCircleOutline />}
+                        leftIcon={<BsTelephoneOutboundFill />}
                       >
                         {" "}
-                        Ajouter au panier
+                        Reserver
                       </Button>
                     </Box>
                   </Box>
@@ -1048,8 +1093,7 @@ export default function Carousel() {
         <FooterR />
       </>
     );
-  } 
-   else {
+  } else {
     return (
       <Center>
         <Box>
@@ -1075,6 +1119,5 @@ export default function Carousel() {
         </Box>
       </Center>
     );
-  }}
-
-
+  }
+}

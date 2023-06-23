@@ -20,6 +20,7 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 export  function ItemCard ({ item, card }) {
   const [imageUrl,setImageUrl]= useState()
   const [adresse,setAdresse]= useState()
+  const [numero,setNumero]= useState()
   // const location = localStorage.getItem("location").length;
   // const toast = useToast();
   const update = async ()=>{
@@ -31,6 +32,7 @@ export  function ItemCard ({ item, card }) {
       // doc.data() is never undefined for query doc snapshots
       setAdresse(doc.data().adresse);
       setImageUrl(doc.data().imageUrl)
+      setNumero(doc.data().number)
     });
   }
 
@@ -55,6 +57,7 @@ export  function ItemCard ({ item, card }) {
           width={{ base: "80%", md: "30%" }}
           mt={"5"}
           mb={10}
+          onClick={()=>sessionStorage.setItem("savefrom",numero)}
           mr={{ base: "0%", md: "0%" }}
           _hover={{ textDecoration: "none" }}
           href={"/" + card + "/" + item.id}

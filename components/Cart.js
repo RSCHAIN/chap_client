@@ -161,7 +161,7 @@ export default function Carte() {
         (ville != undefined && ville != null && ville.length > 3)&&
         ( hours!=undefined && hours != null)
       ) {
-        Cart.map((data, index) => {
+        Cart.map(async (data, index) => {
           push(ref(db2, "Commandes"), {
             productID: data.id,
             nom: data.nom,
@@ -183,6 +183,14 @@ export default function Carte() {
             moment: hours,
             date: new Date(),
           });
+          await axios.post('/api/sendmail', {
+            message:data.description ,
+            email: email.toString(),
+            subject: `Achat de ${data.nom}`,
+            image:data.imageUrl,
+            price:data.prix,
+            quantity:data.quantite,
+          }).then((response)=>{alert("okay")})
         });
         
         localStorage.removeItem("Cart");
@@ -234,7 +242,7 @@ export default function Carte() {
           await axios.post('/api/sendmail', {
             message:data.description ,
             email: email.toString(),
-            subject: data.nom,
+            subject: `Achat de ${data.nom}`,
             image:data.imageUrl,
             price:data.prix,
             quantity:data.quantite,

@@ -26,9 +26,8 @@ const SliderComponents = () => {
   const top = useBreakpointValue({ base: "90%", md: "50%" });
   const side = useBreakpointValue({ base: "30%", md: "10px" });
   const cards = [
-    "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/slide%2FSac-attieke.jpg?alt=media&token=80064c15-2de7-480f-a760-01971cd91f74",
-    "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/slide%2FFB_IMG_1687365402653.jpg?alt=media&token=a6a9a293-5609-4f9a-a058-8164ad48146c",
-    "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/slide%2Fboules.jpg?alt=media&token=06833bbb-fabe-4b94-a212-60f020e157fe",
+    "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/slide%2Ffb2.png?alt=media&token=122cce02-7a42-4e20-9978-3dc2d75e8af1",
+    "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/slide%2FBakery.png?alt=media&token=574eecdf-7fc8-449f-a8d0-e5f9e14f9325",
   ];
   const [isLagerThan768] = useMediaQuery("(min-width: 768px)");
 
@@ -95,7 +94,7 @@ const SliderComponents = () => {
           {cards.map((url, index) => (
             <Box
               key={index}
-              height={{ base: "24vh", md: "56vh" }}
+              height={{ base: "24vh", md: "56vh"}}
               width={"100%"}
               position="relative"
               backgroundPosition="center"
