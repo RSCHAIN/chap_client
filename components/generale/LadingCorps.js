@@ -54,7 +54,7 @@ export  function ItemCard ({ item, card }) {
           height={"15vh"}
           width={{ base: "80%", md: "30%" }}
           mt={"5"}
-          
+          mb={10}
           mr={{ base: "0%", md: "0%" }}
           _hover={{ textDecoration: "none" }}
           href={"/" + card + "/" + item.id}
