@@ -49,7 +49,7 @@ export  function ItemCard ({ item, card }) {
       <>
         {/* card  */}
         <Box height={["20vh","20vh","20vh","40vh","40vh"]}
-          width={{ base: "30%", md: "30%" }} marginBottom={{base:"5em",md:"45px"}} mr={5} borderRadius={50}>
+          width={{ base: "30%", md: "30%" }} marginBottom={40} mr={5} borderRadius={50}>
         <Link
           height={"15vh"}
           width={{ base: "80%", md: "30%" }}
@@ -91,7 +91,7 @@ export  function ItemCard ({ item, card }) {
          
         </Link>
         <Box>
-        <Text as={"h2"} mb={10}
+        <Text as={"h2"} 
           pb={20} fontWeight={'semibold'} align={'center'}  >{adresse}</Text>
         </Box>
         
