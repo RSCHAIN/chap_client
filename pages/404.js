@@ -16,6 +16,14 @@ import {
   useBreakpointValue,
   useDisclosure,
   useToast,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  ModalFooter,
+  Input,
 } from "@chakra-ui/react";
 import { useMediaQuery } from "@chakra-ui/react";
 import InputBar from "@/components/InputBar";
@@ -159,6 +167,51 @@ async function saveCommande2(data) {
     });
 }
 
+async function saveCommande3(d1, d2) {
+  let email = sessionStorage.getItem("email");
+
+  let adress = localStorage.addresse;
+  let nom2 = localStorage.name;
+  let numero = localStorage.number;
+  let date = new Date();
+
+  if (d1.length != 0 && d2.length != 0) {
+    push(ref(db2, "Reservation"), {
+      initiateur: email,
+      Status: "Demande de Reservation",
+      ville: adress,
+      // rue: adress,
+      // code_postal: adress,
+      // batiment: adress,
+      // lieu: adress,
+      Couverts: d2,
+      numero: numero,
+      // jour: "A définir",
+      // moment: "",
+      date: d1,
+    });
+    alert("réservation effectué");
+  
+  }else{
+    alert ("Veuillez remplir les champs svp");
+  }
+  
+  // axios
+  //   .post("/api/sendmail", {
+  //     message: '',
+  //     email: email.toString(),
+  //     subject: "Reservation",
+  //     image: data.imageUrl,
+  //     price: data.prix,
+  //     quantity: "A Definir",
+  //   })
+  //   .then((response) => {
+  //     alert("Vous Allez recevoir un email");
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //   });
+}
 export default function Carousel() {
   const [data, setData] = useState([]);
   const [cat, setCat] = useState([]);
@@ -168,6 +221,8 @@ export default function Carousel() {
   const [check, setCheck] = useState("");
   const [checker, setChecker] = useState(1);
   const [product, setProduct] = useState();
+  const [data1, setData1] = useState();
+  const [data2, setData2] = useState();
 
   useEffect(() => {
     //attribution du link
@@ -244,7 +299,7 @@ export default function Carousel() {
   ];
 
   const [isLagerThan768] = useMediaQuery("(min-width: 768px)");
-  const { isOpen, onToggle } = useDisclosure();
+  const { isOpen, onToggle, onOpen, onClose } = useDisclosure();
   const message = "Revenir á l'accueil";
   if (check != -1 && data.length > 0) {
     // console.log(data.length);
@@ -1119,17 +1174,18 @@ export default function Carousel() {
               color={"#fff"}
               width={"fit-content"}
               as={"a"}
-              href={`tel:${sessionStorage.getItem("savefrom")}`}
-              onClick={() => {
-                // saveCommande2(data);
-                toast({
-                  title: "Veuillez récupérer le numéro svp ",
-                  description:`Le numero est ${sessionStorage.getItem("savefrom")}`,
-                  status: "success",
-                  duration: 100000,
-                  isClosable: true,
-                });
-              }}
+              // href={`tel:${sessionStorage.getItem("savefrom")}`}
+              // onClick={() => {
+              //   // saveCommande2(data);
+              //   toast({
+              //     title: "Veuillez récupérer le numéro svp ",
+              //     description:`Le numero est ${sessionStorage.getItem("savefrom")}`,
+              //     status: "success",
+              //     duration: 100000,
+              //     isClosable: true,
+              //   });
+              // }}
+              onClick={onOpen}
               bgColor={"cyan.700"}
               _hover={{
                 backgroundColor: " cyan.900",
@@ -1139,6 +1195,58 @@ export default function Carousel() {
             >
               Reserver
             </Button>
+            <Modal isOpen={isOpen} onClose={onClose}>
+              <ModalOverlay />
+              <ModalContent>
+                <ModalHeader>Formulaire de Reservation</ModalHeader>
+                <ModalCloseButton />
+                <ModalBody>
+                  <Flex>
+                    <Text mr={20}>Date & heure: </Text>
+                    <Input
+                      type="datetime-local"
+                      width={"180px"}
+                      
+                      onChange={(e) => setData1(e.target.value)}
+                    />
+                  </Flex>
+                  <br />
+                  <Flex>
+                    <Text mr={5}>Nombre De Couverts : </Text>
+                    <Input
+                      type="number"
+                      width={"180px"}
+                      onChange={(e) => setData2(e.target.value)}
+                    />
+                  </Flex>
+                  <br />
+                  <Flex>
+                    <Text marginRight={10}>Numéro du Restaurant : </Text>
+                    <h3>
+                      <a href={`tel:${sessionStorage.getItem("savefrom")}`}>
+                        {sessionStorage.getItem("savefrom")}
+                      </a>
+                    </h3>
+                  </Flex>
+                </ModalBody>
+
+                <ModalFooter>
+                  {/* <Button colorScheme="ghost" mr={3} onClick={onClose}>
+                    Annuler
+                  </Button> */}
+                 
+                  <Button
+                    bgColor={"cyan.700"}
+                    color={"white"}
+                    _hover={{ bgColor: "cyan.900" }}
+                    onClick={() => {saveCommande3(data1, data2),
+                  setData1(""),setData2("")}}
+                  >
+                    Valider
+                  </Button>
+                </ModalFooter>
+              </ModalContent>
+            </Modal>
             <SimpleGrid columns={[1]} spacing={10} alignItems={""}>
               <link
                 rel="stylesheet"
@@ -1342,13 +1450,13 @@ export default function Carousel() {
                           href={`tel:${sessionStorage.getItem("savefrom")}`}
                           onClick={() => {
                             AddToCart(data),
-                            toast({
-                              title: "PRODUIT AJOUTE",
+                              toast({
+                                title: "PRODUIT AJOUTE",
 
-                              status: "success",
-                              duration: 9000,
-                              isClosable: true,
-                            });
+                                status: "success",
+                                duration: 9000,
+                                isClosable: true,
+                              });
                           }}
                           color={"white"}
                           _hover={{
