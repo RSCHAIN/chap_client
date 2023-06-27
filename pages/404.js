@@ -26,7 +26,7 @@ import {
   BiLoaderCircle,
   BiRightArrowAlt,
 } from "react-icons/bi";
-import { IoMdAddCircleOutline } from "react-icons/io";
+import { IoMdAddCircle, IoMdAddCircleOutline } from "react-icons/io";
 // And react-slick as our Carousel Lib
 import Slider from "react-slick";
 
@@ -142,7 +142,8 @@ async function saveCommande2(data) {
     moment: "",
     date,
   });
-   axios.post("/api/sendmail", {
+  axios
+    .post("/api/sendmail", {
       message: data.description,
       email: email.toString(),
       subject: data.nom,
@@ -152,7 +153,10 @@ async function saveCommande2(data) {
     })
     .then((response) => {
       alert("Vous Allez recevoir un email");
-    }).catch((error)=>{console.log(error) });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 }
 
 export default function Carousel() {
@@ -1093,7 +1097,7 @@ export default function Carousel() {
         <FooterR />
       </>
     );
-  }  else if (  checker != -1 && data.length > 0) {
+  } else if (checker != -1 && data.length > 0) {
     // console.log(data.length);
     return (
       <>
@@ -1109,7 +1113,32 @@ export default function Carousel() {
 
               <Text py={0}>{page}</Text>
             </Flex>
-
+            <Button
+              marginTop={2}
+              // backgroundColor={"#2480f0"}
+              color={"#fff"}
+              width={"fit-content"}
+              as={"a"}
+              href={`tel:${sessionStorage.getItem("savefrom")}`}
+              onClick={() => {
+                // saveCommande2(data);
+                toast({
+                  title: "Veuillez récupérer le numéro svp ",
+                  description:`Le numero est ${sessionStorage.getItem("savefrom")}`,
+                  status: "success",
+                  duration: 100000,
+                  isClosable: true,
+                });
+              }}
+              bgColor={"cyan.700"}
+              _hover={{
+                backgroundColor: " cyan.900",
+                color: "white ",
+              }}
+              leftIcon={<BsTelephoneOutboundFill />}
+            >
+              Reserver
+            </Button>
             <SimpleGrid columns={[1]} spacing={10} alignItems={""}>
               <link
                 rel="stylesheet"
@@ -1144,7 +1173,7 @@ export default function Carousel() {
                   leftIcon={<chevronRightIcon fontSize={30}color={"red"} />}
                 >
                   VOIR PLUS
-                </Button> */}
+                </Button>  */}
                 Voir Plus <ChevronRightIcon h={6} />
               </Flex>
             </SimpleGrid>
@@ -1312,12 +1341,12 @@ export default function Carousel() {
                           as={"a"}
                           href={`tel:${sessionStorage.getItem("savefrom")}`}
                           onClick={() => {
-                            saveCommande2(data);
+                            AddToCart(data),
                             toast({
-                              title: "Reservation En Cours De Validation",
+                              title: "PRODUIT AJOUTE",
 
                               status: "success",
-                              duration: 10000,
+                              duration: 9000,
                               isClosable: true,
                             });
                           }}
@@ -1326,10 +1355,10 @@ export default function Carousel() {
                             backgroundColor: " cyan.900",
                             color: "white ",
                           }}
-                          leftIcon={<BsTelephoneOutboundFill />}
+                          leftIcon={<IoMdAddCircle />}
                         >
                           {" "}
-                          Reserver
+                          Commander
                         </Button>
                       </Box>
                     </Box>
@@ -1520,7 +1549,7 @@ export default function Carousel() {
         <FooterR />
       </>
     );
-  }else {
+  } else {
     return (
       <Center>
         <Box>

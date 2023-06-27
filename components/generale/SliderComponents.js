@@ -59,7 +59,7 @@ const SliderComponents = () => {
           <>
             <IconButton
               aria-label="left-arrow"
-              colorScheme="messenger"
+              // colorScheme="messenger"
               borderRadius="full"
               position="absolute"
               left={side}
@@ -74,7 +74,7 @@ const SliderComponents = () => {
 
             <IconButton
               aria-label="right-arrow"
-              colorScheme="messenger"
+              // colorScheme="messenger"
               borderRadius="full"
               position="absolute"
               right={side}
@@ -97,7 +97,7 @@ const SliderComponents = () => {
             <Box
               key={index}
               height={{ base: "24vh", md: "56vh"}}
-              width={"100%"}
+              width={"80%"}
               position="relative"
               backgroundPosition="center"
               backgroundRepeat="no-repeat"
