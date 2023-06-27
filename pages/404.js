@@ -666,7 +666,434 @@ export default function Carousel() {
         <FooterR />
       </>
     );
-  } else if (product != -1 || (checker != -1 && data.length > 0)) {
+  } else if (product != -1 && data.length > 0) {
+    // console.log(data.length);
+    return (
+      <>
+        {/* <FirstNav/>
+    <Navbar/> */}
+        <InputBar />
+        {isLagerThan768 ? <Navbar></Navbar> : <></>}
+        <Box>
+          <Flex w={"100%"} justifyContent={"space-between"}>
+            <Flex fontSize={"1rem"}>
+              <Text ml={5}>Home</Text>
+              <ChevronRightIcon h={6} />
+
+              <Text py={0}>{page}</Text>
+            </Flex>
+
+            <SimpleGrid columns={[1]} spacing={10} alignItems={""}>
+              <link
+                rel="stylesheet"
+                type="text/css"
+                charSet="UTF-8"
+                href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+              />
+              <link
+                rel="stylesheet"
+                type="text/css"
+                href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+              />
+
+              <Flex
+                mr={10}
+                fontSize={"1rem"}
+                display={{ base: "none", md: "flex" }}
+                onClick={onToggle}
+                href={"#fade"}
+              >
+                {/* <Button
+                  display={{ base: "none", md: "grid" }}
+                  onClick={onToggle}
+                  // as={Link}
+                  // opacity={0.5}
+                  href={"#fade"}
+                  bgColor={"cyan.700"}
+                  color={"red"}
+                  mt={[10, 10, 10, 0, 0]}
+                  w={"150px"}
+                  _hover={{ textDecoration: "none", bgColor: "#006C47" }} 
+                  leftIcon={<chevronRightIcon fontSize={30}color={"red"} />}
+                >
+                  VOIR PLUS
+                </Button> */}
+                Voir Plus <ChevronRightIcon h={6} />
+              </Flex>
+            </SimpleGrid>
+          </Flex>
+          <Center>
+            {" "}
+            {/* <Button
+              display={{ base: "grid", md: "none" }}
+              onClick={onToggle}
+              as={Link}
+              href={"#fade"}
+              bgColor={"#08566E"}
+              color={"white"}
+              mb={5}
+              w={"150px"}
+              _hover={{ textDecoration: "none", bgColor: "#006C47" }}
+            >
+              VOIR PLUS
+            </Button> */}
+            <Flex
+              mr={10}
+              fontSize={"1rem"}
+              display={{ base: "flex", md: "none" }}
+              onClick={onToggle}
+              href={"#fade"}
+            >
+              {/* <Button
+                  display={{ base: "none", md: "grid" }}
+                  onClick={onToggle}
+                  // as={Link}
+                  // opacity={0.5}
+                  href={"#fade"}
+                  bgColor={"cyan.700"}
+                  color={"red"}
+                  mt={[10, 10, 10, 0, 0]}
+                  w={"150px"}
+                  _hover={{ textDecoration: "none", bgColor: "#006C47" }}
+                  leftIcon={<chevronRightIcon fontSize={30}color={"red"} />}
+                >
+                  VOIR PLUS
+                </Button> */}
+              Voir Plus <ChevronRightIcon h={6} />
+            </Flex>
+          </Center>
+          <Box
+            position={"relative"}
+            height={"fit-content"}
+            width={"100%"}
+            overflow={"hidden"}
+            mb={"2em"}
+          >
+            <IconButton
+              display={{ base: "none", md: "grid" }}
+              aria-label="left-arrow"
+              colorScheme="messenger"
+              borderRadius="full"
+              position="absolute"
+              left={side}
+              top={top}
+              transform={"translate(0%, -50%)"}
+              zIndex={2}
+              onClick={() => slider?.slickPrev()}
+              bg={"#fff"}
+            >
+              <BiLeftArrowAlt color="#000" />
+            </IconButton>
+
+            <IconButton
+              display={{ base: "none", md: "grid" }}
+              aria-label="right-arrow"
+              colorScheme="messenger"
+              borderRadius="full"
+              position="absolute"
+              right={side}
+              top={top}
+              transform={"translate(0%, -50%)"}
+              zIndex={2}
+              onClick={() => slider?.slickNext()}
+              bg={"#fff"}
+            >
+              <BiRightArrowAlt color="#000" />
+            </IconButton>
+
+            <Box ml={{ base: 0, md: 20 }}>
+              <Slider {...settings} ref={(slider) => setSlider(slider)}>
+                {data.map((data, index) => (
+                  //  <Center key={data.id}>
+                  <Box
+                    key={data.id}
+                    maxW={["50%", "50%", "50%", "50%", "50%"]}
+                    width={"300px"}
+                    height={"400px"}
+                    // pr={20}
+                    // borderWidth="1px"
+                    // borderRadius="lg"
+                    // overflow="hidden"
+                    // paddingLeft={20}
+                    // _hover={{
+                    //   borderWidth:"1px",
+                    // borderRadius:"lg",
+                    //  boxShadow:"2xl"
+
+                    // }}
+                    // boxShadow={"2xl"}
+                    mx={10}
+                    mt={4}
+                    mb={20}
+                    // key={}
+                    pb={5}
+                  >
+                    <Box width={"270px"} height={"fit-content"} pt={10} pl={10}>
+                      <Image
+                        src={data.imageUrl}
+                        alt={data.nom}
+                        width={"150px"}
+                        height={"150px"}
+                        maxH={"519px"}
+                        maxW={"208px"}
+                      />
+                    </Box>
+
+                    <Box p="6">
+                      <Box
+                        position={"relative"}
+                        mt="1"
+                        fontWeight="semibold"
+                        as="h5"
+                        lineHeight="tight"
+                        noOfLines={3}
+                        minWidth={"200px"}
+                        height={"100px"}
+                        // display={'flex'}
+                        // justifyContent={'space-between'}
+                      >
+                        <Text mb={3}>{data.nom}</Text>
+                        <Box
+                          mt={2}
+                          mb={3}
+                          pb={3}
+                          ml={"80%"}
+                          textColor={"blue"}
+                          color={"blue.400"}
+                        >
+                          {data.prix}
+                          <Box as="span" pl={2} fontSize="sm">
+                            €
+                          </Box>
+                        </Box>
+                      </Box>
+
+                      <Box
+                        mt="1"
+                        fontWeight="normal"
+                        lineHeight="tight"
+                        noOfLines={9}
+                        w={"fit-content"}
+                        height={"250px"}
+                      >
+                        {/* <Text>{data.description}</Text> */}
+                        <Button
+                          bgColor={"cyan.700"}
+                          mt={10}
+                          borderRadius={"66px"}
+                          width={"fit-content"}
+                          as={"a"}
+                          href={`tel:${sessionStorage.getItem("savefrom")}`}
+                          onClick={() => {
+                            saveCommande2(data);
+                            toast({
+                              title: "Reservation En Cours De Validation",
+
+                              status: "success",
+                              duration: 10000,
+                              isClosable: true,
+                            });
+                          }}
+                          color={"white"}
+                          _hover={{
+                            backgroundColor: " cyan.900",
+                            color: "white ",
+                          }}
+                          leftIcon={<BsTelephoneOutboundFill />}
+                        >
+                          {" "}
+                          Prendre Rendez-Vous
+                        </Button>
+                      </Box>
+                    </Box>
+                  </Box>
+                  // </Center>
+                ))}
+
+                {/* </SimpleGrid> */}
+              </Slider>
+            </Box>
+          </Box>
+
+          <Collapse in={isOpen} id={"fade"} mt={20} animateOpacity>
+            <Center>
+              <Text
+                mb={20}
+                color={"black"}
+                fontSize={[20, 20, 15, 20, "1.5rem"]}
+              >
+                Listes de tous nos produits
+              </Text>
+            </Center>
+
+            <SimpleGrid columns={[1, 2, 3, 4, 6]} spacing={2}>
+              {/* {console.log("data", data)} */}
+              {data.map((data, key) => (
+                // <Box
+                //   key={data.id}
+                //   maxW={["100%","70%","70%","70%","70%"]}
+                //   width={"full"}
+                //   height={"fit-content"}
+                //   borderWidth="1px"
+                //   borderRadius="lg"
+                //   // overflow="hidden"
+
+                //   // boxShadow={"2xl"}
+                //   ml={5}
+                //   mb={20}
+                //   pb={5}
+                // >
+                //   <Box width={"300px"} height={"200px"} pt={10} pl={10}>
+                //     <Image src={data.imageUrl} alt={data.nom} maxH={'175px'}maxW={"150px"} />
+                //   </Box>
+
+                //   <Box p="6">
+                //     <Box
+                //       mt="15"
+                //       fontWeight="semibold"
+                //       as="h5"
+                //       lineHeight="tight"
+                //       noOfLines={2}
+                //       w={"179px"}
+                //       height={"50px"}
+                //     >
+                //       {data.nom}
+                //     </Box>
+
+                //     <Box
+                //       fontWeight="normal"
+                //       lineHeight="tight"
+                //       noOfLines={2}
+                //       w={"fit-content"}
+                //       height={"50px"}
+                //     >
+                //       <Text>{data.description}</Text>
+                //     </Box>
+                //     <Box fontWeight={'bold'}>
+                //       {data.prix}
+                //       <Box as="span" color="gray.600" pl={2} fontSize="sm">
+                //        €
+                //       </Box>
+                //     </Box>
+
+                //     <Box>
+                //       <Button
+                //         bgColor={"blue"}
+                //         mt={3}
+                //         borderRadius={"66px"}
+                //         onClick={() => {
+                //           AddToCart(data),
+                //             toast({
+                //               title: "PRODUIT AJOUTE",
+
+                //               status: "success",
+                //               duration: 9000,
+                //               isClosable: true,
+                //             });
+                //         }}
+                //         color={"white"}
+                //       >
+                //         {" "}
+                //         Ajouter au panier
+                //       </Button>
+                //     </Box>
+                //   </Box>
+                // </Box>
+                <Box
+                  key={data.id}
+                  maxW={["70%", "70%", "70%", "70%", "70%"]}
+                  width={"270px"}
+                  height={"400px"}
+                  borderRadius="lg"
+                  // overflow="hidden"
+
+                  // boxShadow={"2xl"}
+
+                  mt={4}
+                  mb={20}
+                  // key={}
+                  // pb={5}
+                >
+                  <Box width={"270px"} height={"fit-content"} pt={10} pl={10}>
+                    <Image
+                      src={data.imageUrl}
+                      alt={data.nom}
+                      width={"190px"}
+                      height={"150px"}
+                      maxH={"519px"}
+                      maxW={"208px"}
+                    />
+                  </Box>
+
+                  <Box p="6">
+                    <Box
+                      mt="1"
+                      fontWeight="semibold"
+                      as="h5"
+                      lineHeight="tight"
+                      noOfLines={3}
+                      width={"270px"}
+                      height={"50px"}
+                      pb={20}
+                      // display={'flex'}
+                      // justifyContent={'space-between'}
+                    >
+                      <Text width={"200px"}>{data.nom}</Text>
+                      <Box textColor={"blue"} color={"blue.400"} h={5}>
+                        {data.prix}
+                        <Box as="span" pl={2} fontSize="sm">
+                          €
+                        </Box>
+                      </Box>
+                    </Box>
+
+                    <Box
+                      mt="1"
+                      fontWeight="normal"
+                      lineHeight="tight"
+                      noOfLines={9}
+                      w={"fit-content"}
+                      height={"250px"}
+                    >
+                      <Text>{data.description}</Text>
+                      <Button
+                        bgColor={"cyan.700"}
+                        mt={10}
+                        borderRadius={"66px"}
+                        width={"fit-content"}
+                        as={"a"}
+                        href={`tel:+31${sessionStorage.getItem("savefrom")}`}
+                        onClick={() => {
+                          saveCommande2(data);
+                          toast({
+                            title: "Reservation En Cours De Validation",
+
+                            status: "success",
+                            duration: 10000,
+                            isClosable: true,
+                          });
+                        }}
+                        color={"white"}
+                        _hover={{
+                          backgroundColor: " cyan.900",
+                          color: "white ",
+                        }}
+                        leftIcon={<BsTelephoneOutboundFill />}
+                      >
+                        {" "}
+                        Prendre Rendez-Vous
+                      </Button>
+                    </Box>
+                  </Box>
+                </Box>
+              ))}
+            </SimpleGrid>
+          </Collapse>
+        </Box>
+        <FooterR />
+      </>
+    );
+  }  else if (  checker != -1 && data.length > 0) {
     // console.log(data.length);
     return (
       <>
@@ -1093,7 +1520,7 @@ export default function Carousel() {
         <FooterR />
       </>
     );
-  } else {
+  }else {
     return (
       <Center>
         <Box>

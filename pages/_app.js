@@ -3,10 +3,11 @@ import { PayPalScriptProvider } from '@paypal/react-paypal-js'
 import * as React from 'react'
 export default function App({ Component, pageProps }) {
   const initialOptions = {
-    clientId: "AQJxbcrdNZKjU6mHuyC1q88-tQmj-Ghy097rriW2k3Gvs8QeD0sdRYUK-IWlAmvBrRE2TNvK9rN6U74o",
+    clientId:"ARcXRm974YVZmWeSX092RZm8pxtgQ4K0tzeXGsBO8-yRqO1DGwRxQweNKGnQKBsgJ0ub8IW-SQAfOtWC",
     currency: "EUR",
     intent: "capture",
 };
+console.log(typeof(initialOptions.clientId))
   return(
     <ChakraProvider>
          <PayPalScriptProvider options={initialOptions}>

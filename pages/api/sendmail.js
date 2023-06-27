@@ -4,10 +4,6 @@ export default function handler(req, res) {
   const email = process.env.EMAIL;
   const pass = process.env.EMAIL_PASS;
 
-  console.log(email, pass);
-  console.log(req.body.email);
-  console.log(req.body.subject);
-  console.log(req.body.message);
   const message = {
     from: email,
     to: req.body.email,
@@ -38,7 +34,7 @@ export default function handler(req, res) {
 </div>
    
    
-   </div> <br/> pour plus de details veuillez nous joindre a l'adresse: <a href="mailto:support@rschain.net">support@rschain.net </a></td></tr></table> </td></tr></table> </td></tr></table> </td></tr></table> </body></html>`,
+   </div> <br/> pour plus de details veuillez nous joindre a l'adresse: <a href="mailto:srschain@gmail.com">srschain@gmail.com </a></td></tr></table> </td></tr></table> </td></tr></table> </td></tr></table> </body></html>`,
   };
   const message2 = {
     from: email,

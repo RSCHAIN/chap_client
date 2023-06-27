@@ -7,6 +7,7 @@ const nextConfig = {
         "i.dummyjson.com",
     ],
 },
+
 }
 
 module.exports = nextConfig
