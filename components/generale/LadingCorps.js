@@ -6,7 +6,11 @@ import {
   Heading,
   Link,
   Text,
-
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  AccordionIcon,
 } from "@chakra-ui/react";
 import React, { useState, useEffect, useRef } from "react";
 
@@ -188,7 +192,11 @@ export function ContainerCard({ card }) {
             alignItems={"center"}
             justifyContent={"space-between"}
           >
-            <Heading
+             <AccordionItem   height={"auto"}
+            width={"100%"}>
+    
+      <AccordionButton>
+      <Heading
               height={"auto"}
               id={card.id}
               width={"100%"}
@@ -199,18 +207,11 @@ export function ContainerCard({ card }) {
               {card.id}
              
             </Heading>
-            {/* <Link
-                          href={card.link}
-                          _hover={{textDecoration : 'none'}}
-                      >
-                          <Button rightIcon={<ArrowForwardIcon />} colorScheme='#08566f' variant='outline'>
-                              Voir Plus
-                          </Button>
-                      </Link> */}
-          </Flex>
-  
-          {/* contient les card's  */}
-          <Flex
+        <AccordionIcon />
+      </AccordionButton>
+   
+    <AccordionPanel pb={4}>
+    <Flex
             height={"auto"}
             width={"100%"}
             flexWrap={"wrap"}
@@ -226,6 +227,21 @@ export function ContainerCard({ card }) {
             ))
             }
           </Flex>
+    </AccordionPanel>
+  </AccordionItem>
+           
+            {/* <Link
+                          href={card.link}
+                          _hover={{textDecoration : 'none'}}
+                      >
+                          <Button rightIcon={<ArrowForwardIcon />} colorScheme='#08566f' variant='outline'>
+                              Voir Plus
+                          </Button>
+                      </Link> */}
+          </Flex>
+  
+          {/* contient les card's  */}
+         
         </Flex>
       </>
     );
@@ -305,11 +321,13 @@ const LadingCorps = () => {
             pb={20}
             justifyContent={"center"}
           >
+            <Accordion  height={"auto"}
+            width={"100%"}>
             {cat.map((card, key) => 
             {
               // console.log('card',card)
               
-              if (card.id!="Commandes") {
+              if (card.id!="Commandes" && card.id!="Reservation") {
                return (
                   <ContainerCard key={key} card={card}></ContainerCard>
                 )
@@ -317,6 +335,7 @@ const LadingCorps = () => {
           }
             
             )}
+            </Accordion>
           </Flex>
         </Box>
       </Center>
