@@ -96,7 +96,7 @@ function DropdownMenu() {
   return (
     <>
 
-{cat.map((index, key) => {if(index.id!="Commandes"){
+{cat.map((index, key) => {if(index.id!="Commandes" && index.id!="Reservation"){
               return(
                 <Text fontSize={"1rem"} key={index.id}_hover={{textDecoration:'none',color:'#068DA9' }} mr={2} as={Link} href={`/#${index.id}`}>{index.id}</Text>
               //   <Menu href={index.id}  closeOnSelect={false}

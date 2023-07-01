@@ -6,11 +6,7 @@ import {
   Heading,
   Link,
   Text,
-  Accordion,
-  AccordionItem,
-  AccordionButton,
-  AccordionPanel,
-  AccordionIcon,
+
 } from "@chakra-ui/react";
 import React, { useState, useEffect, useRef } from "react";
 
@@ -54,8 +50,8 @@ export  function ItemCard ({ item, card }) {
       
       <>
         {/* card  */}
-        <Box height={["20vh","20vh","20vh","40vh","40vh"]}
-          width={{ base: "30%", md: "30%" }} marginBottom={40} mr={5} borderRadius={50}>
+        <Box height={["10vh","10vh","10vh","20vh","20vh"]}
+          width={{ base: "10%", md: "15%" }} marginBottom={40} mr={5} borderRadius={50}>
         <Link
           height={"15vh"}
           width={{ base: "80%", md: "30%" }}
@@ -192,11 +188,7 @@ export function ContainerCard({ card }) {
             alignItems={"center"}
             justifyContent={"space-between"}
           >
-             <AccordionItem   height={"auto"}
-            width={"100%"}>
-    
-      <AccordionButton>
-      <Heading
+            <Heading
               height={"auto"}
               id={card.id}
               width={"100%"}
@@ -207,11 +199,18 @@ export function ContainerCard({ card }) {
               {card.id}
              
             </Heading>
-        <AccordionIcon />
-      </AccordionButton>
-   
-    <AccordionPanel pb={4}>
-    <Flex
+            {/* <Link
+                          href={card.link}
+                          _hover={{textDecoration : 'none'}}
+                      >
+                          <Button rightIcon={<ArrowForwardIcon />} colorScheme='#08566f' variant='outline'>
+                              Voir Plus
+                          </Button>
+                      </Link> */}
+          </Flex>
+  
+          {/* contient les card's  */}
+          <Flex
             height={"auto"}
             width={"100%"}
             flexWrap={"wrap"}
@@ -227,21 +226,6 @@ export function ContainerCard({ card }) {
             ))
             }
           </Flex>
-    </AccordionPanel>
-  </AccordionItem>
-           
-            {/* <Link
-                          href={card.link}
-                          _hover={{textDecoration : 'none'}}
-                      >
-                          <Button rightIcon={<ArrowForwardIcon />} colorScheme='#08566f' variant='outline'>
-                              Voir Plus
-                          </Button>
-                      </Link> */}
-          </Flex>
-  
-          {/* contient les card's  */}
-         
         </Flex>
       </>
     );
@@ -321,8 +305,6 @@ const LadingCorps = () => {
             pb={20}
             justifyContent={"center"}
           >
-            <Accordion  height={"auto"}
-            width={"100%"}>
             {cat.map((card, key) => 
             {
               // console.log('card',card)
@@ -335,7 +317,6 @@ const LadingCorps = () => {
           }
             
             )}
-            </Accordion>
           </Flex>
         </Box>
       </Center>
