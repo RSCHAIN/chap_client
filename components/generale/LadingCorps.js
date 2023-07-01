@@ -299,7 +299,7 @@ const LadingCorps = () => {
             height={"auto"}
             width={"100%"}
             mt={10}
-            mb={10}
+            mb={5}
             direction={"column"}
             alignItems={"center"}
             pb={20}
