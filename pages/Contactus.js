@@ -131,7 +131,7 @@ export default function Contact() {
                   <Box m={8} color="#0B0E3F">
                     <VStack spacing={5}>
                       <FormControl id="name">
-                        <FormLabel>VOtre Nom</FormLabel>
+                        <FormLabel>Votre Nom</FormLabel>
                         <InputGroup borderColor="#E0E1E7">
                           <InputLeftElement
                             pointerEvents="none"
@@ -175,6 +175,7 @@ export default function Contact() {
                           bg="#0D74FF"
                           color="white"
                           _hover={{}}
+                          onClick={()=>alert("En cours de Maintenance")}
                         >
                           Envoyer
                         </Button>
