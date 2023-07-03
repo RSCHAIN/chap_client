@@ -16,7 +16,6 @@ import {
   InputGroup,
   InputLeftElement,
   Textarea,
-  useMediaQuery,
 } from '@chakra-ui/react';
 import {
   MdPhone,
@@ -26,15 +25,9 @@ import {
   MdOutlineEmail,
 } from 'react-icons/md';
 import { BsGithub, BsDiscord, BsPerson } from 'react-icons/bs';
-import InputBar from '@/components/InputBar';
-import Navbar from '@/components/Navbar';
 
 export default function contact() {
-  const [isLagerThan768] = useMediaQuery("(min-width: 768px)");
   return (
-    <>
-     <InputBar />
-      {isLagerThan768 ? <Navbar></Navbar> : <></>}
     <Container bg="#9DC4FB" maxW="full" mt={0} centerContent overflow="hidden">
       <Flex>
         <Box
@@ -126,7 +119,7 @@ export default function contact() {
                         <InputGroup borderColor="#E0E1E7">
                           <InputLeftElement
                             pointerEvents="none"
-                            // children={<BsPerson color="gray.800" />}
+                            children={<BsPerson color="gray.800" />}
                           />
                           <Input type="text" size="md" />
                         </InputGroup>
@@ -136,7 +129,7 @@ export default function contact() {
                         <InputGroup borderColor="#E0E1E7">
                           <InputLeftElement
                             pointerEvents="none"
-                            // children={<MdOutlineEmail color="gray.800" />}
+                            children={<MdOutlineEmail color="gray.800" />}
                           />
                           <Input type="text" size="md" />
                         </InputGroup>
@@ -169,6 +162,5 @@ export default function contact() {
         </Box>
       </Flex>
     </Container>
-    </>
   );
 }
