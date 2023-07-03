@@ -55,8 +55,8 @@ export  function ItemCard ({ item, card }) {
         <Link
           height={"15vh"}
           width={{ base: "80%", md: "30%" }}
-          mt={"5"}
-          mb={10}
+          mt={5}
+          mb={5}
           onClick={()=>sessionStorage.setItem("savefrom",numero)}
           mr={{ base: "0%", md: "0%" }}
           _hover={{ textDecoration: "none" }}
@@ -95,7 +95,7 @@ export  function ItemCard ({ item, card }) {
         </Link>
         <Box>
         <Text as={"h4"} 
-          pb={20} fontWeight={'semibold'} align={'center'}  >{adresse}</Text>
+          pb={5}  align={'center'}  >{adresse}</Text>
         </Box>
         
         </Box>
