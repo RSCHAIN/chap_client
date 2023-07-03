@@ -16,6 +16,7 @@ import {
   InputGroup,
   InputLeftElement,
   Textarea,
+  useToast,
 } from '@chakra-ui/react';
 import {
   MdPhone,
@@ -27,8 +28,14 @@ import {
 import { BsGithub, BsDiscord, BsPerson } from 'react-icons/bs';
 import InputBar from '@/components/InputBar';
 import Navbar from '@/components/Navbar';
+import FooterR from '@/components/footerResponsif';
+import { useState } from 'react';
 
 export default function contact() {
+  const toast = useToast();
+  const [email,setEmail] = useState();
+  const [message,setMessage] = useState();
+  const [nom,setNom] = useState();
   return (
     <Container maxW="full" mt={0} centerContent overflow="hidden">
       <InputBar />
@@ -119,7 +126,7 @@ export default function contact() {
                   <Box m={8} color="#0B0E3F">
                     <VStack spacing={5}>
                       <FormControl id="name">
-                        <FormLabel>Your Name</FormLabel>
+                        <FormLabel>VOtre Nom</FormLabel>
                         <InputGroup borderColor="#E0E1E7">
                           <InputLeftElement
                             pointerEvents="none"
@@ -129,7 +136,7 @@ export default function contact() {
                         </InputGroup>
                       </FormControl>
                       <FormControl id="name">
-                        <FormLabel>Mail</FormLabel>
+                        <FormLabel>E-Mail</FormLabel>
                         <InputGroup borderColor="#E0E1E7">
                           <InputLeftElement
                             pointerEvents="none"
@@ -154,7 +161,7 @@ export default function contact() {
                           bg="#0D74FF"
                           color="white"
                           _hover={{}}>
-                          Send Message
+                          Envoyer
                         </Button>
                       </FormControl>
                     </VStack>
@@ -165,6 +172,7 @@ export default function contact() {
           </Box>
         </Box>
       </Flex>
+      <FooterR/>
     </Container>
   );
 }
