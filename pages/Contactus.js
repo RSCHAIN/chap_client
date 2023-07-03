@@ -29,14 +29,8 @@ import { BsGithub, BsDiscord, BsPerson } from "react-icons/bs";
 import Navbar from "@/components/Navbar";
 import InputBar from "@/components/InputBar";
 import FooterR from "@/components/footerResponsif";
-import { useState } from "react";
-
-
 
 export default function contact() {
-  const [email,setEmail] = useState("unknow")
-  const [contact,setContact] = useState("unknow")
-  const [message,setMessage] = useState("unknow")
   const [isLagerThan768] = useMediaQuery("(min-width: 768px)");
   return (
     <>
@@ -63,7 +57,7 @@ export default function contact() {
                   <Box>
                     <Heading>Contact</Heading>
                     <Text mt={{ sm: 3, md: 3, lg: 5 }} color="gray.500">
-                     Remplissez ce formulaire afin de recevoir plus d'aide
+                      Fill up the form below to contact
                     </Text>
                     <Box py={{ base: 5, sm: 5, md: 8, lg: 10 }}>
                       <VStack pl={0} spacing={3} alignItems="flex-start">
@@ -152,7 +146,7 @@ export default function contact() {
                           </InputGroup>
                         </FormControl>
                         <FormControl id="name">
-                          <FormLabel>E-Mail</FormLabel>
+                          <FormLabel>Mail</FormLabel>
                           <InputGroup borderColor="#E0E1E7">
                             <InputLeftElement
                               pointerEvents="none"
