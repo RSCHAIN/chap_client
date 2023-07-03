@@ -25,14 +25,14 @@ import {
   MdOutlineEmail,
 } from 'react-icons/md';
 import { BsGithub, BsDiscord, BsPerson } from 'react-icons/bs';
-// import InputBar from '@/components/InputBar';
-// import Navbar from '@/components/Navbar';
+import InputBar from '@/components/InputBar';
+import Navbar from '@/components/Navbar';
 
 export default function contact() {
   return (
     <Container maxW="full" mt={0} centerContent overflow="hidden">
-      {/* <InputBar />
-      {isLagerThan768 ? <Navbar></Navbar> : <></>} */}
+      <InputBar />
+      {isLagerThan768 ? <Navbar></Navbar> : <></>}
       <Flex>
         <Box
           bg="#02054B"
