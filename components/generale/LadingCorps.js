@@ -50,8 +50,8 @@ export  function ItemCard ({ item, card }) {
       
       <>
         {/* card  */}
-        <Box height={["10vh","10vh","10vh","20vh","20vh"]}
-          width={{ base: "20%", md: "15%" }} marginBottom={40} mr={5} borderRadius={50}>
+        <Box height={["20vh","20vh","20vh","20vh","20vh"]}
+          width={{ base: "25%", md: "15%" }} marginBottom={40} mr={5} borderRadius={50}>
         <Link
           height={"15vh"}
           width={{ base: "80%", md: "30%" }}
@@ -94,7 +94,7 @@ export  function ItemCard ({ item, card }) {
          
         </Link>
         <Box>
-        <Text as={"h2"} 
+        <Text as={"h4"} 
           pb={20} fontWeight={'semibold'} align={'center'}  >{adresse}</Text>
         </Box>
         
