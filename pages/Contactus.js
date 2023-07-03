@@ -32,8 +32,8 @@ export default function contact() {
   return (
     <Container maxW="full" mt={0} centerContent overflow="hidden">
       <InputBar />
-      {isLagerThan768 ? <Navbar></Navbar> : <></>}
-      <Flex>
+     <Navbar></Navbar> 
+          <Flex>
         <Box
           bg="#02054B"
           color="white"
