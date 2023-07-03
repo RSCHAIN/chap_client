@@ -31,7 +31,7 @@ import Navbar from '@/components/Navbar';
 import FooterR from '@/components/footerResponsif';
 import { useState } from 'react';
 
-export default function contact() {
+export default function Contact() {
   const toast = useToast();
   const [email,setEmail] = useState();
   const [message,setMessage] = useState();
