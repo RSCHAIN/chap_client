@@ -211,7 +211,7 @@ export function ContainerCard({ card }) {
   
           {/* contient les card's  */}
           <Flex
-            height={"auto"}
+            maxHeight={"auto"}
             width={"100%"}
             flexWrap={"wrap"}
             direction={"row"}
@@ -297,6 +297,7 @@ const LadingCorps = () => {
           {/* la box de toutes les cartegorie */}
           <Flex
             height={"auto"}
+            position={"relative"}
             width={"100%"}
             mt={10}
             mb={5}

@@ -37,12 +37,13 @@ export default function Contact() {
   const [message, setMessage] = useState();
   const [nom, setNom] = useState();
   return (
+    <>
     <Container maxW="full" mt={0} centerContent overflow="hidden">
       <InputBar />
       <Navbar></Navbar>
       <Flex>
         <Box
-          bg="#02054B"
+          bg="#B0C4DE"
           color="white"
           borderRadius="lg"
           m={{ sm: 4, md: 16, lg: 10 }}
@@ -190,5 +191,6 @@ export default function Contact() {
       </Flex>
       <FooterR />
     </Container>
+    </>
   );
 }
