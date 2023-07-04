@@ -23,7 +23,12 @@ const Minimal = () => {
 
   return (
     <ChakraProvider>
-     git config --global user.email "you@example.com"
+      <Pagination
+        pagesCount={pagesCount}
+        currentPage={currentPage}
+        onPageChange={setCurrentPage}
+      >
+         
         <PaginationContainer>
           <PaginationPrevious>Previous</PaginationPrevious>
           <PaginationPageGroup>
