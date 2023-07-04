@@ -101,7 +101,7 @@ const SliderComponents = () => {
               position="relative"
               backgroundPosition="center"
               backgroundRepeat="no-repeat"
-              backgroundSize="cover"
+              backgroundSize="contain"
               backgroundImage={url}
             ></Box>
           ))}
