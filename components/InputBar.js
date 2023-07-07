@@ -118,7 +118,7 @@ const InputBar = () => {
           width={"auto"}
           height={"full"}
         >
-          {isLagerThan768 ? <InputLg /> : <SearcheIcone />}
+          {isLagerThan768 ? <InputLg /> : <SearcheIcone message={"Rechercher un produit"} />}
         </Flex>
 
         {/* butons se connecter et s'inscrire  */}

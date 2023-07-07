@@ -1,6 +1,7 @@
 import { ArrowForwardIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import {
   Box,
+  Button,
   Center,
   Flex,
   Heading,
@@ -21,6 +22,9 @@ export  function ItemCard ({ item, card }) {
   const [imageUrl,setImageUrl]= useState()
   const [adresse,setAdresse]= useState()
   const [numero,setNumero]= useState()
+  const [nom,setNom]= useState()
+  
+  const [categorie,setCategorie]= useState()
   // const location = localStorage.getItem("location").length;
   // const toast = useToast();
   const update = async ()=>{
@@ -31,14 +35,16 @@ export  function ItemCard ({ item, card }) {
     querySnapshot.forEach( (doc) => {
       // doc.data() is never undefined for query doc snapshots
       setAdresse(doc.data().adresse);
-      setImageUrl(doc.data().imageUrl)
-      setNumero(doc.data().number)
+      setImageUrl(doc.data().imageUrl);
+      setNumero(doc.data().number);
+      setNom(doc.data().organisation);
+      setCategorie(doc.data().categorie)
     });
   }
 
 // console.log(item.id)
 
-    Object.values(item).map((data,index)=>{
+    Object.values(item).map((data)=>{
      
       update()
      
@@ -57,10 +63,10 @@ export  function ItemCard ({ item, card }) {
           width={{ base: "80%", md: "30%" }}
           mt={5}
           mb={5}
-          onClick={()=>sessionStorage.setItem("savefrom",numero)}
+          onClick={()=>{sessionStorage.setItem("savefrom",numero),sessionStorage.setItem("image",imageUrl),sessionStorage.setItem("nom",nom),sessionStorage.setItem("adresse",adresse),sessionStorage.setItem("categorie",categorie)}}
           mr={{ base: "0%", md: "0%" }}
           _hover={{ textDecoration: "none" }}
-          href={"/" + card + "/" + item.id}
+          href={"/otherContent/intermed1"}
         >
           <Flex
             height={"100%"}
@@ -173,8 +179,8 @@ export function ContainerCard({ card }) {
         <Flex
           width={"95%"}
           height={"auto"}
-          mb={10}
-          pb={10}
+          // mb={10}
+          // pb={10}
           direction={"column"}
           alignItems={"center"}
           justifyContent={"space-between"}
@@ -184,7 +190,7 @@ export function ContainerCard({ card }) {
           id={card.id}
             height={"auto"}
             width={"100%"}
-            mt={5}
+            mt={2}
             alignItems={"center"}
             justifyContent={"space-between"}
           >
@@ -199,14 +205,15 @@ export function ContainerCard({ card }) {
               {card.id}
              
             </Heading>
-            {/* <Link
-                          href={card.link}
+            <Link
+                          href="/otherContent/intermed2"
+                          onClick={()=>{localStorage.setItem("service",card.id)}}
                           _hover={{textDecoration : 'none'}}
                       >
                           <Button rightIcon={<ArrowForwardIcon />} colorScheme='#08566f' variant='outline'>
                               Voir Plus
                           </Button>
-                      </Link> */}
+                      </Link>
           </Flex>
   
           {/* contient les card's  */}
@@ -300,7 +307,7 @@ const LadingCorps = () => {
             position={"relative"}
             width={"100%"}
             mt={10}
-            mb={5}
+            mb={2}
             direction={"column"}
             alignItems={"center"}
             pb={20}
@@ -310,7 +317,7 @@ const LadingCorps = () => {
             {
               // console.log('card',card)
               
-              if (card.id!="Commandes" && card.id!="Reservation") {
+              if (card.id!="Commandes" && card.id!="Reservation" && card.id!="All Products") {
                return (
                   <ContainerCard key={key} card={card}></ContainerCard>
                 )

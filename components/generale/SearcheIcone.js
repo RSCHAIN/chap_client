@@ -5,7 +5,7 @@ import React from 'react';
 // fontawesone Icone 
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
-const SearcheIcone = () => {
+const SearcheIcone = (message) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     return (
         <>
@@ -22,7 +22,7 @@ const SearcheIcone = () => {
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
-                    <ModalHeader  color={"#08566E"}>Rechercher un article</ModalHeader>
+                    <ModalHeader  color={"#08566E"}>{Object.values(message)}</ModalHeader>
                     <ModalCloseButton color={"#08566E"} />
                     <ModalBody>
                         <InputGroup>

@@ -51,7 +51,7 @@ export default function Contact() {
         >
           <Box p={4}>
             <Wrap spacing={{ base: 20, sm: 3, md: 5, lg: 20 }}>
-              <WrapItem>
+              <WrapItem>  
                 <Box>
                   <Heading>Contact</Heading>
                   <Text mt={{ sm: 3, md: 3, lg: 5 }} color="gray.500">
@@ -64,7 +64,7 @@ export default function Contact() {
                         height="48px"
                         width="200px"
                         variant="ghost"
-                        color="#DCE2FF"
+                        color="blackAlpha.700"
                         _hover={{ border: "2px solid #1C6FEB" }}
                         leftIcon={<MdPhone color="#1970F1" size="20px" />}
                       >
@@ -75,7 +75,7 @@ export default function Contact() {
                         height="48px"
                         width="200px"
                         variant="ghost"
-                        color="#DCE2FF"
+                        color="blackAlpha.700"
                         _hover={{ border: "2px solid #1C6FEB" }}
                         leftIcon={<MdEmail color="#1970F1" size="20px" />}
                       >
@@ -86,7 +86,7 @@ export default function Contact() {
                         height="48px"
                         width="250px"
                         variant="ghost"
-                        color="#DCE2FF"
+                        color="blackAlpha.700"
                         _hover={{ border: "2px solid #1C6FEB" }}
                         leftIcon={<MdLocationOn color="#1970F1" size="20px" />}
                       >
