@@ -5,6 +5,7 @@ import SearcheIcone from "@/components/generale/SearcheIcone";
 import HeaderBar from "@/components/inscription/HeaderBar";
 import { Box, Center, Flex, Text } from "@chakra-ui/react";
 import Exemple from "./test";
+import Tested from "./test2";
 
 export default function Intrmed2() {
   return (
@@ -29,7 +30,7 @@ export default function Intrmed2() {
       
       </Flex>
       </Center>
-      <Exemple/>
+      <Tested/>
       
     </>
   );
