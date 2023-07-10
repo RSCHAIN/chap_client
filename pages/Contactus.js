@@ -43,9 +43,10 @@ export default function Contact() {
       <Navbar></Navbar>
       <Flex>
         <Box
-          bg="#B0C4DE"
+          bg="#eeeeee "
           color="white"
           borderRadius="lg"
+          boxShadow={"10px red"}
           m={{ sm: 4, md: 16, lg: 10 }}
           p={{ sm: 5, md: 5, lg: 16 }}
         >
@@ -53,9 +54,9 @@ export default function Contact() {
             <Wrap spacing={{ base: 20, sm: 3, md: 5, lg: 20 }}>
               <WrapItem>  
                 <Box>
-                  <Heading>Contact</Heading>
+                  <Heading color={"black"}>Nous-contacter</Heading>
                   <Text mt={{ sm: 3, md: 3, lg: 5 }} color="gray.500">
-                    Fill up the form below to contact
+                   Veuillez renseigner vos informations
                   </Text>
                   <Box py={{ base: 5, sm: 5, md: 8, lg: 10 }}>
                     <VStack pl={0} spacing={3} alignItems="flex-start">

@@ -1,6 +1,6 @@
 import { db } from "@/FIREBASE/clientApp";
-import { Box, Button, Flex, Heading, Link, SimpleGrid, Text } from "@chakra-ui/react";
-import { collection, getDocs, query } from "firebase/firestore";
+import { Box, Button, Center, Flex, Heading, Link, Select, SimpleGrid, Text } from "@chakra-ui/react";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import React, {useState,useEffect} from "react"
 const PagButton = (props) => {
     const activeStyle = {
@@ -49,19 +49,25 @@ export default function Tested(){
     const [tout,setTout] = useState([])
     const [etat,setEtat] = useState(true)
     const [etat1,setEtat1] = useState(false)
-    const [parPage,setParpage] = useState(12)
+    const [parPage,setParpage] = useState(4)
     const [actu, setActu] = useState(1)
-    const TotalPage = parseInt(tout.length/parPage)+1
+    const TotalPage = Math.ceil(tout.length/parPage)
+    // numero.push(Math.ceil(tout.length/parPage))
     const pages = [...Array(TotalPage + 1).keys()].slice(1)
+   
     const dernier = (actu * parPage );
     const premier = dernier - (parPage);
     const visible = tout.slice(premier, dernier)
     
-function Next(num) {
-    if (actu == 2) {
-        setEtat(true)
+function Next() {
+  if (actu == 0) {
+    setEtat(true)
+  }
+    if (actu == 1   ) {
+      setEtat(true)
     }else{setEtat(false)}
-    if (actu == TotalPage-1) {
+    
+    if (actu == TotalPage ) {
         setEtat1(true)
     }else{setEtat1(false)}
 }
@@ -69,8 +75,8 @@ function Next(num) {
 const Get = async ()=>{
   
     if (adresse.length == 0 || adresse.length == null || adresse.length== undefined) {
-        const q = query(collection(db, "Admin"));
-
+        const q = query(collection(db, "Admin"), where("categorie","==", `${localStorage.getItem("service")}`));
+      
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
@@ -79,7 +85,7 @@ const Get = async ()=>{
     //   numero.push(doc.data().number);
     //   nom.push(doc.data().organisation);
     //   categorie.push(doc.data().categorie);
-      console.log("okay");
+     
   
       tout.push(doc.data())
       
@@ -89,9 +95,14 @@ const Get = async ()=>{
     
 }
 useEffect( ()=>{
+  setCategorie(localStorage.getItem("service"))
     if (datas == 0) {
    Get()
+   
+   Next()
+   setDatas(1);
     }
+   
 },[Get])
 
 
@@ -125,7 +136,7 @@ useEffect( ()=>{
           mt={10}
           ml={[10, 10, 10, 20, 20]}
         >
-          {console.log("launched")}
+         
           {visible.map((data, index) => (
            
             <Box
@@ -188,13 +199,32 @@ useEffect( ()=>{
             
           ))}
         </SimpleGrid>
-        <Flex>
-    <Button  onClick={()=>{setActu(actu-1),Next(2)}} isDisabled={etat}>Precedent</Button>
-    <Heading>
-    <Flex >{pages.map(page=> <Button bgColor={"white"} onClick={() => setActu(page)} _hover={{fontSize:"30px" ,bgColor:"cyan.500"}} key={page} >{page}</Button>)}</Flex>
-    </Heading>
-    <Button onClick={()=>{setActu(actu+1),Next(2)}} isDisabled={etat1}>Suivant</Button>
-    </Flex> 
+        {/* {numero[4] == 1 ? <>
+          
+        </>:<> */}
+        <Center><Text>Vous êtes sur la page {actu}</Text>
+          <Select onChange={(e)=>setParpage(e.target.value)}>
+          <option value="4" selected>4</option>
+          <option value="8">8</option>
+            <option value="12">12</option>
+            <option value="16">16</option>
+            <option value="20">20</option>
+          </Select>
+        </Center>
+        <Center>
+         
+        <SimpleGrid columns={[1,1,2,3,3]} spacingX={20}>
+       
+       <Button width={"fit-content"}  onClick={()=>{setActu(actu-1),Next(),setEtat1(false)}} isDisabled={etat}>Precedent</Button>
+       <Heading>
+       <Flex width={"75%"} >{pages.map(page=> <Button bgColor={"white"} onClick={() =>{setActu(page),Next(),Next()} } _hover={{fontSize:"30px" ,bgColor:"cyan.500"}} key={page} >{page}</Button>)}</Flex>
+       </Heading>
+       <Button width={"fit-content"}  onClick={()=>{setActu(actu+1),Next(),setEtat(false)}} isDisabled={etat1}>Suivant</Button>
+       </SimpleGrid> 
+       </Center>
+        {/* </>} */}
+       
+      
        
       </>
     )

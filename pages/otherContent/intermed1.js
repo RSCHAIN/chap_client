@@ -574,17 +574,21 @@ export default function Intermed1() {
                       </Box>
     
                       <Box
-                        mt="1"
+                        
                         fontWeight="normal"
-                        lineHeight="tight"
-                        noOfLines={9}
-                        w={"fit-content"}
-                        height={"250px"}
+                        lineHeight="taller"
+                        noOfLines={8}
+                        w={"250px"}
+                        Height={"250px"}
+                        maxH={"250px"}
                       >
-                        <Text>{data.description}</Text>
-                        <Button
+                        <Text  mb={5}>{data.description}</Text>
+                       
+                      </Box>
+                      <Box>
+                      <Button
                               bgColor={"cyan.700"}
-                              mt={10}
+                              
                               borderRadius={"66px"}
                               width={"fit-content"}
                               as={"a"}
@@ -610,6 +614,7 @@ export default function Intermed1() {
                               Commander
                             </Button>
                       </Box>
+                      
                     </Box>
                   </Box>
                 ))}

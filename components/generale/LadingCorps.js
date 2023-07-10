@@ -7,7 +7,6 @@ import {
   Heading,
   Link,
   Text,
-
 } from "@chakra-ui/react";
 import React, { useState, useEffect, useRef } from "react";
 
@@ -18,52 +17,62 @@ import { useRouter } from "next/router";
 import { collection, query, where, getDocs } from "firebase/firestore";
 
 // les card des differntes cartegories qui seront mapés
-export  function ItemCard ({ item, card }) {
-  const [imageUrl,setImageUrl]= useState()
-  const [adresse,setAdresse]= useState()
-  const [numero,setNumero]= useState()
-  const [nom,setNom]= useState()
-  
-  const [categorie,setCategorie]= useState()
+export function ItemCard({ item, card }) {
+  const [imageUrl, setImageUrl] = useState();
+  const [adresse, setAdresse] = useState();
+  const [numero, setNumero] = useState();
+  const [nom, setNom] = useState();
+
+  const [categorie, setCategorie] = useState();
   // const location = localStorage.getItem("location").length;
   // const toast = useToast();
-  const update = async ()=>{
-    // console.log('item',item.id)
-    const q = query(collection(db, "Admin"), where("organisation", "==",item.id ));
+  // const update = async () => {
+  //   console.log('item',item)
+    // const q = query(
+      // collection(db, "Admin"),
+      // where("organisation", "==", item)
+    // );
 
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach( (doc) => {
+    // const querySnapshot = await getDocs(q);
+    // querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
-      setAdresse(doc.data().adresse);
-      setImageUrl(doc.data().imageUrl);
-      setNumero(doc.data().number);
-      setNom(doc.data().organisation);
-      setCategorie(doc.data().categorie)
-    });
-  }
+      // setAdresse(doc.data().adresse);
+      // setImageUrl(doc.data().imageUrl);
+      // setNumero(doc.data().number);
+      // setNom(doc.data().organisation);
+      // setCategorie(doc.data().categorie);
+    // });
+  // };
 
-// console.log(item.id)
+  // console.log(item.id)
 
-    Object.values(item).map((data)=>{
-     
-      update()
-     
-    })
- 
- 
+  // Object.values(item).map((data) => {
+  //   update();
+  // });
+
   // if (location > 2) {
-    return (
-      
-      <>
-        {/* card  */}
-        <Box height={["20vh","20vh","20vh","20vh","20vh"]}
-          width={{ base: "25%", md: "15%" }} marginBottom={40} mr={5} borderRadius={50}>
+  return (
+    <>
+      {/* card  */}
+      <Box
+        height={["20vh", "20vh", "20vh", "20vh", "20vh"]}
+        width={{ base: "25%", md: "15%" }}
+        marginBottom={40}
+        mr={5}
+        borderRadius={50}
+      >
         <Link
           height={"15vh"}
           width={{ base: "80%", md: "30%" }}
           mt={5}
           mb={5}
-          onClick={()=>{sessionStorage.setItem("savefrom",numero),sessionStorage.setItem("image",imageUrl),sessionStorage.setItem("nom",nom),sessionStorage.setItem("adresse",adresse),sessionStorage.setItem("categorie",categorie)}}
+          onClick={() => {
+            sessionStorage.setItem("savefrom", item.numero),
+              sessionStorage.setItem("image", item.imageUrl),
+              sessionStorage.setItem("nom", item.organisation),
+              sessionStorage.setItem("adresse", item.adresse),
+              sessionStorage.setItem("categorie", item.categorie);
+          }}
           mr={{ base: "0%", md: "0%" }}
           _hover={{ textDecoration: "none" }}
           href={"/otherContent/intermed1"}
@@ -73,8 +82,8 @@ export  function ItemCard ({ item, card }) {
             width={"100%"}
             alignItems={"center"}
             justifyContent={"center"}
-             borderRadius={50}
-            backgroundImage={imageUrl}
+            borderRadius={50}
+            backgroundImage={item.imageUrl}
             backgroundPosition={"center"}
             backgroundSize={"cover"}
             backgroundRepeat={"no-repeat"}
@@ -87,27 +96,20 @@ export  function ItemCard ({ item, card }) {
               width={"100%"}
               bg={"rgba(0, 0, 0, 0.277)"}
             >
-              <Text
-               
-                fontSize={"xl"}
-                color={"#fff"}
-                textAlign={"center"}
-              >
-                {item.id}
+              <Text fontSize={"xl"} color={"#fff"} textAlign={"center"}>
+                {item.organisation}
               </Text>
             </Flex>
           </Flex>
-         
         </Link>
         <Box>
-        <Text as={"h4"} 
-          pb={5}  align={'center'}  >{adresse}</Text>
+          <Text as={"h4"} pb={5} align={"center"}>
+            {item.adresse}
+          </Text>
         </Box>
-        
-        </Box>
-      
-      </>
-    );
+      </Box>
+    </>
+  );
   // } else {
   //   return (
   //     <>
@@ -161,108 +163,130 @@ export  function ItemCard ({ item, card }) {
 }
 
 export function ContainerCard({ card }) {
- 
-  const router = useRouter()
-  const [datas,setDatas]=useState([])
-  useEffect(()=>{
-    const datos = localStorage.getItem(card.id+"Datos");
-   setDatas(JSON.parse(datos))
-  },[card.id])
-  if (datas == null) {
-   
-    router.reload()
+  const router = useRouter();
+  const [datos, setDatos] = useState([]);
+  const [datas, setDatas] = useState(0);
+
+  const GetAgain = async () => {
+    const q = query(collection(db, `f${card}`));
+
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+
+      datos.push(doc.data());
+    });
+    setDatas(1);
+  };
+
+  useEffect(() => {
+    if (datas == 0) {
+      GetAgain();
+      setDatas(1);
+    }
+  }, [datas, GetAgain]);
+  if (datos == null) {
+    router.reload();
   }
- 
-    return (
-      <>
-        {/* categorie*/}
+
+  return (
+    <>
+      {/* categorie*/}
+      <Flex
+        width={"95%"}
+        height={"auto"}
+        // mb={10}
+        // pb={10}
+        direction={"column"}
+        alignItems={"center"}
+        justifyContent={"space-between"}
+      >
+        {/* la box de l'entete de la cartegorie  */}
         <Flex
-          width={"95%"}
+          id={card}
           height={"auto"}
-          // mb={10}
-          // pb={10}
-          direction={"column"}
+          width={"100%"}
+          mt={2}
           alignItems={"center"}
           justifyContent={"space-between"}
         >
-          {/* la box de l'entete de la cartegorie  */}
-          <Flex
-          id={card.id}
+          <Heading
             height={"auto"}
             width={"100%"}
-            mt={2}
+            display={"flex"}
             alignItems={"center"}
             justifyContent={"space-between"}
           >
-            <Heading
-              height={"auto"}
-              id={card.id}
-              width={"100%"}
-              display={"flex"}
-              alignItems={"center"}
-              justifyContent={"space-between"}
-            >
-              {card.id}
+            {card}
+          </Heading>
+          <Link
+            href="/otherContent/intermed2"
+            onClick={() => {
+              if (card == "Coiffure") {
+                localStorage.setItem("service", "Salon de Coiffure");
+              }else if(card == "Mèches"){
+                localStorage.setItem("service", "Commerce de meches");
+              }else{
+                localStorage.setItem("service", card);
+              }
              
-            </Heading>
-            <Link
-                          href="/otherContent/intermed2"
-                          onClick={()=>{localStorage.setItem("service",card.id)}}
-                          _hover={{textDecoration : 'none'}}
-                      >
-                          <Button rightIcon={<ArrowForwardIcon />} colorScheme='#08566f' variant='outline'>
-                              Voir Plus
-                          </Button>
-                      </Link>
-          </Flex>
-  
-          {/* contient les card's  */}
-          <Flex
-            maxHeight={"auto"}
-            width={"100%"}
-            flexWrap={"wrap"}
-            direction={"row"}
-            alignItems={{ base: "center", md: "normal" }}
-            justifyContent={{ base: "center", md: "space-between" }}
+            }}
+            _hover={{ textDecoration: "none" }}
           >
-            {
-        //  console.log(datas)     
-            datas.map((item, key) => (
-              <ItemCard key={key} item={item} card={card.id}></ItemCard>
-              
-            ))
-            }
-          </Flex>
+            <Button
+              rightIcon={<ArrowForwardIcon />}
+              colorScheme="#08566f"
+              variant="outline"
+            >
+              Voir Plus
+            </Button>
+          </Link>
         </Flex>
-      </>
-    );
-  
- 
+
+        {/* contient les card's  */}
+        <Flex
+          maxHeight={"auto"}
+          width={"100%"}
+          flexWrap={"wrap"}
+          direction={"row"}
+          alignItems={{ base: "center", md: "normal" }}
+          justifyContent={{ base: "center", md: "space-between" }}
+        >
+          {
+            //  console.log(datas)
+            datos.map((item, key) => (
+              <ItemCard key={key} item={item} card={card}></ItemCard>
+            ))
+          }
+        </Flex>
+      </Flex>
+    </>
+  );
 }
 
 // le rendu final qui sera affiché
 const LadingCorps = () => {
-  
   const [cat, setCat] = useState([]);
   const [datos, setDatos] = useState([]);
-  const update = () =>{
-    const starCountRef = ref(db2, "/");
-    onValue(starCountRef, (snapshot) => {
-      const donnes = snapshot.val();
+  const [datas, setDatas] = useState(0);
+  const update = async () => {
+  
+    console.log(cat)
+    if(datas == 0) {
       
-      if (donnes != null) {
-        const categorie = Object.keys(donnes).map((key) => ({
-          id: key,
-          ...donnes[key],
-        }))
-        setCat(categorie);
-       
-        
-      }
-        
+      const q = query(collection(db, "Services"));
 
-    })
-  }
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        cat.push(doc.data().nom);
+        // console.log(doc.data().id);
+      });
+    } 
+    console.log(cat.length);
+    setDatas(1);
+  };
+
   // const updateAll = () => {
   //   console.log("okay")
   //   cat.map((index, key) => {
@@ -275,23 +299,23 @@ const LadingCorps = () => {
   //           ...donnees[key],
   //         }))
   //         setDatos(categorie);
-          
+
   //         localStorage.setItem(index.id + "Datos", JSON.stringify(categorie));
   //       }
   //     })
   //   })
   // }
   useEffect(() => {
-   
-    update()
-    //updateAll()
+    if (datas == 0) {
+      update();
+      setDatas(1);
+     
+    }
 
-  }, []);
- 
+    //updateAll()
+  }, [datas, update,cat]);
 
   return (
-    
-
     <>
       {/* <Location /> */}
       <Center width={"100%"} height={"auto"}>
@@ -313,18 +337,11 @@ const LadingCorps = () => {
             pb={20}
             justifyContent={"center"}
           >
-            {cat.map((card, key) => 
-            {
+            {cat.map((card, key) => {
               // console.log('card',card)
-              
-              if (card.id!="Commandes" && card.id!="Reservation" && card.id!="All Products") {
-               return (
-                  <ContainerCard key={key} card={card}></ContainerCard>
-                )
-            }
-          }
-            
-            )}
+
+              return <ContainerCard key={key} card={card}></ContainerCard>;
+            })}
           </Flex>
         </Box>
       </Center>
