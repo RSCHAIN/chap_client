@@ -203,7 +203,7 @@ export default function Intermed1() {
     });
   }, [setImageUrl, setAddresse, setNom, setNumero]);
 
-  if (categorie != "Restaurant" && categorie != "Esthetique" && categorie != "Restauration" && categorie != "Fret" && categorie != "Salon de Coiffure") {
+  if (categorie != "Restaurant" && categorie != "Esthetique" && categorie != "Restauration" && categorie != "Fret" && categorie != "Salon de Coiffure" && categorie != "Commerce de meches") {
     return (
         <>
           <InputBar />
