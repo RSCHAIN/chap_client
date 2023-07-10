@@ -1,6 +1,8 @@
 import { db } from "@/FIREBASE/clientApp";
+import FooterR from "@/components/footerResponsif";
 import { Box, Button, Center, Flex, Heading, Link, Select, SimpleGrid, Text } from "@chakra-ui/react";
 import { collection, getDocs, query, where } from "firebase/firestore";
+import { useRouter } from "next/router";
 import React, {useState,useEffect} from "react"
 const PagButton = (props) => {
     const activeStyle = {
@@ -32,7 +34,7 @@ const PagButton = (props) => {
     );
   };
 export default function Tested(){
-   
+   const router = useRouter()
     
     const [imageUrl, setImageUrl] = useState([]);
     const [adresse, setAdresse] = useState([]);
@@ -49,7 +51,7 @@ export default function Tested(){
     const [tout,setTout] = useState([])
     const [etat,setEtat] = useState(true)
     const [etat1,setEtat1] = useState(false)
-    const [parPage,setParpage] = useState(4)
+    const [parPage,setParpage] = useState(8)
     const [actu, setActu] = useState(1)
     const TotalPage = Math.ceil(tout.length/parPage)
     // numero.push(Math.ceil(tout.length/parPage))
@@ -74,7 +76,7 @@ function Next() {
 
 const Get = async ()=>{
   
-    if (adresse.length == 0 || adresse.length == null || adresse.length== undefined) {
+    if (datas==0 || num == undefined || num == null) {
         const q = query(collection(db, "Admin"), where("categorie","==", `${localStorage.getItem("service")}`));
       
     const querySnapshot = await getDocs(q);
@@ -89,21 +91,23 @@ const Get = async ()=>{
   
       tout.push(doc.data())
       
-    });
+    })
+  }
     setDatas(1);
-    }
+  
     
 }
 useEffect( ()=>{
   setCategorie(localStorage.getItem("service"))
     if (datas == 0) {
-   Get()
-   
-   Next()
-   setDatas(1);
+      
+   Get();
+ 
+   Next();
+  
     }
-   
-},[Get])
+    
+},[Get,datas,Next])
 
 
 
@@ -202,30 +206,39 @@ useEffect( ()=>{
         {/* {numero[4] == 1 ? <>
           
         </>:<> */}
-        <Center><Text>Vous êtes sur la page {actu}</Text>
-          <Select onChange={(e)=>setParpage(e.target.value)}>
+        <Center><Flex alignItems={"center"} justifyContent={"space-around"} >
+        <Box><Text>Vous êtes sur la page {actu}</Text></Box>
+         <Box ml={10}> <Select onChange={(e)=>setParpage(e.target.value)} width={"100px"}>
           <option value="4" selected>4</option>
           <option value="8">8</option>
             <option value="12">12</option>
             <option value="16">16</option>
             <option value="20">20</option>
           </Select>
+          </Box>
+          </Flex>
         </Center>
-        <Center>
+        <Center mb={20}>
          
         <SimpleGrid columns={[1,1,2,3,3]} spacingX={20}>
        
-       <Button width={"fit-content"}  onClick={()=>{setActu(actu-1),Next(),setEtat1(false)}} isDisabled={etat}>Precedent</Button>
+       <Button width={"fit-content"} 
+       bgColor={"white"}
+        // onClick={()=>{setActu(actu-1),Next(),setEtat1(false)}}
+        isDisabled={etat}></Button>
        <Heading>
        <Flex width={"75%"} >{pages.map(page=> <Button bgColor={"white"} onClick={() =>{setActu(page),Next(),Next()} } _hover={{fontSize:"30px" ,bgColor:"cyan.500"}} key={page} >{page}</Button>)}</Flex>
        </Heading>
-       <Button width={"fit-content"}  onClick={()=>{setActu(actu+1),Next(),setEtat(false)}} isDisabled={etat1}>Suivant</Button>
+       <Button width={"fit-content"} 
+        bgColor={"white"}
+        // onClick={()=>{setActu(actu+1),Next(),setEtat(false)}}
+        isDisabled={etat1}></Button>
        </SimpleGrid> 
        </Center>
         {/* </>} */}
        
       
-       
+       <FooterR/>
       </>
     )
 }

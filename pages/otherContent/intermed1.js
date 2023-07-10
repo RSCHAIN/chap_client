@@ -203,7 +203,7 @@ export default function Intermed1() {
     });
   }, [setImageUrl, setAddresse, setNom, setNumero]);
 
-  if (categorie != "Restaurant" && categorie != "Esthetique" && categorie != "Restauration") {
+  if (categorie != "Restaurant" && categorie != "Esthetique" && categorie != "Restauration" && categorie != "Fret" && categorie != "Salon de Coiffure") {
     return (
         <>
           <InputBar />
@@ -212,35 +212,35 @@ export default function Intermed1() {
           <Box width={"90%"} mt={5} ml={40}>
             <Flex width={"100%"}>
               <Box width={"20%"}>
-                <Image src={`${imageUrl}`} alt={`logo de ${nom}`} />
+                <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"150px"} />
               </Box>
-              <Box width={"70%"} mt={10}>
-                <Heading>{nom}</Heading>
-                <Text fontSize={"25px"} fontWeight={"medium"}>
+              <Box width={"70%"}>
+                <Heading fontSize={"20px"} >{nom}</Heading>
+                <Text fontSize={"20px"} fontWeight={"medium"}>
                   {addresse}
                 </Text>
-                <Text fontSize={"25px"} fontWeight={"medium"}>
+                <Text fontSize={"20px"} fontWeight={"medium"}>
                   {numero}
                 </Text>
-                <Heading as={"h3"} fontWeight={"bold"} fontSize={"20px"} ml={"40%"}>
+                <Heading as={"h3"} fontWeight={"bold"} fontSize={"20px"}>
                   {heure}
                 </Heading>
-                <Center>
-                  <Text mt={5} color={"blue.400"} fontSize={"25px"}>
+               
+                  <Text mt={5} color={"blue.400"} fontSize={"15px"}>
                     Pas defini
                   </Text>
-                </Center>
+               
               </Box>
             </Flex>
-            <Heading>Images du magasin </Heading>
+            <Heading fontSize={"30px"} >Images du magasin </Heading>
             <Flex width={"100%"} mt={10}>
-              <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"} />
-              <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"} />
-              <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"} />
-              <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"} />
-              <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"} />
+              <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"}  mr={10}/>
+              <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"} mr={10}/>
+              <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"} mr={10}/>
+              <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"} mr={10}/>
+              <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"} mr={10}/>
             </Flex>
-            <Heading>Les produits </Heading>
+            <Heading  fontSize={"30px"}>Les produits </Heading>
             <Flex width={"100%"} mt={10}>
               {/* <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"} />
               <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"} />
@@ -419,27 +419,27 @@ export default function Intermed1() {
           <InputBar />
           <Navbar />
     
-          <Box width={"90%"} mt={5} ml={40}>
-            <Flex width={"80%"} justifyContent={"space-between"}>
-              <Box width={"20%"}>
-                <Image src={`${imageUrl}`} alt={`logo de ${nom}`} />
+          <Box width={"90%"} ml={30}>
+            <Flex width={"100%"} justifyContent={"space-between"}>
+            <Box width={"20%"}>
+                <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"150px"} />
               </Box>
-              <Box width={"65%"} mt={10}>
-                <Heading>{nom}</Heading>
-                <Text fontSize={"25px"} fontWeight={"medium"}>
+              <Box width={"70%"}>
+                <Heading fontSize={"20px"} >{nom}</Heading>
+                <Text fontSize={"20px"} fontWeight={"medium"}>
                   {addresse}
                 </Text>
-                <Text fontSize={"25px"} fontWeight={"medium"}>
+                <Text fontSize={"20px"} fontWeight={"medium"}>
                   {numero}
                 </Text>
-                <Heading as={"h3"} fontWeight={"bold"} fontSize={"20px"} ml={"40%"}>
+                <Heading as={"h3"} fontWeight={"bold"} fontSize={"20px"}>
                   {heure}
                 </Heading>
-                <Center>
-                  <Text mt={5} color={"blue.400"} fontSize={"25px"}>
+               
+                  <Text mt={5} color={"blue.400"} fontSize={"15px"}>
                     Pas defini
                   </Text>
-                </Center>
+               
               </Box>
               <Box mt={10}>
               <Button
@@ -516,11 +516,11 @@ export default function Intermed1() {
             </Flex>
             <Heading>Images du magasin </Heading>
             <Flex width={"100%"} mt={10}>
-              <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"} />
-              <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"} />
-              <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"} />
-              <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"} />
-              <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"} />
+              <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"} mr={10} />
+              <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"} mr={10}/>
+              <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"} mr={10}/>
+              <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"} mr={10}/>
+              <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"} mr={10} />
             </Flex>
             <Heading>Les produits </Heading>
             <Flex width={"100%"} mt={10}>
