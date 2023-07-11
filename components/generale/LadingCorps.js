@@ -234,9 +234,11 @@ export function ContainerCard({ card }) {
             _hover={{ textDecoration: "none" }}
           >
             <Button
+            border={"none"}
               rightIcon={<ArrowForwardIcon />}
               colorScheme="#08566f"
               variant="outline"
+              fontSize={"14px"}
             >
               Voir Plus
             </Button>

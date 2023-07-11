@@ -419,8 +419,8 @@ export default function Intermed1() {
           <InputBar />
           <Navbar />
     
-          <Box width={"90%"} ml={30}>
-            <Flex width={"100%"} justifyContent={"space-between"}>
+          <Box width={"90%"} mt={5} ml={40}>
+            <Flex width={"80%"} justifyContent={"space-between"}>
             <Box width={"20%"}>
                 <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"150px"} />
               </Box>
