@@ -229,7 +229,7 @@ export function ContainerCard({ card }) {
                 localStorage.setItem("service", "Commerce de meches");
               }else{
                 localStorage.setItem("service", card);
-              }
+              } 
              
             }}
             _hover={{ textDecoration: "none" }}
