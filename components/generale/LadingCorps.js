@@ -200,7 +200,7 @@ export function ContainerCard({ card }) {
         // pb={10}
         direction={"column"}
         alignItems={"center"}
-        // justifyContent={"space-between"}
+        justifyContent={"space-between"}
       >
         {/* la box de l'entete de la cartegorie  */}
         <Flex
@@ -209,14 +209,14 @@ export function ContainerCard({ card }) {
           width={"100%"}
           mt={2}
           alignItems={"center"}
-          // justifyContent={"space-between"}
+          justifyContent={"space-between"}
         >
           <Heading
             height={"auto"}
             width={"100%"}
             display={"flex"}
             alignItems={"center"}
-            // justifyContent={"space-between"}
+            justifyContent={"space-between"}
           >
             {card}
           </Heading>
