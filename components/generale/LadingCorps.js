@@ -55,11 +55,12 @@ export function ItemCard({ item, card }) {
     <>
       {/* card  */}
       <Box
+      mt={5}
         height={["20vh", "20vh", "20vh", "20vh", "20vh"]}
         width={{ base: "25%", md: "15%" }}
         marginBottom={40}
         mr={5}
-        borderRadius={50}
+        borderRadius={25}
       >
         <Link
           height={"15vh"}
@@ -67,7 +68,7 @@ export function ItemCard({ item, card }) {
           mt={5}
           mb={5}
           onClick={() => {
-            sessionStorage.setItem("savefrom", item.numero),
+            sessionStorage.setItem("savefrom", item.number),
               sessionStorage.setItem("image", item.imageUrl),
               sessionStorage.setItem("nom", item.organisation),
               sessionStorage.setItem("adresse", item.adresse),
@@ -82,7 +83,7 @@ export function ItemCard({ item, card }) {
             width={"100%"}
             alignItems={"center"}
             justifyContent={"center"}
-            borderRadius={50}
+            borderRadius={25}
             backgroundImage={item.imageUrl}
             backgroundPosition={"center"}
             backgroundSize={"cover"}
@@ -91,7 +92,7 @@ export function ItemCard({ item, card }) {
             <Flex
               alignItems={"center"}
               justifyContent={"center"}
-              borderRadius={50}
+              borderRadius={25}
               height={"100%"}
               width={"100%"}
               bg={"rgba(0, 0, 0, 0.277)"}

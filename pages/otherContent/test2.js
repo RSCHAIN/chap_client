@@ -209,8 +209,8 @@ useEffect( ()=>{
         <Center><Flex alignItems={"center"} justifyContent={"space-around"} >
         <Box><Text>Vous êtes sur la page {actu}</Text></Box>
          <Box ml={10}> <Select onChange={(e)=>setParpage(e.target.value)} width={"100px"}>
-          <option value="4" selected>4</option>
-          <option value="8">8</option>
+          <option value="4" >4</option>
+          <option value="8" selected>8</option>
             <option value="12">12</option>
             <option value="16">16</option>
             <option value="20">20</option>
