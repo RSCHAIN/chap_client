@@ -102,8 +102,8 @@ const InputBar = () => {
             <Image
               src={"/logo1.png"}
               alt={"Chap"}
-              width={{ base: 95, md: 150 }}
-              mt={{ base: 0, md: 10 }}
+              width={[95,95,"70px" ]}
+              mt={[0,0,0,2,2]}
               mr={["2px", "2px", 0, 0, 0]}
             />
           </Link>
