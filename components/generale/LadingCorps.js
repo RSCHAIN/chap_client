@@ -253,7 +253,7 @@ export function ContainerCard({ card }) {
           flexWrap={"wrap"}
           direction={"row"}
           alignItems={{ base: "center", md: "normal" }}
-          // justifyContent={{ base: "center", md: "space-between" }}
+          justifyContent={{ base: "center", md: "space-between" }}
         >
           {
             //  console.log(datas)

@@ -9,6 +9,7 @@ const SearcheIcone = (message) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     return (
         <>
+        <Input type='search' placeholder={Object.values(message)}/>
             <IconButton
                 variant='outline'
                 color={"#08566E"}

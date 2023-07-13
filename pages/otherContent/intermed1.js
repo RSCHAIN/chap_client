@@ -209,38 +209,42 @@ export default function Intermed1() {
           <InputBar />
           <Navbar />
     
-          <Box width={"90%"} mt={5} ml={40}>
-            <Flex width={"100%"}>
-              <Box width={"20%"}>
-                <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"150px"} />
-              </Box>
-              <Box width={"60%"} ml={10}>
-                <Heading fontSize={"20px"} >{nom}</Heading>
-                <Text fontSize={"20px"} fontWeight={"medium"}>
-                  {addresse}
-                </Text>
-                <Text fontSize={"20px"} fontWeight={"medium"}>
-                  {numero}
-                </Text>
-                <Heading as={"h3"} fontWeight={"bold"} fontSize={"20px"}>
-                  {heure}
-                </Heading>
-               
-                  <Text mt={5} color={"blue.400"} fontSize={"15px"}>
-                    Pas defini
-                  </Text>
-               
-              </Box>
-            </Flex>
-            <Heading fontSize={"30px"} >Images du magasin </Heading>
+          <Box width={"100%"} mt={5}>
+          <Flex width={"90%"} >
+             
+             <Box width={"20%"}>
+                 <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"150px"} />
+               </Box>
+               <SimpleGrid columns={[1,1,2,2,2]} ml={10}>
+               <Box width={["70%"]}>
+                 <Heading fontSize={"20px"} >{nom}</Heading>
+                 <Text fontSize={"10px"} fontWeight={"medium"}>
+                   {addresse}
+                 </Text>
+                 <Text fontSize={"10px"} fontWeight={"medium"}>
+                   {numero}
+                 </Text>
+                 <Heading as={"h3"} fontWeight={"bold"} fontSize={"10px"}>
+                   {heure}
+                 </Heading>
+                
+                   <Text mt={5} color={"blue.400"} fontSize={"15px"}>
+                     Pas defini
+                   </Text>
+                
+               </Box>
+                          
+               </SimpleGrid>
+              
+             </Flex>
+            <Heading fontSize={"20px"} mt={10} >Images du magasin </Heading>
             <Flex width={"100%"} mt={10}>
-              <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"}  mr={10}/>
-              <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"} mr={10}/>
-              <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"} mr={10}/>
-              <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"} mr={10}/>
-              <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"} mr={10}/>
+              <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={["100px","100px","150px","200px","200px"]}  mr={10}/>
+              <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={["100px","100px","150px","200px","200px"]}  mr={10}/>
+              {/* <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"} mr={10}/> */}
+              
             </Flex>
-            <Heading  fontSize={"30px"}>Les produits </Heading>
+            <Heading  fontSize={"20px"} mt={10}>Les produits </Heading>
             <Flex width={"100%"} mt={10}>
               {/* <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"} />
               <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"} />
@@ -418,35 +422,19 @@ export default function Intermed1() {
         <>
           <InputBar />
           <Navbar />
-    
-          <Box width={"90%"} mt={5} ml={[10,10,10,30,40]}>
-            <Flex width={"90%"} justifyContent={"space-between"}>
-            <Box width={"20%"}>
+         
+          <Box width={"100%"} mt={5} ml={{base:"20%",md:"30%"}}  >
+            <Flex width={"100%"} >
+             
+            <Box width={"20%"} >
                 <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"150px"} />
-              </Box>
-              <Box width={["70%"]}>
-                <Heading fontSize={"20px"} >{nom}</Heading>
-                <Text fontSize={"20px"} fontWeight={"medium"}>
-                  {addresse}
-                </Text>
-                <Text fontSize={"20px"} fontWeight={"medium"}>
-                  {numero}
-                </Text>
-                <Heading as={"h3"} fontWeight={"bold"} fontSize={"20px"}>
-                  {heure}
-                </Heading>
-               
-                  <Text mt={5} color={"blue.400"} fontSize={"15px"}>
-                    Pas defini
-                  </Text>
-               
-              </Box>
-              <Box mt={10}>
+                <Box mt={5}>
               <Button
-              marginTop={2}
+              
             
               color={"#fff"}
               width={"fit-content"}
+              height={"30px"}
               as={"a"}
              
               onClick={onOpen}
@@ -512,17 +500,39 @@ export default function Intermed1() {
               </ModalContent>
             </Modal>
               </Box>
+              </Box>
+              <SimpleGrid columns={[1,1,2,2,2]} ml={10}>
+              <Box width={["80%"]}>
+                <Heading fontSize={"20px"} >{nom}</Heading>
+                <Text fontSize={"10px"} fontWeight={"medium"}>
+                  {addresse}
+                </Text>
+                <Text fontSize={"10px"} fontWeight={"medium"}>
+                  {numero}
+                </Text>
+                <Flex>
+                <Heading as={"h3"} fontWeight={"bold"} fontSize={"10px"}>
+                  {heure}
+                </Heading>
+              
+                </Flex>
+                  <Text mt={5} color={"blue.400"} fontSize={"15px"}>
+                    Pas defini
+                  </Text>
+               
+              </Box>
+              
             
+              </SimpleGrid>
+             
             </Flex>
-            <Heading>Images du magasin </Heading>
+            <Heading fontSize={"20px"} mt={10} >Images du magasin </Heading>
             <Flex width={"100%"} mt={10}>
-              <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"} mr={10} />
-              <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"} mr={10}/>
-              <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"} mr={10}/>
-              <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"} mr={10}/>
-              <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"} mr={10} />
+              <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"}  mr={10}/>
+              {/* <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"} mr={10}/> */}
+              
             </Flex>
-            <Heading>Les produits </Heading>
+            <Heading  fontSize={"20px"} mt={10}>Les produits </Heading>
             <Flex width={"100%"} mt={10}>
        
               <SimpleGrid columns={[1, 1, 2, 3, 5]} spacing={2} mr={20}>
@@ -621,6 +631,7 @@ export default function Intermed1() {
               </SimpleGrid>
             </Flex>
           </Box>
+          
         </>
       );
   }
