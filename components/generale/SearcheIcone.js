@@ -1,5 +1,5 @@
 import { Search2Icon } from '@chakra-ui/icons';
-import { Button, IconButton, Input, InputGroup, InputLeftElement, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure } from '@chakra-ui/react';
+import { Button, IconButton, Input, InputGroup, InputLeftElement, InputRightElement, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure } from '@chakra-ui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 // fontawesone Icone 
@@ -9,8 +9,15 @@ const SearcheIcone = (message) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     return (
         <>
-        <Input type='search' placeholder={Object.values(message)} w={"3em"}/>
-            <IconButton
+  <InputGroup>
+  <Input type='search' placeholder={Object.values(message)} w={"10em"} onClick={onOpen}/>
+    <InputRightElement pointerEvents='none'>
+    <Search2Icon/>
+    </InputRightElement>
+  </InputGroup>
+
+        
+            {/* <IconButton
                 variant='outline'
                 color={"#08566E"}
                 fontSize={'2xl'}
@@ -18,7 +25,7 @@ const SearcheIcone = (message) => {
                 icon={<Search2Icon />}
                 onClick={onOpen}
                 border={'none'}
-            />
+            /> */}
 
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
