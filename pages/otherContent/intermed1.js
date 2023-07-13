@@ -259,7 +259,7 @@ export default function Intermed1() {
               <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"} />
               <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"} />
               <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"} /> */}
-              <SimpleGrid columns={[1, 2, 3, 4, 6]} spacing={2}>
+              <SimpleGrid columns={[1, 2, 2, 4, 6]} spacing={2}>
                 {/* {console.log("data", data)} */}
                 {data.map((data, key) => (
                   // <Box
@@ -535,8 +535,10 @@ export default function Intermed1() {
             </Flex>
             <Heading fontSize={"20px"} mt={10} >Images du magasin </Heading>
             <Flex  mt={10}>
-              <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"100px"}  mr={10}/>
-              <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"100px"}  mr={10}/>
+              <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"190px"}
+                        height={"150px"}  mr={10}/>
+              <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"190px"}
+                        height={"150px"}  mr={10}/>
               {/* <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"100px"}  mr={10}/> */}
               {/* <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"} mr={10}/> */}
               
@@ -544,7 +546,7 @@ export default function Intermed1() {
             <Heading  fontSize={"20px"} mt={10}>Les produits </Heading>
             <Flex mt={10}>
        
-              <SimpleGrid columns={[1, 1, 2, 3, 4]} spacing={2} mr={20}>
+              <SimpleGrid columns={[1, 2, 2, 2, 4]} spacing={2} mr={20}>
                 
                 {data.map((data, key) => (
                  
