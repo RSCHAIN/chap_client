@@ -91,20 +91,20 @@ const InputBar = () => {
         {/* le logo  */}
         <Flex
           color={"yellow.400"}
-          width={"auto"}
+          width={"fit-content"}
           height={"100%"}
           align={"center"}
           justifyContent={"center"}
           fontWeight={"bold"}
-          ml={[0, 0, 0, "5em", "5em"]}
+          ml={["5em", "5em", "5em", "5em", "5em"]}
         >
           <Link href={"/"}>
             <Image
               src={"/logo1.png"}
               alt={"Chap"}
-              width={[95,95,"70px" ]}
-              mt={[0,0,0,2,2]}
-              mr={["2px", "2px", 0, 0, 0]}
+              width={"70px"}
+              mt={[2,2,2,2,2]}
+              mr={["2px", "2px", "2px", "2px", "2px"]}
             />
           </Link>
 
@@ -118,6 +118,8 @@ const InputBar = () => {
           width={"auto"}
           height={"full"}
         >
+         
+
           {isLagerThan768 ? <InputLg /> : <SearcheIcone message={"Rechercher un produit"} />}
         </Flex>
 

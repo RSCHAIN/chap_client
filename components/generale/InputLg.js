@@ -30,6 +30,7 @@ import {
   ModalBody,
   ModalFooter,
   useToast,
+  Link,
 } from "@chakra-ui/react";
 import {
   child,
@@ -105,7 +106,7 @@ const InputLg = () => {
       fournisseur != undefined
     ) {
       const rec =  query(
-        ref(db2,   "Alimentation/" ),
+        ref(db2,   "/All Products" ),
         orderByChild("nom"),
         equalTo(inputContent)
       );
@@ -127,7 +128,8 @@ const InputLg = () => {
    
     <>
     
-      <Box>
+      <Box display={"flex"}>
+      
         <InputGroup>
           <Input
             type="text"
@@ -135,7 +137,7 @@ const InputLg = () => {
             _placeholder={{ color: "black" }}
             variant={"filled"}
             borderRadius={"full"}
-            w={{ md: "20em", lg: "30em" }}
+            w={{ md: "15em", lg: "20em" }}
             onChange={(e) => {
               setInputContent(e.target.value), handleSearch();
             }}
