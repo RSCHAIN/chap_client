@@ -154,7 +154,13 @@ async function saveCommande2(data) {
 /// fin des fonctions
 
 
+////////////////////////////////////////////////////////SLIDER CONFIG /////////////////////////////////////////////////////
 
+
+
+
+
+/////////////////////////////////////////////FIN SLIDER CONFIG//////////////////////////////////////////////////////////////
 
 
 
@@ -502,7 +508,7 @@ export default function Intermed1() {
               </Box>
               </Box>
               
-              <Box width={["80%"]}>
+              <Box width={["80%"]} ml={10}>
                 <Heading fontSize={"20px"} >{nom}</Heading>
                 <Text fontSize={"10px"} fontWeight={"medium"}>
                   {addresse}
