@@ -227,7 +227,8 @@ useEffect( ()=>{
         // onClick={()=>{setActu(actu-1),Next(),setEtat1(false)}}
         isDisabled={etat}></Button>
        <Heading>
-       <Flex width={"75%"} >{pages.map(page=> <Button bgColor={"white"} onClick={() =>{setActu(page),Next(),Next()} } _hover={{fontSize:"30px" ,bgColor:"cyan.500"}} key={page} >{page}</Button>)}</Flex>
+       <Flex  >{pages.map(page=>{return (<SimpleGrid key={`${page}`} columns={[7,7,7,9,9]} height={`${pages.length*5}px`}><Button bgColor={"white"} onClick={() =>{setActu(page),Next(),Next()} } _hover={{fontSize:"30px" ,bgColor:"cyan.500"}} key={page} >{page}</Button></SimpleGrid>)}
+       )}</Flex>
        </Heading>
        <Button width={"fit-content"} 
         bgColor={"white"}

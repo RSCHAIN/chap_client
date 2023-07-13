@@ -289,9 +289,9 @@ export default function Intermed1() {
             itemClass="image-item"
             responsive={responsive}
           >
-            {images.slice(0, images.length).map((image) => {
+            {images.slice(0, images.length).map((image,index) => {
               return (
-                <Image width={"40vh"} height={"20vh"} pr={5} src={image} />
+                <Image key={index} alt={`${image}`} width={"40vh"} height={"20vh"} pr={5} src={image} />
               );
             })}
           </Carousel>
@@ -507,6 +507,7 @@ export default function Intermed1() {
                   <>
                     <Box width={"270px"} height={"fit-content"} pt={10} pl={10}>
                       <Image
+                      alt={`${index}`}
                         src={`${imageUrl}`}
                         width={"150px"}
                         height={"100px"}
