@@ -2,9 +2,9 @@ import InputBar from "@/components/InputBar";
 import Navbar from "@/components/Navbar";
 import InputLg from "@/components/generale/InputLg";
 import SearcheIcone from "@/components/generale/SearcheIcone";
-import HeaderBar from "@/components/inscription/HeaderBar";
+
 import { Box, Center, Flex, Text } from "@chakra-ui/react";
-import Exemple from "./test";
+
 import Tested from "./test2";
 
 export default function Intrmed2() {
