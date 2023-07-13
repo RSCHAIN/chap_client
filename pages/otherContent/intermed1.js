@@ -499,29 +499,24 @@ export default function Intermed1() {
           </Heading>
 
           {/* Slider */}
-          <Box ml={{ base: 0, md: 20 }} display={"flex"}>
-            <SimpleGrid columns={5}>
-              <Slider {...settings} ref={(slider) => setSlider(slider)}>
-                {cards.map((data, index) => (
-                  //  <Center key={data.id}>
-                  <>
-                    <Box width={"270px"} height={"fit-content"} pt={10} pl={10}>
-                      <Image
-                      alt={`${index}`}
-                        src={`${imageUrl}`}
-                        width={"150px"}
-                        height={"100px"}
-                        maxWidth={"200px"}
-                        key={index}
-                      />
-                    </Box>
-                  </>
-                ))}
-
-                {/* </SimpleGrid> */}
-              </Slider>
-            </SimpleGrid>
-          </Box>
+          <section style={{
+        marginTop: "20px",
+        marginRight: "20%"
+      }}>
+          <Carousel
+            partialVisbile
+            deviceType={"mobile"}
+            itemClass="image-item"
+            responsive={responsive}
+          >
+            {images.slice(0, images.length).map((image,index) => {
+              return (
+                <Image key={index} alt={`${image}`} width={"40vh"} height={"20vh"} pr={5} src={image} />
+              );
+            })}
+          </Carousel>
+    
+          </section>
 
           {/* fin slide  */}
           <Heading fontSize={"20px"} mt={10}>
