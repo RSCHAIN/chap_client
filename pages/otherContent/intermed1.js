@@ -433,7 +433,7 @@ export default function Intermed1() {
               
             
               color={"#fff"}
-              width={"fit-content"}
+              width={"94px"}
               height={"30px"}
               as={"a"}
              
@@ -501,7 +501,7 @@ export default function Intermed1() {
             </Modal>
               </Box>
               </Box>
-              <SimpleGrid columns={[1,1,2,2,2]} ml={10}>
+              
               <Box width={["80%"]}>
                 <Heading fontSize={"20px"} >{nom}</Heading>
                 <Text fontSize={"10px"} fontWeight={"medium"}>
@@ -523,7 +523,6 @@ export default function Intermed1() {
               </Box>
               
             
-              </SimpleGrid>
              
             </Flex>
             <Heading fontSize={"20px"} mt={10} >Images du magasin </Heading>
