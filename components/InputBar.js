@@ -79,7 +79,7 @@ const InputBar = () => {
   //      localStorage.setItem("total", total);
   //    };
 
-  const [isLagerThan768] = useMediaQuery("(min-width: 768px)");
+  const [isLagerThan768] = useMediaQuery("(min-width: 420px)");
   return (
     <>
       <Flex
@@ -128,7 +128,7 @@ const InputBar = () => {
           width={"auto"}
           height={"full"}
         >
-          {isLagerThan768 ? <LoginSignButton /> : <ResponsiveMenu />}
+           <LoginSignButton />  <ResponsiveMenu />
 
           <Flex
           display={["none","none","none","flex","flex"]}

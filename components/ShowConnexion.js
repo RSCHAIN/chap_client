@@ -84,6 +84,7 @@ export default function Showconnex() {
     return (
       <>
         <Flex
+          display={["none","none","none","flex","flex"]}
           align={"center"}
           justifyContent={"center"}
           width={"auto"}
@@ -223,6 +224,7 @@ export default function Showconnex() {
   } else {
     return (
       <Flex
+      display={["none","none","none","flex","flex"]}
         align={"center"}
         justifyContent={"center"}
         width={"auto"}
