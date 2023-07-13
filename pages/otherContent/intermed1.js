@@ -251,8 +251,8 @@ export default function Intermed1() {
             <Flex  mt={10}>
               <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"190px"}
                         height={"150px"}  mr={10}/>
-              <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"190px"}
-                        height={"150px"}  mr={10}/>
+              {/* <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"190px"} */}
+                        {/* // height={"150px"}  mr={10}/> */}
               {/* <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"100px"}  mr={10}/> */}
               {/* <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"} mr={10}/> */}
               
@@ -472,8 +472,7 @@ export default function Intermed1() {
             <Flex  mt={10}>
               <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"190px"}
                         height={"150px"}  mr={10}/>
-              <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"190px"}
-                        height={"150px"}  mr={10}/>
+              {/* <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"190px"} height={"150px"}  mr={10}/> */}
               {/* <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"100px"}  mr={10}/> */}
               {/* <Image src={`${imageUrl}`} alt={`logo de ${nom}`} width={"200px"} mr={10}/> */}
               
