@@ -248,7 +248,7 @@ export default function Intermed1() {
       <>
         <InputBar />
         <Navbar />
-        <Box ml={["10%", "10%", "20%", "30%", "30%"]} mt={10}>
+        <Box ml={["10%", "10%", "20%", "20%", "20%"]} mt={10}>
           <Flex>
             <Box mr={10}>
               <Image
@@ -280,7 +280,8 @@ export default function Intermed1() {
             Images du magasin{" "}
           </Heading>
           <section style={{
-        marginTop: "20px"
+        marginTop: "20px",
+        marginRight: "20%"
       }}>
           <Carousel
             partialVisbile
