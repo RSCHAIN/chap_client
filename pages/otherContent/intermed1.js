@@ -1,6 +1,7 @@
 import { db2 } from "@/FIREBASE/clientApp";
 import InputBar from "@/components/InputBar";
 import Navbar from "@/components/Navbar";
+import Slide from "@/components/slider";
 import {
   Box,
   Button,
@@ -215,7 +216,8 @@ export default function Intermed1() {
           <InputBar />
           <Navbar />
     
-          <Box  mt={5}>
+        
+          <Box ml={["10%","10%","20%","30%","30%"]} mt={10}>
           <Flex  >
              
              <Box>
@@ -428,7 +430,8 @@ export default function Intermed1() {
         <>
           <InputBar />
           <Navbar />
-          <Box ml={"30%"} mt={10}>
+       
+          <Box ml={["10%","10%","20%","30%","30%"]} mt={10}>
             <Flex >  
              
             <Box   mr={20}>
