@@ -96,7 +96,7 @@ const InputBar = () => {
           align={"center"}
           justifyContent={"center"}
           fontWeight={"bold"}
-          ml={["5em", "5em", "5em", "5em", "5em"]}
+          ml={[0, 0, 0, "5em", "5em"]}
         >
           <Link href={"/"}>
             <Image
@@ -104,7 +104,7 @@ const InputBar = () => {
               alt={"Chap"}
               width={"80px"}
               mt={[2,2,2,2,2]}
-              mr={["2px", "2px", "2px", "2px", "2px"]}
+              mr={[0, 0, 0, "2px", "2px"]}
             />
           </Link>
 
