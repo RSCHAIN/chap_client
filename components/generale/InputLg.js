@@ -139,7 +139,7 @@ const InputLg = () => {
             borderRadius={"full"}
             onClick={onOpen}
             // w={{ md: "10em", lg: "20em" }}
-            w={["40em","40em","40em","30em","30em"]}
+            w={["10em","10em","20em","30em","30em"]}
             onChange={(e) => {
               setInputContent(e.target.value), handleSearch();
             }}
