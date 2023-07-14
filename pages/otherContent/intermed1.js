@@ -448,13 +448,15 @@ export default function Intermed1() {
         </Box>
       </>
     );
-  } else {
-    return (
-      <>
+  } 
+  else if( categorie != "Fret"){
+    return(<>
+       <>
         <InputBar />
         <Navbar />
 
         <Box ml={["10%", "10%", "20%", "30%", "30%"]} mt={10}>
+         
           <Flex>
             <Box mr={10}>
               <Image
@@ -537,20 +539,246 @@ export default function Intermed1() {
 
             <Box>
               <Heading fontSize={"20px"}>{nom}</Heading>
-              <Text fontSize={"10px"} fontWeight={"medium"}>
+              <Text fontSize={"15px"} fontWeight={"medium"}>
                 {addresse}
               </Text>
-              <Text fontSize={"10px"} fontWeight={"medium"}>
-                Contact : {numero}
-              </Text>
+              <Flex mb={2} mt={2}>
+                <BsFillTelephoneOutboundFill />
+                <Text
+                  fontSize={"15px"}
+                  fontWeight={"medium"}
+                  ml={2}
+                  color={"green"}
+                >
+                  {numero}
+                </Text>
+              </Flex>
               <Flex>
-                <Heading as={"h3"} fontWeight={"bold"} fontSize={"10px"}>
-                  {heure}
+                <Text fontWeight={"bold"}>Description :</Text>
+                <Text width={"58%"} textAlign={"justify"}>
+                  {Desc1}
+                 
+                </Text>
+              </Flex>
+
+              
+              <Flex>
+                <Heading
+                  as={"h3"}
+                  fontWeight={"bold"}
+                  _hover={{
+                    cursor: "pointer",
+                  }}
+                  onClick={handleToggle}
+                  color={"blue.700"}
+                  fontSize={"15px"}
+                  mt={3}
+                >
+                  {heure}{" "}
+                  {show ? (
+                    <ChevronUpIcon fontSize={"20px"} />
+                  ) : (
+                    <ChevronDownIcon fontSize={"20px"} />
+                  )}{" "}
+                  :
                 </Heading>
               </Flex>
-              <Text mt={5} color={"blue.400"} fontSize={"15px"}>
-                Pas defini
+              <Collapse in={show}>
+                <Box ml={10}>
+                  <Text fontSize={"15px"}>lundi:</Text>
+                  <Text fontSize={"15px"}>mardi:</Text>
+                  <Text fontSize={"15px"}>mercredi:</Text>
+                  <Text fontSize={"15px"}>jeudi:</Text>
+                  <Text fontSize={"15px"}>vendredi:</Text>
+                  <Text fontSize={"15px"}>samedi:</Text>
+                  <Text fontSize={"15px"}>dimanche:</Text>
+                </Box>
+              </Collapse>
+            </Box>
+          </Flex>
+          <Heading fontSize={"20px"} mt={10}>
+            Images du magasin{" "}
+          </Heading>
+
+          {/* Slider */}
+          <section
+            style={{
+              marginTop: "20px",
+              marginRight: "20%",
+            }}
+          >
+            <Carousel
+              partialVisbile
+              deviceType={"mobile"}
+              itemClass="image-item"
+              responsive={responsive}
+            >
+              {images.slice(0, images.length).map((image, index) => {
+                return (
+                  <Image
+                    key={index}
+                    alt={`${image}`}
+                    width={"40vh"}
+                    height={"20vh"}
+                    pr={5}
+                    src={image}
+                  />
+                );
+              })}
+            </Carousel>
+          </section>
+
+          {/* fin slide  */}
+       
+        </Box>
+      </>
+    </>)
+  }
+  else {
+    return (
+      <>
+        <InputBar />
+        <Navbar />
+
+        <Box ml={["10%", "10%", "20%", "30%", "30%"]} mt={10}>
+         
+          <Flex>
+            <Box mr={10}>
+              <Image
+                src={`${imageUrl}`}
+                alt={`logo de ${nom}`}
+                width={"150px"}
+              />
+              <Box mt={5}>
+                <Button
+                  color={"#fff"}
+                  width={"94px"}
+                  height={"30px"}
+                  as={"a"}
+                  onClick={onOpen}
+                  bgColor={"cyan.700"}
+                  _hover={{
+                    backgroundColor: " cyan.900",
+                    color: "white ",
+                  }}
+                  leftIcon={<BsTelephoneOutboundFill />}
+                >
+                  Reserver
+                </Button>
+                <Modal isOpen={isOpen} onClose={onClose}>
+                  <ModalOverlay />
+                  <ModalContent>
+                    <ModalHeader>Formulaire de Reservation</ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody>
+                      <Flex>
+                        <Text mr={20}>Date & heure: </Text>
+                        <Input
+                          type="datetime-local"
+                          width={"180px"}
+                          onChange={(e) => setData1(e.target.value)}
+                        />
+                      </Flex>
+                      <br />
+                      <Flex>
+                        <Text mr={5}>Nombre De Couverts : </Text>
+                        <Input
+                          type="number"
+                          width={"180px"}
+                          onChange={(e) => setData2(e.target.value)}
+                        />
+                      </Flex>
+                      <br />
+                      <Flex>
+                        <Text marginRight={10}>Numéro du Restaurant : </Text>
+                        <h3>
+                          <a href={`tel:${sessionStorage.getItem("savefrom")}`}>
+                            {sessionStorage.getItem("savefrom")}
+                          </a>
+                        </h3>
+                      </Flex>
+                    </ModalBody>
+
+                    <ModalFooter>
+                      {/* <Button colorScheme="ghost" mr={3} onClick={onClose}>
+                    Annuler
+                  </Button> */}
+
+                      <Button
+                        bgColor={"cyan.700"}
+                        color={"white"}
+                        _hover={{ bgColor: "cyan.900" }}
+                        onClick={() => {
+                          saveCommande3(data1, data2),
+                            setData1(""),
+                            setData2("");
+                        }}
+                      >
+                        Valider
+                      </Button>
+                    </ModalFooter>
+                  </ModalContent>
+                </Modal>
+              </Box>
+            </Box>
+
+            <Box>
+              <Heading fontSize={"20px"}>{nom}</Heading>
+              <Text fontSize={"15px"} fontWeight={"medium"}>
+                {addresse}
               </Text>
+              <Flex mb={2} mt={2}>
+                <BsFillTelephoneOutboundFill />
+                <Text
+                  fontSize={"15px"}
+                  fontWeight={"medium"}
+                  ml={2}
+                  color={"green"}
+                >
+                  {numero}
+                </Text>
+              </Flex>
+              <Flex>
+                <Text fontWeight={"bold"}>Description :</Text>
+                <Text width={"58%"} textAlign={"justify"}>
+                  {Desc1}
+                 
+                </Text>
+              </Flex>
+
+              
+              <Flex>
+                <Heading
+                  as={"h3"}
+                  fontWeight={"bold"}
+                  _hover={{
+                    cursor: "pointer",
+                  }}
+                  onClick={handleToggle}
+                  color={"blue.700"}
+                  fontSize={"15px"}
+                  mt={3}
+                >
+                  {heure}{" "}
+                  {show ? (
+                    <ChevronUpIcon fontSize={"20px"} />
+                  ) : (
+                    <ChevronDownIcon fontSize={"20px"} />
+                  )}{" "}
+                  :
+                </Heading>
+              </Flex>
+              <Collapse in={show}>
+                <Box ml={10}>
+                  <Text fontSize={"15px"}>lundi:</Text>
+                  <Text fontSize={"15px"}>mardi:</Text>
+                  <Text fontSize={"15px"}>mercredi:</Text>
+                  <Text fontSize={"15px"}>jeudi:</Text>
+                  <Text fontSize={"15px"}>vendredi:</Text>
+                  <Text fontSize={"15px"}>samedi:</Text>
+                  <Text fontSize={"15px"}>dimanche:</Text>
+                </Box>
+              </Collapse>
             </Box>
           </Flex>
           <Heading fontSize={"20px"} mt={10}>
