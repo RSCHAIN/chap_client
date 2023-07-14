@@ -76,8 +76,8 @@ export default function Home() {
           }))
           
           
-          localStorage.setItem(index.id + "Datos", JSON.stringify(categorie));
-          setGetter(JSON.parse(localStorage.getItem(index.id + "Datos")))
+          // localStorage.setItem(index.id + "Datos", JSON.stringify(categorie));
+          // setGetter(JSON.parse(localStorage.getItem(index.id + "Datos")))
         }
       })
     })

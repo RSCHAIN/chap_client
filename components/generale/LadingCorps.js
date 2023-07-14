@@ -73,6 +73,7 @@ export function ItemCard({ item, card }) {
               sessionStorage.setItem("nom", item.organisation),
               sessionStorage.setItem("adresse", item.adresse),
               sessionStorage.setItem("categorie", item.categorie);
+              sessionStorage.setItem("description", item.description);
           }}
           mr={{ base: "0%", md: "0%" }}
           _hover={{ textDecoration: "none" }}
@@ -174,7 +175,7 @@ export function ContainerCard({ card }) {
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
-
+   
       datos.push(doc.data());
     });
     setDatas(1);
@@ -286,7 +287,7 @@ const LadingCorps = () => {
         // console.log(doc.data().id);
       });
     } 
-    console.log(cat.length);
+  
     setDatas(1);
   };
 

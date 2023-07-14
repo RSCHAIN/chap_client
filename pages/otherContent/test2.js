@@ -1,7 +1,7 @@
 import { db } from "@/FIREBASE/clientApp";
 import FooterR from "@/components/footerResponsif";
 import { Box, Button, Center, Flex, Heading, Link, Select, SimpleGrid, Text } from "@chakra-ui/react";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import { useRouter } from "next/router";
 import React, {useState,useEffect} from "react"
 const PagButton = (props) => {
@@ -77,17 +77,17 @@ function Next() {
 const Get = async ()=>{
   
     if (datas==0 || num == undefined || num == null) {
-        const q = query(collection(db, "Admin"), where("categorie","==", `${localStorage.getItem("service")}`));
+        const q = query(collection(db, "Admin"), where("categorie","==", `${localStorage.getItem("service")}`),orderBy("organisation"));
       
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
-      adresse.push(doc.data().adresse);
+      // adresse.push(doc.data().adresse);
     //   imageUrl.push(doc.data().imageUrl);
     //   numero.push(doc.data().number);
     //   nom.push(doc.data().organisation);
     //   categorie.push(doc.data().categorie);
-     
+     console.log(doc.data().description)
   
       tout.push(doc.data())
       
@@ -160,9 +160,10 @@ useEffect( ()=>{
                 onClick={() => {
                   sessionStorage.setItem("savefrom", data.number),
                     sessionStorage.setItem("image", data.imageUrl),
-                    sessionStorage.setItem("nom", data.name),
+                    sessionStorage.setItem("nom", data.organisation),
                     sessionStorage.setItem("adresse", data.adresse),
                     sessionStorage.setItem("categorie", data.categorie);
+                    sessionStorage.setItem("description", data.description);
                 }}
                 mr={{ base: "0%", md: "0%" }}
                 _hover={{ textDecoration: "none" }}
@@ -188,7 +189,7 @@ useEffect( ()=>{
                     bg={"rgba(0, 0, 0, 0.277)"}
                   >
                     <Text fontSize={"xl"} color={"#fff"} textAlign={"center"}>
-                      { data.name}
+                      { data.organisation}
                     </Text>
                   </Flex>
                 </Flex>

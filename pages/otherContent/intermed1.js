@@ -7,7 +7,7 @@ import "react-multi-carousel/lib/styles.css";
 import {
   Box,
   Button,
-  Center,
+  Collapse,
   Flex,
   Heading,
   Image,
@@ -28,9 +28,13 @@ import { onValue, push, ref } from "@firebase/database";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useEffect } from "react";
-import { BsTelephoneOutboundFill } from "react-icons/bs";
+import {
+  BsFillTelephoneOutboundFill,
+  BsTelephoneOutboundFill,
+} from "react-icons/bs";
 import { IoMdAddCircle, IoMdAddCircleOutline } from "react-icons/io";
 import Slider from "react-slick";
+import { ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons";
 
 ///fonction du panier
 function saveCart(product) {
@@ -177,13 +181,19 @@ const responsive = {
 /////////////////////////////////////////////FIN SLIDER CONFIG//////////////////////////////////////////////////////////////
 
 export default function Intermed1() {
-  const [slider, setSlider] = useState(null);
+  const [show, setShow] = useState(false);
+
+
+
+
+  const handleToggle = () => setShow(!show);
   const { isOpen, onToggle, onOpen, onClose } = useDisclosure();
   const toast = useToast();
   const router = useRouter();
   const [imageUrl, setImageUrl] = useState("");
   const [numero, setNumero] = useState("");
   const [nom, setNom] = useState("");
+  const [Desc1, setDesc1] = useState("");
   const [addresse, setAddresse] = useState("");
   const [data, setData] = useState([]);
   const [categorie, setCategorie] = useState("");
@@ -196,6 +206,7 @@ export default function Intermed1() {
     setNom(sessionStorage.getItem("nom"));
     setAddresse(sessionStorage.getItem("adresse"));
     setCategorie(sessionStorage.getItem("categorie"));
+    setDesc1(sessionStorage.getItem("description"));
     const starCountRef = ref(
       db2,
       `${sessionStorage.getItem("categorie")}/${sessionStorage.getItem("nom")}`
@@ -260,44 +271,92 @@ export default function Intermed1() {
 
             <Box>
               <Heading fontSize={"20px"}>{nom}</Heading>
-              <Text fontSize={"10px"} fontWeight={"medium"}>
+              <Text fontSize={"15px"} fontWeight={"medium"}>
                 {addresse}
               </Text>
-              <Text fontSize={"10px"} fontWeight={"medium"}>
-                Contact : {numero}
-              </Text>
+              <Flex mb={2} mt={2}>
+                <BsFillTelephoneOutboundFill />
+                <Text
+                  fontSize={"15px"}
+                  fontWeight={"medium"}
+                  ml={2}
+                  color={"green"}
+                >
+                  {numero}
+                </Text>
+              </Flex>
               <Flex>
-                <Heading as={"h3"} fontWeight={"bold"} fontSize={"10px"}>
-                  {heure}
+                <Text fontWeight={"bold"}>Description :</Text>
+                <Text width={"58%"} textAlign={"justify"}>
+                  {Desc1}
+                 
+                </Text>
+              </Flex>
+
+              
+              <Flex>
+                <Heading
+                  as={"h3"}
+                  fontWeight={"bold"}
+                  _hover={{
+                    cursor: "pointer",
+                  }}
+                  onClick={handleToggle}
+                  color={"blue.700"}
+                  fontSize={"15px"}
+                  mt={3}
+                >
+                  {heure}{" "}
+                  {show ? (
+                    <ChevronUpIcon fontSize={"20px"} />
+                  ) : (
+                    <ChevronDownIcon fontSize={"20px"} />
+                  )}{" "}
+                  :
                 </Heading>
               </Flex>
-              <Text mt={5} color={"blue.400"} fontSize={"15px"}>
-                Pas defini
-              </Text>
+              <Collapse in={show}>
+                <Box ml={10}>
+                  <Text fontSize={"15px"}>lundi:</Text>
+                  <Text fontSize={"15px"}>mardi:</Text>
+                  <Text fontSize={"15px"}>mercredi:</Text>
+                  <Text fontSize={"15px"}>jeudi:</Text>
+                  <Text fontSize={"15px"}>vendredi:</Text>
+                  <Text fontSize={"15px"}>samedi:</Text>
+                  <Text fontSize={"15px"}>dimanche:</Text>
+                </Box>
+              </Collapse>
             </Box>
           </Flex>
           <Heading fontSize={"20px"} mt={10}>
             Images du magasin{" "}
           </Heading>
-          <section style={{
-        marginTop: "20px",
-        marginRight: "20%"
-      }}>
-          <Carousel
-            partialVisbile
-            deviceType={"mobile"}
-            itemClass="image-item"
-            responsive={responsive}
+          <section
+            style={{
+              marginTop: "20px",
+              marginRight: "20%",
+            }}
           >
-            {images.slice(0, images.length).map((image,index) => {
-              return (
-                <Image key={index} alt={`${image}`} width={"40vh"} height={"20vh"} pr={5} src={image} />
-              );
-            })}
-          </Carousel>
-    
+            <Carousel
+              partialVisbile
+              deviceType={"mobile"}
+              itemClass="image-item"
+              responsive={responsive}
+            >
+              {images.slice(0, images.length).map((image, index) => {
+                return (
+                  <Image
+                    key={index}
+                    alt={`${image}`}
+                    width={"40vh"}
+                    height={"20vh"}
+                    pr={5}
+                    src={image}
+                  />
+                );
+              })}
+            </Carousel>
           </section>
-         
 
           <Heading fontSize={"20px"} mt={10}>
             Les produits{" "}
@@ -499,23 +558,31 @@ export default function Intermed1() {
           </Heading>
 
           {/* Slider */}
-          <section style={{
-        marginTop: "20px",
-        marginRight: "20%"
-      }}>
-          <Carousel
-            partialVisbile
-            deviceType={"mobile"}
-            itemClass="image-item"
-            responsive={responsive}
+          <section
+            style={{
+              marginTop: "20px",
+              marginRight: "20%",
+            }}
           >
-            {images.slice(0, images.length).map((image,index) => {
-              return (
-                <Image key={index} alt={`${image}`} width={"40vh"} height={"20vh"} pr={5} src={image} />
-              );
-            })}
-          </Carousel>
-    
+            <Carousel
+              partialVisbile
+              deviceType={"mobile"}
+              itemClass="image-item"
+              responsive={responsive}
+            >
+              {images.slice(0, images.length).map((image, index) => {
+                return (
+                  <Image
+                    key={index}
+                    alt={`${image}`}
+                    width={"40vh"}
+                    height={"20vh"}
+                    pr={5}
+                    src={image}
+                  />
+                );
+              })}
+            </Carousel>
           </section>
 
           {/* fin slide  */}
