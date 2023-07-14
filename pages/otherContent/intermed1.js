@@ -350,7 +350,7 @@ export default function Intermed1() {
                     key={index}
                     alt={`${image}`}
                     width={"40vh"}
-                    height={"20vh"}
+                    height={"10vh"}
                     pr={5}
                     src={image}
                   />

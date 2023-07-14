@@ -91,38 +91,34 @@ const InputLg = () => {
 
 
 
-  const handleSearch =  () => {
+  const handleSearch =  (input) => {
 
-   
+   setData([])
   
     
   
 
 
 
-    if (
-      categories != null ||
-      (categories != undefined && fournisseur != null) ||
-      fournisseur != undefined
-    ) {
+  
       const rec =  query(
         ref(db2,   "/All Products" ),
         orderByChild("nom"),
-        equalTo(inputContent)
+        startAt(input)
+       
       );
       get(rec)
         .then((snapshot) => {
           snapshot.forEach((childsnapsho) => {
-            setData([childsnapsho.val()]);
+            data.push(childsnapsho.val());
+            // console.log((childsnapsho.val()))
           });
         })
         .catch((error) => console.log(error));
 
       
-    } else {
-      setData([]);
-    }
-  };
+   
+  }
 
   return (
    
@@ -139,102 +135,111 @@ const InputLg = () => {
             borderRadius={"full"}
             onClick={onOpen}
             // w={{ md: "10em", lg: "20em" }}
-            w={["20em","20em","20em","30em","30em"]}
-            onChange={(e) => {
-              setInputContent(e.target.value), handleSearch();
-            }}
+            w={["15em","15em","15em","30em","30em"]}
+          
           />
           <InputRightElement>
             <Search2Icon color={"#08566E"} onClick={onOpen} />
             <Modal isOpen={isOpen} onClose={onClose}>
               <ModalOverlay />
               <ModalContent>
-                <ModalHeader>ZONE DE RECHERCHE</ModalHeader>
+                <ModalHeader>RECHERCHE DE PRODUIT</ModalHeader>
                 <ModalCloseButton onClick={()=>setData([])}/>
                 <ModalBody>
+                  <Input type="search" width={"150px"} 
+                  placeholder="Que recherchez-vous ?"
+                  _placeholder={{ color: "black" }}
+                  variant={"filled"}
+                  borderRadius={"full"}
+                  w={["20em","20em","20em","20em","20em"]}
+                  onChange={(e) => {
+                     handleSearch(e.target.value);
+                  }}
+                  />
                   {data.map((data, index) => {
-                    if (data.nom != null || data.nom != undefined) {
-                      return (
-                        <Flex
-                          key={index}
-                          bgColor={"#fbfbfbfc"}
-                          width={{
-                            base: "fit-content",
-                            lg: "fit-content",
-                            md: "fit-content",
-                          }}
-                          height={""}
-                          border={"1px solid #e6e6e6"}
-                          // boxShadow={"0px 2px 10px"}
-                          boxSizing={"border-box"}
-                          b
-                          borderRadius={"9px"}
-                          // pb={10}
-                          mb={20}
-                        >
-                          <Box pr={5}>
-                            <Image
-                              src={data.imageUrl}
-                              alt={data.nom}
-                              width={"80px"}
-                              height={"20px"}
-                              ml={15}
-                              my={3}
-                            />
-                          </Box>
-                          <Box display={"COLUMN"}>
-                            <Text
-                              pb={5}
-                              pt={5}
-                              fontWeight={"bold"}
-                              mt={2}
-                              mr={10}
-                            >
-                              {data.nom}
-                            </Text>
+                    // if (data.nom != null || data.nom != undefined) {
+                    //   return (
+                    //     <Flex
+                    //       key={index}
+                    //       bgColor={"#fbfbfbfc"}
+                    //       width={{
+                    //         base: "fit-content",
+                    //         lg: "fit-content",
+                    //         md: "fit-content",
+                    //       }}
+                    //       height={""}
+                    //       border={"1px solid #e6e6e6"}
+                    //       // boxShadow={"0px 2px 10px"}
+                    //       boxSizing={"border-box"}
+                    //       b
+                    //       borderRadius={"9px"}
+                    //       // pb={10}
+                    //       mb={20}
+                    //     >
+                    //       <Box pr={5}>
+                    //         <Image
+                    //           src={data.imageUrl}
+                    //           alt={data.nom}
+                    //           width={"80px"}
+                    //           height={"20px"}
+                    //           ml={15}
+                    //           my={3}
+                    //         />
+                    //       </Box>
+                    //       <Box display={"COLUMN"}>
+                    //         <Text
+                    //           pb={5}
+                    //           pt={5}
+                    //           fontWeight={"bold"}
+                    //           mt={2}
+                    //           mr={10}
+                    //         >
+                    //           {data.nom}
+                    //         </Text>
 
-                            <Text pt={5}>{data.description}</Text>
-                          </Box>
-                          <Box>
-                            <Text
-                              mt={10}
-                              fontWeight={"semibold"}
-                              fontSize={"lg"}
-                              pr={2}
-                            >
-                              {data.prix}€
-                            </Text>
-                            <Button
-                              bgColor={"blue"}
-                              mt={3}
-                              borderRadius={"66px"}
-                              as={"a"}
-                              onClick={() => {
-                                AddToCart(data),
-                                  toast({
-                                    title: "PRODUIT AJOUTE",
+                    //         <Text pt={5}>{data.description}</Text>
+                    //       </Box>
+                    //       <Box>
+                    //         <Text
+                    //           mt={10}
+                    //           fontWeight={"semibold"}
+                    //           fontSize={"lg"}
+                    //           pr={2}
+                    //         >
+                    //           {data.prix}€
+                    //         </Text>
+                    //         <Button
+                    //           bgColor={"blue"}
+                    //           mt={3}
+                    //           borderRadius={"66px"}
+                    //           as={"a"}
+                    //           onClick={() => {
+                    //             AddToCart(data),
+                    //               toast({
+                    //                 title: "PRODUIT AJOUTE",
 
-                                    status: "success",
-                                    duration: 9000,
-                                    isClosable: true,
-                                  });
-                              }}
-                              color={"white"}
-                              _hover={{
-                                backgroundColor: " #00FFEF",
-                                color: "#080904 ",
-                              }}
-                              leftIcon={<IoMdAddCircleOutline />}
-                            >
-                              {" "}
-                              Ajouter au panier
-                            </Button>
-                          </Box>
-                        </Flex>
-                      );
-                    } else {
-                      return <Box key={index}>PRODUIT INTROUVABLE</Box>;
-                    }
+                    //                 status: "success",
+                    //                 duration: 9000,
+                    //                 isClosable: true,
+                    //               });
+                    //           }}
+                    //           color={"white"}
+                    //           _hover={{
+                    //             backgroundColor: " #00FFEF",
+                    //             color: "#080904 ",
+                    //           }}
+                    //           leftIcon={<IoMdAddCircleOutline />}
+                    //         >
+                    //           {" "}
+                    //           Ajouter au panier
+                    //         </Button>
+                    //       </Box>
+                    //     </Flex>
+                    //   );
+                    // } else {
+                    //   return <Box key={index}>PRODUIT INTROUVABLE</Box>;
+                    // }
+                    console.log(data)
                   })}
                 </ModalBody>
               </ModalContent>
