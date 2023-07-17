@@ -270,7 +270,7 @@ export default function Connexion() {
                   Connexion{" "}
                 </Button>
                 <Link mt={20} fontSize={20} textAlign={'center'} height={"40px"}  borderRadius={"5%"} bgColor={"cyan.900"} color={"white"}  _hover={{
-                color: 'blue',
+                color: '#C0C0C0',
               }} href={'/Inscription'}>
                   Inscription
                 </Link>

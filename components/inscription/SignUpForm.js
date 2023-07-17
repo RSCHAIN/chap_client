@@ -34,6 +34,7 @@ import { app } from "@/FIREBASE/clientApp";
 import { getFirestore } from "firebase/firestore";
 import { doc } from "@firebase/firestore"; // for creating a pointer to our Document
 import { setDoc } from "firebase/firestore"; // for adding the Document to Collection
+import FooterR from "../footerResponsif";
 
 const SignUpForm = () => {
   const [name, setName] = useState();
@@ -275,11 +276,12 @@ const SignUpForm = () => {
         </Box>
       </Center>
       
-      <Center width="480px" mb={20} ml={["33%"]} >
+      <Center width={{md:"350px",lg:"480px"}} mb={20} mt={2} ml={["5%","5%","26%","33%","33%"]} >
         <Text>
         {terms}
         </Text>
       </Center>
+      <FooterR/>
     </>
   );
 };
