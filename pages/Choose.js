@@ -29,16 +29,16 @@ export default function Intermediary() {
            */}
 
 
-          <Box mr={5} mb={10} _hover={{color:"cyan.700"}}>
+          <Box mr={20} mb={10} _hover={{color:"cyan.700"}}>
           <Link
             href={"/Connexion"}
             _hover={{ 
               textDecoration: "none",
             }}
           >
-            <Box color={"cyan.700"}>
-             <Center> <Icon as={FaRegUserCircle}  fontSize={50} /></Center>
-             <Center><Text fontSize={20} fontWeight={'semibold'}>Client</Text></Center>
+            <Box color={"cyan.700"} >
+             <Center> <Icon as={FaRegUserCircle}  fontSize={"90px"} /></Center>
+             <Center><Text fontSize={"30px"} fontWeight={'semibold'}>Client</Text></Center>
             </Box>
           </Link>
           </Box>
@@ -72,9 +72,9 @@ export default function Intermediary() {
               textDecoration: "none",
             }}
           >
-            <Box color={"cyan.700"}>
-             <Center> <Icon as={FaRegUserCircle} mr={5}fontSize={50} /></Center>
-             <Center><Text fontSize={20} fontWeight={'semibold'}>Fournisseur</Text></Center>
+            <Box color={"cyan.700"} mr={[20,20,20,1,1]}>
+             <Center> <Icon as={FaRegUserCircle} fontSize={"90px"} /></Center>
+             <Center><Text fontSize={"30px"} fontWeight={'semibold'}>Fournisseur</Text></Center>
             </Box>
           </Link>
           </Box>

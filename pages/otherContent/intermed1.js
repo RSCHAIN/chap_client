@@ -422,9 +422,10 @@ export default function Intermed1() {
                       Height={"250px"}
                       maxH={"250px"}
                     >
-                      <Tooltip label={data.description}>
+                      {data.description == "undefined" ? <></> : <>  <Tooltip label={data.description}>
                       <Text  noOfLines={1}>{data.description}</Text>
-                      </Tooltip>
+                      </Tooltip></>}
+                     
                     </Box>
                     <Box>
                       <Button
