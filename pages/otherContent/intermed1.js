@@ -35,6 +35,7 @@ import {
 import { IoMdAddCircle, IoMdAddCircleOutline } from "react-icons/io";
 import Slider from "react-slick";
 import { ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons";
+import FooterR from "@/components/footerResponsif";
 
 ///fonction du panier
 function saveCart(product) {
@@ -259,14 +260,18 @@ export default function Intermed1() {
       <>
         <InputBar />
         <Navbar />
-        <Box ml={["10%", "10%", "20%", "20%", "20%"]} mt={10}>
+        <Box ml={["3%", "3%", "3%", "20%", "20%"]} mt={10} mb={10}>
           <Flex>
-            <Box mr={10}>
+            <Box mr={5}>
               <Image
                 src={`${imageUrl}`}
                 alt={`logo de ${nom}`}
-                width={"200px"}
-                height={"200px"}
+                width={["150px","150px","150px","200px","200px"]}
+                height={["150px","150px","150px","200px","200px"]}
+                maxHeight={"200px"}
+                maxWidth={"200px"}
+                minHeight={"80px"}
+                minWidth={"100px"}
               />
             </Box>
 
@@ -287,7 +292,7 @@ export default function Intermed1() {
                 </Text>
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"}>Description :</Text>
+                <Text fontWeight={"bold"}>Description : </Text>
                 <Text width={"58%"} textAlign={"justify"}>
                   {Desc1}
                  
@@ -349,8 +354,10 @@ export default function Intermed1() {
                   <Image
                     key={index}
                     alt={`${image}`}
-                    width={"40vh"}
-                    height={"10vh"}
+                    maxWidth={"200px"}
+                    maxHeight={"200px"}
+                    minWidth={"150px"}
+                    minHeight={"150px"}
                     pr={5}
                     src={image}
                   />
@@ -363,24 +370,25 @@ export default function Intermed1() {
             Les produits{" "}
           </Heading>
           <Flex mt={10}>
-            <SimpleGrid columns={[1, 2, 2, 2, 4]} spacing={2} mr={20}>
+            <SimpleGrid columns={[2, 2, 3, 3, 5]} spacing={2} mr={20}>
               {data.map((data, key) => (
                 <Box
                   key={data.id}
-                  maxW={["70%", "70%", "70%", "70%", "70%"]}
+                  maxW={"fit-content"}
                   height={"400px"}
                   borderRadius="lg"
                   mt={4}
                   mb={20}
+                  // border={"1px solid black"}
                 >
-                  <Box width={"270px"} height={"fit-content"} pt={10} pl={10}>
+                  <Box width={"fit-content"} height={"fit-content"} pt={10} pl={5}>
                     <Image
                       src={data.imageUrl}
                       alt={data.nom}
-                      width={"190px"}
+                      width={["150px","150px","150px","190px","190px"]}
                       height={"150px"}
-                      maxH={"519px"}
-                      maxW={"208px"}
+                      maxH={"200px"}
+                      maxW={"200px"}
                     />
                   </Box>
 
@@ -395,7 +403,7 @@ export default function Intermed1() {
                       height={"50px"}
                       pb={20}
                     >
-                      <Text>{data.nom}</Text>
+                      <Text width={"150px"}>{data.nom}</Text>
                       <Box textColor={"blue"} color={"blue.400"} h={5}>
                         {data.prix}
                         <Box as="span" pl={2} fontSize="sm">
@@ -407,12 +415,13 @@ export default function Intermed1() {
                     <Box
                       fontWeight="normal"
                       lineHeight="taller"
+                      mb={5}
                       noOfLines={8}
-                      w={"250px"}
+                      w={{base:"150px",md:"200px"}}
                       Height={"250px"}
                       maxH={"250px"}
                     >
-                      <Text mb={5}>{data.description}</Text>
+                      <Text  noOfLines={1}>{data.description}</Text>
                     </Box>
                     <Box>
                       <Button
@@ -447,6 +456,7 @@ export default function Intermed1() {
             </SimpleGrid>
           </Flex>
         </Box>
+        <FooterR/>
       </>
     );
   } 
@@ -456,15 +466,19 @@ export default function Intermed1() {
         <InputBar />
         <Navbar />
 
-        <Box ml={["10%", "10%", "20%", "30%", "30%"]} mt={10}>
+        <Box ml={["3%", "3%", "3%", "20%", "20%"]} mt={10} mb={10}>
          
           <Flex>
-            <Box mr={10}>
-              <Image
+            <Box mr={5}>
+            <Image
                 src={`${imageUrl}`}
                 alt={`logo de ${nom}`}
-                width={"200px"}
-                height={"200px"}
+                width={["150px","150px","150px","200px","200px"]}
+                height={["150px","150px","150px","200px","200px"]}
+                maxHeight={"200px"}
+                maxWidth={"200px"}
+                minHeight={"80px"}
+                minWidth={"100px"}
               />
               <Box mt={5}>
                 <Button
@@ -545,7 +559,7 @@ export default function Intermed1() {
               </Collapse>
             </Box>
           </Flex>
-          <Heading fontSize={"20px"} mt={10}>
+          <Heading fontSize={"20px"} mt={10} >
             Images du magasin{" "}
           </Heading>
 
@@ -554,6 +568,7 @@ export default function Intermed1() {
             style={{
               marginTop: "20px",
               marginRight: "20%",
+              marginBottom: "70px"
             }}
           >
             <Carousel
@@ -567,8 +582,10 @@ export default function Intermed1() {
                   <Image
                     key={index}
                     alt={`${image}`}
-                    width={"40vh"}
-                    height={"20vh"}
+                    maxWidth={"200px"}
+                    maxHeight={"200px"}
+                    minWidth={"150px"}
+                    minHeight={"150px"}
                     pr={5}
                     src={image}
                   />
@@ -580,6 +597,7 @@ export default function Intermed1() {
           {/* fin slide  */}
        
         </Box>
+        <FooterR/>
       </>
     </>)
   }
@@ -589,15 +607,19 @@ export default function Intermed1() {
         <InputBar />
         <Navbar />
 
-        <Box ml={["10%", "10%", "20%", "30%", "30%"]} mt={10}>
+        <Box ml={["3%", "3%", "3%", "20%", "20%"]} mt={10} mb={10}>
          
           <Flex>
-            <Box mr={10}>
-              <Image
+            <Box mr={5}>
+            <Image
                 src={`${imageUrl}`}
                 alt={`logo de ${nom}`}
-                width={"200px"}
-                height={"200px"}
+                width={["150px","150px","150px","200px","200px"]}
+                height={["150px","150px","150px","200px","200px"]}
+                maxHeight={"200px"}
+                maxWidth={"200px"}
+                minHeight={"80px"}
+                minWidth={"100px"}
               />
               <Box mt={5}>
                 <Button
@@ -751,13 +773,15 @@ export default function Intermed1() {
               {images.slice(0, images.length).map((image, index) => {
                 return (
                   <Image
-                    key={index}
-                    alt={`${image}`}
-                    width={"40vh"}
-                    height={"20vh"}
-                    pr={5}
-                    src={image}
-                  />
+                  key={index}
+                  alt={`${image}`}
+                  maxWidth={"200px"}
+                  maxHeight={"200px"}
+                  minWidth={"150px"}
+                  minHeight={"150px"}
+                  pr={5}
+                  src={image}
+                />
                 );
               })}
             </Carousel>
@@ -768,24 +792,25 @@ export default function Intermed1() {
             Les produits{" "}
           </Heading>
           <Flex mt={10}>
-            <SimpleGrid columns={[1, 2, 2, 2, 4]} spacing={2} mr={20}>
+          <SimpleGrid columns={[2, 2, 3, 3, 5]} spacing={2} mr={20}>
               {data.map((data, key) => (
                 <Box
                   key={data.id}
-                  maxW={["70%", "70%", "70%", "70%", "70%"]}
+                  maxW={"fit-content"}
                   height={"400px"}
                   borderRadius="lg"
                   mt={4}
                   mb={20}
+                  // border={"1px solid black"}
                 >
-                  <Box width={"270px"} height={"fit-content"} pt={10} pl={10}>
+                  <Box width={"fit-content"} height={"fit-content"} pt={10} pl={5}>
                     <Image
                       src={data.imageUrl}
                       alt={data.nom}
-                      width={"190px"}
+                      width={["150px","150px","150px","190px","190px"]}
                       height={"150px"}
-                      maxH={"519px"}
-                      maxW={"208px"}
+                      maxH={"200px"}
+                      maxW={"200px"}
                     />
                   </Box>
 
@@ -800,7 +825,7 @@ export default function Intermed1() {
                       height={"50px"}
                       pb={20}
                     >
-                      <Text>{data.nom}</Text>
+                      <Text width={"150px"}>{data.nom}</Text>
                       <Box textColor={"blue"} color={"blue.400"} h={5}>
                         {data.prix}
                         <Box as="span" pl={2} fontSize="sm">
@@ -812,12 +837,13 @@ export default function Intermed1() {
                     <Box
                       fontWeight="normal"
                       lineHeight="taller"
+                      mb={5}
                       noOfLines={8}
-                      w={"250px"}
+                      w={{base:"150px",md:"200px"}}
                       Height={"250px"}
                       maxH={"250px"}
                     >
-                      <Text mb={5}>{data.description}</Text>
+                      <Text  noOfLines={1}>{data.description}</Text>
                     </Box>
                     <Box>
                       <Button
@@ -852,6 +878,7 @@ export default function Intermed1() {
             </SimpleGrid>
           </Flex>
         </Box>
+        <FooterR/>
       </>
     );
   }
