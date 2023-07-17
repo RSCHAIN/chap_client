@@ -21,6 +21,7 @@ import {
   ModalOverlay,
   SimpleGrid,
   Text,
+  Tooltip,
   useDisclosure,
   useToast,
 } from "@chakra-ui/react";
@@ -421,7 +422,9 @@ export default function Intermed1() {
                       Height={"250px"}
                       maxH={"250px"}
                     >
+                      <Tooltip label={data.description}>
                       <Text  noOfLines={1}>{data.description}</Text>
+                      </Tooltip>
                     </Box>
                     <Box>
                       <Button
@@ -844,7 +847,9 @@ export default function Intermed1() {
                       Height={"250px"}
                       maxH={"250px"}
                     >
+                      <Tooltip label={data.description}>
                       <Text  noOfLines={1}>{data.description}</Text>
+                      </Tooltip>
                     </Box>
                     <Box>
                       <Button
