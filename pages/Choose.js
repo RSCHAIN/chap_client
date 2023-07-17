@@ -29,7 +29,7 @@ export default function Intermediary() {
            */}
 
 
-          <Box mr={5} _hover={{color:"cyan.700"}}>
+          <Box mr={5} mb={10} _hover={{color:"cyan.700"}}>
           <Link
             href={"/Connexion"}
             _hover={{ 

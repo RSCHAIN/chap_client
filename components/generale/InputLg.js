@@ -151,7 +151,7 @@ const InputLg = () => {
                   _placeholder={{ color: "black" }}
                   variant={"filled"}
                   borderRadius={"full"}
-                  w={["20em","20em","20em","20em","20em"]}
+                  w={["15em","15em","15em","20em","20em"]}
                   onChange={(e) => {
                      handleSearch(e.target.value);
                   }}

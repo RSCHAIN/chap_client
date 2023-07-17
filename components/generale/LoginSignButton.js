@@ -4,7 +4,8 @@ import Showconnex from "../ShowConnexion";
 const LoginSignButton = () => {
     return (
         <>
-            <Showconnex/>
+        <Flex display={["none","none","none","flex","flex"]}>            <Showconnex/></Flex>
+
         </>
     );
 };

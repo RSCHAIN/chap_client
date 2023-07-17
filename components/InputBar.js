@@ -117,7 +117,8 @@ const InputBar = () => {
           justifyContent={"center"}
           width={"auto"}
           height={"full"}
-        >
+          mr={3}
+        > 
          
 
           {isLagerThan768 ? <InputLg /> : <SearcheIcone message={"Rechercher un produit"} />}
