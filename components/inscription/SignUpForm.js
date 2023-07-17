@@ -73,7 +73,7 @@ const SignUpForm = () => {
           setEmail(userCredential.user.email);
           // router.back()
           signOut(auth);
-          alert("Email sent")
+          alert("Email sent");
           toast({
             title: "SUCCES.",
             description: "INSCRIPTION VALIDEE",
@@ -112,164 +112,175 @@ const SignUpForm = () => {
     }
   };
 
+  const terms = "  En continuant, vous acceptez nos conditions générales et notre politique de confidentialité. Nous utilisons vos données personnelles pour vous offrir une expérience personnalisée, ainsi que pour mieux comprendre et améliorer notre service. Pour plus de détails, cliquez ici."
   const welcome = "BIENVENUE SUR LA PAGE D'INSCRIPTION";
 
   return (
-    <Center width={"100%"} height={"80vh"} mt={"2em"}>
-      <Box
-        width={{ base: "95%", md: "50%", xl: "40%", "2xl": "30%" }}
-        height={{ base: "95%" }}
-      >
-        <Text fontWeight={"bold"} fontSize={"2xl"}>
-          Bonjour!
-        </Text>
-        <Text fontWeight={"light"}>{welcome}</Text>
-        <Stack spacing={5} marginTop={"1em"} width={{ base: "100%" }}>
-          {/* le nom  */}
-          <InputGroup>
-            <InputLeftElement pointerEvents="none">
-              <FontAwesomeIcon icon={faAdd} color={"gray"} />
-            </InputLeftElement>
-            <Input
-              type="text"
-              onChange={(ev) => setName(ev.target.value)}
-              placeholder="Nom"
-              _placeholder={{ color: "gray.400" }}
-              variant={"outline"}
-              color={"gray.400"}
-              borderRadius={"full"}
-              required
-            />
-          </InputGroup>
-
-          {/* le prenom */}
-          <InputGroup>
-            <InputLeftElement pointerEvents="none">
-              <FontAwesomeIcon icon={faAdd} color={"gray"} />
-            </InputLeftElement>
-            <Input
-              required
-              type="text"
-              onChange={(ev) => setSurname(ev.target.value)}
-              placeholder="Prenom"
-              _placeholder={{ color: "gray.400" }}
-              variant={"outline"}
-              color={"gray.400"}
-              borderRadius={"full"}
-            />
-          </InputGroup>
-
-          {/* le telephone  */}
-          <InputGroup>
-            <InputLeftElement pointerEvents="none">
-              <FontAwesomeIcon icon={faPhone} color={"gray"} />
-            </InputLeftElement>
-            <Input
-              type="number"
-              required
-              onChange={(ev) => setNumber(ev.target.value)}
-              placeholder="Telephone"
-              _placeholder={{ color: "gray.400" }}
-              variant={"outline"}
-              color={"gray.400"}
-              borderRadius={"full"}
-            />
-          </InputGroup>
-
-          {/* le adresse */}
-          <InputGroup>
-            <InputLeftElement pointerEvents="none">
-              <FontAwesomeIcon icon={faHome} color={"gray"} />
-            </InputLeftElement>
-            <Input
-              type="text"
-              required
-              onChange={(ev) => setAdress(ev.target.value)}
-              placeholder="Adresse"
-              _placeholder={{ color: "gray.400" }}
-              variant={"outline"}
-              color={"gray.400"}
-              borderRadius={"full"}
-            />
-          </InputGroup>
-
-          {/* le Email  */}
-          <InputGroup>
-            <InputLeftElement pointerEvents="none">
-              <FontAwesomeIcon icon={faEnvelope} color={"gray"} />
-            </InputLeftElement>
-            <Input
-              type="text"
-              required
-              onChange={(ev) => setEmail(ev.target.value.trim().toLowerCase())}
-              placeholder="Email"
-              _placeholder={{ color: "gray.400" }}
-              variant={"outline"}
-              color={"gray.400"}
-              borderRadius={"full"}
-            />
-          </InputGroup>
-
-          {/* mot de passe */}
-          <InputGroup>
-            <InputLeftElement pointerEvents="none">
-              <FontAwesomeIcon icon={faLock} color={"gray"} />
-            </InputLeftElement>
-            <Input
-              required
-              type={show ? "text" : "password"}
-              placeholder="mot de passe"
-              _placeholder={{ color: "gray.400" }}
-              onChange={(ev) => setPassword(ev.target.value)}
-              variant={"outline"}
-              color={"gray.400"}
-              borderRadius={"full"}
-            />
-            <InputRightElement width="4.5rem">
-              <Button h="1.75rem" size="sm" onClick={handleClick}>
-                {show ? "Hide" : "Show"}
-              </Button>
-            </InputRightElement>
-          </InputGroup>
-
-          {/* confimer mot de passe */}
-          <InputGroup>
-            <InputLeftElement pointerEvents="none">
-              <FontAwesomeIcon icon={faLock} color={"gray"} />
-            </InputLeftElement>
-            <Input
-              required
-              onChange={(ev) => setPassword2(ev.target.value)}
-              type={show ? "text" : "password"}
-              placeholder="confimer votre mot de passe"
-              _placeholder={{ color: "gray.400" }}
-              variant={"outline"}
-              color={"gray.400"}
-              borderRadius={"full"}
-            />
-            <InputRightElement width="4.5rem">
-              <Button h="1.75rem" size="sm" onClick={handleClick}>
-                {show ? "Hide" : "Show"}
-              </Button>
-            </InputRightElement>
-          </InputGroup>
-        </Stack>
-        <Button
-          colorScheme="blue"
-          variant="solid"
-          mt={"2em"}
-          borderRadius={"full"}
-          width={"100%"}
-          onClick={() => createUSer()}
-          bgColor={"#08566e"}
-          _hover={{
-            bgColor: "#08566e",
-          }}
+    <>
+      <Center width={"100%"} height={"80vh"} mt={"2em"}>
+        <Box
+          width={{ base: "95%", md: "50%", xl: "40%", "2xl": "30%" }}
+          height={{ base: "95%" }}
         >
-          Inscription
-        </Button>
-      </Box>
-    </Center>
+          <Text fontWeight={"bold"} fontSize={"2xl"}>
+            Bonjour!
+          </Text>
+          <Text fontWeight={"light"}>{welcome}</Text>
+          <Stack spacing={5} marginTop={"1em"} width={{ base: "100%" }}>
+            {/* le nom  */}
+            <InputGroup>
+              <InputLeftElement pointerEvents="none">
+                <FontAwesomeIcon icon={faAdd} color={"gray"} />
+              </InputLeftElement>
+              <Input
+                type="text"
+                onChange={(ev) => setName(ev.target.value)}
+                placeholder="Nom"
+                _placeholder={{ color: "gray.400" }}
+                variant={"outline"}
+                color={"gray.400"}
+                borderRadius={"full"}
+                required
+              />
+            </InputGroup>
+
+            {/* le prenom */}
+            <InputGroup>
+              <InputLeftElement pointerEvents="none">
+                <FontAwesomeIcon icon={faAdd} color={"gray"} />
+              </InputLeftElement>
+              <Input
+                required
+                type="text"
+                onChange={(ev) => setSurname(ev.target.value)}
+                placeholder="Prenom"
+                _placeholder={{ color: "gray.400" }}
+                variant={"outline"}
+                color={"gray.400"}
+                borderRadius={"full"}
+              />
+            </InputGroup>
+
+            {/* le telephone  */}
+            <InputGroup>
+              <InputLeftElement pointerEvents="none">
+                <FontAwesomeIcon icon={faPhone} color={"gray"} />
+              </InputLeftElement>
+              <Input
+                type="number"
+                required
+                onChange={(ev) => setNumber(ev.target.value)}
+                placeholder="Telephone"
+                _placeholder={{ color: "gray.400" }}
+                variant={"outline"}
+                color={"gray.400"}
+                borderRadius={"full"}
+              />
+            </InputGroup>
+
+            {/* le adresse */}
+            <InputGroup>
+              <InputLeftElement pointerEvents="none">
+                <FontAwesomeIcon icon={faHome} color={"gray"} />
+              </InputLeftElement>
+              <Input
+                type="text"
+                required
+                onChange={(ev) => setAdress(ev.target.value)}
+                placeholder="Adresse"
+                _placeholder={{ color: "gray.400" }}
+                variant={"outline"}
+                color={"gray.400"}
+                borderRadius={"full"}
+              />
+            </InputGroup>
+
+            {/* le Email  */}
+            <InputGroup>
+              <InputLeftElement pointerEvents="none">
+                <FontAwesomeIcon icon={faEnvelope} color={"gray"} />
+              </InputLeftElement>
+              <Input
+                type="text"
+                required
+                onChange={(ev) =>
+                  setEmail(ev.target.value.trim().toLowerCase())
+                }
+                placeholder="Email"
+                _placeholder={{ color: "gray.400" }}
+                variant={"outline"}
+                color={"gray.400"}
+                borderRadius={"full"}
+              />
+            </InputGroup>
+
+            {/* mot de passe */}
+            <InputGroup>
+              <InputLeftElement pointerEvents="none">
+                <FontAwesomeIcon icon={faLock} color={"gray"} />
+              </InputLeftElement>
+              <Input
+                required
+                type={show ? "text" : "password"}
+                placeholder="mot de passe"
+                _placeholder={{ color: "gray.400" }}
+                onChange={(ev) => setPassword(ev.target.value)}
+                variant={"outline"}
+                color={"gray.400"}
+                borderRadius={"full"}
+              />
+              <InputRightElement width="4.5rem">
+                <Button h="1.75rem" size="sm" onClick={handleClick}>
+                  {show ? "Hide" : "Show"}
+                </Button>
+              </InputRightElement>
+            </InputGroup>
+
+            {/* confimer mot de passe */}
+            <InputGroup>
+              <InputLeftElement pointerEvents="none">
+                <FontAwesomeIcon icon={faLock} color={"gray"} />
+              </InputLeftElement>
+              <Input
+                required
+                onChange={(ev) => setPassword2(ev.target.value)}
+                type={show ? "text" : "password"}
+                placeholder="confimer votre mot de passe"
+                _placeholder={{ color: "gray.400" }}
+                variant={"outline"}
+                color={"gray.400"}
+                borderRadius={"full"}
+              />
+              <InputRightElement width="4.5rem">
+                <Button h="1.75rem" size="sm" onClick={handleClick}>
+                  {show ? "Hide" : "Show"}
+                </Button>
+              </InputRightElement>
+            </InputGroup>
+          </Stack>
+          <Button
+            colorScheme="blue"
+            variant="solid"
+            mt={"2em"}
+            // borderRadius={"full"}
+            width={"100%"}
+            onClick={() => createUSer()}
+            bgColor={"#08566e"}
+            _hover={{
+              bgColor: "#08566e",
+            }}
+          >
+            Inscription
+          </Button>
+        </Box>
+      </Center>
+      
+      <Center width="480px" mb={20} ml={["33%"]} >
+        <Text>
+        {terms}
+        </Text>
+      </Center>
+    </>
   );
 };
 

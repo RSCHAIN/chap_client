@@ -244,7 +244,7 @@ export default function Connexion() {
                   type={"text"}
                   placeholder="Email"
                   border={"2px solid gray"}
-                  borderRadius={"50px"}
+                  // borderRadius={"50px"}
                   width={["200px", "200px", "350px", "350px", "350px"]}
                   onChange={(ev) => setEmail(ev.target.value.trim().toLowerCase())}
                   color={"gray.500"}
@@ -253,13 +253,13 @@ export default function Connexion() {
                   type={"password"}
                   placeholder={"Mot de passe"}
                   border={"2px solid gray"}
-                  borderRadius={"50px"}
+                  // borderRadius={"50px"}
                   onChange={(e) => setPassword(e.target.value)}
                   width={["200px", "200px", "350px", "350px", "350px"]}
                 />
                 <TransitionExample/>
                 <Button
-                  borderRadius={"50px"}
+                  // borderRadius={"50px"}
                   bgColor={"#08566e"}
                   color={"white"}
                   _hover={{
@@ -269,7 +269,7 @@ export default function Connexion() {
                 >
                   Connexion{" "}
                 </Button>
-                <Link mt={20} fontSize={20} textAlign={'center'}  _hover={{
+                <Link mt={20} fontSize={20} textAlign={'center'} height={"40px"}  borderRadius={"5%"} bgColor={"cyan.900"} color={"white"}  _hover={{
                 color: 'blue',
               }} href={'/Inscription'}>
                   Inscription
