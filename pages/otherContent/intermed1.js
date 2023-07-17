@@ -370,7 +370,7 @@ export default function Intermed1() {
             Les produits{" "}
           </Heading>
           <Flex mt={10}>
-            <SimpleGrid columns={[2, 2, 3, 3, 5]} spacing={2} mr={20}>
+            <SimpleGrid columns={[2, 2, 3, 4, 5]} spacing={2} mr={20}>
               {data.map((data, key) => (
                 <Box
                   key={data.id}
@@ -460,7 +460,7 @@ export default function Intermed1() {
       </>
     );
   } 
-  else if( categorie == "Fret" || categorie == ""){
+  else if( categorie == "Fret" ){
     return(<>
        <>
         <InputBar />
@@ -761,7 +761,7 @@ export default function Intermed1() {
           <section
             style={{
               marginTop: "20px",
-              marginRight: "20%",
+              marginRight: "10%",
             }}
           >
             <Carousel
@@ -792,7 +792,7 @@ export default function Intermed1() {
             Les produits{" "}
           </Heading>
           <Flex mt={10}>
-          <SimpleGrid columns={[2, 2, 3, 3, 5]} spacing={2} mr={20}>
+          <SimpleGrid columns={[2, 2, 3, 4, 5]} spacing={2} >
               {data.map((data, key) => (
                 <Box
                   key={data.id}
@@ -801,6 +801,7 @@ export default function Intermed1() {
                   borderRadius="lg"
                   mt={4}
                   mb={20}
+                  
                   // border={"1px solid black"}
                 >
                   <Box width={"fit-content"} height={"fit-content"} pt={10} pl={5}>
