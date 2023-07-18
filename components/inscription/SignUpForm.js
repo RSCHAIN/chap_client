@@ -273,13 +273,14 @@ const SignUpForm = () => {
           >
             Inscription
           </Button>
+          <Text>
+        {terms}
+        </Text>
         </Box>
       </Center>
       
-      <Center width={{md:"350px",lg:"480px"}} mb={20} mt={2} ml={["5%","5%","26%","33%","33%"]} >
-        <Text>
-        {terms}
-        </Text>
+      <Center width={{md:"350px",lg:"480px"}} mb={20}  ml={["5%","5%","26%","33%","33%"]} >
+        
       </Center>
       <FooterR/>
     </>
