@@ -492,7 +492,7 @@ export default function Intermed1() {
                   width={"94px"}
                   height={"30px"}
                   as={"a"}
-                  href={`tel:${}`}
+                  href={`tel:${numero}`}
                   bgColor={"cyan.700"}
                   _hover={{
                     backgroundColor: " cyan.900",
