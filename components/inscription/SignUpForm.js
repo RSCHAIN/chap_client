@@ -7,6 +7,7 @@ import {
   InputGroup,
   InputLeftElement,
   InputRightElement,
+  Link,
   Stack,
   Text,
   useToast,
@@ -113,7 +114,8 @@ const SignUpForm = () => {
     }
   };
 
-  const terms = "  En continuant, vous acceptez nos conditions générales et notre politique de confidentialité. Nous utilisons vos données personnelles pour vous offrir une expérience personnalisée, ainsi que pour mieux comprendre et améliorer notre service. Pour plus de détails, cliquez ici."
+  const terms1 = ` Nous utilisons vos données personnelles pour vous offrir une expérience personnalisée, ainsi que pour mieux comprendre et améliorer notre service. Pour plus de détails, cliquez ici.`
+  const terms = " En continuant, vous acceptez nos "
   const welcome = "BIENVENUE SUR LA PAGE D'INSCRIPTION";
 
   return (
@@ -275,7 +277,8 @@ const SignUpForm = () => {
             Inscription
           </Button>
           <Text width={{md:"350px",lg:"480px"}}  pb={20} ml={5}>
-        {terms}
+        {terms}<Link href="/Terms" color={"blue"} _hover={{textDecoration:"none"}}>Terrmes et Conditions.</Link>{terms1}
+        
         </Text>
         </Box>
       </Center>
