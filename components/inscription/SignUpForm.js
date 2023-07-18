@@ -277,7 +277,7 @@ const SignUpForm = () => {
       </Center>
       
      
-        <Text  width={{md:"350px",lg:"480px"}} mb={20}  ml={["5%","5%","26%","33%","33%"]}>
+        <Text  width={{md:"350px",lg:"480px"}} mb={20}   ml={["5%","5%","26%","33%","33%"]}>
         {terms}
         </Text>
   
