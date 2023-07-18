@@ -118,7 +118,7 @@ const SignUpForm = () => {
 
   return (
     <>
-      <Center width={"100%"} height={"80vh"} mt={"2em"}>
+      <Center width={"100%"} minHeight={"80vh"} mt={""}>
         <Box
           width={{ base: "95%", md: "50%", xl: "40%", "2xl": "30%" }}
           height={{ base: "fit-content" }}
