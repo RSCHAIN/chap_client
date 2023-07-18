@@ -121,7 +121,8 @@ const SignUpForm = () => {
       <Center width={"100%"} height={"80vh"} mt={"2em"}>
         <Box
           width={{ base: "95%", md: "50%", xl: "40%", "2xl": "30%" }}
-          height={{ base: "95%" }}
+          height={{ base: "fit-content" }}
+          
         >
           <Text fontWeight={"bold"} fontSize={"2xl"}>
             Bonjour!
@@ -273,13 +274,14 @@ const SignUpForm = () => {
           >
             Inscription
           </Button>
+          <Text width={{md:"350px",lg:"480px"}}  pb={20} ml={5}>
+        {terms}
+        </Text>
         </Box>
       </Center>
       
      
-        <Text  width={{md:"350px",lg:"480px"}} mb={20}   ml={["5%","5%","26%","33%","33%"]}>
-        {terms}
-        </Text>
+        
   
       <FooterR/>
     </>
