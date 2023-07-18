@@ -293,11 +293,13 @@ export default function Intermed1() {
                 </Text>
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"}>Description : </Text>
-                <Text width={"58%"} textAlign={"justify"}>
+              <Text fontWeight={"bold"}>Description : </Text>
+                {Desc1 == "undefined" ? <Text  width={"58%"} textAlign={"justify"}>{categorie} Africaine</Text> :   <Text width={"58%"} textAlign={"justify"}>
                   {Desc1}
                  
-                </Text>
+                </Text> }
+               
+              
               </Flex>
 
               
@@ -490,7 +492,7 @@ export default function Intermed1() {
                   width={"94px"}
                   height={"30px"}
                   as={"a"}
-                 
+                  href={`tel:${}`}
                   bgColor={"cyan.700"}
                   _hover={{
                     backgroundColor: " cyan.900",
@@ -521,11 +523,13 @@ export default function Intermed1() {
                 </Text>
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"}>Description :</Text>
-                <Text width={"58%"} textAlign={"justify"}>
+              <Text fontWeight={"bold"}>Description : </Text>
+                {Desc1 == "undefined" ? <Text  width={"58%"} textAlign={"justify"}>{categorie} Africaine</Text> :   <Text width={"58%"} textAlign={"justify"}>
                   {Desc1}
                  
-                </Text>
+                </Text> }
+               
+              
               </Flex>
 
               
@@ -715,13 +719,20 @@ export default function Intermed1() {
                 </Text>
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"}>Description :</Text>
+               
+                <Text fontWeight={"bold"} width={"fit-content"}>Description : </Text>
                 <Text width={"58%"} textAlign={"justify"}>
                   {Desc1}
                  
                 </Text>
               </Flex>
-
+              <Flex>
+                <Text fontWeight={"bold"} width={"fit-content"}>Reservation : </Text>
+                <Text width={"58%"} textAlign={"justify"}>
+                  1H nécessaire pour la cuisson de chaque plat
+                 
+                </Text>
+              </Flex>
               
               <Flex>
                 <Heading

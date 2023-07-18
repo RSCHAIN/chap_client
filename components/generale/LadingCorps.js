@@ -74,6 +74,7 @@ export function ItemCard({ item, card }) {
               sessionStorage.setItem("adresse", item.adresse),
               sessionStorage.setItem("categorie", item.categorie);
               sessionStorage.setItem("description", item.description);
+              sessionStorage.setItem("horaire", item.description);
           }}
           mr={{ base: "0%", md: "0%" }}
           _hover={{ textDecoration: "none" }}
@@ -98,7 +99,7 @@ export function ItemCard({ item, card }) {
               width={"100%"}
               bg={"rgba(0, 0, 0, 0.277)"}
             >
-              <Text fontSize={"xl"} color={"#fff"} textAlign={"center"}>
+              <Text fontSize={"xl"} color={"#fff"} textAlign={"center"} fontWeight={"bold"}>
                 {item.organisation}
               </Text>
             </Flex>
