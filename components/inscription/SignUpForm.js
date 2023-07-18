@@ -274,7 +274,7 @@ const SignUpForm = () => {
           >
             Inscription
           </Button>
-          <Text width={{md:"350px",lg:"480px"}}  pb={20} ml={5}>
+          <Text width={{md:"350px",lg:"480px"}} height={"400px"} pb={20} ml={5}>
         {terms}
         </Text>
         </Box>
