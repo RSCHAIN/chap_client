@@ -5,6 +5,7 @@ import {
   Center,
   Flex,
   Heading,
+  Input,
   Link,
   Text,
 } from "@chakra-ui/react";
@@ -334,7 +335,10 @@ const LadingCorps = () => {
           <Heading textAlign={"start"} color={"#08566e"} mb={5}>
             Nos Services
           </Heading>
-
+           <Flex>
+            
+            <Input type={"search"} width={"50%"} height={"20px"}/>
+            </Flex> 
           {/* la box de toutes les cartegorie */}
           <Flex
             height={"auto"}

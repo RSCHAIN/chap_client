@@ -185,9 +185,6 @@ const responsive = {
 export default function Intermed1() {
   const [show, setShow] = useState(false);
 
-
-
-
   const handleToggle = () => setShow(!show);
   const { isOpen, onToggle, onOpen, onClose } = useDisclosure();
   const toast = useToast();
@@ -201,28 +198,22 @@ export default function Intermed1() {
   const [categorie, setCategorie] = useState("");
   const [data1, setData1] = useState();
   const [data2, setData2] = useState();
-  
 
-    ////HOraire
-    const heure = "Heure d'Ouverture";
-    const [horaire,setHoraire] = useState({})
-    const [lundi,setLundi]=useState("Non Renseigné")
-    const [mardi,setMardi]=useState("Non Renseigné")
-    const [mercredi,setMercredi]=useState("Non Renseigné")
-    const [jeudi,setJeudi]=useState("Non Renseigné")
-    const [vendredi,setVendredi]=useState("Non Renseigné")
-    const [samedi,setSamedi]=useState("Non Renseigné")
-    const [dimanche,setDimanche]=useState("Non Renseigné")
-    const [paiement,setPaiement]=useState({})
-    const [paiement1,setPaiement1]=useState("Espèce")
-    const [paiement2,setPaiement2]=useState(" ")
-  
-  
-    ///fin horaire
- 
+  ////HOraire
+  const heure = "Heure d'Ouverture";
+  const [horaire, setHoraire] = useState({});
+  const [lundi, setLundi] = useState("Non Renseigné");
+  const [mardi, setMardi] = useState("Non Renseigné");
+  const [mercredi, setMercredi] = useState("Non Renseigné");
+  const [jeudi, setJeudi] = useState("Non Renseigné");
+  const [vendredi, setVendredi] = useState("Non Renseigné");
+  const [samedi, setSamedi] = useState("Non Renseigné");
+  const [dimanche, setDimanche] = useState("Non Renseigné");
+  const [paiement, setPaiement] = useState({});
+  const [paiement1, setPaiement1] = useState("Espèce");
+  const [paiement2, setPaiement2] = useState(" ");
 
-
-
+  ///fin horaire
 
   useEffect(() => {
     setImageUrl(sessionStorage.getItem("image"));
@@ -233,26 +224,26 @@ export default function Intermed1() {
     setDesc1(sessionStorage.getItem("description"));
     if (sessionStorage.getItem("horaire") != "undefined") {
       setHoraire(JSON.parse(sessionStorage.getItem("horaire")));
-     setLundi( horaire.lundi)
-     setMardi( horaire.mardi)
-     setMercredi( horaire.mercredi)
-     setJeudi( horaire.jeudi)
-     setVendredi( horaire.vendredi)
-     setSamedi( horaire.samedi)
-     setDimanche( horaire.dimanche)
-      
-    }
-    
-    if (sessionStorage.getItem("paiement") != "undefined" && sessionStorage.getItem("paiement") != null ) {
-      setPaiement(JSON.parse(sessionStorage.getItem("paiement")))
-      setPaiement1(paiement.methodeDePaiement1)
-      console.log(paiement)
-      setPaiement2(paiement.methodeDePaiement2)
-      console.log(paiement)
+      setLundi(horaire.lundi);
+      setMardi(horaire.mardi);
+      setMercredi(horaire.mercredi);
+      setJeudi(horaire.jeudi);
+      setVendredi(horaire.vendredi);
+      setSamedi(horaire.samedi);
+      setDimanche(horaire.dimanche);
     }
 
+    if (
+      sessionStorage.getItem("paiement") != "undefined" &&
+      sessionStorage.getItem("paiement") != null
+    ) {
+      setPaiement(JSON.parse(sessionStorage.getItem("paiement")));
+      setPaiement1(paiement.methodeDePaiement1);
+      console.log(paiement);
+      setPaiement2(paiement.methodeDePaiement2);
+      console.log(paiement);
+    }
 
-    
     const starCountRef = ref(
       db2,
       `${sessionStorage.getItem("categorie")}/${sessionStorage.getItem("nom")}`
@@ -276,12 +267,15 @@ export default function Intermed1() {
         setData(newProducts);
       }
     });
-  }, [setImageUrl, setAddresse, setNom, setNumero,setHoraire,setDesc1,setCategorie]);
-
-
-
-
-
+  }, [
+    setImageUrl,
+    setAddresse,
+    setNom,
+    setNumero,
+    setHoraire,
+    setDesc1,
+    setCategorie,
+  ]);
 
   const images = [
     imageUrl,
@@ -317,8 +311,8 @@ export default function Intermed1() {
               <Image
                 src={`${imageUrl}`}
                 alt={`logo de ${nom}`}
-                width={["150px","150px","150px","200px","200px"]}
-                height={["150px","150px","150px","200px","200px"]}
+                width={["150px", "150px", "150px", "200px", "200px"]}
+                height={["150px", "150px", "150px", "200px", "200px"]}
                 maxHeight={"200px"}
                 maxWidth={"200px"}
                 minHeight={"80px"}
@@ -343,25 +337,29 @@ export default function Intermed1() {
                 </Text>
               </Flex>
               <Flex>
-              <Text fontWeight={"bold"}>Description : </Text>
-                {Desc1 == "undefined" ? <Text  width={"58%"} textAlign={"justify"}>{categorie} Africaine</Text> :   <Text width={"58%"} textAlign={"justify"}>
-                  {Desc1}
-                 
-                </Text> }
-               
-              
+                <Text fontWeight={"bold"}>Description : </Text>
+                {Desc1 == "undefined" ? (
+                  <Text width={"58%"} textAlign={"justify"}>
+                    {categorie} Africaine
+                  </Text>
+                ) : (
+                  <Text width={"58%"} textAlign={"justify"}>
+                    {Desc1}
+                  </Text>
+                )}
               </Flex>
               <Flex>
-              <Text fontWeight={"bold"}>Moyen De paiement : </Text>
-               <Box>
-                <Text ml={2} fontSize={"15px"}>{paiement1}</Text>
-                <Text ml={2} fontSize={"15px"}>{paiement2}</Text>
-
-               </Box>
-               
-              
+                <Text fontWeight={"bold"}>Moyen De paiement : </Text>
+                <Box>
+                  <Text ml={2} fontSize={"15px"}>
+                    {paiement1}
+                  </Text>
+                  <Text ml={2} fontSize={"15px"}>
+                    {paiement2}
+                  </Text>
+                </Box>
               </Flex>
-              
+
               <Flex>
                 <Heading
                   as={"h3"}
@@ -395,6 +393,16 @@ export default function Intermed1() {
                 </Box>
               </Collapse>
             </Box>
+            <iframe
+              width="500px"
+              height="300px"
+              style={["marginRight: '20em' "]}
+              loading="lazy"
+              allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade"
+              src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
+    &q=${addresse}`}
+            ></iframe>
           </Flex>
           <Heading fontSize={"20px"} mt={10}>
             Images du magasin{" "}
@@ -443,11 +451,16 @@ export default function Intermed1() {
                   mb={20}
                   // border={"1px solid black"}
                 >
-                  <Box width={"fit-content"} height={"fit-content"} pt={10} pl={5}>
+                  <Box
+                    width={"fit-content"}
+                    height={"fit-content"}
+                    pt={10}
+                    pl={5}
+                  >
                     <Image
                       src={data.imageUrl}
                       alt={data.nom}
-                      width={["150px","150px","150px","190px","190px"]}
+                      width={["150px", "150px", "150px", "190px", "190px"]}
                       height={"150px"}
                       maxH={"200px"}
                       maxW={"200px"}
@@ -479,14 +492,20 @@ export default function Intermed1() {
                       lineHeight="taller"
                       mb={5}
                       noOfLines={8}
-                      w={{base:"150px",md:"200px"}}
+                      w={{ base: "150px", md: "200px" }}
                       Height={"250px"}
                       maxH={"250px"}
                     >
-                      {data.description == "undefined" ? <></> : <>  <Tooltip label={data.description}>
-                      <Text  noOfLines={1}>{data.description}</Text>
-                      </Tooltip></>}
-                     
+                      {data.description == "undefined" ? (
+                        <></>
+                      ) : (
+                        <>
+                          {" "}
+                          <Tooltip label={data.description}>
+                            <Text noOfLines={1}>{data.description}</Text>
+                          </Tooltip>
+                        </>
+                      )}
                     </Box>
                     <Box>
                       <Button
@@ -521,178 +540,186 @@ export default function Intermed1() {
             </SimpleGrid>
           </Flex>
         </Box>
-        <FooterR/>
+        <FooterR />
       </>
     );
-  } 
-  else if( categorie == "Fret" ){
-    return(<>
-       <>
-        <InputBar />
-        <Navbar />
+  } else if (categorie == "Fret") {
+    return (
+      <>
+        <>
+          <InputBar />
+          <Navbar />
 
-        <Box ml={["3%", "3%", "3%", "20%", "20%"]} mt={10} mb={10}>
-         
-          <Flex>
-            <Box mr={5}>
-            <Image
-                src={`${imageUrl}`}
-                alt={`logo de ${nom}`}
-                width={["150px","150px","150px","200px","200px"]}
-                height={["150px","150px","150px","200px","200px"]}
-                maxHeight={"200px"}
-                maxWidth={"200px"}
-                minHeight={"80px"}
-                minWidth={"100px"}
-              />
-              <Box mt={5}>
-                <Button
-                  color={"#fff"}
-                  width={"94px"}
-                  height={"30px"}
-                  as={"a"}
-                  href={`tel:${numero}`}
-                  bgColor={"cyan.700"}
-                  _hover={{
-                    backgroundColor: " cyan.900",
-                    color: "white ",
-                  }}
-                  leftIcon={<BsTelephoneOutboundFill />}
-                >
-                  Appeler
-                </Button>
-                
-              </Box>
-            </Box>
-
-            <Box>
-              <Heading fontSize={"40px"}>{nom}</Heading>
-              <Text fontSize={"15px"} fontWeight={"medium"}>
-                {addresse}
-              </Text>
-              <Flex mb={2} mt={2}>
-                <BsFillTelephoneOutboundFill />
-                <Text
-                  fontSize={"15px"}
-                  fontWeight={"medium"}
-                  ml={2}
-                  color={"green"}
-                >
-                  {numero}
-                </Text>
-              </Flex>
-              <Flex>
-              <Text fontWeight={"bold"}>Description : </Text>
-                {Desc1 == "undefined" ? <Text  width={"58%"} textAlign={"justify"}>{categorie} Africaine</Text> :   <Text width={"58%"} textAlign={"justify"}>
-                  {Desc1}
-                 
-                </Text> }
-               
-              
-              </Flex>
-
-              <Flex>
-              <Text fontWeight={"bold"}>Moyen De paiement : </Text>
-               <Box>
-                <Text ml={2} fontSize={"15px"}>{paiement1}</Text>
-                <Text ml={2} fontSize={"15px"}>{paiement2}</Text>
-
-               </Box>
-               
-              
-              </Flex>
-              
-              <Flex>
-                <Heading
-                  as={"h3"}
-                  fontWeight={"bold"}
-                  _hover={{
-                    cursor: "pointer",
-                  }}
-                  onClick={handleToggle}
-                  color={"blue.700"}
-                  fontSize={"15px"}
-                  mt={3}
-                >
-                  {heure}{" "}
-                  {show ? (
-                    <ChevronUpIcon fontSize={"20px"} />
-                  ) : (
-                    <ChevronDownIcon fontSize={"20px"} />
-                  )}{" "}
-                  :
-                </Heading>
-              </Flex>
-              <Collapse in={show}>
-              <Box ml={10}>
-                  <Text fontSize={"15px"}>lundi: {lundi}</Text>
-                  <Text fontSize={"15px"}>mardi: {mardi}</Text>
-                  <Text fontSize={"15px"}>mercredi: {mercredi}</Text>
-                  <Text fontSize={"15px"}>jeudi: {jeudi}</Text>
-                  <Text fontSize={"15px"}>vendredi: {vendredi}</Text>
-                  <Text fontSize={"15px"}>samedi: {samedi}</Text>
-                  <Text fontSize={"15px"}>dimanche: {dimanche}</Text>
+          <Box ml={["3%", "3%", "3%", "20%", "20%"]} mt={10} mb={10}>
+            <Flex>
+              <Box mr={5}>
+                <Image
+                  src={`${imageUrl}`}
+                  alt={`logo de ${nom}`}
+                  width={["150px", "150px", "150px", "200px", "200px"]}
+                  height={["150px", "150px", "150px", "200px", "200px"]}
+                  maxHeight={"200px"}
+                  maxWidth={"200px"}
+                  minHeight={"80px"}
+                  minWidth={"100px"}
+                />
+                <Box mt={5}>
+                  <Button
+                    color={"#fff"}
+                    width={"94px"}
+                    height={"30px"}
+                    as={"a"}
+                    href={`tel:${numero}`}
+                    bgColor={"cyan.700"}
+                    _hover={{
+                      backgroundColor: " cyan.900",
+                      color: "white ",
+                    }}
+                    leftIcon={<BsTelephoneOutboundFill />}
+                  >
+                    Appeler
+                  </Button>
                 </Box>
-              </Collapse>
-            </Box>
-          </Flex>
-          <Heading fontSize={"20px"} mt={10} >
-            Images du magasin{" "}
-          </Heading>
+              </Box>
 
-          {/* Slider */}
-          <section
-            style={{
-              marginTop: "20px",
-              marginRight: "20%",
-              marginBottom: "70px"
-            }}
-          >
-            <Carousel
-              partialVisbile
-              deviceType={"mobile"}
-              itemClass="image-item"
-              responsive={responsive}
+              <Box>
+                <Heading fontSize={"40px"}>{nom}</Heading>
+                <Text fontSize={"15px"} fontWeight={"medium"}>
+                  {addresse}
+                </Text>
+                <Flex mb={2} mt={2}>
+                  <BsFillTelephoneOutboundFill />
+                  <Text
+                    fontSize={"15px"}
+                    fontWeight={"medium"}
+                    ml={2}
+                    color={"green"}
+                  >
+                    {numero}
+                  </Text>
+                </Flex>
+                <Flex>
+                  <Text fontWeight={"bold"}>Description : </Text>
+                  {Desc1 == "undefined" ? (
+                    <Text width={"58%"} textAlign={"justify"}>
+                      {categorie} Africaine
+                    </Text>
+                  ) : (
+                    <Text width={"58%"} textAlign={"justify"}>
+                      {Desc1}
+                    </Text>
+                  )}
+                </Flex>
+
+                <Flex>
+                  <Text fontWeight={"bold"}>Moyen De paiement : </Text>
+                  <Box>
+                    <Text ml={2} fontSize={"15px"}>
+                      {paiement1}
+                    </Text>
+                    <Text ml={2} fontSize={"15px"}>
+                      {paiement2}
+                    </Text>
+                  </Box>
+                </Flex>
+
+                <Flex>
+                  <Heading
+                    as={"h3"}
+                    fontWeight={"bold"}
+                    _hover={{
+                      cursor: "pointer",
+                    }}
+                    onClick={handleToggle}
+                    color={"blue.700"}
+                    fontSize={"15px"}
+                    mt={3}
+                  >
+                    {heure}{" "}
+                    {show ? (
+                      <ChevronUpIcon fontSize={"20px"} />
+                    ) : (
+                      <ChevronDownIcon fontSize={"20px"} />
+                    )}{" "}
+                    :
+                  </Heading>
+                </Flex>
+                <Collapse in={show}>
+                  <Box ml={10}>
+                    <Text fontSize={"15px"}>lundi: {lundi}</Text>
+                    <Text fontSize={"15px"}>mardi: {mardi}</Text>
+                    <Text fontSize={"15px"}>mercredi: {mercredi}</Text>
+                    <Text fontSize={"15px"}>jeudi: {jeudi}</Text>
+                    <Text fontSize={"15px"}>vendredi: {vendredi}</Text>
+                    <Text fontSize={"15px"}>samedi: {samedi}</Text>
+                    <Text fontSize={"15px"}>dimanche: {dimanche}</Text>
+                  </Box>
+                </Collapse>
+              </Box>
+              <iframe
+                width="500px" height="300px" style={["marginRight: '20em' "]}
+                loading="lazy" allowfullscreen  
+                referrerpolicy="no-referrer-when-downgrade" src=
+                {`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
+    &q=${addresse}`}
+                >
+              </iframe>
+            </Flex>
+            <Heading fontSize={"20px"} mt={10}>
+              Images du magasin{" "}
+            </Heading>
+
+            {/* Slider */}
+            <section
+              style={{
+                marginTop: "20px",
+                marginRight: "20%",
+                marginBottom: "70px",
+              }}
             >
-              {images.slice(0, images.length).map((image, index) => {
-                return (
-                  <Image
-                    key={index}
-                    alt={`${image}`}
-                    maxWidth={"200px"}
-                    maxHeight={"200px"}
-                    minWidth={"150px"}
-                    minHeight={"150px"}
-                    pr={5}
-                    src={image}
-                  />
-                );
-              })}
-            </Carousel>
-          </section>
+              <Carousel
+                partialVisbile
+                deviceType={"mobile"}
+                itemClass="image-item"
+                responsive={responsive}
+              >
+                {images.slice(0, images.length).map((image, index) => {
+                  return (
+                    <Image
+                      key={index}
+                      alt={`${image}`}
+                      maxWidth={"200px"}
+                      maxHeight={"200px"}
+                      minWidth={"150px"}
+                      minHeight={"150px"}
+                      pr={5}
+                      src={image}
+                    />
+                  );
+                })}
+              </Carousel>
+            </section>
 
-          {/* fin slide  */}
-       
-        </Box>
-        <FooterR/>
+            {/* fin slide  */}
+          </Box>
+          <FooterR />
+        </>
       </>
-    </>)
-  }
-  else {
+    );
+  } else {
     return (
       <>
         <InputBar />
         <Navbar />
 
         <Box ml={["3%", "3%", "3%", "20%", "20%"]} mt={10} mb={10}>
-         
           <Flex>
             <Box mr={5}>
-            <Image
+              <Image
                 src={`${imageUrl}`}
                 alt={`logo de ${nom}`}
-                width={["150px","150px","150px","200px","200px"]}
-                height={["150px","150px","150px","200px","200px"]}
+                width={["150px", "150px", "150px", "200px", "200px"]}
+                height={["150px", "150px", "150px", "200px", "200px"]}
                 maxHeight={"200px"}
                 maxWidth={"200px"}
                 minHeight={"80px"}
@@ -788,32 +815,37 @@ export default function Intermed1() {
                 </Text>
               </Flex>
               <Flex>
-               
-                
-                <Text fontWeight={"bold"}>Description :  </Text>
-                {Desc1 == "undefined" ? <Text  width={"58%"} textAlign={"justify"}>{categorie} Africaine</Text> :   <Text width={"58%"} textAlign={"justify"}>
-                  {Desc1}
-                 
-                </Text> }
+                <Text fontWeight={"bold"}>Description : </Text>
+                {Desc1 == "undefined" ? (
+                  <Text width={"58%"} textAlign={"justify"}>
+                    {categorie} Africaine
+                  </Text>
+                ) : (
+                  <Text width={"58%"} textAlign={"justify"}>
+                    {Desc1}
+                  </Text>
+                )}
               </Flex>
               <Flex>
-              <Text fontWeight={"bold"}>Moyen De paiement : </Text>
-               <Box>
-                <Text ml={2} fontSize={"15px"}>{paiement1}</Text>
-                <Text ml={2} fontSize={"15px"}>{paiement2}</Text>
-
-               </Box>
-               
-              
+                <Text fontWeight={"bold"}>Moyen De paiement : </Text>
+                <Box>
+                  <Text ml={2} fontSize={"15px"}>
+                    {paiement1}
+                  </Text>
+                  <Text ml={2} fontSize={"15px"}>
+                    {paiement2}
+                  </Text>
+                </Box>
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"} width={"fit-content"}>Reservation : </Text>
+                <Text fontWeight={"bold"} width={"fit-content"}>
+                  Reservation :{" "}
+                </Text>
                 <Text width={"58%"} textAlign={"justify"}>
                   1H nécessaire pour la cuisson de chaque plat
-                 
                 </Text>
               </Flex>
-              
+
               <Flex>
                 <Heading
                   as={"h3"}
@@ -836,7 +868,7 @@ export default function Intermed1() {
                 </Heading>
               </Flex>
               <Collapse in={show}>
-              <Box ml={10}>
+                <Box ml={10}>
                   <Text fontSize={"15px"}>lundi: {lundi}</Text>
                   <Text fontSize={"15px"}>mardi: {mardi}</Text>
                   <Text fontSize={"15px"}>mercredi: {mercredi}</Text>
@@ -847,6 +879,14 @@ export default function Intermed1() {
                 </Box>
               </Collapse>
             </Box>
+            <iframe
+                width="500px" height="300px" style={["marginRight: '20em' "]}
+                loading="lazy" allowfullscreen  
+                referrerpolicy="no-referrer-when-downgrade" src=
+                {`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
+    &q=${addresse}`}
+                >
+              </iframe>
           </Flex>
           <Heading fontSize={"20px"} mt={10}>
             Images du magasin{" "}
@@ -868,15 +908,15 @@ export default function Intermed1() {
               {images.slice(0, images.length).map((image, index) => {
                 return (
                   <Image
-                  key={index}
-                  alt={`${image}`}
-                  maxWidth={"200px"}
-                  maxHeight={"200px"}
-                  minWidth={"150px"}
-                  minHeight={"150px"}
-                  pr={5}
-                  src={image}
-                />
+                    key={index}
+                    alt={`${image}`}
+                    maxWidth={"200px"}
+                    maxHeight={"200px"}
+                    minWidth={"150px"}
+                    minHeight={"150px"}
+                    pr={5}
+                    src={image}
+                  />
                 );
               })}
             </Carousel>
@@ -887,7 +927,7 @@ export default function Intermed1() {
             Les produits{" "}
           </Heading>
           <Flex mt={10}>
-          <SimpleGrid columns={[2, 2, 3, 4, 5]} spacing={2} >
+            <SimpleGrid columns={[2, 2, 3, 4, 5]} spacing={2}>
               {data.map((data, key) => (
                 <Box
                   key={data.id}
@@ -896,14 +936,19 @@ export default function Intermed1() {
                   borderRadius="lg"
                   mt={4}
                   mb={20}
-                  
+
                   // border={"1px solid black"}
                 >
-                  <Box width={"fit-content"} height={"fit-content"} pt={10} pl={5}>
+                  <Box
+                    width={"fit-content"}
+                    height={"fit-content"}
+                    pt={10}
+                    pl={5}
+                  >
                     <Image
                       src={data.imageUrl}
                       alt={data.nom}
-                      width={["150px","150px","150px","190px","190px"]}
+                      width={["150px", "150px", "150px", "190px", "190px"]}
                       height={"150px"}
                       maxH={"200px"}
                       maxW={"200px"}
@@ -935,12 +980,12 @@ export default function Intermed1() {
                       lineHeight="taller"
                       mb={5}
                       noOfLines={8}
-                      w={{base:"150px",md:"200px"}}
+                      w={{ base: "150px", md: "200px" }}
                       Height={"250px"}
                       maxH={"250px"}
                     >
                       <Tooltip label={data.description}>
-                      <Text  noOfLines={1}>{data.description}</Text>
+                        <Text noOfLines={1}>{data.description}</Text>
                       </Tooltip>
                     </Box>
                     <Box>
@@ -976,7 +1021,7 @@ export default function Intermed1() {
             </SimpleGrid>
           </Flex>
         </Box>
-        <FooterR/>
+        <FooterR />
       </>
     );
   }
