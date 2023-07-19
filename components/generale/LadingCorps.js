@@ -28,20 +28,20 @@ export function ItemCard({ item, card }) {
   // const toast = useToast();
   // const update = async () => {
   //   console.log('item',item)
-    // const q = query(
-      // collection(db, "Admin"),
-      // where("organisation", "==", item)
-    // );
+  // const q = query(
+  // collection(db, "Admin"),
+  // where("organisation", "==", item)
+  // );
 
-    // const querySnapshot = await getDocs(q);
-    // querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      // setAdresse(doc.data().adresse);
-      // setImageUrl(doc.data().imageUrl);
-      // setNumero(doc.data().number);
-      // setNom(doc.data().organisation);
-      // setCategorie(doc.data().categorie);
-    // });
+  // const querySnapshot = await getDocs(q);
+  // querySnapshot.forEach((doc) => {
+  // doc.data() is never undefined for query doc snapshots
+  // setAdresse(doc.data().adresse);
+  // setImageUrl(doc.data().imageUrl);
+  // setNumero(doc.data().number);
+  // setNom(doc.data().organisation);
+  // setCategorie(doc.data().categorie);
+  // });
   // };
 
   // console.log(item.id)
@@ -55,7 +55,7 @@ export function ItemCard({ item, card }) {
     <>
       {/* card  */}
       <Box
-      mt={5}
+        mt={5}
         height={["20vh", "20vh", "20vh", "20vh", "20vh"]}
         width={{ base: "25%", md: "15%" }}
         marginBottom={40}
@@ -73,8 +73,12 @@ export function ItemCard({ item, card }) {
               sessionStorage.setItem("nom", item.organisation),
               sessionStorage.setItem("adresse", item.adresse),
               sessionStorage.setItem("categorie", item.categorie);
-              sessionStorage.setItem("description", item.description);
-              sessionStorage.setItem("horaire", item.horaire);
+            sessionStorage.setItem("description", item.description);
+            sessionStorage.setItem("horaire", JSON.stringify(data.horaire));
+            sessionStorage.setItem(
+              "paiement",
+              JSON.stringify(data.methodeDePaiement)
+            );
           }}
           mr={{ base: "0%", md: "0%" }}
           _hover={{ textDecoration: "none" }}
@@ -99,7 +103,12 @@ export function ItemCard({ item, card }) {
               width={"100%"}
               bg={"rgba(0, 0, 0, 0.277)"}
             >
-              <Text fontSize={"xl"} color={"#fff"} textAlign={"center"} fontWeight={"bold"}>
+              <Text
+                fontSize={"xl"}
+                color={"#fff"}
+                textAlign={"center"}
+                fontWeight={"bold"}
+              >
                 {item.organisation}
               </Text>
             </Flex>
@@ -176,7 +185,7 @@ export function ContainerCard({ card }) {
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
-   
+
       datos.push(doc.data());
     });
     setDatas(1);
@@ -227,17 +236,16 @@ export function ContainerCard({ card }) {
             onClick={() => {
               if (card == "Coiffure") {
                 localStorage.setItem("service", "Salon de Coiffure");
-              }else if(card == "Mèches"){
+              } else if (card == "Mèches") {
                 localStorage.setItem("service", "Commerce de meches");
-              }else{
+              } else {
                 localStorage.setItem("service", card);
-              } 
-             
+              }
             }}
             _hover={{ textDecoration: "none" }}
           >
             <Button
-            border={"none"}
+              border={"none"}
               rightIcon={<ArrowForwardIcon />}
               colorScheme="#08566f"
               variant="outline"
@@ -275,10 +283,8 @@ const LadingCorps = () => {
   const [datos, setDatos] = useState([]);
   const [datas, setDatas] = useState(0);
   const update = async () => {
-  
-    console.log(cat)
-    if(datas == 0) {
-      
+    console.log(cat);
+    if (datas == 0) {
       const q = query(collection(db, "Services"));
 
       const querySnapshot = await getDocs(q);
@@ -287,8 +293,8 @@ const LadingCorps = () => {
         cat.push(doc.data().nom);
         // console.log(doc.data().id);
       });
-    } 
-  
+    }
+
     setDatas(1);
   };
 
@@ -314,11 +320,10 @@ const LadingCorps = () => {
     if (datas == 0) {
       update();
       setDatas(1);
-     
     }
 
     //updateAll()
-  }, [datas, update,cat]);
+  }, [datas, update, cat]);
 
   return (
     <>

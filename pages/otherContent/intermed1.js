@@ -213,6 +213,9 @@ export default function Intermed1() {
     const [vendredi,setVendredi]=useState("Non Renseigné")
     const [samedi,setSamedi]=useState("Non Renseigné")
     const [dimanche,setDimanche]=useState("Non Renseigné")
+    const [paiement,setPaiement]=useState({})
+    const [paiement1,setPaiement1]=useState("espéce")
+    const [paiement2,setPaiement2]=useState(" ")
   
   
     ///fin horaire
@@ -239,7 +242,12 @@ export default function Intermed1() {
      setDimanche( horaire.dimanche)
       
     }
-   
+    
+    if (sessionStorage.getItem("paiement") != "undefined") {
+      setPaiement(JSON.parse(sessionStorage.getItem("paiement")))
+      setPaiement1(paiement.methodeDePaiement1)
+      setPaiement2(paiement.methodeDePaiement2)
+    }
     const starCountRef = ref(
       db2,
       `${sessionStorage.getItem("categorie")}/${sessionStorage.getItem("nom")}`
@@ -338,7 +346,7 @@ export default function Intermed1() {
                
               
               </Flex>
-
+              
               
               <Flex>
                 <Heading
