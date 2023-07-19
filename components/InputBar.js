@@ -18,6 +18,7 @@ import {
   PopoverFooter,
   Button,
   Center,
+  useToast,
 } from "@chakra-ui/react";
 import { Search2Icon } from "@chakra-ui/icons";
 import { ChevronDownIcon } from "@chakra-ui/icons";
@@ -80,8 +81,11 @@ const InputBar = () => {
   //    };
 
   const [isLagerThan768] = useMediaQuery("(min-width: 420px)");
+  const toast = useToast()
   return (
     <>
+     
+    
       <Flex
         width={"100%"}
         height={"4em"}

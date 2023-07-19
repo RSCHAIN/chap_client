@@ -104,7 +104,7 @@ export default function Carte() {
   const [hours, setHours] = useState();
   const [batiment, setBatiment] = useState("NON DEFINI");
   const [frais, setFrais] = useState();
-  const [dis, setDis] = useState("grid");
+  const [dis, setDis] = useState();
   useEffect(() => {
     let PrixT = 0;
     const Cart = localStorage.getItem("Cart");
@@ -337,7 +337,7 @@ export default function Carte() {
                       src={data.imageUrl}
                       alt={data.name}
                       width={"117px"}
-                      height={"139px"}
+                      height={"100px"}
                       marginLeft={5}
                       marginY={3}
                     />
@@ -347,7 +347,7 @@ export default function Carte() {
                     paddingBottom={5}
                     pt={5}
                     fontWeight={"bold"}
-                    marginTop={10}
+                    marginTop={7}
                   >
                     {data.nom}
                   </Text>
@@ -374,9 +374,10 @@ export default function Carte() {
                       <Input
                         type={"number"}
                         width={"70px"}
+                        
                         value={data.quantite}
                       />
-                      <Button onClick={() => increment(data, 1)}>+</Button>
+                      <Button mr={4} onClick={() => increment(data, 1)}>+</Button>
                     </Flex>
                     <Box mr={20}>
                       <Text marginTop={1} color={"red.500"} fontSize={20}>
@@ -398,7 +399,7 @@ export default function Carte() {
           </Box>
           <Flex
             border={"1px solid #e6e6e6"}
-            boxShadow={"0px 2px 10px"}
+            // boxShadow={"0px 2px 10px"}
             boxSizing={"border-box"}
             borderRadius={"9px"}
             width={"fit-content"}

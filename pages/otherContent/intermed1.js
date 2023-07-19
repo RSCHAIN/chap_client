@@ -201,7 +201,26 @@ export default function Intermed1() {
   const [categorie, setCategorie] = useState("");
   const [data1, setData1] = useState();
   const [data2, setData2] = useState();
-  const heure = "Heure d'Ouverture";
+  
+
+    ////HOraire
+    const heure = "Heure d'Ouverture";
+    const [horaire,setHoraire] = useState({})
+    const [lundi,setLundi]=useState("Non Renseigné")
+    const [mardi,setMardi]=useState("Non Renseigné")
+    const [mercredi,setMercredi]=useState("Non Renseigné")
+    const [jeudi,setJeudi]=useState("Non Renseigné")
+    const [vendredi,setVendredi]=useState("Non Renseigné")
+    const [samedi,setSamedi]=useState("Non Renseigné")
+    const [dimanche,setDimanche]=useState("Non Renseigné")
+  
+  
+    ///fin horaire
+ 
+
+
+
+
   useEffect(() => {
     setImageUrl(sessionStorage.getItem("image"));
     setNumero(sessionStorage.getItem("savefrom"));
@@ -209,6 +228,18 @@ export default function Intermed1() {
     setAddresse(sessionStorage.getItem("adresse"));
     setCategorie(sessionStorage.getItem("categorie"));
     setDesc1(sessionStorage.getItem("description"));
+    if (sessionStorage.getItem("horaire") != "undefined") {
+      setHoraire(JSON.parse(sessionStorage.getItem("horaire")));
+     setLundi( horaire.lundi)
+     setMardi( horaire.mardi)
+     setMercredi( horaire.mercredi)
+     setJeudi( horaire.jeudi)
+     setVendredi( horaire.vendredi)
+     setSamedi( horaire.samedi)
+     setDimanche( horaire.dimanche)
+      
+    }
+   
     const starCountRef = ref(
       db2,
       `${sessionStorage.getItem("categorie")}/${sessionStorage.getItem("nom")}`
@@ -232,7 +263,13 @@ export default function Intermed1() {
         setData(newProducts);
       }
     });
-  }, [setImageUrl, setAddresse, setNom, setNumero]);
+  }, [setImageUrl, setAddresse, setNom, setNumero,setHoraire,setDesc1,setCategorie]);
+
+
+
+
+
+
   const images = [
     imageUrl,
     imageUrl,
@@ -326,13 +363,13 @@ export default function Intermed1() {
               </Flex>
               <Collapse in={show}>
                 <Box ml={10}>
-                  <Text fontSize={"15px"}>lundi:</Text>
-                  <Text fontSize={"15px"}>mardi:</Text>
-                  <Text fontSize={"15px"}>mercredi:</Text>
-                  <Text fontSize={"15px"}>jeudi:</Text>
-                  <Text fontSize={"15px"}>vendredi:</Text>
-                  <Text fontSize={"15px"}>samedi:</Text>
-                  <Text fontSize={"15px"}>dimanche:</Text>
+                  <Text fontSize={"15px"}>lundi: {lundi}</Text>
+                  <Text fontSize={"15px"}>mardi: {mardi}</Text>
+                  <Text fontSize={"15px"}>mercredi: {mercredi}</Text>
+                  <Text fontSize={"15px"}>jeudi: {jeudi}</Text>
+                  <Text fontSize={"15px"}>vendredi: {vendredi}</Text>
+                  <Text fontSize={"15px"}>samedi: {samedi}</Text>
+                  <Text fontSize={"15px"}>dimanche: {dimanche}</Text>
                 </Box>
               </Collapse>
             </Box>
@@ -555,14 +592,14 @@ export default function Intermed1() {
                 </Heading>
               </Flex>
               <Collapse in={show}>
-                <Box ml={10}>
-                  <Text fontSize={"15px"}>lundi:</Text>
-                  <Text fontSize={"15px"}>mardi:</Text>
-                  <Text fontSize={"15px"}>mercredi:</Text>
-                  <Text fontSize={"15px"}>jeudi:</Text>
-                  <Text fontSize={"15px"}>vendredi:</Text>
-                  <Text fontSize={"15px"}>samedi:</Text>
-                  <Text fontSize={"15px"}>dimanche:</Text>
+              <Box ml={10}>
+                  <Text fontSize={"15px"}>lundi: {lundi}</Text>
+                  <Text fontSize={"15px"}>mardi: {mardi}</Text>
+                  <Text fontSize={"15px"}>mercredi: {mercredi}</Text>
+                  <Text fontSize={"15px"}>jeudi: {jeudi}</Text>
+                  <Text fontSize={"15px"}>vendredi: {vendredi}</Text>
+                  <Text fontSize={"15px"}>samedi: {samedi}</Text>
+                  <Text fontSize={"15px"}>dimanche: {dimanche}</Text>
                 </Box>
               </Collapse>
             </Box>
@@ -720,11 +757,12 @@ export default function Intermed1() {
               </Flex>
               <Flex>
                
-                <Text fontWeight={"bold"} width={"fit-content"}>Description : </Text>
-                <Text width={"58%"} textAlign={"justify"}>
+                
+                <Text fontWeight={"bold"}>Description :  </Text>
+                {Desc1 == "undefined" ? <Text  width={"58%"} textAlign={"justify"}>{categorie} Africaine</Text> :   <Text width={"58%"} textAlign={"justify"}>
                   {Desc1}
                  
-                </Text>
+                </Text> }
               </Flex>
               <Flex>
                 <Text fontWeight={"bold"} width={"fit-content"}>Reservation : </Text>
@@ -756,14 +794,14 @@ export default function Intermed1() {
                 </Heading>
               </Flex>
               <Collapse in={show}>
-                <Box ml={10}>
-                  <Text fontSize={"15px"}>lundi:</Text>
-                  <Text fontSize={"15px"}>mardi:</Text>
-                  <Text fontSize={"15px"}>mercredi:</Text>
-                  <Text fontSize={"15px"}>jeudi:</Text>
-                  <Text fontSize={"15px"}>vendredi:</Text>
-                  <Text fontSize={"15px"}>samedi:</Text>
-                  <Text fontSize={"15px"}>dimanche:</Text>
+              <Box ml={10}>
+                  <Text fontSize={"15px"}>lundi: {lundi}</Text>
+                  <Text fontSize={"15px"}>mardi: {mardi}</Text>
+                  <Text fontSize={"15px"}>mercredi: {mercredi}</Text>
+                  <Text fontSize={"15px"}>jeudi: {jeudi}</Text>
+                  <Text fontSize={"15px"}>vendredi: {vendredi}</Text>
+                  <Text fontSize={"15px"}>samedi: {samedi}</Text>
+                  <Text fontSize={"15px"}>dimanche: {dimanche}</Text>
                 </Box>
               </Collapse>
             </Box>

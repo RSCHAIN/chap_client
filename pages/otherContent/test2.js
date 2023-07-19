@@ -164,6 +164,7 @@ useEffect( ()=>{
                     sessionStorage.setItem("adresse", data.adresse),
                     sessionStorage.setItem("categorie", data.categorie);
                     sessionStorage.setItem("description", data.description);
+                    sessionStorage.setItem("horaire", JSON.stringify(data.horaire));
                 }}
                 mr={{ base: "0%", md: "0%" }}
                 _hover={{ textDecoration: "none" }}

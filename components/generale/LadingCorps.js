@@ -74,7 +74,7 @@ export function ItemCard({ item, card }) {
               sessionStorage.setItem("adresse", item.adresse),
               sessionStorage.setItem("categorie", item.categorie);
               sessionStorage.setItem("description", item.description);
-              sessionStorage.setItem("horaire", item.description);
+              sessionStorage.setItem("horaire", item.horaire);
           }}
           mr={{ base: "0%", md: "0%" }}
           _hover={{ textDecoration: "none" }}
