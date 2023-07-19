@@ -223,14 +223,14 @@ useEffect( ()=>{
         </Center>
         <Center mb={20}>
          
-        <SimpleGrid columns={[1,1,2,3,3]} spacingX={20}>
+        <SimpleGrid columns={[2,2,2,3,3]} spacingX={20}>
        
        <Button width={"fit-content"} 
        bgColor={"white"}
         // onClick={()=>{setActu(actu-1),Next(),setEtat1(false)}}
         isDisabled={etat}></Button>
        <Heading>
-       <Flex  >{pages.map(page=>{return (<SimpleGrid key={`${page}`} columns={[7,7,7,9,9]} height={`${pages.length*5}px`}><Button bgColor={"white"} onClick={() =>{setActu(page),Next(),Next()} } _hover={{fontSize:"30px" ,bgColor:"cyan.500"}} key={page} >{page}</Button></SimpleGrid>)}
+       <Flex  >{pages.map(page=>{return (<SimpleGrid key={`${page}`} columns={[7,7,7,9,9]} height={`${pages.length*5}px`}><Button bgColor={"white"} onClick={() =>{setActu(page),Next(),Next()} } _hover={{fontSize:"20px" ,bgColor:"cyan.500"}} key={page} >{page}</Button></SimpleGrid>)}
        )}</Flex>
        </Heading>
        <Button width={"fit-content"} 

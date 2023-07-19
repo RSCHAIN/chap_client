@@ -214,7 +214,7 @@ export default function Intermed1() {
     const [samedi,setSamedi]=useState("Non Renseigné")
     const [dimanche,setDimanche]=useState("Non Renseigné")
     const [paiement,setPaiement]=useState({})
-    const [paiement1,setPaiement1]=useState("espéce")
+    const [paiement1,setPaiement1]=useState("Espèce")
     const [paiement2,setPaiement2]=useState(" ")
   
   
@@ -243,11 +243,16 @@ export default function Intermed1() {
       
     }
     
-    if (sessionStorage.getItem("paiement") != "undefined") {
+    if (sessionStorage.getItem("paiement") != "undefined" && sessionStorage.getItem("paiement") != null ) {
       setPaiement(JSON.parse(sessionStorage.getItem("paiement")))
       setPaiement1(paiement.methodeDePaiement1)
+      console.log(paiement)
       setPaiement2(paiement.methodeDePaiement2)
+      console.log(paiement)
     }
+
+
+    
     const starCountRef = ref(
       db2,
       `${sessionStorage.getItem("categorie")}/${sessionStorage.getItem("nom")}`
@@ -346,7 +351,16 @@ export default function Intermed1() {
                
               
               </Flex>
+              <Flex>
+              <Text fontWeight={"bold"}>Moyen De paiement : </Text>
+               <Box>
+                <Text ml={2} fontSize={"15px"}>{paiement1}</Text>
+                <Text ml={2} fontSize={"15px"}>{paiement2}</Text>
+
+               </Box>
+               
               
+              </Flex>
               
               <Flex>
                 <Heading
@@ -577,6 +591,16 @@ export default function Intermed1() {
               
               </Flex>
 
+              <Flex>
+              <Text fontWeight={"bold"}>Moyen De paiement : </Text>
+               <Box>
+                <Text ml={2} fontSize={"15px"}>{paiement1}</Text>
+                <Text ml={2} fontSize={"15px"}>{paiement2}</Text>
+
+               </Box>
+               
+              
+              </Flex>
               
               <Flex>
                 <Heading
@@ -771,6 +795,16 @@ export default function Intermed1() {
                   {Desc1}
                  
                 </Text> }
+              </Flex>
+              <Flex>
+              <Text fontWeight={"bold"}>Moyen De paiement : </Text>
+               <Box>
+                <Text ml={2} fontSize={"15px"}>{paiement1}</Text>
+                <Text ml={2} fontSize={"15px"}>{paiement2}</Text>
+
+               </Box>
+               
+              
               </Flex>
               <Flex>
                 <Text fontWeight={"bold"} width={"fit-content"}>Reservation : </Text>
