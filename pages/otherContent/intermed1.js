@@ -393,6 +393,7 @@ export default function Intermed1() {
                 </Box>
               </Collapse>
             </Box>
+            <Box mr={10}>
             <iframe
               width="500px"
               height="300px"
@@ -403,6 +404,7 @@ export default function Intermed1() {
               src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
     &q=${addresse}`}
             ></iframe>
+            </Box>
           </Flex>
           <Heading fontSize={"20px"} mt={10}>
             Images du magasin{" "}
@@ -879,14 +881,17 @@ export default function Intermed1() {
                 </Box>
               </Collapse>
             </Box>
+            <Box mr={10}>
             <iframe
-                width="500px" height="300px" style={["marginRight: '20em' "]}
+               style={["marginRight: '20em' "]}
                 loading="lazy" allowfullscreen  
                 referrerpolicy="no-referrer-when-downgrade" src=
                 {`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
     &q=${addresse}`}
                 >
               </iframe>
+            </Box>
+           
           </Flex>
           <Heading fontSize={"20px"} mt={10}>
             Images du magasin{" "}
