@@ -34,6 +34,7 @@ import { useEffect, useState } from "react";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { app, authentic } from "@/FIREBASE/clientApp";
 import { useRouter } from "next/router";
+import CookieConsent from "react-cookie-consent";
 
 const InputBar = () => {
   const auth = getAuth(app);
@@ -85,7 +86,19 @@ const InputBar = () => {
   return (
     <>
      
-    
+     <CookieConsent
+  location="bottom"
+  buttonText="J'accepte"
+  cookieName="CNSTMTCOOKIE"
+  declineButtonText="Je Refuse"
+  style={{ background: "#2B373B" }}
+  buttonStyle={{ backgroundColor: "#00CCBC", fontSize: "13px",color:"white" }}
+  expires={3}
+  enableDeclineButton
+>
+  Nous utilisons des cookies dans le but de personnaliser, d’améliorer notre contenu et nos services et de diffuser des publicités pertinentes.
+ 
+</CookieConsent>
       <Flex
         width={"100%"}
         height={"4em"}
