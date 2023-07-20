@@ -212,37 +212,49 @@ export default function Intermed1() {
   const [paiement, setPaiement] = useState({});
   const [paiement1, setPaiement1] = useState("Espèce");
   const [paiement2, setPaiement2] = useState(" ");
-
+const [timert,setTimert] = useState() 
   ///fin horaire
-
+ 
   useEffect(() => {
+    if (sessionStorage.getItem("horaire") != "undefined" && sessionStorage.getItem("horaire") != null && sessionStorage.getItem("horaire") != undefined) {
+     setTimert(JSON.parse( sessionStorage.getItem("horaire"))) 
+    }else{
+      setTimert(null)
+    }
+    if (sessionStorage.getItem("paiement") != "undefined" && sessionStorage.getItem("paiement") != null && sessionStorage.getItem("paiement") != undefined) {
+      setPaiement(JSON.parse(sessionStorage.getItem("paiement"))) 
+     }else{
+      setPaiement(null)
+     }
     setImageUrl(sessionStorage.getItem("image"));
     setNumero(sessionStorage.getItem("savefrom"));
     setNom(sessionStorage.getItem("nom"));
     setAddresse(sessionStorage.getItem("adresse"));
     setCategorie(sessionStorage.getItem("categorie"));
     setDesc1(sessionStorage.getItem("description"));
-    if (sessionStorage.getItem("horaire") != "undefined") {
-      setHoraire(JSON.parse(sessionStorage.getItem("horaire")));
-      setLundi(horaire.lundi);
-      setMardi(horaire.mardi);
-      setMercredi(horaire.mercredi);
-      setJeudi(horaire.jeudi);
-      setVendredi(horaire.vendredi);
-      setSamedi(horaire.samedi);
-      setDimanche(horaire.dimanche);
-    }
+    
+    // if (sessionStorage.getItem("horaire") != "undefined") {
+    //   setHoraire(JSON.parse(sessionStorage.getItem("horaire"))); 
+    //   setHoraire(JSON.parse(sessionStorage.getItem("horaire")));
+    //   setLundi(horaire.lundi);
+    //   setMardi(horaire.mardi);
+    //   setMercredi(horaire.mercredi);
+    //   setJeudi(horaire.jeudi);
+    //   setVendredi(horaire.vendredi);
+    //   setSamedi(horaire.samedi);
+    //   setDimanche(horaire.dimanche);
+    // }
 
-    if (
-      sessionStorage.getItem("paiement") != "undefined" &&
-      sessionStorage.getItem("paiement") != null
-    ) {
-      setPaiement(JSON.parse(sessionStorage.getItem("paiement")));
-      setPaiement1(paiement.methodeDePaiement1);
-      console.log(paiement);
-      setPaiement2(paiement.methodeDePaiement2);
-      console.log(paiement);
-    }
+    // if (
+    //   sessionStorage.getItem("paiement") != "undefined" &&
+    //   sessionStorage.getItem("paiement") != null
+    // ) {
+    //   setPaiement(JSON.parse(sessionStorage.getItem("paiement")));
+    //   setPaiement1(paiement.methodeDePaiement1);
+    //   console.log(paiement);
+    //   setPaiement2(paiement.methodeDePaiement2);
+    //   console.log(paiement);
+    // }
 
     const starCountRef = ref(
       db2,
@@ -258,6 +270,7 @@ export default function Intermed1() {
       //   ...donnes[key]
       // }))
       // setCat(categorie)
+      
       if (donnes != null) {
         const newProducts = Object.keys(donnes).map((key) => ({
           id: key,
@@ -293,6 +306,7 @@ export default function Intermed1() {
     imageUrl,
     imageUrl,
   ];
+  console.log(timert)
   if (
     categorie != "Restaurant" &&
     categorie != "Esthetique" &&
@@ -352,13 +366,15 @@ export default function Intermed1() {
                 <Text fontWeight={"bold"}>Moyen De paiement : </Text>
                 <Box>
                   <Text ml={2} fontSize={"15px"}>
-                    {paiement1}
+                  {(paiement != "undefined" && paiement != null)? paiement.methodeDePaiement1 : "Espèces"}
                   </Text>
                   <Text ml={2} fontSize={"15px"}>
-                    {paiement2}
+                  {(paiement != "undefined" && paiement != null)? paiement.methodeDePaiement2 : ""}
                   </Text>
                 </Box>
               </Flex>
+
+
 
               <Flex>
                 <Heading
@@ -381,15 +397,16 @@ export default function Intermed1() {
                   :
                 </Heading>
               </Flex>
-              <Collapse in={show}>
+            
+ <Collapse in={show}>
                 <Box ml={10}>
-                  <Text fontSize={"15px"}>lundi: {lundi}</Text>
-                  <Text fontSize={"15px"}>mardi: {mardi}</Text>
-                  <Text fontSize={"15px"}>mercredi: {mercredi}</Text>
-                  <Text fontSize={"15px"}>jeudi: {jeudi}</Text>
-                  <Text fontSize={"15px"}>vendredi: {vendredi}</Text>
-                  <Text fontSize={"15px"}>samedi: {samedi}</Text>
-                  <Text fontSize={"15px"}>dimanche: {dimanche}</Text>
+                  <Text fontSize={"15px"}>lundi: {(timert != "undefined" && timert != null) ?timert.lundi : "Non Renseigné"}</Text>
+                  <Text fontSize={"15px"}>mardi: {(timert != "undefined" && timert != null) ? timert.mardi : "Non Renseigné"}</Text>
+                  <Text fontSize={"15px"}>mercredi: {(timert != "undefined" && timert != null) ? timert.mercredi : "Non Renseigné"}</Text>
+                  <Text fontSize={"15px"}>jeudi: {(timert != "undefined" && timert != null) ? timert.jeudi : "Non Renseigné"}</Text>
+                  <Text fontSize={"15px"}>vendredi: {(timert != "undefined" && timert != null) ? timert.vendredi : "Non Renseigné"}</Text>
+                  <Text fontSize={"15px"}>samedi: {(timert != "undefined" && timert != null) ? timert.samedi : "Non Renseigné"}</Text>
+                  <Text fontSize={"15px"}>dimanche: {(timert != "undefined" && timert != null) ? timert.dimanche : "Non Renseigné"}</Text>
                 </Box>
               </Collapse>
             </Box>
@@ -614,16 +631,16 @@ export default function Intermed1() {
                 </Flex>
 
                 <Flex>
-                  <Text fontWeight={"bold"}>Moyen De paiement : </Text>
-                  <Box>
-                    <Text ml={2} fontSize={"15px"}>
-                      {paiement1}
-                    </Text>
-                    <Text ml={2} fontSize={"15px"}>
-                      {paiement2}
-                    </Text>
-                  </Box>
-                </Flex>
+                <Text fontWeight={"bold"}>Moyen De paiement : </Text>
+                <Box>
+                  <Text ml={2} fontSize={"15px"}>
+                  {(paiement != "undefined" && paiement != null)? paiement.methodeDePaiement1 : "Espèces"}
+                  </Text>
+                  <Text ml={2} fontSize={"15px"}>
+                  {(paiement != "undefined" && paiement != null)? paiement.methodeDePaiement2 : ""}
+                  </Text>
+                </Box>
+              </Flex>
 
                 <Flex>
                   <Heading
@@ -647,16 +664,16 @@ export default function Intermed1() {
                   </Heading>
                 </Flex>
                 <Collapse in={show}>
-                  <Box ml={10}>
-                    <Text fontSize={"15px"}>lundi: {lundi}</Text>
-                    <Text fontSize={"15px"}>mardi: {mardi}</Text>
-                    <Text fontSize={"15px"}>mercredi: {mercredi}</Text>
-                    <Text fontSize={"15px"}>jeudi: {jeudi}</Text>
-                    <Text fontSize={"15px"}>vendredi: {vendredi}</Text>
-                    <Text fontSize={"15px"}>samedi: {samedi}</Text>
-                    <Text fontSize={"15px"}>dimanche: {dimanche}</Text>
-                  </Box>
-                </Collapse>
+                <Box ml={10}>
+                  <Text fontSize={"15px"}>lundi: {(timert != "undefined" && timert != null) ?timert.lundi : "Non Renseigné"}</Text>
+                  <Text fontSize={"15px"}>mardi: {(timert != "undefined" && timert != null) ? timert.mardi : "Non Renseigné"}</Text>
+                  <Text fontSize={"15px"}>mercredi: {(timert != "undefined" && timert != null) ? timert.mercredi : "Non Renseigné"}</Text>
+                  <Text fontSize={"15px"}>jeudi: {(timert != "undefined" && timert != null) ? timert.jeudi : "Non Renseigné"}</Text>
+                  <Text fontSize={"15px"}>vendredi: {(timert != "undefined" && timert != null) ? timert.vendredi : "Non Renseigné"}</Text>
+                  <Text fontSize={"15px"}>samedi: {(timert != "undefined" && timert != null) ? timert.samedi : "Non Renseigné"}</Text>
+                  <Text fontSize={"15px"}>dimanche: {(timert != "undefined" && timert != null) ? timert.dimanche : "Non Renseigné"}</Text>
+                </Box>
+              </Collapse>
               </Box>
               <iframe
                 width="500px" height="300px" style={["marginRight: '20em' "]}
@@ -817,10 +834,10 @@ export default function Intermed1() {
                 </Text>
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"}>Description : </Text>
+                <Text fontWeight={"bold"} mr={2}>Description : </Text>
                 {Desc1 == "undefined" ? (
                   <Text width={"58%"} textAlign={"justify"}>
-                    {categorie} Africaine
+                    {categorie} Africain
                   </Text>
                 ) : (
                   <Text width={"58%"} textAlign={"justify"}>
@@ -832,22 +849,22 @@ export default function Intermed1() {
                 <Text fontWeight={"bold"}>Moyen De paiement : </Text>
                 <Box>
                   <Text ml={2} fontSize={"15px"}>
-                    {paiement1}
+                  {(paiement != "undefined" && paiement != null)? paiement.methodeDePaiement1 : "Espèces"}
                   </Text>
                   <Text ml={2} fontSize={"15px"}>
-                    {paiement2}
+                  {(paiement != "undefined" && paiement != null)? paiement.methodeDePaiement2 : ""}
                   </Text>
                 </Box>
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"} width={"fit-content"}>
+                <Text fontWeight={"bold"} width={"fit-content"} mr={2}>
                   Reservation :{" "}
                 </Text>
                 <Text width={"58%"} textAlign={"justify"}>
                   1H nécessaire pour la cuisson de chaque plat
                 </Text>
               </Flex>
-
+ 
               <Flex>
                 <Heading
                   as={"h3"}
@@ -871,13 +888,13 @@ export default function Intermed1() {
               </Flex>
               <Collapse in={show}>
                 <Box ml={10}>
-                  <Text fontSize={"15px"}>lundi: {lundi}</Text>
-                  <Text fontSize={"15px"}>mardi: {mardi}</Text>
-                  <Text fontSize={"15px"}>mercredi: {mercredi}</Text>
-                  <Text fontSize={"15px"}>jeudi: {jeudi}</Text>
-                  <Text fontSize={"15px"}>vendredi: {vendredi}</Text>
-                  <Text fontSize={"15px"}>samedi: {samedi}</Text>
-                  <Text fontSize={"15px"}>dimanche: {dimanche}</Text>
+                  <Text fontSize={"15px"}>lundi: {(timert != "undefined" && timert != null) ? `${" "} ${timert.lundi}` : " Non Renseigné"}</Text>
+                  <Text fontSize={"15px"}>mardi: {(timert != "undefined" && timert != null) ?  `${" "} ${timert.mardi}`: " Non Renseigné"}</Text>
+                  <Text fontSize={"15px"}>mercredi: {(timert != "undefined" && timert != null) ?  `${" "} ${timert.mercredi}` : " Non Renseigné"}</Text>
+                  <Text fontSize={"15px"}>jeudi: {(timert != "undefined" && timert != null) ? `${" "} ${timert.jeudi}`: " Non Renseigné"}</Text>
+                  <Text fontSize={"15px"}>vendredi: {(timert != "undefined" && timert != null) ?  `${" "} ${timert.vendredi}` : " Non Renseigné"}</Text>
+                  <Text fontSize={"15px"}>samedi: {(timert != "undefined" && timert != null) ?  `${" "} ${timert.samedi}` : " Non Renseigné"}</Text>
+                  <Text fontSize={"15px"}>dimanche: {(timert != "undefined" && timert != null) ? `${" "} ${timert.dimanche}` : " Non Renseigné"}</Text>
                 </Box>
               </Collapse>
             </Box>

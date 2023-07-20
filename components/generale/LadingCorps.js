@@ -6,7 +6,11 @@ import {
   Flex,
   Heading,
   Input,
+  InputGroup,
+  InputLeftElement,
+  InputRightElement,
   Link,
+  Stack,
   Text,
 } from "@chakra-ui/react";
 import React, { useState, useEffect, useRef } from "react";
@@ -16,6 +20,7 @@ import { ref, onValue } from "firebase/database";
 import Location from "../location";
 import { useRouter } from "next/router";
 import { collection, query, where, getDocs } from "firebase/firestore";
+import { BsSearch } from "react-icons/bs";
 
 // les card des differntes cartegories qui seront mapés
 export function ItemCard({ item, card }) {
@@ -75,10 +80,10 @@ export function ItemCard({ item, card }) {
               sessionStorage.setItem("adresse", item.adresse),
               sessionStorage.setItem("categorie", item.categorie);
             sessionStorage.setItem("description", item.description);
-            sessionStorage.setItem("horaire", JSON.stringify(data.horaire));
+            sessionStorage.setItem("horaire", JSON.stringify(item.horaire));
             sessionStorage.setItem(
               "paiement",
-              JSON.stringify(data.methodeDePaiement)
+              JSON.stringify(item.methodeDePaiement)
             );
           }}
           mr={{ base: "0%", md: "0%" }}
@@ -335,10 +340,19 @@ const LadingCorps = () => {
           <Heading textAlign={"start"} color={"#08566e"} mb={5}>
             Nos Services
           </Heading>
-           <Flex>
+           <Box>
+            <Text>Entrez votre code postal pour trouver les restaurants à proximité</Text>
+            <Stack>
+            <InputGroup >
+                        <Input type={"search"} />
+                        <InputRightElement>
+                        <BsSearch/>
+                        </InputRightElement>
+                        </InputGroup>
+            </Stack>
             
-            <Input type={"search"} width={"50%"} height={"20px"}/>
-            </Flex> 
+
+            </Box> 
           {/* la box de toutes les cartegorie */}
           <Flex
             height={"auto"}
