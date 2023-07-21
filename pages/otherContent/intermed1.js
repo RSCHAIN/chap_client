@@ -365,7 +365,7 @@ export default function Intermed1() {
                 <Text fontWeight={"bold"}>Description : </Text>
                 {Desc1 == "undefined" ? (
                   <Text width={"58%"} textAlign={"justify"}>
-                    {categorie} Africaine
+                    {categorie} Africain
                   </Text>
                 ) : (
                   <Text width={"58%"} textAlign={"justify"}>
@@ -688,7 +688,7 @@ export default function Intermed1() {
                   <Text fontWeight={"bold"}>Description : </Text>
                   {Desc1 == "undefined" ? (
                     <Text width={"58%"} textAlign={"justify"}>
-                      {categorie} Africaine
+                      {categorie} Africain
                     </Text>
                   ) : (
                     <Text width={"58%"} textAlign={"justify"}>

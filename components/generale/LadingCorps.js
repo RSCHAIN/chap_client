@@ -8,6 +8,7 @@ import {
   Input,
   InputGroup,
   InputLeftElement,
+  InputRightAddon,
   InputRightElement,
   Link,
   Stack,
@@ -341,14 +342,18 @@ const LadingCorps = () => {
             Nos Services
           </Heading>
            <Box>
-            <Text>Entrez votre code postal pour trouver les restaurants à proximité</Text>
+            <Text ml={"25%"}>Entrez votre code postal pour trouver les restaurants à proximité</Text>
             <Stack>
-            <InputGroup >
-                        <Input type={"search"} />
-                        <InputRightElement>
+              <Center ml={"30%"}>
+              <InputGroup >
+                        <Input type={"search"} width={"30%"} border={"1px solid black"} mt={3}/>
+                        <InputRightAddon mt={3} cursor={"pointer"}>
                         <BsSearch/>
-                        </InputRightElement>
+                        </InputRightAddon>
                         </InputGroup>
+            
+              </Center>
+           
             </Stack>
             
 
