@@ -462,7 +462,6 @@ export default function Intermed1() {
               <iframe
                 width="400"
                 height="250"
-                style={["marginRight: '20em' "]}
                 loading="lazy"
                 allowfullscreen
                 referrerpolicy="no-referrer-when-downgrade"
@@ -786,7 +785,7 @@ export default function Intermed1() {
               <iframe
                 width="400"
                 height="250"
-                style={["marginRight: '20em' "]}
+              
                 loading="lazy"
                 allowfullscreen
                 referrerpolicy="no-referrer-when-downgrade"
@@ -1069,7 +1068,7 @@ export default function Intermed1() {
               <iframe
                 width="400"
                 height="250"
-                style={["marginRight: '20em' "]}
+                
                 loading="lazy"
                 allowfullscreen
                 referrerpolicy="no-referrer-when-downgrade"
@@ -1452,7 +1451,7 @@ export default function Intermed1() {
               <iframe
                 width="400"
                 height="250"
-                style={["marginRight: '20em' "]}
+                
                 loading="lazy"
                 allowfullscreen
                 referrerpolicy="no-referrer-when-downgrade"
