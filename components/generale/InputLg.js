@@ -82,6 +82,7 @@ const InputLg = () => {
   const [fournisseur, setFournisseur] = useState("EasyShop");
   const [data, setData] = useState([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [check,setCheck] = useState(0)
 
 
 
@@ -91,34 +92,35 @@ const InputLg = () => {
 
 
 
-  const handleSearch =  (input) => {
-
+  const handleSearch =  () => {
+    setCheck(check+1)
    setData([])
-  
-    
-  
-
-
-
-  
       const rec =  query(
-        ref(db2,   "/All Products" ),
-        orderByChild("nom"),
-        startAt(input)
-       
-      );
+        ref(db2,   "/All Products" ));
       get(rec)
         .then((snapshot) => {
+          // data.push(snapshot.val())
           snapshot.forEach((childsnapsho) => {
             data.push(childsnapsho.val());
-            // console.log((childsnapsho.val()))
           });
         })
         .catch((error) => console.log(error));
-
-      
-   
   }
+  const Research = (inputed) => {
+  console.log("data",data)
+   console.log(data.filter(inpute => inpute.nom.includes(inputed)))
+  }
+
+useEffect(()=>{
+  if (check == 0 || check == 1) {
+    handleSearch()
+    console.log(data)
+    console.log(check)
+  }
+  
+})
+
+
 
   return (
    
@@ -128,7 +130,7 @@ const InputLg = () => {
       
         <InputGroup>
           <Input
-            type="text"
+            type="search"
             placeholder="Que recherchez-vous ?"
             _placeholder={{ color: "black" }}
             variant={"filled"}
@@ -153,12 +155,12 @@ const InputLg = () => {
                   borderRadius={"full"}
                   w={["15em","15em","15em","20em","20em"]}
                   onChange={(e) => {
-                     handleSearch(e.target.value);
+                     Research(e.target.value);
                   }}
                   />
-                  {data.map((data, index) => {
-                    // if (data.nom != null || data.nom != undefined) {
-                    //   return (
+                  {/* {data.map((data, index) => { */}
+                    {/* // if (data.nom != null || data.nom != undefined) { */}
+                    {/* //   return (
                     //     <Flex
                     //       key={index}
                     //       bgColor={"#fbfbfbfc"}
@@ -239,8 +241,8 @@ const InputLg = () => {
                     // } else {
                     //   return <Box key={index}>PRODUIT INTROUVABLE</Box>;
                     // }
-                    console.log(data)
-                  })}
+                  //   console.log(data)
+                  // })} */}
                 </ModalBody>
               </ModalContent>
             </Modal>

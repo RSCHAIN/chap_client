@@ -18,6 +18,7 @@ import {
   Menu,
   MenuButton,
   MenuList,
+  Center,
 
 } from "@chakra-ui/react";
 import {
@@ -32,6 +33,7 @@ import {useState,useEffect} from 'react'
 import { getAuth } from "firebase/auth";
 import { app} from "@/FIREBASE/clientApp";
 import Menucat from "./menucat";
+import Keyword from "./Keywords";
 export default function Navbar() {
  
   const { isOpen, onToggle } = useDisclosure();
@@ -60,6 +62,7 @@ useEffect(()=>{
 
 
   return (
+    <>
     <Box display={["none","none","none","grid","grid"]}>
       <Flex
         bg={useColorModeValue("white", "gray.800")}
@@ -86,7 +89,8 @@ useEffect(()=>{
             aria-label={"Toggle Navigation"}
           />
         </Flex>
-        <Flex flex={{ base: 1 }} justify={{ base: "center", md: "center" }}>
+        
+        <Box flex={{ base: 1 }} justify={{ base: "center", md: "center" }} ml={"25%"}>
           {/* <Text
               textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
               fontFamily={'heading'}
@@ -173,7 +177,8 @@ useEffect(()=>{
               Services
             </Link> */}
           </Flex>
-        </Flex>
+          <Keyword/>
+        </Box>
 
         {/* <Stack
             flex={{ base: 1, md: 0 }}
@@ -202,12 +207,15 @@ Se connecter
 
             </Button>
           </Stack> */}
+           
       </Flex>
-
+     
       <Collapse in={isOpen} animateOpacity>
         {/* <MobileNav /> */}
       </Collapse>
     </Box>
+    
+    </>
   );
 }
 

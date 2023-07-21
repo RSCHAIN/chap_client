@@ -7,7 +7,7 @@ export default function App({ Component, pageProps }) {
     currency: "EUR",
     intent: "capture",
 };
-console.log(typeof(initialOptions.clientId))
+
   return(
     <ChakraProvider>
          <PayPalScriptProvider options={initialOptions}>

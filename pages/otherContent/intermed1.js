@@ -20,6 +20,7 @@ import {
   ModalHeader,
   ModalOverlay,
   SimpleGrid,
+  Stack,
   Text,
   Tooltip,
   useDisclosure,
@@ -37,6 +38,7 @@ import { IoMdAddCircle, IoMdAddCircleOutline } from "react-icons/io";
 import Slider from "react-slick";
 import { ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons";
 import FooterR from "@/components/footerResponsif";
+import Keyword from "@/components/Keywords";
 
 ///fonction du panier
 function saveCart(product) {
@@ -166,17 +168,17 @@ const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
     items: 3,
-    paritialVisibilityGutter: 60,
+    partialVisibilityGutter: 60,
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
     items: 2,
-    paritialVisibilityGutter: 50,
+    partialVisibilityGutter: 50,
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
     items: 1,
-    paritialVisibilityGutter: 30,
+    partialVisibilityGutter: 30,
   },
 };
 
@@ -212,29 +214,37 @@ export default function Intermed1() {
   const [paiement, setPaiement] = useState({});
   const [paiement1, setPaiement1] = useState("Espèce");
   const [paiement2, setPaiement2] = useState(" ");
-const [timert,setTimert] = useState() 
+  const [timert, setTimert] = useState();
   ///fin horaire
- 
+
   useEffect(() => {
-    if (sessionStorage.getItem("horaire") != "undefined" && sessionStorage.getItem("horaire") != null && sessionStorage.getItem("horaire") != undefined) {
-     setTimert(JSON.parse( sessionStorage.getItem("horaire"))) 
-    }else{
-      setTimert(null)
+    if (
+      sessionStorage.getItem("horaire") != "undefined" &&
+      sessionStorage.getItem("horaire") != null &&
+      sessionStorage.getItem("horaire") != undefined
+    ) {
+      setTimert(JSON.parse(sessionStorage.getItem("horaire")));
+    } else {
+      setTimert(null);
     }
-    if (sessionStorage.getItem("paiement") != "undefined" && sessionStorage.getItem("paiement") != null && sessionStorage.getItem("paiement") != undefined) {
-      setPaiement(JSON.parse(sessionStorage.getItem("paiement"))) 
-     }else{
-      setPaiement(null)
-     }
+    if (
+      sessionStorage.getItem("paiement") != "undefined" &&
+      sessionStorage.getItem("paiement") != null &&
+      sessionStorage.getItem("paiement") != undefined
+    ) {
+      setPaiement(JSON.parse(sessionStorage.getItem("paiement")));
+    } else {
+      setPaiement(null);
+    }
     setImageUrl(sessionStorage.getItem("image"));
     setNumero(sessionStorage.getItem("savefrom"));
     setNom(sessionStorage.getItem("nom"));
     setAddresse(sessionStorage.getItem("adresse"));
     setCategorie(sessionStorage.getItem("categorie"));
     setDesc1(sessionStorage.getItem("description"));
-    
+
     // if (sessionStorage.getItem("horaire") != "undefined") {
-    //   setHoraire(JSON.parse(sessionStorage.getItem("horaire"))); 
+    //   setHoraire(JSON.parse(sessionStorage.getItem("horaire")));
     //   setHoraire(JSON.parse(sessionStorage.getItem("horaire")));
     //   setLundi(horaire.lundi);
     //   setMardi(horaire.mardi);
@@ -270,7 +280,7 @@ const [timert,setTimert] = useState()
       //   ...donnes[key]
       // }))
       // setCat(categorie)
-      
+
       if (donnes != null) {
         const newProducts = Object.keys(donnes).map((key) => ({
           id: key,
@@ -306,7 +316,7 @@ const [timert,setTimert] = useState()
     imageUrl,
     imageUrl,
   ];
-  console.log(timert)
+  console.log(timert);
   if (
     categorie != "Restaurant" &&
     categorie != "Esthetique" &&
@@ -319,8 +329,9 @@ const [timert,setTimert] = useState()
       <>
         <InputBar />
         <Navbar />
-        <Box ml={["3%", "3%", "3%", "20%", "20%"]} mt={10} mb={10}>
-          <Flex>
+       
+        <Box ml={["10%", "10%", "10%", "20%", "20%"]} mt={10} mb={10}>
+        <Flex display={["grid","grid","grid","flex","flex"]}>
             <Box mr={5}>
               <Image
                 src={`${imageUrl}`}
@@ -366,15 +377,17 @@ const [timert,setTimert] = useState()
                 <Text fontWeight={"bold"}>Moyen De paiement : </Text>
                 <Box>
                   <Text ml={2} fontSize={"15px"}>
-                  {(paiement != "undefined" && paiement != null)? paiement.methodeDePaiement1 : "Espèces"}
+                    {paiement != "undefined" && paiement != null
+                      ? paiement.methodeDePaiement1
+                      : "Espèces"}
                   </Text>
                   <Text ml={2} fontSize={"15px"}>
-                  {(paiement != "undefined" && paiement != null)? paiement.methodeDePaiement2 : ""}
+                    {paiement != "undefined" && paiement != null
+                      ? paiement.methodeDePaiement2
+                      : ""}
                   </Text>
                 </Box>
               </Flex>
-
-
 
               <Flex>
                 <Heading
@@ -397,39 +410,86 @@ const [timert,setTimert] = useState()
                   :
                 </Heading>
               </Flex>
-            
- <Collapse in={show}>
+
+              <Collapse in={show}>
                 <Box ml={10}>
-                  <Text fontSize={"15px"}>lundi: {(timert != "undefined" && timert != null) ?timert.lundi : "Non Renseigné"}</Text>
-                  <Text fontSize={"15px"}>mardi: {(timert != "undefined" && timert != null) ? timert.mardi : "Non Renseigné"}</Text>
-                  <Text fontSize={"15px"}>mercredi: {(timert != "undefined" && timert != null) ? timert.mercredi : "Non Renseigné"}</Text>
-                  <Text fontSize={"15px"}>jeudi: {(timert != "undefined" && timert != null) ? timert.jeudi : "Non Renseigné"}</Text>
-                  <Text fontSize={"15px"}>vendredi: {(timert != "undefined" && timert != null) ? timert.vendredi : "Non Renseigné"}</Text>
-                  <Text fontSize={"15px"}>samedi: {(timert != "undefined" && timert != null) ? timert.samedi : "Non Renseigné"}</Text>
-                  <Text fontSize={"15px"}>dimanche: {(timert != "undefined" && timert != null) ? timert.dimanche : "Non Renseigné"}</Text>
+                  <Text fontSize={"15px"}>
+                    lundi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? timert.lundi
+                      : "Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    mardi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? timert.mardi
+                      : "Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    mercredi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? timert.mercredi
+                      : "Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    jeudi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? timert.jeudi
+                      : "Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    vendredi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? timert.vendredi
+                      : "Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    samedi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? timert.samedi
+                      : "Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    dimanche:{" "}
+                    {timert != "undefined" && timert != null
+                      ? timert.dimanche
+                      : "Non Renseigné"}
+                  </Text>
                 </Box>
               </Collapse>
             </Box>
-            <Box mr={10}>
-            <iframe
-              width="500px"
-              height="300px"
-              style={["marginRight: '20em' "]}
-              loading="lazy"
-              allowfullscreen
-              referrerpolicy="no-referrer-when-downgrade"
-              src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
+            <Box mr={10} display={["none","none","none","grid","grid"]}>
+              <iframe
+                width="400"
+                height="250"
+                style={["marginRight: '20em' "]}
+                loading="lazy"
+                allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade"
+                src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
     &q=${addresse}`}
-            ></iframe>
+              ></iframe>
+            </Box>
+            <Box width={"fit-content"} display={["grid","grid","grid","none","none"]}>
+              <iframe
+                width="350"
+                height="250"
+                loading="lazy"
+                allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade"
+                src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
+    &q=${addresse}`}
+              ></iframe>
             </Box>
           </Flex>
           <Heading fontSize={"20px"} mt={10}>
             Images du magasin{" "}
           </Heading>
+          
           <section
             style={{
               marginTop: "20px",
-              marginRight: "20%",
+            
             }}
           >
             <Carousel
@@ -454,123 +514,131 @@ const [timert,setTimert] = useState()
               })}
             </Carousel>
           </section>
-
-          <Heading fontSize={"20px"} mt={10}>
-            Les produits{" "}
-          </Heading>
-          <Flex mt={10}>
-            <SimpleGrid columns={[2, 2, 3, 4, 5]} spacing={2} mr={20}>
-              {data.map((data, key) => (
-                <Box
-                  key={data.id}
-                  maxW={"fit-content"}
-                  height={"400px"}
-                  borderRadius="lg"
-                  mt={4}
-                  mb={20}
-                  // border={"1px solid black"}
-                >
-                  <Box
-                    width={"fit-content"}
-                    height={"fit-content"}
-                    pt={10}
-                    pl={5}
-                  >
-                    <Image
-                      src={data.imageUrl}
-                      alt={data.nom}
-                      width={["150px", "150px", "150px", "190px", "190px"]}
-                      height={"150px"}
-                      maxH={"200px"}
-                      maxW={"200px"}
-                    />
-                  </Box>
-
-                  <Box p="6">
+     
+          {data.length != 0 ? (
+            <>
+              {" "}
+              <Heading fontSize={"20px"} mt={10}>
+                Les produits{" "}
+              </Heading>
+              <Flex mt={10}>
+                <SimpleGrid columns={[2, 2, 3, 4, 5]} spacing={2} mr={20}>
+                  {data.map((data, key) => (
                     <Box
-                      mt="1"
-                      fontWeight="semibold"
-                      as="h5"
-                      lineHeight="tight"
-                      noOfLines={3}
-                      width={"270px"}
-                      height={"50px"}
-                      pb={20}
+                      key={data.id}
+                      maxW={"fit-content"}
+                      height={"400px"}
+                      borderRadius="lg"
+                      mt={4}
+                      mb={20}
+                      // border={"1px solid black"}
                     >
-                      <Text width={"150px"}>{data.nom}</Text>
-                      <Box textColor={"blue"} color={"blue.400"} h={5}>
-                        {data.prix}
-                        <Box as="span" pl={2} fontSize="sm">
-                          €
+                      <Box
+                        width={"fit-content"}
+                        height={"fit-content"}
+                        pt={10}
+                        pl={5}
+                      >
+                        <Image
+                          src={data.imageUrl}
+                          alt={data.nom}
+                          width={["150px", "150px", "150px", "190px", "190px"]}
+                          height={"150px"}
+                          maxH={"200px"}
+                          maxW={"200px"}
+                        />
+                      </Box>
+
+                      <Box p="6">
+                        <Box
+                          mt="1"
+                          fontWeight="semibold"
+                          as="h5"
+                          lineHeight="tight"
+                          noOfLines={3}
+                          width={"270px"}
+                          height={"50px"}
+                          pb={20}
+                        >
+                          <Text width={"150px"}>{data.nom}</Text>
+                          <Box textColor={"blue"} color={"blue.400"} h={5}>
+                            {data.prix}
+                            <Box as="span" pl={2} fontSize="sm">
+                              €
+                            </Box>
+                          </Box>
+                        </Box>
+
+                        <Box
+                          fontWeight="normal"
+                          lineHeight="taller"
+                          mb={5}
+                          noOfLines={8}
+                          w={{ base: "150px", md: "200px" }}
+                          // Height={"250px"}
+                          maxH={"250px"}
+                        >
+                          {data.description == "undefined" ? (
+                            <></>
+                          ) : (
+                            <>
+                              {" "}
+                              <Tooltip label={data.description}>
+                                <Text noOfLines={1}>{data.description}</Text>
+                              </Tooltip>
+                            </>
+                          )}
+                        </Box>
+                        <Box>
+                          <Button
+                            bgColor={"cyan.700"}
+                            borderRadius={"66px"}
+                            width={"fit-content"}
+                            as={"a"}
+                            onClick={() => {
+                              AddToCart(data),
+                                toast({
+                                  title: "PRODUIT AJOUTE",
+
+                                  status: "success",
+                                  duration: 9000,
+                                  isClosable: true,
+                                });
+                            }}
+                            color={"white"}
+                            _hover={{
+                              backgroundColor: " cyan.900",
+                              color: "white ",
+                            }}
+                            leftIcon={<IoMdAddCircle />}
+                          >
+                            {" "}
+                            Commander
+                          </Button>
                         </Box>
                       </Box>
                     </Box>
-
-                    <Box
-                      fontWeight="normal"
-                      lineHeight="taller"
-                      mb={5}
-                      noOfLines={8}
-                      w={{ base: "150px", md: "200px" }}
-                      Height={"250px"}
-                      maxH={"250px"}
-                    >
-                      {data.description == "undefined" ? (
-                        <></>
-                      ) : (
-                        <>
-                          {" "}
-                          <Tooltip label={data.description}>
-                            <Text noOfLines={1}>{data.description}</Text>
-                          </Tooltip>
-                        </>
-                      )}
-                    </Box>
-                    <Box>
-                      <Button
-                        bgColor={"cyan.700"}
-                        borderRadius={"66px"}
-                        width={"fit-content"}
-                        as={"a"}
-                        onClick={() => {
-                          AddToCart(data),
-                            toast({
-                              title: "PRODUIT AJOUTE",
-
-                              status: "success",
-                              duration: 9000,
-                              isClosable: true,
-                            });
-                        }}
-                        color={"white"}
-                        _hover={{
-                          backgroundColor: " cyan.900",
-                          color: "white ",
-                        }}
-                        leftIcon={<IoMdAddCircle />}
-                      >
-                        {" "}
-                        Commander
-                      </Button>
-                    </Box>
-                  </Box>
-                </Box>
-              ))}
-            </SimpleGrid>
-          </Flex>
+                  ))}
+                </SimpleGrid>
+              </Flex>
+            </>
+          ) : (
+            <></>
+          )}
         </Box>
         <FooterR />
       </>
     );
   } else if (categorie == "Fret") {
     return (
-      <>
+   
         <>
           <InputBar />
           <Navbar />
+         
 
           <Box ml={["3%", "3%", "3%", "20%", "20%"]} mt={10} mb={10}>
-            <Flex>
+          <Flex display={["grid","grid","grid","flex","flex"]}>
               <Box mr={5}>
                 <Image
                   src={`${imageUrl}`}
@@ -631,16 +699,20 @@ const [timert,setTimert] = useState()
                 </Flex>
 
                 <Flex>
-                <Text fontWeight={"bold"}>Moyen De paiement : </Text>
-                <Box>
-                  <Text ml={2} fontSize={"15px"}>
-                  {(paiement != "undefined" && paiement != null)? paiement.methodeDePaiement1 : "Espèces"}
-                  </Text>
-                  <Text ml={2} fontSize={"15px"}>
-                  {(paiement != "undefined" && paiement != null)? paiement.methodeDePaiement2 : ""}
-                  </Text>
-                </Box>
-              </Flex>
+                  <Text fontWeight={"bold"}>Moyen De paiement : </Text>
+                  <Box>
+                    <Text ml={2} fontSize={"15px"}>
+                      {paiement != "undefined" && paiement != null
+                        ? paiement.methodeDePaiement1
+                        : "Espèces"}
+                    </Text>
+                    <Text ml={2} fontSize={"15px"}>
+                      {paiement != "undefined" && paiement != null
+                        ? paiement.methodeDePaiement2
+                        : ""}
+                    </Text>
+                  </Box>
+                </Flex>
 
                 <Flex>
                   <Heading
@@ -664,25 +736,75 @@ const [timert,setTimert] = useState()
                   </Heading>
                 </Flex>
                 <Collapse in={show}>
-                <Box ml={10}>
-                  <Text fontSize={"15px"}>lundi: {(timert != "undefined" && timert != null) ?timert.lundi : "Non Renseigné"}</Text>
-                  <Text fontSize={"15px"}>mardi: {(timert != "undefined" && timert != null) ? timert.mardi : "Non Renseigné"}</Text>
-                  <Text fontSize={"15px"}>mercredi: {(timert != "undefined" && timert != null) ? timert.mercredi : "Non Renseigné"}</Text>
-                  <Text fontSize={"15px"}>jeudi: {(timert != "undefined" && timert != null) ? timert.jeudi : "Non Renseigné"}</Text>
-                  <Text fontSize={"15px"}>vendredi: {(timert != "undefined" && timert != null) ? timert.vendredi : "Non Renseigné"}</Text>
-                  <Text fontSize={"15px"}>samedi: {(timert != "undefined" && timert != null) ? timert.samedi : "Non Renseigné"}</Text>
-                  <Text fontSize={"15px"}>dimanche: {(timert != "undefined" && timert != null) ? timert.dimanche : "Non Renseigné"}</Text>
-                </Box>
-              </Collapse>
+                  <Box ml={10}>
+                    <Text fontSize={"15px"}>
+                      lundi:{" "}
+                      {timert != "undefined" && timert != null
+                        ? timert.lundi
+                        : "Non Renseigné"}
+                    </Text>
+                    <Text fontSize={"15px"}>
+                      mardi:{" "}
+                      {timert != "undefined" && timert != null
+                        ? timert.mardi
+                        : "Non Renseigné"}
+                    </Text>
+                    <Text fontSize={"15px"}>
+                      mercredi:{" "}
+                      {timert != "undefined" && timert != null
+                        ? timert.mercredi
+                        : "Non Renseigné"}
+                    </Text>
+                    <Text fontSize={"15px"}>
+                      jeudi:{" "}
+                      {timert != "undefined" && timert != null
+                        ? timert.jeudi
+                        : "Non Renseigné"}
+                    </Text>
+                    <Text fontSize={"15px"}>
+                      vendredi:{" "}
+                      {timert != "undefined" && timert != null
+                        ? timert.vendredi
+                        : "Non Renseigné"}
+                    </Text>
+                    <Text fontSize={"15px"}>
+                      samedi:{" "}
+                      {timert != "undefined" && timert != null
+                        ? timert.samedi
+                        : "Non Renseigné"}
+                    </Text>
+                    <Text fontSize={"15px"}>
+                      dimanche:{" "}
+                      {timert != "undefined" && timert != null
+                        ? timert.dimanche
+                        : "Non Renseigné"}
+                    </Text>
+                  </Box>
+                </Collapse>
               </Box>
+              <Box mr={10} display={["none","none","none","grid","grid"]}>
               <iframe
-                width="500px" height="300px" style={["marginRight: '20em' "]}
-                loading="lazy" allowfullscreen  
-                referrerpolicy="no-referrer-when-downgrade" src=
-                {`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
+                width="400"
+                height="250"
+                style={["marginRight: '20em' "]}
+                loading="lazy"
+                allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade"
+                src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
     &q=${addresse}`}
-                >
-              </iframe>
+              ></iframe>
+            </Box>
+            <Box width={"fit-content"} display={["grid","grid","grid","none","none"]}>
+              <iframe
+                width="350"
+                height="250"
+                loading="lazy"
+                allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade"
+                src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
+    &q=${addresse}`}
+              ></iframe>
+            </Box>
             </Flex>
             <Heading fontSize={"20px"} mt={10}>
               Images du magasin{" "}
@@ -692,7 +814,7 @@ const [timert,setTimert] = useState()
             <section
               style={{
                 marginTop: "20px",
-                marginRight: "20%",
+            
                 marginBottom: "70px",
               }}
             >
@@ -723,16 +845,19 @@ const [timert,setTimert] = useState()
           </Box>
           <FooterR />
         </>
-      </>
+     
     );
-  } else {
+  }
+  else if(categorie == "Restaurant" ){
     return (
       <>
         <InputBar />
         <Navbar />
+      
 
         <Box ml={["3%", "3%", "3%", "20%", "20%"]} mt={10} mb={10}>
-          <Flex>
+          <Flex display={["grid","grid","grid","flex","flex"]}>
+            
             <Box mr={5}>
               <Image
                 src={`${imageUrl}`}
@@ -816,7 +941,7 @@ const [timert,setTimert] = useState()
                 </Modal>
               </Box>
             </Box>
-
+                  
             <Box>
               <Heading fontSize={"40px"}>{nom}</Heading>
               <Text fontSize={"15px"} fontWeight={"medium"}>
@@ -834,7 +959,9 @@ const [timert,setTimert] = useState()
                 </Text>
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"} mr={2}>Description : </Text>
+                <Text fontWeight={"bold"} mr={2}>
+                  Description :{" "}
+                </Text>
                 {Desc1 == "undefined" ? (
                   <Text width={"58%"} textAlign={"justify"}>
                     {categorie} Africain
@@ -849,10 +976,14 @@ const [timert,setTimert] = useState()
                 <Text fontWeight={"bold"}>Moyen De paiement : </Text>
                 <Box>
                   <Text ml={2} fontSize={"15px"}>
-                  {(paiement != "undefined" && paiement != null)? paiement.methodeDePaiement1 : "Espèces"}
+                    {paiement != "undefined" && paiement != null
+                      ? paiement.methodeDePaiement1
+                      : "Espèces"}
                   </Text>
                   <Text ml={2} fontSize={"15px"}>
-                  {(paiement != "undefined" && paiement != null)? paiement.methodeDePaiement2 : ""}
+                    {paiement != "undefined" && paiement != null
+                      ? paiement.methodeDePaiement2
+                      : ""}
                   </Text>
                 </Box>
               </Flex>
@@ -861,10 +992,10 @@ const [timert,setTimert] = useState()
                   Reservation :{" "}
                 </Text>
                 <Text width={"58%"} textAlign={"justify"}>
-                  1H nécessaire pour la cuisson de chaque plat
+                {data.length != 0 ? <Text color={"messenger.500"}>En ligne</Text>: <Text color={"red.400"}>Non Disponible</Text>}
                 </Text>
               </Flex>
- 
+
               <Flex>
                 <Heading
                   as={"h3"}
@@ -888,27 +1019,76 @@ const [timert,setTimert] = useState()
               </Flex>
               <Collapse in={show}>
                 <Box ml={10}>
-                  <Text fontSize={"15px"}>lundi: {(timert != "undefined" && timert != null) ? `${" "} ${timert.lundi}` : " Non Renseigné"}</Text>
-                  <Text fontSize={"15px"}>mardi: {(timert != "undefined" && timert != null) ?  `${" "} ${timert.mardi}`: " Non Renseigné"}</Text>
-                  <Text fontSize={"15px"}>mercredi: {(timert != "undefined" && timert != null) ?  `${" "} ${timert.mercredi}` : " Non Renseigné"}</Text>
-                  <Text fontSize={"15px"}>jeudi: {(timert != "undefined" && timert != null) ? `${" "} ${timert.jeudi}`: " Non Renseigné"}</Text>
-                  <Text fontSize={"15px"}>vendredi: {(timert != "undefined" && timert != null) ?  `${" "} ${timert.vendredi}` : " Non Renseigné"}</Text>
-                  <Text fontSize={"15px"}>samedi: {(timert != "undefined" && timert != null) ?  `${" "} ${timert.samedi}` : " Non Renseigné"}</Text>
-                  <Text fontSize={"15px"}>dimanche: {(timert != "undefined" && timert != null) ? `${" "} ${timert.dimanche}` : " Non Renseigné"}</Text>
+                  <Text fontSize={"15px"}>
+                    lundi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.lundi}`
+                      : " Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    mardi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.mardi}`
+                      : " Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    mercredi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.mercredi}`
+                      : " Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    jeudi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.jeudi}`
+                      : " Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    vendredi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.vendredi}`
+                      : " Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    samedi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.samedi}`
+                      : " Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    dimanche:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.dimanche}`
+                      : " Non Renseigné"}
+                  </Text>
                 </Box>
               </Collapse>
             </Box>
             <Box mr={10}>
-            <iframe
-               style={["marginRight: '20em' "]}
-                loading="lazy" allowfullscreen  
-                referrerpolicy="no-referrer-when-downgrade" src=
-                {`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
+            <Box mr={10} display={["none","none","none","grid","grid"]}>
+              <iframe
+                width="400"
+                height="250"
+                style={["marginRight: '20em' "]}
+                loading="lazy"
+                allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade"
+                src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
     &q=${addresse}`}
-                >
-              </iframe>
+              ></iframe>
             </Box>
-           
+            <Box width={"fit-content"} display={["grid","grid","grid","none","none"]}>
+              <iframe
+                width="350"
+                height="250"
+                loading="lazy"
+                allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade"
+                src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
+    &q=${addresse}`}
+              ></iframe>
+            </Box>
+            </Box>
           </Flex>
           <Heading fontSize={"20px"} mt={10}>
             Images du magasin{" "}
@@ -918,7 +1098,7 @@ const [timert,setTimert] = useState()
           <section
             style={{
               marginTop: "20px",
-              marginRight: "10%",
+              
             }}
           >
             <Carousel
@@ -945,103 +1125,498 @@ const [timert,setTimert] = useState()
           </section>
 
           {/* fin slide  */}
-          <Heading fontSize={"20px"} mt={10}>
-            Les produits{" "}
-          </Heading>
-          <Flex mt={10}>
-            <SimpleGrid columns={[2, 2, 3, 4, 5]} spacing={2}>
-              {data.map((data, key) => (
-                <Box
-                  key={data.id}
-                  maxW={"fit-content"}
-                  height={"400px"}
-                  borderRadius="lg"
-                  mt={4}
-                  mb={20}
-
-                  // border={"1px solid black"}
-                >
-                  <Box
-                    width={"fit-content"}
-                    height={"fit-content"}
-                    pt={10}
-                    pl={5}
-                  >
-                    <Image
-                      src={data.imageUrl}
-                      alt={data.nom}
-                      width={["150px", "150px", "150px", "190px", "190px"]}
-                      height={"150px"}
-                      maxH={"200px"}
-                      maxW={"200px"}
-                    />
-                  </Box>
-
-                  <Box p="6">
+          {data.length != 0 ? (
+            <>
+              {" "}
+              <Heading fontSize={"20px"} mt={10}>
+                Les produits{" "}
+              </Heading>
+              <Flex mt={10}>
+                <SimpleGrid columns={[2, 2, 3, 4, 5]} spacing={2} mr={20}>
+                  {data.map((data, key) => (
                     <Box
-                      mt="1"
-                      fontWeight="semibold"
-                      as="h5"
-                      lineHeight="tight"
-                      noOfLines={3}
-                      width={"270px"}
-                      height={"50px"}
-                      pb={20}
+                      key={data.id}
+                      maxW={"fit-content"}
+                      height={"400px"}
+                      borderRadius="lg"
+                      mt={4}
+                      mb={20}
+                      // border={"1px solid black"}
                     >
-                      <Text width={"150px"}>{data.nom}</Text>
-                      <Box textColor={"blue"} color={"blue.400"} h={5}>
-                        {data.prix}
-                        <Box as="span" pl={2} fontSize="sm">
-                          €
+                      <Box
+                        width={"fit-content"}
+                        height={"fit-content"}
+                        pt={10}
+                        pl={5}
+                      >
+                        <Image
+                          src={data.imageUrl}
+                          alt={data.nom}
+                          width={["150px", "150px", "150px", "190px", "190px"]}
+                          height={"150px"}
+                          maxH={"200px"}
+                          maxW={"200px"}
+                        />
+                      </Box>
+
+                      <Box p="6">
+                        <Box
+                          mt="1"
+                          fontWeight="semibold"
+                          as="h5"
+                          lineHeight="tight"
+                          noOfLines={3}
+                          width={"270px"}
+                          height={"50px"}
+                          pb={20}
+                        >
+                          <Text width={"150px"}>{data.nom}</Text>
+                          <Box textColor={"blue"} color={"blue.400"} h={5}>
+                            {data.prix}
+                            <Box as="span" pl={2} fontSize="sm">
+                              €
+                            </Box>
+                          </Box>
+                        </Box>
+
+                        <Box
+                          fontWeight="normal"
+                          lineHeight="taller"
+                          mb={5}
+                          noOfLines={8}
+                          w={{ base: "150px", md: "200px" }}
+                          // Height={"250px"}
+                          maxH={"250px"}
+                        >
+                          {data.description == "undefined" ? (
+                            <></>
+                          ) : (
+                            <>
+                              {" "}
+                              <Tooltip label={data.description}>
+                                <Text noOfLines={1}>{data.description}</Text>
+                              </Tooltip>
+                            </>
+                          )}
+                        </Box>
+                        <Box>
+                          <Button
+                            bgColor={"cyan.700"}
+                            borderRadius={"66px"}
+                            width={"fit-content"}
+                            as={"a"}
+                            onClick={() => {
+                              AddToCart(data),
+                                toast({
+                                  title: "PRODUIT AJOUTE",
+
+                                  status: "success",
+                                  duration: 9000,
+                                  isClosable: true,
+                                });
+                            }}
+                            color={"white"}
+                            _hover={{
+                              backgroundColor: " cyan.900",
+                              color: "white ",
+                            }}
+                            leftIcon={<IoMdAddCircle />}
+                          >
+                            {" "}
+                            Commander
+                          </Button>
                         </Box>
                       </Box>
                     </Box>
+                  ))}
+                </SimpleGrid>
+              </Flex>
+            </>
+          ) : (
+            <></>
+          )}
+        </Box>
+        <FooterR />
+      </>
+    );
+  }
+   else {
+    return (
+      <>
+        <InputBar />
+        <Navbar />
+      
 
-                    <Box
-                      fontWeight="normal"
-                      lineHeight="taller"
-                      mb={5}
-                      noOfLines={8}
-                      w={{ base: "150px", md: "200px" }}
-                      Height={"250px"}
-                      maxH={"250px"}
-                    >
-                      <Tooltip label={data.description}>
-                        <Text noOfLines={1}>{data.description}</Text>
-                      </Tooltip>
-                    </Box>
-                    <Box>
+        <Box ml={["3%", "3%", "3%", "20%", "20%"]} mt={10} mb={10}>
+        <Flex display={["grid","grid","grid","flex","flex"]}>
+            
+            <Box mr={5}>
+              <Image
+                src={`${imageUrl}`}
+                alt={`logo de ${nom}`}
+                width={["150px", "150px", "150px", "200px", "200px"]}
+                height={["150px", "150px", "150px", "200px", "200px"]}
+                maxHeight={"200px"}
+                maxWidth={"200px"}
+                minHeight={"80px"}
+                minWidth={"100px"}
+              />
+              <Box mt={5}>
+                <Button
+                  color={"#fff"}
+                  width={"94px"}
+                  height={"30px"}
+                  as={"a"}
+                  onClick={onOpen}
+                  bgColor={"cyan.700"}
+                  _hover={{
+                    backgroundColor: " cyan.900",
+                    color: "white ",
+                  }}
+                  leftIcon={<BsTelephoneOutboundFill />}
+                >
+                  Reserver
+                </Button>
+                <Modal isOpen={isOpen} onClose={onClose}>
+                  <ModalOverlay />
+                  <ModalContent>
+                    <ModalHeader>Formulaire de Reservation</ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody>
+                      <Flex>
+                        <Text mr={20}>Date & heure: </Text>
+                        <Input
+                          type="datetime-local"
+                          width={"180px"}
+                          onChange={(e) => setData1(e.target.value)}
+                        />
+                      </Flex>
+                      <br />
+                      <Flex>
+                        <Text mr={5}>Nombre De Couverts : </Text>
+                        <Input
+                          type="number"
+                          width={"180px"}
+                          onChange={(e) => setData2(e.target.value)}
+                        />
+                      </Flex>
+                      <br />
+                      <Flex>
+                        <Text marginRight={10}>Numéro du Restaurant : </Text>
+                        <h3>
+                          <a href={`tel:${sessionStorage.getItem("savefrom")}`}>
+                            {sessionStorage.getItem("savefrom")}
+                          </a>
+                        </h3>
+                      </Flex>
+                    </ModalBody>
+
+                    <ModalFooter>
+                      {/* <Button colorScheme="ghost" mr={3} onClick={onClose}>
+                    Annuler
+                  </Button> */}
+
                       <Button
                         bgColor={"cyan.700"}
-                        borderRadius={"66px"}
-                        width={"fit-content"}
-                        as={"a"}
-                        onClick={() => {
-                          AddToCart(data),
-                            toast({
-                              title: "PRODUIT AJOUTE",
-
-                              status: "success",
-                              duration: 9000,
-                              isClosable: true,
-                            });
-                        }}
                         color={"white"}
-                        _hover={{
-                          backgroundColor: " cyan.900",
-                          color: "white ",
+                        _hover={{ bgColor: "cyan.900" }}
+                        onClick={() => {
+                          saveCommande3(data1, data2),
+                            setData1(""),
+                            setData2("");
                         }}
-                        leftIcon={<IoMdAddCircle />}
                       >
-                        {" "}
-                        Commander
+                        Valider
                       </Button>
-                    </Box>
-                  </Box>
+                    </ModalFooter>
+                  </ModalContent>
+                </Modal>
+              </Box>
+            </Box>
+                  
+            <Box>
+              <Heading fontSize={"40px"}>{nom}</Heading>
+              <Text fontSize={"15px"} fontWeight={"medium"}>
+                {addresse}
+              </Text>
+              <Flex mb={2} mt={2}>
+                <BsFillTelephoneOutboundFill />
+                <Text
+                  fontSize={"15px"}
+                  fontWeight={"medium"}
+                  ml={2}
+                  color={"green"}
+                >
+                  {numero}
+                </Text>
+              </Flex>
+              <Flex>
+                <Text fontWeight={"bold"} mr={2}>
+                  Description :{" "}
+                </Text>
+                {Desc1 == "undefined" ? (
+                  <Text width={"58%"} textAlign={"justify"}>
+                    {categorie} Africain
+                  </Text>
+                ) : (
+                  <Text width={"58%"} textAlign={"justify"}>
+                    {Desc1}
+                  </Text>
+                )}
+              </Flex>
+              <Flex>
+                <Text fontWeight={"bold"}>Moyen De paiement : </Text>
+                <Box>
+                  <Text ml={2} fontSize={"15px"}>
+                    {paiement != "undefined" && paiement != null
+                      ? paiement.methodeDePaiement1
+                      : "Espèces"}
+                  </Text>
+                  <Text ml={2} fontSize={"15px"}>
+                    {paiement != "undefined" && paiement != null
+                      ? paiement.methodeDePaiement2
+                      : ""}
+                  </Text>
                 </Box>
-              ))}
-            </SimpleGrid>
+              </Flex>
+             
+              <Flex>
+                <Heading
+                  as={"h3"}
+                  fontWeight={"bold"}
+                  _hover={{
+                    cursor: "pointer",
+                  }}
+                  onClick={handleToggle}
+                  color={"blue.700"}
+                  fontSize={"15px"}
+                  mt={3}
+                >
+                  {heure}{" "}
+                  {show ? (
+                    <ChevronUpIcon fontSize={"20px"} />
+                  ) : (
+                    <ChevronDownIcon fontSize={"20px"} />
+                  )}{" "}
+                  :
+                </Heading>
+              </Flex>
+              <Collapse in={show}>
+                <Box ml={10}>
+                  <Text fontSize={"15px"}>
+                    lundi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.lundi}`
+                      : " Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    mardi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.mardi}`
+                      : " Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    mercredi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.mercredi}`
+                      : " Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    jeudi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.jeudi}`
+                      : " Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    vendredi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.vendredi}`
+                      : " Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    samedi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.samedi}`
+                      : " Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    dimanche:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.dimanche}`
+                      : " Non Renseigné"}
+                  </Text>
+                </Box>
+              </Collapse>
+            </Box>
+            <Box mr={10} display={["none","none","none","grid","grid"]}>
+              <iframe
+                width="400"
+                height="250"
+                style={["marginRight: '20em' "]}
+                loading="lazy"
+                allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade"
+                src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
+    &q=${addresse}`}
+              ></iframe>
+            </Box>
+            <Box width={"fit-content"} display={["grid","grid","grid","none","none"]}>
+              <iframe
+                width="350"
+                height="250"
+                loading="lazy"
+                allowfullscreen
+                referrerpolicy="no-referrer-when-downgrade"
+                src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
+    &q=${addresse}`}
+              ></iframe>
+            </Box>
           </Flex>
+          <Heading fontSize={"20px"} mt={10}>
+            Images du magasin{" "}
+          </Heading>
+
+          {/* Slider */}
+          <section
+            style={{
+              marginTop: "20px",
+            
+            }}
+          >
+            <Carousel
+              partialVisbile
+              deviceType={"mobile"}
+              itemClass="image-item"
+              responsive={responsive}
+            >
+              {images.slice(0, images.length).map((image, index) => {
+                return (
+                  <Image
+                    key={index}
+                    alt={`${image}`}
+                    maxWidth={"200px"}
+                    maxHeight={"200px"}
+                    minWidth={"150px"}
+                    minHeight={"150px"}
+                    pr={5}
+                    src={image}
+                  />
+                );
+              })}
+            </Carousel>
+          </section>
+
+          {/* fin slide  */}
+          {data.length != 0 ? (
+            <>
+              {" "}
+              <Heading fontSize={"20px"} mt={10}>
+                Les produits{" "}
+              </Heading>
+              <Flex mt={10}>
+                <SimpleGrid columns={[2, 2, 3, 4, 5]} spacing={2} mr={20}>
+                  {data.map((data, key) => (
+                    <Box
+                      key={data.id}
+                      maxW={"fit-content"}
+                      height={"400px"}
+                      borderRadius="lg"
+                      mt={4}
+                      mb={20}
+                      // border={"1px solid black"}
+                    >
+                      <Box
+                        width={"fit-content"}
+                        height={"fit-content"}
+                        pt={10}
+                        pl={5}
+                      >
+                        <Image
+                          src={data.imageUrl}
+                          alt={data.nom}
+                          width={["150px", "150px", "150px", "190px", "190px"]}
+                          height={"150px"}
+                          maxH={"200px"}
+                          maxW={"200px"}
+                        />
+                      </Box>
+
+                      <Box p="6">
+                        <Box
+                          mt="1"
+                          fontWeight="semibold"
+                          as="h5"
+                          lineHeight="tight"
+                          noOfLines={3}
+                          width={"270px"}
+                          height={"50px"}
+                          pb={20}
+                        >
+                          <Text width={"150px"}>{data.nom}</Text>
+                          <Box textColor={"blue"} color={"blue.400"} h={5}>
+                            {data.prix}
+                            <Box as="span" pl={2} fontSize="sm">
+                              €
+                            </Box>
+                          </Box>
+                        </Box>
+
+                        <Box
+                          fontWeight="normal"
+                          lineHeight="taller"
+                          mb={5}
+                          noOfLines={8}
+                          w={{ base: "150px", md: "200px" }}
+                          // Height={"250px"}
+                          maxH={"250px"}
+                        >
+                          {data.description == "undefined" ? (
+                            <></>
+                          ) : (
+                            <>
+                              {" "}
+                              <Tooltip label={data.description}>
+                                <Text noOfLines={1}>{data.description}</Text>
+                              </Tooltip>
+                            </>
+                          )}
+                        </Box>
+                        <Box>
+                          <Button
+                            bgColor={"cyan.700"}
+                            borderRadius={"66px"}
+                            width={"fit-content"}
+                            as={"a"}
+                            onClick={() => {
+                              AddToCart(data),
+                                toast({
+                                  title: "PRODUIT AJOUTE",
+
+                                  status: "success",
+                                  duration: 9000,
+                                  isClosable: true,
+                                });
+                            }}
+                            color={"white"}
+                            _hover={{
+                              backgroundColor: " cyan.900",
+                              color: "white ",
+                            }}
+                            leftIcon={<IoMdAddCircle />}
+                          >
+                            {" "}
+                            Commander
+                          </Button>
+                        </Box>
+                      </Box>
+                    </Box>
+                  ))}
+                </SimpleGrid>
+              </Flex>
+            </>
+          ) : (
+            <></>
+          )}
         </Box>
         <FooterR />
       </>

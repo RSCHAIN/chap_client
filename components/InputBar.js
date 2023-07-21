@@ -43,6 +43,8 @@ const InputBar = () => {
   const [total, setTotal] = useState("");
   const [lastTime, setLastTime] = useState();
 
+ 
+
   // const handleMove = () => {
 
   //   const currentDate = new Date();
@@ -95,7 +97,7 @@ const InputBar = () => {
   buttonStyle={{ backgroundColor: "#00CCBC", fontSize: "13px",color:"white" }}
   expires={3}
   enableDeclineButton
->
+> 
   Nous utilisons des cookies dans le but de personnaliser, d’améliorer notre contenu et nos services et de diffuser des publicités pertinentes.
  
 </CookieConsent>
@@ -258,6 +260,9 @@ const InputBar = () => {
           </Flex>
         </Flex>
       </Flex>
+      <Center>
+       
+      </Center>
     </>
   );
 };

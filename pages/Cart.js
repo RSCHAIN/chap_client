@@ -29,11 +29,8 @@ export default function Cart() {
     });
   }, [auth, router]);
 
-  const data = [10, 20, 30];
-  const [data2, setData2] = useState();
-  useEffect(() => {
-    setData2(0);
-  }, [data2]);
+  
+  
 
   const [isLagerThan768] = useMediaQuery("(min-width: 768px)");
   return (
