@@ -342,8 +342,8 @@ const LadingCorps = () => {
             Nos Services
           </Heading>
            <Box>
-            <Text ml={"25%"}>Entrez votre code postal pour trouver les restaurants à proximité</Text>
-            <Stack>
+            {/* <Text ml={"25%"}>Entrez votre code postal pour trouver les restaurants à proximité</Text> */}
+            {/* <Stack>
               <Center ml={"30%"}>
               <InputGroup >
                         <Input type={"search"} width={"30%"} border={"1px solid black"} mt={3}/>
@@ -354,7 +354,7 @@ const LadingCorps = () => {
             
               </Center>
            
-            </Stack>
+            </Stack> */}
             
 
             </Box> 

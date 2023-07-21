@@ -488,6 +488,7 @@ export default function Intermed1() {
           <section
             style={{
               marginTop: "20px",
+              marginRight: "20em",
             
             }}
           >
@@ -813,7 +814,8 @@ export default function Intermed1() {
             <section
               style={{
                 marginTop: "20px",
-            
+              marginRight: "20em",
+                
                 marginBottom: "70px",
               }}
             >
@@ -1097,6 +1099,7 @@ export default function Intermed1() {
           <section
             style={{
               marginTop: "20px",
+              marginRight: "20em",
               
             }}
           >
@@ -1479,6 +1482,7 @@ export default function Intermed1() {
           <section
             style={{
               marginTop: "20px",
+              marginRight: "19em",
             
             }}
           >
