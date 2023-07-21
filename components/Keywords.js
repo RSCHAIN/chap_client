@@ -2,12 +2,12 @@ import { Box, Flex, SimpleGrid, Text } from "@chakra-ui/react";
 
 export default function Keyword() {
   const motCle = [
+    "Attieke",
+    "Placali",
+    "Huile Rouge",
     "Ivoirien",
-    "Camerounais",
-    "Nigerian",
-    "Senegalais",
-    "Sauce",
-    "Plantain",
+    "Fret",
+    "Mêches",
   ];
   return (
     <>
