@@ -1653,7 +1653,7 @@ export default function Intermed1() {
             </Box>
           </Flex>
           <Heading fontSize={"20px"} mt={10}>
-            Images du magasin{" "}
+            Images du magasin{" "} 
           </Heading>
 
           {/* Slider */}
@@ -1898,7 +1898,7 @@ export default function Intermed1() {
               </Box>
             </Box>
                   
-            <Box>
+            <Box mr={3}>
               <Heading fontSize={"40px"}>{nom}</Heading>
               <Text fontSize={"15px"} fontWeight={"medium"}>
                 {addresse}
