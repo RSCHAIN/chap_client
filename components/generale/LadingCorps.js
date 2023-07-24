@@ -410,7 +410,7 @@ if (datas !=0) {
                             
                                 type='number'
                                 onChange={e=>recherche(e.target.value)}
-                                placeholder='Nom'
+                                placeholder='Code Postal'
                                 _placeholder={{ color: '#000' }}
                                 variant={'outline'}
                                 color={"#000"}
@@ -418,8 +418,7 @@ if (datas !=0) {
                                 outline={'none'}
                             />
                         </InputGroup>
-                        {console.log("test",typeof(modalData))}
-                        {console.log("test",modalData)}
+                       
                         {modalData.length == 0 ?<> Aucun Magasin de disponible</> : <>
                             <SimpleGrid columns={2}>
                                 {modalData.map((doc,index)=>(
