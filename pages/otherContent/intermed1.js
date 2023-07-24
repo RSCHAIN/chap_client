@@ -524,7 +524,7 @@ export default function Intermed1() {
               ></iframe>
             </Box>
           </Flex>
-          <Flex display={["grid", "grid", "grid", "none", "none"]}>
+          <Flex display={["grid", "grid", "none", "none", "none"]}>
             <Box display={"flex"} mb={5}>
               <Box mr={5}>
                 <Image
@@ -678,6 +678,239 @@ export default function Intermed1() {
               ></iframe>
             </Box>
           </Flex>
+
+          <Flex display={["none", "none", "grid", "none", "none"]}>
+            <Box display={"flex"} mb={5}>
+              <Box mr={5}>
+                <Image
+                  src={`${imageUrl}`}
+                  alt={`logo de ${nom}`}
+                  width={["150px", "150px", "150px", "200px", "200px"]}
+                  height={["150px", "150px", "150px", "200px", "200px"]}
+                  maxHeight={"200px"}
+                  maxWidth={"200px"}
+                  minHeight={"80px"}
+                  minWidth={"100px"}
+                />
+                <Box mt={5}>
+                  <Button
+                    color={"#fff"}
+                    width={"94px"}
+                    height={"30px"}
+                    as={"a"}
+                    onClick={onOpen}
+                    bgColor={"cyan.700"}
+                    _hover={{
+                      backgroundColor: " cyan.900",
+                      color: "white ",
+                    }}
+                    leftIcon={<BsTelephoneOutboundFill />}
+                  >
+                    Reserver
+                  </Button>
+                  <Modal isOpen={isOpen} onClose={onClose}>
+                    <ModalOverlay />
+                    <ModalContent>
+                      <ModalHeader>Formulaire de Reservation</ModalHeader>
+                      <ModalCloseButton />
+                      <ModalBody>
+                        <Flex>
+                          <Text mr={20}>Date & heure: </Text>
+                          <Input
+                            type="datetime-local"
+                            width={"180px"}
+                            onChange={(e) => setData1(e.target.value)}
+                          />
+                        </Flex>
+                        <br />
+                        <Flex>
+                          <Text mr={5}>Nombre De Couverts : </Text>
+                          <Input
+                            type="number"
+                            width={"180px"}
+                            onChange={(e) => setData2(e.target.value)}
+                          />
+                        </Flex>
+                        <br />
+                        <Flex>
+                          <Text marginRight={10}>Numéro du Restaurant : </Text>
+                          <h3>
+                            <a
+                              href={`tel:${sessionStorage.getItem("savefrom")}`}
+                            >
+                              {sessionStorage.getItem("savefrom")}
+                            </a>
+                          </h3>
+                        </Flex>
+                      </ModalBody>
+
+                      <ModalFooter>
+                        {/* <Button colorScheme="ghost" mr={3} onClick={onClose}>
+                    Annuler
+                  </Button> */}
+
+                        <Button
+                          bgColor={"cyan.700"}
+                          color={"white"}
+                          _hover={{ bgColor: "cyan.900" }}
+                          onClick={() => {
+                            saveCommande3(data1, data2),
+                              setData1(""),
+                              setData2("");
+                          }}
+                        >
+                          Valider
+                        </Button>
+                      </ModalFooter>
+                    </ModalContent>
+                  </Modal>
+                </Box>
+              </Box>
+              <Heading fontSize={"40px"}>{nom}</Heading>
+              <Box ml={10}>
+             
+                <iframe
+                  width="400"
+                  height="250"
+                  loading="lazy"
+                  allowFullScreen
+                  referrerPolicy="no-referrer-when-downgrade"
+                  src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
+    &q=${addresse}`}
+                ></iframe>
+              </Box>
+              
+            
+            </Box>
+            <Box>
+              <Text fontSize={"15px"} fontWeight={"medium"}>
+                {addresse}
+              </Text>
+              <Flex mb={2} mt={2}>
+                <BsFillTelephoneOutboundFill />
+                <Text
+                  fontSize={"15px"}
+                  fontWeight={"medium"}
+                  ml={2}
+                  color={"green"}
+                >
+                  {numero}
+                </Text>
+              </Flex>
+              <Flex>
+                <Text fontWeight={"bold"} mr={2}>
+                  Description :{" "}
+                </Text>
+                {Desc1 == "undefined" ? (
+                  <Text width={"58%"} textAlign={"justify"}>
+                    {categorie} Africain
+                  </Text>
+                ) : (
+                  <Text width={"58%"} textAlign={"justify"}>
+                    {Desc1}
+                  </Text>
+                )}
+              </Flex>
+              <Flex>
+                <Text fontWeight={"bold"}>Moyen De paiement : </Text>
+                <Box>
+                  <Text ml={2} fontSize={"15px"}>
+                    {paiement != "undefined" && paiement != null
+                      ? paiement.methodeDePaiement1
+                      : "Espèces"}
+                  </Text>
+                  <Text ml={2} fontSize={"15px"}>
+                    {paiement != "undefined" && paiement != null
+                      ? paiement.methodeDePaiement2
+                      : ""}
+                  </Text>
+                </Box>
+              </Flex>
+              <Flex>
+                <Text fontWeight={"bold"} width={"fit-content"} mr={2}>
+                  Reservation :{" "}
+                </Text>
+                <Text width={"58%"} textAlign={"justify"}>
+                  {data.length != 0 ? (
+                    <Text color={"messenger.500"}>En ligne</Text>
+                  ) : (
+                    <Text color={"red.400"}>Non Disponible</Text>
+                  )}
+                </Text>
+              </Flex>
+
+              <Flex>
+                <Heading
+                  as={"h3"}
+                  fontWeight={"bold"}
+                  _hover={{
+                    cursor: "pointer",
+                  }}
+                  onClick={handleToggle}
+                  color={"blue.700"}
+                  fontSize={"15px"}
+                  mt={3}
+                >
+                  {heure}{" "}
+                  {show ? (
+                    <ChevronUpIcon fontSize={"20px"} />
+                  ) : (
+                    <ChevronDownIcon fontSize={"20px"} />
+                  )}{" "}
+                  :
+                </Heading>
+              </Flex>
+              <Collapse in={show}>
+                <Box ml={10}>
+                  <Text fontSize={"15px"}>
+                    lundi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.lundi}`
+                      : " Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    mardi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.mardi}`
+                      : " Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    mercredi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.mercredi}`
+                      : " Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    jeudi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.jeudi}`
+                      : " Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    vendredi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.vendredi}`
+                      : " Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    samedi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.samedi}`
+                      : " Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    dimanche:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.dimanche}`
+                      : " Non Renseigné"}
+                  </Text>
+                </Box>
+              </Collapse>
+            </Box>
+            
+          </Flex>
+
+
           <Heading fontSize={"20px"} mt={10}>
             Images du magasin{" "}
           </Heading>
@@ -1004,7 +1237,7 @@ export default function Intermed1() {
               ></iframe>
             </Box>
           </Flex>
-          <Flex display={["grid", "grid", "grid", "none", "none"]}>
+          <Flex display={["grid", "grid", "none", "none", "none"]}>
             <Box display={"flex"} mb={5}>
               <Box mr={5}>
                 <Image
@@ -1176,6 +1409,239 @@ export default function Intermed1() {
               ></iframe>
             </Box>
           </Flex>
+
+          <Flex display={["none", "none", "grid", "none", "none"]}>
+            <Box display={"flex"} mb={5}>
+              <Box mr={5}>
+                <Image
+                  src={`${imageUrl}`}
+                  alt={`logo de ${nom}`}
+                  width={["150px", "150px", "150px", "200px", "200px"]}
+                  height={["150px", "150px", "150px", "200px", "200px"]}
+                  maxHeight={"200px"}
+                  maxWidth={"200px"}
+                  minHeight={"80px"}
+                  minWidth={"100px"}
+                />
+                <Box mt={5}>
+                  <Button
+                    color={"#fff"}
+                    width={"94px"}
+                    height={"30px"}
+                    as={"a"}
+                    onClick={onOpen}
+                    bgColor={"cyan.700"}
+                    _hover={{
+                      backgroundColor: " cyan.900",
+                      color: "white ",
+                    }}
+                    leftIcon={<BsTelephoneOutboundFill />}
+                  >
+                    Reserver
+                  </Button>
+                  <Modal isOpen={isOpen} onClose={onClose}>
+                    <ModalOverlay />
+                    <ModalContent>
+                      <ModalHeader>Formulaire de Reservation</ModalHeader>
+                      <ModalCloseButton />
+                      <ModalBody>
+                        <Flex>
+                          <Text mr={20}>Date & heure: </Text>
+                          <Input
+                            type="datetime-local"
+                            width={"180px"}
+                            onChange={(e) => setData1(e.target.value)}
+                          />
+                        </Flex>
+                        <br />
+                        <Flex>
+                          <Text mr={5}>Nombre De Couverts : </Text>
+                          <Input
+                            type="number"
+                            width={"180px"}
+                            onChange={(e) => setData2(e.target.value)}
+                          />
+                        </Flex>
+                        <br />
+                        <Flex>
+                          <Text marginRight={10}>Numéro du Restaurant : </Text>
+                          <h3>
+                            <a
+                              href={`tel:${sessionStorage.getItem("savefrom")}`}
+                            >
+                              {sessionStorage.getItem("savefrom")}
+                            </a>
+                          </h3>
+                        </Flex>
+                      </ModalBody>
+
+                      <ModalFooter>
+                        {/* <Button colorScheme="ghost" mr={3} onClick={onClose}>
+                    Annuler
+                  </Button> */}
+
+                        <Button
+                          bgColor={"cyan.700"}
+                          color={"white"}
+                          _hover={{ bgColor: "cyan.900" }}
+                          onClick={() => {
+                            saveCommande3(data1, data2),
+                              setData1(""),
+                              setData2("");
+                          }}
+                        >
+                          Valider
+                        </Button>
+                      </ModalFooter>
+                    </ModalContent>
+                  </Modal>
+                </Box>
+              </Box>
+              <Heading fontSize={"40px"}>{nom}</Heading>
+              <Box ml={10}>
+             
+                <iframe
+                  width="400"
+                  height="250"
+                  loading="lazy"
+                  allowFullScreen
+                  referrerPolicy="no-referrer-when-downgrade"
+                  src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
+    &q=${addresse}`}
+                ></iframe>
+              </Box>
+              
+            
+            </Box>
+            <Box>
+              <Text fontSize={"15px"} fontWeight={"medium"}>
+                {addresse}
+              </Text>
+              <Flex mb={2} mt={2}>
+                <BsFillTelephoneOutboundFill />
+                <Text
+                  fontSize={"15px"}
+                  fontWeight={"medium"}
+                  ml={2}
+                  color={"green"}
+                >
+                  {numero}
+                </Text>
+              </Flex>
+              <Flex>
+                <Text fontWeight={"bold"} mr={2}>
+                  Description :{" "}
+                </Text>
+                {Desc1 == "undefined" ? (
+                  <Text width={"58%"} textAlign={"justify"}>
+                    {categorie} Africain
+                  </Text>
+                ) : (
+                  <Text width={"58%"} textAlign={"justify"}>
+                    {Desc1}
+                  </Text>
+                )}
+              </Flex>
+              <Flex>
+                <Text fontWeight={"bold"}>Moyen De paiement : </Text>
+                <Box>
+                  <Text ml={2} fontSize={"15px"}>
+                    {paiement != "undefined" && paiement != null
+                      ? paiement.methodeDePaiement1
+                      : "Espèces"}
+                  </Text>
+                  <Text ml={2} fontSize={"15px"}>
+                    {paiement != "undefined" && paiement != null
+                      ? paiement.methodeDePaiement2
+                      : ""}
+                  </Text>
+                </Box>
+              </Flex>
+              <Flex>
+                <Text fontWeight={"bold"} width={"fit-content"} mr={2}>
+                  Reservation :{" "}
+                </Text>
+                <Text width={"58%"} textAlign={"justify"}>
+                  {data.length != 0 ? (
+                    <Text color={"messenger.500"}>En ligne</Text>
+                  ) : (
+                    <Text color={"red.400"}>Non Disponible</Text>
+                  )}
+                </Text>
+              </Flex>
+
+              <Flex>
+                <Heading
+                  as={"h3"}
+                  fontWeight={"bold"}
+                  _hover={{
+                    cursor: "pointer",
+                  }}
+                  onClick={handleToggle}
+                  color={"blue.700"}
+                  fontSize={"15px"}
+                  mt={3}
+                >
+                  {heure}{" "}
+                  {show ? (
+                    <ChevronUpIcon fontSize={"20px"} />
+                  ) : (
+                    <ChevronDownIcon fontSize={"20px"} />
+                  )}{" "}
+                  :
+                </Heading>
+              </Flex>
+              <Collapse in={show}>
+                <Box ml={10}>
+                  <Text fontSize={"15px"}>
+                    lundi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.lundi}`
+                      : " Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    mardi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.mardi}`
+                      : " Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    mercredi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.mercredi}`
+                      : " Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    jeudi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.jeudi}`
+                      : " Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    vendredi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.vendredi}`
+                      : " Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    samedi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.samedi}`
+                      : " Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    dimanche:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.dimanche}`
+                      : " Non Renseigné"}
+                  </Text>
+                </Box>
+              </Collapse>
+            </Box>
+            
+          </Flex>
+
+
           <Heading fontSize={"20px"} mt={10}>
             Images du magasin{" "}
           </Heading>
@@ -1463,7 +1929,7 @@ export default function Intermed1() {
             </Box>
           </Flex>
 
-          <Flex display={["grid", "grid", "grid", "none", "none"]}>
+          <Flex display={["grid", "grid", "none", "none", "none"]}>
             <Box display={"flex"} mb={5}>
               <Box mr={5}>
                 <Image
@@ -1704,6 +2170,236 @@ export default function Intermed1() {
                 ></iframe>
               </Box>
             </Box>
+          </Flex>
+          <Flex display={["none", "none", "grid", "none", "none"]}>
+            <Box display={"flex"} mb={5}>
+              <Box mr={5}>
+                <Image
+                  src={`${imageUrl}`}
+                  alt={`logo de ${nom}`}
+                  width={["150px", "150px", "150px", "200px", "200px"]}
+                  height={["150px", "150px", "150px", "200px", "200px"]}
+                  maxHeight={"200px"}
+                  maxWidth={"200px"}
+                  minHeight={"80px"}
+                  minWidth={"100px"}
+                />
+                <Box mt={5}>
+                  <Button
+                    color={"#fff"}
+                    width={"94px"}
+                    height={"30px"}
+                    as={"a"}
+                    onClick={onOpen}
+                    bgColor={"cyan.700"}
+                    _hover={{
+                      backgroundColor: " cyan.900",
+                      color: "white ",
+                    }}
+                    leftIcon={<BsTelephoneOutboundFill />}
+                  >
+                    Reserver
+                  </Button>
+                  <Modal isOpen={isOpen} onClose={onClose}>
+                    <ModalOverlay />
+                    <ModalContent>
+                      <ModalHeader>Formulaire de Reservation</ModalHeader>
+                      <ModalCloseButton />
+                      <ModalBody>
+                        <Flex>
+                          <Text mr={20}>Date & heure: </Text>
+                          <Input
+                            type="datetime-local"
+                            width={"180px"}
+                            onChange={(e) => setData1(e.target.value)}
+                          />
+                        </Flex>
+                        <br />
+                        <Flex>
+                          <Text mr={5}>Nombre De Couverts : </Text>
+                          <Input
+                            type="number"
+                            width={"180px"}
+                            onChange={(e) => setData2(e.target.value)}
+                          />
+                        </Flex>
+                        <br />
+                        <Flex>
+                          <Text marginRight={10}>Numéro du Restaurant : </Text>
+                          <h3>
+                            <a
+                              href={`tel:${sessionStorage.getItem("savefrom")}`}
+                            >
+                              {sessionStorage.getItem("savefrom")}
+                            </a>
+                          </h3>
+                        </Flex>
+                      </ModalBody>
+
+                      <ModalFooter>
+                        {/* <Button colorScheme="ghost" mr={3} onClick={onClose}>
+                    Annuler
+                  </Button> */}
+
+                        <Button
+                          bgColor={"cyan.700"}
+                          color={"white"}
+                          _hover={{ bgColor: "cyan.900" }}
+                          onClick={() => {
+                            saveCommande3(data1, data2),
+                              setData1(""),
+                              setData2("");
+                          }}
+                        >
+                          Valider
+                        </Button>
+                      </ModalFooter>
+                    </ModalContent>
+                  </Modal>
+                </Box>
+              </Box>
+              <Heading fontSize={"40px"}>{nom}</Heading>
+              <Box ml={10}>
+             
+                <iframe
+                  width="400"
+                  height="250"
+                  loading="lazy"
+                  allowFullScreen
+                  referrerPolicy="no-referrer-when-downgrade"
+                  src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
+    &q=${addresse}`}
+                ></iframe>
+              </Box>
+              
+            
+            </Box>
+            <Box>
+              <Text fontSize={"15px"} fontWeight={"medium"}>
+                {addresse}
+              </Text>
+              <Flex mb={2} mt={2}>
+                <BsFillTelephoneOutboundFill />
+                <Text
+                  fontSize={"15px"}
+                  fontWeight={"medium"}
+                  ml={2}
+                  color={"green"}
+                >
+                  {numero}
+                </Text>
+              </Flex>
+              <Flex>
+                <Text fontWeight={"bold"} mr={2}>
+                  Description :{" "}
+                </Text>
+                {Desc1 == "undefined" ? (
+                  <Text width={"58%"} textAlign={"justify"}>
+                    {categorie} Africain
+                  </Text>
+                ) : (
+                  <Text width={"58%"} textAlign={"justify"}>
+                    {Desc1}
+                  </Text>
+                )}
+              </Flex>
+              <Flex>
+                <Text fontWeight={"bold"}>Moyen De paiement : </Text>
+                <Box>
+                  <Text ml={2} fontSize={"15px"}>
+                    {paiement != "undefined" && paiement != null
+                      ? paiement.methodeDePaiement1
+                      : "Espèces"}
+                  </Text>
+                  <Text ml={2} fontSize={"15px"}>
+                    {paiement != "undefined" && paiement != null
+                      ? paiement.methodeDePaiement2
+                      : ""}
+                  </Text>
+                </Box>
+              </Flex>
+              <Flex>
+                <Text fontWeight={"bold"} width={"fit-content"} mr={2}>
+                  Reservation :{" "}
+                </Text>
+                <Text width={"58%"} textAlign={"justify"}>
+                  {data.length != 0 ? (
+                    <Text color={"messenger.500"}>En ligne</Text>
+                  ) : (
+                    <Text color={"red.400"}>Non Disponible</Text>
+                  )}
+                </Text>
+              </Flex>
+
+              <Flex>
+                <Heading
+                  as={"h3"}
+                  fontWeight={"bold"}
+                  _hover={{
+                    cursor: "pointer",
+                  }}
+                  onClick={handleToggle}
+                  color={"blue.700"}
+                  fontSize={"15px"}
+                  mt={3}
+                >
+                  {heure}{" "}
+                  {show ? (
+                    <ChevronUpIcon fontSize={"20px"} />
+                  ) : (
+                    <ChevronDownIcon fontSize={"20px"} />
+                  )}{" "}
+                  :
+                </Heading>
+              </Flex>
+              <Collapse in={show}>
+                <Box ml={10}>
+                  <Text fontSize={"15px"}>
+                    lundi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.lundi}`
+                      : " Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    mardi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.mardi}`
+                      : " Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    mercredi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.mercredi}`
+                      : " Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    jeudi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.jeudi}`
+                      : " Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    vendredi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.vendredi}`
+                      : " Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    samedi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.samedi}`
+                      : " Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    dimanche:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.dimanche}`
+                      : " Non Renseigné"}
+                  </Text>
+                </Box>
+              </Collapse>
+            </Box>
+            
           </Flex>
           <Heading fontSize={"20px"} mt={10}>
             Images du magasin{" "}
@@ -2087,7 +2783,7 @@ export default function Intermed1() {
             </Box>
           </Flex>
 
-          <Flex display={["grid", "grid", "grid", "none", "none"]}>
+          <Flex display={["grid", "grid", "none", "none", "none"]}>
             <Box display={"flex"} mb={5}>
               <Box mr={5}>
                 <Image
@@ -2314,6 +3010,237 @@ export default function Intermed1() {
     &q=${addresse}`}
               ></iframe>
             </Box>
+          </Flex>
+
+          <Flex display={["none", "none", "grid", "none", "none"]}>
+            <Box display={"flex"} mb={5}>
+              <Box mr={5}>
+                <Image
+                  src={`${imageUrl}`}
+                  alt={`logo de ${nom}`}
+                  width={["150px", "150px", "150px", "200px", "200px"]}
+                  height={["150px", "150px", "150px", "200px", "200px"]}
+                  maxHeight={"200px"}
+                  maxWidth={"200px"}
+                  minHeight={"80px"}
+                  minWidth={"100px"}
+                />
+                <Box mt={5}>
+                  <Button
+                    color={"#fff"}
+                    width={"94px"}
+                    height={"30px"}
+                    as={"a"}
+                    onClick={onOpen}
+                    bgColor={"cyan.700"}
+                    _hover={{
+                      backgroundColor: " cyan.900",
+                      color: "white ",
+                    }}
+                    leftIcon={<BsTelephoneOutboundFill />}
+                  >
+                    Reserver
+                  </Button>
+                  <Modal isOpen={isOpen} onClose={onClose}>
+                    <ModalOverlay />
+                    <ModalContent>
+                      <ModalHeader>Formulaire de Reservation</ModalHeader>
+                      <ModalCloseButton />
+                      <ModalBody>
+                        <Flex>
+                          <Text mr={20}>Date & heure: </Text>
+                          <Input
+                            type="datetime-local"
+                            width={"180px"}
+                            onChange={(e) => setData1(e.target.value)}
+                          />
+                        </Flex>
+                        <br />
+                        <Flex>
+                          <Text mr={5}>Nombre De Couverts : </Text>
+                          <Input
+                            type="number"
+                            width={"180px"}
+                            onChange={(e) => setData2(e.target.value)}
+                          />
+                        </Flex>
+                        <br />
+                        <Flex>
+                          <Text marginRight={10}>Numéro du Restaurant : </Text>
+                          <h3>
+                            <a
+                              href={`tel:${sessionStorage.getItem("savefrom")}`}
+                            >
+                              {sessionStorage.getItem("savefrom")}
+                            </a>
+                          </h3>
+                        </Flex>
+                      </ModalBody>
+
+                      <ModalFooter>
+                        {/* <Button colorScheme="ghost" mr={3} onClick={onClose}>
+                    Annuler
+                  </Button> */}
+
+                        <Button
+                          bgColor={"cyan.700"}
+                          color={"white"}
+                          _hover={{ bgColor: "cyan.900" }}
+                          onClick={() => {
+                            saveCommande3(data1, data2),
+                              setData1(""),
+                              setData2("");
+                          }}
+                        >
+                          Valider
+                        </Button>
+                      </ModalFooter>
+                    </ModalContent>
+                  </Modal>
+                </Box>
+              </Box>
+              <Heading fontSize={"40px"}>{nom}</Heading>
+              <Box ml={10}>
+             
+                <iframe
+                  width="400"
+                  height="250"
+                  loading="lazy"
+                  allowFullScreen
+                  referrerPolicy="no-referrer-when-downgrade"
+                  src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
+    &q=${addresse}`}
+                ></iframe>
+              </Box>
+              
+            
+            </Box>
+            <Box>
+              <Text fontSize={"15px"} fontWeight={"medium"}>
+                {addresse}
+              </Text>
+              <Flex mb={2} mt={2}>
+                <BsFillTelephoneOutboundFill />
+                <Text
+                  fontSize={"15px"}
+                  fontWeight={"medium"}
+                  ml={2}
+                  color={"green"}
+                >
+                  {numero}
+                </Text>
+              </Flex>
+              <Flex>
+                <Text fontWeight={"bold"} mr={2}>
+                  Description :{" "}
+                </Text>
+                {Desc1 == "undefined" ? (
+                  <Text width={"58%"} textAlign={"justify"}>
+                    {categorie} Africain
+                  </Text>
+                ) : (
+                  <Text width={"58%"} textAlign={"justify"}>
+                    {Desc1}
+                  </Text>
+                )}
+              </Flex>
+              <Flex>
+                <Text fontWeight={"bold"}>Moyen De paiement : </Text>
+                <Box>
+                  <Text ml={2} fontSize={"15px"}>
+                    {paiement != "undefined" && paiement != null
+                      ? paiement.methodeDePaiement1
+                      : "Espèces"}
+                  </Text>
+                  <Text ml={2} fontSize={"15px"}>
+                    {paiement != "undefined" && paiement != null
+                      ? paiement.methodeDePaiement2
+                      : ""}
+                  </Text>
+                </Box>
+              </Flex>
+              <Flex>
+                <Text fontWeight={"bold"} width={"fit-content"} mr={2}>
+                  Reservation :{" "}
+                </Text>
+                <Text width={"58%"} textAlign={"justify"}>
+                  {data.length != 0 ? (
+                    <Text color={"messenger.500"}>En ligne</Text>
+                  ) : (
+                    <Text color={"red.400"}>Non Disponible</Text>
+                  )}
+                </Text>
+              </Flex>
+
+              <Flex>
+                <Heading
+                  as={"h3"}
+                  fontWeight={"bold"}
+                  _hover={{
+                    cursor: "pointer",
+                  }}
+                  onClick={handleToggle}
+                  color={"blue.700"}
+                  fontSize={"15px"}
+                  mt={3}
+                >
+                  {heure}{" "}
+                  {show ? (
+                    <ChevronUpIcon fontSize={"20px"} />
+                  ) : (
+                    <ChevronDownIcon fontSize={"20px"} />
+                  )}{" "}
+                  :
+                </Heading>
+              </Flex>
+              <Collapse in={show}>
+                <Box ml={10}>
+                  <Text fontSize={"15px"}>
+                    lundi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.lundi}`
+                      : " Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    mardi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.mardi}`
+                      : " Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    mercredi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.mercredi}`
+                      : " Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    jeudi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.jeudi}`
+                      : " Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    vendredi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.vendredi}`
+                      : " Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    samedi:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.samedi}`
+                      : " Non Renseigné"}
+                  </Text>
+                  <Text fontSize={"15px"}>
+                    dimanche:{" "}
+                    {timert != "undefined" && timert != null
+                      ? `${" "} ${timert.dimanche}`
+                      : " Non Renseigné"}
+                  </Text>
+                </Box>
+              </Collapse>
+            </Box>
+            
           </Flex>
 
           <Heading fontSize={"20px"} mt={10}>
