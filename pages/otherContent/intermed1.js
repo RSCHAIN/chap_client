@@ -1008,23 +1008,7 @@ export default function Intermed1() {
                 minHeight={"80px"}
                 minWidth={"100px"}
               />
-              <Box mt={5}>
-                <Button
-                  color={"#fff"}
-                  width={"94px"}
-                  height={"30px"}
-                  as={"a"}
-                  href={`tel:${numero}`}
-                  bgColor={"cyan.700"}
-                  _hover={{
-                    backgroundColor: " cyan.900",
-                    color: "white ",
-                  }}
-                  leftIcon={<BsTelephoneOutboundFill />}
-                >
-                  Appeler
-                </Button>
-              </Box>
+              
             </Box>
 
             <Box>
@@ -1150,6 +1134,23 @@ export default function Intermed1() {
                 src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
     &q=${addresse}`}
               ></iframe>
+              <Box mt={5}>
+                <Button
+                  color={"#fff"}
+                  width={"150px"}
+                  height={"30px"}
+                  as={"a"}
+                  href={`tel:${numero}`}
+                  bgColor={"cyan.700"}
+                  _hover={{
+                    backgroundColor: " cyan.900",
+                    color: "white ",
+                  }}
+                  leftIcon={<BsTelephoneOutboundFill />}
+                >
+                  Appeler
+                </Button>
+              </Box>
             </Box>
             <Box
               width={"fit-content"}
@@ -1574,77 +1575,7 @@ export default function Intermed1() {
                 minHeight={"80px"}
                 minWidth={"100px"}
               />
-              <Box mt={5}>
-                <Button
-                  color={"#fff"}
-                  width={"94px"}
-                  height={"30px"}
-                  as={"a"}
-                  onClick={onOpen}
-                  bgColor={"cyan.700"}
-                  _hover={{
-                    backgroundColor: " cyan.900",
-                    color: "white ",
-                  }}
-                  leftIcon={<BsTelephoneOutboundFill />}
-                >
-                  Reserver
-                </Button>
-                <Modal isOpen={isOpen} onClose={onClose}>
-                  <ModalOverlay />
-                  <ModalContent>
-                    <ModalHeader>Formulaire de Reservation</ModalHeader>
-                    <ModalCloseButton />
-                    <ModalBody>
-                      <Flex>
-                        <Text mr={20}>Date & heure: </Text>
-                        <Input
-                          type="datetime-local"
-                          width={"180px"}
-                          onChange={(e) => setData1(e.target.value)}
-                        />
-                      </Flex>
-                      <br />
-                      <Flex>
-                        <Text mr={5}>Nombre De Couverts : </Text>
-                        <Input
-                          type="number"
-                          width={"180px"}
-                          onChange={(e) => setData2(e.target.value)}
-                        />
-                      </Flex>
-                      <br />
-                      <Flex>
-                        <Text marginRight={10}>Numéro du Restaurant : </Text>
-                        <h3>
-                          <a href={`tel:${sessionStorage.getItem("savefrom")}`}>
-                            {sessionStorage.getItem("savefrom")}
-                          </a>
-                        </h3>
-                      </Flex>
-                    </ModalBody>
-
-                    <ModalFooter>
-                      {/* <Button colorScheme="ghost" mr={3} onClick={onClose}>
-                    Annuler
-                  </Button> */}
-
-                      <Button
-                        bgColor={"cyan.700"}
-                        color={"white"}
-                        _hover={{ bgColor: "cyan.900" }}
-                        onClick={() => {
-                          saveCommande3(data1, data2),
-                            setData1(""),
-                            setData2("");
-                        }}
-                      >
-                        Valider
-                      </Button>
-                    </ModalFooter>
-                  </ModalContent>
-                </Modal>
-              </Box>
+              
             </Box>
 
             <Box>
@@ -1784,6 +1715,78 @@ export default function Intermed1() {
                   src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
     &q=${addresse}`}
                 ></iframe>
+                <Box mt={5} ml={"40%"}>
+                <Button
+                
+                  color={"#fff"}
+                  width={"150px"}
+                  height={"30px"}
+                  as={"a"}
+                  onClick={onOpen}
+                  bgColor={"cyan.700"}
+                  _hover={{
+                    backgroundColor: " cyan.900",
+                    color: "white ",
+                  }}
+                  leftIcon={<BsTelephoneOutboundFill />}
+                >
+                  Reserver
+                </Button>
+                <Modal isOpen={isOpen} onClose={onClose}>
+                  <ModalOverlay />
+                  <ModalContent>
+                    <ModalHeader>Formulaire de Reservation</ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody>
+                      <Flex>
+                        <Text mr={20}>Date & heure: </Text>
+                        <Input
+                          type="datetime-local"
+                          width={"180px"}
+                          onChange={(e) => setData1(e.target.value)}
+                        />
+                      </Flex>
+                      <br />
+                      <Flex>
+                        <Text mr={5}>Nombre De Couverts : </Text>
+                        <Input
+                          type="number"
+                          width={"180px"}
+                          onChange={(e) => setData2(e.target.value)}
+                        />
+                      </Flex>
+                      <br />
+                      <Flex>
+                        <Text marginRight={10}>Numéro du Restaurant : </Text>
+                        <h3>
+                          <a href={`tel:${sessionStorage.getItem("savefrom")}`}>
+                            {sessionStorage.getItem("savefrom")}
+                          </a>
+                        </h3>
+                      </Flex>
+                    </ModalBody>
+
+                    <ModalFooter>
+                      {/* <Button colorScheme="ghost" mr={3} onClick={onClose}>
+                    Annuler
+                  </Button> */}
+
+                      <Button
+                        bgColor={"cyan.700"}
+                        color={"white"}
+                        _hover={{ bgColor: "cyan.900" }}
+                        onClick={() => {
+                          saveCommande3(data1, data2),
+                            setData1(""),
+                            setData2("");
+                        }}
+                      >
+                        Valider
+                      </Button>
+                    </ModalFooter>
+                  </ModalContent>
+                </Modal>
+              </Box>
               </Box>
               <Box
                 width={"fit-content"}
@@ -2443,77 +2446,7 @@ export default function Intermed1() {
                 minHeight={"80px"}
                 minWidth={"100px"}
               />
-              <Box mt={5}>
-                <Button
-                  color={"#fff"}
-                  width={"94px"}
-                  height={"30px"}
-                  as={"a"}
-                  onClick={onOpen}
-                  bgColor={"cyan.700"}
-                  _hover={{
-                    backgroundColor: " cyan.900",
-                    color: "white ",
-                  }}
-                  leftIcon={<BsTelephoneOutboundFill />}
-                >
-                  Reserver
-                </Button>
-                <Modal isOpen={isOpen} onClose={onClose}>
-                  <ModalOverlay />
-                  <ModalContent>
-                    <ModalHeader>Formulaire de Reservation</ModalHeader>
-                    <ModalCloseButton />
-                    <ModalBody>
-                      <Flex>
-                        <Text mr={20}>Date & heure: </Text>
-                        <Input
-                          type="datetime-local"
-                          width={"180px"}
-                          onChange={(e) => setData1(e.target.value)}
-                        />
-                      </Flex>
-                      <br />
-                      <Flex>
-                        <Text mr={5}>Nombre De Couverts : </Text>
-                        <Input
-                          type="number"
-                          width={"180px"}
-                          onChange={(e) => setData2(e.target.value)}
-                        />
-                      </Flex>
-                      <br />
-                      <Flex>
-                        <Text marginRight={10}>Numéro du Restaurant : </Text>
-                        <h3>
-                          <a href={`tel:${sessionStorage.getItem("savefrom")}`}>
-                            {sessionStorage.getItem("savefrom")}
-                          </a>
-                        </h3>
-                      </Flex>
-                    </ModalBody>
-
-                    <ModalFooter>
-                      {/* <Button colorScheme="ghost" mr={3} onClick={onClose}>
-                    Annuler
-                  </Button> */}
-
-                      <Button
-                        bgColor={"cyan.700"}
-                        color={"white"}
-                        _hover={{ bgColor: "cyan.900" }}
-                        onClick={() => {
-                          saveCommande3(data1, data2),
-                            setData1(""),
-                            setData2("");
-                        }}
-                      >
-                        Valider
-                      </Button>
-                    </ModalFooter>
-                  </ModalContent>
-                </Modal>
-              </Box>
+              
             </Box>
 
             <Box mr={3}>
@@ -2640,6 +2573,77 @@ export default function Intermed1() {
                 src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
     &q=${addresse}`}
               ></iframe>
+              <Box mt={5}>
+                <Button
+                  color={"#fff"}
+                  width={"150px"}
+                  height={"30px"}
+                  as={"a"}
+                  onClick={onOpen}
+                  bgColor={"cyan.700"}
+                  _hover={{
+                    backgroundColor: " cyan.900",
+                    color: "white ",
+                  }}
+                  leftIcon={<BsTelephoneOutboundFill />}
+                >
+                  Reserver
+                </Button>
+                <Modal isOpen={isOpen} onClose={onClose}>
+                  <ModalOverlay />
+                  <ModalContent>
+                    <ModalHeader>Formulaire de Reservation</ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody>
+                      <Flex>
+                        <Text mr={20}>Date & heure: </Text>
+                        <Input
+                          type="datetime-local"
+                          width={"180px"}
+                          onChange={(e) => setData1(e.target.value)}
+                        />
+                      </Flex>
+                      <br />
+                      <Flex>
+                        <Text mr={5}>Nombre De Couverts : </Text>
+                        <Input
+                          type="number"
+                          width={"180px"}
+                          onChange={(e) => setData2(e.target.value)}
+                        />
+                      </Flex>
+                      <br />
+                      <Flex>
+                        <Text marginRight={10}>Numéro du Restaurant : </Text>
+                        <h3>
+                          <a href={`tel:${sessionStorage.getItem("savefrom")}`}>
+                            {sessionStorage.getItem("savefrom")}
+                          </a>
+                        </h3>
+                      </Flex>
+                    </ModalBody>
+
+                    <ModalFooter>
+                      {/* <Button colorScheme="ghost" mr={3} onClick={onClose}>
+                    Annuler
+                  </Button> */}
+
+                      <Button
+                        bgColor={"cyan.700"}
+                        color={"white"}
+                        _hover={{ bgColor: "cyan.900" }}
+                        onClick={() => {
+                          saveCommande3(data1, data2),
+                            setData1(""),
+                            setData2("");
+                        }}
+                      >
+                        Valider
+                      </Button>
+                    </ModalFooter>
+                  </ModalContent>
+                </Modal>
+              </Box>
             </Box>
             <Box
               width={"fit-content"}
