@@ -1,5 +1,5 @@
 import { Search2Icon } from '@chakra-ui/icons';
-import { Box, Button, IconButton, Image, Input, InputGroup, InputLeftElement, InputRightElement, Link, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, SimpleGrid, Text, useDisclosure } from '@chakra-ui/react';
+import { Box, Button, IconButton, Image, Input, InputGroup, InputLeftAddon, InputLeftElement, InputRightAddon, InputRightElement, Link, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, SimpleGrid, Text, useDisclosure } from '@chakra-ui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 // fontawesone Icone 
@@ -63,10 +63,10 @@ useEffect(()=>{
     return (
         <>
   <InputGroup>
-  <Input type='search' placeholder={Object.values(message)} w={"10em"} onClick={onOpen}/>
-    <InputRightElement pointerEvents='none'>
-    <Search2Icon/>
-    </InputRightElement>
+  <Input type='search' placeholder={Object.values(message)} w={["10em","10em","10em","20em","20em",]} onClick={onOpen}/>
+    <InputRightAddon pointerEvents='none'>
+    <Text>Rechercher</Text>
+    </InputRightAddon>
   </InputGroup>
 
         
@@ -87,11 +87,11 @@ useEffect(()=>{
                     <ModalCloseButton color={"#08566E"} />
                     <ModalBody>
                         <InputGroup>
-                            <InputLeftElement
+                            <InputLeftAddon
                                 pointerEvents='none'
                             >
-                                <FontAwesomeIcon icon={faSearch} color={"#08566E"} />
-                            </InputLeftElement>
+                                <Text>Rechercher</Text>
+                            </InputLeftAddon>
                             <Input
                             
                                 type='search'
@@ -105,7 +105,7 @@ useEffect(()=>{
                             />
                         </InputGroup>
                         
-                        {modalData.length == 0 ?<> Aucun Magasin de disponible</> : <>
+                        {modalData.length == 0 ?<> Aucun Commerce de disponible</> : <>
                             <SimpleGrid columns={2}>
                                 {modalData.map((doc,index)=>(
                                     <Box key={index}  m={2} mt={5} as={Link}  onClick={() => {

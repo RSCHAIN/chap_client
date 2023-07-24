@@ -19,7 +19,7 @@ export default function Intrmed2() {
         {/* <Text mr={5} fontSize={20}>Rechercher un magasin</Text><br/> */}
       
       {/* <InputLg/> */}
-      <SearcheIcone message={"Recherchez un magasin"}/>
+      <SearcheIcone  message={"Recherchez un magasin"}/>
       
       </Flex>
       </Center>

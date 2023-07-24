@@ -384,27 +384,27 @@ if (datas !=0) {
             Nos Services
           </Heading>
            <Box>
-            <Text ml={{base:"2%",md:"25%"}}>Entrez votre code postal pour trouver les restaurants à proximité</Text>
+            <Text ml={{base:"2%",md:"25%"}}>Entrez votre code postal pour trouver les commerces à proximité</Text>
             {/* <SearcheIcone message={"Recherchez un magasin proche"}/> */}
 
             <InputGroup ml={{base:"5%",md:"30%"}}>
-  <Input type='search' placeholder="Trouver un magasin a proximité" w={"20em"} onClick={onOpen}/>
+  <Input type='search' placeholder="Trouver un commerce a proximité" w={"20em"} onClick={onOpen}/>
     <InputRightAddon pointerEvents='none'>
-    <Search2Icon/>
+    <Text>Rechercher</Text>
     </InputRightAddon>
   </InputGroup>
 
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
-                    <ModalHeader  color={"#08566E"}>Trouver un magasin a proximité</ModalHeader>
+                    <ModalHeader  color={"#08566E"}>Trouver un commerce a proximité</ModalHeader>
                     <ModalCloseButton color={"#08566E"} />
                     <ModalBody>
                         <InputGroup>
                             <InputLeftAddon
                                 pointerEvents='none'
                             >
-                                <FontAwesomeIcon icon={faSearch} color={"#08566E"} />
+                                <Text>Rechercher</Text>
                             </InputLeftAddon>
                             <Input
                             
