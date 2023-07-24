@@ -1,18 +1,29 @@
-import { ArrowForwardIcon, ChevronRightIcon } from "@chakra-ui/icons";
+import { ArrowForwardIcon, ChevronRightIcon, Search2Icon } from "@chakra-ui/icons";
 import {
   Box,
   Button,
   Center,
   Flex,
   Heading,
+  Image,
   Input,
   InputGroup,
+  InputLeftAddon,
   InputLeftElement,
   InputRightAddon,
   InputRightElement,
   Link,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  SimpleGrid,
   Stack,
   Text,
+  useDisclosure,
 } from "@chakra-ui/react";
 import React, { useState, useEffect, useRef } from "react";
 
@@ -22,6 +33,9 @@ import Location from "../location";
 import { useRouter } from "next/router";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { BsSearch } from "react-icons/bs";
+import SearcheIcone from "./SearcheIcone";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 // les card des differntes cartegories qui seront mapés
 export function ItemCard({ item, card }) {
@@ -289,6 +303,34 @@ const LadingCorps = () => {
   const [cat, setCat] = useState([]);
   const [datos, setDatos] = useState([]);
   const [datas, setDatas] = useState(0);
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  //recherche un magasin
+  const recherche =async (terms)=>{
+        
+    // console.log("Hello all i need help")
+    // console.log(terms)
+    // console.log(categorie)
+    const q = query(collection(db, "Admin"), where("codePostal", "==", String(terms).trim()));
+
+const querySnapshot = await getDocs(q);
+// if (querySnapshot.docs) {
+//     querySnapshot.docs.forEach((doc)=>{
+//         console.log(doc.data())
+//     })
+// }
+setModalData(querySnapshot.docs)
+// console.log(querySnapshot.docs)
+// querySnapshot.forEach((doc) => {
+
+// // doc.data() is never undefined for query doc snapshots
+// modalData.push(doc.data())
+// });
+}
+
+  const [modalData,setModalData] = useState([])
+
+  //fin de recherche
+
   const update = async () => {
     console.log(cat);
     if (datas == 0) {
@@ -298,7 +340,7 @@ const LadingCorps = () => {
       querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
         cat.push(doc.data().nom);
-        // console.log(doc.data().id);
+        
       });
     }
 
@@ -331,7 +373,7 @@ const LadingCorps = () => {
 
     //updateAll()
   }, [datas, update, cat]);
-
+if (datas !=0) {
   return (
     <>
       {/* <Location /> */}
@@ -342,7 +384,81 @@ const LadingCorps = () => {
             Nos Services
           </Heading>
            <Box>
-            {/* <Text ml={"25%"}>Entrez votre code postal pour trouver les restaurants à proximité</Text> */}
+            <Text ml={{base:"2%",md:"25%"}}>Entrez votre code postal pour trouver les restaurants à proximité</Text>
+            {/* <SearcheIcone message={"Recherchez un magasin proche"}/> */}
+
+            <InputGroup ml={{base:"5%",md:"30%"}}>
+  <Input type='search' placeholder="Trouver un magasin a proximité" w={"20em"} onClick={onOpen}/>
+    <InputRightAddon pointerEvents='none'>
+    <Search2Icon/>
+    </InputRightAddon>
+  </InputGroup>
+
+            <Modal isOpen={isOpen} onClose={onClose}>
+                <ModalOverlay />
+                <ModalContent>
+                    <ModalHeader  color={"#08566E"}>Trouver un magasin a proximité</ModalHeader>
+                    <ModalCloseButton color={"#08566E"} />
+                    <ModalBody>
+                        <InputGroup>
+                            <InputLeftAddon
+                                pointerEvents='none'
+                            >
+                                <FontAwesomeIcon icon={faSearch} color={"#08566E"} />
+                            </InputLeftAddon>
+                            <Input
+                            
+                                type='number'
+                                onChange={e=>recherche(e.target.value)}
+                                placeholder='Nom'
+                                _placeholder={{ color: '#000' }}
+                                variant={'outline'}
+                                color={"#000"}
+                                borderRadius={'full'}
+                                outline={'none'}
+                            />
+                        </InputGroup>
+                        {console.log("test",typeof(modalData))}
+                        {console.log("test",modalData)}
+                        {modalData.length == 0 ?<> Aucun Magasin de disponible</> : <>
+                            <SimpleGrid columns={2}>
+                                {modalData.map((doc,index)=>(
+                                    <Box key={index}  m={2} mt={5} as={Link}  onClick={() => {
+                                        sessionStorage.setItem("savefrom", doc.data().number),
+                                          sessionStorage.setItem("image", doc.data().imageUrl),
+                                          sessionStorage.setItem("nom", doc.data().organisation),
+                                          sessionStorage.setItem("adresse", doc.data().adresse),
+                                          sessionStorage.setItem("categorie", doc.data().categorie);
+                                          sessionStorage.setItem("description", doc.data().description);
+                                          sessionStorage.setItem("horaire", JSON.stringify(doc.data().horaire));
+                                          sessionStorage.setItem("paiement", JSON.stringify(doc.data().methodeDePaiement));
+                                      }}
+                      _hover={{ textDecoration: "none" }}
+                      href={"/otherContent/intermed1"}>
+                                       <Image alt={doc.data().organisation} src={doc.data().imageUrl} maxWidth={"150px"} maxHeight={"100px"} minHeight={"100px"} minWidth={"150px"}/>
+                                       <Text fontWeight={"bold"} fontSize={"20px"}>{doc.data().organisation}</Text>
+                                       <Text fontWeight={"medium"}>{doc.data().adresse}</Text>
+                                     </Box>
+                                ))}
+                            </SimpleGrid>
+                        </>}
+                    </ModalBody>
+
+                    <ModalFooter>
+                        <Button background={'#08566E'} color={'#fff'} mr={3} onClick={onClose}>
+                            Annuler
+                        </Button>
+                    </ModalFooter>
+                </ModalContent>
+            </Modal>
+
+
+
+
+
+
+
+            {/* {console.log("okay")} */}
             {/* <Stack>
               <Center ml={"30%"}>
               <InputGroup >
@@ -380,6 +496,8 @@ const LadingCorps = () => {
       </Center>
     </>
   );
+}
+
 };
 
 export default LadingCorps;

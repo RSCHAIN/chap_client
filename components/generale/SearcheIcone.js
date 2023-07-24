@@ -63,7 +63,7 @@ useEffect(()=>{
     return (
         <>
   <InputGroup>
-  <Input type='search' placeholder={Object.values(message)} w={"20em"} onClick={onOpen}/>
+  <Input type='search' placeholder={Object.values(message)} w={"10em"} onClick={onOpen}/>
     <InputRightElement pointerEvents='none'>
     <Search2Icon/>
     </InputRightElement>
