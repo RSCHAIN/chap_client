@@ -168,17 +168,17 @@ const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
     items: 5,
-    partialVisibilityGutter: 60,
+    // partialVisibilityGutter: 60,
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
     items: 3,
-    partialVisibilityGutter: 50,
+    // partialVisibilityGutter: 50,
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
     items: 2,
-    partialVisibilityGutter: 30,
+    // partialVisibilityGutter: 30,
   },
 };
 
@@ -649,20 +649,22 @@ export default function Intermed1() {
             }}
           >
             <Carousel
-              partialVisbile
+              
               deviceType={"mobile"}
               itemClass="image-item"
               responsive={responsive}
+              
+        
             >
               {images.slice(0, images.length).map((image, index) => {
                 return (
                   <Image
                     key={index}
                     alt={`${image}`}
-                    maxWidth={"150px"}
-                    maxHeight={"150px"}
-                    minWidth={"150px"}
-                    minHeight={"150px"}
+                    maxWidth={{base:'150px',md:"200px"}}
+                    maxHeight={{base:'150px',md:"200px"}}
+                    minWidth={{base:'150px',md:"200px"}}
+                    minHeight={{base:'150px',md:"200px"}}
                    
                     src={image}
                   />
@@ -1158,11 +1160,10 @@ export default function Intermed1() {
                   <Image
                     key={index}
                     alt={`${image}`}
-                    maxWidth={"150px"}
-                    maxHeight={"150px"}
-                    minWidth={"150px"}
-                    minHeight={"150px"}
-                  
+                    maxWidth={{base:'150px',md:"200px"}}
+                    maxHeight={{base:'150px',md:"200px"}}
+                    minWidth={{base:'150px',md:"200px"}}
+                    minHeight={{base:'150px',md:"200px"}}
                     src={image}
                   />
                 );
@@ -1686,11 +1687,10 @@ export default function Intermed1() {
                   <Image
                     key={index}
                     alt={`${image}`}
-                    maxWidth={"150px"}
-                    maxHeight={"150px"}
-                    minWidth={"150px"}
-                    minHeight={"150px"}
-                   
+                    maxWidth={{base:'150px',md:"200px"}}
+                    maxHeight={{base:'150px',md:"200px"}}
+                    minWidth={{base:'150px',md:"200px"}}
+                    minHeight={{base:'150px',md:"200px"}}
                     src={image}
                   />
                 );
@@ -2297,11 +2297,10 @@ export default function Intermed1() {
                   <Image
                     key={index}
                     alt={`${image}`}
-                    maxWidth={"150px"}
-                    maxHeight={"150px"}
-                    minWidth={"150px"}
-                    minHeight={"150px"}
-                   
+                    maxWidth={{base:'150px',md:"200px"}}
+                    maxHeight={{base:'150px',md:"200px"}}
+                    minWidth={{base:'150px',md:"200px"}}
+                    minHeight={{base:'150px',md:"200px"}}
                     src={image}
                   />
                 );
