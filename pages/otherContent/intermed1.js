@@ -166,18 +166,57 @@ async function saveCommande3(d1, d2) {
 
 const responsive = {
   desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 5,
+    breakpoint: { max: 1550, min: 1350 },
+    items: 7,
+    // partialVisibilityGutter: 60,
+  },
+  desktopL: {
+    breakpoint: { max: 1705, min: 1550 },
+    items: 8,
+    // partialVisibilityGutter: 60,
+  },
+  desktopM: {
+    breakpoint: { max: 2000, min: 1705 },
+    items: 9,
+    // partialVisibilityGutter: 60,
+  },
+  desktopX: {
+    breakpoint: { max: 2150, min: 2000 },
+    items: 10,
+    // partialVisibilityGutter: 60,
+  },
+  desktopXL: {
+    breakpoint: { max: 2500, min: 2150 },
+    items: 11,
+    // partialVisibilityGutter: 60,
+  },
+  desktopXLL: {
+    breakpoint: { max: 3000, min: 2500 },
+    items: 12,
     // partialVisibilityGutter: 60,
   },
   tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 3,
+    breakpoint: { max: 750, min: 550 },
+    items: 4,
+    // partialVisibilityGutter: 50,
+  },
+  tabletM: {
+    breakpoint: { max: 1125, min: 750 },
+    items: 5,
+    // partialVisibilityGutter: 50,
+  },
+  tabletL: {
+    breakpoint: { max: 1350, min: 1125 },
+    items: 6,
     // partialVisibilityGutter: 50,
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
     items: 2,
+    // partialVisibilityGutter: 30,
+  }, mobileM: {
+    breakpoint: { max: 550, min: 464 },
+    items: 3,
     // partialVisibilityGutter: 30,
   },
 };
@@ -202,7 +241,7 @@ export default function Intermed1() {
   const [data2, setData2] = useState();
 
   ////HOraire
-  const heure = "Heure d'Ouverture";
+  const heure = "Horaire d'Ouverture";
   const [horaire, setHoraire] = useState({});
   const [lundi, setLundi] = useState("Non Renseigné");
   const [mardi, setMardi] = useState("Non Renseigné");
@@ -458,7 +497,7 @@ export default function Intermed1() {
                 </Box>
               </Collapse>
             </Box>
-            <Box mr={10} display={["none", "none", "none", "grid", "grid"]}>
+            <Box ml={20} display={["none", "none", "none", "grid", "grid"]}>
               <iframe
                 width="400"
                 height="250"
@@ -470,6 +509,7 @@ export default function Intermed1() {
               ></iframe>
             </Box>
             <Box
+            mr={10}
               width={"fit-content"}
               display={["grid", "grid", "grid", "none", "none"]}
             >
@@ -1394,11 +1434,11 @@ export default function Intermed1() {
                 </Box>
               </Collapse>
             </Box>
-            <Box mr={10}>
-              <Box mr={10} display={["none", "none", "none", "grid", "grid"]}>
+            <Box ml={20}>
+              <Box  display={["none", "none", "none", "grid", "grid"]}>
                 <iframe
                   width="400"
-                  height="250"
+                  height="200"
                   loading="lazy"
                   allowFullScreen
                   referrerPolicy="no-referrer-when-downgrade"
@@ -1411,8 +1451,8 @@ export default function Intermed1() {
                 display={["grid", "grid", "grid", "none", "none"]}
               >
                 <iframe
-                  width="350"
-                  height="250"
+                  width="200"
+                  height="200"
                   loading="lazy"
                   allowFullScreen
                   referrerPolicy="no-referrer-when-downgrade"
@@ -1687,10 +1727,11 @@ export default function Intermed1() {
                   <Image
                     key={index}
                     alt={`${image}`}
-                    maxWidth={{base:'150px',md:"200px"}}
-                    maxHeight={{base:'150px',md:"200px"}}
-                    minWidth={{base:'150px',md:"200px"}}
-                    minHeight={{base:'150px',md:"200px"}}
+                    maxWidth={{md:'150px',xl:"150px"}}
+                    maxHeight={{base:'150px',xl:"150px"}}
+                    minWidth={{base:'150px',xl:"150px"}}
+                    minHeight={{base:'150px',xl:"150px"}}
+                    pr={5}
                     src={image}
                   />
                 );
@@ -2248,7 +2289,7 @@ export default function Intermed1() {
                 </Box>
               </Collapse>
             </Box>
-            <Box mr={10} display={["none", "none", "none", "grid", "grid"]}>
+            <Box ml={10} display={["none", "none", "none", "grid", "grid"]}>
               <iframe
                 width="400"
                 height="250"

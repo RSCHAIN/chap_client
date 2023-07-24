@@ -18,7 +18,8 @@ export default function Intrmed2() {
       <Flex justifyContent={"space-between"}>
         {/* <Text mr={5} fontSize={20}>Rechercher un magasin</Text><br/> */}
       
-      <InputLg/>
+      {/* <InputLg/> */}
+      <SearcheIcone message={"Recherchez un magasin"}/>
       
       </Flex>
       </Center>
