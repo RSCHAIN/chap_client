@@ -890,7 +890,7 @@ export default function Intermed1() {
                       borderRadius="lg"
                       mt={4}
                       mb={20}
-                      ml={5}
+                      mr={5}
                       // border={"1px solid black"}
                     >
                       <Box
@@ -2325,6 +2325,7 @@ export default function Intermed1() {
                       borderRadius="lg"
                       mt={4}
                       mb={20}
+                      mr={5}
                       // border={"1px solid black"}
                     >
                       <Box
@@ -3166,6 +3167,7 @@ export default function Intermed1() {
                       borderRadius="lg"
                       mt={4}
                       mb={20}
+                      mr={5}
                       // border={"1px solid black"}
                     >
                       <Box
