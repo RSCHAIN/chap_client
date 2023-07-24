@@ -881,7 +881,7 @@ export default function Intermed1() {
                 Les produits{" "}
               </Heading>
               <Flex mt={10}>
-                <SimpleGrid columns={[2, 2, 3, 4, 5]} spacing={2} mr={20}>
+                <SimpleGrid columns={[1, 2, 3, 4, 5]} spacing={2} mr={20}>
                   {data.map((data, key) => (
                     <Box
                       key={data.id}
@@ -2316,7 +2316,7 @@ export default function Intermed1() {
                 Les produits{" "}
               </Heading>
               <Flex mt={10}>
-                <SimpleGrid columns={[2, 2, 3, 4, 5]} spacing={2} mr={20}>
+                <SimpleGrid columns={[1, 2, 3, 4, 5]} spacing={2} mr={20}>
                   {data.map((data, key) => (
                     <Box
                       key={data.id}
@@ -3158,7 +3158,7 @@ export default function Intermed1() {
                 Les produits{" "}
               </Heading>
               <Flex mt={10}>
-                <SimpleGrid columns={[2, 2, 3, 4, 5]} spacing={2} mr={20}>
+                <SimpleGrid columns={[1, 2, 3, 4, 5]} spacing={2} mr={20}>
                   {data.map((data, key) => (
                     <Box
                       key={data.id}
@@ -3166,7 +3166,7 @@ export default function Intermed1() {
                       height={"400px"}
                       borderRadius="lg"
                       mt={4}
-                      mb={20}
+                      mb={10}
                       mr={5}
                       // border={"1px solid black"}
                     >
