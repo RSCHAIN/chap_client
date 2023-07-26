@@ -1,4 +1,10 @@
-import { ArrowForwardIcon, ChevronRightIcon, Search2Icon } from "@chakra-ui/icons";
+import {
+  ArrowForwardIcon,
+  ChevronRightIcon,
+  Search2Icon,
+} from "@chakra-ui/icons";
+import All from "@/components/ResultResarch/All";
+
 import {
   Box,
   Button,
@@ -301,34 +307,37 @@ export function ContainerCard({ card }) {
 // le rendu final qui sera affiché
 const LadingCorps = () => {
   const [cat, setCat] = useState([]);
+  const [postal,setPostal] = useState("")
   const [datos, setDatos] = useState([]);
   const [datas, setDatas] = useState(0);
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { isOpen, onOpen, onClose } = useDisclosure();
   //recherche un magasin
-  const recherche =async (terms)=>{
-        
+  const recherche = async (terms) => {
     // console.log("Hello all i need help")
     // console.log(terms)
     // console.log(categorie)
-    const q = query(collection(db, "Admin"), where("codePostal", "==", String(terms).trim()));
+    const q = query(
+      collection(db, "Admin"),
+      where("codePostal", "==", String(terms).trim())
+    );
 
-const querySnapshot = await getDocs(q);
-// if (querySnapshot.docs) {
-//     querySnapshot.docs.forEach((doc)=>{
-//         console.log(doc.data())
-//     })
-// }
-setModalData(querySnapshot.docs)
-// console.log(querySnapshot.docs)
-// querySnapshot.forEach((doc) => {
+    const querySnapshot = await getDocs(q);
+    // if (querySnapshot.docs) {
+    //     querySnapshot.docs.forEach((doc)=>{
+    //         console.log(doc.data())
+    //     })
+    // }
+    setModalData(querySnapshot.docs);
+    // console.log(querySnapshot.docs)
+    // querySnapshot.forEach((doc) => {
 
-// // doc.data() is never undefined for query doc snapshots
-// modalData.push(doc.data())
-// });
-}
+    // // doc.data() is never undefined for query doc snapshots
+    // modalData.push(doc.data())
+    // });
+  };
 
-  const [modalData,setModalData] = useState([])
-
+    
+  const router = useRouter()
   //fin de recherche
 
   const update = async () => {
@@ -340,7 +349,6 @@ setModalData(querySnapshot.docs)
       querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
         cat.push(doc.data().nom);
-        
       });
     }
 
@@ -373,130 +381,173 @@ setModalData(querySnapshot.docs)
 
     //updateAll()
   }, [datas, update, cat]);
-if (datas !=0) {
-  return (
-    <>
-      {/* <Location /> */}
-      <Center width={"100%"} height={"auto"}>
-        <Box height={"95%"} width={"95%"}>
-          {/* l'entet principale */}
-          <Heading textAlign={"start"} color={"#08566e"} mb={5}>
-            Nos Services
-          </Heading>
-           <Box>
-            <Text ml={{base:"2%",md:"25%"}}>Entrez votre code postal pour trouver les commerces à proximité</Text>
-            {/* <SearcheIcone message={"Recherchez un magasin proche"}/> */}
+  if (datas != 0) {
+    return (
+      <>
+        {/* <Location /> */}
+        <Center width={"100%"} height={"auto"}>
+          <Box height={"95%"} width={"95%"}>
+            {/* l'entet principale */}
+            <Heading textAlign={"start"} color={"#08566e"} mb={5}>
+              Nos Services
+            </Heading>
+            <Center width={"100%"}>
+              <Box>
+                <Text mr={10}>
+                  Entrez votre code postal pour trouver les commerces à
+                  proximité
+                </Text>
+                {/* <SearcheIcone message={"Recherchez un magasin proche"}/> */}
 
-            <InputGroup ml={{base:"5%",md:"30%"}}>
-  <Input type='search' placeholder="Trouver un commerce a proximité" w={"20em"} onClick={onOpen}/>
-    <InputRightAddon pointerEvents='none'>
-    <Text>Rechercher</Text>
-    </InputRightAddon>
-  </InputGroup>
+                <InputGroup>
+                  <Input
+                    type="number"
+                    placeholder="Entrez votre code postal "
+                    w={"20em"}
+                    minLength={5}
+                    onChange={(e)=>{setPostal(e.target.value),localStorage.setItem("postal",e.target.value)}}
+                    // onClick={onOpen}
+                  />
+                  <InputRightAddon as={Link} href={"#"} _hover={{
+                    textDecoration: "none",
+                    bgColor: "#00d4ff"
+                  }} cursor={"pointer"}onClick={()=>{localStorage.setItem("postal",postal)}}>
+                    <Text>Sauvegarder</Text>
+                  </InputRightAddon>
+                </InputGroup>
 
-            <Modal isOpen={isOpen} onClose={onClose}>
-                <ModalOverlay />
-                <ModalContent>
-                    <ModalHeader  color={"#08566E"}>Trouver un commerce a proximité</ModalHeader>
+                {/* <Modal isOpen={isOpen} onClose={onClose}>
+                  <ModalOverlay />
+                  <ModalContent>
+                    <ModalHeader color={"#08566E"}>
+                      Trouver un commerce a proximité
+                    </ModalHeader>
                     <ModalCloseButton color={"#08566E"} />
                     <ModalBody>
-                        <InputGroup>
-                            <InputLeftAddon
-                                pointerEvents='none'
-                            >
-                                <Text>Rechercher</Text>
-                            </InputLeftAddon>
-                            <Input
-                            
-                                type='number'
-                                onChange={e=>recherche(e.target.value)}
-                                placeholder='Code Postal'
-                                _placeholder={{ color: '#000' }}
-                                variant={'outline'}
-                                color={"#000"}
-                                borderRadius={'full'}
-                                outline={'none'}
-                            />
-                        </InputGroup>
-                       
-                        {modalData.length == 0 ?<> Aucun Magasin de disponible</> : <>
-                            <SimpleGrid columns={2}>
-                                {modalData.map((doc,index)=>(
-                                    <Box key={index}  m={2} mt={5} as={Link}  onClick={() => {
-                                        sessionStorage.setItem("savefrom", doc.data().number),
-                                          sessionStorage.setItem("image", doc.data().imageUrl),
-                                          sessionStorage.setItem("nom", doc.data().organisation),
-                                          sessionStorage.setItem("adresse", doc.data().adresse),
-                                          sessionStorage.setItem("categorie", doc.data().categorie);
-                                          sessionStorage.setItem("description", doc.data().description);
-                                          sessionStorage.setItem("horaire", JSON.stringify(doc.data().horaire));
-                                          sessionStorage.setItem("paiement", JSON.stringify(doc.data().methodeDePaiement));
-                                      }}
-                      _hover={{ textDecoration: "none" }}
-                      href={"/otherContent/intermed1"}>
-                                       <Image alt={doc.data().organisation} src={doc.data().imageUrl} maxWidth={"150px"} maxHeight={"100px"} minHeight={"100px"} minWidth={"150px"}/>
-                                       <Text fontWeight={"bold"} fontSize={"20px"}>{doc.data().organisation}</Text>
-                                       <Text fontWeight={"medium"}>{doc.data().adresse}</Text>
-                                     </Box>
-                                ))}
-                            </SimpleGrid>
-                        </>}
+                      <InputGroup>
+                        <InputLeftAddon pointerEvents="none">
+                          <Text>Rechercher</Text>
+                        </InputLeftAddon>
+                        <Input
+                          type="number"
+                          onChange={(e) => recherche(e.target.value)}
+                          placeholder="Code Postal"
+                          _placeholder={{ color: "#000" }}
+                          variant={"outline"}
+                          color={"#000"}
+                          borderRadius={"full"}
+                          outline={"none"}
+                        />
+                      </InputGroup>
+
+                      {modalData.length == 0 ? (
+                        <> Aucun Magasin de disponible</>
+                      ) : (
+                        <>
+                          <SimpleGrid columns={2}>
+                            {modalData.map((doc, index) => (
+                              <Box
+                                key={index}
+                                m={2}
+                                mt={5}
+                                as={Link}
+                                onClick={() => {
+                                  sessionStorage.setItem(
+                                    "savefrom",
+                                    doc.data().number
+                                  ),
+                                    sessionStorage.setItem(
+                                      "image",
+                                      doc.data().imageUrl
+                                    ),
+                                    sessionStorage.setItem(
+                                      "nom",
+                                      doc.data().organisation
+                                    ),
+                                    sessionStorage.setItem(
+                                      "adresse",
+                                      doc.data().adresse
+                                    ),
+                                    sessionStorage.setItem(
+                                      "categorie",
+                                      doc.data().categorie
+                                    );
+                                  sessionStorage.setItem(
+                                    "description",
+                                    doc.data().description
+                                  );
+                                  sessionStorage.setItem(
+                                    "horaire",
+                                    JSON.stringify(doc.data().horaire)
+                                  );
+                                  sessionStorage.setItem(
+                                    "paiement",
+                                    JSON.stringify(doc.data().methodeDePaiement)
+                                  );
+                                }}
+                                _hover={{ textDecoration: "none" }}
+                                href={"/otherContent/intermed1"}
+                              >
+                                <Image
+                                  alt={doc.data().organisation}
+                                  src={doc.data().imageUrl}
+                                  maxWidth={"150px"}
+                                  maxHeight={"100px"}
+                                  minHeight={"100px"}
+                                  minWidth={"150px"}
+                                />
+                                <Text fontWeight={"bold"} fontSize={"20px"}>
+                                  {doc.data().organisation}
+                                </Text>
+                                <Text fontWeight={"medium"}>
+                                  {doc.data().adresse}
+                                </Text>
+                              </Box>
+                            ))}
+                          </SimpleGrid>
+                        </>
+                      )}
                     </ModalBody>
 
                     <ModalFooter>
-                        <Button background={'#08566E'} color={'#fff'} mr={3} onClick={onClose}>
-                            Annuler
-                        </Button>
+                      <Button
+                        background={"#08566E"}
+                        color={"#fff"}
+                        mr={3}
+                        onClick={onClose}
+                      >
+                        Annuler
+                      </Button>
                     </ModalFooter>
-                </ModalContent>
-            </Modal>
+                  </ModalContent>
+                </Modal> */}
+              </Box>
+            </Center>
 
+            {/* la box de toutes les cartegorie */}
+            {postal.length<=4 ?<Flex
+              height={"auto"}
+              position={"relative"}
+              width={"100%"}
+              mt={10}
+              mb={2}
+              direction={"column"}
+              alignItems={"center"}
+              pb={20}
+              justifyContent={"center"}
+            >
+              {cat.map((card, key) => {
+                // console.log('card',card)
 
-
-
-
-
-
-            {/* {console.log("okay")} */}
-            {/* <Stack>
-              <Center ml={"30%"}>
-              <InputGroup >
-                        <Input type={"search"} width={"30%"} border={"1px solid black"} mt={3}/>
-                        <InputRightAddon mt={3} cursor={"pointer"}>
-                        <BsSearch/>
-                        </InputRightAddon>
-                        </InputGroup>
+                return <ContainerCard key={key} card={card}></ContainerCard>;
+              })}
+            </Flex> : <><All/></> }
             
-              </Center>
-           
-            </Stack> */}
-            
-
-            </Box> 
-          {/* la box de toutes les cartegorie */}
-          <Flex
-            height={"auto"}
-            position={"relative"}
-            width={"100%"}
-            mt={10}
-            mb={2}
-            direction={"column"}
-            alignItems={"center"}
-            pb={20}
-            justifyContent={"center"}
-          >
-            {cat.map((card, key) => {
-              // console.log('card',card)
-
-              return <ContainerCard key={key} card={card}></ContainerCard>;
-            })}
-          </Flex>
-        </Box>
-      </Center>
-    </>
-  );
-}
-
+          </Box>
+        </Center>
+      </>
+    );
+  }
 };
 
 export default LadingCorps;

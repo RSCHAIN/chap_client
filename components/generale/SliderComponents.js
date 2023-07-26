@@ -15,12 +15,24 @@ const settings = {
   fade: true,
   infinite: true,
   autoplay: true,
+  
   speed: 500,
   autoplaySpeed: 2000,
   slidesToShow: 1,
   slidesToScroll: 1,
 };
-
+const settings2 = {
+  dots: true,
+  arrows: true,
+  fade: true,
+  infinite: true,
+  autoplay: true,
+  
+  speed: 500,
+  autoplaySpeed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+};
 const SliderComponents = () => {
   const [slider, setSlider] = useState(null);
   const top = useBreakpointValue({ base: "90%", md: "50%" });
@@ -91,7 +103,7 @@ const SliderComponents = () => {
         )}
 
         {/* Slider */}
-        <Slider {...settings} ref={(slider) => setSlider(slider)}>
+     <Slider {...settings} ref={(slider) => setSlider(slider)}>
           {cards.map((url, index) => (
             <Box
               key={index}
@@ -104,8 +116,9 @@ const SliderComponents = () => {
               backgroundSize="contain"
               backgroundImage={url}
             ></Box>
-          ))}
-        </Slider>
+          ))}</Slider> 
+      
+        
       </Box>
     </>
   );

@@ -47,6 +47,8 @@ import { db2 } from "@/FIREBASE/clientApp";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { IoMdAddCircleOutline } from "react-icons/io";
+import axios from "axios";
+
 
 function saveCart(product) {
   localStorage.setItem("Cart", JSON.stringify(product));
@@ -75,11 +77,11 @@ function AddToCart(Product) {
 const InputLg = () => {
   const toast = useToast();
   const [inputContent, setInputContent] = useState([]);
-  const [resutl, setResult] = useState([]);
-  const [categories, setCategories] = useState("Alimentation");
+  const [result, setResult] = useState([]);
+ 
   const [cat,setCat] = useState([])
   const [datos,setDatos]=useState([])
-  const [fournisseur, setFournisseur] = useState("EasyShop");
+
   const [data, setData] = useState([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [check,setCheck] = useState(0)
@@ -92,31 +94,39 @@ const InputLg = () => {
 
 
 
-  const handleSearch =  () => {
-    setCheck(check+1)
-   setData([])
+  const handleSearch =  (exemple) => {
+    console.log("exemple", exemple)
+      setData([])
+  
       const rec =  query(
         ref(db2,   "/All Products" ));
       get(rec)
         .then((snapshot) => {
-          // data.push(snapshot.val())
+          // console.log("snapshot",snapshot.val())
           snapshot.forEach((childsnapsho) => {
-            data.push(childsnapsho.val());
+          data.push(childsnapsho.val());
           });
         })
         .catch((error) => console.log(error));
+        Research(exemple)
   }
-  const Research = (inputed) => {
+  const Research = (exemple) => {
   console.log("data",data)
-   console.log(data.filter(inpute => inpute.nom.includes(inputed)))
+  // console.log("data",exemple)
+
+ console.log(data.forEach((dat)=>{
+  {dat}
+ }))
+  //  console.log(data.filter(inpute => inpute.nom.includes(inputed)))
   }
 
 useEffect(()=>{
-  if (check == 0 || check == 1) {
-    handleSearch()
-    console.log(data)
-    console.log(check)
-  }
+  // if (check == 0 || check == 1) {
+  //   handleSearch()
+  //   console.log(data)
+  //   console.log(check)
+  
+  // }
   
 })
 
@@ -125,7 +135,7 @@ useEffect(()=>{
   return (
    
     <>
-    
+
       <Box display={"flex"}>
       
         <InputGroup>
@@ -155,9 +165,14 @@ useEffect(()=>{
                   borderRadius={"full"}
                   w={["15em","15em","15em","20em","20em"]}
                   onChange={(e) => {
-                     Research(e.target.value);
+                    handleSearch(e.target.value);
                   }}
                   />
+                  <Flex>
+        {data.map((data,index)=>{return  (
+          <Text key={index} color={"black"}> {data.nom}</Text>
+        )})}
+      </Flex>
                   {/* {data.map((data, index) => { */}
                     {/* // if (data.nom != null || data.nom != undefined) { */}
                     {/* //   return (
@@ -250,6 +265,8 @@ useEffect(()=>{
         </InputGroup>
       
       </Box>
+
+      
     </>
   );
 };

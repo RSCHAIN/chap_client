@@ -9,6 +9,7 @@ import {
   Button,
   Collapse,
   Flex,
+  Center,
   Heading,
   Image,
   Input,
@@ -25,6 +26,8 @@ import {
   Tooltip,
   useDisclosure,
   useToast,
+  useBreakpointValue,
+  IconButton,
 } from "@chakra-ui/react";
 import { onValue, push, ref } from "@firebase/database";
 import { useRouter } from "next/router";
@@ -36,9 +39,12 @@ import {
 } from "react-icons/bs";
 import { IoMdAddCircle, IoMdAddCircleOutline } from "react-icons/io";
 import Slider from "react-slick";
+import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 import { ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons";
 import FooterR from "@/components/footerResponsif";
 import Keyword from "@/components/Keywords";
+import SliderComponents from "@/components/generale/SliderComponents";
+
 
 ///fonction du panier
 function saveCart(product) {
@@ -221,6 +227,21 @@ const responsive = {
   },
 };
 
+
+const settings = {
+  dots: true,
+  arrows: false,
+  fade: true,
+  infinite: true,
+  autoplay: true,
+  speed: 1500,
+  autoplaySpeed: 3000,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+};
+
+
+
 /////////////////////////////////////////////FIN SLIDER CONFIG//////////////////////////////////////////////////////////////
 
 export default function Intermed1() {
@@ -255,6 +276,10 @@ export default function Intermed1() {
   const [paiement2, setPaiement2] = useState(" ");
   const [timert, setTimert] = useState();
   ///fin horaire
+  const [slider, setSlider] = useState(null);
+
+  const top = useBreakpointValue({ base: "90%", md: "50%" });
+  const side = useBreakpointValue({ base: "30%", md: "10px" });
 
   useEffect(() => {
     if (
@@ -340,20 +365,15 @@ export default function Intermed1() {
   ]);
 
   const images = [
+  
+    "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/Alimentation%2FCHAPMAG2%2Fthuyamalli-raw-rice.png?alt=media&token=b2a9cac2-27d7-4bf2-9718-a02ba70f1e64",
+    "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/Alimentation%2FCHAPMAG2%2F6-riz-1-7-1140x570.jpg?alt=media&token=c0b1d778-e4f7-4b08-8826-91ab5d574e0f",
     imageUrl,
+    "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/Alimentation%2FCHAPMAG2%2Fthuyamalli-raw-rice.png?alt=media&token=b2a9cac2-27d7-4bf2-9718-a02ba70f1e64",
+    "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/Alimentation%2FCHAPMAG2%2F6-riz-1-7-1140x570.jpg?alt=media&token=c0b1d778-e4f7-4b08-8826-91ab5d574e0f",
     imageUrl,
-    imageUrl,
-    imageUrl,
-    imageUrl,
-    imageUrl,
-    imageUrl,
-    imageUrl,
-    imageUrl,
-    imageUrl,
-    imageUrl,
-    imageUrl,
-    imageUrl,
-    imageUrl,
+    "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/Alimentation%2FCHAPMAG2%2Fthuyamalli-raw-rice.png?alt=media&token=b2a9cac2-27d7-4bf2-9718-a02ba70f1e64",
+    "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/Alimentation%2FCHAPMAG2%2F6-riz-1-7-1140x570.jpg?alt=media&token=c0b1d778-e4f7-4b08-8826-91ab5d574e0f",
   ];
   console.log(timert);
   if (
@@ -1124,10 +1144,10 @@ export default function Intermed1() {
                 </Box>
               </Collapse>
             </Box>
-            <Box mr={10} display={["none", "none", "none", "grid", "grid"]}>
+            <Box ml={10} display={["none", "none", "none", "grid", "grid"]}>
               <iframe
                 width="400"
-                height="250"
+                height="200"
                 loading="lazy"
                 allowFullScreen
                 referrerPolicy="no-referrer-when-downgrade"
@@ -1140,6 +1160,7 @@ export default function Intermed1() {
                   width={"150px"}
                   height={"30px"}
                   as={"a"}
+                  ml={"30%"}
                   href={`tel:${numero}`}
                   bgColor={"cyan.700"}
                   _hover={{
@@ -1561,6 +1582,8 @@ export default function Intermed1() {
       <>
         <InputBar />
         <Navbar />
+        {/* CSS files for react-slick */}
+        
 
         <Box ml={["3%", "3%", "3%", "20%", "20%"]} mt={10} mb={10}>
           <Flex display={["none", "none", "none", "flex", "flex"]}>
@@ -1704,7 +1727,7 @@ export default function Intermed1() {
                 </Box>
               </Collapse>
             </Box>
-            <Box ml={20}>
+            <Box ml={10}>
               <Box  display={["none", "none", "none", "grid", "grid"]}>
                 <iframe
                   width="400"
@@ -1806,22 +1829,168 @@ export default function Intermed1() {
           </Flex>
 
           <Flex display={["grid", "grid", "none", "none", "none"]}>
-            <Box display={"flex"} mb={5}>
-              <Box mr={5}>
-                <Image
-                  src={`${imageUrl}`}
-                  alt={`logo de ${nom}`}
-                  width={["150px", "150px", "150px", "200px", "200px"]}
-                  height={["150px", "150px", "150px", "200px", "200px"]}
-                  maxHeight={"200px"}
-                  maxWidth={"200px"}
-                  minHeight={"80px"}
-                  minWidth={"100px"}
-                />
-                <Box mt={5}>
+            
+             
+               
+                  {/* Slider */}
+                  <Box
+        overflow="-moz-hidden-unscrollable"
+        position={"relative"}
+        height={{ base: "auto", md: "auto", lg: "auto" }}
+        width={{ base: "auto", md: "auto", lg: "auto" }}
+      >
+        {/* CSS files for react-slick */}
+        <link
+          rel="stylesheet"
+          type="text/css"
+          charSet="UTF-8"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+        />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+        />
+
+        {/* {isLagerThan768 ? (
+          <>
+            <IconButton
+              aria-label="left-arrow"
+              // colorScheme="messenger"
+              borderRadius="full"
+              position="absolute"
+              left={side}
+              top={top}
+              transform={"translate(0%, -50%)"}
+              zIndex={2}
+              onClick={() => slider?.slickPrev()}
+              bg={"#fff"}
+            >
+              <BiLeftArrowAlt color="#000" />
+            </IconButton>
+
+            <IconButton
+              aria-label="right-arrow"
+              // colorScheme="messenger"
+              borderRadius="full"
+              position="absolute"
+              right={side}
+              top={top}
+              transform={"translate(0%, -50%)"}
+              zIndex={2}
+              onClick={() => slider?.slickNext()}
+              bg={"#fff"}
+            >
+              <BiRightArrowAlt color="#000" />
+            </IconButton>
+          </>
+        ) : (
+          <></>
+        )} */}
+
+        {/* Slider */}
+     <Slider {...settings} ref={(slider) => setSlider(slider)}>
+          {images.map((url, index) => (
+            <Box
+              key={index}
+              overflow={"auto"}
+              height={{ base: "xs", md: "xs", lg: "xl" }}
+              minw={{ base: "auto", md: "xs", lg: "xl" }}
+              position="relative"
+              backgroundPosition="center"
+              backgroundRepeat="no-repeat"
+              backgroundSize="contain"
+              backgroundImage={url}
+            ></Box>
+          ))}</Slider> 
+      
+        
+      </Box>
+                <Heading fontSize={"40px"}>{nom}</Heading>
+             
+             
+             
+           
+            <Box>
+              <Text fontSize={"15px"} fontWeight={"medium"}>
+                {addresse}
+              </Text>
+              <Flex mb={2} mt={2}>
+                <BsFillTelephoneOutboundFill />
+                <Text
+                  fontSize={"15px"}
+                  fontWeight={"medium"}
+                  ml={2}
+                  color={"green"}
+                >
+                  {numero}
+                </Text>
+              </Flex>
+              <Flex>
+                <Text fontWeight={"bold"} mr={2}>
+                  Description :{" "}
+                </Text>
+                {Desc1 == "undefined" ? (
+                  <Text width={"58%"} textAlign={"justify"}>
+                    {categorie} Africain
+                  </Text>
+                ) : (
+                  <Text width={"58%"} textAlign={"justify"}>
+                    {Desc1}
+                  </Text>
+                )}
+              </Flex>
+              <Flex>
+                <Text fontWeight={"bold"}>Moyen De paiement : </Text>
+                <Box>
+                  <Text ml={2} fontSize={"15px"}>
+                    {paiement != "undefined" && paiement != null
+                      ? paiement.methodeDePaiement1
+                      : "Espèces"}
+                  </Text>
+                  <Text ml={2} fontSize={"15px"}>
+                    {paiement != "undefined" && paiement != null
+                      ? paiement.methodeDePaiement2
+                      : ""}
+                  </Text>
+                </Box>
+              </Flex>
+              <Flex>
+                <Text fontWeight={"bold"} width={"fit-content"} mr={2}>
+                  Reservation :{" "}
+                </Text>
+                <Text width={"58%"} textAlign={"justify"}>
+                  {data.length != 0 ? (
+                    <Text color={"messenger.500"}>En ligne</Text>
+                  ) : (
+                    <Text color={"red.400"}>Non Disponible</Text>
+                  )}
+                </Text>
+              </Flex>
+              <Center display={"flex"} >
+              <Box mt={5} mr={5}>
                   <Button
                     color={"#fff"}
-                    width={"94px"}
+                    width={"150px"}
+                    height={"30px"}
+                    as={"a"}
+                    // onClick={onOpen}
+                    bgColor={"green"}
+                    _hover={{
+                      backgroundColor: " cyan.900",
+                      color: "white ",
+                    }}
+                    href={`tel:${sessionStorage.getItem("savefrom")}`}
+                    leftIcon={<BsTelephoneOutboundFill />}
+                  >
+                    Nous Contacter
+                  </Button>
+                  
+                </Box>
+                <Box mt={5} >
+                  <Button
+                    color={"#fff"}
+                    width={"150px"}
                     height={"30px"}
                     as={"a"}
                     onClick={onOpen}
@@ -1830,7 +1999,7 @@ export default function Intermed1() {
                       backgroundColor: " cyan.900",
                       color: "white ",
                     }}
-                    leftIcon={<BsTelephoneOutboundFill />}
+                    // leftIcon={<BsTelephoneOutboundFill />}
                   >
                     Reserver
                   </Button>
@@ -1891,66 +2060,7 @@ export default function Intermed1() {
                     </ModalContent>
                   </Modal>
                 </Box>
-              </Box>
-              <Heading fontSize={"40px"}>{nom}</Heading>
-            </Box>
-            <Box>
-              <Text fontSize={"15px"} fontWeight={"medium"}>
-                {addresse}
-              </Text>
-              <Flex mb={2} mt={2}>
-                <BsFillTelephoneOutboundFill />
-                <Text
-                  fontSize={"15px"}
-                  fontWeight={"medium"}
-                  ml={2}
-                  color={"green"}
-                >
-                  {numero}
-                </Text>
-              </Flex>
-              <Flex>
-                <Text fontWeight={"bold"} mr={2}>
-                  Description :{" "}
-                </Text>
-                {Desc1 == "undefined" ? (
-                  <Text width={"58%"} textAlign={"justify"}>
-                    {categorie} Africain
-                  </Text>
-                ) : (
-                  <Text width={"58%"} textAlign={"justify"}>
-                    {Desc1}
-                  </Text>
-                )}
-              </Flex>
-              <Flex>
-                <Text fontWeight={"bold"}>Moyen De paiement : </Text>
-                <Box>
-                  <Text ml={2} fontSize={"15px"}>
-                    {paiement != "undefined" && paiement != null
-                      ? paiement.methodeDePaiement1
-                      : "Espèces"}
-                  </Text>
-                  <Text ml={2} fontSize={"15px"}>
-                    {paiement != "undefined" && paiement != null
-                      ? paiement.methodeDePaiement2
-                      : ""}
-                  </Text>
-                </Box>
-              </Flex>
-              <Flex>
-                <Text fontWeight={"bold"} width={"fit-content"} mr={2}>
-                  Reservation :{" "}
-                </Text>
-                <Text width={"58%"} textAlign={"justify"}>
-                  {data.length != 0 ? (
-                    <Text color={"messenger.500"}>En ligne</Text>
-                  ) : (
-                    <Text color={"red.400"}>Non Disponible</Text>
-                  )}
-                </Text>
-              </Flex>
-
+                </Center>
               <Flex>
                 <Heading
                   as={"h3"}
@@ -1972,7 +2082,7 @@ export default function Intermed1() {
                   :
                 </Heading>
               </Flex>
-              <Collapse in={show}>
+             
                 <Box ml={10}>
                   <Text fontSize={"15px"}>
                     lundi:{" "}
@@ -2017,10 +2127,13 @@ export default function Intermed1() {
                       : " Non Renseigné"}
                   </Text>
                 </Box>
-              </Collapse>
+            
             </Box>
-            <Box mr={10}>
-              <Box mr={10} display={["none", "none", "none", "grid", "grid"]}>
+            <Text mt={5} as={"h3"}
+                  fontWeight={"bold"}>Nous rejoindre</Text>
+            <Center>
+            <Box  mt={10}>
+              <Box  display={["none", "none", "none", "grid", "grid"]}>
                 <iframe
                   width="400"
                   height="250"
@@ -2046,9 +2159,10 @@ export default function Intermed1() {
                 ></iframe>
               </Box>
             </Box>
+            </Center>
           </Flex>
           <Flex display={["none", "none", "grid", "none", "none"]}>
-            <Box display={"flex"} mb={5}>
+            <Box  mb={5}>
               <Box mr={5}>
                 <Image
                   src={`${imageUrl}`}
@@ -2056,9 +2170,9 @@ export default function Intermed1() {
                   width={["150px", "150px", "150px", "200px", "200px"]}
                   height={["150px", "150px", "150px", "200px", "200px"]}
                   maxHeight={"200px"}
-                  maxWidth={"200px"}
+                  maxWidth={"100%"}
                   minHeight={"80px"}
-                  minWidth={"100px"}
+                  minWidth={"100%"}
                 />
                 <Box mt={5}>
                   <Button
@@ -2277,12 +2391,12 @@ export default function Intermed1() {
             </Box>
             
           </Flex>
-          <Heading fontSize={"20px"} mt={10}>
+          {/* <Heading fontSize={"20px"} mt={10}>
             Images du magasin{" "}
-          </Heading>
+          </Heading> */}
 
           {/* Slider */}
-          <section
+          {/* <section
             style={{
               marginTop: "20px",
               marginRight: "20px",
@@ -2309,7 +2423,7 @@ export default function Intermed1() {
                 );
               })}
             </Carousel>
-          </section>
+          </section> */}
 
           {/* fin slide  */}
           {data.length != 0 ? (
@@ -2319,22 +2433,24 @@ export default function Intermed1() {
                 Les produits{" "}
               </Heading>
               <Flex mt={10}>
-                <SimpleGrid columns={[1, 2, 3, 4, 5]} spacing={2} mr={20}>
+                <SimpleGrid columns={[1, 2, 3, 4, 5]}  mr={20}>
                   {data.map((data, key) => (
                     <Box
                       key={data.id}
                       maxW={"fit-content"}
-                      height={"400px"}
+                      // height={"400px"}
+                      mb={5}
                       borderRadius="lg"
-                      mt={4}
-                      mb={20}
+                     
+                      
                       mr={5}
+                      display={"flex"}
                       // border={"1px solid black"}
                     >
                       <Box
                         width={"fit-content"}
                         height={"fit-content"}
-                        pt={10}
+                        // pt={10}
                         pl={5}
                       >
                         <Image
@@ -2344,22 +2460,23 @@ export default function Intermed1() {
                           height={"150px"}
                           maxH={"200px"}
                           maxW={"200px"}
+                          borderRadius={"25px"}
                         />
                       </Box>
 
-                      <Box p="6">
+                      <Box ml={5} >
                         <Box
-                          mt="1"
+                          
                           fontWeight="semibold"
                           as="h5"
                           lineHeight="tight"
                           noOfLines={3}
                           width={"270px"}
-                          height={"50px"}
-                          pb={20}
+                          height={"fit-content"}
+                          
                         >
-                          <Text width={"150px"}>{data.nom}</Text>
-                          <Box textColor={"blue"} color={"blue.400"} h={5}>
+                          <Text width={"200px"} fontSize={"20px"}>{data.nom}</Text>
+                          <Box textColor={"blue"} color={"blue.400"}  >
                             {data.prix}
                             <Box as="span" pl={2} fontSize="sm">
                               €
@@ -2370,7 +2487,7 @@ export default function Intermed1() {
                         <Box
                           fontWeight="normal"
                           lineHeight="taller"
-                          mb={5}
+                         
                           noOfLines={8}
                           w={{ base: "150px", md: "200px" }}
                           // Height={"250px"}
@@ -2382,7 +2499,7 @@ export default function Intermed1() {
                             <>
                               {" "}
                               <Tooltip label={data.description}>
-                                <Text noOfLines={1}>{data.description}</Text>
+                                <Text noOfLines={3} width={"200px"}>{data.description}</Text>
                               </Tooltip>
                             </>
                           )}
@@ -2566,7 +2683,7 @@ export default function Intermed1() {
             <Box mr={10} display={["none", "none", "none", "grid", "grid"]}>
               <iframe
                 width="400"
-                height="250"
+                height="200"
                 loading="lazy"
                 allowFullScreen
                 referrerPolicy="no-referrer-when-downgrade"
@@ -2579,6 +2696,7 @@ export default function Intermed1() {
                   width={"150px"}
                   height={"30px"}
                   as={"a"}
+                  ml={"30%"}
                   onClick={onOpen}
                   bgColor={"cyan.700"}
                   _hover={{

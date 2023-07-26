@@ -30,12 +30,33 @@ import InputBar from "@/components/InputBar";
 import Navbar from "@/components/Navbar";
 import FooterR from "@/components/footerResponsif";
 import { useState } from "react";
+import axios from "axios";
 
 export default function Contact() {
   const toast = useToast();
-  const [email, setEmail] = useState();
-  const [message, setMessage] = useState();
-  const [nom, setNom] = useState();
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [nom, setNom] = useState("");
+  const [etatB, setEtatB] = useState("")
+  
+
+  const SendMail= async ()=>{
+
+    await axios.post('/api/Send2', {
+      message:message.trim() ,
+      email: email.toString().trim(),
+      nom: nom.toString().trim(),
+        }).then((response)=>{alert("Votre Message a Bien été reçu")});
+  }
+
+
+ 
+
+
+
+
+
+
   return (
     <>
     <Container maxW="full" mt={0} centerContent overflow="hidden">
@@ -134,11 +155,11 @@ export default function Contact() {
                     <VStack spacing={5}>
                       <FormControl id="name">
                         <FormLabel>Votre Nom</FormLabel>
-                        <InputGroup borderColor="#E0E1E7">
-                          <InputLeftElement
+                        <InputGroup borderColor="#0B0E3F" color="#0B0E3F">
+                          {/* <InputLeftElement
                             pointerEvents="none"
                             // children={<BsPerson color="gray.800" />}
-                          />
+                          /> */}
                           <Input
                             type="text"
                             size="md"
@@ -148,11 +169,11 @@ export default function Contact() {
                       </FormControl>
                       <FormControl id="name">
                         <FormLabel>E-Mail</FormLabel>
-                        <InputGroup borderColor="#E0E1E7">
-                          <InputLeftElement
+                        <InputGroup  borderColor="#0B0E3F">
+                          {/* <InputLeftElement
                             pointerEvents="none"
                             // children={<MdOutlineEmail color="gray.800" />}
-                          />
+                          /> */}
                           <Input
                             type="text"
                             size="md"
@@ -163,7 +184,9 @@ export default function Contact() {
                       <FormControl id="name">
                         <FormLabel>Message</FormLabel>
                         <Textarea
-                          borderColor="gray.300"
+                        minLength={30}
+                         borderColor="#0B0E3F"
+                          // borderColor="gray.300"
                           _hover={{
                             borderRadius: "gray.300",
                           }}
@@ -177,7 +200,8 @@ export default function Contact() {
                           bg="#0D74FF"
                           color="white"
                           _hover={{}}
-                          onClick={()=>alert("En cours de Maintenance")}
+                          isDisabled={nom.length <= 3 || email.length <= 10 || message.length <= 30}
+                          onClick={()=>{SendMail(),setNom(""),setEmail(""),setMessage("")}}
                         >
                           Envoyer
                         </Button>
