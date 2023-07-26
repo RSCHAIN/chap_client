@@ -381,8 +381,7 @@ export default function Intermed1() {
     categorie != "Esthetique" &&
     categorie != "Restauration" &&
     categorie != "Fret" &&
-    categorie != "Salon de Coiffure" &&
-    categorie != "Commerce de meches"
+    categorie != "Salon de Coiffure"
   ) {
     return (
       <>
@@ -1537,40 +1536,9 @@ export default function Intermed1() {
           </Flex>
 
 
-          <Heading fontSize={"20px"} mt={10}>
-            Images du magasin{" "}
-          </Heading>
+        
 
-          {/* Slider */}
-          <section
-            style={{
-              marginTop: "20px",
-              marginRight: "20px",
-
-              marginBottom: "70px",
-            }}
-          >
-            <Carousel
-              partialVisbile
-              deviceType={"mobile"}
-              itemClass="image-item"
-              responsive={responsive}
-            >
-              {images.slice(0, images.length).map((image, index) => {
-                return (
-                  <Image
-                    key={index}
-                    alt={`${image}`}
-                    maxWidth={{base:'150px',md:"200px"}}
-                    maxHeight={{base:'150px',md:"200px"}}
-                    minWidth={{base:'150px',md:"200px"}}
-                    minHeight={{base:'150px',md:"200px"}}
-                    src={image}
-                  />
-                );
-              })}
-            </Carousel>
-          </section>
+      
 
           {/* fin slide  */}
         </Box>
