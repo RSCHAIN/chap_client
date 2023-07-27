@@ -52,7 +52,7 @@ export default function All (){
         <Navbar /> */}
         
         <Center mt={10}>
-        <Box width={"80%"}>
+        <Box width={"100%"}>
         <Restaurant data={modalData} />
         <Epicerie data={modalData} />
         <Cosmetique data={modalData} />

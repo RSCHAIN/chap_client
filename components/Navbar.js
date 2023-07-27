@@ -39,6 +39,7 @@ export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
   const auth = getAuth(app);
   const [total,setTotal]=useState('')
+  const [postal,setPostal]=useState('')
  const numb=()=>{
 
 
@@ -54,9 +55,16 @@ export default function Navbar() {
 
   localStorage.setItem("total", total);
 };
-
+  
 useEffect(()=>{
   numb()
+  if (postal == null) {
+    localStorage.setItem("postal","")
+  }
+  else{
+    setPostal(localStorage.getItem("postal"))
+  }
+  
 })
 
 
@@ -103,10 +111,10 @@ useEffect(()=>{
             // ml={"25%"}
             fontSize={20}
             color={"black"}
+            justifyContent={"space-between"}
           >
             {/* <DesktopNav /> */}
-
-            <Link
+            <Flex>  <Link
               href={"/"}
               mr={3}
               fontSize={"1rem"}
@@ -131,7 +139,8 @@ useEffect(()=>{
               _hover={{ textDecoration: "none", color: "#068DA9" }}
             >
              Nous-contacter
-            </Link>
+            </Link></Flex>
+            {postal.length ==5 ? <><Flex  mr={10}><Text mr={5}>Votre code postal</Text>{postal}</Flex></>:<></>}
             {/* <Menu isLazy>
               <MenuButton
                 // mr={3}

@@ -9,6 +9,9 @@ import {
   Box,
   Button,
   Center,
+  Editable,
+  EditableInput,
+  EditablePreview,
   Flex,
   Heading,
   Image,
@@ -29,6 +32,7 @@ import {
   SimpleGrid,
   Stack,
   Text,
+  Tooltip,
   useDisclosure,
 } from "@chakra-ui/react";
 import React, { useState, useEffect, useRef } from "react";
@@ -378,9 +382,15 @@ const LadingCorps = () => {
       update();
       setDatas(1);
     }
-
+    if (postal == null) {
+      localStorage.setItem("postal",0)
+      setPostal(0)
+    }else{
+      setPostal(localStorage.getItem("postal"))
+    }
+    
     //updateAll()
-  }, [datas, update, cat]);
+  }, [datas, update, cat,postal]);
   if (datas != 0) {
     return (
       <>
@@ -393,13 +403,21 @@ const LadingCorps = () => {
             </Heading>
             <Center width={"100%"}>
               <Box>
-                <Text mr={10}>
-                  Entrez votre code postal pour trouver les commerces à
-                  proximité
-                </Text>
+               
                 {/* <SearcheIcone message={"Recherchez un magasin proche"}/> */}
-
-                <InputGroup>
+ {postal.length ==5 ? <><Flex><Text mr={5} mt={1}>Votre code postal</Text> <Tooltip label='click, pour editer'><Editable  defaultValue={postal}>
+  <EditablePreview/>
+  <EditableInput onChange={(e)=>{setPostal(e.target.value),localStorage.setItem("postal",e.target.value)}}/>
+</Editable></Tooltip></Flex></> :
+                
+               
+                <>
+                
+                <Text mr={10}>
+                Entrez votre code postal pour trouver les commerces à
+                proximité
+              </Text>
+              <InputGroup>
                   <Input
                     type="number"
                     placeholder="Entrez votre code postal "
@@ -408,14 +426,15 @@ const LadingCorps = () => {
                     onChange={(e)=>{setPostal(e.target.value),localStorage.setItem("postal",e.target.value)}}
                     // onClick={onOpen}
                   />
-                  <InputRightAddon as={Link} href={"#"} _hover={{
+                  {/* <InputRightAddon as={Link} href={"#"} _hover={{
                     textDecoration: "none",
                     bgColor: "#00d4ff"
                   }} cursor={"pointer"}onClick={()=>{localStorage.setItem("postal",postal)}}>
                     <Text>Sauvegarder</Text>
-                  </InputRightAddon>
+                  </InputRightAddon> */}
                 </InputGroup>
-
+                </>
+                }
                 {/* <Modal isOpen={isOpen} onClose={onClose}>
                   <ModalOverlay />
                   <ModalContent>

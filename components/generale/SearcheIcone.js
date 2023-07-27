@@ -63,9 +63,9 @@ useEffect(()=>{
     return (
         <>
   <InputGroup>
-  <Input type='search' placeholder={Object.values(message)} w={["10em","10em","10em","20em","20em",]} onClick={onOpen}/>
+  <Input type='search' placeholder={Object.values(message)} w={["5em","5em","10em","20em","20em",]} onClick={onOpen}/>
     <InputRightAddon pointerEvents='none'>
-    <Text>Rechercher</Text>
+    <Text >Rechercher</Text>
     </InputRightAddon>
   </InputGroup>
 

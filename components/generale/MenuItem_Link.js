@@ -20,7 +20,7 @@ const MenuItem_Link = () => {
           direction={{ base: "column", md: "row" }}
         >
           <Link href="/">Accueil</Link>
-          <Menucat />
+          {/* <Menucat /> */}
           <Link
             href={"/Whoami"}
             mr={3}
