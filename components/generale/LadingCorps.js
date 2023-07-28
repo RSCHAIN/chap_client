@@ -386,6 +386,7 @@ const LadingCorps = () => {
       localStorage.setItem("postal","0")
       setPostal("0")
     }else{
+      
       setPostal(localStorage.getItem("postal"))
     }
     
