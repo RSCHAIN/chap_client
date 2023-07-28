@@ -424,6 +424,7 @@ const LadingCorps = () => {
                     placeholder="Entrez votre code postal "
                     w={"20em"}
                     minLength={5}
+                    value={postal}
                     onChange={(e)=>{setPostal(e.target.value),localStorage.setItem("postal",e.target.value)}}
                     // onClick={onOpen}
                   />
