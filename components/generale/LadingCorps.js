@@ -544,7 +544,8 @@ const LadingCorps = () => {
             </Center>
 
             {/* la box de toutes les cartegorie */}
-            {postal.length<=4 ?<Flex
+            {postal.length<=4 ?
+            <Flex
               height={"auto"}
               position={"relative"}
               width={"100%"}

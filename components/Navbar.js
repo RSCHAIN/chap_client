@@ -58,19 +58,22 @@ export default function Navbar() {
   
 useEffect(()=>{
   numb()
-  if (postal == null) {
+  if (postal == null || postal == "undefined") {
     localStorage.setItem("postal","")
+    console.log("okay")
   }
   else{
     setPostal(localStorage.getItem("postal"))
+    console.log("desole")
   }
   
-})
+},[postal,numb])
 
 
 
   return (
     <>
+    
     <Box display={["none","none","none","grid","grid"]}>
       <Flex
         bg={useColorModeValue("white", "gray.800")}

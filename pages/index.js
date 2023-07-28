@@ -40,8 +40,12 @@ export default function Home() {
   useEffect(()=>{
     localStorage.setItem("index",0)
     const verifPos = localStorage.getItem("location")
+    const postal = localStorage.getItem("postal")
     if (verifPos== undefined) {
-      localStorage.setItem("location","")
+      localStorage.setItem("location"," ")
+    }
+    if (postal== undefined || postal== null) {
+      localStorage.setItem("postal","0")
     }
     update()
     updateAll()
