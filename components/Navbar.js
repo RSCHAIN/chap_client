@@ -140,7 +140,7 @@ useEffect(()=>{
             >
              Nous-contacter
             </Link></Flex>
-            {postal.length ==5 ? <><Flex  mr={10}><Text mr={5}>Votre code postal</Text>{postal}</Flex></>:<></>}
+            {/* {postal.length ==5 ? <><Flex  mr={10}><Text mr={5}>Votre code postal</Text>{postal}</Flex></>:<></>} */}
             {/* <Menu isLazy>
               <MenuButton
                 // mr={3}
