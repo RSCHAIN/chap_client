@@ -58,14 +58,10 @@ export default function Navbar() {
   
 useEffect(()=>{
   numb()
-  if (postal == null || postal == "undefined") {
-    localStorage.setItem("postal","")
-    console.log("okay")
-  }
-  else{
-    setPostal(localStorage.getItem("postal"))
-    console.log("desole")
-  }
+ const postale = localStorage.getItem("postal")
+ if (postale == undefined || postale== null ) {
+  localStorage.setItem("postal","0")
+} 
   
 },[postal,numb])
 
