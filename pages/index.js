@@ -32,19 +32,23 @@ import { BsGeoAlt } from "react-icons/bs";
 import { onValue, ref } from "@firebase/database";
 import { db2 } from "@/FIREBASE/clientApp";
 import Cookies from "cookies";
+import { useRouter } from "next/router";
 
 export default function Home() {
+  const router = useRouter()
   const [getter,setGetter] = useState([])
   const [isLagerThan768] = useMediaQuery("(min-width: 768px)");
   const [cat, setCat] = useState([]);
   useEffect(()=>{
     localStorage.setItem("index",0)
     const verifPos = localStorage.getItem("location")
-    const postal = localStorage.getItem("postal")
+    const postale = localStorage.getItem("postal")
     if (verifPos== undefined) {
       localStorage.setItem("location"," ")
+
     }
-    if (postal== undefined || postal== null) {
+    if (postale == undefined || postale== null) {
+      router.reload()
       localStorage.setItem("postal","0")
     }
     update()
