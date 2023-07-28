@@ -54,15 +54,16 @@ export default function Navbar() {
   }
 
   localStorage.setItem("total", total);
+  const postale = localStorage.getItem("postal")
+ if (postale == undefined || postale== null ) {
+  localStorage.setItem("postal","0")
+
+} 
 };
   
 useEffect(()=>{
   numb()
- const postale = localStorage.getItem("postal")
- if (postale == undefined || postale== null ) {
-  localStorage.setItem("postal","0")
-  setPostal("0")
-} 
+ 
   
 },[postal,numb])
 
