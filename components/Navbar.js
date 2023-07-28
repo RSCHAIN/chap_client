@@ -61,6 +61,7 @@ useEffect(()=>{
  const postale = localStorage.getItem("postal")
  if (postale == undefined || postale== null ) {
   localStorage.setItem("postal","0")
+  setPostal("0")
 } 
   
 },[postal,numb])
