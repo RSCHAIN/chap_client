@@ -69,7 +69,7 @@ useEffect(()=>{
 
   return (
     <>
-    
+  
     <Box display={["none","none","none","grid","grid"]}>
       <Flex
         bg={useColorModeValue("white", "gray.800")}
