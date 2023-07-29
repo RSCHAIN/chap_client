@@ -384,7 +384,7 @@ export default function Intermed1() {
         <Box ml={["10%", "10%", "10%", "20%", "20%"]} mt={10} mb={10}>
           <Flex display={["none", "none", "none", "flex", "flex"]}>
             <Box mr={5}>
-              <Image
+              <Image 
                 src={`${imageUrl}`}
                 alt={`logo de ${nom}`}
                 width={["150px", "150px", "150px", "200px", "200px"]}
