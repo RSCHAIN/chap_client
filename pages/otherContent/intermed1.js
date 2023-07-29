@@ -359,14 +359,13 @@ export default function Intermed1() {
 
   const images = [
   
-    "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/Alimentation%2FCHAPMAG2%2Fthuyamalli-raw-rice.png?alt=media&token=b2a9cac2-27d7-4bf2-9718-a02ba70f1e64",
-    "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/Alimentation%2FCHAPMAG2%2F6-riz-1-7-1140x570.jpg?alt=media&token=c0b1d778-e4f7-4b08-8826-91ab5d574e0f",
     imageUrl,
-    "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/Alimentation%2FCHAPMAG2%2Fthuyamalli-raw-rice.png?alt=media&token=b2a9cac2-27d7-4bf2-9718-a02ba70f1e64",
-    "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/Alimentation%2FCHAPMAG2%2F6-riz-1-7-1140x570.jpg?alt=media&token=c0b1d778-e4f7-4b08-8826-91ab5d574e0f",
+    
     imageUrl,
-    "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/Alimentation%2FCHAPMAG2%2Fthuyamalli-raw-rice.png?alt=media&token=b2a9cac2-27d7-4bf2-9718-a02ba70f1e64",
-    "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/Alimentation%2FCHAPMAG2%2F6-riz-1-7-1140x570.jpg?alt=media&token=c0b1d778-e4f7-4b08-8826-91ab5d574e0f",
+    imageUrl,
+    
+    imageUrl,
+    
   ];
   console.log(timert);
   if (
