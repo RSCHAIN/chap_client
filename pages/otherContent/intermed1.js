@@ -908,30 +908,28 @@ export default function Intermed1() {
             </Carousel>
           </section> */}
 
-          {data.length != 0 ? (
+{data.length != 0 ? (
             <>
               {" "}
               <Heading fontSize={"20px"} mt={10}>
                 Les produits{" "}
               </Heading>
               <Flex mt={10}>
-                <SimpleGrid columns={[1, 2, 3, 4, 5]} spacing={2} mr={20}>
+                <SimpleGrid columns={[1, 1, 1, 2, 2]}>
                   {data.map((data, key) => (
                     <Box
                       key={data.id}
                       maxW={"fit-content"}
-                      height={"400px"}
+                      // height={"400px"}
+                      mb={5}
                       borderRadius="lg"
-                      mt={4}
-                      mb={20}
-                      mr={5}
+                      display={"flex"}
                       // border={"1px solid black"}
                     >
                       <Box
-                        width={"fit-content"}
+                        width={"200px"}
                         height={"fit-content"}
-                        pt={10}
-                        pl={5}
+                        // pt={10}
                       >
                         <Image
                           src={data.imageUrl}
@@ -940,22 +938,23 @@ export default function Intermed1() {
                           height={"200px"}
                           maxH={"200px"}
                           maxW={"200px"}
+                          borderRadius={"25px"}
                         />
                       </Box>
 
-                      <Box p="6">
+                      <Box ml={5}>
                         <Box
-                          mt="1"
                           fontWeight="semibold"
                           as="h5"
                           lineHeight="tight"
                           noOfLines={3}
                           width={"270px"}
-                          height={"50px"}
-                          pb={20}
+                          height={"fit-content"}
                         >
-                          <Text width={"150px"}>{data.nom}</Text>
-                          <Box textColor={"blue"} color={"blue.400"} h={5}>
+                          <Text width={"200px"} fontSize={"20px"}>
+                            {data.nom}
+                          </Text>
+                          <Box textColor={"blue"} color={"blue.400"}>
                             {data.prix}
                             <Box as="span" pl={2} fontSize="sm">
                               €
@@ -966,7 +965,6 @@ export default function Intermed1() {
                         <Box
                           fontWeight="normal"
                           lineHeight="taller"
-                          mb={5}
                           noOfLines={8}
                           w={{ base: "150px", md: "200px" }}
                           // Height={"250px"}
@@ -978,7 +976,9 @@ export default function Intermed1() {
                             <>
                               {" "}
                               <Tooltip label={data.description}>
-                                <Text noOfLines={1}>{data.description}</Text>
+                                <Text noOfLines={3} width={"200px"}>
+                                  {data.description}
+                                </Text>
                               </Tooltip>
                             </>
                           )}
@@ -2900,8 +2900,8 @@ export default function Intermed1() {
                         <Image
                           src={data.imageUrl}
                           alt={data.nom}
-                          width={["150px", "150px", "150px", "190px", "190px"]}
-                          height={"150px"}
+                          width={"200px"}
+                          height={"200px"}
                           maxH={"200px"}
                           maxW={"200px"}
                           borderRadius={"25px"}
@@ -3984,8 +3984,8 @@ export default function Intermed1() {
                         <Image
                           src={data.imageUrl}
                           alt={data.nom}
-                          width={["150px", "150px", "150px", "190px", "190px"]}
-                          height={"150px"}
+                          width={"200px"}
+                          height={"200px"}
                           maxH={"200px"}
                           maxW={"200px"}
                           borderRadius={"25px"}
