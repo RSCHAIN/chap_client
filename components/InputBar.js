@@ -102,7 +102,7 @@ const InputBar = () => {
  
 </CookieConsent>
       <Flex
-        width={"-webkit-max-content"}
+        width={"full"}
         height={"4em"}
         align={"center"}
         justifyContent={"space-evenly"}
