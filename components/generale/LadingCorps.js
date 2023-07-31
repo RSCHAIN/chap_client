@@ -406,7 +406,7 @@ const LadingCorps = () => {
               <Box>
                
                 {/* <SearcheIcone message={"Recherchez un magasin proche"}/> */}
- {postal.length ==5 ? <><Flex><Text mr={5} mt={1}>Votre code postal</Text> <Tooltip label='click, pour editer'><Editable  defaultValue={postal}>
+ {postal.length ==5 ? <><Flex><Text mt={1}>Votre code postal</Text> <Tooltip label='click, pour editer'><Editable  defaultValue={postal}>
   <EditablePreview/>
   <EditableInput onChange={(e)=>{setPostal(e.target.value),localStorage.setItem("postal",e.target.value)}}/>
 </Editable></Tooltip></Flex></> :
@@ -414,7 +414,7 @@ const LadingCorps = () => {
                
                 <>
                 
-                <Text mr={10}>
+                <Text >
                 Entrez votre code postal pour trouver les commerces à
                 proximité
               </Text>
