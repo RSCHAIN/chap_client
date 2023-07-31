@@ -73,7 +73,7 @@ const ListHeader = ({ children }) => {
 
 export default function FooterR() {
   return (
-    <Center w={"100%"} >
+    <Center w={"-webkit-max-content"} >
     <Box 
       bg={'#B0C4DE'}
       color={useColorModeValue('gray.700', 'gray.200')} w='full'>
