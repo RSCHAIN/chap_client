@@ -936,8 +936,8 @@ export default function Intermed1() {
                         <Image
                           src={data.imageUrl}
                           alt={data.nom}
-                          width={["150px", "150px", "150px", "190px", "190px"]}
-                          height={"150px"}
+                          width={"200px"}
+                          height={"200px"}
                           maxH={"200px"}
                           maxW={"200px"}
                         />
