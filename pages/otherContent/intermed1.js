@@ -2301,17 +2301,7 @@ export default function Intermed1() {
               width={{ base: "auto", md: "auto", lg: "auto" }}
             > */}
               {/* CSS files for react-slick */}
-              <link
-                rel="stylesheet"
-                type="text/css"
-                charSet="UTF-8"
-                href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
-              />
-              <link
-                rel="stylesheet"
-                type="text/css"
-                href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
-              />
+            
 
               {/* {isLagerThan768 ? (
           <>
@@ -2439,8 +2429,9 @@ export default function Intermed1() {
                   )}
                 </Text>
               </Flex>
-              <Center display={"flex"}>
-                <Box mt={5} mr={5}>
+              {/* <Center > */}
+                <SimpleGrid columns={2} spacingX={3}>
+                <Box mt={5}>
                   <Button
                     color={"#fff"}
                     width={"150px"}
@@ -2458,7 +2449,7 @@ export default function Intermed1() {
                     Nous Contacter
                   </Button>
                 </Box>
-                <Box mt={5} mr={5}>
+                <Box mt={5} >
                   <Button
                     color={"#fff"}
                     width={"150px"}
@@ -2477,7 +2468,8 @@ export default function Intermed1() {
                     Site Web
                   </Button>
                 </Box>
-                <Box mt={5}>
+               
+                <Box mt={5} ml={"50%"}>
                   <Button
                     color={"#fff"}
                     width={"150px"}
@@ -2550,7 +2542,9 @@ export default function Intermed1() {
                     </ModalContent>
                   </Modal>
                 </Box>
-              </Center>
+                </SimpleGrid>
+              {/* </Center> */}
+
               <Flex>
                 <Heading
                   as={"h3"}
@@ -2652,78 +2646,7 @@ export default function Intermed1() {
             </Center>
           </Flex>
           <Flex display={["none", "none", "grid", "none", "none"]}>
-            {/* <Box
-              overflow="-moz-hidden-unscrollable"
-              position={"relative"}
-              height={{ base: "auto", md: "auto", lg: "auto" }}
-              width={{ base: "auto", md: "auto", lg: "auto" }}
-            > */}
-              {/* CSS files for react-slick */}
-              {/* <link
-                rel="stylesheet"
-                type="text/css"
-                charSet="UTF-8"
-                href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
-              />
-              <link
-                rel="stylesheet"
-                type="text/css"
-                href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
-              /> */}
-
-              {/* {isLagerThan768 ? (
-          <>
-            <IconButton
-              aria-label="left-arrow"
-              // colorScheme="messenger"
-              borderRadius="full"
-              position="absolute"
-              left={side}
-              top={top}
-              transform={"translate(0%, -50%)"}
-              zIndex={2}
-              onClick={() => slider?.slickPrev()}
-              bg={"#fff"}
-            >
-              <BiLeftArrowAlt color="#000" />
-            </IconButton>
-
-            <IconButton
-              aria-label="right-arrow"
-              // colorScheme="messenger"
-              borderRadius="full"
-              position="absolute"
-              right={side}
-              top={top}
-              transform={"translate(0%, -50%)"}
-              zIndex={2}
-              onClick={() => slider?.slickNext()}
-              bg={"#fff"}
-            >
-              <BiRightArrowAlt color="#000" />
-            </IconButton>
-          </>
-        ) : (
-          <></>
-        )} */}
-
-              {/* Slider */}
-              {/* <Slider {...settings} ref={(slider) => setSlider(slider)}>
-                {images.map((url, index) => (
-                  <Box
-                    key={index}
-                    overflow={"auto"}
-                    height={{ base: "xs", md: "xs", lg: "xl" }}
-                    minw={{ base: "auto", md: "xs", lg: "xl" }}
-                    position="relative"
-                    backgroundPosition="center"
-                    backgroundRepeat="no-repeat"
-                    backgroundSize="contain"
-                    backgroundImage={url}
-                  ></Box>
-                ))}
-              </Slider>
-            </Box> */}
+           
              <Box display={"flex"} mb={5}>
               <Box mr={5}>
                 <Image
@@ -2797,8 +2720,8 @@ export default function Intermed1() {
                   )}
                 </Text>
               </Flex>
-              <Center display={"flex"}>
-                <Box mt={5} mr={5}>
+              <SimpleGrid columns={2} spacingX={3}>
+                <Box mt={5}>
                   <Button
                     color={"#fff"}
                     width={"150px"}
@@ -2807,7 +2730,7 @@ export default function Intermed1() {
                     // onClick={onOpen}
                     bgColor={"green"}
                     _hover={{
-                      backgroundColor: " cyan.900",
+                      backgroundColor: " green.200",
                       color: "white ",
                     }}
                     href={`tel:${sessionStorage.getItem("savefrom")}`}
@@ -2816,7 +2739,7 @@ export default function Intermed1() {
                     Nous Contacter
                   </Button>
                 </Box>
-                <Box mt={5} mr={5}>
+                <Box mt={5} >
                   <Button
                     color={"#fff"}
                     width={"150px"}
@@ -2835,7 +2758,8 @@ export default function Intermed1() {
                     Site Web
                   </Button>
                 </Box>
-                <Box mt={5}>
+               
+                <Box mt={5} ml={"50%"}>
                   <Button
                     color={"#fff"}
                     width={"150px"}
@@ -2908,7 +2832,7 @@ export default function Intermed1() {
                     </ModalContent>
                   </Modal>
                 </Box>
-              </Center>
+                </SimpleGrid>
               <Flex>
                 <Heading
                   as={"h3"}
