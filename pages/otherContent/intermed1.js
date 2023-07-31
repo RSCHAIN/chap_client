@@ -1325,7 +1325,22 @@ export default function Intermed1() {
                 ))}
               </Slider>
             </Box> */}
-            <Heading fontSize={"40px"}>{nom}</Heading>
+             <Box display={"flex"} mb={5}>
+              <Box mr={5}>
+                <Image
+                  src={`${imageUrl}`}
+                  alt={`logo de ${nom}`}
+                  width={["150px", "150px", "150px", "200px", "200px"]}
+                  height={["150px", "150px", "150px", "200px", "200px"]}
+                  maxHeight={"200px"}
+                  maxWidth={"200px"}
+                  minHeight={"80px"}
+                  minWidth={"100px"}
+                />
+                
+              </Box>
+              <Heading fontSize={"40px"}>{nom}</Heading>
+            </Box>
 
             <Box>
               <Text fontSize={"15px"} fontWeight={"medium"}>
@@ -1633,7 +1648,22 @@ export default function Intermed1() {
                 ))}
               </Slider>
             </Box> */}
-            <Heading fontSize={"40px"}>{nom}</Heading>
+             <Box display={"flex"} mb={5}>
+              <Box mr={5}>
+                <Image
+                  src={`${imageUrl}`}
+                  alt={`logo de ${nom}`}
+                  width={["150px", "150px", "150px", "200px", "200px"]}
+                  height={["150px", "150px", "150px", "200px", "200px"]}
+                  maxHeight={"200px"}
+                  maxWidth={"200px"}
+                  minHeight={"80px"}
+                  minWidth={"100px"}
+                />
+                
+              </Box>
+              <Heading fontSize={"40px"}>{nom}</Heading>
+            </Box>
 
             <Box>
               <Text fontSize={"15px"} fontWeight={"medium"}>
@@ -2261,6 +2291,23 @@ export default function Intermed1() {
           </Flex>
 
           <Flex display={["grid", "grid", "none", "none", "none"]}>
+            
+          <Box display={"flex"} mb={5}>
+              <Box mr={5}>
+                <Image
+                  src={`${imageUrl}`}
+                  alt={`logo de ${nom}`}
+                  width={["150px", "150px", "150px", "200px", "200px"]}
+                  height={["150px", "150px", "150px", "200px", "200px"]}
+                  maxHeight={"200px"}
+                  maxWidth={"200px"}
+                  minHeight={"80px"}
+                  minWidth={"100px"}
+                />
+                
+              </Box>
+              <Heading fontSize={"40px"}>{nom}</Heading>
+            </Box>
             {/* Slider */}
             {/* <Box
               overflow="-moz-hidden-unscrollable"
@@ -2334,7 +2381,22 @@ export default function Intermed1() {
                 ))}
               </Slider>
             </Box> */}
-            <Heading fontSize={"40px"}>{nom}</Heading>
+             <Box display={"flex"} mb={5}>
+              <Box mr={5}>
+                <Image
+                  src={`${imageUrl}`}
+                  alt={`logo de ${nom}`}
+                  width={["150px", "150px", "150px", "200px", "200px"]}
+                  height={["150px", "150px", "150px", "200px", "200px"]}
+                  maxHeight={"200px"}
+                  maxWidth={"200px"}
+                  minHeight={"80px"}
+                  minWidth={"100px"}
+                />
+                
+              </Box>
+              <Heading fontSize={"40px"}>{nom}</Heading>
+            </Box>
 
             <Box>
               <Text fontSize={"15px"} fontWeight={"medium"}>
@@ -2677,7 +2739,22 @@ export default function Intermed1() {
                 ))}
               </Slider>
             </Box> */}
-            <Heading fontSize={"40px"}>{nom}</Heading>
+             <Box display={"flex"} mb={5}>
+              <Box mr={5}>
+                <Image
+                  src={`${imageUrl}`}
+                  alt={`logo de ${nom}`}
+                  width={["150px", "150px", "150px", "200px", "200px"]}
+                  height={["150px", "150px", "150px", "200px", "200px"]}
+                  maxHeight={"200px"}
+                  maxWidth={"200px"}
+                  minHeight={"80px"}
+                  minWidth={"100px"}
+                />
+                
+              </Box>
+              <Heading fontSize={"40px"}>{nom}</Heading>
+            </Box>
 
             <Box>
               <Text fontSize={"15px"} fontWeight={"medium"}>
@@ -3524,7 +3601,22 @@ export default function Intermed1() {
                 ))}
               </Slider>
             </Box> */}
-            <Heading fontSize={"40px"}>{nom}</Heading>
+             <Box display={"flex"} mb={5}>
+              <Box mr={5}>
+                <Image
+                  src={`${imageUrl}`}
+                  alt={`logo de ${nom}`}
+                  width={["150px", "150px", "150px", "200px", "200px"]}
+                  height={["150px", "150px", "150px", "200px", "200px"]}
+                  maxHeight={"200px"}
+                  maxWidth={"200px"}
+                  minHeight={"80px"}
+                  minWidth={"100px"}
+                />
+                
+              </Box>
+              <Heading fontSize={"40px"}>{nom}</Heading>
+            </Box>
 
             <Box>
               <Text fontSize={"15px"} fontWeight={"medium"}>
@@ -3867,7 +3959,22 @@ export default function Intermed1() {
                 ))}
               </Slider>
             </Box> */}
-            <Heading fontSize={"40px"}>{nom}</Heading>
+             <Box display={"flex"} mb={5}>
+              <Box mr={5}>
+                <Image
+                  src={`${imageUrl}`}
+                  alt={`logo de ${nom}`}
+                  width={["150px", "150px", "150px", "200px", "200px"]}
+                  height={["150px", "150px", "150px", "200px", "200px"]}
+                  maxHeight={"200px"}
+                  maxWidth={"200px"}
+                  minHeight={"80px"}
+                  minWidth={"100px"}
+                />
+                
+              </Box>
+              <Heading fontSize={"40px"}>{nom}</Heading>
+            </Box>
 
             <Box>
               <Text fontSize={"15px"} fontWeight={"medium"}>
