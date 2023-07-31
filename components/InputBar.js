@@ -102,7 +102,7 @@ const InputBar = () => {
  
 </CookieConsent>
       <Flex
-        width={"100%"}
+        width={"full"}
         height={"4em"}
         align={"center"}
         justifyContent={"space-evenly"}
@@ -147,7 +147,7 @@ const InputBar = () => {
         <Flex
           align={"center"}
           justifyContent={"center"}
-          width={"auto"}
+          width={"fit-content"}
           height={"full"}
         >
            <LoginSignButton />  <ResponsiveMenu />

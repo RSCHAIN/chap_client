@@ -1904,14 +1904,15 @@ export default function Intermed1() {
         <FooterR />
       </>
     );
-  } else if (categorie == "Restaurant") {
+  } 
+  else if (categorie == "Restaurant") {
     return (
       <>
         <InputBar />
         <Navbar />
         {/* CSS files for react-slick */}
 
-        <Box ml={["3%", "3%", "3%", "20%", "20%"]} mt={10} mb={10}>
+        <Box ml={["3%", "3%", "3%", "20%", "20%"]} mt={10} mb={10} >
           <Flex display={["none", "none", "none", "flex", "flex"]}>
             <Box mr={5}>
               <Image
@@ -2290,72 +2291,10 @@ export default function Intermed1() {
             </Box>
           </Flex>
 
-          <Flex display={["grid", "grid", "none", "none", "none"]}>
+          <Flex display={["grid", "grid", "none", "none", "none"]}  width={"-webkit-max-content"}>
             
         
-            {/* Slider */}
-            {/* <Box
-              overflow="-moz-hidden-unscrollable"
-              position={"relative"}
-              height={{ base: "auto", md: "auto", lg: "auto" }}
-              width={{ base: "auto", md: "auto", lg: "auto" }}
-            > */}
-              {/* CSS files for react-slick */}
-            
-
-              {/* {isLagerThan768 ? (
-          <>
-            <IconButton
-              aria-label="left-arrow"
-              // colorScheme="messenger"
-              borderRadius="full"
-              position="absolute"
-              left={side}
-              top={top}
-              transform={"translate(0%, -50%)"}
-              zIndex={2}
-              onClick={() => slider?.slickPrev()}
-              bg={"#fff"}
-            >
-              <BiLeftArrowAlt color="#000" />
-            </IconButton>
-
-            <IconButton
-              aria-label="right-arrow"
-              // colorScheme="messenger"
-              borderRadius="full"
-              position="absolute"
-              right={side}
-              top={top}
-              transform={"translate(0%, -50%)"}
-              zIndex={2}
-              onClick={() => slider?.slickNext()}
-              bg={"#fff"}
-            >
-              <BiRightArrowAlt color="#000" />
-            </IconButton>
-          </>
-        ) : (
-          <></>
-        )} */}
-
-              {/* Slider */}
-              {/* <Slider {...settings} ref={(slider) => setSlider(slider)}>
-                {images.map((url, index) => (
-                  <Box
-                    key={index}
-                    overflow={"auto"}
-                    height={{ base: "xs", md: "xs", lg: "xl" }}
-                    minw={{ base: "auto", md: "xs", lg: "xl" }}
-                    position="relative"
-                    backgroundPosition="center"
-                    backgroundRepeat="no-repeat"
-                    backgroundSize="contain"
-                    backgroundImage={url}
-                  ></Box>
-                ))}
-              </Slider>
-            </Box> */}
+          
              <Box display={"flex"} mb={5}>
               <Box mr={5}>
                 <Image
@@ -2645,7 +2584,7 @@ export default function Intermed1() {
               </Box>
             </Center>
           </Flex>
-          <Flex display={["none", "none", "grid", "none", "none"]}>
+          <Flex display={["none", "none", "grid", "none", "none"]} width={"-webkit-max-content"}>
            
              <Box display={"flex"} mb={5}>
               <Box mr={5}>
@@ -3058,7 +2997,7 @@ export default function Intermed1() {
         {/* CSS files for react-slick */}
 
         <Box ml={["3%", "3%", "3%", "20%", "20%"]} mt={10} mb={10}>
-          <Flex display={["none", "none", "none", "flex", "flex"]}>
+        <Flex display={["none", "none", "none", "flex", "flex"]}>
             <Box mr={5}>
               <Image
                 src={`${imageUrl}`}
@@ -3436,80 +3375,10 @@ export default function Intermed1() {
             </Box>
           </Flex>
 
-          <Flex display={["grid", "grid", "none", "none", "none"]}>
-            {/* Slider */}
-            {/* <Box
-              overflow="-moz-hidden-unscrollable"
-              position={"relative"}
-              height={{ base: "auto", md: "auto", lg: "auto" }}
-              width={{ base: "auto", md: "auto", lg: "auto" }}
-            > */}
-              {/* CSS files for react-slick */}
-              <link
-                rel="stylesheet"
-                type="text/css"
-                charSet="UTF-8"
-                href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
-              />
-              <link
-                rel="stylesheet"
-                type="text/css"
-                href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
-              />
-
-              {/* {isLagerThan768 ? (
-          <>
-            <IconButton
-              aria-label="left-arrow"
-              // colorScheme="messenger"
-              borderRadius="full"
-              position="absolute"
-              left={side}
-              top={top}
-              transform={"translate(0%, -50%)"}
-              zIndex={2}
-              onClick={() => slider?.slickPrev()}
-              bg={"#fff"}
-            >
-              <BiLeftArrowAlt color="#000" />
-            </IconButton>
-
-            <IconButton
-              aria-label="right-arrow"
-              // colorScheme="messenger"
-              borderRadius="full"
-              position="absolute"
-              right={side}
-              top={top}
-              transform={"translate(0%, -50%)"}
-              zIndex={2}
-              onClick={() => slider?.slickNext()}
-              bg={"#fff"}
-            >
-              <BiRightArrowAlt color="#000" />
-            </IconButton>
-          </>
-        ) : (
-          <></>
-        )} */}
-
-              {/* Slider */}
-              {/* <Slider {...settings} ref={(slider) => setSlider(slider)}>
-                {images.map((url, index) => (
-                  <Box
-                    key={index}
-                    overflow={"auto"}
-                    height={{ base: "xs", md: "xs", lg: "xl" }}
-                    minw={{ base: "auto", md: "xs", lg: "xl" }}
-                    position="relative"
-                    backgroundPosition="center"
-                    backgroundRepeat="no-repeat"
-                    backgroundSize="contain"
-                    backgroundImage={url}
-                  ></Box>
-                ))}
-              </Slider>
-            </Box> */}
+          <Flex display={["grid", "grid", "none", "none", "none"]}  width={"-webkit-max-content"}>
+            
+        
+          
              <Box display={"flex"} mb={5}>
               <Box mr={5}>
                 <Image
@@ -3571,20 +3440,10 @@ export default function Intermed1() {
                   </Text>
                 </Box>
               </Flex>
-              <Flex>
-                <Text fontWeight={"bold"} width={"fit-content"} mr={2}>
-                  Reservation :{" "}
-                </Text>
-                <Text width={"58%"} textAlign={"justify"}>
-                  {data.length != 0 ? (
-                    <Text color={"messenger.500"}>En ligne</Text>
-                  ) : (
-                    <Text color={"red.400"}>Non Disponible</Text>
-                  )}
-                </Text>
-              </Flex>
-              <Center display={"flex"}>
-                <Box mt={5} mr={5}>
+             
+              {/* <Center > */}
+                <SimpleGrid columns={2} spacingX={3}>
+                <Box mt={5}>
                   <Button
                     color={"#fff"}
                     width={"150px"}
@@ -3598,11 +3457,12 @@ export default function Intermed1() {
                     }}
                     href={`tel:${sessionStorage.getItem("savefrom")}`}
                     leftIcon={<BsTelephoneOutboundFill />}
+                    isDisabled={true}
                   >
                     Nous Contacter
                   </Button>
                 </Box>
-                <Box mt={5} mr={5}>
+                <Box mt={5} >
                   <Button
                     color={"#fff"}
                     width={"150px"}
@@ -3617,84 +3477,16 @@ export default function Intermed1() {
                     href={`${sessionStorage.getItem("website")}`}
                     leftIcon={<BiWorld />}
                     isExternal
+                    isDisabled={true}
                   >
                     Site Web
                   </Button>
                 </Box>
-                <Box mt={5}>
-                  <Button
-                    color={"#fff"}
-                    width={"150px"}
-                    height={"30px"}
-                    as={"a"}
-                    onClick={onOpen}
-                    bgColor={"cyan.700"}
-                    _hover={{
-                      backgroundColor: " cyan.900",
-                      color: "white ",
-                    }}
-                    // leftIcon={<BsTelephoneOutboundFill />}
-                  >
-                    Reserver
-                  </Button>
-                  <Modal isOpen={isOpen} onClose={onClose}>
-                    <ModalOverlay />
-                    <ModalContent>
-                      <ModalHeader>Formulaire de Reservation</ModalHeader>
-                      <ModalCloseButton />
-                      <ModalBody>
-                        <Flex>
-                          <Text mr={20}>Date & heure: </Text>
-                          <Input
-                            type="datetime-local"
-                            width={"180px"}
-                            onChange={(e) => setData1(e.target.value)}
-                          />
-                        </Flex>
-                        <br />
-                        <Flex>
-                          <Text mr={5}>Nombre De Couverts : </Text>
-                          <Input
-                            type="number"
-                            width={"180px"}
-                            onChange={(e) => setData2(e.target.value)}
-                          />
-                        </Flex>
-                        <br />
-                        <Flex>
-                          <Text marginRight={10}>Numéro du Restaurant : </Text>
-                          <h3>
-                            <a
-                              href={`tel:${sessionStorage.getItem("savefrom")}`}
-                            >
-                              {sessionStorage.getItem("savefrom")}
-                            </a>
-                          </h3>
-                        </Flex>
-                      </ModalBody>
+               
+               
+                </SimpleGrid>
+              {/* </Center> */}
 
-                      <ModalFooter>
-                        {/* <Button colorScheme="ghost" mr={3} onClick={onClose}>
-                    Annuler
-                  </Button> */}
-
-                        <Button
-                          bgColor={"cyan.700"}
-                          color={"white"}
-                          _hover={{ bgColor: "cyan.900" }}
-                          onClick={() => {
-                            saveCommande3(data1, data2),
-                              setData1(""),
-                              setData2("");
-                          }}
-                        >
-                          Valider
-                        </Button>
-                      </ModalFooter>
-                    </ModalContent>
-                  </Modal>
-                </Box>
-              </Center>
               <Flex>
                 <Heading
                   as={"h3"}
@@ -3795,79 +3587,8 @@ export default function Intermed1() {
               </Box>
             </Center>
           </Flex>
-          <Flex display={["none", "none", "grid", "none", "none"]}>
-            {/* <Box
-              overflow="-moz-hidden-unscrollable"
-              position={"relative"}
-              height={{ base: "auto", md: "auto", lg: "auto" }}
-              width={{ base: "auto", md: "auto", lg: "auto" }}
-            > */}
-              {/* CSS files for react-slick */}
-              <link
-                rel="stylesheet"
-                type="text/css"
-                charSet="UTF-8"
-                href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
-              />
-              <link
-                rel="stylesheet"
-                type="text/css"
-                href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
-              />
-
-              {/* {isLagerThan768 ? (
-          <>
-            <IconButton
-              aria-label="left-arrow"
-              // colorScheme="messenger"
-              borderRadius="full"
-              position="absolute"
-              left={side}
-              top={top}
-              transform={"translate(0%, -50%)"}
-              zIndex={2}
-              onClick={() => slider?.slickPrev()}
-              bg={"#fff"}
-            >
-              <BiLeftArrowAlt color="#000" />
-            </IconButton>
-
-            <IconButton
-              aria-label="right-arrow"
-              // colorScheme="messenger"
-              borderRadius="full"
-              position="absolute"
-              right={side}
-              top={top}
-              transform={"translate(0%, -50%)"}
-              zIndex={2}
-              onClick={() => slider?.slickNext()}
-              bg={"#fff"}
-            >
-              <BiRightArrowAlt color="#000" />
-            </IconButton>
-          </>
-        ) : (
-          <></>
-        )} */}
-
-              {/* Slider */}
-              {/* <Slider {...settings} ref={(slider) => setSlider(slider)}>
-                {images.map((url, index) => (
-                  <Box
-                    key={index}
-                    overflow={"auto"}
-                    height={{ base: "xs", md: "xs", lg: "xl" }}
-                    minw={{ base: "auto", md: "xs", lg: "xl" }}
-                    position="relative"
-                    backgroundPosition="center"
-                    backgroundRepeat="no-repeat"
-                    backgroundSize="contain"
-                    backgroundImage={url}
-                  ></Box>
-                ))}
-              </Slider>
-            </Box> */}
+          <Flex display={["none", "none", "grid", "none", "none"]} width={"-webkit-max-content"}>
+           
              <Box display={"flex"} mb={5}>
               <Box mr={5}>
                 <Image
@@ -3941,8 +3662,8 @@ export default function Intermed1() {
                   )}
                 </Text>
               </Flex>
-              <Center display={"flex"}>
-                <Box mt={5} mr={5}>
+              <SimpleGrid columns={2} spacingX={3}>
+                <Box mt={5}>
                   <Button
                     color={"#fff"}
                     width={"150px"}
@@ -3951,7 +3672,7 @@ export default function Intermed1() {
                     // onClick={onOpen}
                     bgColor={"green"}
                     _hover={{
-                      backgroundColor: " cyan.900",
+                      backgroundColor: " green.200",
                       color: "white ",
                     }}
                     href={`tel:${sessionStorage.getItem("savefrom")}`}
@@ -3960,7 +3681,7 @@ export default function Intermed1() {
                     Nous Contacter
                   </Button>
                 </Box>
-                <Box mt={5} mr={5}>
+                <Box mt={5} >
                   <Button
                     color={"#fff"}
                     width={"150px"}
@@ -3979,7 +3700,8 @@ export default function Intermed1() {
                     Site Web
                   </Button>
                 </Box>
-                <Box mt={5}>
+               
+                <Box mt={5} ml={"50%"}>
                   <Button
                     color={"#fff"}
                     width={"150px"}
@@ -4052,7 +3774,7 @@ export default function Intermed1() {
                     </ModalContent>
                   </Modal>
                 </Box>
-              </Center>
+                </SimpleGrid>
               <Flex>
                 <Heading
                   as={"h3"}
