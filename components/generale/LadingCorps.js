@@ -428,12 +428,12 @@ const LadingCorps = () => {
                     onChange={(e)=>{setPostal(e.target.value),localStorage.setItem("postal",e.target.value)}}
                     // onClick={onOpen}
                   />
-                  {/* <InputRightAddon as={Link} href={"#"} _hover={{
+                  <InputRightAddon as={Link} href={"#"} _hover={{
                     textDecoration: "none",
                     bgColor: "#00d4ff"
                   }} cursor={"pointer"}onClick={()=>{localStorage.setItem("postal",postal)}}>
-                    <Text>Sauvegarder</Text>
-                  </InputRightAddon> */}
+                    <Text>Rechercher</Text>
+                  </InputRightAddon>
                 </InputGroup>
                 </>
                 }

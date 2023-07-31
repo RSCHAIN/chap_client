@@ -12,12 +12,12 @@ const LoginSignButton = () => {
     return (
         <>
         <Flex display={["none","none","none","flex","flex"]}>  
-        {posta.length<=4 ? <>  </>:<>
+        {/* {posta.length<=4 ? <>  </>:<>
         
             <Flex><Text mr={5} mt={1}>{paramText}</Text> <Tooltip label='click, pour editer'><Editable  defaultValue={posta}>
   <EditablePreview/>
   <EditableInput value={posta} onChange={(e)=>{setPosta(e.target.value),localStorage.setItem("postal",e.target.value)}}/>
-</Editable></Tooltip></Flex></>}
+</Editable></Tooltip></Flex></>} */}
                   <Showconnex/>
                   </Flex>
 
