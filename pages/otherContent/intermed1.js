@@ -1266,12 +1266,12 @@ export default function Intermed1() {
 
           <Flex display={["grid", "grid", "none", "none", "none"]}>
             {/* Slider */}
-            <Box
+            {/* <Box
               overflow="-moz-hidden-unscrollable"
               position={"relative"}
               height={{ base: "auto", md: "auto", lg: "auto" }}
               width={{ base: "auto", md: "auto", lg: "auto" }}
-            >
+            > */}
               {/* {isLagerThan768 ? (
         <>
           <IconButton
@@ -1309,7 +1309,7 @@ export default function Intermed1() {
       )} */}
 
               {/* Slider */}
-              <Slider {...settings} ref={(slider) => setSlider(slider)}>
+              {/* <Slider {...settings} ref={(slider) => setSlider(slider)}>
                 {images.map((url, index) => (
                   <Box
                     key={index}
@@ -1324,7 +1324,7 @@ export default function Intermed1() {
                   ></Box>
                 ))}
               </Slider>
-            </Box>
+            </Box> */}
             <Heading fontSize={"40px"}>{nom}</Heading>
 
             <Box>
@@ -1561,12 +1561,12 @@ export default function Intermed1() {
             </Center>
           </Flex>
           <Flex display={["none", "none", "grid", "none", "none"]}>
-            <Box
+            {/* <Box
               overflow="-moz-hidden-unscrollable"
               position={"relative"}
               height={{ base: "auto", md: "auto", lg: "auto" }}
               width={{ base: "auto", md: "auto", lg: "auto" }}
-            >
+            > */}
               {/* CSS files for react-slick */}
               <link
                 rel="stylesheet"
@@ -1617,7 +1617,7 @@ export default function Intermed1() {
       )} */}
 
               {/* Slider */}
-              <Slider {...settings} ref={(slider) => setSlider(slider)}>
+              {/* <Slider {...settings} ref={(slider) => setSlider(slider)}>
                 {images.map((url, index) => (
                   <Box
                     key={index}
@@ -1632,7 +1632,7 @@ export default function Intermed1() {
                   ></Box>
                 ))}
               </Slider>
-            </Box>
+            </Box> */}
             <Heading fontSize={"40px"}>{nom}</Heading>
 
             <Box>
@@ -2262,12 +2262,12 @@ export default function Intermed1() {
 
           <Flex display={["grid", "grid", "none", "none", "none"]}>
             {/* Slider */}
-            <Box
+            {/* <Box
               overflow="-moz-hidden-unscrollable"
               position={"relative"}
               height={{ base: "auto", md: "auto", lg: "auto" }}
               width={{ base: "auto", md: "auto", lg: "auto" }}
-            >
+            > */}
               {/* CSS files for react-slick */}
               <link
                 rel="stylesheet"
@@ -2318,7 +2318,7 @@ export default function Intermed1() {
         )} */}
 
               {/* Slider */}
-              <Slider {...settings} ref={(slider) => setSlider(slider)}>
+              {/* <Slider {...settings} ref={(slider) => setSlider(slider)}>
                 {images.map((url, index) => (
                   <Box
                     key={index}
@@ -2333,7 +2333,7 @@ export default function Intermed1() {
                   ></Box>
                 ))}
               </Slider>
-            </Box>
+            </Box> */}
             <Heading fontSize={"40px"}>{nom}</Heading>
 
             <Box>
@@ -2605,14 +2605,14 @@ export default function Intermed1() {
             </Center>
           </Flex>
           <Flex display={["none", "none", "grid", "none", "none"]}>
-            <Box
+            {/* <Box
               overflow="-moz-hidden-unscrollable"
               position={"relative"}
               height={{ base: "auto", md: "auto", lg: "auto" }}
               width={{ base: "auto", md: "auto", lg: "auto" }}
-            >
+            > */}
               {/* CSS files for react-slick */}
-              <link
+              {/* <link
                 rel="stylesheet"
                 type="text/css"
                 charSet="UTF-8"
@@ -2622,7 +2622,7 @@ export default function Intermed1() {
                 rel="stylesheet"
                 type="text/css"
                 href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
-              />
+              /> */}
 
               {/* {isLagerThan768 ? (
           <>
@@ -2661,7 +2661,7 @@ export default function Intermed1() {
         )} */}
 
               {/* Slider */}
-              <Slider {...settings} ref={(slider) => setSlider(slider)}>
+              {/* <Slider {...settings} ref={(slider) => setSlider(slider)}>
                 {images.map((url, index) => (
                   <Box
                     key={index}
@@ -2676,7 +2676,7 @@ export default function Intermed1() {
                   ></Box>
                 ))}
               </Slider>
-            </Box>
+            </Box> */}
             <Heading fontSize={"40px"}>{nom}</Heading>
 
             <Box>
@@ -3452,12 +3452,12 @@ export default function Intermed1() {
 
           <Flex display={["grid", "grid", "none", "none", "none"]}>
             {/* Slider */}
-            <Box
+            {/* <Box
               overflow="-moz-hidden-unscrollable"
               position={"relative"}
               height={{ base: "auto", md: "auto", lg: "auto" }}
               width={{ base: "auto", md: "auto", lg: "auto" }}
-            >
+            > */}
               {/* CSS files for react-slick */}
               <link
                 rel="stylesheet"
@@ -3508,7 +3508,7 @@ export default function Intermed1() {
         )} */}
 
               {/* Slider */}
-              <Slider {...settings} ref={(slider) => setSlider(slider)}>
+              {/* <Slider {...settings} ref={(slider) => setSlider(slider)}>
                 {images.map((url, index) => (
                   <Box
                     key={index}
@@ -3523,7 +3523,7 @@ export default function Intermed1() {
                   ></Box>
                 ))}
               </Slider>
-            </Box>
+            </Box> */}
             <Heading fontSize={"40px"}>{nom}</Heading>
 
             <Box>
@@ -3795,12 +3795,12 @@ export default function Intermed1() {
             </Center>
           </Flex>
           <Flex display={["none", "none", "grid", "none", "none"]}>
-            <Box
+            {/* <Box
               overflow="-moz-hidden-unscrollable"
               position={"relative"}
               height={{ base: "auto", md: "auto", lg: "auto" }}
               width={{ base: "auto", md: "auto", lg: "auto" }}
-            >
+            > */}
               {/* CSS files for react-slick */}
               <link
                 rel="stylesheet"
@@ -3851,7 +3851,7 @@ export default function Intermed1() {
         )} */}
 
               {/* Slider */}
-              <Slider {...settings} ref={(slider) => setSlider(slider)}>
+              {/* <Slider {...settings} ref={(slider) => setSlider(slider)}>
                 {images.map((url, index) => (
                   <Box
                     key={index}
@@ -3866,7 +3866,7 @@ export default function Intermed1() {
                   ></Box>
                 ))}
               </Slider>
-            </Box>
+            </Box> */}
             <Heading fontSize={"40px"}>{nom}</Heading>
 
             <Box>
