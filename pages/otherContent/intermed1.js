@@ -541,11 +541,11 @@ export default function Intermed1() {
             </Box>
             <Box
               mr={10}
-              width={"fit-content"}
+              width={"200px"}
               display={["grid", "grid", "grid", "none", "none"]}
             >
               <iframe
-                width="350"
+                width="200"
                 height="200"
                 loading="lazy"
                 allowFullScreen
@@ -730,11 +730,11 @@ export default function Intermed1() {
               ></iframe>
             </Box>
             <Box
-              width={"fit-content"}
+              width={"200px"}
               display={["grid", "grid", "grid", "none", "none"]}
             >
               <iframe
-                width="350"
+                width="200"
                 height="200"
                 loading="lazy"
                 allowFullScreen
@@ -1251,7 +1251,7 @@ export default function Intermed1() {
                 </Box>
               </Box>
               <Box
-                width={"fit-content"}
+                width={"200px"}
                 display={["grid", "grid", "grid", "none", "none"]}
               >
                 <iframe
@@ -1587,7 +1587,7 @@ export default function Intermed1() {
               <Box mt={10}>
                
                 <Box
-                  width={"300px"}
+                  width={"200px"}
                   display={["grid", "grid", "grid", "none", "none"]}
                 >
                   <iframe
@@ -1900,11 +1900,11 @@ export default function Intermed1() {
               <Box mt={10}>
                
                 <Box
-                  width={"300px"}
+                  width={"200px"}
                   display={["grid", "grid", "grid", "none", "none"]}
                 >
                   <iframe
-                    width="250"
+                    width="200"
                     height="200"
                     loading="lazy"
                     allowFullScreen
@@ -2258,7 +2258,7 @@ export default function Intermed1() {
                 </Box>
               </Box>
               <Box
-                width={"fit-content"}
+                width={"200px"}
                 display={["grid", "grid", "grid", "none", "none"]}
               >
                 <iframe
@@ -2576,11 +2576,11 @@ export default function Intermed1() {
               <Box mt={10}>
                
                 <Box
-                  width={"300px"}
+                  width={"200px"}
                   display={["grid", "grid", "grid", "none", "none"]}
                 >
                   <iframe
-                    width="250"
+                    width="200"
                     height="250"
                     loading="lazy"
                     allowFullScreen
@@ -2854,11 +2854,11 @@ export default function Intermed1() {
               <Box mt={10}>
                
                 <Box
-                  width={"300px"}
+                  width={"200px"}
                   display={["grid", "grid", "grid", "none", "none"]}
                 >
                   <iframe
-                    width="250"
+                    width="200"
                     height="250"
                     loading="lazy"
                     allowFullScreen
@@ -3212,7 +3212,7 @@ export default function Intermed1() {
                 </Box>
               </Box>
               <Box
-                width={"fit-content"}
+                width={"200px"}
                 display={["grid", "grid", "grid", "none", "none"]}
               >
                 <iframe
@@ -3530,11 +3530,11 @@ export default function Intermed1() {
               <Box mt={10}>
               
                 <Box
-                  width={"300px"}
+                  width={"200px"}
                   display={["grid", "grid", "grid", "none", "none"]}
                 >
                   <iframe
-                    width="250"
+                    width="200"
                     height="250"
                     loading="lazy"
                     allowFullScreen
@@ -3807,11 +3807,11 @@ export default function Intermed1() {
             <Center>
               <Box mt={10}>
                 <Box
-                  width={"300px"}
+                  width={"200px"}
                   display={["grid", "grid", "grid", "none", "none"]}
                 >
                   <iframe
-                    width="350"
+                    width="200"
                     height="250"
                     loading="lazy"
                     allowFullScreen
