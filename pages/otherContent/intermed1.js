@@ -2244,7 +2244,7 @@ export default function Intermed1() {
           </Flex>
 
           <Flex display={["grid", "grid", "none", "none", "none"]}  width={"-webkit-max-content"}>
-            
+               
         
           
              <Box display={"flex"} mb={5}>
