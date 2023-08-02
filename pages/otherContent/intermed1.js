@@ -2912,7 +2912,7 @@ export default function Intermed1() {
                           as="h5"
                           lineHeight="tight"
                           noOfLines={3}
-                          width={"270px"}
+                          width={"fit-content"}
                           height={"fit-content"}
                         >
                           <Text width={"200px"} fontSize={"20px"}>
@@ -2930,7 +2930,7 @@ export default function Intermed1() {
                           fontWeight="normal"
                           lineHeight="taller"
                           noOfLines={8}
-                          w={{ base: "150px", md: "200px" }}
+                          w={"fit-content"}
                           // Height={"250px"}
                           maxH={"250px"}
                         >
