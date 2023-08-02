@@ -541,11 +541,11 @@ export default function Intermed1() {
             </Box>
             <Box
               mr={10}
-              width={"200px"}
+              width={"300px"}
               display={["grid", "grid", "grid", "none", "none"]}
             >
               <iframe
-                width="200"
+                width="300"
                 height="200"
                 loading="lazy"
                 allowFullScreen
@@ -730,11 +730,11 @@ export default function Intermed1() {
               ></iframe>
             </Box>
             <Box
-              width={"200px"}
+              width={"300px"}
               display={["grid", "grid", "grid", "none", "none"]}
             >
               <iframe
-                width="200"
+                width="300"
                 height="200"
                 loading="lazy"
                 allowFullScreen
@@ -1251,11 +1251,11 @@ export default function Intermed1() {
                 </Box>
               </Box>
               <Box
-                width={"200px"}
+                width={"300px"}
                 display={["grid", "grid", "grid", "none", "none"]}
               >
                 <iframe
-                  width="200"
+                  width="300"
                   height="200"
                   loading="lazy"
                   allowFullScreen
@@ -1587,11 +1587,11 @@ export default function Intermed1() {
               <Box mt={10}>
                
                 <Box
-                  width={"200px"}
+                  width={"300px"}
                   display={["grid", "grid", "grid", "none", "none"]}
                 >
                   <iframe
-                    width="250"
+                    width="300"
                     height="250"
                     loading="lazy"
                     allowFullScreen
@@ -1900,11 +1900,11 @@ export default function Intermed1() {
               <Box mt={10}>
                
                 <Box
-                  width={"200px"}
+                  width={"300px"}
                   display={["grid", "grid", "grid", "none", "none"]}
                 >
                   <iframe
-                    width="200"
+                    width="300"
                     height="200"
                     loading="lazy"
                     allowFullScreen
@@ -2258,11 +2258,11 @@ export default function Intermed1() {
                 </Box>
               </Box>
               <Box
-                width={"200px"}
+                width={"300px"}
                 display={["grid", "grid", "grid", "none", "none"]}
               >
                 <iframe
-                  width="200"
+                  width="300"
                   height="200"
                   loading="lazy"
                   allowFullScreen
@@ -2576,11 +2576,11 @@ export default function Intermed1() {
               <Box mt={10}>
                
                 <Box
-                  width={"200px"}
+                  width={"300px"}
                   display={["grid", "grid", "grid", "none", "none"]}
                 >
                   <iframe
-                    width="200"
+                    width="300"
                     height="250"
                     loading="lazy"
                     allowFullScreen
@@ -2854,11 +2854,11 @@ export default function Intermed1() {
               <Box mt={10}>
                
                 <Box
-                  width={"200px"}
+                  width={"300px"}
                   display={["grid", "grid", "grid", "none", "none"]}
                 >
                   <iframe
-                    width="200"
+                    width="300"
                     height="250"
                     loading="lazy"
                     allowFullScreen
@@ -2872,8 +2872,119 @@ export default function Intermed1() {
           </Flex>
 
           {/* fin slide  */}
-       
+          {data.length != 0 ? (
+            <>
+              {" "}
+              <Heading fontSize={"20px"} mt={10}>
+                Les produits{" "}
+              </Heading>
+              <Flex mt={10}>
+                <SimpleGrid columns={[1, 1, 1, 2, 2]}>
+                  {data.map((data, key) => (
+                    <Box
+                      key={data.id}
+                      maxW={"fit-content"}
+                      // height={"400px"}
+                      mb={5}
+                      borderRadius="lg"
+                      display={"flex"}
+                      // border={"1px solid black"}
+                    >
+                      <Box
+                        width={"200px"}
+                        height={"fit-content"}
+                        // pt={10}
+                      >
+                        <Image
+                          src={data.imageUrl}
+                          alt={data.nom}
+                          width={"200px"}
+                          height={"200px"}
+                          maxH={"200px"}
+                          maxW={"200px"}
+                          borderRadius={"25px"}
+                        />
+                      </Box>
+
+                      <Box ml={5}>
+                        <Box
+                          fontWeight="semibold"
+                          as="h5"
+                          lineHeight="tight"
+                          noOfLines={3}
+                          width={"270px"}
+                          height={"fit-content"}
+                        >
+                          <Text width={"200px"} fontSize={"20px"}>
+                            {data.nom}
+                          </Text>
+                          <Box textColor={"blue"} color={"blue.400"}>
+                            {data.prix}
+                            <Box as="span" pl={2} fontSize="sm">
+                              €
+                            </Box>
+                          </Box>
+                        </Box>
+
+                        <Box
+                          fontWeight="normal"
+                          lineHeight="taller"
+                          noOfLines={8}
+                          w={{ base: "150px", md: "200px" }}
+                          // Height={"250px"}
+                          maxH={"250px"}
+                        >
+                          {data.description == "undefined" ? (
+                            <></>
+                          ) : (
+                            <>
+                              {" "}
+                              <Tooltip label={data.description}>
+                                <Text noOfLines={3} width={"200px"}>
+                                  {data.description}
+                                </Text>
+                              </Tooltip>
+                            </>
+                          )}
+                        </Box>
+                        <Box>
+                          <Button
+                            bgColor={"cyan.700"}
+                            borderRadius={"66px"}
+                            width={"fit-content"}
+                            as={"a"}
+                            onClick={() => {
+                              AddToCart(data),
+                                toast({
+                                  title: "PRODUIT AJOUTE",
+
+                                  status: "success",
+                                  duration: 9000,
+                                  isClosable: true,
+                                });
+                            }}
+                            color={"white"}
+                            _hover={{
+                              backgroundColor: " cyan.900",
+                              color: "white ",
+                            }}
+                            leftIcon={<IoMdAddCircle />}
+                          >
+                            {" "}
+                            Commander
+                          </Button>
+                        </Box>
+                      </Box>
+                    </Box>
+                  ))}
+                </SimpleGrid>
+              </Flex>
+            </>
+          ) : (
+            <></>
+          )}
         </Box>
+      
         <FooterR />
       </>
     );
@@ -3212,11 +3323,11 @@ export default function Intermed1() {
                 </Box>
               </Box>
               <Box
-                width={"200px"}
+                width={"300px"}
                 display={["grid", "grid", "grid", "none", "none"]}
               >
                 <iframe
-                  width="200"
+                  width="300"
                   height="200"
                   loading="lazy"
                   allowFullScreen
@@ -3530,11 +3641,11 @@ export default function Intermed1() {
               <Box mt={10}>
               
                 <Box
-                  width={"200px"}
+                  width={"300px"}
                   display={["grid", "grid", "grid", "none", "none"]}
                 >
                   <iframe
-                    width="200"
+                    width="300"
                     height="250"
                     loading="lazy"
                     allowFullScreen
@@ -3807,11 +3918,11 @@ export default function Intermed1() {
             <Center>
               <Box mt={10}>
                 <Box
-                  width={"200px"}
+                  width={"300px"}
                   display={["grid", "grid", "grid", "none", "none"]}
                 >
                   <iframe
-                    width="200"
+                    width="300"
                     height="250"
                     loading="lazy"
                     allowFullScreen
