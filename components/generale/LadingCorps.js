@@ -36,16 +36,12 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import React, { useState, useEffect, useRef } from "react";
-
+import {MdLocationOn} from 'react-icons/md'
 import { db, db2 } from "@/FIREBASE/clientApp";
 import { ref, onValue } from "firebase/database";
 import Location from "../location";
 import { useRouter } from "next/router";
 import { collection, query, where, getDocs } from "firebase/firestore";
-import { BsSearch } from "react-icons/bs";
-import SearcheIcone from "./SearcheIcone";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 // les card des differntes cartegories qui seront mapés
 export function ItemCard({ item, card }) {
@@ -105,6 +101,7 @@ export function ItemCard({ item, card }) {
               sessionStorage.setItem("adresse", item.adresse),
               sessionStorage.setItem("categorie", item.categorie);
             sessionStorage.setItem("description", item.description);
+            sessionStorage.setItem("nationalite", item.nationalite);
             sessionStorage.setItem("horaire", JSON.stringify(item.horaire));
             sessionStorage.setItem(
               "paiement",
@@ -313,6 +310,7 @@ const LadingCorps = () => {
   const [cat, setCat] = useState([]);
   const [postal,setPostal] = useState("")
   const [datos, setDatos] = useState([]);
+  const [locate,setLocate] = useState("")
   const [datas, setDatas] = useState(0);
   const { isOpen, onOpen, onClose } = useDisclosure();
   //recherche un magasin
@@ -382,16 +380,10 @@ const LadingCorps = () => {
       update();
       setDatas(1);
     }
-    if (postal == null) {
-      localStorage.setItem("postal","0")
-      setPostal("0")
-    }else{
-      
-      setPostal(localStorage.getItem("postal"))
-    }
+    setLocate(localStorage.getItem("postal") ?? "0")
     
     //updateAll()
-  }, [datas, update, cat,postal]);
+  }, [datas, update, cat,postal,locate]);
   if (datas != 0) {
     return (
       <>
@@ -405,148 +397,39 @@ const LadingCorps = () => {
             <Center width={"100%"}>
               <Box>
                
-                {/* <SearcheIcone message={"Recherchez un magasin proche"}/> */}
- {postal.length ==5 ? <><Flex><Text mt={1}>Votre code postal</Text> <Tooltip label='click, pour editer'><Editable  defaultValue={postal}>
-  <EditablePreview/>
-  <EditableInput onChange={(e)=>{setPostal(e.target.value),localStorage.setItem("postal",e.target.value)}}/>
-</Editable></Tooltip></Flex></> :
-                
-               
-                <>
-                
-                <Text >
-                Entrez votre code postal pour trouver les commerces à
-                proximité
-              </Text>
-              <InputGroup>
-                  <Input
-                    type="number"
-                    placeholder="Entrez votre code postal "
-                    w={"20em"}
-                    minLength={5}
-                    value={postal}
-                    onChange={(e)=>{setPostal(e.target.value),localStorage.setItem("postal",e.target.value)}}
-                    // onClick={onOpen}
-                  />
-                  <InputRightAddon as={Link} href={"#"} _hover={{
-                    textDecoration: "none",
-                    bgColor: "#00d4ff"
-                  }} cursor={"pointer"}onClick={()=>{localStorage.setItem("postal",postal)}}>
-                    <Text>Rechercher</Text>
-                  </InputRightAddon>
-                </InputGroup>
-                </>
-                }
-                {/* <Modal isOpen={isOpen} onClose={onClose}>
-                  <ModalOverlay />
-                  <ModalContent>
-                    <ModalHeader color={"#08566E"}>
-                      Trouver un commerce a proximité
-                    </ModalHeader>
-                    <ModalCloseButton color={"#08566E"} />
-                    <ModalBody>
-                      <InputGroup>
-                        <InputLeftAddon pointerEvents="none">
-                          <Text>Rechercher</Text>
-                        </InputLeftAddon>
-                        <Input
-                          type="number"
-                          onChange={(e) => recherche(e.target.value)}
-                          placeholder="Code Postal"
-                          _placeholder={{ color: "#000" }}
-                          variant={"outline"}
-                          color={"#000"}
-                          borderRadius={"full"}
-                          outline={"none"}
-                        />
-                      </InputGroup>
 
-                      {modalData.length == 0 ? (
-                        <> Aucun Magasin de disponible</>
-                      ) : (
-                        <>
-                          <SimpleGrid columns={2}>
-                            {modalData.map((doc, index) => (
-                              <Box
-                                key={index}
-                                m={2}
-                                mt={5}
-                                as={Link}
-                                onClick={() => {
-                                  sessionStorage.setItem(
-                                    "savefrom",
-                                    doc.data().number
-                                  ),
-                                    sessionStorage.setItem(
-                                      "image",
-                                      doc.data().imageUrl
-                                    ),
-                                    sessionStorage.setItem(
-                                      "nom",
-                                      doc.data().organisation
-                                    ),
-                                    sessionStorage.setItem(
-                                      "adresse",
-                                      doc.data().adresse
-                                    ),
-                                    sessionStorage.setItem(
-                                      "categorie",
-                                      doc.data().categorie
-                                    );
-                                  sessionStorage.setItem(
-                                    "description",
-                                    doc.data().description
-                                  );
-                                  sessionStorage.setItem(
-                                    "horaire",
-                                    JSON.stringify(doc.data().horaire)
-                                  );
-                                  sessionStorage.setItem(
-                                    "paiement",
-                                    JSON.stringify(doc.data().methodeDePaiement)
-                                  );
-                                }}
-                                _hover={{ textDecoration: "none" }}
-                                href={"/otherContent/intermed1"}
-                              >
-                                <Image
-                                  alt={doc.data().organisation}
-                                  src={doc.data().imageUrl}
-                                  maxWidth={"150px"}
-                                  maxHeight={"100px"}
-                                  minHeight={"100px"}
-                                  minWidth={"150px"}
-                                />
-                                <Text fontWeight={"bold"} fontSize={"20px"}>
-                                  {doc.data().organisation}
-                                </Text>
-                                <Text fontWeight={"medium"}>
-                                  {doc.data().adresse}
-                                </Text>
-                              </Box>
-                            ))}
-                          </SimpleGrid>
-                        </>
-                      )}
-                    </ModalBody>
+              {locate.length<=4 ?
+              <InputGroup mt={10}  bgColor={"#ddd"} borderRadius={"100px"}>
+              <Input
+              borderRadius={"100px"}
+                type={"number"}
+                placeholder="Entrez votre code postal "
+                w={"20em"}
+                maxLength={5}
+                value={locate}
+                // value={postal}
+                onChange={(e)=>{localStorage.setItem("postal",e.target.value)}}
+                // onClick={onOpen}
+              />
+              <InputLeftElement as={Link} href={"#"} borderRaduis={"50%"}   _hover={{
+                textDecoration: "none",
+              
+              }} cursor={"pointer"} >
+                <MdLocationOn/>
+              </InputLeftElement>
+            </InputGroup>
+           : <></> }
 
-                    <ModalFooter>
-                      <Button
-                        background={"#08566E"}
-                        color={"#fff"}
-                        mr={3}
-                        onClick={onClose}
-                      >
-                        Annuler
-                      </Button>
-                    </ModalFooter>
-                  </ModalContent>
-                </Modal> */}
+
+
+
+              
+ 
               </Box>
             </Center>
 
             {/* la box de toutes les cartegorie */}
-            {postal.length<=4 ?
+            {locate.length<=4 ?
             <Flex
               height={"auto"}
               position={"relative"}

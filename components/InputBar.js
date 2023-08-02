@@ -19,6 +19,7 @@ import {
   Button,
   Center,
   useToast,
+  InputLeftElement
 } from "@chakra-ui/react";
 import { Search2Icon } from "@chakra-ui/icons";
 import { ChevronDownIcon } from "@chakra-ui/icons";
@@ -35,56 +36,31 @@ import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { app, authentic } from "@/FIREBASE/clientApp";
 import { useRouter } from "next/router";
 import CookieConsent from "react-cookie-consent";
+import {MdLocationOn} from 'react-icons/md'
+
 
 const InputBar = () => {
   const auth = getAuth(app);
   const router = useRouter();
-
+  const [locate,setLocate] = useState("")
   const [total, setTotal] = useState("");
   const [lastTime, setLastTime] = useState();
 
- 
-
-  // const handleMove = () => {
-
-  //   const currentDate = new Date();
-  //   const newTime = currentDate.getTime();
-  //   const define = parseInt(lastTime) + 4500000;
-  //   if (total ==2) {
-  //       if (define <newTime) {
-  //           signOut(auth);
-  //           sessionStorage.removeItem("email")
-  //           router.reload();
-  //         }
-  //   }
-
-  // };
   useEffect(() => {
+    setLocate(localStorage.getItem("postal") ?? "0");
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setTotal(2);
       }
     });
-    // setLastTime(localStorage.time)
-    // handleMove()
-  });
-  //     const numb=()=>{
-
-  //      const Cart = localStorage.getItem("Cart");
-  //      const All = JSON.parse(Cart);
-  //      let tot=0
-  //      if (All != null) {
-  //        All.map((data, index) => {
-  //          tot = parseInt(data.quantite) + tot;
-  //        });
-  //        setTotal(tot);
-  //      }
-
-  //      localStorage.setItem("total", total);
-  //    };
+    
+  },[locate,total,auth]);
+ 
 
   const [isLagerThan768] = useMediaQuery("(min-width: 420px)");
   const toast = useToast()
+  
+
   return (
     <>
      
@@ -102,7 +78,7 @@ const InputBar = () => {
  
 </CookieConsent>
       <Flex
-        width={"full"}
+        width={"100%"}
         height={"4em"}
         align={"center"}
         justifyContent={"space-evenly"}
@@ -140,14 +116,14 @@ const InputBar = () => {
         > 
          
 
-          {isLagerThan768 ? <InputLg /> : <SearcheIcone message={"Rechercher un produit/un magasin"} />}
+          {isLagerThan768 ? <InputLg /> : <SearcheIcone message={"Rechercher un produit"} />}
         </Flex>
 
         {/* butons se connecter et s'inscrire  */}
         <Flex
           align={"center"}
           justifyContent={"center"}
-          width={"fit-content"}
+          width={"auto"}
           height={"full"}
         >
            <LoginSignButton />  <ResponsiveMenu />
@@ -164,19 +140,25 @@ const InputBar = () => {
           <Icon as={AiOutlineUser} fontSize={30} mr={2}/> Se connecter
         </Link> */}
             <Popover>
-              <PopoverTrigger>
-                <Button
-                  leftIcon={<Icon as={TfiHelpAlt} fontSize={30} />}
-                  _hover={{
-                    color: "cyan.700",
+            <InputGroup   bgColor={"#ddd"} borderRadius={"100px"}>
+                  <Input
+                  borderRadius={"100px"}
+                    type={"number"}
+                    placeholder="Entrez votre code postal "
+                    w={"20em"}
+                    maxLength={5}
+                    value={locate}
+                    // value={postal}
+                    onChange={(e)=>{localStorage.setItem("postal",e.target.value),setLocate(e.target.value)}}
+                    // onClick={onOpen}
+                  />
+                  <InputLeftElement as={Link} href={"#"} borderRaduis={"50%"}   _hover={{
                     textDecoration: "none",
-                  }}
-                  rightIcon={<ChevronDownIcon />}
-                  bgColor={"white"}
-                >
-                  Aide
-                </Button>
-              </PopoverTrigger>
+                  
+                  }} cursor={"pointer"} >
+                    <MdLocationOn/>
+                  </InputLeftElement>
+                </InputGroup>
               <PopoverContent width={"210px"}>
                 {/* <PopoverArrow />
            
@@ -195,6 +177,23 @@ const InputBar = () => {
               }}><Button width={"full"} bgColor={"white"} >  Mon profils</Button></Link>
              
             </PopoverFooter> */}
+             {locate.length <=4 ?  <InputGroup   bgColor={"#ddd"} borderRadius={"100px"}>
+                  <Input
+                  borderRadius={"100px"}
+                    type={"number"}
+                    placeholder="Entrez votre code postal "
+                    w={"20em"}
+                    maxLength={5}
+                    value={locate} 
+                    onChange={(e)=>{localStorage.setItem("postal",e.target.value),setLocate(e.target.value)}}
+                  />
+                  <InputLeftElement as={Link} href={"#"} borderRaduis={"50%"}   _hover={{
+                    textDecoration: "none",
+                  
+                  }} cursor={"pointer"} >
+                    <MdLocationOn/>
+                  </InputLeftElement>
+                </InputGroup> : <> </>} 
               </PopoverContent>
             </Popover>
           </Flex>

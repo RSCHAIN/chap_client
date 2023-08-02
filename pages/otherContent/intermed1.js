@@ -251,6 +251,7 @@ export default function Intermed1() {
   const [numero, setNumero] = useState("");
   const [nom, setNom] = useState("");
   const [Desc1, setDesc1] = useState("");
+  const [nation, setNation] = useState("");
   const [addresse, setAddresse] = useState("");
   const [data, setData] = useState([]);
   const [categorie, setCategorie] = useState("");
@@ -295,6 +296,7 @@ export default function Intermed1() {
     setAddresse(sessionStorage.getItem("adresse"));
     setCategorie(sessionStorage.getItem("categorie"));
     setDesc1(sessionStorage.getItem("description"));
+    setNation(sessionStorage.getItem("nationalite"));
 
     // if (sessionStorage.getItem("horaire") != "undefined") {
     //   setHoraire(JSON.parse(sessionStorage.getItem("horaire")));
