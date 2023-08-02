@@ -2891,17 +2891,17 @@ export default function Intermed1() {
                       // border={"1px solid black"}
                     >
                       <Box
-                        width={"200px"}
+                        width={["150px","150px","150px","200px","200px"]}
                         height={"fit-content"}
                         // pt={10}
                       >
                         <Image
                           src={data.imageUrl}
                           alt={data.nom}
-                          width={"200px"}
+                          width={["150px","150px","150px","200px","200px"]}
                           height={"200px"}
                           maxH={"200px"}
-                          maxW={"200px"}
+                          maxW={["150px","150px","150px","200px","200px"]}
                           borderRadius={"25px"}
                         />
                       </Box>
