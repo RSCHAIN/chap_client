@@ -2899,8 +2899,8 @@ export default function Intermed1() {
                           src={data.imageUrl}
                           alt={data.nom}
                           width={["150px","150px","150px","200px","200px"]}
-                          height={"200px"}
-                          maxH={"200px"}
+                          height={["150px","150px","150px","200px","200px"]}
+                          maxH={["150px","150px","150px","200px","200px"]}
                           maxW={["150px","150px","150px","200px","200px"]}
                           borderRadius={"25px"}
                         />
