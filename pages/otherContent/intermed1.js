@@ -1930,7 +1930,7 @@ export default function Intermed1() {
         <Navbar />
         {/* CSS files for react-slick */}
 
-        <Box ml={["3%", "3%", "3%", "20%", "20%"]} mt={10} mb={10}  width={"fit-content"}>
+        <Box ml={["3%", "3%", "3%", "20%", "20%"]} mt={10} mb={10}  >
           <Flex display={["none", "none", "none", "flex", "flex"]}>
             <Box mr={5}>
               <Image
@@ -2309,7 +2309,7 @@ export default function Intermed1() {
             </Box>
           </Flex>
 
-          <Flex display={["grid", "grid", "none", "none", "none"]}>
+          <Flex display={["grid", "grid", "none", "none", "none"]} width={"fit-content"}>
             
         
           
@@ -2592,7 +2592,7 @@ export default function Intermed1() {
               </Box>
             </Center>
           </Flex>
-          <Flex display={["none", "none", "grid", "none", "none"]}>
+          <Flex display={["none", "none", "grid", "none", "none"]} width={"fit-content"}>
            
              <Box display={"flex"} mb={5}>
               <Box mr={5}>
