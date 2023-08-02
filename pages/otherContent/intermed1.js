@@ -412,6 +412,20 @@ export default function Intermed1() {
                   </Text>
                 )}
               </Flex>
+              
+              <Flex>
+                <Text fontWeight={"bold"}>Nationalité : </Text>
+                <Box>
+                  <Text ml={2} fontSize={"15px"}>
+                    {nation != "undefined" && nation != null
+                      ? nation
+                      : "Africaine"}
+                  </Text>
+                  
+                </Box>
+              </Flex>
+
+
               <Flex>
                 <Text fontWeight={"bold"}>Moyen De paiement : </Text>
                 <Box>
@@ -599,6 +613,17 @@ export default function Intermed1() {
                 )}
               </Flex>
               <Flex>
+                <Text fontWeight={"bold"}>Nationalité : </Text>
+                <Box>
+                  <Text ml={2} fontSize={"15px"}>
+                    {nation != "undefined" && nation != null
+                      ? nation
+                      : "Africaine"}
+                  </Text>
+                  
+                </Box>
+              </Flex>
+              <Flex>
                 <Text fontWeight={"bold"}>Moyen De paiement : </Text>
                 <Box>
                   <Text ml={2} fontSize={"15px"}>
@@ -775,6 +800,17 @@ export default function Intermed1() {
                     {Desc1}
                   </Text>
                 )}
+              </Flex>
+              <Flex>
+                <Text fontWeight={"bold"}>Nationalité : </Text>
+                <Box>
+                  <Text ml={2} fontSize={"15px"}>
+                    {nation != "undefined" && nation != null
+                      ? nation
+                      : "Africaine"}
+                  </Text>
+                  
+                </Box>
               </Flex>
               <Flex>
                 <Text fontWeight={"bold"}>Moyen De paiement : </Text>
@@ -1078,6 +1114,17 @@ export default function Intermed1() {
                 )}
               </Flex>
               <Flex>
+                <Text fontWeight={"bold"}>Nationalité : </Text>
+                <Box>
+                  <Text ml={2} fontSize={"15px"}>
+                    {nation != "undefined" && nation != null
+                      ? nation
+                      : "Africaine"}
+                  </Text>
+                  
+                </Box>
+              </Flex>
+              <Flex>
                 <Text fontWeight={"bold"}>Moyen De paiement : </Text>
                 <Box>
                   <Text ml={2} fontSize={"15px"}>
@@ -1267,66 +1314,6 @@ export default function Intermed1() {
           </Flex>
 
           <Flex display={["grid", "grid", "none", "none", "none"]}>
-            {/* Slider */}
-            {/* <Box
-              overflow="-moz-hidden-unscrollable"
-              position={"relative"}
-              height={{ base: "auto", md: "auto", lg: "auto" }}
-              width={{ base: "auto", md: "auto", lg: "auto" }}
-            > */}
-              {/* {isLagerThan768 ? (
-        <>
-          <IconButton
-            aria-label="left-arrow"
-            // colorScheme="messenger"
-            borderRadius="full"
-            position="absolute"
-            left={side}
-            top={top}
-            transform={"translate(0%, -50%)"}
-            zIndex={2}
-            onClick={() => slider?.slickPrev()}
-            bg={"#fff"}
-          >
-            <BiLeftArrowAlt color="#000" />
-          </IconButton>
-
-          <IconButton
-            aria-label="right-arrow"
-            // colorScheme="messenger"
-            borderRadius="full"
-            position="absolute"
-            right={side}
-            top={top}
-            transform={"translate(0%, -50%)"}
-            zIndex={2}
-            onClick={() => slider?.slickNext()}
-            bg={"#fff"}
-          >
-            <BiRightArrowAlt color="#000" />
-          </IconButton>
-        </>
-      ) : (
-        <></>
-      )} */}
-
-              {/* Slider */}
-              {/* <Slider {...settings} ref={(slider) => setSlider(slider)}>
-                {images.map((url, index) => (
-                  <Box
-                    key={index}
-                    overflow={"auto"}
-                    height={{ base: "xs", md: "xs", lg: "xl" }}
-                    minw={{ base: "auto", md: "xs", lg: "xl" }}
-                    position="relative"
-                    backgroundPosition="center"
-                    backgroundRepeat="no-repeat"
-                    backgroundSize="contain"
-                    backgroundImage={url}
-                  ></Box>
-                ))}
-              </Slider>
-            </Box> */}
              <Box display={"flex"} mb={5}>
               <Box mr={5}>
                 <Image
@@ -1372,6 +1359,17 @@ export default function Intermed1() {
                     {Desc1}
                   </Text>
                 )}
+              </Flex>
+              <Flex>
+                <Text fontWeight={"bold"}>Nationalité : </Text>
+                <Box>
+                  <Text ml={2} fontSize={"15px"}>
+                    {nation != "undefined" && nation != null
+                      ? nation
+                      : "Africaine"}
+                  </Text>
+                  
+                </Box>
               </Flex>
               <Flex>
                 <Text fontWeight={"bold"}>Moyen De paiement : </Text>
@@ -1578,78 +1576,8 @@ export default function Intermed1() {
             </Center>
           </Flex>
           <Flex display={["none", "none", "grid", "none", "none"]}>
-            {/* <Box
-              overflow="-moz-hidden-unscrollable"
-              position={"relative"}
-              height={{ base: "auto", md: "auto", lg: "auto" }}
-              width={{ base: "auto", md: "auto", lg: "auto" }}
-            > */}
-              {/* CSS files for react-slick */}
-              <link
-                rel="stylesheet"
-                type="text/css"
-                charSet="UTF-8"
-                href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
-              />
-              <link
-                rel="stylesheet"
-                type="text/css"
-                href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
-              />
+        
 
-              {/* {isLagerThan768 ? (
-        <>
-          <IconButton
-            aria-label="left-arrow"
-            // colorScheme="messenger"
-            borderRadius="full"
-            position="absolute"
-            left={side}
-            top={top}
-            transform={"translate(0%, -50%)"}
-            zIndex={2}
-            onClick={() => slider?.slickPrev()}
-            bg={"#fff"}
-          >
-            <BiLeftArrowAlt color="#000" />
-          </IconButton>
-
-          <IconButton
-            aria-label="right-arrow"
-            // colorScheme="messenger"
-            borderRadius="full"
-            position="absolute"
-            right={side}
-            top={top}
-            transform={"translate(0%, -50%)"}
-            zIndex={2}
-            onClick={() => slider?.slickNext()}
-            bg={"#fff"}
-          >
-            <BiRightArrowAlt color="#000" />
-          </IconButton>
-        </>
-      ) : (
-        <></>
-      )} */}
-
-              {/* Slider */}
-              {/* <Slider {...settings} ref={(slider) => setSlider(slider)}>
-                {images.map((url, index) => (
-                  <Box
-                    key={index}
-                    overflow={"auto"}
-                    height={{ base: "xs", md: "xs", lg: "xl" }}
-                    minw={{ base: "auto", md: "xs", lg: "xl" }}
-                    position="relative"
-                    backgroundPosition="center"
-                    backgroundRepeat="no-repeat"
-                    backgroundSize="contain"
-                    backgroundImage={url}
-                  ></Box>
-                ))}
-              </Slider>
-            </Box> */}
              <Box display={"flex"} mb={5}>
               <Box mr={5}>
                 <Image
@@ -1695,6 +1623,17 @@ export default function Intermed1() {
                     {Desc1}
                   </Text>
                 )}
+              </Flex>
+              <Flex>
+                <Text fontWeight={"bold"}>Nationalité : </Text>
+                <Box>
+                  <Text ml={2} fontSize={"15px"}>
+                    {nation != "undefined" && nation != null
+                      ? nation
+                      : "Africaine"}
+                  </Text>
+                  
+                </Box>
               </Flex>
               <Flex>
                 <Text fontWeight={"bold"}>Moyen De paiement : </Text>
@@ -1958,6 +1897,17 @@ export default function Intermed1() {
                     {Desc1}
                   </Text>
                 )}
+              </Flex>
+              <Flex>
+                <Text fontWeight={"bold"}>Nationalité : </Text>
+                <Box>
+                  <Text ml={2} fontSize={"15px"}>
+                    {nation != "undefined" && nation != null
+                      ? nation
+                      : "Africaine"}
+                  </Text>
+                  
+                </Box>
               </Flex>
               <Flex>
                 <Text fontWeight={"bold"}>Moyen De paiement : </Text>
@@ -2342,6 +2292,17 @@ export default function Intermed1() {
                     {Desc1}
                   </Text>
                 )}
+              </Flex>
+              <Flex>
+                <Text fontWeight={"bold"}>Nationalité : </Text>
+                <Box>
+                  <Text ml={2} fontSize={"15px"}>
+                    {nation != "undefined" && nation != null
+                      ? nation
+                      : "Africaine"}
+                  </Text>
+                  
+                </Box>
               </Flex>
               <Flex>
                 <Text fontWeight={"bold"}>Moyen De paiement : </Text>
@@ -3044,6 +3005,17 @@ export default function Intermed1() {
                 )}
               </Flex>
               <Flex>
+                <Text fontWeight={"bold"}>Nationalité : </Text>
+                <Box>
+                  <Text ml={2} fontSize={"15px"}>
+                    {nation != "undefined" && nation != null
+                      ? nation
+                      : "Africaine"}
+                  </Text>
+                  
+                </Box>
+              </Flex>
+              <Flex>
                 <Text fontWeight={"bold"}>Moyen De paiement : </Text>
                 <Box>
                   <Text ml={2} fontSize={"15px"}>
@@ -3428,6 +3400,17 @@ export default function Intermed1() {
                 )}
               </Flex>
               <Flex>
+                <Text fontWeight={"bold"}>Nationalité : </Text>
+                <Box>
+                  <Text ml={2} fontSize={"15px"}>
+                    {nation != "undefined" && nation != null
+                      ? nation
+                      : "Africaine"}
+                  </Text>
+                  
+                </Box>
+              </Flex>
+              <Flex>
                 <Text fontWeight={"bold"}>Moyen De paiement : </Text>
                 <Box>
                   <Text ml={2} fontSize={"15px"}>
@@ -3673,7 +3656,7 @@ export default function Intermed1() {
           <Flex display={["none", "none", "grid", "none", "none"]} width={"-webkit-max-content"}>
            
              <Box display={"flex"} mb={5}>
-              <Box mr={5}>
+              <Box mr={3}>
                 <Image
                   src={`${imageUrl}`}
                   alt={`logo de ${nom}`}
@@ -3717,6 +3700,17 @@ export default function Intermed1() {
                     {Desc1}
                   </Text>
                 )}
+              </Flex>
+              <Flex>
+                <Text fontWeight={"bold"}>Nationalité : </Text>
+                <Box>
+                  <Text ml={2} fontSize={"15px"}>
+                    {nation != "undefined" && nation != null
+                      ? nation
+                      : "Africaine"}
+                  </Text>
+                  
+                </Box>
               </Flex>
               <Flex>
                 <Text fontWeight={"bold"}>Moyen De paiement : </Text>
