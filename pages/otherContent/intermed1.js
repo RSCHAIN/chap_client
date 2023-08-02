@@ -801,7 +801,7 @@ export default function Intermed1() {
                   </Text>
                 )}
               </Flex>
-              <Flex>
+               <Flex>
                 <Text fontWeight={"bold"}>Nationalité : </Text>
                 <Box>
                   <Text ml={2} fontSize={"15px"}>
@@ -1114,17 +1114,6 @@ export default function Intermed1() {
                 )}
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"}>Nationalité : </Text>
-                <Box>
-                  <Text ml={2} fontSize={"15px"}>
-                    {nation != "undefined" && nation != null
-                      ? nation
-                      : "Africaine"}
-                  </Text>
-                  
-                </Box>
-              </Flex>
-              <Flex>
                 <Text fontWeight={"bold"}>Moyen De paiement : </Text>
                 <Box>
                   <Text ml={2} fontSize={"15px"}>
@@ -1314,6 +1303,66 @@ export default function Intermed1() {
           </Flex>
 
           <Flex display={["grid", "grid", "none", "none", "none"]}>
+            {/* Slider */}
+            {/* <Box
+              overflow="-moz-hidden-unscrollable"
+              position={"relative"}
+              height={{ base: "auto", md: "auto", lg: "auto" }}
+              width={{ base: "auto", md: "auto", lg: "auto" }}
+            > */}
+              {/* {isLagerThan768 ? (
+        <>
+          <IconButton
+            aria-label="left-arrow"
+            // colorScheme="messenger"
+            borderRadius="full"
+            position="absolute"
+            left={side}
+            top={top}
+            transform={"translate(0%, -50%)"}
+            zIndex={2}
+            onClick={() => slider?.slickPrev()}
+            bg={"#fff"}
+          >
+            <BiLeftArrowAlt color="#000" />
+          </IconButton>
+
+          <IconButton
+            aria-label="right-arrow"
+            // colorScheme="messenger"
+            borderRadius="full"
+            position="absolute"
+            right={side}
+            top={top}
+            transform={"translate(0%, -50%)"}
+            zIndex={2}
+            onClick={() => slider?.slickNext()}
+            bg={"#fff"}
+          >
+            <BiRightArrowAlt color="#000" />
+          </IconButton>
+        </>
+      ) : (
+        <></>
+      )} */}
+
+              {/* Slider */}
+              {/* <Slider {...settings} ref={(slider) => setSlider(slider)}>
+                {images.map((url, index) => (
+                  <Box
+                    key={index}
+                    overflow={"auto"}
+                    height={{ base: "xs", md: "xs", lg: "xl" }}
+                    minw={{ base: "auto", md: "xs", lg: "xl" }}
+                    position="relative"
+                    backgroundPosition="center"
+                    backgroundRepeat="no-repeat"
+                    backgroundSize="contain"
+                    backgroundImage={url}
+                  ></Box>
+                ))}
+              </Slider>
+            </Box> */}
              <Box display={"flex"} mb={5}>
               <Box mr={5}>
                 <Image
@@ -1359,17 +1408,6 @@ export default function Intermed1() {
                     {Desc1}
                   </Text>
                 )}
-              </Flex>
-              <Flex>
-                <Text fontWeight={"bold"}>Nationalité : </Text>
-                <Box>
-                  <Text ml={2} fontSize={"15px"}>
-                    {nation != "undefined" && nation != null
-                      ? nation
-                      : "Africaine"}
-                  </Text>
-                  
-                </Box>
               </Flex>
               <Flex>
                 <Text fontWeight={"bold"}>Moyen De paiement : </Text>
@@ -1547,23 +1585,13 @@ export default function Intermed1() {
             </Text>
             <Center>
               <Box mt={10}>
-                <Box display={["none", "none", "none", "grid", "grid"]}>
-                  <iframe
-                    width="400"
-                    height="250"
-                    loading="lazy"
-                    allowFullScreen
-                    referrerPolicy="no-referrer-when-downgrade"
-                    src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
-  &q=${addresse}`}
-                  ></iframe>
-                </Box>
+               
                 <Box
-                  width={"fit-content"}
+                  width={"300px"}
                   display={["grid", "grid", "grid", "none", "none"]}
                 >
                   <iframe
-                    width="350"
+                    width="250"
                     height="250"
                     loading="lazy"
                     allowFullScreen
@@ -1576,8 +1604,78 @@ export default function Intermed1() {
             </Center>
           </Flex>
           <Flex display={["none", "none", "grid", "none", "none"]}>
-        
+            {/* <Box
+              overflow="-moz-hidden-unscrollable"
+              position={"relative"}
+              height={{ base: "auto", md: "auto", lg: "auto" }}
+              width={{ base: "auto", md: "auto", lg: "auto" }}
+            > */}
+              {/* CSS files for react-slick */}
+              <link
+                rel="stylesheet"
+                type="text/css"
+                charSet="UTF-8"
+                href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+              />
+              <link
+                rel="stylesheet"
+                type="text/css"
+                href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+              />
 
+              {/* {isLagerThan768 ? (
+        <>
+          <IconButton
+            aria-label="left-arrow"
+            // colorScheme="messenger"
+            borderRadius="full"
+            position="absolute"
+            left={side}
+            top={top}
+            transform={"translate(0%, -50%)"}
+            zIndex={2}
+            onClick={() => slider?.slickPrev()}
+            bg={"#fff"}
+          >
+            <BiLeftArrowAlt color="#000" />
+          </IconButton>
+
+          <IconButton
+            aria-label="right-arrow"
+            // colorScheme="messenger"
+            borderRadius="full"
+            position="absolute"
+            right={side}
+            top={top}
+            transform={"translate(0%, -50%)"}
+            zIndex={2}
+            onClick={() => slider?.slickNext()}
+            bg={"#fff"}
+          >
+            <BiRightArrowAlt color="#000" />
+          </IconButton>
+        </>
+      ) : (
+        <></>
+      )} */}
+
+              {/* Slider */}
+              {/* <Slider {...settings} ref={(slider) => setSlider(slider)}>
+                {images.map((url, index) => (
+                  <Box
+                    key={index}
+                    overflow={"auto"}
+                    height={{ base: "xs", md: "xs", lg: "xl" }}
+                    minw={{ base: "auto", md: "xs", lg: "xl" }}
+                    position="relative"
+                    backgroundPosition="center"
+                    backgroundRepeat="no-repeat"
+                    backgroundSize="contain"
+                    backgroundImage={url}
+                  ></Box>
+                ))}
+              </Slider>
+            </Box> */}
              <Box display={"flex"} mb={5}>
               <Box mr={5}>
                 <Image
@@ -1623,17 +1721,6 @@ export default function Intermed1() {
                     {Desc1}
                   </Text>
                 )}
-              </Flex>
-              <Flex>
-                <Text fontWeight={"bold"}>Nationalité : </Text>
-                <Box>
-                  <Text ml={2} fontSize={"15px"}>
-                    {nation != "undefined" && nation != null
-                      ? nation
-                      : "Africaine"}
-                  </Text>
-                  
-                </Box>
               </Flex>
               <Flex>
                 <Text fontWeight={"bold"}>Moyen De paiement : </Text>
@@ -1811,23 +1898,13 @@ export default function Intermed1() {
             </Text>
             <Center>
               <Box mt={10}>
-                <Box display={["none", "none", "none", "grid", "grid"]}>
-                  <iframe
-                    width="400"
-                    height="200"
-                    loading="lazy"
-                    allowFullScreen
-                    referrerPolicy="no-referrer-when-downgrade"
-                    src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
-  &q=${addresse}`}
-                  ></iframe>
-                </Box>
+               
                 <Box
-                  width={"fit-content"}
+                  width={"300px"}
                   display={["grid", "grid", "grid", "none", "none"]}
                 >
                   <iframe
-                    width="350"
+                    width="250"
                     height="200"
                     loading="lazy"
                     allowFullScreen
@@ -1897,17 +1974,6 @@ export default function Intermed1() {
                     {Desc1}
                   </Text>
                 )}
-              </Flex>
-              <Flex>
-                <Text fontWeight={"bold"}>Nationalité : </Text>
-                <Box>
-                  <Text ml={2} fontSize={"15px"}>
-                    {nation != "undefined" && nation != null
-                      ? nation
-                      : "Africaine"}
-                  </Text>
-                  
-                </Box>
               </Flex>
               <Flex>
                 <Text fontWeight={"bold"}>Moyen De paiement : </Text>
@@ -2243,8 +2309,8 @@ export default function Intermed1() {
             </Box>
           </Flex>
 
-          <Flex display={["grid", "grid", "none", "none", "none"]}  width={"-webkit-max-content"}>
-               
+          <Flex display={["grid", "grid", "none", "none", "none"]}>
+            
         
           
              <Box display={"flex"} mb={5}>
@@ -2292,17 +2358,6 @@ export default function Intermed1() {
                     {Desc1}
                   </Text>
                 )}
-              </Flex>
-              <Flex>
-                <Text fontWeight={"bold"}>Nationalité : </Text>
-                <Box>
-                  <Text ml={2} fontSize={"15px"}>
-                    {nation != "undefined" && nation != null
-                      ? nation
-                      : "Africaine"}
-                  </Text>
-                  
-                </Box>
               </Flex>
               <Flex>
                 <Text fontWeight={"bold"}>Moyen De paiement : </Text>
@@ -2519,23 +2574,13 @@ export default function Intermed1() {
             </Text>
             <Center>
               <Box mt={10}>
-                <Box display={["none", "none", "none", "grid", "grid"]}>
-                  <iframe
-                    width="400"
-                    height="250"
-                    loading="lazy"
-                    allowFullScreen
-                    referrerPolicy="no-referrer-when-downgrade"
-                    src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
-    &q=${addresse}`}
-                  ></iframe>
-                </Box>
+               
                 <Box
-                  width={"fit-content"}
+                  width={"300px"}
                   display={["grid", "grid", "grid", "none", "none"]}
                 >
                   <iframe
-                    width="350"
+                    width="250"
                     height="250"
                     loading="lazy"
                     allowFullScreen
@@ -2547,7 +2592,7 @@ export default function Intermed1() {
               </Box>
             </Center>
           </Flex>
-          <Flex display={["none", "none", "grid", "none", "none"]} width={"-webkit-max-content"}>
+          <Flex display={["none", "none", "grid", "none", "none"]}>
            
              <Box display={"flex"} mb={5}>
               <Box mr={5}>
@@ -2807,23 +2852,13 @@ export default function Intermed1() {
             </Text>
             <Center>
               <Box mt={10}>
-                <Box display={["none", "none", "none", "grid", "grid"]}>
-                  <iframe
-                    width="400"
-                    height="250"
-                    loading="lazy"
-                    allowFullScreen
-                    referrerPolicy="no-referrer-when-downgrade"
-                    src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
-    &q=${addresse}`}
-                  ></iframe>
-                </Box>
+               
                 <Box
-                  width={"fit-content"}
+                  width={"300px"}
                   display={["grid", "grid", "grid", "none", "none"]}
                 >
                   <iframe
-                    width="350"
+                    width="250"
                     height="250"
                     loading="lazy"
                     allowFullScreen
@@ -2833,121 +2868,11 @@ export default function Intermed1() {
                   ></iframe>
                 </Box>
               </Box>
-            </Center>
+            </Center> 
           </Flex>
 
           {/* fin slide  */}
-          {data.length != 0 ? (
-            <>
-              {" "}
-              <Heading fontSize={"20px"} mt={10}>
-                Les produits{" "}
-              </Heading>
-              <Flex mt={10}>
-                <SimpleGrid columns={[1, 1, 1, 2, 2]}>
-                  {data.map((data, key) => (
-                    <Box
-                      key={data.id}
-                      maxW={"fit-content"}
-                      // height={"400px"}
-                      mb={5}
-                      borderRadius="lg"
-                      display={"flex"}
-                      // border={"1px solid black"}
-                    >
-                      <Box
-                        width={"200px"}
-                        height={"fit-content"}
-                        // pt={10}
-                      >
-                        <Image
-                          src={data.imageUrl}
-                          alt={data.nom}
-                          width={"200px"}
-                          height={"200px"}
-                          maxH={"200px"}
-                          maxW={"200px"}
-                          borderRadius={"25px"}
-                        />
-                      </Box>
-
-                      <Box ml={5}>
-                        <Box
-                          fontWeight="semibold"
-                          as="h5"
-                          lineHeight="tight"
-                          noOfLines={3}
-                          width={"270px"}
-                          height={"fit-content"}
-                        >
-                          <Text width={"200px"} fontSize={"20px"}>
-                            {data.nom}
-                          </Text>
-                          <Box textColor={"blue"} color={"blue.400"}>
-                            {data.prix}
-                            <Box as="span" pl={2} fontSize="sm">
-                              €
-                            </Box>
-                          </Box>
-                        </Box>
-
-                        <Box
-                          fontWeight="normal"
-                          lineHeight="taller"
-                          noOfLines={8}
-                          w={{ base: "150px", md: "200px" }}
-                          // Height={"250px"}
-                          maxH={"250px"}
-                        >
-                          {data.description == "undefined" ? (
-                            <></>
-                          ) : (
-                            <>
-                              {" "}
-                              <Tooltip label={data.description}>
-                                <Text noOfLines={3} width={"200px"}>
-                                  {data.description}
-                                </Text>
-                              </Tooltip>
-                            </>
-                          )}
-                        </Box>
-                        <Box>
-                          <Button
-                            bgColor={"cyan.700"}
-                            borderRadius={"66px"}
-                            width={"fit-content"}
-                            as={"a"}
-                            onClick={() => {
-                              AddToCart(data),
-                                toast({
-                                  title: "PRODUIT AJOUTE",
-
-                                  status: "success",
-                                  duration: 9000,
-                                  isClosable: true,
-                                });
-                            }}
-                            color={"white"}
-                            _hover={{
-                              backgroundColor: " cyan.900",
-                              color: "white ",
-                            }}
-                            leftIcon={<IoMdAddCircle />}
-                          >
-                            {" "}
-                            Commander
-                          </Button>
-                        </Box>
-                      </Box>
-                    </Box>
-                  ))}
-                </SimpleGrid>
-              </Flex>
-            </>
-          ) : (
-            <></>
-          )}
+       
         </Box>
         <FooterR />
       </>
@@ -3003,17 +2928,6 @@ export default function Intermed1() {
                     {Desc1}
                   </Text>
                 )}
-              </Flex>
-              <Flex>
-                <Text fontWeight={"bold"}>Nationalité : </Text>
-                <Box>
-                  <Text ml={2} fontSize={"15px"}>
-                    {nation != "undefined" && nation != null
-                      ? nation
-                      : "Africaine"}
-                  </Text>
-                  
-                </Box>
               </Flex>
               <Flex>
                 <Text fontWeight={"bold"}>Moyen De paiement : </Text>
@@ -3400,17 +3314,6 @@ export default function Intermed1() {
                 )}
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"}>Nationalité : </Text>
-                <Box>
-                  <Text ml={2} fontSize={"15px"}>
-                    {nation != "undefined" && nation != null
-                      ? nation
-                      : "Africaine"}
-                  </Text>
-                  
-                </Box>
-              </Flex>
-              <Flex>
                 <Text fontWeight={"bold"}>Moyen De paiement : </Text>
                 <Box>
                   <Text ml={2} fontSize={"15px"}>
@@ -3625,23 +3528,13 @@ export default function Intermed1() {
             </Text>
             <Center>
               <Box mt={10}>
-                <Box display={["none", "none", "none", "grid", "grid"]}>
-                  <iframe
-                    width="400"
-                    height="250"
-                    loading="lazy"
-                    allowFullScreen
-                    referrerPolicy="no-referrer-when-downgrade"
-                    src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
-    &q=${addresse}`}
-                  ></iframe>
-                </Box>
+              
                 <Box
-                  width={"fit-content"}
+                  width={"300px"}
                   display={["grid", "grid", "grid", "none", "none"]}
                 >
                   <iframe
-                    width="350"
+                    width="250"
                     height="250"
                     loading="lazy"
                     allowFullScreen
@@ -3656,7 +3549,7 @@ export default function Intermed1() {
           <Flex display={["none", "none", "grid", "none", "none"]} width={"-webkit-max-content"}>
            
              <Box display={"flex"} mb={5}>
-              <Box mr={3}>
+              <Box mr={5}>
                 <Image
                   src={`${imageUrl}`}
                   alt={`logo de ${nom}`}
@@ -3700,17 +3593,6 @@ export default function Intermed1() {
                     {Desc1}
                   </Text>
                 )}
-              </Flex>
-              <Flex>
-                <Text fontWeight={"bold"}>Nationalité : </Text>
-                <Box>
-                  <Text ml={2} fontSize={"15px"}>
-                    {nation != "undefined" && nation != null
-                      ? nation
-                      : "Africaine"}
-                  </Text>
-                  
-                </Box>
               </Flex>
               <Flex>
                 <Text fontWeight={"bold"}>Moyen De paiement : </Text>
@@ -3924,19 +3806,8 @@ export default function Intermed1() {
             </Text>
             <Center>
               <Box mt={10}>
-                <Box display={["none", "none", "none", "grid", "grid"]}>
-                  <iframe
-                    width="400"
-                    height="250"
-                    loading="lazy"
-                    allowFullScreen
-                    referrerPolicy="no-referrer-when-downgrade"
-                    src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
-    &q=${addresse}`}
-                  ></iframe>
-                </Box>
                 <Box
-                  width={"fit-content"}
+                  width={"300px"}
                   display={["grid", "grid", "grid", "none", "none"]}
                 >
                   <iframe
