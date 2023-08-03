@@ -277,7 +277,23 @@ const InputBar = () => {
                   }} cursor={"pointer"} >
                     <MdLocationOn/>
                   </InputLeftElement>
-                </InputGroup> : <> </>} 
+                </InputGroup> : <><InputGroup   bgColor={"#ddd"} borderRadius={"100px"}>
+                  <Input
+                  borderRadius={"100px"}
+                    type={"number"}
+                    placeholder="Entrez votre code postal "
+                    w={"15em"}
+                    maxLength={5}
+                    value={locate} 
+                    onChange={(e)=>{localStorage.setItem("postal",e.target.value),setLocate(e.target.value)}}
+                  />
+                  <InputLeftElement as={Link} href={"#"} borderRaduis={"50%"}   _hover={{
+                    textDecoration: "none",
+                  
+                  }} cursor={"pointer"} >
+                    <MdLocationOn/>
+                  </InputLeftElement>
+                </InputGroup> </>} 
       </Center>
     </>
   );
