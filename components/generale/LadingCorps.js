@@ -407,8 +407,8 @@ const LadingCorps = () => {
  
               </Box>
             </Center>
-            <Heading textAlign={"start"} color={"#08566e"} mb={2} mt={9}>
-              Les produits de partenaires
+            <Heading textAlign={"start"} fontSize={"25px"}color={"#08566e"} mb={2} mt={9}>
+              Les produits sponsorisés
             </Heading>
             <Favlist/>
 
