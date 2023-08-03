@@ -89,7 +89,7 @@ export default function Favlist() {
       </Box>
     ))}
     </SimpleGrid> */}
-    <Box ml={10} width={"100%"}>
+    <Box ml={10} width={"90%"}>
     <Carousel  responsive={responsive} style={"marginLeft='10px'"}
   >
           {Object.values(data).splice(0,8).map((data, index) => (
