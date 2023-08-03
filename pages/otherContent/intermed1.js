@@ -1931,7 +1931,8 @@ export default function Intermed1() {
         {/* CSS files for react-slick */}
 
         <Box ml={["3%", "3%", "3%", "20%", "20%"]} mt={10} mb={10}  >
-          <Flex display={["none", "none", "none", "flex", "flex"]}>
+          <Box display={["none", "none", "none", "grid", "grid"]}>
+          <Flex >
             <Box mr={5}>
               <Image
                 src={`${imageUrl}`}
@@ -2082,8 +2083,61 @@ export default function Intermed1() {
                   src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
     &q=${addresse}`}
                 ></iframe>
-                <Box mt={5}>
-                  <Center display={"flex"}>
+                
+              </Box>
+              <Box
+                width={"300px"}
+                display={["grid", "grid", "grid", "none", "none"]}
+              >
+                <iframe
+                  width="300"
+                  height="200"
+                  loading="lazy"
+                  allowFullScreen
+                  referrerPolicy="no-referrer-when-downgrade"
+                  src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
+    &q=${addresse}`}
+                ></iframe>
+              </Box>
+              {/* <Flex>
+              <Heading fontSize={"20px"} mt={10}>
+            Images du magasin{" "}
+          </Heading> */}
+
+              {/* Slider */}
+              {/* <section
+            style={{
+              marginTop: "20px",
+              marginRight: "20px",
+            }}
+          >
+            <Carousel
+              partialVisbile
+              deviceType={"mobile"}
+              itemClass="image-item"
+              responsive={responsive}
+            >
+              {images.slice(0, images.length).map((image, index) => {
+                return (
+                  <Image
+                    key={index}
+                    alt={`${image}`}
+                    maxWidth={{md:'150px',xl:"150px"}}
+                    maxHeight={{base:'150px',xl:"150px"}}
+                    minWidth={{base:'150px',xl:"150px"}}
+                    minHeight={{base:'150px',xl:"150px"}}
+                    pr={5}
+                    src={image}
+                  />
+                );
+              })}
+            </Carousel>
+          </section>
+              </Flex> */}
+            </Box>
+          </Flex>
+          <Box mt={5} width={"90%"}>
+                  <Center >
                     <Box mr={2}>
                       <Button
                         color={"#fff"}
@@ -2256,58 +2310,8 @@ export default function Intermed1() {
                     </ModalContent>
                   </Modal>
                 </Box>
-              </Box>
-              <Box
-                width={"300px"}
-                display={["grid", "grid", "grid", "none", "none"]}
-              >
-                <iframe
-                  width="300"
-                  height="200"
-                  loading="lazy"
-                  allowFullScreen
-                  referrerPolicy="no-referrer-when-downgrade"
-                  src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
-    &q=${addresse}`}
-                ></iframe>
-              </Box>
-              {/* <Flex>
-              <Heading fontSize={"20px"} mt={10}>
-            Images du magasin{" "}
-          </Heading> */}
-
-              {/* Slider */}
-              {/* <section
-            style={{
-              marginTop: "20px",
-              marginRight: "20px",
-            }}
-          >
-            <Carousel
-              partialVisbile
-              deviceType={"mobile"}
-              itemClass="image-item"
-              responsive={responsive}
-            >
-              {images.slice(0, images.length).map((image, index) => {
-                return (
-                  <Image
-                    key={index}
-                    alt={`${image}`}
-                    maxWidth={{md:'150px',xl:"150px"}}
-                    maxHeight={{base:'150px',xl:"150px"}}
-                    minWidth={{base:'150px',xl:"150px"}}
-                    minHeight={{base:'150px',xl:"150px"}}
-                    pr={5}
-                    src={image}
-                  />
-                );
-              })}
-            </Carousel>
-          </section>
-              </Flex> */}
-            </Box>
-          </Flex>
+          </Box>
+          
 
           <Flex display={["grid", "grid", "none", "none", "none"]} width={"fit-content"}>
             

@@ -42,6 +42,7 @@ import { ref, onValue } from "firebase/database";
 import Location from "../location";
 import { useRouter } from "next/router";
 import { collection, query, where, getDocs } from "firebase/firestore";
+import Favlist from "./FavLists";
 
 // les card des differntes cartegories qui seront mapés
 export function ItemCard({ item, card }) {
@@ -357,24 +358,7 @@ const LadingCorps = () => {
     setDatas(1);
   };
 
-  // const updateAll = () => {
-  //   console.log("okay")
-  //   cat.map((index, key) => {
-  //     const starCountRef2 = ref(db2, index.id + "/");
-  //     onValue(starCountRef2, (snapshot) => {
-  //       const donnees = snapshot.val();
-  //       if (donnees != null) {
-  //         const categorie = Object.keys(donnees).map((key) => ({
-  //           id: key,
-  //           ...donnees[key],
-  //         }))
-  //         setDatos(categorie);
 
-  //         localStorage.setItem(index.id + "Datos", JSON.stringify(categorie));
-  //       }
-  //     })
-  //   })
-  // }
   useEffect(() => {
     if (datas == 0) {
       update();
@@ -390,11 +374,7 @@ const LadingCorps = () => {
         {/* <Location /> */}
         <Center width={"100%"} height={"auto"}>
           <Box height={"95%"} width={"95%"}>
-            {/* l'entet principale */}
-            <Heading textAlign={"start"} color={"#08566e"} mb={5}>
-              Nos Services
-            </Heading>
-            <Center width={"100%"}>
+          <Center width={"100%"}>
               <Box>
                
 
@@ -427,6 +407,16 @@ const LadingCorps = () => {
  
               </Box>
             </Center>
+            <Heading textAlign={"start"} color={"#08566e"} mb={2} mt={9}>
+              Les produits de partenaires
+            </Heading>
+            <Favlist/>
+
+            {/* l'entet principale */}
+            <Heading textAlign={"start"} color={"#08566e"} mb={2} mt={9}>
+              Nos Services
+            </Heading>
+           
 
             {/* la box de toutes les cartegorie */}
             {locate.length<=4 ?

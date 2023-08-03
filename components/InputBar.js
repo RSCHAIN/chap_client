@@ -181,8 +181,8 @@ const InputBar = () => {
                   <Input
                   borderRadius={"100px"}
                     type={"number"}
-                    placeholder="Entrez votre code postal "
-                    w={"20em"}
+                    placeholder="Entrez votre code posta"
+                    w={"15em"}
                     maxLength={5}
                     value={locate} 
                     onChange={(e)=>{localStorage.setItem("postal",e.target.value),setLocate(e.target.value)}}
@@ -259,8 +259,25 @@ const InputBar = () => {
           </Flex>
         </Flex>
       </Flex>
-      <Center>
-       
+      <Center display={["grid","grid","grid","none","none"]} width={"90%"}>
+      {locate.length <=4 ? 
+       <InputGroup   bgColor={"#ddd"} borderRadius={"100px"}>
+                  <Input
+                  borderRadius={"100px"}
+                    type={"number"}
+                    placeholder="Entrez votre code postal "
+                    w={"15em"}
+                    maxLength={5}
+                    value={locate} 
+                    onChange={(e)=>{localStorage.setItem("postal",e.target.value),setLocate(e.target.value)}}
+                  />
+                  <InputLeftElement as={Link} href={"#"} borderRaduis={"50%"}   _hover={{
+                    textDecoration: "none",
+                  
+                  }} cursor={"pointer"} >
+                    <MdLocationOn/>
+                  </InputLeftElement>
+                </InputGroup> : <> </>} 
       </Center>
     </>
   );
