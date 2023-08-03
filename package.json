@@ -52,6 +52,7 @@
     "react-firebaseui": "^6.0.0",
     "react-icons": "^4.8.0",
     "react-multi-carousel": "^2.8.4",
+    "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.10.0",
     "react-slick": "^0.29.0",
     "react-snap-carousel": "^0.3.2",
