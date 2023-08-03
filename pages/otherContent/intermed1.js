@@ -965,17 +965,17 @@ export default function Intermed1() {
                       // border={"1px solid black"}
                     >
                       <Box
-                        width={"200px"}
+                        width={["130px","130px","130px","200px","200px"]}
                         height={"fit-content"}
                         // pt={10}
                       >
                         <Image
                           src={data.imageUrl}
                           alt={data.nom}
-                          width={"200px"}
-                          height={"200px"}
-                          maxH={"200px"}
-                          maxW={"200px"}
+                          width={["130px","130px","130px","200px","200px"]}
+                          height={["130px","130px","130px","200px","200px"]}
+                          maxH={["130px","130px","130px","200px","200px"]}
+                          maxW={["130px","130px","130px","200px","200px"]}
                           borderRadius={"25px"}
                         />
                       </Box>
@@ -986,7 +986,7 @@ export default function Intermed1() {
                           as="h5"
                           lineHeight="tight"
                           noOfLines={3}
-                          width={"270px"}
+                          width={"fit-content"}
                           height={"fit-content"}
                         >
                           <Text width={"200px"} fontSize={"20px"}>
@@ -1004,7 +1004,7 @@ export default function Intermed1() {
                           fontWeight="normal"
                           lineHeight="taller"
                           noOfLines={8}
-                          w={{ base: "150px", md: "200px" }}
+                          w={"fit-content"}
                           // Height={"250px"}
                           maxH={"250px"}
                         >
@@ -3959,17 +3959,17 @@ export default function Intermed1() {
                       // border={"1px solid black"}
                     >
                       <Box
-                        width={"200px"}
+                        width={["130px","130px","130px","200px","200px"]}
                         height={"fit-content"}
                         // pt={10}
                       >
                         <Image
                           src={data.imageUrl}
                           alt={data.nom}
-                          width={"200px"}
-                          height={"200px"}
-                          maxH={"200px"}
-                          maxW={"200px"}
+                          width={["130px","130px","130px","200px","200px"]}
+                          height={["130px","130px","130px","200px","200px"]}
+                          maxH={["130px","130px","130px","200px","200px"]}
+                          maxW={["130px","130px","130px","200px","200px"]}
                           borderRadius={"25px"}
                         />
                       </Box>
@@ -3980,7 +3980,7 @@ export default function Intermed1() {
                           as="h5"
                           lineHeight="tight"
                           noOfLines={3}
-                          width={"270px"}
+                          width={"fit-content"}
                           height={"fit-content"}
                         >
                           <Text width={"200px"} fontSize={"20px"}>
@@ -3998,7 +3998,7 @@ export default function Intermed1() {
                           fontWeight="normal"
                           lineHeight="taller"
                           noOfLines={8}
-                          w={{ base: "150px", md: "200px" }}
+                          w={"fit-content"}
                           // Height={"250px"}
                           maxH={"250px"}
                         >
