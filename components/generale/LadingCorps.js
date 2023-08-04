@@ -413,7 +413,7 @@ const LadingCorps = () => {
             <Favlist/>
 
             {/* l'entet principale */}
-            <Heading textAlign={"start"} color={"#08566e"} mb={2} mt={9}>
+            <Heading textAlign={"start"} fontSize={"25px"} color={"#08566e"} mb={2} mt={9}>
               Nos Services
             </Heading>
            
