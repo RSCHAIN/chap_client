@@ -32,7 +32,7 @@ import {
 } from "@chakra-ui/react";
 import { onValue, push, ref } from "@firebase/database";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import React,{ useState } from "react";
 import { useEffect } from "react";
 import {
   BsFillTelephoneOutboundFill,
@@ -300,29 +300,7 @@ export default function Intermed1() {
     setNation(sessionStorage.getItem("nationalite"));
     setNum(sessionStorage.getItem("savefrom"));
 
-    // if (sessionStorage.getItem("horaire") != "undefined") {
-    //   setHoraire(JSON.parse(sessionStorage.getItem("horaire")));
-    //   setHoraire(JSON.parse(sessionStorage.getItem("horaire")));
-    //   setLundi(horaire.lundi);
-    //   setMardi(horaire.mardi);
-    //   setMercredi(horaire.mercredi);
-    //   setJeudi(horaire.jeudi);
-    //   setVendredi(horaire.vendredi);
-    //   setSamedi(horaire.samedi);
-    //   setDimanche(horaire.dimanche);
-    // }
-
-    // if (
-    //   sessionStorage.getItem("paiement") != "undefined" &&
-    //   sessionStorage.getItem("paiement") != null
-    // ) {
-    //   setPaiement(JSON.parse(sessionStorage.getItem("paiement")));
-    //   setPaiement1(paiement.methodeDePaiement1);
-    //   console.log(paiement);
-    //   setPaiement2(paiement.methodeDePaiement2);
-    //   console.log(paiement);
-    // }
-
+ 
     const starCountRef = ref(
       db2,
       `${sessionStorage.getItem("categorie")}/${sessionStorage.getItem("nom")}`
@@ -355,6 +333,7 @@ export default function Intermed1() {
     setHoraire,
     setDesc1,
     setCategorie,
+    setNum,
   ]);
 
   const images = [imageUrl, imageUrl, imageUrl, imageUrl];
