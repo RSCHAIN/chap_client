@@ -32,7 +32,7 @@ import {
 } from "@chakra-ui/react";
 import { onValue, push, ref } from "@firebase/database";
 import { useRouter } from "next/router";
-import React,{ useState } from "react";
+import { useState } from "react";
 import { useEffect } from "react";
 import {
   BsFillTelephoneOutboundFill,
@@ -253,7 +253,6 @@ export default function Intermed1() {
   const [Desc1, setDesc1] = useState("");
   const [nation, setNation] = useState("");
   const [addresse, setAddresse] = useState("");
-  const [num, setNum] = useState("");
   const [data, setData] = useState([]);
   const [categorie, setCategorie] = useState("");
   const [data1, setData1] = useState();
@@ -298,9 +297,30 @@ export default function Intermed1() {
     setCategorie(sessionStorage.getItem("categorie"));
     setDesc1(sessionStorage.getItem("description"));
     setNation(sessionStorage.getItem("nationalite"));
-    setNum(sessionStorage.getItem("savefrom"));
 
- 
+    // if (sessionStorage.getItem("horaire") != "undefined") {
+    //   setHoraire(JSON.parse(sessionStorage.getItem("horaire")));
+    //   setHoraire(JSON.parse(sessionStorage.getItem("horaire")));
+    //   setLundi(horaire.lundi);
+    //   setMardi(horaire.mardi);
+    //   setMercredi(horaire.mercredi);
+    //   setJeudi(horaire.jeudi);
+    //   setVendredi(horaire.vendredi);
+    //   setSamedi(horaire.samedi);
+    //   setDimanche(horaire.dimanche);
+    // }
+
+    // if (
+    //   sessionStorage.getItem("paiement") != "undefined" &&
+    //   sessionStorage.getItem("paiement") != null
+    // ) {
+    //   setPaiement(JSON.parse(sessionStorage.getItem("paiement")));
+    //   setPaiement1(paiement.methodeDePaiement1);
+    //   console.log(paiement);
+    //   setPaiement2(paiement.methodeDePaiement2);
+    //   console.log(paiement);
+    // }
+
     const starCountRef = ref(
       db2,
       `${sessionStorage.getItem("categorie")}/${sessionStorage.getItem("nom")}`
@@ -333,7 +353,6 @@ export default function Intermed1() {
     setHoraire,
     setDesc1,
     setCategorie,
-    setNum,
   ]);
 
   const images = [imageUrl, imageUrl, imageUrl, imageUrl];
@@ -570,7 +589,7 @@ export default function Intermed1() {
                           backgroundColor: " cyan.900",
                           color: "white ",
                         }}
-                        href={`tel:${num}`}
+                        href={`tel:${sessionStorage.getItem("savefrom")}`}
                         leftIcon={<BsTelephoneOutboundFill />}
                       >
                         Nous Contacter
@@ -1272,7 +1291,7 @@ export default function Intermed1() {
                           backgroundColor: " cyan.900",
                           color: "white ",
                         }}
-                        href={`tel:${num}`}
+                        href={`tel:${sessionStorage.getItem("savefrom")}`}
                         leftIcon={<BsTelephoneOutboundFill />}
                       >
                         Nous Contacter
@@ -1488,7 +1507,7 @@ export default function Intermed1() {
                       backgroundColor: " green.200",
                       color: "white ",
                     }}
-                    href={`tel:${num}`}
+                    href={`tel:${sessionStorage.getItem("savefrom")}`}
                     leftIcon={<BsTelephoneOutboundFill />}
                   >
                     Nous Contacter
@@ -1539,9 +1558,9 @@ export default function Intermed1() {
                         <Text marginRight={10}>Numéro du Restaurant : </Text>
                         <h3>
                           <a
-                            href={`tel:${num}`}
+                            href={`tel:${sessionStorage.getItem("savefrom")}`}
                           >
-                            {num}
+                            {sessionStorage.getItem("savefrom")}
                           </a>
                         </h3>
                       </Flex>
@@ -1801,7 +1820,7 @@ export default function Intermed1() {
                       backgroundColor: " cyan.900",
                       color: "white ",
                     }}
-                    href={`tel:${num}`}
+                    href={`tel:${sessionStorage.getItem("savefrom")}`}
                     leftIcon={<BsTelephoneOutboundFill />}
                   >
                     Nous Contacter
@@ -1852,9 +1871,9 @@ export default function Intermed1() {
                         <Text marginRight={10}>Numéro du Restaurant : </Text>
                         <h3>
                           <a
-                            href={`tel:${num}`}
+                            href={`tel:${sessionStorage.getItem("savefrom")}`}
                           >
-                            {num}
+                            {sessionStorage.getItem("savefrom")}
                           </a>
                         </h3>
                       </Flex>
@@ -2200,7 +2219,7 @@ export default function Intermed1() {
                           backgroundColor: " cyan.900",
                           color: "white ",
                         }}
-                        href={`tel:${num}`}
+                        href={`tel:${sessionStorage.getItem("savefrom")}`}
                         leftIcon={<BsTelephoneOutboundFill />}
                       >
                         Nous Contacter
@@ -2271,9 +2290,11 @@ export default function Intermed1() {
                               </Text>
                               <h3>
                                 <a
-                                  href={`tel:${num}`}
+                                  href={`tel:${sessionStorage.getItem(
+                                    "savefrom"
+                                  )}`}
                                 >
-                                  {num}
+                                  {sessionStorage.getItem("savefrom")}
                                 </a>
                               </h3>
                             </Flex>
@@ -2329,9 +2350,9 @@ export default function Intermed1() {
                           <Text marginRight={10}>Numéro du Restaurant : </Text>
                           <h3>
                             <a
-                              href={`tel:${num}`}
+                              href={`tel:${sessionStorage.getItem("savefrom")}`}
                             >
-                              {num}
+                              {sessionStorage.getItem("savefrom")}
                             </a>
                           </h3>
                         </Flex>
@@ -2452,7 +2473,7 @@ export default function Intermed1() {
                       backgroundColor: " green.200",
                       color: "white ",
                     }}
-                    href={`tel:${num}`}
+                    href={`tel:${sessionStorage.getItem("savefrom")}`}
                     leftIcon={<BsTelephoneOutboundFill />}
                   >
                     Nous Contacter
@@ -2522,9 +2543,9 @@ export default function Intermed1() {
                           <Text marginRight={10}>Numéro du Restaurant : </Text>
                           <h3>
                             <a
-                              href={`tel:${num}`}
+                              href={`tel:${sessionStorage.getItem("savefrom")}`}
                             >
-                              {num}
+                              {sessionStorage.getItem("savefrom")}
                             </a>
                           </h3>
                         </Flex>
@@ -2732,7 +2753,7 @@ export default function Intermed1() {
                       backgroundColor: " green.200",
                       color: "white ",
                     }}
-                    href={`tel:${num}`}
+                    href={`tel:${sessionStorage.getItem("savefrom")}`}
                     leftIcon={<BsTelephoneOutboundFill />}
                   >
                     Nous Contacter
@@ -2802,9 +2823,9 @@ export default function Intermed1() {
                           <Text marginRight={10}>Numéro du Restaurant : </Text>
                           <h3>
                             <a
-                              href={`tel:${num}`}
+                              href={`tel:${sessionStorage.getItem("savefrom")}`}
                             >
-                              {num}
+                              {sessionStorage.getItem("savefrom")}
                             </a>
                           </h3>
                         </Flex>
@@ -3213,7 +3234,7 @@ export default function Intermed1() {
                           backgroundColor: " cyan.900",
                           color: "white ",
                         }}
-                        href={`tel:${num}`}
+                        href={`tel:${sessionStorage.getItem("savefrom")}`}
                         leftIcon={<BsTelephoneOutboundFill />}
                       >
                         Nous Contacter
@@ -3288,7 +3309,7 @@ export default function Intermed1() {
                                     "savefrom"
                                   )}`}
                                 >
-                                  {num}
+                                  {sessionStorage.getItem("savefrom")}
                                 </a>
                               </h3>
                             </Flex>
@@ -3344,9 +3365,9 @@ export default function Intermed1() {
                           <Text marginRight={10}>Numéro du Restaurant : </Text>
                           <h3>
                             <a
-                              href={`tel:${num}`}
+                              href={`tel:${sessionStorage.getItem("savefrom")}`}
                             >
-                              {num}
+                              {sessionStorage.getItem("savefrom")}
                             </a>
                           </h3>
                         </Flex>
@@ -3517,7 +3538,7 @@ export default function Intermed1() {
                       backgroundColor: " green.200",
                       color: "white ",
                     }}
-                    href={`tel:${num}`}
+                    href={`tel:${sessionStorage.getItem("savefrom")}`}
                     leftIcon={<BsTelephoneOutboundFill />}
                   >
                     Nous Contacter
@@ -3587,9 +3608,9 @@ export default function Intermed1() {
                           <Text marginRight={10}>Numéro du Restaurant : </Text>
                           <h3>
                             <a
-                              href={`tel:${num}`}
+                              href={`tel:${sessionStorage.getItem("savefrom")}`}
                             >
-                              {num}
+                              {sessionStorage.getItem("savefrom")}
                             </a>
                           </h3>
                         </Flex>
@@ -3797,7 +3818,7 @@ export default function Intermed1() {
                       backgroundColor: " green.200",
                       color: "white ",
                     }}
-                    href={`tel:${num}`}
+                    href={`tel:${sessionStorage.getItem("savefrom")}`}
                     leftIcon={<BsTelephoneOutboundFill />}
                   >
                     Nous Contacter
@@ -3867,9 +3888,9 @@ export default function Intermed1() {
                           <Text marginRight={10}>Numéro du Restaurant : </Text>
                           <h3>
                             <a
-                              href={`tel:${num}`}
+                              href={`tel:${sessionStorage.getItem("savefrom")}`}
                             >
-                              {num}
+                              {sessionStorage.getItem("savefrom")}
                             </a>
                           </h3>
                         </Flex>
