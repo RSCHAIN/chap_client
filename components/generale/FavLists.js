@@ -118,7 +118,7 @@ export default function Favlist() {
               </Box>
               
               <Text fontWeight={"bold"} width={["100px","100px","100px","150px","150px"]} noOfLines={1} pl={2}>{data.nom}</Text>
-              <Text color={"green"} ml={"70%"} fontWeight={"semibold"} >{data.prix}€</Text>
+              <Text color={"green"} ml={["60%","60%","60%","70%","70%"]} fontWeight={"semibold"} >{data.prix}€</Text>
             </Box>
             </Link>
           ))}</Carousel>
