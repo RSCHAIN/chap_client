@@ -110,7 +110,7 @@ export default function Favlist() {
               bgImage={data.imageUrl}
               backgroundPosition={"center"}
               backgroundSize={"cover"}
-              bgColor={"black"}
+              
               backgroundRepeat={"no-repeat"}
               >
                
