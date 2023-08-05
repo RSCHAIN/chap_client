@@ -523,9 +523,6 @@ export default function Intermed1() {
               ></iframe>
               <Center>
                 {" "}
-                
-                
-                <Box>
                 <Box mr={2}>
                       <Button
                         color={"#fff"}
@@ -543,8 +540,8 @@ export default function Intermed1() {
                       >
                         Nous Contacter
                       </Button>
+                    </Box>
                 <Button
-                mr={2}
                   bgColor={"green"}
                   color={"white"}
                   mt={5}
@@ -555,13 +552,13 @@ export default function Intermed1() {
                 >
                   Site web
                 </Button>
-
+                <Box>
                       <Button
                         color={"#fff"}
                         width={"150px"}
                         height={"30px"}
                         as={"a"}
-                        // onClick={onOpen}
+                        onClick={onOpen}
                         bgColor={"cyan.700"}
                         _hover={{
                           backgroundColor: " cyan.900",
