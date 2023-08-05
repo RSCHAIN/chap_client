@@ -1302,7 +1302,7 @@ export default function Intermed1() {
             </Box>
           </Flex>
 
-          <Flex display={["grid", "grid", "none", "none", "none"]}>
+          <Flex display={["grid", "grid", "none", "none", "none"]}  width={"fit-content"}>
             {/* Slider */}
             {/* <Box
               overflow="-moz-hidden-unscrollable"
@@ -1603,7 +1603,7 @@ export default function Intermed1() {
               </Box>
             </Center>
           </Flex>
-          <Flex display={["none", "none", "grid", "none", "none"]}>
+          <Flex display={["none", "none", "grid", "none", "none"]}  width={"fit-content"}>
             {/* <Box
               overflow="-moz-hidden-unscrollable"
               position={"relative"}
@@ -3378,7 +3378,7 @@ export default function Intermed1() {
             </Box>
           </Flex>
 
-          <Flex display={["grid", "grid", "none", "none", "none"]}  width={"-webkit-max-content"}>
+          <Flex display={["grid", "grid", "none", "none", "none"]}   width={"fit-content"}>
             
         
           
@@ -3661,7 +3661,7 @@ export default function Intermed1() {
               </Box>
             </Center>
           </Flex>
-          <Flex display={["none", "none", "grid", "none", "none"]} width={"-webkit-max-content"}>
+          <Flex display={["none", "none", "grid", "none", "none"]} width={"fit-content"}>
            
              <Box display={"flex"} mb={5}>
               <Box mr={5}>
