@@ -102,7 +102,7 @@ export default function Favlist() {
             <Box
             
             key={index} my={10}bgColor={"#eee2"} borderRadius={"25px"} pb={5} boxShadow={"grey 1px 1px  5px"} width={["100px","100px","100px","150px","150px"]}>
-              <Box
+              {/* <Box
              
               borderRadius={"25px 25px 0px 0px"}
               width={"full"} 
@@ -115,8 +115,9 @@ export default function Favlist() {
               >
                
             
-              </Box>
-              
+              </Box> */}
+              <Image height={"100px"}  width={"full"} src={data.imageUrl}  alt={data.nom}  borderRadius={"25px 25px 0px 0px"}/>
+
               <Text fontWeight={"bold"} width={["100px","100px","100px","150px","150px"]} noOfLines={1} pl={2}>{data.nom}</Text>
               <Text color={"green"} ml={["60%","60%","60%","70%","70%"]} fontWeight={"semibold"} >{data.prix}€</Text>
             </Box>
