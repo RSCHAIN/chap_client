@@ -1125,7 +1125,7 @@ export default function Intermed1() {
             </>
           ) : (
             <></>
-          )}()
+          )}
         </Box>
         <FooterR />
       </>
