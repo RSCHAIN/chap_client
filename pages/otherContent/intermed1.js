@@ -370,7 +370,8 @@ export default function Intermed1() {
         <Navbar />
 
         <Box ml={["10%", "10%", "10%", "20%", "20%"]} mt={10} mb={10}>
-          <Flex display={["none", "none", "none", "flex", "flex"]}>
+        <Box display={["none", "none", "none", "grid", "grid"]}>
+          <Flex >
             <Box mr={5}>
               <Image
                 src={`${imageUrl}`}
@@ -401,426 +402,6 @@ export default function Intermed1() {
                 </Text>
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"}>Description : </Text>
-                {Desc1 == "undefined" ? (
-                  <Text width={"58%"} textAlign={"justify"}>
-                    {categorie} Africain
-                  </Text>
-                ) : (
-                  <Text width={"58%"} textAlign={"justify"}>
-                    {Desc1}
-                  </Text>
-                )}
-              </Flex>
-              
-              <Flex>
-                <Text fontWeight={"bold"}>Nationalité : </Text>
-                <Box>
-                  <Text ml={2} fontSize={"15px"}>
-                    {nation != "undefined" && nation != null
-                      ? nation
-                      : "Africaine"}
-                  </Text>
-                  
-                </Box>
-              </Flex>
-
-
-              <Flex>
-                <Text fontWeight={"bold"}>Moyen De paiement : </Text>
-                <Box>
-                  <Text ml={2} fontSize={"15px"}>
-                    {paiement != "undefined" && paiement != null
-                      ? paiement.methodeDePaiement1
-                      : "Espèces"}
-                  </Text>
-                  <Text ml={2} fontSize={"15px"}>
-                    {paiement != "undefined" && paiement != null
-                      ? paiement.methodeDePaiement2
-                      : ""}
-                  </Text>
-                </Box>
-              </Flex>
-
-              <Flex>
-                <Heading
-                  as={"h3"}
-                  fontWeight={"bold"}
-                  _hover={{
-                    cursor: "pointer",
-                  }}
-                  onClick={handleToggle}
-                  color={"blue.700"}
-                  fontSize={"15px"}
-                  mt={3}
-                >
-                  {heure}{" "}
-                  {show ? (
-                    <ChevronUpIcon fontSize={"20px"} />
-                  ) : (
-                    <ChevronDownIcon fontSize={"20px"} />
-                  )}{" "}
-                  :
-                </Heading>
-              </Flex>
-
-              <Collapse in={show}>
-                <Box ml={10}>
-                  <Text fontSize={"15px"}>
-                    lundi:{" "}
-                    {timert != "undefined" && timert != null
-                      ? timert.lundi
-                      : "Non Renseigné"}
-                  </Text>
-                  <Text fontSize={"15px"}>
-                    mardi:{" "}
-                    {timert != "undefined" && timert != null
-                      ? timert.mardi
-                      : "Non Renseigné"}
-                  </Text>
-                  <Text fontSize={"15px"}>
-                    mercredi:{" "}
-                    {timert != "undefined" && timert != null
-                      ? timert.mercredi
-                      : "Non Renseigné"}
-                  </Text>
-                  <Text fontSize={"15px"}>
-                    jeudi:{" "}
-                    {timert != "undefined" && timert != null
-                      ? timert.jeudi
-                      : "Non Renseigné"}
-                  </Text>
-                  <Text fontSize={"15px"}>
-                    vendredi:{" "}
-                    {timert != "undefined" && timert != null
-                      ? timert.vendredi
-                      : "Non Renseigné"}
-                  </Text>
-                  <Text fontSize={"15px"}>
-                    samedi:{" "}
-                    {timert != "undefined" && timert != null
-                      ? timert.samedi
-                      : "Non Renseigné"}
-                  </Text>
-                  <Text fontSize={"15px"}>
-                    dimanche:{" "}
-                    {timert != "undefined" && timert != null
-                      ? timert.dimanche
-                      : "Non Renseigné"}
-                  </Text>
-                </Box>
-              </Collapse>
-            </Box>
-            <Box ml={20} display={["none", "none", "none", "grid", "grid"]}>
-              <iframe
-                width="400"
-                height="200"
-                loading="lazy"
-                allowFullScreen
-                referrerPolicy="no-referrer-when-downgrade"
-                src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
-    &q=${addresse}`}
-              ></iframe>
-              <Center>
-                {" "}
-                <Box mr={2}>
-                      <Button
-                        color={"#fff"}
-                        width={"150px"}
-                        height={"30px"}
-                        as={"a"}
-                        // onClick={onOpen}
-                        bgColor={"green"}
-                        _hover={{
-                          backgroundColor: " cyan.900",
-                          color: "white ",
-                        }}
-                        href={`tel:${numero}`}
-                        leftIcon={<BsTelephoneOutboundFill />}
-                      >
-                        Nous Contacter
-                      </Button>
-                    </Box>
-                <Button
-                  bgColor={"green"}
-                  color={"white"}
-                  mt={5}
-                  width={"150px"}
-                  as={Link}
-                  isExternal
-                  href={"#"}
-                >
-                  Site web
-                </Button>
-                <Box>
-                      <Button
-                        color={"#fff"}
-                        width={"150px"}
-                        height={"30px"}
-                        as={"a"}
-                        onClick={onOpen}
-                        bgColor={"cyan.700"}
-                        _hover={{
-                          backgroundColor: " cyan.900",
-                          color: "white ",
-                        }}
-                        // leftIcon={<BsTelephoneOutboundFill />}
-                      >
-                        Reserver
-                      </Button>
-                      </Box>
-                
-              </Center>
-            </Box>
-            <Box
-              mr={10}
-              width={"300px"}
-              display={["grid", "grid", "grid", "none", "none"]}
-            >
-              <iframe
-                width="300"
-                height="200"
-                loading="lazy"
-                allowFullScreen
-                referrerPolicy="no-referrer-when-downgrade"
-                src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
-    &q=${addresse}`}
-              ></iframe>
-              <Center>
-                {" "}
-                <Button
-                  bgColor={"green"}
-                  color={"white"}
-                  mt={5}
-                  width={"150px"}
-                  as={Link}
-                  isExternal
-                  href={"https://www.google.com"}
-                >
-                  Site web
-                </Button>
-              </Center>
-            </Box>
-          </Flex>
-          <Flex display={["grid", "grid", "none", "none", "none"]} width={"fit-content"}>
-            <Box display={"flex"} mb={5}>
-              <Box mr={5}>
-                <Image
-                  src={`${imageUrl}`}
-                  alt={`logo de ${nom}`}
-                  width={["150px", "150px", "150px", "200px", "200px"]}
-                  height={["150px", "150px", "150px", "200px", "200px"]}
-                  maxHeight={"200px"}
-                  maxWidth={"200px"}
-                  minHeight={"80px"}
-                  minWidth={"100px"}
-                />
-              </Box>
-              <Heading fontSize={"40px"}>{nom}</Heading>
-            </Box>
-            <Box>
-              <Text fontSize={"15px"} fontWeight={"medium"}>
-                {addresse}
-              </Text>
-              <Flex mb={2} mt={2}>
-                <BsFillTelephoneOutboundFill />
-                <Text
-                  fontSize={"15px"}
-                  fontWeight={"medium"}
-                  ml={2}
-                  color={"green"}
-                >
-                  {numero}
-                </Text>
-              </Flex>
-              <Flex>
-                <Text fontWeight={"bold"}>Description : </Text>
-                {Desc1 == "undefined" ? (
-                  <Text width={"58%"} textAlign={"justify"}>
-                    {categorie} Africain
-                  </Text>
-                ) : (
-                  <Text width={"58%"} textAlign={"justify"}>
-                    {Desc1}
-                  </Text>
-                )}
-              </Flex>
-              <Flex>
-                <Text fontWeight={"bold"}>Nationalité : </Text>
-                <Box>
-                  <Text ml={2} fontSize={"15px"}>
-                    {nation != "undefined" && nation != null
-                      ? nation
-                      : "Africaine"}
-                  </Text>
-                  
-                </Box>
-              </Flex>
-              <Flex>
-                <Text fontWeight={"bold"}>Moyen De paiement : </Text>
-                <Box>
-                  <Text ml={2} fontSize={"15px"}>
-                    {paiement != "undefined" && paiement != null
-                      ? paiement.methodeDePaiement1
-                      : "Espèces"}
-                  </Text>
-                  <Text ml={2} fontSize={"15px"}>
-                    {paiement != "undefined" && paiement != null
-                      ? paiement.methodeDePaiement2
-                      : ""}
-                  </Text>
-                </Box>
-              </Flex>
-
-              <Center>
-                {" "}
-                
-                <Button
-                  bgColor={"green"}
-                  color={"white"}
-                  mt={5}
-                  width={"150px"}
-                  as={Link}
-                  isExternal
-                  href={"#"}
-                >
-                  Site web
-                </Button>
-             
-                
-              </Center>
-
-              <Flex>
-                <Heading
-                  as={"h3"}
-                  fontWeight={"bold"}
-                  _hover={{
-                    cursor: "pointer",
-                  }}
-                  // onClick={handleToggle}
-                  color={"blue.700"}
-                  fontSize={"15px"}
-                  mt={3}
-                >
-                  {heure}:
-                </Heading>
-              </Flex>
-
-              <Box ml={10} mb={10}>
-                <Text fontSize={"15px"}>
-                  lundi:{" "}
-                  {timert != "undefined" && timert != null
-                    ? timert.lundi
-                    : "Non Renseigné"}
-                </Text>
-                <Text fontSize={"15px"}>
-                  mardi:{" "}
-                  {timert != "undefined" && timert != null
-                    ? timert.mardi
-                    : "Non Renseigné"}
-                </Text>
-                <Text fontSize={"15px"}>
-                  mercredi:{" "}
-                  {timert != "undefined" && timert != null
-                    ? timert.mercredi
-                    : "Non Renseigné"}
-                </Text>
-                <Text fontSize={"15px"}>
-                  jeudi:{" "}
-                  {timert != "undefined" && timert != null
-                    ? timert.jeudi
-                    : "Non Renseigné"}
-                </Text>
-                <Text fontSize={"15px"}>
-                  vendredi:{" "}
-                  {timert != "undefined" && timert != null
-                    ? timert.vendredi
-                    : "Non Renseigné"}
-                </Text>
-                <Text fontSize={"15px"}>
-                  samedi:{" "}
-                  {timert != "undefined" && timert != null
-                    ? timert.samedi
-                    : "Non Renseigné"}
-                </Text>
-                <Text fontSize={"15px"}>
-                  dimanche:{" "}
-                  {timert != "undefined" && timert != null
-                    ? timert.dimanche
-                    : "Non Renseigné"}
-                </Text>
-              </Box>
-            </Box>
-            <Box mr={10} display={["none", "none", "none", "grid", "grid"]}>
-              <iframe
-                width="400"
-                height="200"
-                loading="lazy"
-                allowFullScreen
-                referrerPolicy="no-referrer-when-downgrade"
-                src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
-    &q=${addresse}`}
-              ></iframe>
-            </Box>
-            <Box
-              width={"300px"}
-              display={["grid", "grid", "grid", "none", "none"]}
-            >
-              <iframe
-                width="300"
-                height="200"
-                loading="lazy"
-                allowFullScreen
-                referrerPolicy="no-referrer-when-downgrade"
-                src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
-    &q=${addresse}`}
-              ></iframe>
-            </Box>
-          </Flex>
-
-          <Flex display={["none", "none", "grid", "none", "none"]}  width={"fit-content"}>
-            <Box display={"flex"} mb={5}>
-              <Box mr={5}>
-                <Image
-                  src={`${imageUrl}`}
-                  alt={`logo de ${nom}`}
-                  width={["150px", "150px", "150px", "200px", "200px"]}
-                  height={["150px", "150px", "150px", "200px", "200px"]}
-                  maxHeight={"200px"}
-                  maxWidth={"200px"}
-                  minHeight={"80px"}
-                  minWidth={"100px"}
-                />
-              </Box>
-              <Heading fontSize={"40px"}>{nom}</Heading>
-              <Box ml={10}>
-                <iframe
-                  width="400"
-                  height="200"
-                  loading="lazy"
-                  allowFullScreen
-                  referrerPolicy="no-referrer-when-downgrade"
-                  src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
-    &q=${addresse}`}
-                ></iframe>
-              </Box>
-            </Box>
-            <Box>
-              <Text fontSize={"15px"} fontWeight={"medium"}>
-                {addresse}
-              </Text>
-              <Flex mb={2} mt={2}>
-                <BsFillTelephoneOutboundFill />
-                <Text
-                  fontSize={"15px"}
-                  fontWeight={"medium"}
-                  ml={2}
-                  color={"green"}
-                >
-                  {numero}
-                </Text>
-              </Flex>
-              <Flex>
                 <Text fontWeight={"bold"} mr={2}>
                   Description :{" "}
                 </Text>
@@ -834,17 +415,6 @@ export default function Intermed1() {
                   </Text>
                 )}
               </Flex>
-               <Flex>
-                <Text fontWeight={"bold"}>Nationalité : </Text>
-                <Box>
-                  <Text ml={2} fontSize={"15px"}>
-                    {nation != "undefined" && nation != null
-                      ? nation
-                      : "Africaine"}
-                  </Text>
-                  
-                </Box>
-              </Flex>
               <Flex>
                 <Text fontWeight={"bold"}>Moyen De paiement : </Text>
                 <Box>
@@ -860,23 +430,18 @@ export default function Intermed1() {
                   </Text>
                 </Box>
               </Flex>
-              <Center>
-                {" "}
-                
-                <Button
-                  bgColor={"green"}
-                  color={"white"}
-                  mt={5}
-                  width={"150px"}
-                  as={Link}
-                  isExternal
-                  href={"#"}
-                >
-                  Site web
-                </Button>
-             
-                
-              </Center>
+              <Flex>
+                <Text fontWeight={"bold"} width={"fit-content"} mr={2}>
+                  Reservation :{" "}
+                </Text>
+                <Text width={"58%"} textAlign={"justify"}>
+                  {data.length != 0 ? (
+                    <Text color={"messenger.500"}>En ligne</Text>
+                  ) : (
+                    <Text color={"red.400"}>Non Disponible</Text>
+                  )}
+                </Text>
+              </Flex>
 
               <Flex>
                 <Heading
@@ -946,7 +511,586 @@ export default function Intermed1() {
                 </Box>
               </Collapse>
             </Box>
+            <Box ml={10}>
+              <Box display={["none", "none", "none", "grid", "grid"]}>
+                <iframe
+                  width="400"
+                  height="200"
+                  loading="lazy"
+                  allowFullScreen
+                  referrerPolicy="no-referrer-when-downgrade"
+                  src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
+    &q=${addresse}`}
+                ></iframe>
+                
+              </Box>
+              <Box
+                width={"300px"}
+                display={["grid", "grid", "grid", "none", "none"]}
+              >
+                <iframe
+                  width="300"
+                  height="200"
+                  loading="lazy"
+                  allowFullScreen
+                  referrerPolicy="no-referrer-when-downgrade"
+                  src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
+    &q=${addresse}`}
+                ></iframe>
+              </Box>
+              {/* <Flex>
+              <Heading fontSize={"20px"} mt={10}>
+            Images du magasin{" "}
+          </Heading> */}
+
+              {/* Slider */}
+              {/* <section
+            style={{
+              marginTop: "20px",
+              marginRight: "20px",
+            }}
+          >
+            <Carousel
+              partialVisbile
+              deviceType={"mobile"}
+              itemClass="image-item"
+              responsive={responsive}
+            >
+              {images.slice(0, images.length).map((image, index) => {
+                return (
+                  <Image
+                    key={index}
+                    alt={`${image}`}
+                    maxWidth={{md:'150px',xl:"150px"}}
+                    maxHeight={{base:'150px',xl:"150px"}}
+                    minWidth={{base:'150px',xl:"150px"}}
+                    minHeight={{base:'150px',xl:"150px"}}
+                    pr={5}
+                    src={image}
+                  />
+                );
+              })}
+            </Carousel>
+          </section>
+              </Flex> */}
+            </Box>
           </Flex>
+          <Box mt={5} width={"90%"}>
+                  <Center >
+                    <Box mr={2}>
+                      <Button
+                        color={"#fff"}
+                        width={"150px"}
+                        height={"30px"}
+                        as={"a"}
+                        // onClick={onOpen}
+                        bgColor={"green"}
+                        _hover={{
+                          backgroundColor: " cyan.900",
+                          color: "white ",
+                        }}
+                        href={`tel:${numero}`}
+                        leftIcon={<BsTelephoneOutboundFill />}
+                      >
+                        Nous Contacter
+                      </Button>
+                    </Box>
+                    <Box mr={2}>
+                      <Button
+                        color={"#fff"}
+                        width={"150px"}
+                        height={"30px"}
+                        isDisabled={true}
+                        as={"a"}
+                        // onClick={onOpen}
+                        bgColor={"red"}
+                        _hover={{
+                          backgroundColor: " red.500",
+                          color: "white ",
+                        }}
+                        // href={`${sessionStorage.getItem("website")}`}
+                        leftIcon={<BiWorld />}
+                        // isExternal
+                      >
+                        Site Web
+                      </Button>
+                    </Box>
+                    <Box>
+                      <Button
+                        color={"#fff"}
+                        width={"150px"}
+                        height={"30px"}
+                        as={"a"}
+                        // onClick={onOpen}
+                        isDisabled={true}
+                        bgColor={"cyan.700"}
+                        _hover={{
+                          backgroundColor: " cyan.900",
+                          color: "white ",
+                        }}
+                        // leftIcon={<BsTelephoneOutboundFill />}
+                      >
+                        Reserver
+                      </Button>
+                    
+                    </Box>
+                  </Center>
+                  
+                </Box>
+          </Box>
+          <Flex display={["grid", "grid", "none", "none", "none"]} width={"fit-content"}>
+            
+        
+          
+            <Box display={"flex"} mb={5}>
+             <Box mr={5}>
+               <Image
+                 src={`${imageUrl}`}
+                 alt={`logo de ${nom}`}
+                 width={["150px", "150px", "150px", "200px", "200px"]}
+                 height={["150px", "150px", "150px", "200px", "200px"]}
+                 maxHeight={"200px"}
+                 maxWidth={"200px"}
+                 minHeight={"80px"}
+                 minWidth={"100px"}
+               />
+               
+             </Box>
+             <Heading fontSize={"40px"}>{nom}</Heading>
+           </Box>
+
+           <Box>
+             <Text fontSize={"15px"} fontWeight={"medium"}>
+               {addresse}
+             </Text>
+             <Flex mb={2} mt={2}>
+               <BsFillTelephoneOutboundFill />
+               <Text
+                 fontSize={"15px"}
+                 fontWeight={"medium"}
+                 ml={2}
+                 color={"green"}
+               >
+                 {numero}
+               </Text>
+             </Flex>
+             <Flex>
+               <Text fontWeight={"bold"} mr={2}>
+                 Description :{" "}
+               </Text>
+               {Desc1 == "undefined" ? (
+                 <Text width={"58%"} textAlign={"justify"}>
+                   {categorie} Africain
+                 </Text>
+               ) : (
+                 <Text width={"58%"} textAlign={"justify"}>
+                   {Desc1}
+                 </Text>
+               )}
+             </Flex>
+             <Flex>
+               <Text fontWeight={"bold"}>Moyen De paiement : </Text>
+               <Box>
+                 <Text ml={2} fontSize={"15px"}>
+                   {paiement != "undefined" && paiement != null
+                     ? paiement.methodeDePaiement1
+                     : "Espèces"}
+                 </Text>
+                 <Text ml={2} fontSize={"15px"}>
+                   {paiement != "undefined" && paiement != null
+                     ? paiement.methodeDePaiement2
+                     : ""}
+                 </Text>
+               </Box>
+             </Flex>
+             <Flex>
+               <Text fontWeight={"bold"} width={"fit-content"} mr={2}>
+                 Reservation :{" "}
+               </Text>
+               <Text width={"58%"} textAlign={"justify"}>
+                 {data.length != 0 ? (
+                   <Text color={"messenger.500"}>En ligne</Text>
+                 ) : (
+                   <Text color={"red.400"}>Non Disponible</Text>
+                 )}
+               </Text>
+             </Flex>
+             {/* <Center > */}
+               <SimpleGrid columns={2} spacingX={3}>
+               <Box mt={5}>
+                 <Button
+                   color={"#fff"}
+                   width={"150px"}
+                   height={"30px"}
+                   as={"a"}
+                   // onClick={onOpen}
+                   bgColor={"green"}
+                   _hover={{
+                     backgroundColor: " green.200",
+                     color: "white ",
+                   }}
+                   href={`tel:${numero}`}
+                   leftIcon={<BsTelephoneOutboundFill />}
+                 >
+                   Nous Contacter
+                 </Button>
+               </Box>
+               <Box mt={5} >
+                 <Button
+                   color={"#fff"}
+                   width={"150px"}
+                   height={"30px"}
+                   as={"a"}
+                   // onClick={onOpen}
+                   bgColor={"red"}
+                   _hover={{
+                     backgroundColor: " red.500",
+                     color: "white ",
+                   }}
+                   isDisabled = {true}
+                   // href={`${sessionStorage.getItem("website")}`}
+                   leftIcon={<BiWorld />}
+                   // isExternal
+                 >
+                   Site Web
+                 </Button>
+               </Box>
+              
+               <Box mt={5} ml={"50%"}>
+                 <Button
+                   color={"#fff"}
+                   width={"150px"}
+                   height={"30px"}
+                   as={"a"}
+                   // onClick={onOpen}
+                   bgColor={"cyan.700"}
+                   _hover={{
+                     backgroundColor: " cyan.900",
+                     color: "white ",
+                   }}
+                   // leftIcon={<BsTelephoneOutboundFill />}
+                 >
+                   Reserver
+                 </Button>
+                
+               </Box>
+               </SimpleGrid>
+             {/* </Center> */}
+
+             <Flex>
+               <Heading
+                 as={"h3"}
+                 fontWeight={"bold"}
+                 _hover={{
+                   cursor: "pointer",
+                 }}
+                 onClick={handleToggle}
+                 color={"blue.700"}
+                 fontSize={"15px"}
+                 mt={3}
+               >
+                 {heure}{" "}
+                 {show ? (
+                   <ChevronUpIcon fontSize={"20px"} />
+                 ) : (
+                   <ChevronDownIcon fontSize={"20px"} />
+                 )}{" "}
+                 :
+               </Heading>
+             </Flex>
+
+             <Box ml={10}>
+               <Text fontSize={"15px"}>
+                 lundi:{" "}
+                 {timert != "undefined" && timert != null
+                   ? `${" "} ${timert.lundi}`
+                   : " Non Renseigné"}
+               </Text>
+               <Text fontSize={"15px"}>
+                 mardi:{" "}
+                 {timert != "undefined" && timert != null
+                   ? `${" "} ${timert.mardi}`
+                   : " Non Renseigné"}
+               </Text>
+               <Text fontSize={"15px"}>
+                 mercredi:{" "}
+                 {timert != "undefined" && timert != null
+                   ? `${" "} ${timert.mercredi}`
+                   : " Non Renseigné"}
+               </Text>
+               <Text fontSize={"15px"}>
+                 jeudi:{" "}
+                 {timert != "undefined" && timert != null
+                   ? `${" "} ${timert.jeudi}`
+                   : " Non Renseigné"}
+               </Text>
+               <Text fontSize={"15px"}>
+                 vendredi:{" "}
+                 {timert != "undefined" && timert != null
+                   ? `${" "} ${timert.vendredi}`
+                   : " Non Renseigné"}
+               </Text>
+               <Text fontSize={"15px"}>
+                 samedi:{" "}
+                 {timert != "undefined" && timert != null
+                   ? `${" "} ${timert.samedi}`
+                   : " Non Renseigné"}
+               </Text>
+               <Text fontSize={"15px"}>
+                 dimanche:{" "}
+                 {timert != "undefined" && timert != null
+                   ? `${" "} ${timert.dimanche}`
+                   : " Non Renseigné"}
+               </Text>
+             </Box>
+           </Box>
+           <Text mt={5} as={"h3"} fontWeight={"bold"}>
+             Nous rejoindre
+           </Text>
+           <Center>
+             <Box mt={10}>
+              
+               <Box
+                 width={"300px"}
+                 display={["grid", "grid", "grid", "none", "none"]}
+               >
+                 <iframe
+                   width="300"
+                   height="250"
+                   loading="lazy"
+                   allowFullScreen
+                   referrerPolicy="no-referrer-when-downgrade"
+                   src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
+   &q=${addresse}`}
+                 ></iframe>
+               </Box>
+             </Box>
+           </Center>
+         </Flex>
+         <Flex display={["none", "none", "grid", "none", "none"]} width={"fit-content"}>
+          
+          <Box display={"flex"} mb={5}>
+           <Box mr={5}>
+             <Image
+               src={`${imageUrl}`}
+               alt={`logo de ${nom}`}
+               width={["150px", "150px", "150px", "200px", "200px"]}
+               height={["150px", "150px", "150px", "200px", "200px"]}
+               maxHeight={"200px"}
+               maxWidth={"200px"}
+               minHeight={"80px"}
+               minWidth={"100px"}
+             />
+             
+           </Box>
+           <Heading fontSize={"40px"}>{nom}</Heading>
+         </Box>
+
+         <Box>
+           <Text fontSize={"15px"} fontWeight={"medium"}>
+             {addresse}
+           </Text>
+           <Flex mb={2} mt={2}>
+             <BsFillTelephoneOutboundFill />
+             <Text
+               fontSize={"15px"}
+               fontWeight={"medium"}
+               ml={2}
+               color={"green"}
+             >
+               {numero}
+             </Text>
+           </Flex>
+           <Flex>
+             <Text fontWeight={"bold"} mr={2}>
+               Description :{" "}
+             </Text>
+             {Desc1 == "undefined" ? (
+               <Text width={"58%"} textAlign={"justify"}>
+                 {categorie} Africain
+               </Text>
+             ) : (
+               <Text width={"58%"} textAlign={"justify"}>
+                 {Desc1}
+               </Text>
+             )}
+           </Flex>
+           <Flex>
+             <Text fontWeight={"bold"}>Moyen De paiement : </Text>
+             <Box>
+               <Text ml={2} fontSize={"15px"}>
+                 {paiement != "undefined" && paiement != null
+                   ? paiement.methodeDePaiement1
+                   : "Espèces"}
+               </Text>
+               <Text ml={2} fontSize={"15px"}>
+                 {paiement != "undefined" && paiement != null
+                   ? paiement.methodeDePaiement2
+                   : ""}
+               </Text>
+             </Box>
+           </Flex>
+           <Flex>
+             <Text fontWeight={"bold"} width={"fit-content"} mr={2}>
+               Reservation :{" "}
+             </Text>
+             <Text width={"58%"} textAlign={"justify"}>
+               {data.length != 0 ? (
+                 <Text color={"messenger.500"}>En ligne</Text>
+               ) : (
+                 <Text color={"red.400"}>Non Disponible</Text>
+               )}
+             </Text>
+           </Flex>
+           <SimpleGrid columns={2} spacingX={3}>
+             <Box mt={5}>
+               <Button
+                 color={"#fff"}
+                 width={"150px"}
+                 height={"30px"}
+                 as={"a"}
+                 // onClick={onOpen}
+                 bgColor={"green"}
+                 _hover={{
+                   backgroundColor: " green.200",
+                   color: "white ",
+                 }}
+                 href={`tel:${numero}`}
+                 leftIcon={<BsTelephoneOutboundFill />}
+               >
+                 Nous Contacter
+               </Button>
+             </Box>
+             <Box mt={5} >
+               <Button
+                 color={"#fff"}
+                 width={"150px"}
+                 height={"30px"}
+                 as={"a"}
+                 // onClick={onOpen}
+                 bgColor={"red"}
+                 _hover={{
+                   backgroundColor: " red.500",
+                   color: "white ",
+                 }}
+                 isDisabled={true}
+                 // href={`${sessionStorage.getItem("website")}`}
+                 leftIcon={<BiWorld />}
+                 // isExternal
+               >
+                 Site Web
+               </Button>
+             </Box>
+            
+             <Box mt={5} ml={"50%"}>
+               <Button
+                 color={"#fff"}
+                 width={"150px"}
+                 height={"30px"}
+                 as={"a"}
+                 // onClick={onOpen}
+                 bgColor={"cyan.700"}
+                 _hover={{
+                   backgroundColor: " cyan.900",
+                   color: "white ",
+                 }}
+                 // leftIcon={<BsTelephoneOutboundFill />}
+               >
+                 Reserver
+               </Button>
+              
+             </Box>
+             </SimpleGrid>
+           <Flex>
+             <Heading
+               as={"h3"}
+               fontWeight={"bold"}
+               _hover={{
+                 cursor: "pointer",
+               }}
+               onClick={handleToggle}
+               color={"blue.700"}
+               fontSize={"15px"}
+               mt={3}
+             >
+               {heure}{" "}
+               {show ? (
+                 <ChevronUpIcon fontSize={"20px"} />
+               ) : (
+                 <ChevronDownIcon fontSize={"20px"} />
+               )}{" "}
+               :
+             </Heading>
+           </Flex>
+
+           <Box ml={10}>
+             <Text fontSize={"15px"}>
+               lundi:{" "}
+               {timert != "undefined" && timert != null
+                 ? `${" "} ${timert.lundi}`
+                 : " Non Renseigné"}
+             </Text>
+             <Text fontSize={"15px"}>
+               mardi:{" "}
+               {timert != "undefined" && timert != null
+                 ? `${" "} ${timert.mardi}`
+                 : " Non Renseigné"}
+             </Text>
+             <Text fontSize={"15px"}>
+               mercredi:{" "}
+               {timert != "undefined" && timert != null
+                 ? `${" "} ${timert.mercredi}`
+                 : " Non Renseigné"}
+             </Text>
+             <Text fontSize={"15px"}>
+               jeudi:{" "}
+               {timert != "undefined" && timert != null
+                 ? `${" "} ${timert.jeudi}`
+                 : " Non Renseigné"}
+             </Text>
+             <Text fontSize={"15px"}>
+               vendredi:{" "}
+               {timert != "undefined" && timert != null
+                 ? `${" "} ${timert.vendredi}`
+                 : " Non Renseigné"}
+             </Text>
+             <Text fontSize={"15px"}>
+               samedi:{" "}
+               {timert != "undefined" && timert != null
+                 ? `${" "} ${timert.samedi}`
+                 : " Non Renseigné"}
+             </Text>
+             <Text fontSize={"15px"}>
+               dimanche:{" "}
+               {timert != "undefined" && timert != null
+                 ? `${" "} ${timert.dimanche}`
+                 : " Non Renseigné"}
+             </Text>
+           </Box>
+         </Box>
+         <Text mt={5} as={"h3"} fontWeight={"bold"}>
+           Nous rejoindre
+         </Text>
+         <Center>
+           <Box mt={10}>
+            
+             <Box
+               width={"300px"}
+               display={["grid", "grid", "grid", "none", "none"]}
+             >
+               <iframe
+                 width="300"
+                 height="250"
+                 loading="lazy"
+                 allowFullScreen
+                 referrerPolicy="no-referrer-when-downgrade"
+                 src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
+ &q=${addresse}`}
+               ></iframe>
+             </Box>
+           </Box>
+         </Center> 
+       </Flex>
 
           {/* <Heading fontSize={"20px"} mt={10}>
             Images du magasin{" "}
@@ -1089,7 +1233,7 @@ export default function Intermed1() {
             </>
           ) : (
             <></>
-          )}()
+          )}
         </Box>
         <FooterR />
       </>
@@ -1102,7 +1246,8 @@ export default function Intermed1() {
         {/* CSS files for react-slick */}
 
         <Box ml={["3%", "3%", "3%", "20%", "20%"]} mt={10} mb={10}>
-          <Flex display={["none", "none", "none", "flex", "flex"]}>
+        <Box display={["none", "none", "none", "grid", "grid"]}>
+          <Flex >
             <Box mr={5}>
               <Image
                 src={`${imageUrl}`}
@@ -1160,6 +1305,18 @@ export default function Intermed1() {
                       : ""}
                   </Text>
                 </Box>
+              </Flex>
+              <Flex>
+                <Text fontWeight={"bold"} width={"fit-content"} mr={2}>
+                  Reservation :{" "}
+                </Text>
+                <Text width={"58%"} textAlign={"justify"}>
+                  {data.length != 0 ? (
+                    <Text color={"messenger.500"}>En ligne</Text>
+                  ) : (
+                    <Text color={"red.400"}>Non Disponible</Text>
+                  )}
+                </Text>
               </Flex>
 
               <Flex>
@@ -1239,49 +1396,9 @@ export default function Intermed1() {
                   allowFullScreen
                   referrerPolicy="no-referrer-when-downgrade"
                   src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
-  &q=${addresse}`}
+    &q=${addresse}`}
                 ></iframe>
-                <Box mt={5}>
-                  <Center display={"flex"}>
-                    <Box mr={2}>
-                      <Button
-                        color={"#fff"}
-                        width={"150px"}
-                        height={"30px"}
-                        as={"a"}
-                        // onClick={onOpen}
-                        bgColor={"green"}
-                        _hover={{
-                          backgroundColor: " cyan.900",
-                          color: "white ",
-                        }}
-                        href={`tel:${sessionStorage.getItem("savefrom")}`}
-                        leftIcon={<BsTelephoneOutboundFill />}
-                      >
-                        Nous Contacter
-                      </Button>
-                    </Box>
-
-                    <Box>
-                      <Button
-                        color={"#fff"}
-                        width={"150px"}
-                        height={"30px"}
-                        as={"a"}
-                        // onClick={onOpen}
-                        bgColor={"cyan.700"}
-                        _hover={{
-                          backgroundColor: " cyan.900",
-                          color: "white ",
-                        }}
-                        // leftIcon={<BsTelephoneOutboundFill />}
-                      >
-                        Devis
-                      </Button>
-                      {/*  */}
-                    </Box>
-                  </Center>
-                </Box>
+                
               </Box>
               <Box
                 width={"300px"}
@@ -1294,108 +1411,113 @@ export default function Intermed1() {
                   allowFullScreen
                   referrerPolicy="no-referrer-when-downgrade"
                   src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
-  &q=${addresse}`}
+    &q=${addresse}`}
                 ></iframe>
               </Box>
               {/* <Flex>
-            <Heading fontSize={"20px"} mt={10}>
-          Images du magasin{" "}
-        </Heading> */}
+              <Heading fontSize={"20px"} mt={10}>
+            Images du magasin{" "}
+          </Heading> */}
 
               {/* Slider */}
               {/* <section
-          style={{
-            marginTop: "20px",
-            marginRight: "20px",
-          }}
-        >
-          <Carousel
-            partialVisbile
-            deviceType={"mobile"}
-            itemClass="image-item"
-            responsive={responsive}
+            style={{
+              marginTop: "20px",
+              marginRight: "20px",
+            }}
           >
-            {images.slice(0, images.length).map((image, index) => {
-              return (
-                <Image
-                  key={index}
-                  alt={`${image}`}
-                  maxWidth={{md:'150px',xl:"150px"}}
-                  maxHeight={{base:'150px',xl:"150px"}}
-                  minWidth={{base:'150px',xl:"150px"}}
-                  minHeight={{base:'150px',xl:"150px"}}
-                  pr={5}
-                  src={image}
-                />
-              );
-            })}
-          </Carousel>
-        </section>
-            </Flex> */}
+            <Carousel
+              partialVisbile
+              deviceType={"mobile"}
+              itemClass="image-item"
+              responsive={responsive}
+            >
+              {images.slice(0, images.length).map((image, index) => {
+                return (
+                  <Image
+                    key={index}
+                    alt={`${image}`}
+                    maxWidth={{md:'150px',xl:"150px"}}
+                    maxHeight={{base:'150px',xl:"150px"}}
+                    minWidth={{base:'150px',xl:"150px"}}
+                    minHeight={{base:'150px',xl:"150px"}}
+                    pr={5}
+                    src={image}
+                  />
+                );
+              })}
+            </Carousel>
+          </section>
+              </Flex> */}
             </Box>
           </Flex>
-
-          <Flex display={["grid", "grid", "none", "none", "none"]}  width={"fit-content"}>
-            {/* Slider */}
-            {/* <Box
-              overflow="-moz-hidden-unscrollable"
-              position={"relative"}
-              height={{ base: "auto", md: "auto", lg: "auto" }}
-              width={{ base: "auto", md: "auto", lg: "auto" }}
-            > */}
-              {/* {isLagerThan768 ? (
-        <>
-          <IconButton
-            aria-label="left-arrow"
-            // colorScheme="messenger"
-            borderRadius="full"
-            position="absolute"
-            left={side}
-            top={top}
-            transform={"translate(0%, -50%)"}
-            zIndex={2}
-            onClick={() => slider?.slickPrev()}
-            bg={"#fff"}
-          >
-            <BiLeftArrowAlt color="#000" />
-          </IconButton>
-
-          <IconButton
-            aria-label="right-arrow"
-            // colorScheme="messenger"
-            borderRadius="full"
-            position="absolute"
-            right={side}
-            top={top}
-            transform={"translate(0%, -50%)"}
-            zIndex={2}
-            onClick={() => slider?.slickNext()}
-            bg={"#fff"}
-          >
-            <BiRightArrowAlt color="#000" />
-          </IconButton>
-        </>
-      ) : (
-        <></>
-      )} */}
-
-              {/* Slider */}
-              {/* <Slider {...settings} ref={(slider) => setSlider(slider)}>
-                {images.map((url, index) => (
-                  <Box
-                    key={index}
-                    overflow={"auto"}
-                    height={{ base: "xs", md: "xs", lg: "xl" }}
-                    minw={{ base: "auto", md: "xs", lg: "xl" }}
-                    position="relative"
-                    backgroundPosition="center"
-                    backgroundRepeat="no-repeat"
-                    backgroundSize="contain"
-                    backgroundImage={url}
-                  ></Box>
-                ))}
-              </Slider>
-            </Box> */}
+          <Box mt={5} width={"90%"}>
+                  <Center >
+                    <Box mr={2}>
+                      <Button
+                        color={"#fff"}
+                        width={"150px"}
+                        height={"30px"}
+                        as={"a"}
+                        // onClick={onOpen}
+                        bgColor={"green"}
+                        _hover={{
+                          backgroundColor: " cyan.900",
+                          color: "white ",
+                        }}
+                        href={`tel:${numero}`}
+                        leftIcon={<BsTelephoneOutboundFill />}
+                      >
+                        Nous Contacter
+                      </Button>
+                    </Box>
+                    <Box mr={2}>
+                      <Button
+                        color={"#fff"}
+                        width={"150px"}
+                        height={"30px"}
+                        isDisabled={true}
+                        as={"a"}
+                        // onClick={onOpen}
+                        bgColor={"red"}
+                        _hover={{
+                          backgroundColor: " red.500",
+                          color: "white ",
+                        }}
+                        // href={`${sessionStorage.getItem("website")}`}
+                        leftIcon={<BiWorld />}
+                        // isExternal
+                      >
+                        Site Web
+                      </Button>
+                    </Box>
+                    <Box>
+                      <Button
+                        color={"#fff"}
+                        width={"150px"}
+                        height={"30px"}
+                        as={"a"}
+                        // onClick={onOpen}
+                        isDisabled={true}
+                        bgColor={"cyan.700"}
+                        _hover={{
+                          backgroundColor: " cyan.900",
+                          color: "white ",
+                        }}
+                        // leftIcon={<BsTelephoneOutboundFill />}
+                      >
+                        Reserver
+                      </Button>
+                    
+                    </Box>
+                  </Center>
+                  
+                </Box>
+          </Box>
+          <Flex display={["grid", "grid", "none", "none", "none"]} width={"fit-content"}>
+            
+        
+          
              <Box display={"flex"} mb={5}>
               <Box mr={5}>
                 <Image
@@ -1457,9 +1579,21 @@ export default function Intermed1() {
                   </Text>
                 </Box>
               </Flex>
-
-              <Center display={"flex"}>
-                <Box mt={5} mr={5}>
+              <Flex>
+                <Text fontWeight={"bold"} width={"fit-content"} mr={2}>
+                  Reservation :{" "}
+                </Text>
+                <Text width={"58%"} textAlign={"justify"}>
+                  {data.length != 0 ? (
+                    <Text color={"messenger.500"}>En ligne</Text>
+                  ) : (
+                    <Text color={"red.400"}>Non Disponible</Text>
+                  )}
+                </Text>
+              </Flex>
+              {/* <Center > */}
+                <SimpleGrid columns={2} spacingX={3}>
+                <Box mt={5}>
                   <Button
                     color={"#fff"}
                     width={"150px"}
@@ -1471,14 +1605,34 @@ export default function Intermed1() {
                       backgroundColor: " green.200",
                       color: "white ",
                     }}
-                    href={`tel:${sessionStorage.getItem("savefrom")}`}
+                    href={`tel:${numero}`}
                     leftIcon={<BsTelephoneOutboundFill />}
                   >
                     Nous Contacter
                   </Button>
                 </Box>
-
-                <Box mt={5}>
+                <Box mt={5} >
+                  <Button
+                    color={"#fff"}
+                    width={"150px"}
+                    height={"30px"}
+                    as={"a"}
+                    // onClick={onOpen}
+                    bgColor={"red"}
+                    _hover={{
+                      backgroundColor: " red.500",
+                      color: "white ",
+                    }}
+                    isDisabled = {true}
+                    // href={`${sessionStorage.getItem("website")}`}
+                    leftIcon={<BiWorld />}
+                    // isExternal
+                  >
+                    Site Web
+                  </Button>
+                </Box>
+               
+                <Box mt={5} ml={"50%"}>
                   <Button
                     color={"#fff"}
                     width={"150px"}
@@ -1494,64 +1648,11 @@ export default function Intermed1() {
                   >
                     Devis
                   </Button>
-                  {/* <Modal isOpen={isOpen} onClose={onClose}>
-                  <ModalOverlay />
-                  <ModalContent>
-                    <ModalHeader>Formulaire de Reservation</ModalHeader>
-                    <ModalCloseButton />
-                    <ModalBody>
-                      <Flex>
-                        <Text mr={20}>Date & heure: </Text>
-                        <Input
-                          type="datetime-local"
-                          width={"180px"}
-                          onChange={(e) => setData1(e.target.value)}
-                        />
-                      </Flex>
-                      <br />
-                      <Flex>
-                        <Text mr={5}>Nombre De Couverts : </Text>
-                        <Input
-                          type="number"
-                          width={"180px"}
-                          onChange={(e) => setData2(e.target.value)}
-                        />
-                      </Flex>
-                      <br />
-                      <Flex>
-                        <Text marginRight={10}>Numéro du Restaurant : </Text>
-                        <h3>
-                          <a
-                            href={`tel:${sessionStorage.getItem("savefrom")}`}
-                          >
-                            {sessionStorage.getItem("savefrom")}
-                          </a>
-                        </h3>
-                      </Flex>
-                    </ModalBody>
-
-                    <ModalFooter>
-                      {/* <Button colorScheme="ghost" mr={3} onClick={onClose}>
-                  Annuler
-                </Button> */}
-                  {/* 
-                      <Button
-                        bgColor={"cyan.700"}
-                        color={"white"}
-                        _hover={{ bgColor: "cyan.900" }}
-                        onClick={() => {
-                          saveCommande3(data1, data2),
-                            setData1(""),
-                            setData2("");
-                        }}
-                      >
-                        Valider
-                      </Button>
-                    </ModalFooter>
-                  </ModalContent>
-                </Modal>  */}
+                 
                 </Box>
-              </Center>
+                </SimpleGrid>
+              {/* </Center> */}
+
               <Flex>
                 <Heading
                   as={"h3"}
@@ -1564,7 +1665,13 @@ export default function Intermed1() {
                   fontSize={"15px"}
                   mt={3}
                 >
-                  {heure} :
+                  {heure}{" "}
+                  {show ? (
+                    <ChevronUpIcon fontSize={"20px"} />
+                  ) : (
+                    <ChevronDownIcon fontSize={"20px"} />
+                  )}{" "}
+                  :
                 </Heading>
               </Flex>
 
@@ -1630,325 +1737,236 @@ export default function Intermed1() {
                     allowFullScreen
                     referrerPolicy="no-referrer-when-downgrade"
                     src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
-  &q=${addresse}`}
+    &q=${addresse}`}
                   ></iframe>
                 </Box>
               </Box>
             </Center>
           </Flex>
-          <Flex display={["none", "none", "grid", "none", "none"]}  width={"fit-content"}>
-            {/* <Box
-              overflow="-moz-hidden-unscrollable"
-              position={"relative"}
-              height={{ base: "auto", md: "auto", lg: "auto" }}
-              width={{ base: "auto", md: "auto", lg: "auto" }}
-            > */}
-              {/* CSS files for react-slick */}
-              <link
-                rel="stylesheet"
-                type="text/css"
-                charSet="UTF-8"
-                href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+          <Flex display={["none", "none", "grid", "none", "none"]} width={"fit-content"}>
+           
+           <Box display={"flex"} mb={5}>
+            <Box mr={5}>
+              <Image
+                src={`${imageUrl}`}
+                alt={`logo de ${nom}`}
+                width={["150px", "150px", "150px", "200px", "200px"]}
+                height={["150px", "150px", "150px", "200px", "200px"]}
+                maxHeight={"200px"}
+                maxWidth={"200px"}
+                minHeight={"80px"}
+                minWidth={"100px"}
               />
-              <link
-                rel="stylesheet"
-                type="text/css"
-                href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
-              />
-
-              {/* {isLagerThan768 ? (
-        <>
-          <IconButton
-            aria-label="left-arrow"
-            // colorScheme="messenger"
-            borderRadius="full"
-            position="absolute"
-            left={side}
-            top={top}
-            transform={"translate(0%, -50%)"}
-            zIndex={2}
-            onClick={() => slider?.slickPrev()}
-            bg={"#fff"}
-          >
-            <BiLeftArrowAlt color="#000" />
-          </IconButton>
-
-          <IconButton
-            aria-label="right-arrow"
-            // colorScheme="messenger"
-            borderRadius="full"
-            position="absolute"
-            right={side}
-            top={top}
-            transform={"translate(0%, -50%)"}
-            zIndex={2}
-            onClick={() => slider?.slickNext()}
-            bg={"#fff"}
-          >
-            <BiRightArrowAlt color="#000" />
-          </IconButton>
-        </>
-      ) : (
-        <></>
-      )} */}
-
-              {/* Slider */}
-              {/* <Slider {...settings} ref={(slider) => setSlider(slider)}>
-                {images.map((url, index) => (
-                  <Box
-                    key={index}
-                    overflow={"auto"}
-                    height={{ base: "xs", md: "xs", lg: "xl" }}
-                    minw={{ base: "auto", md: "xs", lg: "xl" }}
-                    position="relative"
-                    backgroundPosition="center"
-                    backgroundRepeat="no-repeat"
-                    backgroundSize="contain"
-                    backgroundImage={url}
-                  ></Box>
-                ))}
-              </Slider>
-            </Box> */}
-             <Box display={"flex"} mb={5}>
-              <Box mr={5}>
-                <Image
-                  src={`${imageUrl}`}
-                  alt={`logo de ${nom}`}
-                  width={["150px", "150px", "150px", "200px", "200px"]}
-                  height={["150px", "150px", "150px", "200px", "200px"]}
-                  maxHeight={"200px"}
-                  maxWidth={"200px"}
-                  minHeight={"80px"}
-                  minWidth={"100px"}
-                />
-                
-              </Box>
-              <Heading fontSize={"40px"}>{nom}</Heading>
+              
             </Box>
+            <Heading fontSize={"40px"}>{nom}</Heading>
+          </Box>
 
-            <Box>
-              <Text fontSize={"15px"} fontWeight={"medium"}>
-                {addresse}
-              </Text>
-              <Flex mb={2} mt={2}>
-                <BsFillTelephoneOutboundFill />
-                <Text
-                  fontSize={"15px"}
-                  fontWeight={"medium"}
-                  ml={2}
-                  color={"green"}
-                >
-                  {numero}
-                </Text>
-              </Flex>
-              <Flex>
-                <Text fontWeight={"bold"} mr={2}>
-                  Description :{" "}
-                </Text>
-                {Desc1 == "undefined" ? (
-                  <Text width={"58%"} textAlign={"justify"}>
-                    {categorie} Africain
-                  </Text>
-                ) : (
-                  <Text width={"58%"} textAlign={"justify"}>
-                    {Desc1}
-                  </Text>
-                )}
-              </Flex>
-              <Flex>
-                <Text fontWeight={"bold"}>Moyen De paiement : </Text>
-                <Box>
-                  <Text ml={2} fontSize={"15px"}>
-                    {paiement != "undefined" && paiement != null
-                      ? paiement.methodeDePaiement1
-                      : "Espèces"}
-                  </Text>
-                  <Text ml={2} fontSize={"15px"}>
-                    {paiement != "undefined" && paiement != null
-                      ? paiement.methodeDePaiement2
-                      : ""}
-                  </Text>
-                </Box>
-              </Flex>
-
-              <Center display={"flex"}>
-                <Box mt={5} mr={5}>
-                  <Button
-                    color={"#fff"}
-                    width={"150px"}
-                    height={"30px"}
-                    as={"a"}
-                    // onClick={onOpen}
-                    bgColor={"green"}
-                    _hover={{
-                      backgroundColor: " cyan.900",
-                      color: "white ",
-                    }}
-                    href={`tel:${sessionStorage.getItem("savefrom")}`}
-                    leftIcon={<BsTelephoneOutboundFill />}
-                  >
-                    Nous Contacter
-                  </Button>
-                </Box>
-
-                <Box mt={5}>
-                  <Button
-                    color={"#fff"}
-                    width={"150px"}
-                    height={"30px"}
-                    as={"a"}
-                    // onClick={onOpen}
-                    bgColor={"cyan.700"}
-                    _hover={{
-                      backgroundColor: " cyan.900",
-                      color: "white ",
-                    }}
-                    // leftIcon={<BsTelephoneOutboundFill />}
-                  >
-                    Devis
-                  </Button>
-                  <Modal isOpen={isOpen} onClose={onClose}>
-                    <ModalOverlay />
-                    {/* <ModalContent>
-                    <ModalHeader>Formulaire de Reservation</ModalHeader>
-                    <ModalCloseButton />
-                    <ModalBody>
-                      <Flex>
-                        <Text mr={20}>Date & heure: </Text>
-                        <Input
-                          type="datetime-local"
-                          width={"180px"}
-                          onChange={(e) => setData1(e.target.value)}
-                        />
-                      </Flex>
-                      <br />
-                      <Flex>
-                        <Text mr={5}>Nombre De Couverts : </Text>
-                        <Input
-                          type="number"
-                          width={"180px"}
-                          onChange={(e) => setData2(e.target.value)}
-                        />
-                      </Flex>
-                      <br />
-                      <Flex>
-                        <Text marginRight={10}>Numéro du Restaurant : </Text>
-                        <h3>
-                          <a
-                            href={`tel:${sessionStorage.getItem("savefrom")}`}
-                          >
-                            {sessionStorage.getItem("savefrom")}
-                          </a>
-                        </h3>
-                      </Flex>
-                    </ModalBody>
-
-                    <ModalFooter>
-                      {/* <Button colorScheme="ghost" mr={3} onClick={onClose}>
-                  Annuler
-                </Button> */}
-                    {/* 
-                      <Button
-                        bgColor={"cyan.700"}
-                        color={"white"}
-                        _hover={{ bgColor: "cyan.900" }}
-                        onClick={() => {
-                          saveCommande3(data1, data2),
-                            setData1(""),
-                            setData2("");
-                        }}
-                      >
-                        Valider
-                      </Button>
-                    </ModalFooter>
-                  </ModalContent>  */}
-                  </Modal>
-                </Box>
-              </Center>
-              <Flex>
-                <Heading
-                  as={"h3"}
-                  fontWeight={"bold"}
-                  _hover={{
-                    cursor: "pointer",
-                  }}
-                  onClick={handleToggle}
-                  color={"blue.700"}
-                  fontSize={"15px"}
-                  mt={3}
-                >
-                  {heure} :
-                </Heading>
-              </Flex>
-
-              <Box ml={10}>
-                <Text fontSize={"15px"}>
-                  lundi:{" "}
-                  {timert != "undefined" && timert != null
-                    ? `${" "} ${timert.lundi}`
-                    : " Non Renseigné"}
-                </Text>
-                <Text fontSize={"15px"}>
-                  mardi:{" "}
-                  {timert != "undefined" && timert != null
-                    ? `${" "} ${timert.mardi}`
-                    : " Non Renseigné"}
-                </Text>
-                <Text fontSize={"15px"}>
-                  mercredi:{" "}
-                  {timert != "undefined" && timert != null
-                    ? `${" "} ${timert.mercredi}`
-                    : " Non Renseigné"}
-                </Text>
-                <Text fontSize={"15px"}>
-                  jeudi:{" "}
-                  {timert != "undefined" && timert != null
-                    ? `${" "} ${timert.jeudi}`
-                    : " Non Renseigné"}
-                </Text>
-                <Text fontSize={"15px"}>
-                  vendredi:{" "}
-                  {timert != "undefined" && timert != null
-                    ? `${" "} ${timert.vendredi}`
-                    : " Non Renseigné"}
-                </Text>
-                <Text fontSize={"15px"}>
-                  samedi:{" "}
-                  {timert != "undefined" && timert != null
-                    ? `${" "} ${timert.samedi}`
-                    : " Non Renseigné"}
-                </Text>
-                <Text fontSize={"15px"}>
-                  dimanche:{" "}
-                  {timert != "undefined" && timert != null
-                    ? `${" "} ${timert.dimanche}`
-                    : " Non Renseigné"}
-                </Text>
-              </Box>
-            </Box>
-            <Text mt={5} as={"h3"} fontWeight={"bold"}>
-              Nous rejoindre
+          <Box>
+            <Text fontSize={"15px"} fontWeight={"medium"}>
+              {addresse}
             </Text>
-            <Center>
-              <Box mt={10}>
-               
-                <Box
-                  width={"300px"}
-                  display={["grid", "grid", "grid", "none", "none"]}
-                >
-                  <iframe
-                    width="300"
-                    height="200"
-                    loading="lazy"
-                    allowFullScreen
-                    referrerPolicy="no-referrer-when-downgrade"
-                    src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
-  &q=${addresse}`}
-                  ></iframe>
-                </Box>
+            <Flex mb={2} mt={2}>
+              <BsFillTelephoneOutboundFill />
+              <Text
+                fontSize={"15px"}
+                fontWeight={"medium"}
+                ml={2}
+                color={"green"}
+              >
+                {numero}
+              </Text>
+            </Flex>
+            <Flex>
+              <Text fontWeight={"bold"} mr={2}>
+                Description :{" "}
+              </Text>
+              {Desc1 == "undefined" ? (
+                <Text width={"58%"} textAlign={"justify"}>
+                  {categorie} Africain
+                </Text>
+              ) : (
+                <Text width={"58%"} textAlign={"justify"}>
+                  {Desc1}
+                </Text>
+              )}
+            </Flex>
+            <Flex>
+              <Text fontWeight={"bold"}>Moyen De paiement : </Text>
+              <Box>
+                <Text ml={2} fontSize={"15px"}>
+                  {paiement != "undefined" && paiement != null
+                    ? paiement.methodeDePaiement1
+                    : "Espèces"}
+                </Text>
+                <Text ml={2} fontSize={"15px"}>
+                  {paiement != "undefined" && paiement != null
+                    ? paiement.methodeDePaiement2
+                    : ""}
+                </Text>
               </Box>
-            </Center>
-          </Flex>
+            </Flex>
+            <Flex>
+              <Text fontWeight={"bold"} width={"fit-content"} mr={2}>
+                Reservation :{" "}
+              </Text>
+              <Text width={"58%"} textAlign={"justify"}>
+                {data.length != 0 ? (
+                  <Text color={"messenger.500"}>En ligne</Text>
+                ) : (
+                  <Text color={"red.400"}>Non Disponible</Text>
+                )}
+              </Text>
+            </Flex>
+            <SimpleGrid columns={2} spacingX={3}>
+              <Box mt={5}>
+                <Button
+                  color={"#fff"}
+                  width={"150px"}
+                  height={"30px"}
+                  as={"a"}
+                  // onClick={onOpen}
+                  bgColor={"green"}
+                  _hover={{
+                    backgroundColor: " green.200",
+                    color: "white ",
+                  }}
+                  href={`tel:${numero}`}
+                  leftIcon={<BsTelephoneOutboundFill />}
+                >
+                  Nous Contacter
+                </Button>
+              </Box>
+              <Box mt={5} >
+                <Button
+                  color={"#fff"}
+                  width={"150px"}
+                  height={"30px"}
+                  as={"a"}
+                  // onClick={onOpen}
+                  bgColor={"red"}
+                  _hover={{
+                    backgroundColor: " red.500",
+                    color: "white ",
+                  }}
+                  isDisabled={true}
+                  // href={`${sessionStorage.getItem("website")}`}
+                  leftIcon={<BiWorld />}
+                  // isExternal
+                >
+                  Site Web
+                </Button>
+              </Box>
+             
+              <Box mt={5} ml={"50%"}>
+                <Button
+                  color={"#fff"}
+                  width={"150px"}
+                  height={"30px"}
+                  as={"a"}
+                  // onClick={onOpen}
+                  bgColor={"cyan.700"}
+                  _hover={{
+                    backgroundColor: " cyan.900",
+                    color: "white ",
+                  }}
+                  // leftIcon={<BsTelephoneOutboundFill />}
+                >
+                  Devis
+                </Button>
+               
+              </Box>
+              </SimpleGrid>
+            <Flex>
+              <Heading
+                as={"h3"}
+                fontWeight={"bold"}
+                _hover={{
+                  cursor: "pointer",
+                }}
+                onClick={handleToggle}
+                color={"blue.700"}
+                fontSize={"15px"}
+                mt={3}
+              >
+                {heure}{" "}
+                {show ? (
+                  <ChevronUpIcon fontSize={"20px"} />
+                ) : (
+                  <ChevronDownIcon fontSize={"20px"} />
+                )}{" "}
+                :
+              </Heading>
+            </Flex>
+
+            <Box ml={10}>
+              <Text fontSize={"15px"}>
+                lundi:{" "}
+                {timert != "undefined" && timert != null
+                  ? `${" "} ${timert.lundi}`
+                  : " Non Renseigné"}
+              </Text>
+              <Text fontSize={"15px"}>
+                mardi:{" "}
+                {timert != "undefined" && timert != null
+                  ? `${" "} ${timert.mardi}`
+                  : " Non Renseigné"}
+              </Text>
+              <Text fontSize={"15px"}>
+                mercredi:{" "}
+                {timert != "undefined" && timert != null
+                  ? `${" "} ${timert.mercredi}`
+                  : " Non Renseigné"}
+              </Text>
+              <Text fontSize={"15px"}>
+                jeudi:{" "}
+                {timert != "undefined" && timert != null
+                  ? `${" "} ${timert.jeudi}`
+                  : " Non Renseigné"}
+              </Text>
+              <Text fontSize={"15px"}>
+                vendredi:{" "}
+                {timert != "undefined" && timert != null
+                  ? `${" "} ${timert.vendredi}`
+                  : " Non Renseigné"}
+              </Text>
+              <Text fontSize={"15px"}>
+                samedi:{" "}
+                {timert != "undefined" && timert != null
+                  ? `${" "} ${timert.samedi}`
+                  : " Non Renseigné"}
+              </Text>
+              <Text fontSize={"15px"}>
+                dimanche:{" "}
+                {timert != "undefined" && timert != null
+                  ? `${" "} ${timert.dimanche}`
+                  : " Non Renseigné"}
+              </Text>
+            </Box>
+          </Box>
+          <Text mt={5} as={"h3"} fontWeight={"bold"}>
+            Nous rejoindre
+          </Text>
+          <Center>
+            <Box mt={10}>
+             
+              <Box
+                width={"300px"}
+                display={["grid", "grid", "grid", "none", "none"]}
+              >
+                <iframe
+                  width="300"
+                  height="250"
+                  loading="lazy"
+                  allowFullScreen
+                  referrerPolicy="no-referrer-when-downgrade"
+                  src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
+  &q=${addresse}`}
+                ></iframe>
+              </Box>
+            </Box>
+          </Center> 
+        </Flex>
 
           {/* fin slide  */}
         </Box>
@@ -3033,7 +3051,8 @@ export default function Intermed1() {
         {/* CSS files for react-slick */}
 
         <Box ml={["3%", "3%", "3%", "20%", "20%"]} mt={10} mb={10}>
-        <Flex display={["none", "none", "none", "flex", "flex"]}>
+        <Box display={["none", "none", "none", "grid", "grid"]}>
+          <Flex >
             <Box mr={5}>
               <Image
                 src={`${imageUrl}`}
@@ -3184,180 +3203,7 @@ export default function Intermed1() {
                   src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
     &q=${addresse}`}
                 ></iframe>
-                <Box mt={5}>
-                  <Center display={"flex"}>
-                    <Box mr={2}>
-                      <Button
-                        color={"#fff"}
-                        width={"150px"}
-                        height={"30px"}
-                        as={"a"}
-                        // onClick={onOpen}
-                        bgColor={"green"}
-                        _hover={{
-                          backgroundColor: " cyan.900",
-                          color: "white ",
-                        }}
-                        href={`tel:${sessionStorage.getItem("savefrom")}`}
-                        leftIcon={<BsTelephoneOutboundFill />}
-                      >
-                        Nous Contacter
-                      </Button>
-                    </Box>
-                    <Box mr={2}>
-                      <Button
-                        color={"#fff"}
-                        width={"150px"}
-                        height={"30px"}
-                        as={"a"}
-                        // onClick={onOpen}
-                        bgColor={"red"}
-                        _hover={{
-                          backgroundColor: " red.500",
-                          color: "white ",
-                        }}
-                        href={`${sessionStorage.getItem("website")}`}
-                        leftIcon={<BiWorld />}
-                        isExternal
-                      >
-                        Site Web
-                      </Button>
-                    </Box>
-                    <Box>
-                      <Button
-                        color={"#fff"}
-                        width={"150px"}
-                        height={"30px"}
-                        as={"a"}
-                        onClick={onOpen}
-                        bgColor={"cyan.700"}
-                        _hover={{
-                          backgroundColor: " cyan.900",
-                          color: "white ",
-                        }}
-                        // leftIcon={<BsTelephoneOutboundFill />}
-                      >
-                        Reserver
-                      </Button>
-                      <Modal isOpen={isOpen} onClose={onClose}>
-                        <ModalOverlay />
-                        <ModalContent>
-                          <ModalHeader>Formulaire de Reservation</ModalHeader>
-                          <ModalCloseButton />
-                          <ModalBody>
-                            <Flex>
-                              <Text mr={20}>Date & heure: </Text>
-                              <Input
-                                type="datetime-local"
-                                width={"180px"}
-                                onChange={(e) => setData1(e.target.value)}
-                              />
-                            </Flex>
-                            <br />
-                            <Flex>
-                              <Text mr={5}>Nombre De Couverts : </Text>
-                              <Input
-                                type="number"
-                                width={"180px"}
-                                onChange={(e) => setData2(e.target.value)}
-                              />
-                            </Flex>
-                            <br />
-                            <Flex>
-                              <Text marginRight={10}>
-                                Numéro du Restaurant :{" "}
-                              </Text>
-                              <h3>
-                                <a
-                                  href={`tel:${sessionStorage.getItem(
-                                    "savefrom"
-                                  )}`}
-                                >
-                                  {sessionStorage.getItem("savefrom")}
-                                </a>
-                              </h3>
-                            </Flex>
-                          </ModalBody>
-
-                          <ModalFooter>
-                            {/* <Button colorScheme="ghost" mr={3} onClick={onClose}>
-                    Annuler
-                  </Button> */}
-
-                            <Button
-                              bgColor={"cyan.700"}
-                              color={"white"}
-                              _hover={{ bgColor: "cyan.900" }}
-                              onClick={() => {
-                                saveCommande3(data1, data2),
-                                  setData1(""),
-                                  setData2("");
-                              }}
-                            >
-                              Valider
-                            </Button>
-                          </ModalFooter>
-                        </ModalContent>
-                      </Modal>
-                    </Box>
-                  </Center>
-                  <Modal isOpen={isOpen} onClose={onClose}>
-                    <ModalOverlay />
-                    <ModalContent>
-                      <ModalHeader>Formulaire de Reservation</ModalHeader>
-                      <ModalCloseButton />
-                      <ModalBody>
-                        <Flex>
-                          <Text mr={20}>Date & heure: </Text>
-                          <Input
-                            type="datetime-local"
-                            width={"180px"}
-                            onChange={(e) => setData1(e.target.value)}
-                          />
-                        </Flex>
-                        <br />
-                        <Flex>
-                          <Text mr={5}>Nombre De Couverts : </Text>
-                          <Input
-                            type="number"
-                            width={"180px"}
-                            onChange={(e) => setData2(e.target.value)}
-                          />
-                        </Flex>
-                        <br />
-                        <Flex>
-                          <Text marginRight={10}>Numéro du Restaurant : </Text>
-                          <h3>
-                            <a
-                              href={`tel:${sessionStorage.getItem("savefrom")}`}
-                            >
-                              {sessionStorage.getItem("savefrom")}
-                            </a>
-                          </h3>
-                        </Flex>
-                      </ModalBody>
-
-                      <ModalFooter>
-                        {/* <Button colorScheme="ghost" mr={3} onClick={onClose}>
-                    Annuler
-                  </Button> */}
-
-                        <Button
-                          bgColor={"cyan.700"}
-                          color={"white"}
-                          _hover={{ bgColor: "cyan.900" }}
-                          onClick={() => {
-                            saveCommande3(data1, data2),
-                              setData1(""),
-                              setData2("");
-                          }}
-                        >
-                          Valider
-                        </Button>
-                      </ModalFooter>
-                    </ModalContent>
-                  </Modal>
-                </Box>
+                
               </Box>
               <Box
                 width={"300px"}
@@ -3410,6 +3256,69 @@ export default function Intermed1() {
               </Flex> */}
             </Box>
           </Flex>
+          <Box mt={5} width={"90%"}>
+                  <Center >
+                    <Box mr={2}>
+                      <Button
+                        color={"#fff"}
+                        width={"150px"}
+                        height={"30px"}
+                        as={"a"}
+                        // onClick={onOpen}
+                        bgColor={"green"}
+                        _hover={{
+                          backgroundColor: " cyan.900",
+                          color: "white ",
+                        }}
+                        href={`tel:${numero}`}
+                        leftIcon={<BsTelephoneOutboundFill />}
+                      >
+                        Nous Contacter
+                      </Button>
+                    </Box>
+                    <Box mr={2}>
+                      <Button
+                        color={"#fff"}
+                        width={"150px"}
+                        height={"30px"}
+                        isDisabled={true}
+                        as={"a"}
+                        // onClick={onOpen}
+                        bgColor={"red"}
+                        _hover={{
+                          backgroundColor: " red.500",
+                          color: "white ",
+                        }}
+                        // href={`${sessionStorage.getItem("website")}`}
+                        leftIcon={<BiWorld />}
+                        // isExternal
+                      >
+                        Site Web
+                      </Button>
+                    </Box>
+                    <Box>
+                      <Button
+                        color={"#fff"}
+                        width={"150px"}
+                        height={"30px"}
+                        as={"a"}
+                        // onClick={onOpen}
+                        isDisabled={true}
+                        bgColor={"cyan.700"}
+                        _hover={{
+                          backgroundColor: " cyan.900",
+                          color: "white ",
+                        }}
+                        // leftIcon={<BsTelephoneOutboundFill />}
+                      >
+                        Reserver
+                      </Button>
+                    
+                    </Box>
+                  </Center>
+                  
+                </Box>
+          </Box>
 
           <Flex display={["grid", "grid", "none", "none", "none"]}   width={"fit-content"}>
             
