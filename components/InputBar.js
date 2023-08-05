@@ -259,7 +259,7 @@ const InputBar = () => {
           </Flex>
         </Flex>
       </Flex>
-      <Center display={["grid","grid","grid","none","none"]} width={"90%"}>
+      {/* <Center display={["grid","grid","grid","none","none"]} width={"90%"}>
       {locate.length <=4 ? 
        <InputGroup   bgColor={"#ddd"} borderRadius={"100px"}>
                   <Input
@@ -294,7 +294,7 @@ const InputBar = () => {
                     <MdLocationOn/>
                   </InputLeftElement>
                 </InputGroup> </>} 
-      </Center>
+      </Center> */}
     </>
   );
 };

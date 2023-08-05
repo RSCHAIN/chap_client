@@ -378,7 +378,7 @@ const LadingCorps = () => {
               <Box>
                
 
-              {locate.length<=4 ?
+             
               <InputGroup mt={10}  bgColor={"#ddd"} borderRadius={"100px"}>
               <Input
               borderRadius={"100px"}
@@ -398,13 +398,6 @@ const LadingCorps = () => {
                 <MdLocationOn/>
               </InputLeftElement>
             </InputGroup>
-           : <></> }
-
-
-
-
-              
- 
               </Box>
             </Center>
             <Heading textAlign={"start"} fontSize={"25px"}color={"#08566e"} mb={2} mt={9}>
