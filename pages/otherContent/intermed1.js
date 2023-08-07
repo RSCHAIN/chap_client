@@ -402,7 +402,7 @@ export default function Intermed1() {
                 </Text>
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"} mr={2}>
+                <Text fontWeight={"bold"}>
                   Description :{" "}
                 </Text>
                 {Desc1 == "undefined" ? (
@@ -431,7 +431,7 @@ export default function Intermed1() {
                 </Box>
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"} width={"fit-content"} mr={2}>
+                <Text fontWeight={"bold"}>
                   Reservation :{" "}
                 </Text>
                 <Text width={"58%"} textAlign={"justify"}>
@@ -675,7 +675,7 @@ export default function Intermed1() {
                </Text>
              </Flex>
              <Flex>
-               <Text fontWeight={"bold"} mr={2}>
+               <Text fontWeight={"bold"} >
                  Description :{" "}
                </Text>
                {Desc1 == "undefined" ? (
@@ -689,7 +689,7 @@ export default function Intermed1() {
                )}
              </Flex>
              <Flex>
-               <Text fontWeight={"bold"}>Moyen De paiement : </Text>
+               <Text fontWeight={"bold"} >Moyen De paiement : </Text>
                <Box>
                  <Text ml={2} fontSize={"15px"}>
                    {paiement != "undefined" && paiement != null
@@ -704,7 +704,7 @@ export default function Intermed1() {
                </Box>
              </Flex>
              <Flex>
-               <Text fontWeight={"bold"} width={"fit-content"} mr={2}>
+               <Text fontWeight={"bold"} >
                  Reservation :{" "}
                </Text>
                <Text width={"58%"} textAlign={"justify"}>
@@ -902,7 +902,7 @@ export default function Intermed1() {
              </Text>
            </Flex>
            <Flex>
-             <Text fontWeight={"bold"} mr={2}>
+             <Text fontWeight={"bold"} >
                Description :{" "}
              </Text>
              {Desc1 == "undefined" ? (
@@ -916,7 +916,7 @@ export default function Intermed1() {
              )}
            </Flex>
            <Flex>
-             <Text fontWeight={"bold"}>Moyen De paiement : </Text>
+             <Text fontWeight={"bold"} >Moyen De paiement : </Text>
              <Box>
                <Text ml={2} fontSize={"15px"}>
                  {paiement != "undefined" && paiement != null
@@ -931,7 +931,7 @@ export default function Intermed1() {
              </Box>
            </Flex>
            <Flex>
-             <Text fontWeight={"bold"} width={"fit-content"} mr={2}>
+             <Text fontWeight={"bold"}>
                Reservation :{" "}
              </Text>
              <Text width={"58%"} textAlign={"justify"}>
@@ -1278,7 +1278,7 @@ export default function Intermed1() {
                 </Text>
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"} mr={2}>
+                <Text fontWeight={"bold"} >
                   Description :{" "}
                 </Text>
                 {Desc1 == "undefined" ? (
@@ -1292,7 +1292,7 @@ export default function Intermed1() {
                 )}
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"}>Moyen De paiement : </Text>
+                <Text fontWeight={"bold"} >Moyen De paiement : </Text>
                 <Box>
                   <Text ml={2} fontSize={"15px"}>
                     {paiement != "undefined" && paiement != null
@@ -1307,7 +1307,7 @@ export default function Intermed1() {
                 </Box>
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"} width={"fit-content"} mr={2}>
+                <Text fontWeight={"bold"} >
                   Reservation :{" "}
                 </Text>
                 <Text width={"58%"} textAlign={"justify"}>
@@ -1551,7 +1551,7 @@ export default function Intermed1() {
                 </Text>
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"} mr={2}>
+                <Text fontWeight={"bold"} >
                   Description :{" "}
                 </Text>
                 {Desc1 == "undefined" ? (
@@ -1565,7 +1565,7 @@ export default function Intermed1() {
                 )}
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"}>Moyen De paiement : </Text>
+                <Text fontWeight={"bold"} >Moyen De paiement : </Text>
                 <Box>
                   <Text ml={2} fontSize={"15px"}>
                     {paiement != "undefined" && paiement != null
@@ -1580,7 +1580,7 @@ export default function Intermed1() {
                 </Box>
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"} width={"fit-content"} mr={2}>
+                <Text fontWeight={"bold"} >
                   Reservation :{" "}
                 </Text>
                 <Text width={"58%"} textAlign={"justify"}>
@@ -1778,7 +1778,7 @@ export default function Intermed1() {
               </Text>
             </Flex>
             <Flex>
-              <Text fontWeight={"bold"} mr={2}>
+              <Text fontWeight={"bold"} >
                 Description :{" "}
               </Text>
               {Desc1 == "undefined" ? (
@@ -1792,7 +1792,7 @@ export default function Intermed1() {
               )}
             </Flex>
             <Flex>
-              <Text fontWeight={"bold"}>Moyen De paiement : </Text>
+              <Text fontWeight={"bold"} >Moyen De paiement : </Text>
               <Box>
                 <Text ml={2} fontSize={"15px"}>
                   {paiement != "undefined" && paiement != null
@@ -1807,7 +1807,7 @@ export default function Intermed1() {
               </Box>
             </Flex>
             <Flex>
-              <Text fontWeight={"bold"} width={"fit-content"} mr={2}>
+              <Text fontWeight={"bold"} >
                 Reservation :{" "}
               </Text>
               <Text width={"58%"} textAlign={"justify"}>
@@ -2014,7 +2014,7 @@ export default function Intermed1() {
                 </Text>
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"} mr={2}>
+                <Text fontWeight={"bold"}>
                   Description :{" "}
                 </Text>
                 {Desc1 == "undefined" ? (
@@ -2028,7 +2028,7 @@ export default function Intermed1() {
                 )}
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"}>Moyen De paiement : </Text>
+                <Text fontWeight={"bold"} >Moyen De paiement : </Text>
                 <Box>
                   <Text ml={2} fontSize={"15px"}>
                     {paiement != "undefined" && paiement != null
@@ -2043,7 +2043,7 @@ export default function Intermed1() {
                 </Box>
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"} width={"fit-content"} mr={2}>
+                <Text fontWeight={"bold"} >
                   Reservation :{" "}
                 </Text>
                 <Text width={"58%"} textAlign={"justify"}>
@@ -2401,7 +2401,7 @@ export default function Intermed1() {
                 </Text>
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"} mr={2}>
+                <Text fontWeight={"bold"} >
                   Description :{" "}
                 </Text>
                 {Desc1 == "undefined" ? (
@@ -2415,7 +2415,7 @@ export default function Intermed1() {
                 )}
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"}>Moyen De paiement : </Text>
+                <Text fontWeight={"bold"} >Moyen De paiement : </Text>
                 <Box>
                   <Text ml={2} fontSize={"15px"}>
                     {paiement != "undefined" && paiement != null
@@ -2430,7 +2430,7 @@ export default function Intermed1() {
                 </Box>
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"} width={"fit-content"} mr={2}>
+                <Text fontWeight={"bold"} >
                   Reservation :{" "}
                 </Text>
                 <Text width={"58%"} textAlign={"justify"}>
@@ -2682,7 +2682,7 @@ export default function Intermed1() {
                 </Text>
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"} mr={2}>
+                <Text fontWeight={"bold"} >
                   Description :{" "}
                 </Text>
                 {Desc1 == "undefined" ? (
@@ -2696,7 +2696,7 @@ export default function Intermed1() {
                 )}
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"}>Moyen De paiement : </Text>
+                <Text fontWeight={"bold"} width={"fit-content"}>Moyen De paiement : </Text>
                 <Box>
                   <Text ml={2} fontSize={"15px"}>
                     {paiement != "undefined" && paiement != null
@@ -3083,7 +3083,7 @@ export default function Intermed1() {
                 </Text>
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"} mr={2}>
+                <Text fontWeight={"bold"} >
                   Description :{" "}
                 </Text>
                 {Desc1 == "undefined" ? (
@@ -3097,7 +3097,7 @@ export default function Intermed1() {
                 )}
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"}>Moyen De paiement : </Text>
+                <Text fontWeight={"bold"} >Moyen De paiement : </Text>
                 <Box>
                   <Text ml={2} fontSize={"15px"}>
                     {paiement != "undefined" && paiement != null
@@ -3112,7 +3112,7 @@ export default function Intermed1() {
                 </Box>
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"} width={"fit-content"} mr={2}>
+                <Text fontWeight={"bold"} >
                   Reservation :{" "}
                 </Text>
                 <Text width={"58%"} textAlign={"justify"}>
@@ -3358,7 +3358,7 @@ export default function Intermed1() {
                 </Text>
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"} mr={2}>
+                <Text fontWeight={"bold"}>
                   Description :{" "}
                 </Text>
                 {Desc1 == "undefined" ? (
@@ -3372,7 +3372,7 @@ export default function Intermed1() {
                 )}
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"}>Moyen De paiement : </Text>
+                <Text fontWeight={"bold"} >Moyen De paiement : </Text>
                 <Box>
                   <Text ml={2} fontSize={"15px"}>
                     {paiement != "undefined" && paiement != null
@@ -3387,7 +3387,7 @@ export default function Intermed1() {
                 </Box>
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"} width={"fit-content"} mr={2}>
+                <Text fontWeight={"bold"} >
                   Reservation :{" "}
                 </Text>
                 <Text width={"58%"} textAlign={"justify"}>
@@ -3586,7 +3586,7 @@ export default function Intermed1() {
                 </Text>
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"} mr={2}>
+                <Text fontWeight={"bold"} >
                   Description :{" "}
                 </Text>
                 {Desc1 == "undefined" ? (
@@ -3615,7 +3615,7 @@ export default function Intermed1() {
                 </Box>
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"} width={"fit-content"} mr={2}>
+                <Text fontWeight={"bold"}>
                   Reservation :{" "}
                 </Text>
                 <Text width={"58%"} textAlign={"justify"}>
