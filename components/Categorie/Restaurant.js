@@ -339,6 +339,7 @@ export default function Restaurant(){
     const images = [imageUrl, imageUrl, imageUrl, imageUrl];
     return
     (
+        
         <>
         <InputBar />
         <Navbar />

@@ -344,7 +344,7 @@ export default function Intermed1() {
         <InputBar />
         <Navbar />
 
-        <Box ml={["3%", "3%", "3%", "3%", "10%"]} mt={10} mb={10}>
+        <Box ml={["3%", "3%", "3%", "10%", "10%"]} mt={10} mb={10}>
         <Box display={["none", "none", "none", "grid", "grid"]}>
           <Flex >
             <Box mr={5}>
@@ -361,7 +361,7 @@ export default function Intermed1() {
             </Box>
 
             <Box>
-              <Heading fontSize={"40px"}>{nom}</Heading>
+              <Heading fontSize={"35px"}>{nom}</Heading>
               <Text fontSize={"15px"} fontWeight={"medium"}>
                 {addresse}
               </Text>
@@ -645,7 +645,7 @@ export default function Intermed1() {
                />
                
              </Box>
-             <Heading fontSize={"40px"}>{nom}</Heading>
+             <Heading fontSize={"35px"}>{nom}</Heading>
            </Box>
 
            <Box>
@@ -872,7 +872,7 @@ export default function Intermed1() {
              />
              
            </Box>
-           <Heading fontSize={"40px"}>{nom}</Heading>
+           <Heading fontSize={"35px"}>{nom}</Heading>
          </Box>
 
          <Box>
@@ -1251,7 +1251,7 @@ export default function Intermed1() {
             </Box>
 
             <Box>
-              <Heading fontSize={"40px"}>{nom}</Heading>
+              <Heading fontSize={"35px"}>{nom}</Heading>
               <Text fontSize={"15px"} fontWeight={"medium"}>
                 {addresse}
               </Text>
@@ -1535,7 +1535,7 @@ export default function Intermed1() {
                />
                
              </Box>
-             <Heading fontSize={"40px"}>{nom}</Heading>
+             <Heading fontSize={"35px"}>{nom}</Heading>
            </Box>
 
            <Box>
@@ -1763,7 +1763,7 @@ export default function Intermed1() {
              />
              
            </Box>
-           <Heading fontSize={"40px"}>{nom}</Heading>
+           <Heading fontSize={"35px"}>{nom}</Heading>
          </Box>
 
          <Box>
@@ -2003,7 +2003,7 @@ export default function Intermed1() {
             </Box>
 
             <Box>
-              <Heading fontSize={"40px"}>{nom}</Heading>
+              <Heading fontSize={"35px"}>{nom}</Heading>
               <Text fontSize={"15px"} fontWeight={"medium"}>
                 {addresse}
               </Text>
@@ -2023,11 +2023,11 @@ export default function Intermed1() {
                   Description :{" "}
                 </Text>
                 {Desc1 == "undefined" ? (
-                  <Text width={"58%"}  textAlign={"justify"}>
+                  <Text width={"58%"} maxWidth={"58%"}  textAlign={"justify"}>
                     {categorie} Africain
                   </Text>
                 ) : (
-                  <Text width={"58%"}  textAlign={"justify"}>
+                  <Text width={"58%"} maxWidth={"58%"} textAlign={"justify"}>
                     {Desc1}
                   </Text>
                 )}
@@ -2387,7 +2387,7 @@ export default function Intermed1() {
                 />
                 
               </Box>
-              <Heading fontSize={"40px"}>{nom}</Heading>
+              <Heading fontSize={"35px"}>{nom}</Heading>
             </Box>
 
             <Box>
@@ -2668,7 +2668,7 @@ export default function Intermed1() {
                 />
                 
               </Box>
-              <Heading fontSize={"40px"}>{nom}</Heading>
+              <Heading fontSize={"35px"}>{nom}</Heading>
             </Box>
 
             <Box>
@@ -3072,7 +3072,7 @@ export default function Intermed1() {
             </Box>
 
             <Box>
-              <Heading fontSize={"40px"}>{nom}</Heading>
+              <Heading fontSize={"35px"}>{nom}</Heading>
               <Text fontSize={"15px"} fontWeight={"medium"}>
                 {addresse}
               </Text>
@@ -3344,7 +3344,7 @@ export default function Intermed1() {
                 />
                 
               </Box>
-              <Heading fontSize={"40px"}>{nom}</Heading>
+              <Heading fontSize={"35px"}>{nom}</Heading>
             </Box>
 
             <Box>
@@ -3572,7 +3572,7 @@ export default function Intermed1() {
                 />
                 
               </Box>
-              <Heading fontSize={"40px"}>{nom}</Heading>
+              <Heading fontSize={"35px"}>{nom}</Heading>
             </Box>
 
             <Box>
