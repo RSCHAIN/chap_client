@@ -1403,41 +1403,7 @@ export default function Intermed1() {
     &q=${addresse}`}
                 ></iframe>
               </Box>
-              {/* <Flex>
-              <Heading fontSize={"20px"} mt={10}>
-            Images du magasin{" "}
-          </Heading> */}
-
-              {/* Slider */}
-              {/* <section
-            style={{
-              marginTop: "20px",
-              marginRight: "20px",
-            }}
-          >
-            <Carousel
-              partialVisbile
-              deviceType={"mobile"}
-              itemClass="image-item"
-              responsive={responsive}
-            >
-              {images.slice(0, images.length).map((image, index) => {
-                return (
-                  <Image
-                    key={index}
-                    alt={`${image}`}
-                    maxWidth={{md:'150px',xl:"150px"}}
-                    maxHeight={{base:'150px',xl:"150px"}}
-                    minWidth={{base:'150px',xl:"150px"}}
-                    minHeight={{base:'150px',xl:"150px"}}
-                    pr={5}
-                    src={image}
-                  />
-                );
-              })}
-            </Carousel>
-          </section>
-              </Flex> */}
+            
             </Box>
           </Flex>
           <Box mt={5} width={"90%"}>
@@ -1495,7 +1461,7 @@ export default function Intermed1() {
                         }}
                         // leftIcon={<BsTelephoneOutboundFill />}
                       >
-                        Reserver
+                        Devis
                       </Button>
                     
                     </Box>
