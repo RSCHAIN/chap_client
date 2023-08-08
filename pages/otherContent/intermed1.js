@@ -396,11 +396,11 @@ export default function Intermed1() {
                   Nationalite :{" "}
                 </Text>
                 {nation == "undefined" ? (
-                  <Text width={"58%"}  textAlign={"justify"}>
+                  <Text  ml={2} fontSize={"15px"} >
                      Africaine
                   </Text>
                 ) : (
-                  <Text width={"58%"} textAlign={"justify"}>
+                  <Text  ml={2} fontSize={"15px"} >
                     {`${" ",nation} `}
                   </Text>
                 )}
@@ -635,11 +635,11 @@ export default function Intermed1() {
                   Nationalite :{" "}
                 </Text>
                 {nation == "undefined" ? (
-                  <Text width={"58%"}  textAlign={"justify"}>
+                  <Text  ml={2} fontSize={"15px"} >
                      Africaine
                   </Text>
                 ) : (
-                  <Text width={"58%"} textAlign={"justify"}>
+                  <Text  ml={2} fontSize={"15px"} >
                     {`${" ",nation} `}
                   </Text>
                 )}
@@ -875,11 +875,11 @@ export default function Intermed1() {
                   Nationalite :{" "}
                 </Text>
                 {nation == "undefined" ? (
-                  <Text width={"58%"}  textAlign={"justify"}>
+                  <Text  ml={2} fontSize={"15px"} >
                      Africaine
                   </Text>
                 ) : (
-                  <Text width={"58%"} textAlign={"justify"}>
+                  <Text  ml={2} fontSize={"15px"} >
                     {`${" ",nation} `}
                   </Text>
                 )}
@@ -1235,11 +1235,11 @@ export default function Intermed1() {
                   Nationalite :{" "}
                 </Text>
                 {nation == "undefined" ? (
-                  <Text width={"58%"}  textAlign={"justify"}>
+                  <Text  ml={2} fontSize={"15px"} >
                      Africaine
                   </Text>
                 ) : (
-                  <Text width={"58%"} textAlign={"justify"}>
+                  <Text  ml={2} fontSize={"15px"} >
                     {`${" ",nation} `}
                   </Text>
                 )}
@@ -1520,11 +1520,11 @@ export default function Intermed1() {
                   Nationalite :{" "}
                 </Text>
                 {nation == "undefined" ? (
-                  <Text width={"58%"}  textAlign={"justify"}>
+                  <Text  ml={2} fontSize={"15px"} >
                      Africaine
                   </Text>
                 ) : (
-                  <Text width={"58%"} textAlign={"justify"}>
+                  <Text  ml={2} fontSize={"15px"} >
                     {`${" ",nation} `}
                   </Text>
                 )}
@@ -1761,11 +1761,11 @@ export default function Intermed1() {
                   Nationalite :{" "}
                 </Text>
                 {nation == "undefined" ? (
-                  <Text width={"58%"}  textAlign={"justify"}>
+                  <Text  ml={2} fontSize={"15px"} >
                      Africaine
                   </Text>
                 ) : (
-                  <Text width={"58%"} textAlign={"justify"}>
+                  <Text  ml={2} fontSize={"15px"} >
                     {`${" ",nation} `}
                   </Text>
                 )}
@@ -2011,11 +2011,11 @@ export default function Intermed1() {
                   Nationalite :{" "}
                 </Text>
                 {nation == "undefined" ? (
-                  <Text width={"58%"}  textAlign={"justify"}>
+                  <Text  ml={2} fontSize={"15px"} >
                      Africaine
                   </Text>
                 ) : (
-                  <Text width={"58%"} textAlign={"justify"}>
+                  <Text  ml={2} fontSize={"15px"} >
                     {`${" ",nation} `}
                   </Text>
                 )}
@@ -2410,11 +2410,11 @@ export default function Intermed1() {
                   Nationalite :{" "}
                 </Text>
                 {nation == "undefined" ? (
-                  <Text width={"58%"}  textAlign={"justify"}>
+                  <Text  ml={2} fontSize={"15px"} >
                      Africaine
                   </Text>
                 ) : (
-                  <Text width={"58%"} textAlign={"justify"}>
+                  <Text  ml={2} fontSize={"15px"} >
                     {`${" ",nation} `}
                   </Text>
                 )}
@@ -2704,11 +2704,11 @@ export default function Intermed1() {
                   Nationalite :{" "}
                 </Text>
                 {nation == "undefined" ? (
-                  <Text width={"58%"}  textAlign={"justify"}>
+                  <Text  ml={2} fontSize={"15px"} >
                      Africaine
                   </Text>
                 ) : (
-                  <Text width={"58%"} textAlign={"justify"}>
+                  <Text  ml={2} fontSize={"15px"} >
                     {`${" ",nation} `}
                   </Text>
                 )}
@@ -3118,11 +3118,11 @@ export default function Intermed1() {
                   Nationalite :{" "}
                 </Text>
                 {nation == "undefined" ? (
-                  <Text width={"58%"}  textAlign={"justify"}>
+                  <Text  ml={2} fontSize={"15px"} >
                      Africaine
                   </Text>
                 ) : (
-                  <Text width={"58%"} textAlign={"justify"}>
+                  <Text  ml={2} fontSize={"15px"} >
                     {`${" ",nation} `}
                   </Text>
                 )}
@@ -3405,11 +3405,11 @@ export default function Intermed1() {
                   Nationalite :{" "}
                 </Text>
                 {nation == "undefined" ? (
-                  <Text width={"58%"}  textAlign={"justify"}>
+                  <Text  ml={2} fontSize={"15px"} >
                      Africaine
                   </Text>
                 ) : (
-                  <Text width={"58%"} textAlign={"justify"}>
+                  <Text  ml={2} fontSize={"15px"} >
                     {`${" ",nation} `}
                   </Text>
                 )}
@@ -3646,11 +3646,11 @@ export default function Intermed1() {
                   Nationalite :{" "}
                 </Text>
                 {nation == "undefined" ? (
-                  <Text width={"58%"}  textAlign={"justify"}>
+                  <Text  ml={2} fontSize={"15px"} >
                      Africaine
                   </Text>
                 ) : (
-                  <Text width={"58%"} textAlign={"justify"}>
+                  <Text  ml={2} fontSize={"15px"} >
                     {`${" ",nation} `}
                   </Text>
                 )}
