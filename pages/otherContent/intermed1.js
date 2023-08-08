@@ -407,11 +407,11 @@ export default function Intermed1() {
                 </Text>
                 {Desc1 == "undefined" ? (
                   <Text width={"58%"}  textAlign={"justify"}>
-                    {categorie} Africain
+                    {`${" "}{${categorie} Africain`} 
                   </Text>
                 ) : (
                   <Text width={"58%"} textAlign={"justify"}>
-                    {Desc1}
+                     {`${" "}{${Desc1} `} 
                   </Text>
                 )}
               </Flex>
