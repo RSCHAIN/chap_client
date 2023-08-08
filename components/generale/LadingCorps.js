@@ -374,7 +374,7 @@ const LadingCorps = () => {
         {/* <Location /> */}
         <Center width={"100%"} height={"auto"}>
           <Box height={"95%"} width={"95%"}>
-          <Center width={"100%"}>
+          <Center width={"100%"} display={"grid","grid","grid","none","none"}>
               <Box>
                
 
