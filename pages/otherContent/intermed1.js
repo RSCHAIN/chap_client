@@ -298,28 +298,7 @@ export default function Intermed1() {
     setDesc1(sessionStorage.getItem("description"));
     setNation(sessionStorage.getItem("nationalite"));
 
-    // if (sessionStorage.getItem("horaire") != "undefined") {
-    //   setHoraire(JSON.parse(sessionStorage.getItem("horaire")));
-    //   setHoraire(JSON.parse(sessionStorage.getItem("horaire")));
-    //   setLundi(horaire.lundi);
-    //   setMardi(horaire.mardi);
-    //   setMercredi(horaire.mercredi);
-    //   setJeudi(horaire.jeudi);
-    //   setVendredi(horaire.vendredi);
-    //   setSamedi(horaire.samedi);
-    //   setDimanche(horaire.dimanche);
-    // }
-
-    // if (
-    //   sessionStorage.getItem("paiement") != "undefined" &&
-    //   sessionStorage.getItem("paiement") != null
-    // ) {
-    //   setPaiement(JSON.parse(sessionStorage.getItem("paiement")));
-    //   setPaiement1(paiement.methodeDePaiement1);
-    //   console.log(paiement);
-    //   setPaiement2(paiement.methodeDePaiement2);
-    //   console.log(paiement);
-    // }
+   
 
     const starCountRef = ref(
       db2,
@@ -330,11 +309,7 @@ export default function Intermed1() {
       console.log(snapshot.val());
       const donnes = snapshot.val();
 
-      // const categorie = Object.keys(donnes).map(key=>({
-      //   id:key,
-      //   ...donnes[key]
-      // }))
-      // setCat(categorie)
+      
 
       if (donnes != null) {
         const newProducts = Object.keys(donnes).map((key) => ({
@@ -407,11 +382,11 @@ export default function Intermed1() {
                 </Text>
                 {Desc1 == "undefined" ? (
                   <Text width={"58%"}  textAlign={"justify"}>
-                    {`${" "}{${categorie} Africain`} 
+                    {`${" ",categorie} Africain`} 
                   </Text>
                 ) : (
                   <Text width={"58%"} textAlign={"justify"}>
-                     {`${" "}{${Desc1} `} 
+                     {`${" ",Desc1} `} 
                   </Text>
                 )}
               </Flex>
