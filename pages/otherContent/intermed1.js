@@ -378,7 +378,7 @@ export default function Intermed1() {
                 </Text>
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"}>
+                <Text fontWeight={"bold"} pr={2}>
                   Description :{" "}
                 </Text>
                 {Desc1 == "undefined" ? (
@@ -617,7 +617,7 @@ export default function Intermed1() {
                </Text>
              </Flex>
              <Flex>
-               <Text fontWeight={"bold"} >
+               <Text fontWeight={"bold"} pr={2}>
                  Description :{" "}
                </Text>
                {Desc1 == "undefined" ? (
@@ -857,7 +857,7 @@ export default function Intermed1() {
              </Text>
            </Flex>
            <Flex>
-             <Text fontWeight={"bold"} >
+             <Text fontWeight={"bold"} pr={2}>
                Description :{" "}
              </Text>
              {Desc1 == "undefined" ? (
@@ -1216,7 +1216,7 @@ export default function Intermed1() {
                 </Text>
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"}>
+                <Text fontWeight={"bold"} pr={2}>
                   Description :{" "}
                 </Text>
                 {Desc1 == "undefined" ? (
@@ -1502,7 +1502,7 @@ export default function Intermed1() {
                </Text>
              </Flex>
              <Flex>
-               <Text fontWeight={"bold"} >
+               <Text fontWeight={"bold"} pr={2}>
                  Description :{" "}
                </Text>
                {Desc1 == "undefined" ? (
@@ -1743,7 +1743,7 @@ export default function Intermed1() {
              </Text>
            </Flex>
            <Flex>
-             <Text fontWeight={"bold"} >
+             <Text fontWeight={"bold"} pr={2}>
                Description :{" "}
              </Text>
              {Desc1 == "undefined" ? (
@@ -1993,7 +1993,7 @@ export default function Intermed1() {
                 </Text>
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"}>
+                <Text fontWeight={"bold"} pr={2}>
                   Description :{" "}
                 </Text>
                 {Desc1 == "undefined" ? (
@@ -2392,7 +2392,7 @@ export default function Intermed1() {
                 </Text>
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"} >
+                <Text fontWeight={"bold"} pr={2}>
                   Description :{" "}
                 </Text>
                 {Desc1 == "undefined" ? (
@@ -2686,7 +2686,7 @@ export default function Intermed1() {
                 </Text>
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"} >
+                <Text fontWeight={"bold"} pr={2}>
                   Description :{" "}
                 </Text>
                 {Desc1 == "undefined" ? (
@@ -3100,7 +3100,7 @@ export default function Intermed1() {
                 </Text>
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"} >
+                <Text fontWeight={"bold"} pr={2}>
                   Description :{" "}
                 </Text>
                 {Desc1 == "undefined" ? (
@@ -3387,7 +3387,7 @@ export default function Intermed1() {
                 </Text>
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"}>
+                <Text fontWeight={"bold"} pr={2}>
                   Description :{" "}
                 </Text>
                 {Desc1 == "undefined" ? (
@@ -3628,7 +3628,7 @@ export default function Intermed1() {
                 </Text>
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"} >
+                <Text fontWeight={"bold"} pr={2}>
                   Description :{" "}
                 </Text>
                 {Desc1 == "undefined" ? (
