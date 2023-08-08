@@ -1267,21 +1267,35 @@ export default function Intermed1() {
                 </Text>
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"} >
+                <Text fontWeight={"bold"}>
                   Description :{" "}
                 </Text>
                 {Desc1 == "undefined" ? (
                   <Text width={"58%"}  textAlign={"justify"}>
-                    {categorie} Africain
+                    {`${" ",categorie} Africain`} 
                   </Text>
                 ) : (
-                  <Text width={"58%"}  textAlign={"justify"}>
-                    {Desc1}
+                  <Text width={"58%"} textAlign={"justify"}>
+                     {`${" ",Desc1} `} 
                   </Text>
                 )}
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"} >Moyen De paiement : </Text>
+                <Text fontWeight={"bold"}>
+                  Nationalite :{" "}
+                </Text>
+                {nation == "undefined" ? (
+                  <Text width={"58%"}  textAlign={"justify"}>
+                     Africaine
+                  </Text>
+                ) : (
+                  <Text width={"58%"} textAlign={"justify"}>
+                    {`${" ",nation} `}
+                  </Text>
+                )}
+              </Flex>
+              <Flex>
+                <Text fontWeight={"bold"}>Moyen De paiement : </Text>
                 <Box>
                   <Text ml={2} fontSize={"15px"}>
                     {paiement != "undefined" && paiement != null
@@ -1296,14 +1310,14 @@ export default function Intermed1() {
                 </Box>
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"} >
+                <Text fontWeight={"bold"}>
                   Reservation :{" "}
                 </Text>
-                <Text width={"58%"} textAlign={"justify"}>
+                <Text width={"58%"}ml={2} textAlign={"justify"}>
                   {data.length != 0 ? (
                     <Text color={"messenger.500"} ml={2}>En ligne</Text>
                   ) : (
-                    <Text color={"red.400"} ml={2}>Non Disponible</Text>
+                    <Text color={"red.400"} ml={2} >Non Disponible</Text>
                   )}
                 </Text>
               </Flex>
@@ -1403,7 +1417,41 @@ export default function Intermed1() {
     &q=${addresse}`}
                 ></iframe>
               </Box>
-            
+              {/* <Flex>
+              <Heading fontSize={"20px"} mt={10}>
+            Images du magasin{" "}
+          </Heading> */}
+
+              {/* Slider */}
+              {/* <section
+            style={{
+              marginTop: "20px",
+              marginRight: "20px",
+            }}
+          >
+            <Carousel
+              partialVisbile
+              deviceType={"mobile"}
+              itemClass="image-item"
+              responsive={responsive}
+            >
+              {images.slice(0, images.length).map((image, index) => {
+                return (
+                  <Image
+                    key={index}
+                    alt={`${image}`}
+                    maxWidth={{md:'150px',xl:"150px"}}
+                    maxHeight={{base:'150px',xl:"150px"}}
+                    minWidth={{base:'150px',xl:"150px"}}
+                    minHeight={{base:'150px',xl:"150px"}}
+                    pr={5}
+                    src={image}
+                  />
+                );
+              })}
+            </Carousel>
+          </section>
+              </Flex> */}
             </Box>
           </Flex>
           <Box mt={5} width={"90%"}>
@@ -1461,7 +1509,7 @@ export default function Intermed1() {
                         }}
                         // leftIcon={<BsTelephoneOutboundFill />}
                       >
-                        Devis
+                        Reserver
                       </Button>
                     
                     </Box>
@@ -1473,455 +1521,455 @@ export default function Intermed1() {
             
         
           
-             <Box display={"flex"} mb={5}>
-              <Box mr={5}>
-                <Image
-                  src={`${imageUrl}`}
-                  alt={`logo de ${nom}`}
-                  width={["150px", "150px", "150px", "200px", "200px"]}
-                  height={["150px", "150px", "150px", "200px", "200px"]}
-                  maxHeight={"200px"}
-                  maxWidth={"200px"}
-                  minHeight={"80px"}
-                  minWidth={"100px"}
-                />
-                
-              </Box>
-              <Heading fontSize={"40px"}>{nom}</Heading>
-            </Box>
-
-            <Box>
-              <Text fontSize={"15px"} fontWeight={"medium"}>
-                {addresse}
-              </Text>
-              <Flex mb={2} mt={2}>
-                <BsFillTelephoneOutboundFill />
-                <Text
-                  fontSize={"15px"}
-                  fontWeight={"medium"}
-                  ml={2}
-                  color={"green"}
-                >
-                  {numero}
-                </Text>
-              </Flex>
-              <Flex>
-                <Text fontWeight={"bold"} >
-                  Description :{" "}
-                </Text>
-                {Desc1 == "undefined" ? (
-                  <Text width={"58%"}  textAlign={"justify"}>
-                    {categorie} Africain
-                  </Text>
-                ) : (
-                  <Text width={"58%"}  textAlign={"justify"}>
-                    {Desc1}
-                  </Text>
-                )}
-              </Flex>
-              <Flex>
-                <Text fontWeight={"bold"} >Moyen De paiement : </Text>
-                <Box>
-                  <Text ml={2} fontSize={"15px"}>
-                    {paiement != "undefined" && paiement != null
-                      ? paiement.methodeDePaiement1
-                      : "Espèces"}
-                  </Text>
-                  <Text ml={2} fontSize={"15px"}>
-                    {paiement != "undefined" && paiement != null
-                      ? paiement.methodeDePaiement2
-                      : ""}
-                  </Text>
-                </Box>
-              </Flex>
-              <Flex>
-                <Text fontWeight={"bold"} >
-                  Reservation :{" "}
-                </Text>
-                <Text width={"58%"} textAlign={"justify"}>
-                  {data.length != 0 ? (
-                    <Text color={"messenger.500"} ml={2}>En ligne</Text>
-                  ) : (
-                    <Text color={"red.400"} ml={2}>Non Disponible</Text>
-                  )}
-                </Text>
-              </Flex>
-              {/* <Center > */}
-                <SimpleGrid columns={2} spacingX={3}>
-                <Box mt={5}>
-                  <Button
-                    color={"#fff"}
-                    width={"150px"}
-                    height={"30px"}
-                    as={"a"}
-                    // onClick={onOpen}
-                    bgColor={"green"}
-                    _hover={{
-                      backgroundColor: " green.200",
-                      color: "white ",
-                    }}
-                    href={`tel:${numero}`}
-                    leftIcon={<BsTelephoneOutboundFill />}
-                  >
-                    Nous Contacter
-                  </Button>
-                </Box>
-                <Box mt={5} >
-                  <Button
-                    color={"#fff"}
-                    width={"150px"}
-                    height={"30px"}
-                    as={"a"}
-                    // onClick={onOpen}
-                    bgColor={"red"}
-                    _hover={{
-                      backgroundColor: " red.500",
-                      color: "white ",
-                    }}
-                    isDisabled = {true}
-                    // href={`${sessionStorage.getItem("website")}`}
-                    leftIcon={<BiWorld />}
-                    // isExternal
-                  >
-                    Site Web
-                  </Button>
-                </Box>
+            <Box display={"flex"} mb={5}>
+             <Box mr={5}>
+               <Image
+                 src={`${imageUrl}`}
+                 alt={`logo de ${nom}`}
+                 width={["150px", "150px", "150px", "200px", "200px"]}
+                 height={["150px", "150px", "150px", "200px", "200px"]}
+                 maxHeight={"200px"}
+                 maxWidth={"200px"}
+                 minHeight={"80px"}
+                 minWidth={"100px"}
+               />
                
-                <Box mt={5} ml={"50%"}>
-                  <Button
-                    color={"#fff"}
-                    width={"150px"}
-                    height={"30px"}
-                    as={"a"}
-                    // onClick={onOpen}
-                    bgColor={"cyan.700"}
-                    _hover={{
-                      backgroundColor: " cyan.900",
-                      color: "white ",
-                    }}
-                    // leftIcon={<BsTelephoneOutboundFill />}
-                  >
-                    Devis
-                  </Button>
-                 
-                </Box>
-                </SimpleGrid>
-              {/* </Center> */}
+             </Box>
+             <Heading fontSize={"40px"}>{nom}</Heading>
+           </Box>
 
-              <Flex>
-                <Heading
-                  as={"h3"}
-                  fontWeight={"bold"}
-                  _hover={{
-                    cursor: "pointer",
-                  }}
-                  onClick={handleToggle}
-                  color={"blue.700"}
-                  fontSize={"15px"}
-                  mt={3}
-                >
-                  {heure}{" "}
-                  {show ? (
-                    <ChevronUpIcon fontSize={"20px"} />
-                  ) : (
-                    <ChevronDownIcon fontSize={"20px"} />
-                  )}{" "}
-                  :
-                </Heading>
-              </Flex>
-
-              <Box ml={10}>
-                <Text fontSize={"15px"}>
-                  lundi:{" "}
-                  {timert != "undefined" && timert != null
-                    ? `${" "} ${timert.lundi}`
-                    : " Non Renseigné"}
-                </Text>
-                <Text fontSize={"15px"}>
-                  mardi:{" "}
-                  {timert != "undefined" && timert != null
-                    ? `${" "} ${timert.mardi}`
-                    : " Non Renseigné"}
-                </Text>
-                <Text fontSize={"15px"}>
-                  mercredi:{" "}
-                  {timert != "undefined" && timert != null
-                    ? `${" "} ${timert.mercredi}`
-                    : " Non Renseigné"}
-                </Text>
-                <Text fontSize={"15px"}>
-                  jeudi:{" "}
-                  {timert != "undefined" && timert != null
-                    ? `${" "} ${timert.jeudi}`
-                    : " Non Renseigné"}
-                </Text>
-                <Text fontSize={"15px"}>
-                  vendredi:{" "}
-                  {timert != "undefined" && timert != null
-                    ? `${" "} ${timert.vendredi}`
-                    : " Non Renseigné"}
-                </Text>
-                <Text fontSize={"15px"}>
-                  samedi:{" "}
-                  {timert != "undefined" && timert != null
-                    ? `${" "} ${timert.samedi}`
-                    : " Non Renseigné"}
-                </Text>
-                <Text fontSize={"15px"}>
-                  dimanche:{" "}
-                  {timert != "undefined" && timert != null
-                    ? `${" "} ${timert.dimanche}`
-                    : " Non Renseigné"}
-                </Text>
-              </Box>
-            </Box>
-            <Text mt={5} as={"h3"} fontWeight={"bold"}>
-              Nous rejoindre
-            </Text>
-            <Center>
-              <Box mt={10}>
-               
-                <Box
-                  width={"300px"}
-                  display={["grid", "grid", "grid", "none", "none"]}
-                >
-                  <iframe
-                    width="300"
-                    height="250"
-                    loading="lazy"
-                    allowFullScreen
-                    referrerPolicy="no-referrer-when-downgrade"
-                    src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
-    &q=${addresse}`}
-                  ></iframe>
-                </Box>
-              </Box>
-            </Center>
-          </Flex>
-          <Flex display={["none", "none", "grid", "none", "none"]} width={"fit-content"}>
-           
-           <Box display={"flex"} mb={5}>
-            <Box mr={5}>
-              <Image
-                src={`${imageUrl}`}
-                alt={`logo de ${nom}`}
-                width={["150px", "150px", "150px", "200px", "200px"]}
-                height={["150px", "150px", "150px", "200px", "200px"]}
-                maxHeight={"200px"}
-                maxWidth={"200px"}
-                minHeight={"80px"}
-                minWidth={"100px"}
-              />
+           <Box>
+             <Text fontSize={"15px"} fontWeight={"medium"}>
+               {addresse}
+             </Text>
+             <Flex mb={2} mt={2}>
+               <BsFillTelephoneOutboundFill />
+               <Text
+                 fontSize={"15px"}
+                 fontWeight={"medium"}
+                 ml={2}
+                 color={"green"}
+               >
+                 {numero}
+               </Text>
+             </Flex>
+             <Flex>
+               <Text fontWeight={"bold"} >
+                 Description :{" "}
+               </Text>
+               {Desc1 == "undefined" ? (
+                 <Text width={"58%"}  textAlign={"justify"}>
+                   {categorie} Africain
+                 </Text>
+               ) : (
+                 <Text width={"58%"}  textAlign={"justify"}>
+                   {Desc1}
+                 </Text>
+               )}
+             </Flex>
+             <Flex>
+               <Text fontWeight={"bold"} >Moyen De paiement : </Text>
+               <Box>
+                 <Text ml={2} fontSize={"15px"}>
+                   {paiement != "undefined" && paiement != null
+                     ? paiement.methodeDePaiement1
+                     : "Espèces"}
+                 </Text>
+                 <Text ml={2} fontSize={"15px"}>
+                   {paiement != "undefined" && paiement != null
+                     ? paiement.methodeDePaiement2
+                     : ""}
+                 </Text>
+               </Box>
+             </Flex>
+             <Flex>
+               <Text fontWeight={"bold"} >
+                 Reservation :{" "}
+               </Text>
+               <Text width={"58%"} textAlign={"justify"}>
+                 {data.length != 0 ? (
+                   <Text color={"messenger.500"} ml={2}>En ligne</Text>
+                 ) : (
+                   <Text color={"red.400"} ml={2}>Non Disponible</Text>
+                 )}
+               </Text>
+             </Flex>
+             {/* <Center > */}
+               <SimpleGrid columns={2} spacingX={3}>
+               <Box mt={5}>
+                 <Button
+                   color={"#fff"}
+                   width={"150px"}
+                   height={"30px"}
+                   as={"a"}
+                   // onClick={onOpen}
+                   bgColor={"green"}
+                   _hover={{
+                     backgroundColor: " green.200",
+                     color: "white ",
+                   }}
+                   href={`tel:${numero}`}
+                   leftIcon={<BsTelephoneOutboundFill />}
+                 >
+                   Nous Contacter
+                 </Button>
+               </Box>
+               <Box mt={5} >
+                 <Button
+                   color={"#fff"}
+                   width={"150px"}
+                   height={"30px"}
+                   as={"a"}
+                   // onClick={onOpen}
+                   bgColor={"red"}
+                   _hover={{
+                     backgroundColor: " red.500",
+                     color: "white ",
+                   }}
+                   isDisabled = {true}
+                   // href={`${sessionStorage.getItem("website")}`}
+                   leftIcon={<BiWorld />}
+                   // isExternal
+                 >
+                   Site Web
+                 </Button>
+               </Box>
               
-            </Box>
-            <Heading fontSize={"40px"}>{nom}</Heading>
-          </Box>
+               <Box mt={5} ml={"50%"}>
+                 <Button
+                   color={"#fff"}
+                   width={"150px"}
+                   height={"30px"}
+                   as={"a"}
+                   // onClick={onOpen}
+                   bgColor={"cyan.700"}
+                   _hover={{
+                     backgroundColor: " cyan.900",
+                     color: "white ",
+                   }}
+                   // leftIcon={<BsTelephoneOutboundFill />}
+                 >
+                   Reserver
+                 </Button>
+                
+               </Box>
+               </SimpleGrid>
+             {/* </Center> */}
 
-          <Box>
-            <Text fontSize={"15px"} fontWeight={"medium"}>
-              {addresse}
-            </Text>
-            <Flex mb={2} mt={2}>
-              <BsFillTelephoneOutboundFill />
-              <Text
-                fontSize={"15px"}
-                fontWeight={"medium"}
-                ml={2}
-                color={"green"}
-              >
-                {numero}
-              </Text>
-            </Flex>
-            <Flex>
-              <Text fontWeight={"bold"} >
-                Description :{" "}
-              </Text>
-              {Desc1 == "undefined" ? (
-                <Text width={"58%"}   textAlign={"justify"}>
-                  {categorie} Africain
-                </Text>
-              ) : (
-                <Text width={"58%"}  textAlign={"justify"}>
-                  {Desc1}
-                </Text>
-              )}
-            </Flex>
-            <Flex>
-              <Text fontWeight={"bold"} >Moyen De paiement : </Text>
-              <Box>
-                <Text ml={2} fontSize={"15px"}>
-                  {paiement != "undefined" && paiement != null
-                    ? paiement.methodeDePaiement1
-                    : "Espèces"}
-                </Text>
-                <Text ml={2} fontSize={"15px"}>
-                  {paiement != "undefined" && paiement != null
-                    ? paiement.methodeDePaiement2
-                    : ""}
-                </Text>
-              </Box>
-            </Flex>
-            <Flex>
-              <Text fontWeight={"bold"} >
-                Reservation :{" "}
-              </Text>
-              <Text width={"58%"} textAlign={"justify"}>
-                {data.length != 0 ? (
-                  <Text color={"messenger.500"} ml={2}>En ligne</Text>
-                ) : (
-                  <Text color={"red.400"} ml={2}>Non Disponible</Text>
-                )}
-              </Text>
-            </Flex>
-            <SimpleGrid columns={2} spacingX={3}>
-              <Box mt={5}>
-                <Button
-                  color={"#fff"}
-                  width={"150px"}
-                  height={"30px"}
-                  as={"a"}
-                  // onClick={onOpen}
-                  bgColor={"green"}
-                  _hover={{
-                    backgroundColor: " green.200",
-                    color: "white ",
-                  }}
-                  href={`tel:${numero}`}
-                  leftIcon={<BsTelephoneOutboundFill />}
-                >
-                  Nous Contacter
-                </Button>
-              </Box>
-              <Box mt={5} >
-                <Button
-                  color={"#fff"}
-                  width={"150px"}
-                  height={"30px"}
-                  as={"a"}
-                  // onClick={onOpen}
-                  bgColor={"red"}
-                  _hover={{
-                    backgroundColor: " red.500",
-                    color: "white ",
-                  }}
-                  isDisabled={true}
-                  // href={`${sessionStorage.getItem("website")}`}
-                  leftIcon={<BiWorld />}
-                  // isExternal
-                >
-                  Site Web
-                </Button>
-              </Box>
-             
-              <Box mt={5} ml={"50%"}>
-                <Button
-                  color={"#fff"}
-                  width={"150px"}
-                  height={"30px"}
-                  as={"a"}
-                  // onClick={onOpen}
-                  bgColor={"cyan.700"}
-                  _hover={{
-                    backgroundColor: " cyan.900",
-                    color: "white ",
-                  }}
-                  // leftIcon={<BsTelephoneOutboundFill />}
-                >
-                  Devis
-                </Button>
-               
-              </Box>
-              </SimpleGrid>
-            <Flex>
-              <Heading
-                as={"h3"}
-                fontWeight={"bold"}
-                _hover={{
-                  cursor: "pointer",
-                }}
-                onClick={handleToggle}
-                color={"blue.700"}
-                fontSize={"15px"}
-                mt={3}
-              >
-                {heure}{" "}
-                {show ? (
-                  <ChevronUpIcon fontSize={"20px"} />
-                ) : (
-                  <ChevronDownIcon fontSize={"20px"} />
-                )}{" "}
-                :
-              </Heading>
-            </Flex>
+             <Flex>
+               <Heading
+                 as={"h3"}
+                 fontWeight={"bold"}
+                 _hover={{
+                   cursor: "pointer",
+                 }}
+                 onClick={handleToggle}
+                 color={"blue.700"}
+                 fontSize={"15px"}
+                 mt={3}
+               >
+                 {heure}{" "}
+                 {show ? (
+                   <ChevronUpIcon fontSize={"20px"} />
+                 ) : (
+                   <ChevronDownIcon fontSize={"20px"} />
+                 )}{" "}
+                 :
+               </Heading>
+             </Flex>
 
-            <Box ml={10}>
-              <Text fontSize={"15px"}>
-                lundi:{" "}
-                {timert != "undefined" && timert != null
-                  ? `${" "} ${timert.lundi}`
-                  : " Non Renseigné"}
-              </Text>
-              <Text fontSize={"15px"}>
-                mardi:{" "}
-                {timert != "undefined" && timert != null
-                  ? `${" "} ${timert.mardi}`
-                  : " Non Renseigné"}
-              </Text>
-              <Text fontSize={"15px"}>
-                mercredi:{" "}
-                {timert != "undefined" && timert != null
-                  ? `${" "} ${timert.mercredi}`
-                  : " Non Renseigné"}
-              </Text>
-              <Text fontSize={"15px"}>
-                jeudi:{" "}
-                {timert != "undefined" && timert != null
-                  ? `${" "} ${timert.jeudi}`
-                  : " Non Renseigné"}
-              </Text>
-              <Text fontSize={"15px"}>
-                vendredi:{" "}
-                {timert != "undefined" && timert != null
-                  ? `${" "} ${timert.vendredi}`
-                  : " Non Renseigné"}
-              </Text>
-              <Text fontSize={"15px"}>
-                samedi:{" "}
-                {timert != "undefined" && timert != null
-                  ? `${" "} ${timert.samedi}`
-                  : " Non Renseigné"}
-              </Text>
-              <Text fontSize={"15px"}>
-                dimanche:{" "}
-                {timert != "undefined" && timert != null
-                  ? `${" "} ${timert.dimanche}`
-                  : " Non Renseigné"}
-              </Text>
-            </Box>
-          </Box>
-          <Text mt={5} as={"h3"} fontWeight={"bold"}>
-            Nous rejoindre
-          </Text>
-          <Center>
-            <Box mt={10}>
+             <Box ml={10}>
+               <Text fontSize={"15px"}>
+                 lundi:{" "}
+                 {timert != "undefined" && timert != null
+                   ? `${" "} ${timert.lundi}`
+                   : " Non Renseigné"}
+               </Text>
+               <Text fontSize={"15px"}>
+                 mardi:{" "}
+                 {timert != "undefined" && timert != null
+                   ? `${" "} ${timert.mardi}`
+                   : " Non Renseigné"}
+               </Text>
+               <Text fontSize={"15px"}>
+                 mercredi:{" "}
+                 {timert != "undefined" && timert != null
+                   ? `${" "} ${timert.mercredi}`
+                   : " Non Renseigné"}
+               </Text>
+               <Text fontSize={"15px"}>
+                 jeudi:{" "}
+                 {timert != "undefined" && timert != null
+                   ? `${" "} ${timert.jeudi}`
+                   : " Non Renseigné"}
+               </Text>
+               <Text fontSize={"15px"}>
+                 vendredi:{" "}
+                 {timert != "undefined" && timert != null
+                   ? `${" "} ${timert.vendredi}`
+                   : " Non Renseigné"}
+               </Text>
+               <Text fontSize={"15px"}>
+                 samedi:{" "}
+                 {timert != "undefined" && timert != null
+                   ? `${" "} ${timert.samedi}`
+                   : " Non Renseigné"}
+               </Text>
+               <Text fontSize={"15px"}>
+                 dimanche:{" "}
+                 {timert != "undefined" && timert != null
+                   ? `${" "} ${timert.dimanche}`
+                   : " Non Renseigné"}
+               </Text>
+             </Box>
+           </Box>
+           <Text mt={5} as={"h3"} fontWeight={"bold"}>
+             Nous rejoindre
+           </Text>
+           <Center>
+             <Box mt={10}>
+              
+               <Box
+                 width={"300px"}
+                 display={["grid", "grid", "grid", "none", "none"]}
+               >
+                 <iframe
+                   width="300"
+                   height="250"
+                   loading="lazy"
+                   allowFullScreen
+                   referrerPolicy="no-referrer-when-downgrade"
+                   src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
+   &q=${addresse}`}
+                 ></iframe>
+               </Box>
+             </Box>
+           </Center>
+         </Flex>
+         <Flex display={["none", "none", "grid", "none", "none"]} width={"fit-content"}>
+          
+          <Box display={"flex"} mb={5}>
+           <Box mr={5}>
+             <Image
+               src={`${imageUrl}`}
+               alt={`logo de ${nom}`}
+               width={["150px", "150px", "150px", "200px", "200px"]}
+               height={["150px", "150px", "150px", "200px", "200px"]}
+               maxHeight={"200px"}
+               maxWidth={"200px"}
+               minHeight={"80px"}
+               minWidth={"100px"}
+             />
              
-              <Box
-                width={"300px"}
-                display={["grid", "grid", "grid", "none", "none"]}
-              >
-                <iframe
-                  width="300"
-                  height="250"
-                  loading="lazy"
-                  allowFullScreen
-                  referrerPolicy="no-referrer-when-downgrade"
-                  src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
-  &q=${addresse}`}
-                ></iframe>
-              </Box>
-            </Box>
-          </Center> 
-        </Flex>
+           </Box>
+           <Heading fontSize={"40px"}>{nom}</Heading>
+         </Box>
+
+         <Box>
+           <Text fontSize={"15px"} fontWeight={"medium"}>
+             {addresse}
+           </Text>
+           <Flex mb={2} mt={2}>
+             <BsFillTelephoneOutboundFill />
+             <Text
+               fontSize={"15px"}
+               fontWeight={"medium"}
+               ml={2}
+               color={"green"}
+             >
+               {numero}
+             </Text>
+           </Flex>
+           <Flex>
+             <Text fontWeight={"bold"} >
+               Description :{" "}
+             </Text>
+             {Desc1 == "undefined" ? (
+               <Text width={"58%"}  textAlign={"justify"}>
+                 {categorie} Africain
+               </Text>
+             ) : (
+               <Text width={"58%"}   textAlign={"justify"}>
+                 {Desc1}
+               </Text>
+             )}
+           </Flex>
+           <Flex>
+             <Text fontWeight={"bold"} >Moyen De paiement : </Text>
+             <Box>
+               <Text ml={2} fontSize={"15px"}>
+                 {paiement != "undefined" && paiement != null
+                   ? paiement.methodeDePaiement1
+                   : "Espèces"}
+               </Text>
+               <Text ml={2} fontSize={"15px"}>
+                 {paiement != "undefined" && paiement != null
+                   ? paiement.methodeDePaiement2
+                   : ""}
+               </Text>
+             </Box>
+           </Flex>
+           <Flex>
+             <Text fontWeight={"bold"}>
+               Reservation :{" "}
+             </Text>
+             <Text width={"58%"} textAlign={"justify"}>
+               {data.length != 0 ? (
+                 <Text color={"messenger.500"} ml={2}>En ligne</Text>
+               ) : (
+                 <Text color={"red.400"} ml={2}>Non Disponible</Text>
+               )}
+             </Text>
+           </Flex>
+           <SimpleGrid columns={2} spacingX={3}>
+             <Box mt={5}>
+               <Button
+                 color={"#fff"}
+                 width={"150px"}
+                 height={"30px"}
+                 as={"a"}
+                 // onClick={onOpen}
+                 bgColor={"green"}
+                 _hover={{
+                   backgroundColor: " green.200",
+                   color: "white ",
+                 }}
+                 href={`tel:${numero}`}
+                 leftIcon={<BsTelephoneOutboundFill />}
+               >
+                 Nous Contacter
+               </Button>
+             </Box>
+             <Box mt={5} >
+               <Button
+                 color={"#fff"}
+                 width={"150px"}
+                 height={"30px"}
+                 as={"a"}
+                 // onClick={onOpen}
+                 bgColor={"red"}
+                 _hover={{
+                   backgroundColor: " red.500",
+                   color: "white ",
+                 }}
+                 isDisabled={true}
+                 // href={`${sessionStorage.getItem("website")}`}
+                 leftIcon={<BiWorld />}
+                 // isExternal
+               >
+                 Site Web
+               </Button>
+             </Box>
+            
+             <Box mt={5} ml={"50%"}>
+               <Button
+                 color={"#fff"}
+                 width={"150px"}
+                 height={"30px"}
+                 as={"a"}
+                 // onClick={onOpen}
+                 bgColor={"cyan.700"}
+                 _hover={{
+                   backgroundColor: " cyan.900",
+                   color: "white ",
+                 }}
+                 // leftIcon={<BsTelephoneOutboundFill />}
+               >
+                 Reserver
+               </Button>
+              
+             </Box>
+             </SimpleGrid>
+           <Flex>
+             <Heading
+               as={"h3"}
+               fontWeight={"bold"}
+               _hover={{
+                 cursor: "pointer",
+               }}
+               onClick={handleToggle}
+               color={"blue.700"}
+               fontSize={"15px"}
+               mt={3}
+             >
+               {heure}{" "}
+               {show ? (
+                 <ChevronUpIcon fontSize={"20px"} />
+               ) : (
+                 <ChevronDownIcon fontSize={"20px"} />
+               )}{" "}
+               :
+             </Heading>
+           </Flex>
+
+           <Box ml={10}>
+             <Text fontSize={"15px"}>
+               lundi:{" "}
+               {timert != "undefined" && timert != null
+                 ? `${" "} ${timert.lundi}`
+                 : " Non Renseigné"}
+             </Text>
+             <Text fontSize={"15px"}>
+               mardi:{" "}
+               {timert != "undefined" && timert != null
+                 ? `${" "} ${timert.mardi}`
+                 : " Non Renseigné"}
+             </Text>
+             <Text fontSize={"15px"}>
+               mercredi:{" "}
+               {timert != "undefined" && timert != null
+                 ? `${" "} ${timert.mercredi}`
+                 : " Non Renseigné"}
+             </Text>
+             <Text fontSize={"15px"}>
+               jeudi:{" "}
+               {timert != "undefined" && timert != null
+                 ? `${" "} ${timert.jeudi}`
+                 : " Non Renseigné"}
+             </Text>
+             <Text fontSize={"15px"}>
+               vendredi:{" "}
+               {timert != "undefined" && timert != null
+                 ? `${" "} ${timert.vendredi}`
+                 : " Non Renseigné"}
+             </Text>
+             <Text fontSize={"15px"}>
+               samedi:{" "}
+               {timert != "undefined" && timert != null
+                 ? `${" "} ${timert.samedi}`
+                 : " Non Renseigné"}
+             </Text>
+             <Text fontSize={"15px"}>
+               dimanche:{" "}
+               {timert != "undefined" && timert != null
+                 ? `${" "} ${timert.dimanche}`
+                 : " Non Renseigné"}
+             </Text>
+           </Box>
+         </Box>
+         <Text mt={5} as={"h3"} fontWeight={"bold"}>
+           Nous rejoindre
+         </Text>
+         <Center>
+           <Box mt={10}>
+            
+             <Box
+               width={"300px"}
+               display={["grid", "grid", "grid", "none", "none"]}
+             >
+               <iframe
+                 width="300"
+                 height="250"
+                 loading="lazy"
+                 allowFullScreen
+                 referrerPolicy="no-referrer-when-downgrade"
+                 src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
+ &q=${addresse}`}
+               ></iframe>
+             </Box>
+           </Box>
+         </Center> 
+       </Flex>
 
           {/* fin slide  */}
         </Box>
