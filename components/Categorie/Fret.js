@@ -81,7 +81,7 @@ async function saveCommande2(data) {
   let numero = localStorage.number;
   let date = new Date();
 
-  push(ref(db2, "Commandes"), {
+  push(ref(db2, "Devis"), {
     productID: data.id,
     nom: data.nom,
     description: data.description,
@@ -90,7 +90,7 @@ async function saveCommande2(data) {
     organisation: data.organisation,
     totalPrix: data.prix,
     initiateur: email,
-    Status: "Demande de Reservation",
+    Status: "Demande de Devis",
     ville: adress,
     rue: adress,
     code_postal: adress,
@@ -246,7 +246,7 @@ const settings = {
 
 
 
-export default function Epicerie(){
+export default function Fret(){
     const [show, setShow] = useState(false);
 
     const handleToggle = () => setShow(!show);
@@ -618,7 +618,7 @@ export default function Epicerie(){
                           }}
                           // leftIcon={<BsTelephoneOutboundFill />}
                         >
-                          Reserver
+                          Devis
                         </Button>
                       
                       </Box>
@@ -758,7 +758,7 @@ export default function Epicerie(){
                      }}
                      // leftIcon={<BsTelephoneOutboundFill />}
                    >
-                     Reserver
+                     Devis
                    </Button>
                   
                  </Box>
