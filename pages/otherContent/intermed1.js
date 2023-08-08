@@ -257,7 +257,7 @@ export default function Intermed1() {
   const [categorie, setCategorie] = useState("");
   const [data1, setData1] = useState();
   const [data2, setData2] = useState();
-
+  const [link,setLink] = useState();
   ////HOraire
   const heure = "Horaire d'Ouverture";
   const [horaire, setHoraire] = useState({});
@@ -297,7 +297,8 @@ export default function Intermed1() {
     setCategorie(sessionStorage.getItem("categorie"));
     setDesc1(sessionStorage.getItem("description"));
     setNation(sessionStorage.getItem("nationalite"));
-
+    setLink(`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
+    &q=${sessionStorage.getItem("adresse")}`);
    
 
     const starCountRef = ref(
@@ -508,8 +509,7 @@ export default function Intermed1() {
                   loading="lazy"
                   allowFullScreen
                   referrerPolicy="no-referrer-when-downgrade"
-                  src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
-    &q=${addresse}`}
+                  src={link}
                 ></iframe>
                 
               </Box>
@@ -630,6 +630,20 @@ export default function Intermed1() {
                  </Text>
                )}
              </Flex>
+             <Flex>
+                <Text fontWeight={"bold"}>
+                  Nationalite :{" "}
+                </Text>
+                {nation == "undefined" ? (
+                  <Text width={"58%"}  textAlign={"justify"}>
+                     Africaine
+                  </Text>
+                ) : (
+                  <Text width={"58%"} textAlign={"justify"}>
+                    {`${" ",nation} `}
+                  </Text>
+                )}
+              </Flex>
              <Flex>
                <Text fontWeight={"bold"} >Moyen De paiement : </Text>
                <Box>
@@ -802,8 +816,7 @@ export default function Intermed1() {
                    loading="lazy"
                    allowFullScreen
                    referrerPolicy="no-referrer-when-downgrade"
-                   src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
-   &q=${addresse}`}
+                   src={link}
                  ></iframe>
                </Box>
              </Box>
@@ -857,6 +870,20 @@ export default function Intermed1() {
                </Text>
              )}
            </Flex>
+           <Flex>
+                <Text fontWeight={"bold"}>
+                  Nationalite :{" "}
+                </Text>
+                {nation == "undefined" ? (
+                  <Text width={"58%"}  textAlign={"justify"}>
+                     Africaine
+                  </Text>
+                ) : (
+                  <Text width={"58%"} textAlign={"justify"}>
+                    {`${" ",nation} `}
+                  </Text>
+                )}
+              </Flex>
            <Flex>
              <Text fontWeight={"bold"} >Moyen De paiement : </Text>
              <Box>
@@ -1026,8 +1053,7 @@ export default function Intermed1() {
                  loading="lazy"
                  allowFullScreen
                  referrerPolicy="no-referrer-when-downgrade"
-                 src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
- &q=${addresse}`}
+                 src={link}
                ></iframe>
              </Box>
            </Box>
@@ -1203,6 +1229,7 @@ export default function Intermed1() {
                   </Text>
                 )}
               </Flex>
+
               <Flex>
                 <Text fontWeight={"bold"}>
                   Nationalite :{" "}
@@ -1321,8 +1348,7 @@ export default function Intermed1() {
                   loading="lazy"
                   allowFullScreen
                   referrerPolicy="no-referrer-when-downgrade"
-                  src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
-    &q=${addresse}`}
+                  src={link}
                 ></iframe>
                 
               </Box>
@@ -1336,8 +1362,7 @@ export default function Intermed1() {
                   loading="lazy"
                   allowFullScreen
                   referrerPolicy="no-referrer-when-downgrade"
-                  src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
-    &q=${addresse}`}
+                  src={link}
                 ></iframe>
               </Box>
               {/* <Flex>
@@ -1490,6 +1515,20 @@ export default function Intermed1() {
                  </Text>
                )}
              </Flex>
+             <Flex>
+                <Text fontWeight={"bold"}>
+                  Nationalite :{" "}
+                </Text>
+                {nation == "undefined" ? (
+                  <Text width={"58%"}  textAlign={"justify"}>
+                     Africaine
+                  </Text>
+                ) : (
+                  <Text width={"58%"} textAlign={"justify"}>
+                    {`${" ",nation} `}
+                  </Text>
+                )}
+              </Flex>
              <Flex>
                <Text fontWeight={"bold"} >Moyen De paiement : </Text>
                <Box>
@@ -1663,8 +1702,7 @@ export default function Intermed1() {
                    loading="lazy"
                    allowFullScreen
                    referrerPolicy="no-referrer-when-downgrade"
-                   src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
-   &q=${addresse}`}
+                   src={link}
                  ></iframe>
                </Box>
              </Box>
@@ -1718,6 +1756,20 @@ export default function Intermed1() {
                </Text>
              )}
            </Flex>
+           <Flex>
+                <Text fontWeight={"bold"}>
+                  Nationalite :{" "}
+                </Text>
+                {nation == "undefined" ? (
+                  <Text width={"58%"}  textAlign={"justify"}>
+                     Africaine
+                  </Text>
+                ) : (
+                  <Text width={"58%"} textAlign={"justify"}>
+                    {`${" ",nation} `}
+                  </Text>
+                )}
+              </Flex>
            <Flex>
              <Text fontWeight={"bold"} >Moyen De paiement : </Text>
              <Box>
@@ -1888,8 +1940,7 @@ export default function Intermed1() {
                  loading="lazy"
                  allowFullScreen
                  referrerPolicy="no-referrer-when-downgrade"
-                 src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
- &q=${addresse}`}
+                 src={link}
                ></iframe>
              </Box>
            </Box>
@@ -1952,6 +2003,20 @@ export default function Intermed1() {
                 ) : (
                   <Text width={"58%"} maxWidth={"58%"} textAlign={"justify"}>
                     {Desc1}
+                  </Text>
+                )}
+              </Flex>
+              <Flex>
+                <Text fontWeight={"bold"}>
+                  Nationalite :{" "}
+                </Text>
+                {nation == "undefined" ? (
+                  <Text width={"58%"}  textAlign={"justify"}>
+                     Africaine
+                  </Text>
+                ) : (
+                  <Text width={"58%"} textAlign={"justify"}>
+                    {`${" ",nation} `}
                   </Text>
                 )}
               </Flex>
@@ -2059,8 +2124,7 @@ export default function Intermed1() {
                   loading="lazy"
                   allowFullScreen
                   referrerPolicy="no-referrer-when-downgrade"
-                  src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
-    &q=${addresse}`}
+                  src={link}
                 ></iframe>
                 
               </Box>
@@ -2074,8 +2138,7 @@ export default function Intermed1() {
                   loading="lazy"
                   allowFullScreen
                   referrerPolicy="no-referrer-when-downgrade"
-                  src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
-    &q=${addresse}`}
+                  src={link}
                 ></iframe>
               </Box>
               {/* <Flex>
@@ -2343,6 +2406,20 @@ export default function Intermed1() {
                 )}
               </Flex>
               <Flex>
+                <Text fontWeight={"bold"}>
+                  Nationalite :{" "}
+                </Text>
+                {nation == "undefined" ? (
+                  <Text width={"58%"}  textAlign={"justify"}>
+                     Africaine
+                  </Text>
+                ) : (
+                  <Text width={"58%"} textAlign={"justify"}>
+                    {`${" ",nation} `}
+                  </Text>
+                )}
+              </Flex>
+              <Flex>
                 <Text fontWeight={"bold"} >Moyen De paiement : </Text>
                 <Box>
                   <Text ml={2} fontSize={"15px"}>
@@ -2568,8 +2645,7 @@ export default function Intermed1() {
                     loading="lazy"
                     allowFullScreen
                     referrerPolicy="no-referrer-when-downgrade"
-                    src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
-    &q=${addresse}`}
+                    src={link}
                   ></iframe>
                 </Box>
               </Box>
@@ -2620,6 +2696,20 @@ export default function Intermed1() {
                 ) : (
                   <Text width={"58%"}  textAlign={"justify"}>
                     {Desc1}
+                  </Text>
+                )}
+              </Flex>
+              <Flex>
+                <Text fontWeight={"bold"}>
+                  Nationalite :{" "}
+                </Text>
+                {nation == "undefined" ? (
+                  <Text width={"58%"}  textAlign={"justify"}>
+                     Africaine
+                  </Text>
+                ) : (
+                  <Text width={"58%"} textAlign={"justify"}>
+                    {`${" ",nation} `}
                   </Text>
                 )}
               </Flex>
@@ -2846,8 +2936,7 @@ export default function Intermed1() {
                     loading="lazy"
                     allowFullScreen
                     referrerPolicy="no-referrer-when-downgrade"
-                    src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
-    &q=${addresse}`}
+                    src={link}
                   ></iframe>
                 </Box>
               </Box>
@@ -3025,6 +3114,20 @@ export default function Intermed1() {
                 )}
               </Flex>
               <Flex>
+                <Text fontWeight={"bold"}>
+                  Nationalite :{" "}
+                </Text>
+                {nation == "undefined" ? (
+                  <Text width={"58%"}  textAlign={"justify"}>
+                     Africaine
+                  </Text>
+                ) : (
+                  <Text width={"58%"} textAlign={"justify"}>
+                    {`${" ",nation} `}
+                  </Text>
+                )}
+              </Flex>
+              <Flex>
                 <Text fontWeight={"bold"} >Moyen De paiement : </Text>
                 <Box>
                   <Text ml={2} fontSize={"15px"}>
@@ -3128,8 +3231,7 @@ export default function Intermed1() {
                   loading="lazy"
                   allowFullScreen
                   referrerPolicy="no-referrer-when-downgrade"
-                  src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
-    &q=${addresse}`}
+                  src={link}
                 ></iframe>
                 
               </Box>
@@ -3143,8 +3245,7 @@ export default function Intermed1() {
                   loading="lazy"
                   allowFullScreen
                   referrerPolicy="no-referrer-when-downgrade"
-                  src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
-    &q=${addresse}`}
+                  src={link}
                 ></iframe>
               </Box>
               {/* <Flex>
@@ -3296,6 +3397,20 @@ export default function Intermed1() {
                 ) : (
                   <Text width={"58%"} textAlign={"justify"}>
                     {Desc1}
+                  </Text>
+                )}
+              </Flex>
+              <Flex>
+                <Text fontWeight={"bold"}>
+                  Nationalite :{" "}
+                </Text>
+                {nation == "undefined" ? (
+                  <Text width={"58%"}  textAlign={"justify"}>
+                     Africaine
+                  </Text>
+                ) : (
+                  <Text width={"58%"} textAlign={"justify"}>
+                    {`${" ",nation} `}
                   </Text>
                 )}
               </Flex>
@@ -3472,8 +3587,7 @@ export default function Intermed1() {
                     loading="lazy"
                     allowFullScreen
                     referrerPolicy="no-referrer-when-downgrade"
-                    src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
-    &q=${addresse}`}
+                    src={link}
                   ></iframe>
                 </Box>
               </Box>
@@ -3524,6 +3638,20 @@ export default function Intermed1() {
                 ) : (
                   <Text width={"58%"}  textAlign={"justify"}>
                     {Desc1}
+                  </Text>
+                )}
+              </Flex>
+              <Flex>
+                <Text fontWeight={"bold"}>
+                  Nationalite :{" "}
+                </Text>
+                {nation == "undefined" ? (
+                  <Text width={"58%"}  textAlign={"justify"}>
+                     Africaine
+                  </Text>
+                ) : (
+                  <Text width={"58%"} textAlign={"justify"}>
+                    {`${" ",nation} `}
                   </Text>
                 )}
               </Flex>
@@ -3749,8 +3877,7 @@ export default function Intermed1() {
                     loading="lazy"
                     allowFullScreen
                     referrerPolicy="no-referrer-when-downgrade"
-                    src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
-    &q=${addresse}`}
+                    src={link}
                   ></iframe>
                 </Box>
               </Box>
