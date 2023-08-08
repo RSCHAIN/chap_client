@@ -400,7 +400,7 @@ export default function Intermed1() {
                   </Text>
                 ) : (
                   <Text width={"58%"} textAlign={"justify"}>
-                    {nation}
+                    {`${" ",nation} `}
                   </Text>
                 )}
               </Flex>
