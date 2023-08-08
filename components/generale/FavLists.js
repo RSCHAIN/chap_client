@@ -116,7 +116,7 @@ export default function Favlist() {
                
             
               </Box> */}
-              <Image height={["150px","150px","150px","150px","150px"]}  width={["150px","150px","150px","150px","150px"]} src={data.imageUrl}  alt={data.nom}  borderRadius={"25px 25px 0px 0px"}/>
+              <Image height={["100px","100px","100px","100px","100px"]}  width={["150px","150px","150px","150px","150px"]} src={data.imageUrl}  alt={data.nom}  borderRadius={"25px 25px 0px 0px"}/>
 
               <Text fontWeight={"bold"} width={["150px","150px","150px","150px","150px"]} noOfLines={1} pl={2}>{data.nom}</Text>
               <Text color={"green"} ml={["55%","55%","60%","70%","70%"]} fontWeight={"semibold"} >{data.prix}€</Text>
