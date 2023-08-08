@@ -1509,7 +1509,7 @@ export default function Intermed1() {
                         }}
                         // leftIcon={<BsTelephoneOutboundFill />}
                       >
-                        Reserver
+                        Devis
                       </Button>
                     
                     </Box>
@@ -1641,6 +1641,7 @@ export default function Intermed1() {
                    width={"150px"}
                    height={"30px"}
                    as={"a"}
+                 isDisabled={true}
                    // onClick={onOpen}
                    bgColor={"cyan.700"}
                    _hover={{
@@ -1649,7 +1650,7 @@ export default function Intermed1() {
                    }}
                    // leftIcon={<BsTelephoneOutboundFill />}
                  >
-                   Reserver
+                   Devis
                  </Button>
                 
                </Box>
@@ -1867,6 +1868,7 @@ export default function Intermed1() {
                  width={"150px"}
                  height={"30px"}
                  as={"a"}
+                 isDisabled={true}
                  // onClick={onOpen}
                  bgColor={"cyan.700"}
                  _hover={{
@@ -1875,7 +1877,7 @@ export default function Intermed1() {
                  }}
                  // leftIcon={<BsTelephoneOutboundFill />}
                >
-                 Reserver
+                 Devis
                </Button>
               
              </Box>
