@@ -416,6 +416,20 @@ export default function Intermed1() {
                 )}
               </Flex>
               <Flex>
+                <Text fontWeight={"bold"}>
+                  Nationalite :{" "}
+                </Text>
+                {nation == "undefined" ? (
+                  <Text width={"58%"}  textAlign={"justify"}>
+                     Africaine
+                  </Text>
+                ) : (
+                  <Text width={"58%"} textAlign={"justify"}>
+                    {nation}
+                  </Text>
+                )}
+              </Flex>
+              <Flex>
                 <Text fontWeight={"bold"}>Moyen De paiement : </Text>
                 <Box>
                   <Text ml={2} fontSize={"15px"}>
