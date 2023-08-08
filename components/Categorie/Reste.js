@@ -246,7 +246,7 @@ const settings = {
 
 
 
-export default function Restaurant(){
+export default function Reste(){
     const [show, setShow] = useState(false);
 
     const handleToggle = () => setShow(!show);
