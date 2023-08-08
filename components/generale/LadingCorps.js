@@ -256,7 +256,7 @@ export function ContainerCard({ card }) {
             width={"100%"}
             display={"flex"}
             fontWeight={"bold"}
-            fontSize={"15px"}
+            fontSize={"25px"}
             alignItems={"center"}
             justifyContent={"space-between"}
           >
