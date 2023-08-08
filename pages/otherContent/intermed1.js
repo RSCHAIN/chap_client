@@ -344,7 +344,7 @@ export default function Intermed1() {
         <InputBar />
         <Navbar />
 
-        <Box ml={["10%", "10%", "10%", "20%", "20%"]} mt={10} mb={10}>
+        <Box ml={["3%", "3%", "3%", "3%", "10%"]} mt={10} mb={10}>
         <Box display={["none", "none", "none", "grid", "grid"]}>
           <Flex >
             <Box mr={5}>
@@ -1234,7 +1234,7 @@ export default function Intermed1() {
         <Navbar />
         {/* CSS files for react-slick */}
 
-        <Box ml={["3%", "3%", "3%", "20%", "20%"]} mt={10} mb={10}>
+        <Box ml={["3%", "3%", "3%", "10%", "10%"]} mt={10} mb={10}>
         <Box display={["none", "none", "none", "grid", "grid"]}>
           <Flex >
             <Box mr={5}>
@@ -1986,7 +1986,7 @@ export default function Intermed1() {
         <Navbar />
         {/* CSS files for react-slick */}
 
-        <Box ml={["3%", "3%", "3%", "20%", "20%"]} mt={10} mb={10}  >
+        <Box ml={["3%", "3%", "3%", "15%", "15%"]} mt={10} mb={10}  >
           <Box display={["none", "none", "none", "grid", "grid"]}>
           <Flex >
             <Box mr={5}>
@@ -3055,7 +3055,7 @@ export default function Intermed1() {
         <Navbar />
         {/* CSS files for react-slick */}
 
-        <Box ml={["3%", "3%", "3%", "20%", "20%"]} mt={10} mb={10}>
+        <Box ml={["3%", "3%", "3%", "15%", "15%"]} mt={10} mb={10}>
         <Box display={["none", "none", "none", "grid", "grid"]}>
           <Flex >
             <Box mr={5}>
