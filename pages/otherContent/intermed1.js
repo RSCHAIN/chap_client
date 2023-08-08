@@ -406,11 +406,11 @@ export default function Intermed1() {
                   Description :{" "}
                 </Text>
                 {Desc1 == "undefined" ? (
-                  <Text width={"58%"} ml={2} textAlign={"justify"}>
+                  <Text width={"58%"}  textAlign={"justify"}>
                     {categorie} Africain
                   </Text>
                 ) : (
-                  <Text width={"58%"}ml={2} textAlign={"justify"}>
+                  <Text width={"58%"} textAlign={"justify"}>
                     {Desc1}
                   </Text>
                 )}
@@ -679,11 +679,11 @@ export default function Intermed1() {
                  Description :{" "}
                </Text>
                {Desc1 == "undefined" ? (
-                 <Text width={"58%"} ml={2} textAlign={"justify"}>
+                 <Text width={"58%"}  textAlign={"justify"}>
                    {categorie} Africain
                  </Text>
                ) : (
-                 <Text width={"58%"} ml={2} textAlign={"justify"}>
+                 <Text width={"58%"}  textAlign={"justify"}>
                    {Desc1}
                  </Text>
                )}
@@ -906,11 +906,11 @@ export default function Intermed1() {
                Description :{" "}
              </Text>
              {Desc1 == "undefined" ? (
-               <Text width={"58%"} ml={2} textAlign={"justify"}>
+               <Text width={"58%"}  textAlign={"justify"}>
                  {categorie} Africain
                </Text>
              ) : (
-               <Text width={"58%"}  ml={2} textAlign={"justify"}>
+               <Text width={"58%"}   textAlign={"justify"}>
                  {Desc1}
                </Text>
              )}
@@ -1282,11 +1282,11 @@ export default function Intermed1() {
                   Description :{" "}
                 </Text>
                 {Desc1 == "undefined" ? (
-                  <Text width={"58%"} ml={2} textAlign={"justify"}>
+                  <Text width={"58%"}  textAlign={"justify"}>
                     {categorie} Africain
                   </Text>
                 ) : (
-                  <Text width={"58%"} ml={2} textAlign={"justify"}>
+                  <Text width={"58%"}  textAlign={"justify"}>
                     {Desc1}
                   </Text>
                 )}
@@ -1555,11 +1555,11 @@ export default function Intermed1() {
                   Description :{" "}
                 </Text>
                 {Desc1 == "undefined" ? (
-                  <Text width={"58%"} ml={2} textAlign={"justify"}>
+                  <Text width={"58%"}  textAlign={"justify"}>
                     {categorie} Africain
                   </Text>
                 ) : (
-                  <Text width={"58%"} ml={2} textAlign={"justify"}>
+                  <Text width={"58%"}  textAlign={"justify"}>
                     {Desc1}
                   </Text>
                 )}
@@ -1782,11 +1782,11 @@ export default function Intermed1() {
                 Description :{" "}
               </Text>
               {Desc1 == "undefined" ? (
-                <Text width={"58%"}  ml={2} textAlign={"justify"}>
+                <Text width={"58%"}   textAlign={"justify"}>
                   {categorie} Africain
                 </Text>
               ) : (
-                <Text width={"58%"} ml={2} textAlign={"justify"}>
+                <Text width={"58%"}  textAlign={"justify"}>
                   {Desc1}
                 </Text>
               )}
@@ -2018,11 +2018,11 @@ export default function Intermed1() {
                   Description :{" "}
                 </Text>
                 {Desc1 == "undefined" ? (
-                  <Text width={"58%"} ml={2} textAlign={"justify"}>
+                  <Text width={"58%"}  textAlign={"justify"}>
                     {categorie} Africain
                   </Text>
                 ) : (
-                  <Text width={"58%"} ml={2} textAlign={"justify"}>
+                  <Text width={"58%"}  textAlign={"justify"}>
                     {Desc1}
                   </Text>
                 )}
@@ -2405,11 +2405,11 @@ export default function Intermed1() {
                   Description :{" "}
                 </Text>
                 {Desc1 == "undefined" ? (
-                  <Text width={"58%"} ml={2} textAlign={"justify"}>
+                  <Text width={"58%"}  textAlign={"justify"}>
                     {categorie} Africain
                   </Text>
                 ) : (
-                  <Text width={"58%"} ml={2} textAlign={"justify"}>
+                  <Text width={"58%"}  textAlign={"justify"}>
                     {Desc1}
                   </Text>
                 )}
@@ -2686,11 +2686,11 @@ export default function Intermed1() {
                   Description :{" "}
                 </Text>
                 {Desc1 == "undefined" ? (
-                  <Text width={"58%"} ml={2} textAlign={"justify"}>
+                  <Text width={"58%"}  textAlign={"justify"}>
                     {categorie} Africain
                   </Text>
                 ) : (
-                  <Text width={"58%"} ml={2} textAlign={"justify"}>
+                  <Text width={"58%"}  textAlign={"justify"}>
                     {Desc1}
                   </Text>
                 )}
@@ -3087,11 +3087,11 @@ export default function Intermed1() {
                   Description :{" "}
                 </Text>
                 {Desc1 == "undefined" ? (
-                  <Text width={"58%"} ml={2} textAlign={"justify"}>
+                  <Text width={"58%"}  textAlign={"justify"}>
                     {categorie} Africain
                   </Text>
                 ) : (
-                  <Text width={"58%"}  ml={2} textAlign={"justify"}>
+                  <Text width={"58%"}   textAlign={"justify"}>
                     {Desc1}
                   </Text>
                 )}
@@ -3362,11 +3362,11 @@ export default function Intermed1() {
                   Description :{" "}
                 </Text>
                 {Desc1 == "undefined" ? (
-                  <Text width={"58%"}  ml={2} textAlign={"justify"}>
+                  <Text width={"58%"}   textAlign={"justify"}>
                     {categorie} Africain
                   </Text>
                 ) : (
-                  <Text width={"58%"} ml={2} textAlign={"justify"}>
+                  <Text width={"58%"} textAlign={"justify"}>
                     {Desc1}
                   </Text>
                 )}
@@ -3590,11 +3590,11 @@ export default function Intermed1() {
                   Description :{" "}
                 </Text>
                 {Desc1 == "undefined" ? (
-                  <Text width={"58%"} ml={2} textAlign={"justify"}>
+                  <Text width={"58%"}  textAlign={"justify"}>
                     {categorie} Africain
                   </Text>
                 ) : (
-                  <Text width={"58%"} ml={2} textAlign={"justify"}>
+                  <Text width={"58%"}  textAlign={"justify"}>
                     {Desc1}
                   </Text>
                 )}
