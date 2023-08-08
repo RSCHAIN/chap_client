@@ -1119,7 +1119,7 @@ export default function Intermed1() {
                 Les produits{" "}
               </Heading>
               <Flex mt={10}>
-                <SimpleGrid columns={[1, 1, 1, 2, 2]}>
+                <SimpleGrid columns={[1, 1, 1, 2, 3]}>
                   {data.map((data, key) => (
                     <Box
                       key={data.id}
@@ -2939,7 +2939,7 @@ export default function Intermed1() {
                 Les produits{" "}
               </Heading>
               <Flex mt={10}>
-                <SimpleGrid columns={[1, 1, 1, 2, 2]}>
+                <SimpleGrid columns={[1, 1, 1, 2, 3]}>
                   {data.map((data, key) => (
                     <Box
                       key={data.id}
@@ -3842,7 +3842,7 @@ export default function Intermed1() {
                 Les produits{" "}
               </Heading>
               <Flex mt={10}>
-                <SimpleGrid columns={[1, 1, 1, 2, 2]}>
+                <SimpleGrid columns={[1, 1, 1, 2, 3]}>
                   {data.map((data, key) => (
                     <Box
                       key={data.id}
