@@ -251,16 +251,17 @@ export function ContainerCard({ card }) {
           alignItems={"center"}
           justifyContent={"space-between"}
         >
-          <Heading
+          <Text
             height={"auto"}
             width={"100%"}
             display={"flex"}
+            fontWeight={"bold"}
             fontSize={"25px"}
             alignItems={"center"}
             justifyContent={"space-between"}
           >
             {card}
-          </Heading>
+          </Text>
           <Link
             href="/otherContent/intermed2"
             onClick={() => {
