@@ -406,11 +406,11 @@ export default function Intermed1() {
                   Description :{" "}
                 </Text>
                 {Desc1 == "undefined" ? (
-                  <Text width={"58%"} textAlign={"justify"}>
+                  <Text width={"58%"} ml={2} textAlign={"justify"}>
                     {categorie} Africain
                   </Text>
                 ) : (
-                  <Text width={"58%"} textAlign={"justify"}>
+                  <Text width={"58%"}ml={2} textAlign={"justify"}>
                     {Desc1}
                   </Text>
                 )}
@@ -434,11 +434,11 @@ export default function Intermed1() {
                 <Text fontWeight={"bold"}>
                   Reservation :{" "}
                 </Text>
-                <Text width={"58%"} textAlign={"justify"}>
+                <Text width={"58%"}ml={2} textAlign={"justify"}>
                   {data.length != 0 ? (
-                    <Text color={"messenger.500"}>En ligne</Text>
+                    <Text color={"messenger.500"} ml={2}>En ligne</Text>
                   ) : (
-                    <Text color={"red.400"}>Non Disponible</Text>
+                    <Text color={"red.400"} ml={2} >Non Disponible</Text>
                   )}
                 </Text>
               </Flex>
@@ -679,11 +679,11 @@ export default function Intermed1() {
                  Description :{" "}
                </Text>
                {Desc1 == "undefined" ? (
-                 <Text width={"58%"} textAlign={"justify"}>
+                 <Text width={"58%"} ml={2} textAlign={"justify"}>
                    {categorie} Africain
                  </Text>
                ) : (
-                 <Text width={"58%"} textAlign={"justify"}>
+                 <Text width={"58%"} ml={2} textAlign={"justify"}>
                    {Desc1}
                  </Text>
                )}
@@ -709,9 +709,9 @@ export default function Intermed1() {
                </Text>
                <Text width={"58%"} textAlign={"justify"}>
                  {data.length != 0 ? (
-                   <Text color={"messenger.500"}>En ligne</Text>
+                   <Text color={"messenger.500"} ml={2}>En ligne</Text>
                  ) : (
-                   <Text color={"red.400"}>Non Disponible</Text>
+                   <Text color={"red.400"} ml={2}>Non Disponible</Text>
                  )}
                </Text>
              </Flex>
@@ -906,11 +906,11 @@ export default function Intermed1() {
                Description :{" "}
              </Text>
              {Desc1 == "undefined" ? (
-               <Text width={"58%"} textAlign={"justify"}>
+               <Text width={"58%"} ml={2} textAlign={"justify"}>
                  {categorie} Africain
                </Text>
              ) : (
-               <Text width={"58%"} textAlign={"justify"}>
+               <Text width={"58%"}  ml={2} textAlign={"justify"}>
                  {Desc1}
                </Text>
              )}
@@ -936,9 +936,9 @@ export default function Intermed1() {
              </Text>
              <Text width={"58%"} textAlign={"justify"}>
                {data.length != 0 ? (
-                 <Text color={"messenger.500"}>En ligne</Text>
+                 <Text color={"messenger.500"} ml={2}>En ligne</Text>
                ) : (
-                 <Text color={"red.400"}>Non Disponible</Text>
+                 <Text color={"red.400"} ml={2}>Non Disponible</Text>
                )}
              </Text>
            </Flex>
@@ -1282,11 +1282,11 @@ export default function Intermed1() {
                   Description :{" "}
                 </Text>
                 {Desc1 == "undefined" ? (
-                  <Text width={"58%"} textAlign={"justify"}>
+                  <Text width={"58%"} ml={2} textAlign={"justify"}>
                     {categorie} Africain
                   </Text>
                 ) : (
-                  <Text width={"58%"} textAlign={"justify"}>
+                  <Text width={"58%"} ml={2} textAlign={"justify"}>
                     {Desc1}
                   </Text>
                 )}
@@ -1312,9 +1312,9 @@ export default function Intermed1() {
                 </Text>
                 <Text width={"58%"} textAlign={"justify"}>
                   {data.length != 0 ? (
-                    <Text color={"messenger.500"}>En ligne</Text>
+                    <Text color={"messenger.500"} ml={2}>En ligne</Text>
                   ) : (
-                    <Text color={"red.400"}>Non Disponible</Text>
+                    <Text color={"red.400"} ml={2}>Non Disponible</Text>
                   )}
                 </Text>
               </Flex>
@@ -1555,11 +1555,11 @@ export default function Intermed1() {
                   Description :{" "}
                 </Text>
                 {Desc1 == "undefined" ? (
-                  <Text width={"58%"} textAlign={"justify"}>
+                  <Text width={"58%"} ml={2} textAlign={"justify"}>
                     {categorie} Africain
                   </Text>
                 ) : (
-                  <Text width={"58%"} textAlign={"justify"}>
+                  <Text width={"58%"} ml={2} textAlign={"justify"}>
                     {Desc1}
                   </Text>
                 )}
@@ -1585,9 +1585,9 @@ export default function Intermed1() {
                 </Text>
                 <Text width={"58%"} textAlign={"justify"}>
                   {data.length != 0 ? (
-                    <Text color={"messenger.500"}>En ligne</Text>
+                    <Text color={"messenger.500"} ml={2}>En ligne</Text>
                   ) : (
-                    <Text color={"red.400"}>Non Disponible</Text>
+                    <Text color={"red.400"} ml={2}>Non Disponible</Text>
                   )}
                 </Text>
               </Flex>
@@ -1782,11 +1782,11 @@ export default function Intermed1() {
                 Description :{" "}
               </Text>
               {Desc1 == "undefined" ? (
-                <Text width={"58%"} textAlign={"justify"}>
+                <Text width={"58%"}  ml={2} textAlign={"justify"}>
                   {categorie} Africain
                 </Text>
               ) : (
-                <Text width={"58%"} textAlign={"justify"}>
+                <Text width={"58%"} ml={2} textAlign={"justify"}>
                   {Desc1}
                 </Text>
               )}
@@ -1812,9 +1812,9 @@ export default function Intermed1() {
               </Text>
               <Text width={"58%"} textAlign={"justify"}>
                 {data.length != 0 ? (
-                  <Text color={"messenger.500"}>En ligne</Text>
+                  <Text color={"messenger.500"} ml={2}>En ligne</Text>
                 ) : (
-                  <Text color={"red.400"}>Non Disponible</Text>
+                  <Text color={"red.400"} ml={2}>Non Disponible</Text>
                 )}
               </Text>
             </Flex>
@@ -2018,11 +2018,11 @@ export default function Intermed1() {
                   Description :{" "}
                 </Text>
                 {Desc1 == "undefined" ? (
-                  <Text width={"58%"} textAlign={"justify"}>
+                  <Text width={"58%"} ml={2} textAlign={"justify"}>
                     {categorie} Africain
                   </Text>
                 ) : (
-                  <Text width={"58%"} textAlign={"justify"}>
+                  <Text width={"58%"} ml={2} textAlign={"justify"}>
                     {Desc1}
                   </Text>
                 )}
@@ -2048,9 +2048,9 @@ export default function Intermed1() {
                 </Text>
                 <Text width={"58%"} textAlign={"justify"}>
                   {data.length != 0 ? (
-                    <Text color={"messenger.500"}>En ligne</Text>
+                    <Text color={"messenger.500"} ml={2}>En ligne</Text>
                   ) : (
-                    <Text color={"red.400"}>Non Disponible</Text>
+                    <Text color={"red.400"} ml={2}>Non Disponible</Text>
                   )}
                 </Text>
               </Flex>
@@ -2405,11 +2405,11 @@ export default function Intermed1() {
                   Description :{" "}
                 </Text>
                 {Desc1 == "undefined" ? (
-                  <Text width={"58%"} textAlign={"justify"}>
+                  <Text width={"58%"} ml={2} textAlign={"justify"}>
                     {categorie} Africain
                   </Text>
                 ) : (
-                  <Text width={"58%"} textAlign={"justify"}>
+                  <Text width={"58%"} ml={2} textAlign={"justify"}>
                     {Desc1}
                   </Text>
                 )}
@@ -2435,9 +2435,9 @@ export default function Intermed1() {
                 </Text>
                 <Text width={"58%"} textAlign={"justify"}>
                   {data.length != 0 ? (
-                    <Text color={"messenger.500"}>En ligne</Text>
+                    <Text color={"messenger.500"} ml={2}>En ligne</Text>
                   ) : (
-                    <Text color={"red.400"}>Non Disponible</Text>
+                    <Text color={"red.400"} ml={2}>Non Disponible</Text>
                   )}
                 </Text>
               </Flex>
@@ -2686,17 +2686,17 @@ export default function Intermed1() {
                   Description :{" "}
                 </Text>
                 {Desc1 == "undefined" ? (
-                  <Text width={"58%"} textAlign={"justify"}>
+                  <Text width={"58%"} ml={2} textAlign={"justify"}>
                     {categorie} Africain
                   </Text>
                 ) : (
-                  <Text width={"58%"} textAlign={"justify"}>
+                  <Text width={"58%"} ml={2} textAlign={"justify"}>
                     {Desc1}
                   </Text>
                 )}
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"} width={"fit-content"}>Moyen De paiement : </Text>
+                <Text fontWeight={"bold"} >Moyen De paiement : </Text>
                 <Box>
                   <Text ml={2} fontSize={"15px"}>
                     {paiement != "undefined" && paiement != null
@@ -2711,14 +2711,14 @@ export default function Intermed1() {
                 </Box>
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"} width={"fit-content"} mr={2}>
+                <Text fontWeight={"bold"} >
                   Reservation :{" "}
                 </Text>
-                <Text width={"58%"} textAlign={"justify"}>
+                <Text width={"58%"} ml={2} textAlign={"justify"}>
                   {data.length != 0 ? (
-                    <Text color={"messenger.500"}>En ligne</Text>
+                    <Text color={"messenger.500"} ml={2}>En ligne</Text>
                   ) : (
-                    <Text color={"red.400"}>Non Disponible</Text>
+                    <Text color={"red.400"} ml={2}>Non Disponible</Text>
                   )}
                 </Text>
               </Flex>
@@ -3087,11 +3087,11 @@ export default function Intermed1() {
                   Description :{" "}
                 </Text>
                 {Desc1 == "undefined" ? (
-                  <Text width={"58%"} textAlign={"justify"}>
+                  <Text width={"58%"} ml={2} textAlign={"justify"}>
                     {categorie} Africain
                   </Text>
                 ) : (
-                  <Text width={"58%"} textAlign={"justify"}>
+                  <Text width={"58%"}  ml={2} textAlign={"justify"}>
                     {Desc1}
                   </Text>
                 )}
@@ -3117,9 +3117,9 @@ export default function Intermed1() {
                 </Text>
                 <Text width={"58%"} textAlign={"justify"}>
                   {data.length != 0 ? (
-                    <Text color={"messenger.500"}>En ligne</Text>
+                    <Text color={"messenger.500"} ml={2}>En ligne</Text>
                   ) : (
-                    <Text color={"red.400"}>Non Disponible</Text>
+                    <Text color={"red.400"} ml={2}>Non Disponible</Text>
                   )}
                 </Text>
               </Flex>
@@ -3362,11 +3362,11 @@ export default function Intermed1() {
                   Description :{" "}
                 </Text>
                 {Desc1 == "undefined" ? (
-                  <Text width={"58%"} textAlign={"justify"}>
+                  <Text width={"58%"}  ml={2} textAlign={"justify"}>
                     {categorie} Africain
                   </Text>
                 ) : (
-                  <Text width={"58%"} textAlign={"justify"}>
+                  <Text width={"58%"} ml={2} textAlign={"justify"}>
                     {Desc1}
                   </Text>
                 )}
@@ -3392,9 +3392,9 @@ export default function Intermed1() {
                 </Text>
                 <Text width={"58%"} textAlign={"justify"}>
                   {data.length != 0 ? (
-                    <Text color={"messenger.500"}>En ligne</Text>
+                    <Text color={"messenger.500"} ml={2} >En ligne</Text>
                   ) : (
-                    <Text color={"red.400"}>Non Disponible</Text>
+                    <Text color={"red.400"} ml={2}>Non Disponible</Text>
                   )}
                 </Text>
               </Flex>
@@ -3590,11 +3590,11 @@ export default function Intermed1() {
                   Description :{" "}
                 </Text>
                 {Desc1 == "undefined" ? (
-                  <Text width={"58%"} textAlign={"justify"}>
+                  <Text width={"58%"} ml={2} textAlign={"justify"}>
                     {categorie} Africain
                   </Text>
                 ) : (
-                  <Text width={"58%"} textAlign={"justify"}>
+                  <Text width={"58%"} ml={2} textAlign={"justify"}>
                     {Desc1}
                   </Text>
                 )}
@@ -3620,9 +3620,9 @@ export default function Intermed1() {
                 </Text>
                 <Text width={"58%"} textAlign={"justify"}>
                   {data.length != 0 ? (
-                    <Text color={"messenger.500"}>En ligne</Text>
+                    <Text color={"messenger.500"} ml={2}>En ligne</Text>
                   ) : (
-                    <Text color={"red.400"}>Non Disponible</Text>
+                    <Text color={"red.400"} ml={2}>Non Disponible</Text>
                   )}
                 </Text>
               </Flex>
