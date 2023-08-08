@@ -1763,7 +1763,7 @@ export default function Intermed1() {
              />
              
            </Box>
-           <Heading fontSize={"35px"}>{nom}</Heading>
+           <Text fontSize={"30px"}>{nom}</Text>
          </Box>
 
          <Box>
