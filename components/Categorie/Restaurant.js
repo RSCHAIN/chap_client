@@ -119,19 +119,19 @@ async function saveCommande2(data) {
     });
 }
 
-async function saveCommande3(d1, d2) {
+async function saveCommande3(d1, d2,d3) {
   let email = sessionStorage.getItem("email");
 
   let adress = localStorage.addresse;
   let nom2 = localStorage.name;
-  let numero = localStorage.number;
+  let numero = localStorage.number ?? d3;
   let date = new Date();
-
+  console.log(d1,d2)
   if (d1.length != 0 && d2.length != 0) {
     push(ref(db2, "Reservation"), {
       initiateur: email,
       Status: "Demande de Reservation",
-      ville: adress,
+      // ville: adress,
       // rue: adress,
       // code_postal: adress,
       // batiment: adress,
@@ -142,7 +142,7 @@ async function saveCommande3(d1, d2) {
       // moment: "",
       date: d1,
     });
-    alert("Devis en cours d'estimation");
+    alert("Reservation en cours!!!");
   } else {
     alert("Veuillez remplir les champs svp");
   }
@@ -258,12 +258,18 @@ export default function Restaurant(){
     const [nom, setNom] = useState("");
     const [Desc1, setDesc1] = useState("");
     const [nation, setNation] = useState("");
+
+   const [added, setAdded] = useState()
+   const [etat1,setEtat1] = useState(false);
+
     const [addresse, setAddresse] = useState("");
     const [data, setData] = useState([]);
     const [categorie, setCategorie] = useState("");
     const [data1, setData1] = useState();
     const [data2, setData2] = useState();
+    const [data3, setData3] = useState();
     const [link,setLink] = useState();
+
     ////HOraire
     const heure = "Horaire d'Ouverture";
     const [horaire, setHoraire] = useState({});
@@ -295,6 +301,17 @@ export default function Restaurant(){
         setPaiement(JSON.parse(sessionStorage.getItem("paiement")));
       } else {
         setPaiement(null);
+      }
+
+      if (
+        localStorage.getItem("number") != "undefined" &&
+        localStorage.getItem("number") != null &&
+        localStorage.getItem("number") != undefined
+      ) {
+        setData3(localStorage.getItem("number"));
+        setEtat1(true)
+      } else {
+        setData3(null);
       }
       setImageUrl(sessionStorage.getItem("image"));
       setNumero(sessionStorage.getItem("savefrom"));
@@ -583,124 +600,10 @@ export default function Restaurant(){
                       >
                         Reserver
                       </Button>
-                      <Modal isOpen={isOpen} onClose={onClose}>
-                        <ModalOverlay />
-                        <ModalContent>
-                          <ModalHeader>Formulaire de Reservation</ModalHeader>
-                          <ModalCloseButton />
-                          <ModalBody>
-                            <Flex>
-                              <Text mr={20}>Date & heure: </Text>
-                              <Input
-                                type="datetime-local"
-                                width={"180px"}
-                                onChange={(e) => setData1(e.target.value)}
-                              />
-                            </Flex>
-                            <br />
-                            <Flex>
-                              <Text mr={5}>Nombre De Couverts : </Text>
-                              <Input
-                                type="number"
-                                width={"180px"}
-                                onChange={(e) => setData2(e.target.value)}
-                              />
-                            </Flex>
-                            <br />
-                            <Flex>
-                              <Text marginRight={10}>
-                                Numéro du Restaurant :{" "}
-                              </Text>
-                              <h3>
-                                <a
-                                  href={`tel:${sessionStorage.getItem(
-                                    "savefrom"
-                                  )}`}
-                                >
-                                  {sessionStorage.getItem("savefrom")}
-                                </a>
-                              </h3>
-                            </Flex>
-                          </ModalBody>
-
-                          <ModalFooter>
-                            {/* <Button colorScheme="ghost" mr={3} onClick={onClose}>
-                    Annuler
-                  </Button> */}
-
-                            <Button
-                              bgColor={"cyan.700"}
-                              color={"white"}
-                              _hover={{ bgColor: "cyan.900" }}
-                              onClick={() => {
-                                saveCommande3(data1, data2),
-                                  setData1(""),
-                                  setData2("");
-                              }}
-                            >
-                              Valider
-                            </Button>
-                          </ModalFooter>
-                        </ModalContent>
-                      </Modal>
+                   
                     </Box>
                   </Center>
-                  <Modal isOpen={isOpen} onClose={onClose}>
-                    <ModalOverlay />
-                    <ModalContent>
-                      <ModalHeader>Formulaire de Reservation</ModalHeader>
-                      <ModalCloseButton />
-                      <ModalBody>
-                        <Flex>
-                          <Text mr={20}>Date & heure: </Text>
-                          <Input
-                            type="datetime-local"
-                            width={"180px"}
-                            onChange={(e) => setData1(e.target.value)}
-                          />
-                        </Flex>
-                        <br />
-                        <Flex>
-                          <Text mr={5}>Nombre De Couverts : </Text>
-                          <Input
-                            type="number"
-                            width={"180px"}
-                            onChange={(e) => setData2(e.target.value)}
-                          />
-                        </Flex>
-                        <br />
-                        <Flex>
-                          <Text marginRight={10}>Numéro du Restaurant : </Text>
-                          <h3>
-                            <a
-                              href={`tel:${sessionStorage.getItem("savefrom")}`}
-                            >
-                              {sessionStorage.getItem("savefrom")}
-                            </a>
-                          </h3>
-                        </Flex>
-                      </ModalBody>
-
-                      <ModalFooter>
-                        {/* <Button colorScheme="ghost" mr={3} onClick={onClose}>
-                    Annuler
-                  </Button> */}
-
-                        <Button
-                          bgColor={"cyan.700"}
-                          color={"white"}
-                          _hover={{ bgColor: "cyan.900" }}
-                          onClick={() => {
-                            saveCommande3(data1, data2),
-                              setData1(""),
-                              setData2("");
-                          }}
-                        >
-                          Valider
-                        </Button>
-                      </ModalFooter>
-                    </ModalContent>
-                  </Modal>
+                 
                 </Box>
           </Box>
           
@@ -852,62 +755,7 @@ export default function Restaurant(){
                   >
                     Reserver
                   </Button>
-                  <Modal isOpen={isOpen} onClose={onClose}>
-                    <ModalOverlay />
-                    <ModalContent>
-                      <ModalHeader>Formulaire de Reservation</ModalHeader>
-                      <ModalCloseButton />
-                      <ModalBody>
-                        <Flex>
-                          <Text mr={20}>Date & heure: </Text>
-                          <Input
-                            type="datetime-local"
-                            width={"180px"}
-                            onChange={(e) => setData1(e.target.value)}
-                          />
-                        </Flex>
-                        <br />
-                        <Flex>
-                          <Text mr={5}>Nombre De Couverts : </Text>
-                          <Input
-                            type="number"
-                            width={"180px"}
-                            onChange={(e) => setData2(e.target.value)}
-                          />
-                        </Flex>
-                        <br />
-                        <Flex>
-                          <Text marginRight={10}>Numéro du Restaurant : </Text>
-                          <h3>
-                            <a
-                              href={`tel:${sessionStorage.getItem("savefrom")}`}
-                            >
-                              {sessionStorage.getItem("savefrom")}
-                            </a>
-                          </h3>
-                        </Flex>
-                      </ModalBody>
-
-                      <ModalFooter>
-                        {/* <Button colorScheme="ghost" mr={3} onClick={onClose}>
-                    Annuler
-                  </Button> */}
-
-                        <Button
-                          bgColor={"cyan.700"}
-                          color={"white"}
-                          _hover={{ bgColor: "cyan.900" }}
-                          onClick={() => {
-                            saveCommande3(data1, data2),
-                              setData1(""),
-                              setData2("");
-                          }}
-                        >
-                          Valider
-                        </Button>
-                      </ModalFooter>
-                    </ModalContent>
-                  </Modal>
+                  
                 </Box>
                 </SimpleGrid>
               {/* </Center> */}
@@ -1145,62 +993,7 @@ export default function Restaurant(){
                   >
                     Reserver
                   </Button>
-                  <Modal isOpen={isOpen} onClose={onClose}>
-                    <ModalOverlay />
-                    <ModalContent>
-                      <ModalHeader>Formulaire de Reservation</ModalHeader>
-                      <ModalCloseButton />
-                      <ModalBody>
-                        <Flex>
-                          <Text mr={20}>Date & heure: </Text>
-                          <Input
-                            type="datetime-local"
-                            width={"180px"}
-                            onChange={(e) => setData1(e.target.value)}
-                          />
-                        </Flex>
-                        <br />
-                        <Flex>
-                          <Text mr={5}>Nombre De Couverts : </Text>
-                          <Input
-                            type="number"
-                            width={"180px"}
-                            onChange={(e) => setData2(e.target.value)}
-                          />
-                        </Flex>
-                        <br />
-                        <Flex>
-                          <Text marginRight={10}>Numéro du Restaurant : </Text>
-                          <h3>
-                            <a
-                              href={`tel:${sessionStorage.getItem("savefrom")}`}
-                            >
-                              {sessionStorage.getItem("savefrom")}
-                            </a>
-                          </h3>
-                        </Flex>
-                      </ModalBody>
-
-                      <ModalFooter>
-                        {/* <Button colorScheme="ghost" mr={3} onClick={onClose}>
-                    Annuler
-                  </Button> */}
-
-                        <Button
-                          bgColor={"cyan.700"}
-                          color={"white"}
-                          _hover={{ bgColor: "cyan.900" }}
-                          onClick={() => {
-                            saveCommande3(data1, data2),
-                              setData1(""),
-                              setData2("");
-                          }}
-                        >
-                          Valider
-                        </Button>
-                      </ModalFooter>
-                    </ModalContent>
-                  </Modal>
+                  
                 </Box>
                 </SimpleGrid>
               <Flex>
@@ -1292,7 +1085,80 @@ export default function Restaurant(){
               </Box>
             </Center> 
           </Flex>
+          <Modal isOpen={isOpen}  onClose={onClose}>
+                        <ModalOverlay />
+                        <ModalContent>
+                          <ModalHeader>Formulaire de Reservation</ModalHeader>
+                          <ModalCloseButton />
+                          <ModalBody>
+                            <Flex>
+                              <Text mr={20}>Date & heure: </Text>
+                              <Input
+                              value={data1}
+                                type="datetime-local"
+                                width={"180px"}
+                                onChange={(e) => setData1(e.target.value)}
+                              />
+                            </Flex>
+                            <br />
+                            <Flex>
+                              <Text mr={5}>Nombre De Couverts : </Text>
+                              <Input
+                              value={data2}
+                                type="number"
+                                width={"180px"}
+                                onChange={(e) => setData2(e.target.value)}
+                              />
+                            </Flex>
+                            <br />
+                            <Flex>
+                              <Text mr={20}>Votre numero : </Text>
+                              <Input
+                              isDisabled={etat1}
+                              value={data3}
+                                type="number"
+                                width={"180px"}
+                                onChange={(e) => setData3(e.target.value)}
+                              />
+                            </Flex>
+                            <br />
+                            <Flex>
+                              <Text marginRight={10}>
+                                Numéro du Restaurant :{" "}
+                              </Text>
+                              <h3>
+                                <a
+                                  href={`tel:${sessionStorage.getItem(
+                                    "savefrom"
+                                  )}`}
+                                >
+                                  {sessionStorage.getItem("savefrom")}
+                                </a>
+                              </h3>
+                            </Flex>
+                          </ModalBody>
 
+                          <ModalFooter>
+                            {/* <Button colorScheme="ghost" mr={3} onClick={onClose}>
+                    Annuler
+                  </Button> */}
+
+                            <Button
+                              bgColor={"cyan.700"}
+                              color={"white"}
+                              _hover={{ bgColor: "cyan.900" }}
+                              onClick={() => {
+                                saveCommande3(data1, data2,data3),
+                                  setData1(""),
+                                  setData2("");
+                                  // setData3("");
+                              }}
+                            >
+                              Valider
+                            </Button>
+                          </ModalFooter>
+                        </ModalContent>
+                      </Modal>
           {/* fin slide  */}
           {data.length != 0 ? (
             <>

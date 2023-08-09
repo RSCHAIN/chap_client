@@ -69,7 +69,7 @@ function DropdownMenu() {
     }
     FetchDataaa();
     setCat(cat + 1);
-  }, [datos, cat]);
+  }, [datos, cat,]);
 
   const updateLink = (index) => {
     const starCountRef2 = ref(db2, index + "/");
@@ -90,7 +90,7 @@ function DropdownMenu() {
     const height = el.offsetHeight;
     setMenuHeight(height + 20);
   }
-  console.log(Object.values(datos));
+ 
   return (
     <>
       {/* { datos.forEach((doc) => {
