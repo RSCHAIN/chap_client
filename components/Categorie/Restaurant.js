@@ -263,7 +263,7 @@ export default function Restaurant(){
     const [categorie, setCategorie] = useState("");
     const [data1, setData1] = useState();
     const [data2, setData2] = useState();
-  
+    const [link,setLink] = useState();
     ////HOraire
     const heure = "Horaire d'Ouverture";
     const [horaire, setHoraire] = useState({});
@@ -303,7 +303,8 @@ export default function Restaurant(){
       setCategorie(sessionStorage.getItem("categorie"));
       setDesc1(sessionStorage.getItem("description"));
       setNation(sessionStorage.getItem("nationalite"));
-  
+      setLink(`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
+    &q=${sessionStorage.getItem("adresse")}`);
      
   
       const starCountRef = ref(
@@ -337,15 +338,13 @@ export default function Restaurant(){
     ]);
   
     const images = [imageUrl, imageUrl, imageUrl, imageUrl];
-    return
-    (
-        
-        <>
+    return(
+      <>
         <InputBar />
         <Navbar />
         {/* CSS files for react-slick */}
 
-        <Box ml={["3%", "3%", "3%", "20%", "20%"]} mt={10} mb={10}  >
+        <Box ml={["3%", "3%", "3%", "15%", "15%"]} mt={10} mb={10}  >
           <Box display={["none", "none", "none", "grid", "grid"]}>
           <Flex >
             <Box mr={5}>
@@ -362,7 +361,7 @@ export default function Restaurant(){
             </Box>
 
             <Box>
-              <Heading fontSize={"40px"}>{nom}</Heading>
+              <Heading fontSize={"35px"}>{nom}</Heading>
               <Text fontSize={"15px"} fontWeight={"medium"}>
                 {addresse}
               </Text>
@@ -378,16 +377,30 @@ export default function Restaurant(){
                 </Text>
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"}>
+                <Text fontWeight={"bold"} pr={2}>
                   Description :{" "}
                 </Text>
                 {Desc1 == "undefined" ? (
-                  <Text width={"58%"}  textAlign={"justify"}>
+                  <Text width={"58%"} maxWidth={"58%"}  textAlign={"justify"}>
                     {categorie} Africain
                   </Text>
                 ) : (
-                  <Text width={"58%"}  textAlign={"justify"}>
+                  <Text width={"58%"} maxWidth={"58%"} textAlign={"justify"}>
                     {Desc1}
+                  </Text>
+                )}
+              </Flex>
+              <Flex>
+                <Text fontWeight={"bold"}>
+                  Nationalite :{" "}
+                </Text>
+                {nation == "undefined" ? (
+                  <Text  ml={2} fontSize={"15px"} >
+                     Africaine
+                  </Text>
+                ) : (
+                  <Text  ml={2} fontSize={"15px"} >
+                    {`${" ",nation} `}
                   </Text>
                 )}
               </Flex>
@@ -495,8 +508,7 @@ export default function Restaurant(){
                   loading="lazy"
                   allowFullScreen
                   referrerPolicy="no-referrer-when-downgrade"
-                  src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
-    &q=${addresse}`}
+                  src={link}
                 ></iframe>
                 
               </Box>
@@ -510,45 +522,10 @@ export default function Restaurant(){
                   loading="lazy"
                   allowFullScreen
                   referrerPolicy="no-referrer-when-downgrade"
-                  src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
-    &q=${addresse}`}
+                  src={link}
                 ></iframe>
               </Box>
-              {/* <Flex>
-              <Heading fontSize={"20px"} mt={10}>
-            Images du magasin{" "}
-          </Heading> */}
-
-              {/* Slider */}
-              {/* <section
-            style={{
-              marginTop: "20px",
-              marginRight: "20px",
-            }}
-          >
-            <Carousel
-              partialVisbile
-              deviceType={"mobile"}
-              itemClass="image-item"
-              responsive={responsive}
-            >
-              {images.slice(0, images.length).map((image, index) => {
-                return (
-                  <Image
-                    key={index}
-                    alt={`${image}`}
-                    maxWidth={{md:'150px',xl:"150px"}}
-                    maxHeight={{base:'150px',xl:"150px"}}
-                    minWidth={{base:'150px',xl:"150px"}}
-                    minHeight={{base:'150px',xl:"150px"}}
-                    pr={5}
-                    src={image}
-                  />
-                );
-              })}
-            </Carousel>
-          </section>
-              </Flex> */}
+             
             </Box>
           </Flex>
           <Box mt={5} width={"90%"}>
@@ -746,7 +723,7 @@ export default function Restaurant(){
                 />
                 
               </Box>
-              <Heading fontSize={"40px"}>{nom}</Heading>
+              <Heading fontSize={"35px"}>{nom}</Heading>
             </Box>
 
             <Box>
@@ -765,7 +742,7 @@ export default function Restaurant(){
                 </Text>
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"} >
+                <Text fontWeight={"bold"} pr={2}>
                   Description :{" "}
                 </Text>
                 {Desc1 == "undefined" ? (
@@ -775,6 +752,20 @@ export default function Restaurant(){
                 ) : (
                   <Text width={"58%"}  textAlign={"justify"}>
                     {Desc1}
+                  </Text>
+                )}
+              </Flex>
+              <Flex>
+                <Text fontWeight={"bold"}>
+                  Nationalite :{" "}
+                </Text>
+                {nation == "undefined" ? (
+                  <Text  ml={2} fontSize={"15px"} >
+                     Africaine
+                  </Text>
+                ) : (
+                  <Text  ml={2} fontSize={"15px"} >
+                    {`${" ",nation} `}
                   </Text>
                 )}
               </Flex>
@@ -1004,8 +995,7 @@ export default function Restaurant(){
                     loading="lazy"
                     allowFullScreen
                     referrerPolicy="no-referrer-when-downgrade"
-                    src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
-    &q=${addresse}`}
+                    src={link}
                   ></iframe>
                 </Box>
               </Box>
@@ -1027,7 +1017,7 @@ export default function Restaurant(){
                 />
                 
               </Box>
-              <Heading fontSize={"40px"}>{nom}</Heading>
+              <Heading fontSize={"35px"}>{nom}</Heading>
             </Box>
 
             <Box>
@@ -1046,7 +1036,7 @@ export default function Restaurant(){
                 </Text>
               </Flex>
               <Flex>
-                <Text fontWeight={"bold"} >
+                <Text fontWeight={"bold"} pr={2}>
                   Description :{" "}
                 </Text>
                 {Desc1 == "undefined" ? (
@@ -1056,6 +1046,20 @@ export default function Restaurant(){
                 ) : (
                   <Text width={"58%"}  textAlign={"justify"}>
                     {Desc1}
+                  </Text>
+                )}
+              </Flex>
+              <Flex>
+                <Text fontWeight={"bold"}>
+                  Nationalite :{" "}
+                </Text>
+                {nation == "undefined" ? (
+                  <Text  ml={2} fontSize={"15px"} >
+                     Africaine
+                  </Text>
+                ) : (
+                  <Text  ml={2} fontSize={"15px"} >
+                    {`${" ",nation} `}
                   </Text>
                 )}
               </Flex>
@@ -1282,8 +1286,7 @@ export default function Restaurant(){
                     loading="lazy"
                     allowFullScreen
                     referrerPolicy="no-referrer-when-downgrade"
-                    src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM
-    &q=${addresse}`}
+                    src={link}
                   ></iframe>
                 </Box>
               </Box>
@@ -1334,7 +1337,7 @@ export default function Restaurant(){
                           width={"fit-content"}
                           height={"fit-content"}
                         >
-                          <Text width={"200px"} fontSize={"20px"}>
+                          <Text width={"185px"} fontSize={"20px"}>
                             {data.nom}
                           </Text>
                           <Box textColor={"blue"} color={"blue.400"}>
@@ -1406,5 +1409,5 @@ export default function Restaurant(){
       
         <FooterR />
       </>
-      );
+    );
 }
