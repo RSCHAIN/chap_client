@@ -15,12 +15,20 @@ const responsive = {
     breakpoint: { max:4000, min: 3000 },
     items: 9
   }, 
-  LargeDesktop: {
-    breakpoint: { max: 3000, min: 2000 },
+  MDesktop: {
+    breakpoint: { max: 3000, min: 2500 },
     items: 8
   }, 
+  LargeDesktop: {
+    breakpoint: { max: 2500, min: 2000 },
+    items: 8
+  }, 
+  desktopM: {
+    breakpoint: { max: 2000, min: 1750 },
+    items: 7
+  },
   desktopL: {
-    breakpoint: { max: 2000, min: 1500 },
+    breakpoint: { max: 1750, min: 1500 },
     items: 6
   },
   desktop: {
