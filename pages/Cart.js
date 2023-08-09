@@ -25,6 +25,7 @@ export default function Cart() {
     onAuthStateChanged(auth, (user) => {
       if (!user) {
         router.push("/Choose");
+        router.reload()
       }
     });
   }, [auth, router]);
