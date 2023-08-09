@@ -8,7 +8,7 @@ const MenuItem_Link = () => {
       <Flex
         width={{ base: "100%", md: "70%" }}
         height={{ base: "50vh", md: "100%" }}
-        direction={{ base: "column", md: "row" }}
+        direction={{ base: "column", md: "column" }}
         align={"center"}
         justify={{ base: "space-around", md: "space-between" }}
       >
@@ -17,7 +17,7 @@ const MenuItem_Link = () => {
           height={{ base: "80%", md: "100%" }}
           align={"center"}
           justify={"space-between"}
-          direction={{ base: "column", md: "row" }}
+          direction={{ base: "column", md: "column" }}
         >
           <Link href="/">Accueil</Link>
           {/* <Menucat /> */}
