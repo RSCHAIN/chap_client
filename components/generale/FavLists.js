@@ -12,12 +12,19 @@ import { useRouter } from "next/router";
 
 const responsive = {
   superLargeDesktop: {
-    // the naming can be any, depends on you.
+    breakpoint: { min: 4000 },
+    items: 9
+  }, 
+  LargeDesktop: {
     breakpoint: { max: 4000, min: 3000 },
-    items: 7
+    items: 8
+  }, 
+  desktopL: {
+    breakpoint: { max: 3000, min: 2000 },
+    items: 6
   },
   desktop: {
-    breakpoint: { max: 3000, min: 1024 },
+    breakpoint: { max: 2000, min: 1024 },
     items: 5
   },
   tablet: {

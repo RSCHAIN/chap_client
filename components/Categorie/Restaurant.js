@@ -81,7 +81,7 @@ async function saveCommande2(data) {
   let numero = localStorage.number;
   let date = new Date();
 
-  push(ref(db2, "Devis"), {
+  push(ref(db2, "Reservation"), {
     productID: data.id,
     nom: data.nom,
     description: data.description,
@@ -128,9 +128,9 @@ async function saveCommande3(d1, d2) {
   let date = new Date();
 
   if (d1.length != 0 && d2.length != 0) {
-    push(ref(db2, "Devis"), {
+    push(ref(db2, "Reservation"), {
       initiateur: email,
-      Status: "Demande de Devis",
+      Status: "Demande de Reservation",
       ville: adress,
       // rue: adress,
       // code_postal: adress,

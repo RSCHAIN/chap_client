@@ -119,13 +119,13 @@ async function saveCommande2(data) {
     });
 }
 
-async function saveCommande3(d1, d2) {
+async function saveCommande3(d1, d2,d3,d4,d5,d6) {
   let email = sessionStorage.getItem("email");
 
   let organisation = sessionStorage.getItem("nom");
-  let nom2 = localStorage.name;
+  // let nom2 = localStorage.name;
   let numero = localStorage.number;
-  let date = new Date();
+  // let date = new Date();
 
   if (d1.length != 0 && d2.length != 0) {
     push(ref(db2, "Devis"), {
@@ -659,6 +659,26 @@ export default function Fret() {
                         />
                       </Box>
                       <br />
+                      <Box ml={20}>
+                        <Text>hauteur : </Text>
+                        <Input
+                          placeholder="hauteur en metres"
+                          type="number"
+                          width={"180px"}
+                          onChange={(e) => setData5(e.target.value)}
+                        />
+                      </Box>
+                      <br />
+                      <Box ml={20}>
+                        <Text>Poids: </Text>
+                        <Input
+                          placeholder="poids  en kg"
+                          type="number"
+                          width={"180px"}
+                          onChange={(e) => setData6(e.target.value)}
+                        />
+                      </Box>
+                      <br />
                     </ModalBody>
 
                     <ModalFooter>
@@ -877,6 +897,26 @@ export default function Fret() {
                           type="number"
                           width={"180px"}
                           onChange={(e) => setData4(e.target.value)}
+                        />
+                      </Box>
+                      <br />
+                      <Box ml={20}>
+                        <Text>hauteur : </Text>
+                        <Input
+                          placeholder="hauteur en metres"
+                          type="number"
+                          width={"180px"}
+                          onChange={(e) => setData5(e.target.value)}
+                        />
+                      </Box>
+                      <br />
+                      <Box ml={20}>
+                        <Text>Poids: </Text>
+                        <Input
+                          placeholder="poids  en kg"
+                          type="number"
+                          width={"180px"}
+                          onChange={(e) => setData6(e.target.value)}
                         />
                       </Box>
                       <br />
