@@ -164,6 +164,7 @@ useEffect( ()=>{
                     sessionStorage.setItem("adresse", data.adresse),
                     sessionStorage.setItem("categorie", data.categorie);
                     sessionStorage.setItem("description", data.description);
+                    sessionStorage.setItem("nationalite", data.nationalite);
                     sessionStorage.setItem("horaire", JSON.stringify(data.horaire));
                     sessionStorage.setItem("paiement", JSON.stringify(data.methodeDePaiement));
                 }}

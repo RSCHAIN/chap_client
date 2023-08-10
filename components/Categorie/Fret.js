@@ -1110,6 +1110,7 @@ export default function Fret() {
                         <Box>
                               <Text >Votre Numero : </Text>
                               <Input
+                              placeholder="votre numero"
                               value={data7}
                               isDisabled={etat1}
                                 type="number"
