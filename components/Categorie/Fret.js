@@ -119,29 +119,31 @@ async function saveCommande2(data) {
     });
 }
 
-async function saveCommande3(d1, d2,d3,d4,d5,d6) {
+async function saveCommande3(d1, d2,d3,d4,d5,d6,d7) {
   let email = sessionStorage.getItem("email");
 
   let organisation = sessionStorage.getItem("nom");
   // let nom2 = localStorage.name;
-  let numero = localStorage.number;
+  let numero =  d7;
   // let date = new Date();
-
-  if (d1.length != 0 && d2.length != 0 && d3.length != 0 && d4.length != 0 && d5.length != 0 && d6.length != 0) {
-    push(ref(db2, "Devis"), {
-      initiateur: email,
-      Status: "Demande de Devis",
-      organisation: organisation,
-      Destination: d2,
-      numero: numero,
-      longueur: d3,
-      date: d1,
-      largeur: d4,
-      hauteur: d5,
-      poids: d6,
-    });
-    alert("réservation effectué");
-  } else {
+  if (d1 != undefined && d2 != undefined && d3 != undefined && d4 != undefined && d5!= undefined && d6 != undefined){
+    if (d1.length != 0 && d2.length != 0 && d3.length != 0 && d4.length != 0 && d5.length != 0 && d6.length != 0) {
+      push(ref(db2, "Devis"), {
+        initiateur: email,
+        Status: "Demande de Devis",
+        organisation: organisation,
+        Destination: d2,
+        numero: numero,
+        longueur: d3,
+        date: d1,
+        largeur: d4,
+        hauteur: d5,
+        poids: d6,
+      });
+      alert("En cours d'estimation, nous vous recontacterons!! ");
+    } 
+  }
+ else {
     alert("Veuillez remplir les champs svp");
   }
 
@@ -259,7 +261,10 @@ export default function Fret() {
   const [data4, setData4] = useState();
   const [data5, setData5] = useState();
   const [data6, setData6] = useState();
+  const [data7, setData7] = useState();
   const [link, setLink] = useState();
+  const [etat1,setEtat1] = useState(false);
+
 
   ////HOraire
   const heure = "Horaire d'Ouverture";
@@ -275,6 +280,18 @@ export default function Fret() {
   const side = useBreakpointValue({ base: "30%", md: "10px" });
 
   useEffect(() => {
+    if (
+      localStorage.getItem("number") != "undefined" &&
+      localStorage.getItem("number") != null &&
+      localStorage.getItem("number") != undefined
+    ) {
+      setData7(localStorage.getItem("number"));
+      setEtat1(true)
+    } else {
+      setData7(null);
+    }
+
+
     if (
       sessionStorage.getItem("horaire") != "undefined" &&
       sessionStorage.getItem("horaire") != null &&
@@ -519,41 +536,6 @@ export default function Fret() {
                   src={link}
                 ></iframe>
               </Box>
-              {/* <Flex>
-              <Heading fontSize={"20px"} mt={10}>
-            Images du magasin{" "}
-          </Heading> */}
-
-              {/* Slider */}
-              {/* <section
-            style={{
-              marginTop: "20px",
-              marginRight: "20px",
-            }}
-          >
-            <Carousel
-              partialVisbile
-              deviceType={"mobile"}
-              itemClass="image-item"
-              responsive={responsive}
-            >
-              {images.slice(0, images.length).map((image, index) => {
-                return (
-                  <Image
-                    key={index}
-                    alt={`${image}`}
-                    maxWidth={{md:'150px',xl:"150px"}}
-                    maxHeight={{base:'150px',xl:"150px"}}
-                    minWidth={{base:'150px',xl:"150px"}}
-                    minHeight={{base:'150px',xl:"150px"}}
-                    pr={5}
-                    src={image}
-                  />
-                );
-              })}
-            </Carousel>
-          </section>
-              </Flex> */}
             </Box>
           </Flex>
           <Box mt={5} width={"90%"}>
@@ -613,94 +595,7 @@ export default function Fret() {
                 >
                   Devis
                 </Button>
-                <Modal isOpen={isOpen} onClose={onClose}>
-                  <ModalOverlay />
-                  <ModalContent>
-                    <ModalHeader>Demande de Devis</ModalHeader>
-                    <ModalCloseButton />
-                    <ModalBody>
-                      <Box ml={20}>
-                        <Text>Date & heure expedition: </Text>
-
-                        <Input
-                          type="datetime-local"
-                          width={"180px"}
-                          onChange={(e) => setData1(e.target.value)}
-                        />
-                      </Box>
-                      <br />
-                      <Box ml={20}>
-                        <Text>Destination: </Text>
-                        <Input
-                          placeholder="lieu de destination"
-                          type="text"
-                          width={"180px"}
-                          onChange={(e) => setData2(e.target.value)}
-                        />
-                      </Box>
-                      <br />
-                      <Box ml={20}>
-                        <Text>Longueur: </Text>
-                        <Input
-                          placeholder="longueur en metres"
-                          type="number"
-                          width={"180px"}
-                          onChange={(e) => setData3(e.target.value)}
-                        />
-                      </Box>
-                      <br />
-                      <Box ml={20}>
-                        <Text>Largeur: </Text>
-                        <Input
-                          placeholder="largeur en metres"
-                          type="number"
-                          width={"180px"}
-                          onChange={(e) => setData4(e.target.value)}
-                        />
-                      </Box>
-                      <br />
-                      <Box ml={20}>
-                        <Text>hauteur : </Text>
-                        <Input
-                          placeholder="hauteur en metres"
-                          type="number"
-                          width={"180px"}
-                          onChange={(e) => setData5(e.target.value)}
-                        />
-                      </Box>
-                      <br />
-                      <Box ml={20}>
-                        <Text>Poids: </Text>
-                        <Input
-                          placeholder="poids  en kg"
-                          type="number"
-                          width={"180px"}
-                          onChange={(e) => setData6(e.target.value)}
-                        />
-                      </Box>
-                      <br />
-                    </ModalBody>
-
-                    <ModalFooter>
-                      {/* <Button colorScheme="ghost" mr={3} onClick={onClose}>
-                    Annuler
-                  </Button> */}
-
-                      <Button
-                        bgColor={"cyan.700"}
-                        color={"white"}
-                        _hover={{ bgColor: "cyan.900" }}
-                        onClick={() => {
-                          saveCommande3(data1, data2,data3,data4,data5,data6),
-                            setData1(""),
-                            setData2("");
-                        }}
-                      >
-                        Valider
-                      </Button>
-                    </ModalFooter>
-                  </ModalContent>
-                </Modal>
+               
               </Box>
             </Center>
           </Box>
@@ -854,94 +749,7 @@ export default function Fret() {
                   Devis
                 </Button>
               </Box>
-              <Modal isOpen={isOpen} onClose={onClose}>
-                  <ModalOverlay />
-                  <ModalContent>
-                    <ModalHeader>Demande de Devis</ModalHeader>
-                    <ModalCloseButton />
-                    <ModalBody>
-                      <Box ml={20}>
-                        <Text>Date & heure expedition: </Text>
-
-                        <Input
-                          type="datetime-local"
-                          width={"180px"}
-                          onChange={(e) => setData1(e.target.value)}
-                        />
-                      </Box>
-                      <br />
-                      <Box ml={20}>
-                        <Text>Destination: </Text>
-                        <Input
-                          placeholder="lieu de destination"
-                          type="text"
-                          width={"180px"}
-                          onChange={(e) => setData2(e.target.value)}
-                        />
-                      </Box>
-                      <br />
-                      <Box ml={20}>
-                        <Text>Longueur: </Text>
-                        <Input
-                          placeholder="longueur en metres"
-                          type="number"
-                          width={"180px"}
-                          onChange={(e) => setData3(e.target.value)}
-                        />
-                      </Box>
-                      <br />
-                      <Box ml={20}>
-                        <Text>Largeur: </Text>
-                        <Input
-                          placeholder="largeur en metres"
-                          type="number"
-                          width={"180px"}
-                          onChange={(e) => setData4(e.target.value)}
-                        />
-                      </Box>
-                      <br />
-                      <Box ml={20}>
-                        <Text>hauteur : </Text>
-                        <Input
-                          placeholder="hauteur en metres"
-                          type="number"
-                          width={"180px"}
-                          onChange={(e) => setData5(e.target.value)}
-                        />
-                      </Box>
-                      <br />
-                      <Box ml={20}>
-                        <Text>Poids: </Text>
-                        <Input
-                          placeholder="poids  en kg"
-                          type="number"
-                          width={"180px"}
-                          onChange={(e) => setData6(e.target.value)}
-                        />
-                      </Box>
-                      <br />
-                    </ModalBody>
-
-                    <ModalFooter>
-                      {/* <Button colorScheme="ghost" mr={3} onClick={onClose}>
-                    Annuler
-                  </Button> */}
-
-                      <Button
-                        bgColor={"cyan.700"}
-                        color={"white"}
-                        _hover={{ bgColor: "cyan.900" }}
-                        onClick={() => {
-                          saveCommande3(data1, data2,data3,data4,data5,data6),
-                            setData1(""),
-                            setData2("");
-                        }}
-                      >
-                        Valider
-                      </Button>
-                    </ModalFooter>
-                  </ModalContent>
-                </Modal>
+              
             </SimpleGrid>
             {/* </Center> */}
 
@@ -1181,94 +989,7 @@ export default function Fret() {
                   Devis
                 </Button>
               </Box>
-              <Modal isOpen={isOpen} onClose={onClose}>
-                  <ModalOverlay />
-                  <ModalContent>
-                    <ModalHeader>Demande de Devis</ModalHeader>
-                    <ModalCloseButton />
-                    <ModalBody>
-                      <Box ml={20}>
-                        <Text>Date & heure expedition: </Text>
-
-                        <Input
-                          type="datetime-local"
-                          width={"180px"}
-                          onChange={(e) => setData1(e.target.value)}
-                        />
-                      </Box>
-                      <br />
-                      <Box ml={20}>
-                        <Text>Destination: </Text>
-                        <Input
-                          placeholder="lieu de destination"
-                          type="text"
-                          width={"180px"}
-                          onChange={(e) => setData2(e.target.value)}
-                        />
-                      </Box>
-                      <br />
-                      <Box ml={20}>
-                        <Text>Longueur: </Text>
-                        <Input
-                          placeholder="longueur en metres"
-                          type="number"
-                          width={"180px"}
-                          onChange={(e) => setData3(e.target.value)}
-                        />
-                      </Box>
-                      <br />
-                      <Box ml={20}>
-                        <Text>Largeur: </Text>
-                        <Input
-                          placeholder="largeur en metres"
-                          type="number"
-                          width={"180px"}
-                          onChange={(e) => setData4(e.target.value)}
-                        />
-                      </Box>
-                      <br />
-                      <Box ml={20}>
-                        <Text>hauteur : </Text>
-                        <Input
-                          placeholder="hauteur en metres"
-                          type="number"
-                          width={"180px"}
-                          onChange={(e) => setData5(e.target.value)}
-                        />
-                      </Box>
-                      <br />
-                      <Box ml={20}>
-                        <Text>Poids: </Text>
-                        <Input
-                          placeholder="poids  en kg"
-                          type="number"
-                          width={"180px"}
-                          onChange={(e) => setData6(e.target.value)}
-                        />
-                      </Box>
-                      <br />
-                    </ModalBody>
-
-                    <ModalFooter>
-                      {/* <Button colorScheme="ghost" mr={3} onClick={onClose}>
-                    Annuler
-                  </Button> */}
-
-                      <Button
-                        bgColor={"cyan.700"}
-                        color={"white"}
-                        _hover={{ bgColor: "cyan.900" }}
-                        onClick={() => {
-                          saveCommande3(data1, data2,data3,data4,data5,data6),
-                            setData1(""),
-                            setData2("");
-                        }}
-                      >
-                        Valider
-                      </Button>
-                    </ModalFooter>
-                  </ModalContent>
-                </Modal>
+             
             </SimpleGrid>
             <Flex>
               <Heading
@@ -1358,7 +1079,110 @@ export default function Fret() {
             </Box>
           </Center>
         </Flex>
+        <Modal isOpen={isOpen} onClose={onClose}>
+                  <ModalOverlay />
+                  <ModalContent>
+                    <ModalHeader>Demande de Devis</ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody>
+                      <Center>
+                      <Box >
+                        <Text>Date & heure expedition: </Text>
 
+                        <Input
+                          type="datetime-local"
+                          width={"180px"}
+                          onChange={(e) => setData1(e.target.value)}
+                        />
+                      </Box>
+                      </Center>
+                     
+                      <SimpleGrid columns={2}>
+                      <Box >
+                        <Text>Destination: </Text>
+                        <Input
+                          placeholder="lieu de destination"
+                          type="text"
+                          width={"180px"}
+                          onChange={(e) => setData2(e.target.value)}
+                        />
+                      </Box>
+                        <Box>
+                              <Text >Votre Numero : </Text>
+                              <Input
+                              value={data7}
+                              isDisabled={etat1}
+                                type="number"
+                                width={"180px"}
+                                onChange={(e) => setData7(e.target.value)}
+                              />
+                            </Box>
+                     
+                      <Box >
+                        <Text>Longueur: </Text>
+                        <Input
+                          placeholder="longueur en metres"
+                          type="number"
+                          width={"180px"}
+                          onChange={(e) => setData3(e.target.value)}
+                        />
+                      </Box>
+                      
+                      <Box>
+                        <Text>Largeur: </Text>
+                        <Input
+                          placeholder="largeur en metres"
+                          type="number"
+                          width={"180px"}
+                          onChange={(e) => setData4(e.target.value)}
+                        />
+                      </Box>
+                     
+                      <Box>
+                        <Text>hauteur : </Text>
+                        <Input
+                          placeholder="hauteur en metres"
+                          type="number"
+                          width={"180px"}
+                          onChange={(e) => setData5(e.target.value)}
+                        />
+                      </Box>
+                     
+                      <Box >
+                        <Text>Poids: </Text>
+                        <Input
+                          placeholder="poids  en kg"
+                          type="number"
+                          width={"180px"}
+                          onChange={(e) => setData6(e.target.value)}
+                        />
+                      </Box>
+                      </SimpleGrid>
+                      
+                    
+                    
+                    </ModalBody>
+
+                    <ModalFooter>
+                      {/* <Button colorScheme="ghost" mr={3} onClick={onClose}>
+                    Annuler
+                  </Button> */}
+
+                      <Button
+                        bgColor={"cyan.700"}
+                        color={"white"}
+                        _hover={{ bgColor: "cyan.900" }}
+                        onClick={() => {
+                          saveCommande3(data1, data2,data3,data4,data5,data6,data7),
+                            setData1(""),
+                            setData2("");
+                        }}
+                      >
+                        Valider
+                      </Button>
+                    </ModalFooter>
+                  </ModalContent>
+                </Modal>
         {/* fin slide  */}
       </Box>
       <FooterR />
