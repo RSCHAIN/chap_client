@@ -1206,7 +1206,7 @@ export default function Restaurant(){
                           <Text width={"185px"} fontSize={"20px"}>
                             {data.nom}
                           </Text>
-                          <Box textColor={"blue"} color={"blue.400"}>
+                          <Box textColor={"blue"} color={"blue.400"} fontWeight={"semibold"}>
                             {data.prix}
                             <Box as="span" pl={2} fontSize="sm">
                               €
@@ -1227,11 +1227,15 @@ export default function Restaurant(){
                           ) : (
                             <>
                               {" "}
+                              <Flex>
+                              <Text fontWeight={"bold"} mr={2}>Desc :</Text>
                               <Tooltip label={data.description}>
                                 <Text noOfLines={3} width={"200px"}>
                                   {data.description}
                                 </Text>
                               </Tooltip>
+                              </Flex>
+                             
                             </>
                           )}
                         </Box>
