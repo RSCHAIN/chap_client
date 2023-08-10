@@ -76,7 +76,7 @@ export default function Intrmed2() {
           ml={[10, 10, 10, 20, 20]}
         >
          
-          {modalData.map((data, index) => (
+          {modalData.map((doc, index) => (
            
             <Box
               key={index}
@@ -93,15 +93,15 @@ export default function Intrmed2() {
                 mt={5}
                 mb={5}
                 onClick={() => {
-                  sessionStorage.setItem("savefrom", data.number),
-                    sessionStorage.setItem("image", data.imageUrl),
-                    sessionStorage.setItem("nom", data.organisation),
-                    sessionStorage.setItem("adresse", data.adresse),
-                    sessionStorage.setItem("categorie", data.categorie);
-                    sessionStorage.setItem("description", data.description);
-                    sessionStorage.setItem("nationalite", data.nationalite);
-                    sessionStorage.setItem("horaire", JSON.stringify(data.horaire));
-                    sessionStorage.setItem("paiement", JSON.stringify(data.methodeDePaiement));
+                  sessionStorage.setItem("savefrom", doc.data().number),
+                    sessionStorage.setItem("image",  doc.data().imageUrl),
+                    sessionStorage.setItem("nom",  doc.data().organisation),
+                    sessionStorage.setItem("adresse",  doc.data().adresse),
+                    sessionStorage.setItem("categorie",  doc.data().categorie);
+                    sessionStorage.setItem("description",  doc.data().description);
+                    sessionStorage.setItem("nationalite",  doc.data().nationalite);
+                    sessionStorage.setItem("horaire", JSON.stringify( doc.data().horaire));
+                    sessionStorage.setItem("paiement", JSON.stringify( doc.data().methodeDePaiement));
                 }}
                 mr={{ base: "0%", md: "0%" }}
                 _hover={{ textDecoration: "none" }}
@@ -113,7 +113,7 @@ export default function Intrmed2() {
                   alignItems={"center"}
                   justifyContent={"center"}
                   borderRadius={50}
-                  backgroundImage={data.imageUrl}
+                  backgroundImage={ doc.data().imageUrl}
                   backgroundPosition={"center"}
                   backgroundSize={"cover"}
                   backgroundRepeat={"no-repeat"}
@@ -127,14 +127,14 @@ export default function Intrmed2() {
                     bg={"rgba(0, 0, 0, 0.277)"}
                   >
                     <Text fontSize={"xl"} color={"#fff"} textAlign={"center"}>
-                      { data.organisation}
+                      {  doc.data().organisation}
                     </Text>
                   </Flex>
                 </Flex>
               </Link>
               <Box>
                 <Text as={"h4"} pb={5} align={"center"}>
-                    { data.adresse}
+                    {  doc.data().adresse}
                 </Text>
               </Box>
               
