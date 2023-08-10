@@ -1128,6 +1128,10 @@ export default function Epicerie(){
                           </Box>
                         </Box>
                       </Box>
+                      <Box   display={"flex"}width={"200px"} >
+                        <Text fontWeight={"bold"} pr={2}> Origine : </Text> 
+                        {data.origine}
+                        </Box>
                       <Box
                         fontWeight="normal"
                         lineHeight="taller"
@@ -1141,8 +1145,8 @@ export default function Epicerie(){
                         ) : (
                           <>
                             {" "}
-                            <Flex>
-                              <Text fontWeight={"bold"} mr={2} width={"45px"}>Desc :</Text>
+                            <Flex >
+                              <Text fontWeight={"bold"} pr={2} >Desc :</Text>
                               <Tooltip label={data.description}>
                                 <Text noOfLines={2}  width={"155px"}>
                                   {data.description}
