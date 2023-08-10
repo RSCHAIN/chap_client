@@ -1141,11 +1141,15 @@ export default function Epicerie(){
                         ) : (
                           <>
                             {" "}
-                            <Tooltip label={data.description}>
-                              <Text noOfLines={3} width={"200px"}>
-                                {data.description}
-                              </Text>
-                            </Tooltip>
+                            <Flex>
+                              <Text fontWeight={"bold"} mr={2}>Desc :</Text>
+                              <Tooltip label={data.description}>
+                                <Text noOfLines={3} width={"200px"}>
+                                  {data.description}
+                                </Text>
+                              </Tooltip>
+                              </Flex>
+                            
                           </>
                         )}
                       </Box>

@@ -127,7 +127,7 @@ async function saveCommande3(d1, d2,d3,d4,d5,d6) {
   let numero = localStorage.number;
   // let date = new Date();
 
-  if (d1.length != 0 && d2.length != 0) {
+  if (d1.length != 0 && d2.length != 0 && d3.length != 0 && d4.length != 0 && d5.length != 0 && d6.length != 0) {
     push(ref(db2, "Devis"), {
       initiateur: email,
       Status: "Demande de Devis",
