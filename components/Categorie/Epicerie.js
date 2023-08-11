@@ -1148,7 +1148,7 @@ export default function Epicerie(){
                             <Flex >
                               <Text fontWeight={"bold"} pr={2} >Desc :</Text>
                               <Tooltip label={data.description}>
-                                <Text noOfLines={2}  width={"155px"}>
+                                <Text noOfLines={2}  width={"140px"}>
                                   {data.description}
                                 </Text>
                               </Tooltip>
