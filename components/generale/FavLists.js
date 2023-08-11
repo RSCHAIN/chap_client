@@ -59,7 +59,7 @@ export default function Favlist() {
     const starCountRef = ref(db2, "Epicerie/Massy Market");
     onValue(starCountRef, (snapshot) => {
       setData(snapshot.val());
-      console.log(snapshot.val())
+      // console.log(snapshot.val())
     });
   };
   const Up =()=>{

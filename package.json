@@ -38,12 +38,14 @@
     "firebase": "^9.19.1",
     "firebase-admin": "^11.5.0",
     "framer-motion": "^10.10.0",
+    "fs.promises": "^0.1.2",
     "js-cookie": "^3.0.1",
     "js-cookies": "^1.0.4",
     "next": "13.2.4",
     "node-geocoder": "^4.2.0",
     "nodemailer": "^6.9.3",
     "opencage-api-client": "^1.0.1",
+    "path": "^0.12.7",
     "react": "^18.2.0",
     "react-cookie-consent": "^8.0.1",
     "react-dom": "^18.2.0",
@@ -57,6 +59,7 @@
     "react-slick": "^0.29.0",
     "react-snap-carousel": "^0.3.2",
     "react-transition-group": "^4.4.5",
+    "read-file-json": "^1.1.0",
     "styled-component": "^2.8.0"
   }
 }

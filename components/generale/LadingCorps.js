@@ -36,13 +36,14 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import React, { useState, useEffect, useRef } from "react";
-import {MdLocationOn} from 'react-icons/md'
+import { MdLocationOn } from "react-icons/md";
 import { db, db2 } from "@/FIREBASE/clientApp";
 import { ref, onValue } from "firebase/database";
 import Location from "../location";
 import { useRouter } from "next/router";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import Favlist from "./FavLists";
+import axios from "axios";
 
 // les card des differntes cartegories qui seront mapés
 export function ItemCard({ item, card }) {
@@ -311,10 +312,13 @@ export function ContainerCard({ card }) {
 // le rendu final qui sera affiché
 const LadingCorps = () => {
   const [cat, setCat] = useState([]);
-  const [postal,setPostal] = useState("")
+  const [postal, setPostal] = useState("");
   const [datos, setDatos] = useState([]);
-  const [locate,setLocate] = useState("")
+  const [locate, setLocate] = useState("");
   const [datas, setDatas] = useState(0);
+  const [data,setData] = useState([]);
+    const [code,setCode] = useState([]);
+    const [final,setFinal] = useState([""]);
   const { isOpen, onOpen, onClose } = useDisclosure();
   //recherche un magasin
   const recherche = async (terms) => {
@@ -341,8 +345,7 @@ const LadingCorps = () => {
     // });
   };
 
-    
-  const router = useRouter()
+  const router = useRouter();
   //fin de recherche
 
   const update = async () => {
@@ -359,80 +362,128 @@ const LadingCorps = () => {
 
     setDatas(1);
   };
-
+  const Search =(id)=>{
+ 
+    if(data.filter(order => (order.num_dep === id)).length!=0){
+      setFinal(data.filter(order => (order.num_dep === id))) 
+   
+     
+   } 
+   else{
+    setFinal([""])
+   }
+  
+   
+}
 
   useEffect(() => {
+    const  GetAll= async ()=>{
+      await axios.get("api/GetJson").then((response)=>{
+          // console.log(response.data);
+          // console.log("object values", Object.values(response.data))
+          setData(JSON.parse(Object.values(response.data)))
+      })
+  };
+  GetAll()
     if (datas == 0) {
       update();
+     
       setDatas(1);
     }
-    setLocate(localStorage.getItem("postal") ?? "0")
-    
+    setLocate(localStorage.getItem("postal") ?? "0");
+
     //updateAll()
-  }, [datas, update, cat,postal,locate]);
+  }, [datas, update, cat, postal, locate]);
   if (datas != 0) {
     return (
       <>
         {/* <Location /> */}
         <Center width={"100%"} height={"auto"}>
           <Box height={"95%"} width={"95%"}>
-          <Center width={"100%"} display={["grid","grid","grid","none","none"]}>
+            <Center
+              width={"100%"}
+              display={["grid", "grid", "grid", "grid", "grid"]}
+            >
               <Box>
-               
-
-             
-              <InputGroup mt={10}  bgColor={"#ddd"} borderRadius={"100px"}>
-              <Input
-              borderRadius={"100px"}
-                type={"number"}
-                placeholder="Entrez votre code postal "
-                w={"20em"}
-                maxLength={5}
-                value={locate}
-                // value={postal}
-                onChange={(e)=>{localStorage.setItem("postal",e.target.value)}}
-                // onClick={onOpen}
-              />
-              <InputLeftElement as={Link} href={"#"} borderRaduis={"50%"}   _hover={{
-                textDecoration: "none",
-              
-              }} cursor={"pointer"} >
-                <MdLocationOn/>
-              </InputLeftElement>
-            </InputGroup>
+                <InputGroup mt={10} bgColor={"#ddd"} borderRadius={"100px"}>
+                  <InputRightElement as={Text} width={"10em"}>
+                  {Object.values(final[0])[1]}
+                  </InputRightElement>
+                  <Input
+                    borderRadius={"100px"}
+                    type={"number"}
+                    placeholder="Entrez votre code postal "
+                    w={"20em"}
+                    maxLength={5}
+                    value={locate}
+                    // value={postal}
+                    onChange={(e) => {
+                      localStorage.setItem("postal", e.target.value),
+                      setCode(e.target.value),
+                      Search(code.slice(0,2))
+                    }}
+                    // onClick={onOpen}
+                  />
+                  <InputLeftElement
+                    as={Link}
+                    href={"#"}
+                    borderRaduis={"50%"}
+                    _hover={{
+                      textDecoration: "none",
+                    }}
+                    cursor={"pointer"}
+                  >
+                    <MdLocationOn />
+                  </InputLeftElement>
+                </InputGroup>
               </Box>
             </Center>
-            <Heading textAlign={"start"} fontSize={"25px"}color={"#08566e"} mb={2} mt={9}>
+            <Heading
+              textAlign={"start"}
+              fontSize={"25px"}
+              color={"#08566e"}
+              mb={2}
+              mt={9}
+            >
               Les produits sponsorisés
             </Heading>
-            <Favlist/>
+            <Favlist />
 
             {/* l'entet principale */}
-            <Heading textAlign={"start"} fontSize={"25px"} color={"#08566e"} mb={2} mt={9}>
+            <Heading
+              textAlign={"start"}
+              fontSize={"25px"}
+              color={"#08566e"}
+              mb={2}
+              mt={9}
+            >
               Nos Services
             </Heading>
-           
 
             {/* la box de toutes les cartegorie */}
-            {locate.length<=4 ?
-            <Flex
-              height={"auto"}
-              position={"relative"}
-              width={"100%"}
-              mt={10}
-              mb={2}
-              direction={"column"}
-              alignItems={"center"}
-              pb={20}
-              justifyContent={"center"}
-            >
-              {cat.map((card, key) => {
-                // console.log('card',card)
+            {locate.length <= 4 ? (
+              <Flex
+                height={"auto"}
+                position={"relative"}
+                width={"100%"}
+                mt={10}
+                mb={2}
+                direction={"column"}
+                alignItems={"center"}
+                pb={20}
+                justifyContent={"center"}
+              >
+                {cat.map((card, key) => {
+                  // console.log('card',card)
 
-                return <ContainerCard key={key} card={card}></ContainerCard>;
-              })}
-            </Flex> : <><All/></> }
-            
+                  return <ContainerCard key={key} card={card}></ContainerCard>;
+                })}
+              </Flex>
+            ) : (
+              <>
+                <All />
+              </>
+            )}
           </Box>
         </Center>
       </>
