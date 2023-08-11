@@ -402,7 +402,7 @@ const LadingCorps = () => {
           <Box height={"95%"} width={"95%"}>
             <Center
               width={"100%"}
-              display={["grid", "grid", "grid", "grid", "grid"]}
+              display={["grid", "grid", "grid", "none", "none"]}
             >
               <Box>
                 <InputGroup mt={10} bgColor={"#ddd"} borderRadius={"100px"}>
