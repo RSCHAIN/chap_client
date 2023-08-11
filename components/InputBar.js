@@ -37,7 +37,7 @@ import { app, authentic } from "@/FIREBASE/clientApp";
 import { useRouter } from "next/router";
 import CookieConsent from "react-cookie-consent";
 import {MdLocationOn} from 'react-icons/md'
-
+import axios from "axios";
 
 const InputBar = () => {
   const auth = getAuth(app);
@@ -45,8 +45,35 @@ const InputBar = () => {
   const [locate,setLocate] = useState("")
   const [total, setTotal] = useState("");
   const [lastTime, setLastTime] = useState();
+  const [data,setData] = useState([]);
+  const [code,setCode] = useState([]);
+  const [final,setFinal] = useState([""]);
+
+  const Search =(id)=>{
+ 
+    if(data.filter(order => (order.num_dep === id)).length!=0){
+      setFinal(data.filter(order => (order.num_dep === id))) 
+   
+     
+   } 
+   else{
+    setFinal([""])
+   }
+  
+   
+}
+
+
 
   useEffect(() => {
+    const  GetAll= async ()=>{
+      await axios.get("api/GetJson").then((response)=>{
+          // console.log(response.data);
+          // console.log("object values", Object.values(response.data))
+          setData(JSON.parse(Object.values(response.data)))
+      })
+  };
+  GetAll()
     setLocate(localStorage.getItem("postal") ?? "0");
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -141,15 +168,18 @@ const InputBar = () => {
         </Link> */}
             <Popover>
             <InputGroup   bgColor={"#ddd"} borderRadius={"100px"}>
+            <InputRightElement as={Text} width={"10em"}>
+                  {Object.values(final[0])[1]}
+                  </InputRightElement>
                   <Input
                   borderRadius={"100px"}
                     type={"number"}
-                    placeholder="Entrez votre code postal "
+                    placeholder="Entrez votre code postal"
                     w={"20em"}
                     maxLength={5}
                     value={locate}
                     // value={postal}
-                    onChange={(e)=>{localStorage.setItem("postal",e.target.value),setLocate(e.target.value)}}
+                    onChange={(e)=>{localStorage.setItem("postal",e.target.value),setLocate(e.target.value),Search(locate.slice(0,2))}}
                     // onClick={onOpen}
                   />
                   <InputLeftElement as={Link} href={"#"} borderRaduis={"50%"}   _hover={{
@@ -160,24 +190,11 @@ const InputBar = () => {
                   </InputLeftElement>
                 </InputGroup>
               <PopoverContent width={"210px"}>
-                {/* <PopoverArrow />
-           
-            <PopoverBody>
-              <Center><Button as={Link} href="/Connexion" bgColor="#08566E" color={"white"}_hover={{
-                bgColor:"#0f7493",
-                textDecoration: "none"
-              }}> SE CONNECTER</Button></Center>
-            </PopoverBody>
-            <PopoverFooter>
-             <Link href="/Mybuy" width={"full"}  _hover={{
-                textDecoration: "none"
-              }} ><Button width={"full"} bgColor={"white"}> Mes commandes</Button></Link>
-             <Link href="/profiles" width={"full"} _hover={{
-                textDecoration: "none"
-              }}><Button width={"full"} bgColor={"white"} >  Mon profils</Button></Link>
              
-            </PopoverFooter> */}
              {locate.length <=4 ?  <InputGroup   bgColor={"#ddd"} borderRadius={"100px"}>
+             <InputRightElement as={Text} width={"10em"}>
+                  KOLO
+                  </InputRightElement>
                   <Input
                   borderRadius={"100px"}
                     type={"number"}
@@ -185,7 +202,7 @@ const InputBar = () => {
                     w={"15em"}
                     maxLength={5}
                     value={locate} 
-                    onChange={(e)=>{localStorage.setItem("postal",e.target.value),setLocate(e.target.value)}}
+                    onChange={(e)=>{localStorage.setItem("postal",e.target.value),setLocate(e.target.value),Search(locate.slice(0,2))}}
                   />
                   <InputLeftElement as={Link} href={"#"} borderRaduis={"50%"}   _hover={{
                     textDecoration: "none",
@@ -193,7 +210,24 @@ const InputBar = () => {
                   }} cursor={"pointer"} >
                     <MdLocationOn/>
                   </InputLeftElement>
-                </InputGroup> : <> </>} 
+                </InputGroup> : <> <InputGroup   bgColor={"#ddd"} borderRadius={"100px"}>
+           
+                  <Input
+                  borderRadius={"100px"}
+                    type={"number"}
+                    placeholder="Entrez votre code posta"
+                    w={"15em"}
+                    maxLength={5}
+                    value={locate} 
+                    onChange={(e)=>{localStorage.setItem("postal",e.target.value),setLocate(e.target.value),Search(locate.slice(0,2))}}
+                  />
+                  <InputLeftElement as={Link} href={"#"} borderRaduis={"50%"}   _hover={{
+                    textDecoration: "none",
+                  
+                  }} cursor={"pointer"} >
+                    <MdLocationOn/>
+                  </InputLeftElement>
+                </InputGroup> </>} 
               </PopoverContent>
             </Popover>
           </Flex>
