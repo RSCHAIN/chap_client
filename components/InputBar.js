@@ -177,6 +177,7 @@ const InputBar = () => {
                     placeholder="Entrez votre code postal"
                     w={"20em"}
                     maxLength={5}
+                    
                     value={locate}
                     // value={postal}
                     onChange={(e)=>{localStorage.setItem("postal",e.target.value),setLocate(e.target.value),Search(locate.slice(0,2))}}
