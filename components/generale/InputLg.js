@@ -1,5 +1,11 @@
 import { Search2Icon } from "@chakra-ui/icons";
 import {
+  Drawer,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  DrawerHeader,
+  DrawerBody,
   Box,
   Button,
   Center,
@@ -18,14 +24,6 @@ import {
   SimpleGrid,
   PopoverContent,
   useDisclosure,
-  PopoverCloseButton,
-  PopoverArrow,
-  PopoverHeader,
-  PopoverBody,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
   ModalCloseButton,
   ModalBody,
   ModalFooter,
@@ -48,7 +46,6 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import axios from "axios";
-
 
 function saveCart(product) {
   localStorage.setItem("Cart", JSON.stringify(product));
@@ -78,66 +75,55 @@ const InputLg = () => {
   const toast = useToast();
   const [inputContent, setInputContent] = useState([]);
   const [result, setResult] = useState([]);
- 
-  const [cat,setCat] = useState([])
-  const [datos,setDatos]=useState([])
+
+  const [cat, setCat] = useState([]);
+  const [datos, setDatos] = useState([]);
 
   const [data, setData] = useState([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [check,setCheck] = useState(0)
+  const [check, setCheck] = useState(0);
 
+  const handleSearch = () => {
+    // console.log("exemple", exemple)
+    setData([]);
 
-
-
-
-
-
-
-
-  const handleSearch =  (exemple) => {
-    console.log("exemple", exemple)
-      setData([])
-  
-      const rec =  query(
-        ref(db2,   "/All Products" ));
-      get(rec)
-        .then((snapshot) => {
-          // console.log("snapshot",snapshot.val())
-          snapshot.forEach((childsnapsho) => {
+    const rec = query(ref(db2, "/All Products"));
+    get(rec)
+      .then((snapshot) => {
+        // console.log("snapshot",snapshot.val())
+        snapshot.forEach((childsnapsho) => {
           data.push(childsnapsho.val());
-          });
+        });
+      })
+      .catch((error) => console.log(error));
+  };
+  const Research = (exemple, dat) => {
+    setDatos([])
+    if(exemple.length>=1){
+      setDatos([])
+      setDatos(
+        Object.values(dat).filter((product) => {
+          return (
+            product.nom.toLowerCase().includes(exemple.toLowerCase()) ||
+            product.description.toLowerCase().includes(exemple.toLowerCase())
+          );
         })
-        .catch((error) => console.log(error));
-        Research(exemple)
-  }
-  const Research = (exemple) => {
-  console.log("data",data)
-  // console.log("data",exemple)
-
- console.log(data.forEach((dat)=>{
-  {dat}
- }))
-  //  console.log(data.filter(inpute => inpute.nom.includes(inputed)))
-  }
-
-useEffect(()=>{
-  // if (check == 0 || check == 1) {
-  //   handleSearch()
-  //   console.log(data)
-  //   console.log(check)
+      );
+    }
   
-  // }
-  
-})
+    // console.log("data",exemple)
 
+    //  console.log(data.filter(inpute => inpute.nom.includes(inputed)))
+  };
 
+  useEffect(() => {
+    handleSearch();
+    setCheck(check + 1);
+  }, [check, handleSearch, data]);
 
   return (
-   
     <>
-
       <Box display={"flex"}>
-      
         <InputGroup>
           <Input
             type="search"
@@ -147,126 +133,69 @@ useEffect(()=>{
             borderRadius={"full"}
             onClick={onOpen}
             // w={{ md: "10em", lg: "20em" }}
-            w={["15em","15em","15em","30em","30em"]}
-          
+            w={["15em", "15em", "15em", "30em", "30em"]}
           />
           <InputRightElement>
             <Search2Icon color={"#08566E"} onClick={onOpen} />
-            <Modal isOpen={isOpen} onClose={onClose}>
-              <ModalOverlay />
-              <ModalContent>
-                <ModalHeader>RECHERCHE DE PRODUIT</ModalHeader>
-                <ModalCloseButton onClick={()=>setData([])}/>
-                <ModalBody>
-                  <Input type="search" width={"150px"} 
-                  placeholder="Que recherchez-vous ?"
-                  _placeholder={{ color: "black" }}
-                  variant={"filled"}
-                  borderRadius={"full"}
-                  w={["15em","15em","15em","20em","20em"]}
-                  onChange={(e) => {
-                    handleSearch(e.target.value);
-                  }}
-                  />
-                  <Flex>
-        {data.map((data,index)=>{return  (
-          <Text key={index} color={"black"}> {data.nom}</Text>
-        )})}
-      </Flex>
-                  {/* {data.map((data, index) => { */}
-                    {/* // if (data.nom != null || data.nom != undefined) { */}
-                    {/* //   return (
-                    //     <Flex
-                    //       key={index}
-                    //       bgColor={"#fbfbfbfc"}
-                    //       width={{
-                    //         base: "fit-content",
-                    //         lg: "fit-content",
-                    //         md: "fit-content",
-                    //       }}
-                    //       height={""}
-                    //       border={"1px solid #e6e6e6"}
-                    //       // boxShadow={"0px 2px 10px"}
-                    //       boxSizing={"border-box"}
-                    //       b
-                    //       borderRadius={"9px"}
-                    //       // pb={10}
-                    //       mb={20}
-                    //     >
-                    //       <Box pr={5}>
-                    //         <Image
-                    //           src={data.imageUrl}
-                    //           alt={data.nom}
-                    //           width={"80px"}
-                    //           height={"20px"}
-                    //           ml={15}
-                    //           my={3}
-                    //         />
-                    //       </Box>
-                    //       <Box display={"COLUMN"}>
-                    //         <Text
-                    //           pb={5}
-                    //           pt={5}
-                    //           fontWeight={"bold"}
-                    //           mt={2}
-                    //           mr={10}
-                    //         >
-                    //           {data.nom}
-                    //         </Text>
-
-                    //         <Text pt={5}>{data.description}</Text>
-                    //       </Box>
-                    //       <Box>
-                    //         <Text
-                    //           mt={10}
-                    //           fontWeight={"semibold"}
-                    //           fontSize={"lg"}
-                    //           pr={2}
-                    //         >
-                    //           {data.prix}€
-                    //         </Text>
-                    //         <Button
-                    //           bgColor={"blue"}
-                    //           mt={3}
-                    //           borderRadius={"66px"}
-                    //           as={"a"}
-                    //           onClick={() => {
-                    //             AddToCart(data),
-                    //               toast({
-                    //                 title: "PRODUIT AJOUTE",
-
-                    //                 status: "success",
-                    //                 duration: 9000,
-                    //                 isClosable: true,
-                    //               });
-                    //           }}
-                    //           color={"white"}
-                    //           _hover={{
-                    //             backgroundColor: " #00FFEF",
-                    //             color: "#080904 ",
-                    //           }}
-                    //           leftIcon={<IoMdAddCircleOutline />}
-                    //         >
-                    //           {" "}
-                    //           Ajouter au panier
-                    //         </Button>
-                    //       </Box>
-                    //     </Flex>
-                    //   );
-                    // } else {
-                    //   return <Box key={index}>PRODUIT INTROUVABLE</Box>;
-                    // }
-                  //   console.log(data)
-                  // })} */}
-                </ModalBody>
-              </ModalContent>
-            </Modal>
           </InputRightElement>
         </InputGroup>
-      
       </Box>
 
-      
+      <Drawer onClose={onClose} isOpen={isOpen} size={"full"}>
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton fontSize={30}/>
+          <DrawerHeader>
+            
+            <InputGroup ml={"30%"} mt={5}>
+          <Input
+            type="search"
+            placeholder="Que recherchez-vous ?"
+            _placeholder={{ color: "black" }}
+            variant={"filled"}
+            borderRadius={"full"}
+            // onClick={onOpen}
+            // w={{ md: "10em", lg: "20em" }}
+            w={["15em", "15em", "15em", "30em", "30em"]}
+            onChange={(e)=>Research(e.target.value,data)}
+          />
+         
+        </InputGroup>
+        
+        
+          </DrawerHeader>
+          <DrawerBody>
+            {datos.length > 0 ? <>
+              <SimpleGrid columns={[2,2,2,5,5]} spacingX={2}>
+            {Object.values(datos).map((data,index)=>{
+              return(
+                <>
+                
+                <Link key={index}  onClick={()=>{localStorage.setItem("Fav",data.organisation)}}
+            href={"/FavInt"}
+            _hover={{
+              textDecoration:"none"
+            }}
+            >
+            <Box
+            
+            key={index} my={10}bgColor={"#eee2"} borderRadius={"25px"} pb={5} boxShadow={"grey 1px 1px  5px"} width={["170px","170px","170px","170px","170px"]}>
+            
+              <Image height={["100px","100px","100px","100px","100px"]}  width={"full"} src={data.imageUrl}  alt={data.nom}  borderRadius={"25px 25px 0px 0px"}/>
+
+              <Text fontWeight={"bold"} width={["170px","170px","170px","170px","170px"]} noOfLines={1} pl={2}>{data.nom}</Text>
+              <Text color={"green"} ml={["55%","55%","60%","70%","70%"]} fontWeight={"semibold"} >{data.prix}€</Text>
+            </Box>
+            </Link>
+                
+                </>
+              )
+            })}
+            </SimpleGrid>
+            </> :<></>}
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
     </>
   );
 };
