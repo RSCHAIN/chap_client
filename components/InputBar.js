@@ -143,7 +143,7 @@ const InputBar = () => {
         > 
          
 
-          {isLagerThan768 ? <InputLg /> : <SearcheIcone message={"Rechercher un produit"} />}
+           <InputLg /> 
         </Flex>
 
         {/* butons se connecter et s'inscrire  */}
