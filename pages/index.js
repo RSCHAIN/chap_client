@@ -102,6 +102,10 @@ export default function Home() {
       {/* <BarBleu /> */}
       <InputBar />
       {isLagerThan768 ? <Navbar></Navbar> : <></>}
+      <Box width={"100%"} height={"3em"} bgColor={"#87ceeb"} mb={4} display={["grid","grid","grid","none","none"]}>
+        <Center>  <Text fontSize={"30px"} color={"blackAlpha.700"}>Bienvenue sur Chap</Text></Center>
+    
+      </Box>
       <SliderComponents />
       
       <LadingCorps />

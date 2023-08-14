@@ -345,8 +345,8 @@ export default function Co(){
         <InputBar />
         <Navbar />
 
-        <Box ml={["3%", "3%", "3%", "10%", "10%"]} mt={10} mb={10}>
-        <Box display={["none", "none", "none", "grid", "grid"]}>
+        <Box mt={10} mb={10}>
+        <Box display={["none", "none", "none", "grid", "grid"]} ml={["3%", "3%", "3%", "10%", "10%"]} >
           <Flex >
             <Box mr={5}>
               <Image
@@ -580,7 +580,7 @@ export default function Co(){
                   
                 </Box>
           </Box>
-          <Flex display={["grid", "grid", "none", "none", "none"]} width={"fit-content"}>
+          <Flex display={["grid", "grid", "none", "none", "none"]} width={"fit-content"} ml={["3%", "3%", "3%", "10%", "10%"]} >
             
         
           
@@ -672,7 +672,7 @@ export default function Co(){
                </Text>
              </Flex>
              {/* <Center > */}
-               <SimpleGrid columns={2} spacingX={3}>
+               <Box>
                <Box mt={5}>
                  <Button
                    color={"#fff"}
@@ -730,7 +730,7 @@ export default function Co(){
                  </Button>
                 
                </Box>
-               </SimpleGrid>
+               </Box>
              {/* </Center> */}
 
              <Flex>
@@ -822,7 +822,7 @@ export default function Co(){
              </Box>
            </Center>
          </Flex>
-         <Flex display={["none", "none", "grid", "none", "none"]} width={"fit-content"}>
+         <Flex display={["none", "none", "grid", "none", "none"]} width={"fit-content"} ml={["3%", "3%", "3%", "10%", "10%"]} >
           
           <Box display={"flex"} mb={5}>
            <Box mr={5}>
@@ -911,7 +911,7 @@ export default function Co(){
                )}
              </Text>
            </Flex>
-           <SimpleGrid columns={2} spacingX={3}>
+           <Box>
              <Box mt={5}>
                <Button
                  color={"#fff"}
@@ -969,7 +969,7 @@ export default function Co(){
                </Button>
               
              </Box>
-             </SimpleGrid>
+             </Box>
            <Flex>
              <Heading
                as={"h3"}
@@ -1061,14 +1061,15 @@ export default function Co(){
        </Flex>
 
         
-{data.length != 0 ? (
+       <Center display={"grid"} width={"100%"} ml={0}>
+          {data.length != 0 ? (
             <>
               {" "}
               <Heading fontSize={"20px"} mt={10}>
                 Les produits{" "}
               </Heading>
               <Flex mt={10}>
-                <SimpleGrid columns={[1, 1, 1, 2, 3]}>
+                <SimpleGrid columns={[1, 1, 1, 2, 2]}>
                   {data.map((data, key) => (
                     <Box
                       key={data.id}
@@ -1104,10 +1105,10 @@ export default function Co(){
                           width={"fit-content"}
                           height={"fit-content"}
                         >
-                          <Text width={"200px"} fontSize={"20px"}>
+                          <Text width={"185px"} fontSize={"15px"}>
                             {data.nom}
                           </Text>
-                          <Box textColor={"blue"} color={"blue.400"}>
+                          <Box textColor={"blue"} color={"blue.400"} fontWeight={"semibold"}>
                             {data.prix}
                             <Box as="span" pl={2} fontSize="sm">
                               €
@@ -1128,8 +1129,8 @@ export default function Co(){
                           ) : (
                             <>
                               {" "}
-                              <Tooltip label={data.description}>
-                                <Text noOfLines={3} width={"200px"}>
+                              <Tooltip label={data.description} >
+                                <Text noOfLines={2} width={"200px"} fontSize={"15px"}>
                                   {data.description}
                                 </Text>
                               </Tooltip>
@@ -1160,7 +1161,7 @@ export default function Co(){
                             leftIcon={<IoMdAddCircle />}
                           >
                             {" "}
-                            Commander
+                            Ajouter
                           </Button>
                         </Box>
                       </Box>
@@ -1172,6 +1173,7 @@ export default function Co(){
           ) : (
             <></>
           )}
+          </Center>
         </Box>
         <FooterR />
       </>

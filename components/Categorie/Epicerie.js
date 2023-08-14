@@ -344,8 +344,8 @@ export default function Epicerie(){
       <InputBar />
       <Navbar />
 
-      <Box ml={["3%", "3%", "3%", "10%", "10%"]} mt={10} mb={10}>
-      <Box display={["none", "none", "none", "grid", "grid"]}>
+      <Box  mt={10} mb={10}>
+      <Box display={["none", "none", "none", "grid", "grid"]} ml={["3%", "3%", "3%", "10%", "10%"]}>
         <Flex >
           <Box mr={5}>
             <Image
@@ -579,7 +579,7 @@ export default function Epicerie(){
                 
               </Box>
         </Box>
-        <Flex display={["grid", "grid", "none", "none", "none"]} width={"fit-content"}>
+        <Flex display={["grid", "grid", "none", "none", "none"]} width={"fit-content"} ml={["3%", "3%", "3%", "10%", "10%"]}>
           
       
         
@@ -671,7 +671,7 @@ export default function Epicerie(){
              </Text>
            </Flex>
            {/* <Center > */}
-             <SimpleGrid columns={2} spacingX={3}>
+             <Box>
              <Box mt={5}>
                <Button
                  color={"#fff"}
@@ -711,7 +711,7 @@ export default function Epicerie(){
                </Button>
              </Box>
             
-             <Box mt={5} ml={"50%"}>
+             <Box mt={5} >
                <Button
                  color={"#fff"}
                  width={"150px"}
@@ -729,7 +729,7 @@ export default function Epicerie(){
                </Button>
               
              </Box>
-             </SimpleGrid>
+             </Box>
            {/* </Center> */}
 
            <Flex>
@@ -821,7 +821,7 @@ export default function Epicerie(){
            </Box>
          </Center>
        </Flex>
-       <Flex display={["none", "none", "grid", "none", "none"]} width={"fit-content"}>
+       <Flex display={["none", "none", "grid", "none", "none"]} width={"fit-content"} ml={["3%", "3%", "3%", "10%", "10%"]}>
         
         <Box display={"flex"} mb={5}>
          <Box mr={5}>
@@ -910,7 +910,7 @@ export default function Epicerie(){
              )}
            </Text>
          </Flex>
-         <SimpleGrid columns={2} spacingX={3}>
+         <Box>
            <Box mt={5}>
              <Button
                color={"#fff"}
@@ -950,7 +950,7 @@ export default function Epicerie(){
              </Button>
            </Box>
           
-           <Box mt={5} ml={"50%"}>
+           <Box mt={5} >
              <Button
                color={"#fff"}
                width={"150px"}
@@ -968,7 +968,7 @@ export default function Epicerie(){
              </Button>
             
            </Box>
-           </SimpleGrid>
+           </Box>
          <Flex>
            <Heading
              as={"h3"}
@@ -1059,15 +1059,15 @@ export default function Epicerie(){
        </Center> 
      </Flex>
 
-      
-{data.length != 0 ? (
+    <Center display={"grid"} width={"100%"} ml={0}>
+    {data.length != 0 ? (
           <>
             {" "}
             <Heading fontSize={"20px"} mt={10}>
               Les produits{" "}
             </Heading>
             <Flex mt={10}>
-              <SimpleGrid columns={[1, 1, 2, 2, 3]}>
+              <SimpleGrid columns={[1, 1, 2, 2, 2]}>
                 {data.map((data, key) => (
                   <Box
                     key={data.id}
@@ -1103,33 +1103,16 @@ export default function Epicerie(){
                         width={"fit-content"}
                         height={"fit-content"}
                       >
-                        <Text width={"200px"} fontSize={"20px"}>
+                        <Text width={"200px"} fontSize={"18px"}>
                           {data.nom}
                         </Text>
                         <Box   display={"flex"}width={"200px"} >
-                        <Text fontWeight={"bold"} pr={2}> Qte : </Text> 
+                        <Text fontWeight={"bold"} pr={2} fontSize={"15px"}> Qte : </Text> 
                         {data.quantite}
                         </Box>
                       </Box>
-                      <Box
-                        fontWeight="semibold"
-                        as="h5"
-                        lineHeight="tight"
-                        noOfLines={3}
-                        width={"fit-content"}
-                        height={"fit-content"}
-                      >
-                       
-                        <Box textColor={"blue"} width={"200px"} color={"blue.400"}>
-                       
-                        {data.prix} 
-                          <Box as="span" pl={2} fontSize="sm">
-                            €
-                          </Box>
-                        </Box>
-                      </Box>
-                      <Box   display={"flex"}width={"200px"} >
-                        <Text fontWeight={"bold"} pr={2}> Origine : </Text> 
+                      <Box   display={"flex"}width={"200px"} fontSize={"15px"} >
+                        <Text fontWeight={"bold"} pr={2} fontSize={"15px"}> Origine : </Text> 
                         {data.origine}
                         </Box>
                       <Box
@@ -1148,7 +1131,7 @@ export default function Epicerie(){
                             <Flex >
                               <Text fontWeight={"bold"} pr={2} >Desc :</Text>
                               <Tooltip label={data.description}>
-                                <Text noOfLines={2}  width={"140px"}>
+                                <Text noOfLines={2}  width={"140px"} fontSize={"15px"}>
                                   {data.description}
                                 </Text>
                               </Tooltip>
@@ -1156,6 +1139,23 @@ export default function Epicerie(){
                             
                           </>
                         )}
+                      </Box>
+                      <Box
+                        fontWeight="semibold"
+                        as="h5"
+                        lineHeight="tight"
+                        noOfLines={3}
+                        width={"fit-content"}
+                        height={"fit-content"}
+                      >
+                       
+                        <Box textColor={"blue"} width={"200px"} color={"blue.400"} fontSize={"15px"} mb={2}>
+                       
+                        {data.prix} 
+                          <Box as="span" pl={2} fontSize="sm">
+                            €
+                          </Box>
+                        </Box>
                       </Box>
                       <Box>
                         <Button
@@ -1181,7 +1181,7 @@ export default function Epicerie(){
                           leftIcon={<IoMdAddCircle />}
                         >
                           {" "}
-                          Commander
+                          Ajouter
                         </Button>
                       </Box>
                     </Box>
@@ -1193,6 +1193,8 @@ export default function Epicerie(){
         ) : (
           <></>
         )}
+    </Center>  
+
       </Box>
       <FooterR />
     </>);}

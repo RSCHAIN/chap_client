@@ -117,11 +117,11 @@ export default function Carte() {
       });
       setPrix(PrixT);
     }
-    if (PrixT < 20) {
+    if (PrixT < 30) {
       setDis("none");
     } else {
       setDis("grid");
-      if (PrixT < 40 && PrixT > 19) {
+      if (PrixT < 40 && PrixT > 29) {
         console.log(40 < prix < 60);
         setFrais((PrixT * 10) / 100);
       } else {

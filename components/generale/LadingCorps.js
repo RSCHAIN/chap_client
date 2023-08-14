@@ -53,33 +53,7 @@ export function ItemCard({ item, card }) {
   const [nom, setNom] = useState();
 
   const [categorie, setCategorie] = useState();
-  // const location = localStorage.getItem("location").length;
-  // const toast = useToast();
-  // const update = async () => {
-  //   console.log('item',item)
-  // const q = query(
-  // collection(db, "Admin"),
-  // where("organisation", "==", item)
-  // );
-
-  // const querySnapshot = await getDocs(q);
-  // querySnapshot.forEach((doc) => {
-  // doc.data() is never undefined for query doc snapshots
-  // setAdresse(doc.data().adresse);
-  // setImageUrl(doc.data().imageUrl);
-  // setNumero(doc.data().number);
-  // setNom(doc.data().organisation);
-  // setCategorie(doc.data().categorie);
-  // });
-  // };
-
-  // console.log(item.id)
-
-  // Object.values(item).map((data) => {
-  //   update();
-  // });
-
-  // if (location > 2) {
+ 
   return (
     <>
       {/* card  */}
@@ -152,56 +126,7 @@ export function ItemCard({ item, card }) {
       </Box>
     </>
   );
-  // } else {
-  //   return (
-  //     <>
-  //       {/* card  */}
-  //       <Link
-  //         height={"40vh"}
-  //         width={{ base: "70%", md: "30%" }}
-  //         mt={"5"}
-  //         mr={{ base: "0%", md: "0%" }}
-  //         _hover={{ textDecoration: "none" }}
-  //         // onClick={() =>  toast({
-  //         //   title: 'POSITION REQUISE',
-  //         //   description: "Nous vous prions de fournir votre position",
-  //         //   status: 'info',
-  //         //   duration: 9000,
-  //         //   isClosable: true,
-  //         // })}
-  //       >
-  //         <Flex
-  //           height={"100%"}
-  //           width={"100%"}
-  //           alignItems={"center"}
-  //           justifyContent={"center"}
-  //           backgroundImage={item.imageUrl}
-  //           backgroundPosition={"center"}
-  //           backgroundSize={"cover"}
-  //           backgroundRepeat={"no-repeat"}
-  //         >
-  //           <Flex
-  //             alignItems={"center"}
-  //             justifyContent={"center"}
-  //             borderRadius={"10px"}
-  //             height={"100%"}
-  //             width={"100%"}
-  //             bg={"rgba(0, 0, 0, 0.277)"}
-  //           >
-  //             <Text
-  //               fontWeight={"bold"}
-  //               fontSize={"2xl"}
-  //               color={"#fff"}
-  //               textAlign={"center"}
-  //             >
-  //               {item.id}
-  //             </Text>
-  //           </Flex>
-  //         </Flex>
-  //       </Link>
-  //     </>
-  //   );
-  // }
+ 
 }
 
 export function ContainerCard({ card }) {
@@ -297,12 +222,40 @@ export function ContainerCard({ card }) {
           alignItems={{ base: "center", md: "normal" }}
           justifyContent={{ base: "center", md: "space-between" }}
         >
+        <SimpleGrid 
+        display={["none","none","none","flex","flex"]}
+        
+          width={"100%"} 
+          flexWrap={"wrap"} 
+          direction={"row"}
+          alignItems={{ base: "center", md: "normal" }}
+          justifyContent={{ base: "center", md: "space-between" }}
+          >
           {
             //  console.log(datas)
+            
             datos.map((item, key) => (
               <ItemCard key={key} item={item} card={card}></ItemCard>
             ))
           }
+          </SimpleGrid>
+          <SimpleGrid 
+        display={["flex","flex","flex","none","none"]}
+        
+          width={"100%"} 
+          flexWrap={"wrap"} 
+          direction={"row"}
+          alignItems={{ base: "center", md: "normal" }}
+          justifyContent={{ base: "center", md: "space-between" }}
+          >
+          {
+            //  console.log(datas)
+            
+            datos.slice(0,3).map((item, key) => (
+              <ItemCard key={key} item={item} card={card}></ItemCard>
+            ))
+          }
+          </SimpleGrid>
         </Flex>
       </Flex>
     </>
@@ -322,27 +275,13 @@ const LadingCorps = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   //recherche un magasin
   const recherche = async (terms) => {
-    // console.log("Hello all i need help")
-    // console.log(terms)
-    // console.log(categorie)
+  
     const q = query(
       collection(db, "Admin"),
       where("codePostal", "==", String(terms).trim())
     );
-
     const querySnapshot = await getDocs(q);
-    // if (querySnapshot.docs) {
-    //     querySnapshot.docs.forEach((doc)=>{
-    //         console.log(doc.data())
-    //     })
-    // }
     setModalData(querySnapshot.docs);
-    // console.log(querySnapshot.docs)
-    // querySnapshot.forEach((doc) => {
-
-    // // doc.data() is never undefined for query doc snapshots
-    // modalData.push(doc.data())
-    // });
   };
 
   const router = useRouter();
@@ -379,8 +318,7 @@ const LadingCorps = () => {
   useEffect(() => {
     const  GetAll= async ()=>{
       await axios.get("api/GetJson").then((response)=>{
-          // console.log(response.data);
-          // console.log("object values", Object.values(response.data))
+
           setData(JSON.parse(Object.values(response.data)))
       })
   };
@@ -438,6 +376,18 @@ const LadingCorps = () => {
                 </InputGroup>
               </Box>
             </Center>
+            <Flex mt={5}width={"100%"} height={"15vh"} bgColor={"#ccdbef"} display={["flex","flex","flex","none","none"]}>
+              <Center width={"100%"}>
+                <Box  display={"flex"}>
+                    <Text fontSize={"25px"} width={"full"}>
+                        Êtes-vous un commerçants?
+                    </Text>
+                    <Button color={"white"} bgColor={"black"}>
+                      Rejoignez-nous
+                    </Button>
+                    </Box>
+                    </Center>
+            </Flex>
             <Heading
               textAlign={"start"}
               fontSize={"25px"}
@@ -448,7 +398,18 @@ const LadingCorps = () => {
               Les produits sponsorisés
             </Heading>
             <Favlist />
-
+            <Flex width={"100%"} height={"15vh"} bgColor={"#ccdbef"} display={["none","none","none","flex","flex"]}>
+              <Center width={"100%"}>
+                <Box  display={"flex"}>
+                    <Text fontSize={"25px"} width={"full"}>
+                        Êtes-vous un commerçants?
+                    </Text>
+                    <Button color={"white"} bgColor={"black"}>
+                      Rejoignez-nous
+                    </Button>
+                    </Box>
+                    </Center>
+            </Flex>
             {/* l'entet principale */}
             <Heading
               textAlign={"start"}

@@ -525,41 +525,6 @@ export default function Reste(){
                 src={link}
               ></iframe>
             </Box>
-            {/* <Flex>
-            <Heading fontSize={"20px"} mt={10}>
-          Images du magasin{" "}
-        </Heading> */}
-
-            {/* Slider */}
-            {/* <section
-          style={{
-            marginTop: "20px",
-            marginRight: "20px",
-          }}
-        >
-          <Carousel
-            partialVisbile
-            deviceType={"mobile"}
-            itemClass="image-item"
-            responsive={responsive}
-          >
-            {images.slice(0, images.length).map((image, index) => {
-              return (
-                <Image
-                  key={index}
-                  alt={`${image}`}
-                  maxWidth={{md:'150px',xl:"150px"}}
-                  maxHeight={{base:'150px',xl:"150px"}}
-                  minWidth={{base:'150px',xl:"150px"}}
-                  minHeight={{base:'150px',xl:"150px"}}
-                  pr={5}
-                  src={image}
-                />
-              );
-            })}
-          </Carousel>
-        </section>
-            </Flex> */}
           </Box>
         </Flex>
         <Box mt={5} width={"90%"}>
@@ -719,7 +684,7 @@ export default function Reste(){
               </Text>
             </Flex>
             {/* <Center > */}
-              <SimpleGrid columns={2} spacingX={3}>
+              <Box>
               <Box mt={5}>
                 <Button
                   color={"#fff"}
@@ -778,7 +743,7 @@ export default function Reste(){
                 </Button>
               
               </Box>
-              </SimpleGrid>
+              </Box>
             {/* </Center> */}
 
             <Flex>
@@ -959,7 +924,7 @@ export default function Reste(){
                 )}
               </Text>
             </Flex>
-            <SimpleGrid columns={2} spacingX={3}>
+            <Box>
               <Box mt={5}>
                 <Button
                   color={"#fff"}
@@ -1072,7 +1037,7 @@ export default function Reste(){
                   </ModalContent>
                 </Modal>
               </Box>
-              </SimpleGrid>
+              </Box>
             <Flex>
               <Heading
                 as={"h3"}
@@ -1170,7 +1135,7 @@ export default function Reste(){
               Les produits{" "}
             </Heading>
             <Flex mt={10}>
-              <SimpleGrid columns={[1, 1, 1, 2, 3]}>
+              <SimpleGrid columns={[1, 1, 2, 2, 2]}>
                 {data.map((data, key) => (
                   <Box
                     key={data.id}
@@ -1206,7 +1171,7 @@ export default function Reste(){
                         width={"fit-content"}
                         height={"fit-content"}
                       >
-                        <Text width={"200px"} fontSize={"20px"}>
+                        <Text width={"200px"} fontSize={"15px"}>
                           {data.nom}
                         </Text>
                         <Box textColor={"blue"} color={"blue.400"}>
@@ -1231,7 +1196,7 @@ export default function Reste(){
                           <>
                             {" "}
                             <Tooltip label={data.description}>
-                              <Text noOfLines={3} width={"200px"}>
+                              <Text noOfLines={3} width={"200px"} fontSize={"15px"}>
                                 {data.description}
                               </Text>
                             </Tooltip>
@@ -1262,7 +1227,7 @@ export default function Reste(){
                           leftIcon={<IoMdAddCircle />}
                         >
                           {" "}
-                          Commander
+                          Ajouter
                         </Button>
                       </Box>
                     </Box>

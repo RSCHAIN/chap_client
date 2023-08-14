@@ -4,6 +4,8 @@ import {
   IconButton,
   useBreakpointValue,
   useMediaQuery,
+  Flex,
+  Text
 } from "@chakra-ui/react";
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 // And react-slick as our Carousel Lib
@@ -109,7 +111,9 @@ const SliderComponents = () => {
         )}
 
         {/* Slider */}
-     <Slider {...settings} ref={(slider) => setSlider(slider)}>
+        <Flex width={"full"}>
+          <Box width={["100%","100%","100%","70%","70%"]}  height={{ base: "xs", md: "xs", lg: "xl" }} mr={3}>
+          <Slider {...settings} ref={(slider) => setSlider(slider)}>
           {cards.map((url, index) => (
             <Box
               key={index}
@@ -123,6 +127,12 @@ const SliderComponents = () => {
               backgroundImage={url}
             ></Box>
           ))}</Slider> 
+          </Box>
+          <Box display={["none","none","none","grid","grid",]}width={"25%"}  height={{ base: "xs", md: "xs", lg: "xl" }} bgColor={"black"}  overflow={"auto"}>
+          <Text fontSize={"75px"} color={"White"}> BANNIERE DE DROITE  </Text>
+          </Box>
+        </Flex>
+    
       
         
       </Box>
