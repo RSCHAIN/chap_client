@@ -990,9 +990,10 @@ export default function Reste(){
                     backgroundColor: " red.500",
                     color: "white ",
                   }}
-                  href={`${sessionStorage.getItem("website")}`}
+                  isDisabled={true}
+                  // href={`${sessionStorage.getItem("website")}`}
                   leftIcon={<BiWorld />}
-                  isExternal
+                  // isExternal
                 >
                   Site Web
                 </Button>
