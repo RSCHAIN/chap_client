@@ -273,6 +273,7 @@ const LadingCorps = () => {
     const [code,setCode] = useState([]);
     const [final,setFinal] = useState([""]);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [check,setCheck] = useState(0);
   //recherche un magasin
   const recherche = async (terms) => {
   
@@ -316,13 +317,19 @@ const LadingCorps = () => {
 }
 
   useEffect(() => {
-    const  GetAll= async ()=>{
-      await axios.get("api/GetJson").then((response)=>{
+    if(check == 0 || check == 1){
+      const  GetAll= async ()=>{
+        setData([])
+        await axios.get("api/GetJson").then((response)=>{
+  
+            setData(JSON.parse(Object.values(response.data)))
+        })
+    };
+    GetAll()
+      setCheck(check+1);
+    }
+   
 
-          setData(JSON.parse(Object.values(response.data)))
-      })
-  };
-  GetAll()
     if (datas == 0) {
       update();
      

@@ -67,6 +67,8 @@ const InputBar = () => {
 
 
   useEffect(() => {
+    
+  if(check == 0 || check == 1){
     const  GetAll= async ()=>{
       await axios.get("api/GetJson").then((response)=>{
           // console.log(response.data);
@@ -74,14 +76,14 @@ const InputBar = () => {
           setData(JSON.parse(Object.values(response.data)))
       })
   };
-  if(check == 0 || check == 1){
-    GetAll();
+    // GetAll();
     setLocate(localStorage.getItem("postal") ?? "0");
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setTotal(2);
       }
     });
+    console.log("check",check)
     setCheck(check+1);
   }
   
