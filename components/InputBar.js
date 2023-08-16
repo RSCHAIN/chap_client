@@ -48,6 +48,7 @@ const InputBar = () => {
   const [data,setData] = useState([]);
   const [code,setCode] = useState([]);
   const [final,setFinal] = useState([""]);
+  const [check,setCheck] = useState(0);
 
   const Search =(id)=>{
  
@@ -73,15 +74,19 @@ const InputBar = () => {
           setData(JSON.parse(Object.values(response.data)))
       })
   };
-  GetAll()
+  if(check == 0 || check == 1){
+    GetAll();
     setLocate(localStorage.getItem("postal") ?? "0");
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setTotal(2);
       }
     });
-    
-  },[locate,total,auth]);
+    setCheck(check+1);
+  }
+  
+   
+  },[locate,total,auth,data,check]);
  
 
   const [isLagerThan768] = useMediaQuery("(min-width: 420px)");
