@@ -134,24 +134,25 @@ export function ContainerCard({ card }) {
   const [datos, setDatos] = useState([]);
   const [datas, setDatas] = useState(0);
 
-  const GetAgain = async () => {
-    const q = query(collection(db, `f${card}`));
-
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-
-      datos.push(doc.data());
-    });
-    setDatas(1);
-  };
-
+  
   useEffect(() => {
+    const GetAgain = async () => {
+      const q = query(collection(db, `f${card}`));
+  
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+  
+        datos.push(doc.data());
+      });
+      setDatas(1);
+    };
+  
     if (datas == 0) {
       GetAgain();
       setDatas(1);
     }
-  }, [datas, GetAgain]);
+  }, [datas,card,datos]);
   if (datos == null) {
     router.reload();
   }
@@ -288,20 +289,7 @@ const LadingCorps = () => {
   const router = useRouter();
   //fin de recherche
 
-  const update = async () => {
-    console.log(cat);
-    if (datas == 0) {
-      const q = query(collection(db, "Services"));
 
-      const querySnapshot = await getDocs(q);
-      querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-        cat.push(doc.data().nom);
-      });
-    }
-
-    setDatas(1);
-  };
   const Search =(id)=>{
  
     if(data.filter(order => (order.num_dep === id)).length!=0){
@@ -317,6 +305,20 @@ const LadingCorps = () => {
 }
 
   useEffect(() => {
+    const update = async () => {
+      console.log(cat);
+      if (datas == 0) {
+        const q = query(collection(db, "Services"));
+  
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+          // doc.data() is never undefined for query doc snapshots
+          cat.push(doc.data().nom);
+        });
+      }
+  
+      setDatas(1);
+    };
     if(check == 0 || check == 1){
       const  GetAll= async ()=>{
         setData([])
@@ -338,7 +340,7 @@ const LadingCorps = () => {
     setLocate(localStorage.getItem("postal") ?? "0");
 
     //updateAll()
-  }, [datas, update, cat, postal, locate]);
+  }, [datas, cat, postal, locate,check]);
   if (datas != 0) {
     return (
       <>

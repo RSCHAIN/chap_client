@@ -83,20 +83,7 @@ const InputLg = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [check, setCheck] = useState(0);
 
-  const handleSearch = () => {
-    // console.log("exemple", exemple)
-    setData([]);
-
-    const rec = query(ref(db2, "/All Products"));
-    get(rec)
-      .then((snapshot) => {
-        // console.log("snapshot",snapshot.val())
-        snapshot.forEach((childsnapsho) => {
-          data.push(childsnapsho.val());
-        });
-      })
-      .catch((error) => console.log(error));
-  };
+  
   const Research = (exemple, dat) => {
     setDatos([])
     if(exemple.length>=1){
@@ -117,8 +104,25 @@ const InputLg = () => {
   };
 
   useEffect(() => {
-    handleSearch();
-    setCheck(check + 1);
+    const handleSearch = () => {
+      // console.log("exemple", exemple)
+      setData([]);
+  
+      const rec = query(ref(db2, "/All Products"));
+      get(rec)
+        .then((snapshot) => {
+          // console.log("snapshot",snapshot.val())
+          snapshot.forEach((childsnapsho) => {
+            data.push(childsnapsho.val());
+          });
+        })
+        .catch((error) => console.log(error));
+    };
+    if(check==0|| check ==1){
+      handleSearch();
+      setCheck(check + 1);
+    }
+  
   }, [check, handleSearch, data]);
 
   return (
@@ -127,7 +131,7 @@ const InputLg = () => {
         <InputGroup>
           <Input
             type="search"
-            placeholder="Que recherchez-vous ?"
+            placeholder={"Que recherchez-vous ?"}
             _placeholder={{ color: "black" }}
             variant={"filled"}
             borderRadius={"full"}
@@ -147,7 +151,7 @@ const InputLg = () => {
           <DrawerCloseButton fontSize={30}/>
           <DrawerHeader>
             
-            <InputGroup ml={"30%"} mt={5}>
+            <InputGroup ml={["10%","10%","10%","30%","30%"]} mt={5}>
           <Input
             type="search"
             placeholder="Que recherchez-vous ?"
@@ -156,7 +160,7 @@ const InputLg = () => {
             borderRadius={"full"}
             // onClick={onOpen}
             // w={{ md: "10em", lg: "20em" }}
-            w={["10em", "10em", "15em", "30em", "30em"]}
+            w={["15em", "15em", "15em", "30em", "30em"]}
             onChange={(e)=>Research(e.target.value,data)}
           />
          

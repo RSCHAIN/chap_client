@@ -49,6 +49,7 @@ const responsive = {
 export default function Favlist() {
   const [data,setData] = useState([])
   const [tout,setTout] = useState()
+  const [check,setCheck] = useState(0)
   const route = useRouter()
 
 
@@ -66,9 +67,13 @@ export default function Favlist() {
     
   }
   useEffect(()=>{
-    Fav()
+    if(check == 0 || check == 1){
+      Fav()
+      setCheck(check+1)
+    }
+   
     // setTout(data.length())
-  })
+  },[check])
   const [slider, setSlider] = useState(null);
   return <>
   {/* <SimpleGrid columns={[2,2,2,4,5]} spacing={2}>

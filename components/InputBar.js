@@ -76,7 +76,7 @@ const InputBar = () => {
           setData(JSON.parse(Object.values(response.data)))
       })
   };
-    // GetAll();
+    GetAll();
     setLocate(localStorage.getItem("postal") ?? "0");
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -239,29 +239,7 @@ const InputBar = () => {
               </PopoverContent>
             </Popover>
           </Flex>
-          {/* <Link
-          mt={5}
-            href={"#"}
-            mr={3}
-            _hover={{ textDecoration: "none", color: "#3a07c4" }}
-          >
-            <Box display={["none", "none", "none", "grid", "grid"]}>
-              <Icon
-                as={TfiHelpAlt}
-                fontSize={40}
-                fontWeight={"thin"}
-                color={"#303030"}
-              />
-              <Text
-                textAlign={"center"}
-                alignContent={"center"}
-                alignItems={"center"}
-              >
-                AIDE
-              </Text>
-              
-            </Box>
-          </Link> */}
+         
 
           <Flex
           display={["none","none","none","flex","flex"]}
@@ -271,9 +249,7 @@ const InputBar = () => {
             height={"100%"}
             mr={"1em"}
           >
-            {/* <Link display={'flex'} mr={{ base: "3", md: "3" }} fontSize={20} href={"/Connexion"}>
-          <Icon as={AiOutlineUser} fontSize={30} mr={2}/> Se connecter
-        </Link> */}
+      
             <Popover>
               <PopoverTrigger>
                 <Link
