@@ -391,7 +391,7 @@ const LadingCorps = () => {
                     <Text fontSize={"25px"} width={"full"}>
                     etes-vous commerçant ?  boostez votre commerce avec CHAP
                     </Text>
-                    <Button color={"white"} bgColor={"black"}>
+                    <Button color={"white"} bgColor={"black"} mt={7}>
                       Rejoignez-nous
                     </Button>
                     </Box>
@@ -413,7 +413,7 @@ const LadingCorps = () => {
                     <Text fontSize={"25px"} width={"full"}>
                     etes-vous commerçant ?  boostez votre commerce avec CHAP
                     </Text>
-                    <Button color={"white"} bgColor={"black"} mt={5}>
+                    <Button color={"white"} bgColor={"black"} >
                       Rejoignez-nous
                     </Button>
                     </Box>
