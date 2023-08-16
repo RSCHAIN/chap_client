@@ -123,7 +123,7 @@ const InputLg = () => {
       setCheck(check + 1);
     }
   
-  }, [check, handleSearch, data]);
+  }, [check, data]);
 
   return (
     <>
