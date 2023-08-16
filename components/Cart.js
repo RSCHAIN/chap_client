@@ -87,6 +87,9 @@ export default function Carte() {
   const [conf3, setConf3] = useState();
   const [conf4, setConf4] = useState();
   const [conf5, setConf5] = useState("none");
+  const [conf7, setConf7] = useState("none");
+  const [conf9, setConf9] = useState("none");
+  const [conf8, setConf8] = useState("grid");
   const [conf6, setConf6] = useState("none");
   const [cart, setCart] = useState();
   const [lieu, setLieu] = useState(" NON DEFINI");
@@ -113,7 +116,7 @@ export default function Carte() {
     setCart(JSON.parse(Cart));
     if (All != null) {
       All.map((data, index) => {
-        PrixT = parseInt(data.prix) + PrixT;
+        PrixT = parseFloat(data.prix) + PrixT;
       });
       setPrix(PrixT);
     }
@@ -164,6 +167,7 @@ export default function Carte() {
         Cart.map(async (data, index) => {
           push(ref(db2, "Commandes"), {
             productID: data.id,
+            payment:"paypal",
             nom: data.nom,
             description: data.description,
             quantite: data.quantite,
@@ -264,6 +268,65 @@ export default function Carte() {
         });
       }
     }
+
+    function saveCommande3() {
+      let email = sessionStorage.getItem("email");
+      let Cart = JSON.parse(localStorage.getItem("Cart"));
+
+      if (
+        (lieu != undefined && lieu != null && lieu.length > 3) &&
+        (ville != undefined && ville != null && ville.length > 3)&&
+        ( hours!=undefined && hours != null)
+      ) {
+        Cart.map(async (data, index) => {
+          push(ref(db2, "Commandes"), {
+            productID: data.id,
+            payment:"En Especes",
+            nom: data.nom,
+            description: data.description,
+            quantite: data.quantite,
+            imageUrl: data.imageUrl,
+            organisation: data.organisation,
+            totalPrix: data.prix,
+            initiateur: email,
+            Status: "En Cours",
+            ville: ville,
+            rue: rue,
+            code_postal: postal,
+            batiment: batiment,
+            lieu: lieu,
+            receveur: nom,
+            numero: numero,
+            jour: day,
+            moment: hours,
+            date: new Date(),
+          });
+          await axios.post('/api/sendmail', {
+            message:data.description ,
+            email: email.toString(),
+            subject: `Achat de ${data.nom}`,
+            image:data.imageUrl,
+            price:data.prix,
+            quantity:data.quantite,
+          }).then((response)=>{alert("okay")})
+        });
+        
+        localStorage.removeItem("Cart");
+        setLieu("");
+        setNom("");
+        setNumero("");
+        router.reload();
+      } else {
+        toast({
+          title: "PLS, veuillez renseigner les champs",
+          // description: "We've created your account for you.",
+          status: "error",
+          duration: 9000,
+          isClosable: true,
+        });
+      }
+    }
+
 
     function saveCart(product) {
       localStorage.setItem("Cart", JSON.stringify(product));
@@ -411,8 +474,8 @@ export default function Carte() {
             justifyContent={"space-between"}
           >
             <Box marginX={5}>
-              <Heading margin={2} fontSize={"28px"} fontWeight={700}>
-                VALIDATION DE LA COMMANDE
+              <Heading margin={2} fontSize={"20px"} fontWeight={700}>
+                Validation de la commande
               </Heading>
               <RadioGroup>
                 <Accordion>
@@ -425,14 +488,14 @@ export default function Carte() {
                             setNom(localStorage.getItem("name"));
                         }}
                       >
-                        <Radio value="4"> LIVRAISON A DOMICILE</Radio>
+                        <Radio value="4"> Livraison a domicile</Radio>
                       </AccordionButton>
                     </h2>
                     <AccordionPanel paddingBottom={4}>
                       <Box margin={2}>
                         <Text marginBottom={5} fontWeight={"semibold"}>
                           {" "}
-                          JOURS DE LIVRAISON
+                          Jours de Livraison
                         </Text>
                         <Box display={"flex"} marginBottom={2}>
                           <Tabs>
@@ -448,7 +511,7 @@ export default function Carte() {
                               <TabPanel>
                                 <Text marginBottom={5} fontWeight={"semibold"}>
                                   {" "}
-                                  HEURE DE LIVRAISON
+                                  Periode de livraison
                                 </Text>
                                 <Box display={"flex"} marginBottom={5}>
                                   <RadioGroup onChange={setHours} value={hours}>
@@ -469,7 +532,7 @@ export default function Carte() {
                               <TabPanel>
                                 <Text marginBottom={5} fontWeight={"semibold"}>
                                   {" "}
-                                  HEURE DE LIVRAISON
+                                  Periode de livraison
                                 </Text>
                                 <Box display={"flex"} marginBottom={5}>
                                   <RadioGroup onChange={setHours} value={hours}>
@@ -490,7 +553,7 @@ export default function Carte() {
                               <TabPanel>
                                 <Text marginBottom={5} fontWeight={"semibold"}>
                                   {" "}
-                                  HEURE DE LIVRAISON
+                                  Periode de livraison
                                 </Text>
                                 <Box display={"flex"} marginBottom={5}>
                                   <RadioGroup onChange={setHours} value={hours}>
@@ -518,7 +581,7 @@ export default function Carte() {
 
                         <Text marginBottom={5} fontWeight={"semibold"}>
                           {" "}
-                          LIEU DE LIVRAISON
+                          Lieu de livraison
                         </Text>
                         <Stack marginBottom={5}>
                           <RadioGroup>
@@ -537,13 +600,18 @@ export default function Carte() {
                                   >
                                     <Radio value="1">
                                       {" "}
-                                      UTILISER MON ADRESSE
+                                      Utiliser mon adresse
                                     </Radio>
                                   </AccordionButton>
                                 </h2>
+                                <RadioGroup>
                                 <AccordionPanel paddingBottom={4}>
                                   <Box margin={2}>
+                                    <Box onClick={()=>{setConf7("none"),setDele(false)}} width={"100%"}>
+                                    <Radio value='1' onClick={()=>{setConf7("none"),setDele(false)}}>Paypal</Radio>
+                                    </Box>
                                     <PayPalButtons
+                                    
                                       disabled={dele}
                                       createOrder={(data, actions) => {
                                         return actions.order.create({
@@ -569,6 +637,7 @@ export default function Carte() {
                                             setConf4("none");
                                             setConf5("grid");
                                             setConf6("grid");
+                                            setConf8("none")
 
                                             alert(
                                               `Transaction Validée par ${name} \n veuillez CONFIRMER svp `
@@ -587,10 +656,27 @@ export default function Carte() {
                                       marginRight={3}
                                       onClick={() => saveCommande()}
                                     >
-                                      CONFIRMER
+                                      Confirmer
                                     </Button>
                                   </Box>
                                 </AccordionPanel>
+                                <AccordionPanel paddingBottom={4}>
+                                  <Box margin={2}>
+                                    <Flex width={"100%"}  onClick={()=>{setConf7("Grid"),setDele(true)}}>
+                                    <Radio display={conf8} value='2' onClick={()=>{setConf7("Grid"),setDele(true)}} mb={5}>Especes</Radio>
+                                    </Flex>
+                                    <Button
+                                      display={conf7}
+                                      bgColor="cyan.700"
+                                      color={"white"}
+                                      marginRight={3}
+                                      onClick={() => saveCommande3()}
+                                    >
+                                      Confirmer
+                                    </Button>
+                                  </Box>
+                                </AccordionPanel>
+                                </RadioGroup>
                               </AccordionItem>
 
                               <AccordionItem>
@@ -598,7 +684,7 @@ export default function Carte() {
                                   <AccordionButton display={conf4}>
                                     <Radio value="2">
                                       {" "}
-                                      UTILISER UNE AUTRE ADRESSE
+                                     Utiliser une autre adresse
                                     </Radio>
                                     <AccordionIcon />
                                   </AccordionButton>
@@ -609,7 +695,7 @@ export default function Carte() {
                                   paddingBottom={4}
                                   backgroundColor={"#f"}
                                 >
-                                  <Box display={conf5}>
+                                  <Box display={"none"}>
                                     <Box>
                                       <FormControl>
                                         <FormLabel>Nom du Receveur</FormLabel>
@@ -631,7 +717,7 @@ export default function Carte() {
                                         />
                                       </FormControl>
                                       <FormControl>
-                                        <FormLabel>ville</FormLabel>
+                                        <FormLabel>Ville</FormLabel>
                                         <Input
                                           onChange={(e) =>
                                             setVille(e.target.value)
@@ -706,53 +792,127 @@ export default function Carte() {
                                     display={conf6}
                                       backgroundColor="cyan.700"
                                       color={"white"}
-                                      // _hover={{
-                                      //   backgroundColor: "#db6d0fad",
-                                      // }}
-
                                       marginRight={3}
                                       onClick={() => saveCommande()}
                                     >
-                                      CONFIRMER
+                                      Confirmer
                                     </Button>
                                   </Box>
                                 </AccordionPanel>
+                                <AccordionPanel
+                                
+                                paddingBottom={4}
+                                backgroundColor={"#f"}
+                              >
+                                <Box display={conf9}>
+                                  <Box>
+                                    <FormControl>
+                                      <FormLabel>Nom du Receveur</FormLabel>
+                                      <Input
+                                        onChange={(e) =>
+                                          setNom(e.target.value)
+                                        }
+                                      />
+                                    </FormControl>
+                                    <FormControl>
+                                      <FormLabel>
+                                        Numero du Receveur
+                                      </FormLabel>
+                                      <Input
+                                        type="number"
+                                        onChange={(e) =>
+                                          setNumero(e.target.value)
+                                        }
+                                      />
+                                    </FormControl>
+                                    <FormControl>
+                                      <FormLabel>Ville</FormLabel>
+                                      <Input
+                                        onChange={(e) =>
+                                          setVille(e.target.value)
+                                        }
+                                      />
+                                    </FormControl>
+                                  </Box>
+                                  <Box marginLeft={3}>
+                                    <FormControl>
+                                      <FormLabel>Nom de la Rue</FormLabel>
+                                      <Input
+                                        onChange={(e) =>
+                                          setRue(e.target.value)
+                                        }
+                                      />
+                                    </FormControl>
+                                    <FormControl>
+                                      <FormLabel>
+                                        Numero du batiment
+                                      </FormLabel>
+                                      <Input
+                                        type="number"
+                                        onChange={(e) =>
+                                          setBatiment(e.target.value)
+                                        }
+                                      />
+                                    </FormControl>
+                                    <FormControl>
+                                      <FormLabel>Code Postal</FormLabel>
+                                      <Input
+                                        onChange={(e) =>
+                                          setPostal(e.target.value)
+                                        }
+                                      />
+                                    </FormControl>
+                                  </Box>
+                                </Box>
+                                <Box margin={2}>
+                               
+                                  <Button
+                                  display={conf9}
+                                    backgroundColor="cyan.700"
+                                    color={"white"}
+                                    marginRight={3}
+                                    onClick={() => saveCommande4()}
+                                  >
+                                    Confirmer
+                                  </Button>
+                                </Box>
+                              </AccordionPanel>
                               </AccordionItem>
                             </Accordion>
                           </RadioGroup>
                         </Stack>
                         <Box>
-                          <Text fontSize={20} fontWeight={"bold"}>
-                            PRIX DE LA COMMANDE
+                          <Text fontWeight={"bold"}fontSize={"19px"} > Récapitulatif de commande</Text>
+                         
+                         <Flex justifyContent={"space-between"} mb={2}>
+                          <Text>Articles :</Text>
+                          <Text>
+                          {prix} €
                           </Text>
-                          <Text
+                         </Flex>
+                         <Flex justifyContent={"space-between"}  mb={2} borderBottom={"1px solid grey"}>
+                          <Text>Livraison :</Text>
+                          <Text>
+                          {frais} €
+                          </Text>
+                         </Flex>
+                         <Flex justifyContent={"space-between"}>
+                          <Text  fontSize={20}
+                          
+                           color={"red.600"}
                             fontWeight={"bold"}
-                            marginX={"40%"}
-                            marginBottom={10}
-                            marginTop={5}
-                          >
-                            {prix} €
-                          </Text>
-                          <Text fontSize={20} fontWeight={"bold"}>
-                            PRIX DE LA LIVRAISON
-                          </Text>
-                          <Text
+                            marginBottom={5}>Total :</Text>
+                          <Text  fontSize={20}
+                           
+                           color={"red.600"}
                             fontWeight={"bold"}
-                            marginX={"40%"}
-                            marginBottom={10}
-                            marginTop={5}
-                          >
-                            {frais} €
+                            marginBottom={5}>
+                          {prix + frais} €
                           </Text>
-                          <Text
-                            fontSize={20}
-                            width={"full"}
-                            borderTop={"1px solid black"}
-                            fontWeight={"bold"}
-                            marginBottom={5}
-                          >
-                            TOTAL : {prix + frais} €
-                          </Text>
+                         </Flex>
+                         
+                         
+
                         </Box>
                       </Box>
                     </AccordionPanel>
@@ -761,7 +921,7 @@ export default function Carte() {
                   <AccordionItem>
                     <h2>
                       <AccordionButton display={conf2}>
-                        <Radio value="3"> EN MAGASIN</Radio>
+                        <Radio value="3"> En magasin</Radio>
                         <AccordionIcon />
                       </AccordionButton>
                     </h2>
@@ -770,7 +930,7 @@ export default function Carte() {
                       <Box margin={2}>
                         <Text marginBottom={5} fontWeight={"semibold"}>
                           {" "}
-                          JOURS DE RECUPERATION
+                          Jours de recuperation
                         </Text>
                         <Box display={"flex"} marginBottom={2}>
                           <Tabs>
@@ -786,7 +946,7 @@ export default function Carte() {
                               <TabPanel>
                                 <Text marginBottom={5} fontWeight={"semibold"}>
                                   {" "}
-                                  HEURE DE LIVRAISON
+                                  Disponibilité
                                 </Text>
                                 <Box display={"flex"} marginBottom={5}>
                                   <RadioGroup onChange={setHours} value={hours}>
@@ -807,7 +967,7 @@ export default function Carte() {
                               <TabPanel>
                                 <Text marginBottom={5} fontWeight={"semibold"}>
                                   {" "}
-                                  HEURE DE LIVRAISON
+                                 Disponibilité
                                 </Text>
                                 <Box display={"flex"} marginBottom={5}>
                                   <RadioGroup onChange={setHours} value={hours}>
@@ -828,7 +988,7 @@ export default function Carte() {
                               <TabPanel>
                                 <Text marginBottom={5} fontWeight={"semibold"}>
                                   {" "}
-                                  HEURE DE LIVRAISON
+                                  Disponibilité
                                 </Text>
                                 <Box display={"flex"} marginBottom={5}>
                                   <RadioGroup onChange={setHours} value={hours}>
@@ -853,119 +1013,33 @@ export default function Carte() {
                             </TabPanels>
                           </Tabs>
                         </Box>
-
-                        {/* <Text marginBottom={5} fontWeight={'semibold'}> LIEU DE LIVRAISON</Text>
-              <Stack marginBottom={5}>
-                <RadioGroup>
-                  <Accordion>
-                    <AccordionItem>
-                      <h2>
-                        <AccordionButton
-                          onClick={() => {
-                            setLieu(localStorage.getItem("addresse")),
-                              setNumero(localStorage.getItem("number")),
-                              setNom(localStorage.getItem("name"));
-                          }}
-                        >
-                          <Radio value="1"> UTILISER MON ADRESSE</Radio>
-                        </AccordionButton>
-                      </h2>
-                      <AccordionPanel pb={4} >
-                        <Box m={5}>
-                          <Button
-                            bgColor="#E57C23"
-                            color={'white'}
-                            _hover={{
-                              bgColor:'#db6d0fad'
-                            }}
-                            mr={3}
-                            onClick={() => saveCommande()}
-                          >
-                            CONFIRMER
-                          </Button>
-                         
-                        </Box>
-                      </AccordionPanel>
-                    </AccordionItem>
-
-                    <AccordionItem>
-                      <h2>
-                        <AccordionButton>
-                          <Radio value="2"> UTILISER UNE AUTRE ADRESSE</Radio>
-                          <AccordionIcon />
-                        </AccordionButton>
-                      </h2>
-
-                      <AccordionPanel pb={4} backgroundColor={"#f"}>
-                        <Box display={"flex"}>
-                          <Box>
-                            <FormControl>
-                              <FormLabel>Nom du Receveur</FormLabel>
-                              <Input onChange={(e) => setNom(e.target.value)} />
-                            </FormControl>
-                            <FormControl>
-                              <FormLabel>Numero du Receveur</FormLabel>
-                              <Input
-                                type="number"
-                                onChange={(e) => setNumero(e.target.value)}
-                              />
-                            </FormControl>
-                            <FormControl>
-                              <FormLabel>ville</FormLabel>
-                              <Input
-                                onChange={(e) => setVille(e.target.value)}
-                              />
-                            </FormControl>
-                          </Box>
-                          <Box ml={3}>
-                            <FormControl>
-                              <FormLabel>Nom de la Rue</FormLabel>
-                              <Input onChange={(e) => setRue(e.target.value)} />
-                            </FormControl>
-                            <FormControl>
-                              <FormLabel>Numero du batiment</FormLabel>
-                              <Input
-                                type="number"
-                                onChange={(e) => setBatiment(e.target.value)}
-                              />
-                            </FormControl>
-                            <FormControl>
-                              <FormLabel>Code Postal</FormLabel>
-                              <Input
-                                onChange={(e) => setPostal(e.target.value)}
-                              />
-                            </FormControl>
-                          </Box>
-                        </Box>
-                        <Box m={5}>
-                          <Button
-                             bgColor="#E57C23"
-                             color={'white'}
-                             _hover={{
-                               bgColor:'#db6d0fad'
-                             }}
-                            mr={3}
-                            onClick={() => saveCommande()}
-                          >
-                            CONFIRMER
-                          </Button>
-                         
-                        </Box>
-                      </AccordionPanel>
-                    </AccordionItem>
-                  </Accordion>
-                </RadioGroup>
-              </Stack>*/}
                         <Box>
-                          <Text
-                            fontSize={20}
-                            width={"full"}
-                            borderTop={"1px solid black"}
-                            fontWeight={"bold"}
-                            marginBottom={5}
-                          >
-                            TOTAL : {prix} €
+                          <Text fontWeight={"bold"}fontSize={"19px"} > Récapitulatif de commande</Text>
+                         
+                         <Flex justifyContent={"space-between"} my={2} borderBottom={"1px solid grey"}>
+                          <Text>Articles :</Text>
+                          <Text>
+                          {prix} €
                           </Text>
+                         </Flex>
+                         
+                         <Flex justifyContent={"space-between"}>
+                          <Text  fontSize={20}
+                          
+                           color={"red.600"}
+                            fontWeight={"bold"}
+                            marginBottom={5}>Total :</Text>
+                          <Text  fontSize={20}
+                           
+                           color={"red.600"}
+                            fontWeight={"bold"}
+                            marginBottom={5}>
+                          {prix} €
+                          </Text>
+                         </Flex>
+                         
+                         
+
                         </Box>
                       </Box>
                       <Box m={5}>

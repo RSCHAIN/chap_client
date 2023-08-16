@@ -5,8 +5,13 @@ import {
   useBreakpointValue,
   useMediaQuery,
   Flex,
-  Text
+  Text,
+  Input,
+  InputGroup,
+  InputRightElement,
+  Button
 } from "@chakra-ui/react";
+import {RiSendPlaneLine} from "react-icons/ri"
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 // And react-slick as our Carousel Lib
 import Slider from "react-slick";
@@ -19,7 +24,7 @@ const settings = {
   autoplay: true,
   
   speed: 500,
-  autoplaySpeed: 2000,
+  autoplaySpeed: 1500,
   slidesToShow: 1,
   slidesToScroll: 1,
 };
@@ -79,6 +84,7 @@ const SliderComponents = () => {
             <IconButton
               aria-label="left-arrow"
               // colorScheme="messenger"
+              display={"none"}
               borderRadius="full"
               position="absolute"
               left={side}
@@ -92,6 +98,7 @@ const SliderComponents = () => {
             </IconButton>
 
             <IconButton
+            display={"none"}
               aria-label="right-arrow"
               // colorScheme="messenger"
               borderRadius="full"
@@ -111,7 +118,7 @@ const SliderComponents = () => {
         )}
 
         {/* Slider */}
-        <Flex width={"full"}>
+        <Flex width={"100%"}>
           <Box width={["100%","100%","100%","70%","70%"]}  height={{ base: "xs", md: "xs", lg: "xl" }} mr={3}>
           <Slider {...settings} ref={(slider) => setSlider(slider)}>
           {cards.map((url, index) => (
@@ -128,8 +135,26 @@ const SliderComponents = () => {
             ></Box>
           ))}</Slider> 
           </Box>
-          <Box display={["none","none","none","grid","grid",]}width={"25%"}  height={{ base: "xs", md: "xs", lg: "xl" }} bgColor={"black"}  overflow={"auto"}>
-          <Text fontSize={"75px"} color={"White"}> BANNIERE DE DROITE  </Text>
+          <Box display={["none","none","none","grid","grid",]}width={"28%"}  height={{ base: "lg", md: "lg", lg: "sm" }} bgColor={"white"}  overflow={"auto"} mt={7}>
+          <Box bgColor={"#d0eb99"} width={"95%"} ml={"5%"} height={"xs"} mt={10} borderRight={"1px solid #FDBFB7"} >
+            <Text fontSize={"20px"} color={"black"}>Entrez votre adresse pour trouver les commerces à proximité</Text>
+            <Flex mt={5}>
+            <InputGroup width={"60%"} mr={5} ml={3}>
+            <InputRightElement _hover={
+                {
+                  cursor:"pointer"   ,
+                  border:"3px solid cyan",
+                  borderRadius:"10px"            
+                 }
+              }>
+              <RiSendPlaneLine color={"cyan.700"} fontSize={"25px"} />
+            </InputRightElement>
+            <Input placeholder={"Saisir le Code postal"} borderRadius={"4px"} bgColor={"#F1F1F1"}/>
+            </InputGroup>
+            <Button bgcolor={""}>Trouver</Button>
+            </Flex>
+ 
+          </Box>
           </Box>
         </Flex>
     
