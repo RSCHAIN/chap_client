@@ -136,7 +136,7 @@ export default function Favlist() {
                
             
               </Box> */}
-              <Image height={["100px","100px","100px","100px","100px"]}  width={["150px","150px","150px","150px","150px"]} src={data.imageUrl}  alt={data.nom}  />
+              <Image height={["100px","100px","100px","100px","100px"]}  width={["150px","150px","150px","150px","150px"]} src={data.imageUrl}  alt={data.nom} borderRadius={"15px 15px 0px 0px"} />
 
               <Text fontWeight={"bold"} width={"fit-content"} noOfLines={1} pl={2} fontSize={"20px"}>{data.nom}</Text>
               <Flex justifyContent={"space-between"}>
