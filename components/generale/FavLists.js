@@ -121,7 +121,7 @@ export default function Favlist() {
             >
             <Box
             
-            key={index} my={10}bgColor={"#eee2"} pb={5} boxShadow={"grey 1px 1px  5px"} width={["150px","150px","150px","150px","150px"]}>
+            key={index} my={10}bgColor={"#eee2"} pb={5} boxShadow={"grey 1px 1px  5px"} width={["150px","150px","150px","150px","150px"]} borderRadius={"15px"}>
               {/* <Box
              
               borderRadius={"25px 25px 0px 0px"}
