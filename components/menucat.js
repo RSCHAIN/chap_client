@@ -107,6 +107,7 @@ function DropdownMenu() {
         ) {
           return (
             <Link key={index.id}
+            
             _hover={{
               textDecoration : "none"
             }}
@@ -120,7 +121,7 @@ function DropdownMenu() {
               }
             }}
             href={"/otherContent/intermed2"}
-            fontSize={"1rem"}
+            fontSize={"1.25rem"}
             >
               <Text
                

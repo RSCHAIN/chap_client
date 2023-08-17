@@ -346,7 +346,7 @@ const LadingCorps = () => {
       <>
         {/* <Location /> */}
         <Center width={"100%"} height={"auto"}>
-          <Box height={"95%"} width={"95%"}>
+          <Box height={"100%"} width={"100%"}>
             <Center
               width={"100%"}
               display={["grid", "grid", "grid", "none", "none"]}
@@ -385,13 +385,25 @@ const LadingCorps = () => {
                 </InputGroup>
               </Box>
             </Center>
-            <Flex mt={5}width={"100%"} height={"15vh"} bgColor={"#ccdbef"} display={["flex","flex","flex","none","none"]}>
+            <Flex width={"100%"} height={"15vh"} bgColor={"#ccdbef"} display={["flex","flex","flex","none","none"]}>
               <Center width={"100%"}>
                 <Box  display={"flex"}>
                     <Text fontSize={"25px"} width={"full"}>
                     etes-vous commerçant ?  boostez votre commerce avec CHAP
                     </Text>
                     <Button color={"white"} bgColor={"black"} mt={7}>
+                      Rejoignez-nous
+                    </Button>
+                    </Box>
+                    </Center>
+            </Flex>
+            <Flex width={"100%"} height={"15vh"} bgColor={"#08566e"} display={["none","none","none","flex","flex"]} mt={-3} color={"white"}>
+              <Center width={"100%"}>
+                <Box  display={"flex"}>
+                    <Text fontSize={"25px"} width={"full"}>
+                    Commerçant ? Devenez partenaire et boostez votre commerce avec CHAP
+                    </Text>
+                    <Button color={"white"} bgColor={"black"} >
                       Rejoignez-nous
                     </Button>
                     </Box>
@@ -407,18 +419,7 @@ const LadingCorps = () => {
               Les produits sponsorisés
             </Heading>
             <Favlist />
-            <Flex width={"100%"} height={"15vh"} bgColor={"#ccdbef"} display={["none","none","none","flex","flex"]}>
-              <Center width={"100%"}>
-                <Box  display={"flex"}>
-                    <Text fontSize={"25px"} width={"full"}>
-                    etes-vous commerçant ?  boostez votre commerce avec CHAP
-                    </Text>
-                    <Button color={"white"} bgColor={"black"} >
-                      Rejoignez-nous
-                    </Button>
-                    </Box>
-                    </Center>
-            </Flex>
+          
             {/* l'entet principale */}
             <Heading
               textAlign={"start"}

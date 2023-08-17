@@ -72,10 +72,10 @@ useEffect(()=>{
   return (
     <>
   
-    <Box display={["none","none","none","grid","grid"]}>
+    <Box display={["none","none","none","grid","grid"]} bgColor={"#08566e"} color={"white"} mt={4}>
       <Flex
-        bg={useColorModeValue("white", "gray.800")}
-        color={useColorModeValue("gray.600", "white")}
+       bgColor={"#08566e"}
+        color={"white"}
         minH={"60px"}
         py={{ base: 2 }}
         px={{ base: 4 }}
@@ -86,7 +86,7 @@ useEffect(()=>{
       >
         <Flex
           flex={{ base: 1, md: "auto" }}
-          ml={{ base: -2 }}
+          
           display={{ base: "flex", md: "none" }}
         >
           <IconButton
@@ -99,7 +99,7 @@ useEffect(()=>{
           />
         </Flex>
         
-        <Box flex={{ base: 1 }} justify={{ base: "center", md: "center" }} ml={"25%"}>
+        <Box flex={{ base: 1 }} justify={{ base: "center", md: "center" }} ml={"15%"}>
           {/* <Text
               textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
               fontFamily={'heading'}
@@ -110,15 +110,16 @@ useEffect(()=>{
           <Flex
             display={{ base: "none", md: "flex" }}
             // ml={"25%"}
-            fontSize={20}
-            color={"black"}
+            fontSize={"30px"}
+            color={"white"}
             justifyContent={"space-between"}
           >
             {/* <DesktopNav /> */}
             <Flex>  <Link
+            bgColor={""}
               href={"/"}
               mr={3}
-              fontSize={"1rem"}
+              fontSize={"1.25rem"}
               _hover={{ textDecoration: "none", color: "#068DA9" }}
             >
               Accueil
@@ -128,7 +129,7 @@ useEffect(()=>{
 
               href={"/Whoami"}
               mr={3}
-              fontSize={"1rem"}
+              fontSize={"1.25rem"}
               _hover={{ textDecoration: "none", color: "#068DA9" }}
             >
               Qui sommes-nous?
@@ -136,7 +137,7 @@ useEffect(()=>{
             <Link
               href={"/Contactus"}
               mr={3}
-              fontSize={"1rem"}
+              fontSize={"1.25rem"}
               _hover={{ textDecoration: "none", color: "#068DA9" }}
             >
              Nous-contacter
