@@ -136,7 +136,7 @@ const SliderComponents = () => {
           ))}</Slider> 
           </Box>
           <Box display={["none","none","none","grid","grid",]}width={"28%"}  height={{ base: "lg", md: "lg", lg: "sm" }} bgColor={"white"}  overflow={"auto"} mt={7}>
-          <Box bgColor={"#d0eb99"} width={"95%"} ml={"5%"} height={"xs"} mt={10} borderRight={"1px solid #FDBFB7"} >
+          <Box  width={"95%"} ml={"5%"} height={"xs"} mt={10} >
             <Text fontSize={"20px"} color={"black"}>Entrez votre adresse pour trouver les commerces à proximité</Text>
             <Flex mt={5}>
             <InputGroup width={"60%"} mr={5} ml={3}>
