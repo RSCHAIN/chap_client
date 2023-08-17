@@ -13,27 +13,27 @@ import { useRouter } from "next/router";
 const responsive = {
   superLargeDesktop: {
     breakpoint: { max:4000, min: 3000 },
-    items: 11
+    items: 13
   }, 
   MDesktop: {
     breakpoint: { max: 3000, min: 2500 },
-    items: 10
+    items: 12
   }, 
   LargeDesktop: {
     breakpoint: { max: 2500, min: 2000 },
-    items: 9
+    items: 11
   }, 
   desktopM: {
     breakpoint: { max: 2000, min: 1750 },
-    items: 7
+    items: 9
   },
   desktopL: {
     breakpoint: { max: 1750, min: 1500 },
-    items: 6
+    items: 8
   },
   desktop: {
     breakpoint: { max: 1500, min: 1024 },
-    items: 5
+    items: 7
   },
   tablet: {
     breakpoint: { max: 1024, min: 500 },
@@ -121,7 +121,7 @@ export default function Favlist() {
             >
             <Box
             
-            key={index} my={10}bgColor={"#eee2"} pb={5} boxShadow={"grey 1px 1px  5px"} width={["200px","200px","200px","200px","200px"]}>
+            key={index} my={10}bgColor={"#eee2"} pb={5} boxShadow={"grey 1px 1px  5px"} width={["150px","150px","150px","150px","150px"]}>
               {/* <Box
              
               borderRadius={"25px 25px 0px 0px"}
@@ -136,7 +136,7 @@ export default function Favlist() {
                
             
               </Box> */}
-              <Image height={["100px","100px","100px","150px","150px"]}  width={["200px","200px","200px","200px","200px"]} src={data.imageUrl}  alt={data.nom}  />
+              <Image height={["100px","100px","100px","100px","100px"]}  width={["150px","150px","150px","150px","150px"]} src={data.imageUrl}  alt={data.nom}  />
 
               <Text fontWeight={"bold"} width={"fit-content"} noOfLines={1} pl={2} fontSize={"20px"}>{data.nom}</Text>
               <Flex justifyContent={"space-between"}>

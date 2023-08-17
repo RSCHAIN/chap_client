@@ -107,7 +107,7 @@ function DropdownMenu() {
         ) {
           return (
             <Link key={index.id}
-            
+            mr={10}
             _hover={{
               textDecoration : "none"
             }}

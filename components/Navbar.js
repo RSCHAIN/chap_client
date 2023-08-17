@@ -99,7 +99,7 @@ useEffect(()=>{
           />
         </Flex>
         
-        <Box flex={{ base: 1 }} justify={{ base: "center", md: "center" }} ml={"15%"}>
+        <Box flex={{ base: 1 }} justify={{ base: "center", md: "center" }} ml={"5%"}>
           {/* <Text
               textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
               fontFamily={'heading'}
@@ -118,7 +118,7 @@ useEffect(()=>{
             <Flex>  <Link
             bgColor={""}
               href={"/"}
-              mr={3}
+              mr={10}
               fontSize={"1.25rem"}
               _hover={{ textDecoration: "none", color: "#068DA9" }}
             >
@@ -128,7 +128,7 @@ useEffect(()=>{
             <Link
 
               href={"/Whoami"}
-              mr={3}
+              mr={10}
               fontSize={"1.25rem"}
               _hover={{ textDecoration: "none", color: "#068DA9" }}
             >
@@ -136,7 +136,7 @@ useEffect(()=>{
             </Link>
             <Link
               href={"/Contactus"}
-              mr={3}
+              mr={10}
               fontSize={"1.25rem"}
               _hover={{ textDecoration: "none", color: "#068DA9" }}
             >
