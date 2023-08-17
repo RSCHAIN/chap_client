@@ -17,7 +17,7 @@ export default function Exemple() {
   const router = useRouter();
 
   const update = async (serv) => {
-    console.log(serv);
+    // console.log(serv);
     const q = query(collection(db, "Admin"));
 
     const querySnapshot = await getDocs(q);
@@ -28,7 +28,7 @@ export default function Exemple() {
       numero.push(doc.data().number);
       nom.push(doc.data().organisation);
       categorie.push(doc.data().categorie);
-      console.log("okay");
+      // console.log("okay");
     });
     setDatas(1);
   };
@@ -52,7 +52,7 @@ export default function Exemple() {
         mt={10}
         ml={[10, 10, 10, 20, 20]}
       >
-        {console.log("launched")}
+        {/* {console.log("launched")} */}
         {categorie.map((data, index) => (
           <Box
             key={index}

@@ -115,7 +115,7 @@ async function saveCommande2(data) {
       alert("Vous Allez recevoir un email");
     })
     .catch((error) => {
-      console.log(error);
+      // console.log(error);
     });
 }
 
@@ -314,7 +314,7 @@ export default function Reste(){
       );
   
       onValue(starCountRef, (snapshot) => {
-        console.log(snapshot.val());
+        // console.log(snapshot.val());
         const donnes = snapshot.val();
   
         

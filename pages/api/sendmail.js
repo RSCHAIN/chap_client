@@ -68,7 +68,7 @@ export default function handler(req, res) {
    
    </div> <br/> pour plus de details veuillez nous joindre a l'adresse: <a href="mailto:support@rschain.net">support@rschain.net </a></td></tr></table> </td></tr></table> </td></tr></table> </td></tr></table> </body></html>`,
   };
-  console.log(req.body.subject, req.body.message);
+  // console.log(req.body.subject, req.body.message);
 
   let transporter = nodemailer.createTransport({
     service: "gmail",

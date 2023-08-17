@@ -10,8 +10,8 @@ const Listing = ({categorie}) => {
    
     const [tab,setTab] = useState([])
     useEffect(()=>{
-        console.log("categorie")
-        console.log(JSON.parse(localStorage.getItem(categorie)))
+        // console.log("categorie")
+        // console.log(JSON.parse(localStorage.getItem(categorie)))
 
     })
    

@@ -107,7 +107,7 @@ const FetcherData = async () =>{
   const handlePageChange = (nextPage) => {
     // -> request new data using the page number
     setCurrentPage(nextPage);
-    console.log("request new data with ->", nextPage);
+    // console.log("request new data with ->", nextPage);
   };
 
   const handlePageSizeChange = () => {
@@ -135,7 +135,7 @@ const FetcherData = async () =>{
             <Text>{card}</Text>
           </Center>
         ))}
-  {console.log(tota)}
+  {/* {console.log(tota)} */}
         {/* {pokemons?.map(({ name }) => (
           <Center key={name} bg="green.100" p={4}>
             <Text>{name}</Text>

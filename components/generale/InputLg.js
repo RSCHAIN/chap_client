@@ -106,8 +106,9 @@ const InputLg = () => {
   useEffect(() => {
     const handleSearch = () => {
       // console.log("exemple", exemple)
+
       setData([]);
-  
+      if(check==0|| check ==1){
       const rec = query(ref(db2, "/All Products"));
       get(rec)
         .then((snapshot) => {
@@ -116,12 +117,14 @@ const InputLg = () => {
             data.push(childsnapsho.val());
           });
         })
-        .catch((error) => console.log(error));
+        .catch((error) => {}
+        );
     };
-    if(check==0|| check ==1){
+  }
+   
       handleSearch();
       setCheck(check + 1);
-    }
+  
   
   }, [check, data]);
 
@@ -137,7 +140,7 @@ const InputLg = () => {
             borderRadius={"full"}
             onClick={onOpen}
             // w={{ md: "10em", lg: "20em" }}
-            w={["10em", "10em", "15em", "20em", "20em"]}
+            w={["10em", "10em", "15em", "15em", "20em"]}
           />
           <InputRightElement>
             <Search2Icon color={"#08566E"} onClick={onOpen} />

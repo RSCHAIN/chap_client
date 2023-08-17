@@ -71,7 +71,7 @@ const SignUpForm = () => {
       await createUserWithEmailAndPassword(auth, email, password)
         .then(async (userCredential) => {
           await sendEmailVerification(userCredential.user);
-          console.log(userCredential.user);
+          // console.log(userCredential.user);
           setEmail(userCredential.user.email);
           // router.back()
           signOut(auth);
@@ -103,7 +103,7 @@ const SignUpForm = () => {
           }
         });
     } else {
-      console.log("okay la");
+      // console.log("okay la");
       toast({
         title: "MAUVAISE SAISIE",
         description: "MOT DE PASSE NON IDENTIQUE",

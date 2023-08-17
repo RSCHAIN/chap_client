@@ -115,7 +115,7 @@ async function saveCommande2(data) {
       alert("Vous Allez recevoir un email");
     })
     .catch((error) => {
-      console.log(error);
+      // console.log(error);
     });
 }
 
@@ -126,7 +126,7 @@ async function saveCommande3(d1, d2,d3) {
   let nom2 = localStorage.name;
   let numero = localStorage.number ?? d3;
   let date = new Date();
-  console.log(d1,d2)
+  // console.log(d1,d2)
   if (d1.length != 0 && d2.length != 0) {
     push(ref(db2, "Reservation"), {
       initiateur: email,
@@ -330,7 +330,7 @@ export default function Restaurant(){
       );
   
       onValue(starCountRef, (snapshot) => {
-        console.log(snapshot.val());
+        // console.log(snapshot.val());
         const donnes = snapshot.val();
   
         

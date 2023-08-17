@@ -120,7 +120,7 @@ async function saveCommande2(data) {
       alert("Vous Allez recevoir un email");
     })
     .catch((error) => {
-      console.log(error);
+      // console.log(error);
     });
 }
 
@@ -312,7 +312,7 @@ export default function Intermed1() {
     );
 
     onValue(starCountRef, (snapshot) => {
-      console.log(snapshot.val());
+      // console.log(snapshot.val());
       const donnes = snapshot.val();
 
       
@@ -337,7 +337,7 @@ export default function Intermed1() {
   ]);
 
   const images = [imageUrl, imageUrl, imageUrl, imageUrl];
-  console.log(timert);
+  // console.log(timert);
   if (
     categorie != "Restaurant" &&
     categorie != "Esthetique" &&

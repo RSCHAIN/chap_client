@@ -21,7 +21,7 @@ import InputBar from "@/components/InputBar";
 import FooterR from "@/components/footerResponsif";
 
 function Cancel2(id, state) {
-  console.log(id);
+  // console.log(id);
   update(ref(db2, "Commandes/" + String(id)), {
     Status: state,
   });
@@ -124,7 +124,7 @@ function Cancel({ items, email }) {
   }
 }
 function Launch({ items, email,id }) {
-  console.log(items);
+  // console.log(items);
   if (items.Status == "En Cours" && items.initiateur == email) {
     return (
       <>

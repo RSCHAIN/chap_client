@@ -306,7 +306,7 @@ const LadingCorps = () => {
 
   useEffect(() => {
     const update = async () => {
-      console.log(cat);
+      // console.log(cat);
       if (datas == 0) {
         const q = query(collection(db, "Services"));
   

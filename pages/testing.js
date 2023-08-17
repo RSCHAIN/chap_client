@@ -9,7 +9,7 @@ export default function Recherhce(){
     const [code,setCode] = useState([])
     const [final,setFinal] = useState([""])
     const Search =(id)=>{
-        console.log(data.filter(order => (order.num_dep === id)))
+        // console.log(data.filter(order => (order.num_dep === id)))
        if(data.filter(order => (order.num_dep === id)).length!=0){
         setFinal(data.filter(order => (order.num_dep === id)))
        }

@@ -44,43 +44,10 @@ import { ref, set, push } from "@firebase/database";
 import { db2 } from "@/FIREBASE/clientApp";
 import { PayPalButtons } from "@paypal/react-paypal-js";
 import axios from "axios";
+import {BsCashCoin} from 'react-icons/bs'
 
 export default function Carte() {
-  //braintree
-
-  // state = {
-  //         clientToken: null,
-  //         purchaseComplete: false
-  // };
-  // const buy = async() => {
-  //   const Cart = localStorage.prix
-  //   const user = localStorage.user
-
-  //   // Send the nonce to your server
-  //   const { nonce } = await requestPaymentMethod();
-  //   const res = await fetch('/api/payment/checkout',
-  //       {
-  //         body: JSON.stringify({
-  //           paymentMethodNonce: nonce,
-  //           user_id: user,
-  //           price: Cart
-  //         }),
-  //         headers: {
-  //           'Content-Type': 'application/json'
-  //         },
-  //         method: 'POST'
-  //       }
-  //     )
-  //   const result = await res.json()
-  //   if (result.result == "success") {
-  //       this.setState({
-  //           purchaseComplete: true
-  //       });
-  //       alert("votre achat de "+ Cart+ " a ete completer")
-  //       localStorage.removeItem('Cart')
-
-  //   }
-  // }
+ 
   const [dele, setDele] = useState();
   // const [conf1, setConf1] = useState();
   const [conf2, setConf2] = useState();
@@ -125,7 +92,7 @@ export default function Carte() {
     } else {
       setDis("grid");
       if (PrixT < 40 && PrixT > 29) {
-        console.log(40 < prix < 60);
+        // console.log(40 < prix < 60);
         setFrais((PrixT * 10) / 100);
       } else {
         if (PrixT < 51) {
@@ -225,6 +192,7 @@ export default function Carte() {
           push(ref(db2, "Commandes"), {
             productID: data.id,
             nom: data.nom,
+            payment : "Paypal",
             description: data.description,
             quantite: data.quantite,
             imageUrl: data.imageUrl,
@@ -327,6 +295,7 @@ export default function Carte() {
       }
     }
 
+    
 
     function saveCart(product) {
       localStorage.setItem("Cart", JSON.stringify(product));
@@ -351,7 +320,7 @@ export default function Carte() {
       let foundit = Cart.find((p) => p.id == Product.id);
       if (foundit.quantite <= 1) {
         DeleteProduct(foundit);
-        console.log("inferieur a 1");
+        // console.log("inferieur a 1");
       } else {
         foundit.prix =
           parseInt(foundit.prix) -
@@ -662,8 +631,11 @@ export default function Carte() {
                                 </AccordionPanel>
                                 <AccordionPanel paddingBottom={4}>
                                   <Box margin={2}>
-                                    <Flex width={"100%"}  onClick={()=>{setConf7("Grid"),setDele(true)}}>
-                                    <Radio display={conf8} value='2' onClick={()=>{setConf7("Grid"),setDele(true)}} mb={5}>Especes</Radio>
+                                    <Flex width={"100%"} display={"flex"}  onClick={()=>{setConf7("Grid"),setDele(true)}}>
+                                    <Radio  display={"flex"} value='2' onClick={()=>{setConf7("Grid"),setDele(true)}} mb={5}>
+                                      <BsCashCoin/>
+                                      Especes
+                                      </Radio>
                                     </Flex>
                                     <Button
                                       display={conf7}
@@ -711,12 +683,9 @@ export default function Carte() {
                                         </FormLabel>
                                         <Input
                                           type="number"
-                                          onChange={(e) =>
-                                            setNumero(e.target.value)
-                                          }
-                                        />
+                                          onChange={(e) =>setNumero(e.target.value)}/>
                                       </FormControl>
-                                      <FormControl>
+                                      <FormControl >
                                         <FormLabel>Ville</FormLabel>
                                         <Input
                                           onChange={(e) =>
@@ -804,6 +773,12 @@ export default function Carte() {
                                 paddingBottom={4}
                                 backgroundColor={"#f"}
                               >
+                                 <Flex width={"100%"} display={"flex"}  onClick={()=>{setConf9("Grid"),setDele(true)}}>
+                                    <Radio  display={"flex"} value='2' onClick={()=>{setConf7("Grid"),setDele(true)}} mb={5}>
+                                      <BsCashCoin/>
+                                      Especes
+                                      </Radio>
+                                    </Flex>
                                 <Box display={conf9}>
                                   <Box>
                                     <FormControl>
@@ -868,10 +843,11 @@ export default function Carte() {
                                
                                   <Button
                                   display={conf9}
+                                  isDisabled={postal.length<5 || batiment.length<1 || rue.length<3 || ville.length<5 || numero.length<6 ||nom.length<3}
                                     backgroundColor="cyan.700"
                                     color={"white"}
                                     marginRight={3}
-                                    onClick={() => saveCommande4()}
+                                    onClick={() => saveCommande3()}
                                   >
                                     Confirmer
                                   </Button>
@@ -907,7 +883,7 @@ export default function Carte() {
                            color={"red.600"}
                             fontWeight={"bold"}
                             marginBottom={5}>
-                          {prix + frais} €
+                          {parseFloat(prix + frais).toFixed(3)} €
                           </Text>
                          </Flex>
                          

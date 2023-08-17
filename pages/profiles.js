@@ -39,7 +39,7 @@ export default function Profiles() {
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
       if (user) {
-        console.log()
+        // console.log()
         setUsers(user);
         setEmail(user.email);
         const docRef = doc(db, "Utilisateurs/" + user.email);
@@ -106,7 +106,7 @@ export default function Profiles() {
         createNew()
       })
       .catch((error) => {
-        console.log(error)
+        // console.log(error)
         toast({
           title: "Erreur",
           description: "Veuillez reesayer apres vous etes reconnecté(e)",

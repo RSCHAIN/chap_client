@@ -43,39 +43,24 @@ function DropdownMenu() {
   const [datos, setDatos] = useState([]);
 
   useEffect(() => {
-    // const starCountRef = ref(db2, "/");
-    // onValue(starCountRef, (snapshot) => {
-    //   const donnes = snapshot.val();
-    //   if (donnes != null) {
-    //     const categorie = Object.keys(donnes).map((key) => ({
-    //       id: key,
-    //       ...donnes[key],
-    //     }));
-    //     setCat(categorie);
-    //   }
-    // });
     async function FetchDataaa() {
       if (cat == 0 || cat == 1) {
         const q = query(collection(db, `Services`));
-
         const querySnapshot = await getDocs(q);
-
         querySnapshot.forEach((doc) => {
-          // doc.data() is never undefined for query doc snapshots
-
           datos.push(doc.data());
         });
       }
     }
     FetchDataaa();
     setCat(cat + 1);
-  }, [datos, cat,]);
+  }, [datos, cat]);
 
   const updateLink = (index) => {
     const starCountRef2 = ref(db2, index + "/");
     onValue(starCountRef2, (snapshot) => {
       const donnees = snapshot.val();
-      console.log("index");
+      // console.log("index");
       if (donnees != null) {
         const categorie = Object.keys(donnees).map((key) => ({
           id: key,

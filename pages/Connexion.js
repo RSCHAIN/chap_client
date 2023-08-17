@@ -103,8 +103,8 @@ export default function Connexion() {
         // throw error;
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(error.message)
-        console.log(error.message)
+        // console.log(error.message)
+        // console.log(error.message)
         if (errorMessage == "Firebase: Error (auth/user-not-found).") {
           // console.log("VEUILLEZ VERIFIER VOS INFOS DE CONNEXION");
           toast({

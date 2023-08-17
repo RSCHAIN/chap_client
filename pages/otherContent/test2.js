@@ -87,7 +87,7 @@ const Get = async ()=>{
     //   numero.push(doc.data().number);
     //   nom.push(doc.data().organisation);
     //   categorie.push(doc.data().categorie);
-     console.log(doc.data().description)
+    //  console.log(doc.data().description)
   
       tout.push(doc.data())
       

@@ -49,6 +49,7 @@ const InputBar = () => {
   const [code,setCode] = useState([]);
   const [final,setFinal] = useState([""]);
   const [check,setCheck] = useState(0);
+  const [contenu,setContenu] = useState(0);
 
   const Search =(id)=>{
  
@@ -67,10 +68,10 @@ const InputBar = () => {
 
 
   useEffect(() => {
-    
+
   if(check == 0 || check == 1){
     const  GetAll= async ()=>{
-      await axios.get("api/GetJson").then((response)=>{
+      await axios.get("/api/GetJson").then((response)=>{
           // console.log(response.data);
           // console.log("object values", Object.values(response.data))
           setData(JSON.parse(Object.values(response.data)))
@@ -83,10 +84,15 @@ const InputBar = () => {
         setTotal(2);
       }
     });
-    console.log("check",check)
+    // console.log("check",check)
     setCheck(check+1);
   }
-  
+  if(localStorage.getItem("Cart") != undefined || localStorage.getItem("Cart") != null){
+    setContenu(JSON.parse(localStorage.getItem("Cart")).length);
+  }
+  else{
+    setContenu(0)
+  }
    
   },[locate,total,auth,data,check]);
  
@@ -201,7 +207,7 @@ const InputBar = () => {
              
              {locate.length <=4 ?  <InputGroup   bgColor={"#ddd"} borderRadius={"100px"}>
              <InputRightElement as={Text} width={"10em"}>
-                  KOLO
+                 
                   </InputRightElement>
                   <Input
                   borderRadius={"100px"}
@@ -269,7 +275,7 @@ const InputBar = () => {
                     leftIcon={<Icon as={HiOutlineShoppingBag} fontSize={30} />}
                     bgColor={"white"}
                   >
-                    Panier
+                    Panier({contenu})
                   </Button>
                 </Link>
               </PopoverTrigger>
