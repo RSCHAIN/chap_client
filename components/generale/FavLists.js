@@ -141,7 +141,7 @@ export default function Favlist() {
               <Text fontWeight={"bold"} width={"fit-content"} noOfLines={1} pl={2} fontSize={"20px"}>{data.nom}</Text>
               <Flex justifyContent={"space-between"}>
               <Text fontWeight={"bold"} width={"fit-content"} color={"orange.900"}  pl={2} fontSize={"15px"}>{data.organisation}</Text>
-              <Text color={"green"}  fontWeight={"semibold"} fontSize={"20px"}>{data.prix}€</Text>
+              <Text color={"black"}  fontWeight={"bold"} fontSize={"15px"}>{data.prix}€</Text>
               </Flex>
              
             </Box>
