@@ -104,6 +104,7 @@ export default function Connexion() {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(error.message)
+        console.log(error.message)
         if (errorMessage == "Firebase: Error (auth/user-not-found).") {
           // console.log("VEUILLEZ VERIFIER VOS INFOS DE CONNEXION");
           toast({
@@ -114,7 +115,7 @@ export default function Connexion() {
             isClosable: true,
           });
        
-         if (error.code== "auth/too-many-requests") {
+         if (errorMessage == "Firebase: Error (auth/too-many-requests).") {
           toast({
             title: "TROP DE TENTATIVES.",
             description: "VEUILLEZ REESAYER PLUS TARD",
@@ -123,7 +124,7 @@ export default function Connexion() {
             isClosable: true,
           });
          } else {
-            if (error.code == "auth/wrong-password") {
+            if (errorMessage == "Firebase: Error (auth/wrong-password).") {
               toast({
                 title: "MOT DE PASSE/IDENTIFIANT INCORRECT",
                 description: "VEUILLEZ VERIFIER VOS ACCES",
@@ -132,7 +133,7 @@ export default function Connexion() {
                 isClosable: true,
               });
             }else{
-              if (error.code == "auth/invalid-email") {
+              if (errorMessage == "Firebase: Error (auth/invalid-email).") {
                 toast({
                   title: "MOT DE PASSE/IDENTIFIANT INCORRECT",
                   description: "VEUILLEZ VERIFIER VOS ACCES",
