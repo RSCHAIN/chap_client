@@ -17,11 +17,11 @@ const responsive = {
   }, 
   MDesktop: {
     breakpoint: { max: 3000, min: 2500 },
-    items: 12
+    items: 11
   }, 
   LargeDesktop: {
     breakpoint: { max: 2500, min: 2000 },
-    items: 11
+    items: 10
   }, 
   desktopM: {
     breakpoint: { max: 2000, min: 1750 },

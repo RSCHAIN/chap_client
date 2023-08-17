@@ -388,7 +388,7 @@ const LadingCorps = () => {
             <Flex width={"100%"} height={"15vh"} bgColor={"#08566e"} display={["flex","flex","flex","none","none"]} color={"white"}>
               <Center width={"100%"}>
                 <Box  display={"flex"}>
-                    <Text fontSize={"25px"} width={"full"}>
+                    <Text fontSize={"20px"} width={"full"}>
                     Commerçant ? Devenez partenaire et boostez votre commerce avec CHAP
                     </Text>
                     <Button color={"white"} bgColor={"black"} mt={7}>
