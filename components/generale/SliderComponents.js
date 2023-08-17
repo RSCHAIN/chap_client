@@ -135,7 +135,7 @@ const SliderComponents = () => {
             ></Box>
           ))}</Slider> 
           </Box>
-          <Box display={["none","none","none","grid","grid",]}width={"28%"}  height={{ base: "lg", md: "lg", lg: "sm" }} bgColor={"white"}  overflow={"auto"} mt={7}>
+          <Box display={["none","none","none","grid","grid",]}width={"28%"}  height={{ base: "lg", md: "lg", lg: "sm" }} bgColor={"white"}  overflow={"auto"} mt={"150px"}>
           <Box  width={"95%"} ml={"5%"} height={"xs"} mt={10} >
             <Text fontSize={"20px"} color={"black"}>Entrez votre adresse pour trouver les commerces à proximité</Text>
             <Flex mt={5}>

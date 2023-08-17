@@ -174,7 +174,7 @@ const InputBar = () => {
           <Icon as={AiOutlineUser} fontSize={30} mr={2}/> Se connecter
         </Link> */}
             <Popover>
-            <InputGroup   bgColor={"#ddd"} borderRadius={"100px"}>
+            <InputGroup   borderRadius={"100px"}>
             <InputRightElement as={Text} width={"10em"}>
                   {Object.values(final[0])[1]}
                   </InputRightElement>
@@ -182,7 +182,7 @@ const InputBar = () => {
                   borderRadius={"100px"}
                     type={"number"}
                     placeholder="Entrez votre code postal"
-                    w={"20em"}
+                    w={"15em"}
                     maxLength={5}
                     
                     value={locate}

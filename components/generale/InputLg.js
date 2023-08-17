@@ -137,7 +137,7 @@ const InputLg = () => {
             borderRadius={"full"}
             onClick={onOpen}
             // w={{ md: "10em", lg: "20em" }}
-            w={["10em", "10em", "15em", "30em", "30em"]}
+            w={["10em", "10em", "15em", "20em", "20em"]}
           />
           <InputRightElement>
             <Search2Icon color={"#08566E"} onClick={onOpen} />

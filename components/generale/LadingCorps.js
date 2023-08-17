@@ -69,7 +69,7 @@ export function ItemCard({ item, card }) {
           height={"15vh"}
           width={{ base: "80%", md: "30%" }}
           mt={5}
-          mb={5}
+         
           onClick={() => {
             sessionStorage.setItem("savefrom", item.number),
               sessionStorage.setItem("image", item.imageUrl),
@@ -119,7 +119,7 @@ export function ItemCard({ item, card }) {
           </Flex>
         </Link>
         <Box>
-          <Text as={"h4"} pb={5} align={"center"}>
+          <Text as={"h4"} pb={2} align={"center"}>
             {item.adresse}
           </Text>
         </Box>
@@ -162,7 +162,7 @@ export function ContainerCard({ card }) {
       {/* categorie*/}
       <Flex
         width={"95%"}
-        height={"auto"}
+        height={"45vh"}
         // mb={10}
         // pb={10}
         direction={"column"}
@@ -352,7 +352,7 @@ const LadingCorps = () => {
               display={["grid", "grid", "grid", "none", "none"]}
             >
               <Box>
-                <InputGroup mt={10} bgColor={"#ddd"} borderRadius={"100px"}>
+                <InputGroup mt={10} bgColor={"#ddd"} borderRadius={"100px"} mb={5}>
                   <InputRightElement as={Text} width={"10em"}>
                   {Object.values(final[0])[1]}
                   </InputRightElement>
@@ -385,11 +385,11 @@ const LadingCorps = () => {
                 </InputGroup>
               </Box>
             </Center>
-            <Flex width={"100%"} height={"15vh"} bgColor={"#ccdbef"} display={["flex","flex","flex","none","none"]}>
+            <Flex width={"100%"} height={"15vh"} bgColor={"#08566e"} display={["flex","flex","flex","none","none"]} color={"white"}>
               <Center width={"100%"}>
                 <Box  display={"flex"}>
                     <Text fontSize={"25px"} width={"full"}>
-                    etes-vous commerçant ?  boostez votre commerce avec CHAP
+                    Commerçant ? Devenez partenaire et boostez votre commerce avec CHAP
                     </Text>
                     <Button color={"white"} bgColor={"black"} mt={7}>
                       Rejoignez-nous
@@ -434,14 +434,14 @@ const LadingCorps = () => {
             {/* la box de toutes les cartegorie */}
             {locate.length <= 4 ? (
               <Flex
-                height={"auto"}
+                height={"fit-content"}
                 position={"relative"}
                 width={"100%"}
-                mt={10}
-                mb={2}
+               
+                
                 direction={"column"}
                 alignItems={"center"}
-                pb={20}
+                
                 justifyContent={"center"}
               >
                 {cat.map((card, key) => {

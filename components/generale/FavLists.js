@@ -1,5 +1,5 @@
 import { db2 } from "@/FIREBASE/clientApp";
-import { Box, Image, SimpleGrid, Text,Link } from "@chakra-ui/react";
+import { Box, Image, SimpleGrid, Text,Link,Flex } from "@chakra-ui/react";
 import { ref, onValue  } from "@firebase/database";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -121,7 +121,7 @@ export default function Favlist() {
             >
             <Box
             
-            key={index} my={10}bgColor={"#eee2"} borderRadius={"25px"} pb={5} boxShadow={"grey 1px 1px  5px"} width={["150px","150px","150px","150px","150px"]}>
+            key={index} my={10}bgColor={"#eee2"} pb={5} boxShadow={"grey 1px 1px  5px"} width={["200px","200px","200px","200px","200px"]}>
               {/* <Box
              
               borderRadius={"25px 25px 0px 0px"}
@@ -136,10 +136,14 @@ export default function Favlist() {
                
             
               </Box> */}
-              <Image height={["100px","100px","100px","100px","100px"]}  width={["150px","150px","150px","150px","150px"]} src={data.imageUrl}  alt={data.nom}  borderRadius={"25px 25px 0px 0px"}/>
+              <Image height={["100px","100px","100px","150px","150px"]}  width={["200px","200px","200px","200px","200px"]} src={data.imageUrl}  alt={data.nom}  />
 
-              <Text fontWeight={"bold"} width={["150px","150px","150px","150px","150px"]} noOfLines={1} pl={2}>{data.nom}</Text>
-              <Text color={"green"} ml={["55%","55%","60%","70%","70%"]} fontWeight={"semibold"} >{data.prix}€</Text>
+              <Text fontWeight={"bold"} width={"fit-content"} noOfLines={1} pl={2} fontSize={"20px"}>{data.nom}</Text>
+              <Flex justifyContent={"space-between"}>
+              <Text fontWeight={"bold"} width={"fit-content"} color={"orange.900"}  pl={2} fontSize={"15px"}>{data.organisation}</Text>
+              <Text color={"green"}  fontWeight={"semibold"} fontSize={"20px"}>{data.prix}€</Text>
+              </Flex>
+             
             </Box>
             </Link>
           ))}</Carousel>
