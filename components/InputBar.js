@@ -94,7 +94,7 @@ const InputBar = () => {
     setContenu(0)
   }
    
-  },[locate,total,auth,data,check]);
+  },[locate,total,auth,data,check,contenu]);
  
 
   const [isLagerThan768] = useMediaQuery("(min-width: 420px)");

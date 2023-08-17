@@ -44,7 +44,7 @@ import { ref, set, push } from "@firebase/database";
 import { db2 } from "@/FIREBASE/clientApp";
 import { PayPalButtons } from "@paypal/react-paypal-js";
 import axios from "axios";
-import {BsCashCoin} from 'react-icons/bs'
+import {BsCashCoin,BsPaypal} from 'react-icons/bs'
 
 export default function Carte() {
  
@@ -180,62 +180,7 @@ export default function Carte() {
       }
     }
 
-    function saveCommande2() {
-      let email = sessionStorage.getItem("email");
-      let Cart = JSON.parse(localStorage.getItem("Cart"));
-      let adress = localStorage.addresse;
-      let nom2 = localStorage.name;
-      let numero = localStorage.number;
-      let date = new Date();
-      if (email != undefined && email != null && email.length > 3 &&  hours!=undefined && hours != null) {
-        Cart.map(async (data, index) => {
-          push(ref(db2, "Commandes"), {
-            productID: data.id,
-            nom: data.nom,
-            payment : "Paypal",
-            description: data.description,
-            quantite: data.quantite,
-            imageUrl: data.imageUrl,
-            organisation: data.organisation,
-            totalPrix: data.prix,
-            initiateur: email,
-            Status: "En Cours",
-            ville: adress,
-            rue: adress,
-            code_postal: adress,
-            batiment: adress,
-            lieu: adress,
-            receveur: nom2,
-            numero: numero,
-            jour: day,
-            moment: hours,
-            date,
-          });
-          await axios.post('/api/sendmail', {
-            message:data.description ,
-            email: email.toString(),
-            subject: `Achat de ${data.nom}`,
-            image:data.imageUrl,
-            price:data.prix,
-            quantity:data.quantite,
-          }).then((response)=>{alert("okay")})
-        });
-        
-        localStorage.removeItem("Cart");
-        setLieu("");
-        setNom("");
-        setNumero("");
-        router.reload();
-      } else {
-        toast({
-          title: "PLS, veuillez renseigner les champs",
-          // description: "We've created your account for you.",
-          status: "error",
-          duration: 9000,
-          isClosable: true,
-        });
-      }
-    }
+    
 
     function saveCommande3() {
       let email = sessionStorage.getItem("email");
@@ -294,8 +239,122 @@ export default function Carte() {
         });
       }
     }
-
+//// EN MAGASIN
+    function saveCommande2() {
+      let email = sessionStorage.getItem("email");
+      let Cart = JSON.parse(localStorage.getItem("Cart"));
+      let adress = localStorage.addresse;
+      let nom2 = localStorage.name;
+      let numero = localStorage.number;
+      let date = new Date();
+      if (email != undefined && email != null && email.length > 3 &&  hours!=undefined && hours != null) {
+        Cart.map(async (data, index) => {
+          push(ref(db2, "Commandes"), {
+            productID: data.id,
+            nom: data.nom,
+            payment : "Paypal",
+            description: data.description,
+            quantite: data.quantite,
+            imageUrl: data.imageUrl,
+            organisation: data.organisation,
+            totalPrix: data.prix,
+            initiateur: email,
+            Status: "En Cours",
+            ville: adress,
+            rue: adress,
+            code_postal: adress,
+            batiment: adress,
+            lieu: adress,
+            receveur: nom2,
+            numero: numero,
+            jour: day,
+            moment: hours,
+            date,
+          });
+          await axios.post('/api/sendmail', {
+            message:data.description ,
+            email: email.toString(),
+            subject: `Achat de ${data.nom}`,
+            image:data.imageUrl,
+            price:data.prix,
+            quantity:data.quantite,
+          }).then((response)=>{alert("okay")})
+        });
+        
+        localStorage.removeItem("Cart");
+        setLieu("");
+        setNom("");
+        setNumero("");
+        router.reload();
+      } else {
+        toast({
+          title: "PLS, veuillez renseigner les champs",
+          // description: "We've created your account for you.",
+          status: "error",
+          duration: 9000,
+          isClosable: true,
+        });
+      }
+    }
     
+    function saveCommande4() {
+      let email = sessionStorage.getItem("email");
+      let Cart = JSON.parse(localStorage.getItem("Cart"));
+      let adress = localStorage.addresse;
+      let nom2 = localStorage.name;
+      let numero = localStorage.number;
+      let date = new Date();
+      if (email != undefined && email != null && email.length > 3 &&  hours!=undefined && hours != null) {
+        Cart.map(async (data, index) => {
+          push(ref(db2, "Commandes"), {
+            productID: data.id,
+            nom: data.nom,
+            payment : "En Especes",
+            description: data.description,
+            quantite: data.quantite,
+            imageUrl: data.imageUrl,
+            organisation: data.organisation,
+            totalPrix: data.prix,
+            initiateur: email,
+            Status: "En Cours",
+            ville: adress,
+            rue: adress,
+            code_postal: adress,
+            batiment: adress,
+            lieu: adress,
+            receveur: nom2,
+            numero: numero,
+            jour: day,
+            moment: hours,
+            date,
+          });
+          await axios.post('/api/sendmail', {
+            message:data.description ,
+            email: email.toString(),
+            subject: `Achat de ${data.nom}`,
+            image:data.imageUrl,
+            price:data.prix,
+            quantity:data.quantite,
+          }).then((response)=>{alert("okay")})
+        });
+        
+        localStorage.removeItem("Cart");
+        setLieu("");
+        setNom("");
+        setNumero("");
+        router.reload();
+      } else {
+        toast({
+          title: "PLS, veuillez renseigner les champs",
+          // description: "We've created your account for you.",
+          status: "error",
+          duration: 9000,
+          isClosable: true,
+        });
+      }
+    }
+
+
 
     function saveCart(product) {
       localStorage.setItem("Cart", JSON.stringify(product));
@@ -989,36 +1048,15 @@ export default function Carte() {
                             </TabPanels>
                           </Tabs>
                         </Box>
-                        <Box>
-                          <Text fontWeight={"bold"}fontSize={"19px"} > Récapitulatif de commande</Text>
-                         
-                         <Flex justifyContent={"space-between"} my={2} borderBottom={"1px solid grey"}>
-                          <Text>Articles :</Text>
-                          <Text>
-                          {prix} €
-                          </Text>
-                         </Flex>
-                         
-                         <Flex justifyContent={"space-between"}>
-                          <Text  fontSize={20}
-                          
-                           color={"red.600"}
-                            fontWeight={"bold"}
-                            marginBottom={5}>Total :</Text>
-                          <Text  fontSize={20}
-                           
-                           color={"red.600"}
-                            fontWeight={"bold"}
-                            marginBottom={5}>
-                          {prix} €
-                          </Text>
-                         </Flex>
-                         
-                         
-
-                        </Box>
+                        
                       </Box>
-                      <Box m={5}>
+                      <Box m={2}>
+                      <Flex width={"100%"} display={"flex"}  onClick={()=>{setConf7("none"),setDele(false)}}>
+                                    <Radio display={"flex"} value='1' onClick={()=>{setConf7("Grid"),setDele(true)}} mb={5}>
+                                      <BsPaypal/>
+                                      Paypal
+                                      </Radio>
+                                    </Flex>
                       <PayPalButtons
                                       disabled={dele}
                                       createOrder={(data, actions) => {
@@ -1066,6 +1104,58 @@ export default function Carte() {
                         </Button>
                       </Box>
                     </AccordionPanel>
+                    <AccordionPanel pb={4} backgroundColor={"#f"}>
+                      
+                      <Box m={2}>
+                      
+                      <Flex width={"100%"} display={"flex"}  onClick={()=>{setConf7("Grid"),setDele(true)}}>
+                                    <Radio display={"flex"} value='2' onClick={()=>{setConf7("Grid"),setDele(true)}} mb={5}>
+                                      <BsCashCoin/>
+                                      Especes
+                                      </Radio>
+                                    </Flex>
+                        <Button
+                        display={conf7}
+                          bgColor="cyan.700"
+                          color={"white"}
+                          // _hover={{
+                          //   bgColor: "#db6d0fad",
+                          // }}
+                          mr={3}
+                          onClick={() => saveCommande4()}
+                        >
+                          CONFIRMER
+                        </Button>
+                      </Box>
+                    </AccordionPanel>
+                    <Box>
+                          <Text fontWeight={"bold"}fontSize={"19px"} > Récapitulatif de commande</Text>
+                         
+                         <Flex justifyContent={"space-between"} my={2} borderBottom={"1px solid grey"}>
+                          <Text>Articles :</Text>
+                          <Text>
+                          {prix} €
+                          </Text>
+                         </Flex>
+                         
+                         <Flex justifyContent={"space-between"}>
+                          <Text  fontSize={20}
+                          
+                           color={"red.600"}
+                            fontWeight={"bold"}
+                            marginBottom={5}>Total :</Text>
+                          <Text  fontSize={20}
+                           
+                           color={"red.600"}
+                            fontWeight={"bold"}
+                            marginBottom={5}>
+                          {prix} €
+                          </Text>
+                         </Flex>
+                         
+                         
+
+                        </Box>
                   </AccordionItem>
                 </Accordion>
               </RadioGroup>
