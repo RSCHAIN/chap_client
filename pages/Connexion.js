@@ -114,8 +114,8 @@ export default function Connexion() {
             duration: 9000,
             isClosable: true,
           });
-       
-         if (errorMessage == "Firebase: Error (auth/too-many-requests).") {
+        }
+        else if (errorMessage == "Firebase: Error (auth/too-many-requests).") {
           toast({
             title: "TROP DE TENTATIVES.",
             description: "VEUILLEZ REESAYER PLUS TARD",
@@ -123,7 +123,8 @@ export default function Connexion() {
             duration: 9000,
             isClosable: true,
           });
-         } else {
+         }
+          else {
             if (errorMessage == "Firebase: Error (auth/wrong-password).") {
               toast({
                 title: "MOT DE PASSE/IDENTIFIANT INCORRECT",
@@ -146,7 +147,7 @@ export default function Connexion() {
               };
             }
          }
-        }
+      
       });
   };
   const isError = email === ''
