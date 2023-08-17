@@ -143,23 +143,8 @@ export default function Connexion() {
                   isClosable: true,
                 });
               }else{
-                if (errorMessage == "Firebase: Error (auth/missing-email).") {
-                  toast({
-                    title: "EMAIL NON RENSEIGNE",
-                    description: "VEUILLEZ VERIFIER VOS ACCES",
-                    status: "error",
-                    duration: 9000,
-                    isClosable: true,
-                  });
-              }
-              else  if (errorMessage == "Firebase: Error (auth/missing-password).") {
-                toast({
-                  title: "MOT DE PASSE NON RENSEIGNE",
-                  description: "VEUILLEZ VERIFIER VOS ACCES",
-                  status: "error",
-                  duration: 9000,
-                  isClosable: true,
-                });
+                // console.log(error);
+              };
             }
          }
       
