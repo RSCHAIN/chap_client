@@ -200,7 +200,7 @@ export default function Connexion() {
             />
           </Box>
           <Center>
-            <Box width={"full"} color={"black"} ml={[10, 10, 10, 20, 20]}>
+            <Box width={"full"} color={"black"} >
               
               <FormControl isInvalid={isError}>
               <Stack spacing={4}>

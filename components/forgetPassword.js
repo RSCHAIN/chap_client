@@ -52,7 +52,7 @@ export default function TransitionExample() {
     }
     return (
       <>
-        <Text onClick={onOpen} cursor={'pointer'} mt={20} fontSize={20}  _hover={{
+        <Text onClick={onOpen} cursor={'pointer'} mt={20} fontSize={[20]}  _hover={{
                 color: 'blue',
               }}>Mot de passe Oublié ? </Text>
         <Modal
@@ -63,7 +63,7 @@ export default function TransitionExample() {
         >
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader> <Heading lineHeight={1.1} fontSize={{ base: '2xl', md: '3xl' }}>
+            <ModalHeader> <Heading lineHeight={1.1} fontSize={{ base: 'xl', md: '3xl' }}>
             MOT DE PASSE OUBLIE
           </Heading></ModalHeader>
             <ModalCloseButton />
