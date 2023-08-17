@@ -64,7 +64,14 @@ const InputBar = () => {
   
    
 }
-
+const Contenu = ()=>{
+  if(localStorage.getItem("Cart") != undefined || localStorage.getItem("Cart") != null){
+    setContenu(JSON.parse(localStorage.getItem("Cart")).length);
+  }
+  else{
+    setContenu(0)
+  }
+}
 
 
   useEffect(() => {
@@ -87,13 +94,8 @@ const InputBar = () => {
     // console.log("check",check)
     setCheck(check+1);
   }
-  if(localStorage.getItem("Cart") != undefined || localStorage.getItem("Cart") != null){
-    setContenu(JSON.parse(localStorage.getItem("Cart")).length);
-  }
-  else{
-    setContenu(0)
-  }
-   
+  
+  
   },[locate,total,auth,data,check,contenu]);
  
 
