@@ -501,6 +501,7 @@ export default function Carte() {
             marginBottom={[5, 5, 5, 0, 0]}
             marginTop={0}
             justifyContent={"space-between"}
+            ml={["10%","10%","10%","0","0"]}
           >
             <Box marginX={5}>
               <Heading margin={2} fontSize={"20px"} fontWeight={700}>
