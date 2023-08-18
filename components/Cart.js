@@ -404,7 +404,7 @@ export default function Carte() {
       <>
       <Center display={'grid'}>
         <SimpleGrid
-          columns={[1, 1, 1, 2, 2]}
+          columns={[1, 1, 2, 2, 2]}
           spacing={10}
           justifyContent={"space-around"}
         >
