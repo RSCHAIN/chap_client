@@ -347,6 +347,21 @@ const LadingCorps = () => {
         {/* <Location /> */}
         <Center width={"100%"} height={"auto"}>
           <Box height={"100%"} width={"100%"}>
+          <Flex width={"100%"} height={"15vh"} bgColor={"#08566e"} display={["flex","flex","flex","none","none"]} color={"white"}>
+              <Center width={"100%"}>
+                <Box  display={"flex"}>
+                    <Text fontSize={"18px"} width={"full"}>
+                    Commerçant ? Devenez partenaire et boostez votre commerce avec CHAP
+                    </Text>
+                    <Button color={"white"} bgColor={"black"} mt={5} _hover={{
+                      bgColor:"black",
+                      opacity:"0.7"
+                    }}>
+                      Rejoignez-nous
+                    </Button>
+                    </Box>
+                    </Center>
+            </Flex>
             <Center
               width={"100%"}
               display={["grid", "grid", "grid", "none", "none"]}
@@ -385,21 +400,7 @@ const LadingCorps = () => {
                 </InputGroup>
               </Box>
             </Center>
-            <Flex width={"100%"} height={"15vh"} bgColor={"#08566e"} display={["flex","flex","flex","none","none"]} color={"white"}>
-              <Center width={"100%"}>
-                <Box  display={"flex"}>
-                    <Text fontSize={"18px"} width={"full"}>
-                    Commerçant ? Devenez partenaire et boostez votre commerce avec CHAP
-                    </Text>
-                    <Button color={"white"} bgColor={"black"} mt={5} _hover={{
-                      bgColor:"black",
-                      opacity:"0.7"
-                    }}>
-                      Rejoignez-nous
-                    </Button>
-                    </Box>
-                    </Center>
-            </Flex>
+          
             <Flex width={"100%"} height={"15vh"} bgColor={"#08566e"} display={["none","none","none","flex","flex"]} mt={-3} color={"white"}>
               <Center width={"100%"}>
                 <Box  display={"flex"}>
