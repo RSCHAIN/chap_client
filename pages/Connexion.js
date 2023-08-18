@@ -257,7 +257,7 @@ export default function Connexion() {
                     width={["200px", "200px", "350px", "350px", "350px"]}
                   /> */}
                   <TransitionExample />
-                  <Center display={"grid"}>
+                  <Box display={"grid"}>
                     <Button
                       width={"fit-content"}
                       // borderRadius={"50px"}
@@ -287,7 +287,7 @@ export default function Connexion() {
                       Inscription
                     </Link>
                     </Box>
-                  </Center>
+                  </Box>
                 </Stack>
                 {!isError ? (
                   <FormHelperText></FormHelperText>
