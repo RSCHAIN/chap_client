@@ -731,7 +731,7 @@ export default function Fret() {
                 </Button>
               </Box>
 
-              <Box mt={5} ml={"50%"}>
+              <Box mt={5}>
                 <Button
                   color={"#fff"}
                   width={"150px"}
@@ -972,7 +972,7 @@ export default function Fret() {
                 </Button>
               </Box>
 
-              <Box mt={5} ml={"50%"}>
+              <Box mt={5} >
                 <Button
                   color={"#fff"}
                   width={"150px"}
