@@ -52,7 +52,7 @@ export default function TransitionExample() {
     }
     return (
       <>
-        <Text onClick={onOpen} cursor={'pointer'} mt={20} fontSize={["15px","15px","15px",20,20]}  _hover={{
+        <Text onClick={onOpen} cursor={'pointer'} mt={20}  ml={"10%"}fontSize={["15px","15px","15px",20,20]}  _hover={{
                 color: 'blue',
               }}>Mot de passe Oublié ? </Text>
         <Modal
