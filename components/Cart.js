@@ -1164,8 +1164,9 @@ export default function Carte() {
           </Flex>
         </SimpleGrid>
 
-        <FooterR />
+        
         </Center>
+        <FooterR />
       </>
     );
   } else {
