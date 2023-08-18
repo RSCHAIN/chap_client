@@ -911,65 +911,67 @@ export default function Co(){
                )}
              </Text>
            </Flex>
-           <Box>
-             <Box mt={5}>
-               <Button
-                 color={"#fff"}
-                 width={"150px"}
-                 height={"30px"}
-                 as={"a"}
-                 // onClick={onOpen}
-                 bgColor={"green"}
-                 _hover={{
-                   backgroundColor: " green.200",
-                   color: "white ",
-                 }}
-                 href={`tel:${numero}`}
-                 leftIcon={<BsTelephoneOutboundFill />}
-               >
-                 Nous Contacter
-               </Button>
-             </Box>
-             <Box mt={5} >
-               <Button
-                 color={"#fff"}
-                 width={"150px"}
-                 height={"30px"}
-                 as={"a"}
-                 // onClick={onOpen}
-                 bgColor={"red"}
-                 _hover={{
-                   backgroundColor: " red.500",
-                   color: "white ",
-                 }}
-                 isDisabled={true}
-                 // href={`${sessionStorage.getItem("website")}`}
-                 leftIcon={<BiWorld />}
-                 // isExternal
-               >
-                 Site Web
-               </Button>
-             </Box>
-            
-             <Box mt={5} ml={"50%"}>
-               <Button
-                 color={"#fff"}
-                 width={"150px"}
-                 height={"30px"}
-                 as={"a"}
-                 // onClick={onOpen}
-                 bgColor={"cyan.700"}
-                 _hover={{
-                   backgroundColor: " cyan.900",
-                   color: "white ",
-                 }}
-                 // leftIcon={<BsTelephoneOutboundFill />}
-               >
-                 Reserver
-               </Button>
+           <Center > 
+               <Box>
+               <Box mt={5}>
+                 <Button
+                   color={"#fff"}
+                   width={"150px"}
+                   height={"30px"}
+                   as={"a"}
+                   // onClick={onOpen}
+                   bgColor={"green"}
+                   _hover={{
+                     backgroundColor: " green.200",
+                     color: "white ",
+                   }}
+                   href={`tel:${numero}`}
+                   leftIcon={<BsTelephoneOutboundFill />}
+                 >
+                   Nous Contacter
+                 </Button>
+               </Box>
+               <Box mt={5} >
+                 <Button
+                   color={"#fff"}
+                   width={"150px"}
+                   height={"30px"}
+                   as={"a"}
+                   // onClick={onOpen}
+                   bgColor={"red"}
+                   _hover={{
+                     backgroundColor: " red.500",
+                     color: "white ",
+                   }}
+                   isDisabled = {true}
+                   // href={`${sessionStorage.getItem("website")}`}
+                   leftIcon={<BiWorld />}
+                   // isExternal
+                 >
+                   Site Web
+                 </Button>
+               </Box>
               
-             </Box>
-             </Box>
+               <Box mt={5}>
+                 <Button
+                   color={"#fff"}
+                   width={"150px"}
+                   height={"30px"}
+                   as={"a"}
+                   // onClick={onOpen}
+                   bgColor={"cyan.700"}
+                   _hover={{
+                     backgroundColor: " cyan.900",
+                     color: "white ",
+                   }}
+                   // leftIcon={<BsTelephoneOutboundFill />}
+                 >
+                   Reserver
+                 </Button>
+                
+               </Box>
+               </Box>
+             </Center> 
            <Flex>
              <Heading
                as={"h3"}
