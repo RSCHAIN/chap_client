@@ -700,7 +700,7 @@ export default function Restaurant(){
                   )}
                 </Text>
               </Flex>
-              {/* <Center > */}
+              <Center >
                 <Box>
                 <Box mt={5}>
                   <Button
@@ -759,7 +759,7 @@ export default function Restaurant(){
                   
                 </Box>
                 </Box>
-              {/* </Center> */}
+              </Center> 
 
               <Flex>
                 <Heading
@@ -850,6 +850,7 @@ export default function Restaurant(){
               </Box>
             </Center>
           </Flex>
+          <Center>
           <Flex display={["none", "none", "grid", "none", "none"]} width={"fit-content"} ml={["3%", "3%", "3%", "15%", "15%"]}>
            
              <Box display={"flex"} mb={5}>
@@ -939,6 +940,7 @@ export default function Restaurant(){
                   )}
                 </Text>
               </Flex>
+              <Center>
               <Box>
                 <Box mt={5}>
                   <Button
@@ -997,6 +999,7 @@ export default function Restaurant(){
                   
                 </Box>
                 </Box>
+                </Center>
               <Flex>
                 <Heading
                   as={"h3"}
@@ -1086,6 +1089,7 @@ export default function Restaurant(){
               </Box>
             </Center> 
           </Flex>
+          </Center>
           <Modal isOpen={isOpen}  onClose={onClose}>
                         <ModalOverlay />
                         <ModalContent>

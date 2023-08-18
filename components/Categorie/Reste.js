@@ -683,7 +683,7 @@ export default function Reste(){
                 )}
               </Text>
             </Flex>
-            {/* <Center > */}
+            <Center >
               <Box>
               <Box mt={5}>
                 <Button
@@ -744,7 +744,7 @@ export default function Reste(){
               
               </Box>
               </Box>
-            {/* </Center> */}
+           </Center> 
 
             <Flex>
               <Heading
@@ -835,6 +835,7 @@ export default function Reste(){
             </Box>
           </Center>
         </Flex>
+        <Center>
         <Flex display={["none", "none", "grid", "none", "none"]} width={"fit-content"}>
          
            <Box display={"flex"} mb={5}>
@@ -924,6 +925,7 @@ export default function Reste(){
                 )}
               </Text>
             </Flex>
+            <Center>
             <Box>
               <Box mt={5}>
                 <Button
@@ -1038,6 +1040,7 @@ export default function Reste(){
                 </Modal>
               </Box>
               </Box>
+              </Center>
             <Flex>
               <Heading
                 as={"h3"}
@@ -1126,6 +1129,7 @@ export default function Reste(){
             </Box>
           </Center>
         </Flex>
+        </Center>
 
         {/* fin slide  */}
         {data.length != 0 ? (
