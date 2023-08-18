@@ -205,7 +205,7 @@ export default function Connexion() {
               
               <FormControl isInvalid={isError}>
               <Stack spacing={4}>
-                <Heading display={["none","none","none","grid","grid"]} ml={[,"10%","10%","10%","0%","0%"]}>Bienvenue</Heading>
+                <Heading display={["none","none","none","grid","grid"]} ml={["10%","10%","10%","0%","0%"]}>Bienvenue</Heading>
                 <Text display={["none","none","none","grid","grid"]}>Connectez-vous á votre compte</Text>
                 <Input
                   type={"text"}
