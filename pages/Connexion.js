@@ -202,13 +202,13 @@ export default function Connexion() {
           // boxShadow={"0px 4px 24px "}
         >
           <SimpleGrid columns={[1,1,1,2,2]}>
-          <Box h={500}>
+          <Box h={[300,300,300,500,500]}>
             <Image
-              height={500}
+              h={[300,300,300,500,500]}
               alt={"logo"}
-              width={650}
+              width={[200,200,250,650,650]}
               src="/logo1.png"
-              display={["none", "none", "flex", "flex", "flex"]}
+            
             />
           </Box>
           <Center>
@@ -235,16 +235,16 @@ export default function Connexion() {
                     }
                     color={"gray.500"}
                   />
-                   <InputGroup size='md'>
+                   <InputGroup >
       <Input
        onChange={(e) => setPassword(e.target.value)}
        width={["200px", "200px", "350px", "350px", "350px"]}
         type={show ? 'text' : 'password'}
-        placeholder='ENtrez le mot de passe'
+        placeholder='Entrez le mot de passe'
       />
       <InputRightAddon width='4.5rem'>
         <Button h='1.75rem' size='sm' onClick={handleClick}>
-          {show ? 'Hide' : 'Show'}
+          {show ? 'Masquer' : 'voir'}
         </Button>
       </InputRightAddon>
     </InputGroup>
