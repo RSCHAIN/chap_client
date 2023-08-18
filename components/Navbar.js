@@ -129,7 +129,7 @@ useEffect(()=>{
 
               href={"/Whoami"}
               mr={10}
-              fontSize={"1.25rem"}
+              fontSize={{base:"1rem",xl:"1.25rem"}}
               _hover={{ textDecoration: "none", color: "#068DA9" }}
             >
               Qui sommes-nous?
@@ -137,7 +137,7 @@ useEffect(()=>{
             <Link
               href={"/Contactus"}
               mr={10}
-              fontSize={"1.25rem"}
+              fontSize={{base:"1rem",xl:"1.25rem"}}
               _hover={{ textDecoration: "none", color: "#068DA9" }}
             >
              Nous-contacter
