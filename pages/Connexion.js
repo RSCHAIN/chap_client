@@ -238,7 +238,7 @@ export default function Connexion() {
                    <InputGroup size='md'>
       <Input
        onChange={(e) => setPassword(e.target.value)}
-        pr='4.5rem'
+       width={["200px", "200px", "350px", "350px", "350px"]}
         type={show ? 'text' : 'password'}
         placeholder='ENtrez le mot de passe'
       />
