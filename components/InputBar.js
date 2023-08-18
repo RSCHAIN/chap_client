@@ -75,7 +75,7 @@ const Contenu = ()=>{
 
 
   useEffect(() => {
-
+    Contenu();
   if(check == 0 || check == 1){
     const  GetAll= async ()=>{
       await axios.get("/api/GetJson").then((response)=>{
