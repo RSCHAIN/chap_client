@@ -391,7 +391,10 @@ const LadingCorps = () => {
                     <Text fontSize={"18px"} width={"full"}>
                     Commerçant ? Devenez partenaire et boostez votre commerce avec CHAP
                     </Text>
-                    <Button color={"white"} bgColor={"black"} mt={7}>
+                    <Button color={"white"} bgColor={"black"} mt={5} _hover={{
+                      bgColor:"black",
+                      opacity:"0.7"
+                    }}>
                       Rejoignez-nous
                     </Button>
                     </Box>
