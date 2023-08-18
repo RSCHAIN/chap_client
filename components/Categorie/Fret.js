@@ -750,7 +750,7 @@ export default function Fret() {
                 </Button>
               </Box>
               
-            </Boxs=>
+            </Box>
              </Center>
 
             <Flex>
