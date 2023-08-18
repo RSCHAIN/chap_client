@@ -404,7 +404,7 @@ export default function Carte() {
       <>
       <Center display={'grid'}>
         <SimpleGrid
-          columns={[1, 2, 2, 2, 2]}
+          columns={[1, 1, 2, 2, 2]}
           spacing={10}
           justifyContent={"space-around"}
         >
@@ -501,7 +501,7 @@ export default function Carte() {
             marginBottom={[5, 5, 5, 0, 0]}
             marginTop={0}
             justifyContent={"space-between"}
-            ml={["10%","10%","10%","0","0"]}
+            ml={["30%","30%","0","0","0"]}
           >
             <Box marginX={5}>
               <Heading margin={2} fontSize={"20px"} fontWeight={700}>
