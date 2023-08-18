@@ -421,7 +421,7 @@ export default function Carte() {
                   boxSizing={"border-box"}
                   borderRadius={"9px"}
                   // pb={10}
-                  marginBottom={20}
+                  marginBottom={5}
                 >
                   <Box>
                     <Image

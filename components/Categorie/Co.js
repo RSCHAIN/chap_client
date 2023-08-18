@@ -671,7 +671,7 @@ export default function Co(){
                  )}
                </Text>
              </Flex>
-             {/* <Center > */}
+              <Center > 
                <Box>
                <Box mt={5}>
                  <Button
@@ -731,7 +731,7 @@ export default function Co(){
                 
                </Box>
                </Box>
-             {/* </Center> */}
+             </Center> 
 
              <Flex>
                <Heading
