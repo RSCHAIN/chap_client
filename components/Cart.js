@@ -402,7 +402,7 @@ export default function Carte() {
 
     return (
       <>
-      <Center>
+      <Center display={'grid'}>
         <SimpleGrid
           columns={[1, 1, 1, 2, 2]}
           spacing={10}
