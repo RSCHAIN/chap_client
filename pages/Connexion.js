@@ -270,7 +270,7 @@ export default function Connexion() {
                     >
                       Connexion{" "}
                     </Button>
-                    <Box>
+                    
                     <Link
                       width={"fit-content"}
                       mt={10}
@@ -287,7 +287,7 @@ export default function Connexion() {
                       Inscription
                     </Link>
                     </Box>
-                  </Box>
+                
                 </Stack>
                 {!isError ? (
                   <FormHelperText></FormHelperText>
