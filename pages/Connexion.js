@@ -12,6 +12,7 @@ import {
   Modal,
   InputGroup,
 InputRightAddon,
+SimpleGrid,
   ModalOverlay,
   ModalContent,
   ModalHeader,
@@ -188,7 +189,7 @@ export default function Connexion() {
           </Alert>
         ) : (
           <></>
-          // <Button onClick={onOpen}>Show Alert</Button>
+          // <Butto   n onClick={onOpen}>Show Alert</Butto>
         )}
         <Flex
           textAlign={"center"}
@@ -200,6 +201,7 @@ export default function Connexion() {
           my={5}
           // boxShadow={"0px 4px 24px "}
         >
+          <SimpleGrid columns={[1,1,1,2,2]}>
           <Box h={500}>
             <Image
               height={500}
@@ -295,6 +297,7 @@ export default function Connexion() {
               </FormControl>
             </Box>
           </Center>
+          </SimpleGrid>
         </Flex>
       </Center>
     </>
