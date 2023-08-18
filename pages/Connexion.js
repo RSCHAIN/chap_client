@@ -257,7 +257,7 @@ export default function Connexion() {
                     width={["200px", "200px", "350px", "350px", "350px"]}
                   /> */}
                   <TransitionExample />
-                  <Center>
+                  <Center display={"grid"}>
                     <Button
                       width={"fit-content"}
                       // borderRadius={"50px"}
