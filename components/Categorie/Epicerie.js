@@ -580,10 +580,7 @@ export default function Epicerie(){
               </Box>
         </Box>
         <Flex display={["grid", "grid", "none", "none", "none"]} width={"fit-content"} ml={["3%", "3%", "3%", "10%", "10%"]}>
-          
-      
-        
-          <Box display={"flex"} mb={5}>
+        <Box display={"flex"} mb={5}>
            <Box mr={5}>
              <Image
                src={`${imageUrl}`}
@@ -670,7 +667,7 @@ export default function Epicerie(){
                )}
              </Text>
            </Flex>
-           {/* <Center > */}
+           <Center >
              <Box>
              <Box mt={5}>
                <Button
@@ -730,7 +727,7 @@ export default function Epicerie(){
               
              </Box>
              </Box>
-           {/* </Center> */}
+            </Center>
 
            <Flex>
              <Heading
