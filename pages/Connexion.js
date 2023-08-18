@@ -205,8 +205,7 @@ export default function Connexion() {
               
               <FormControl isInvalid={isError}>
               <Stack spacing={4}>
-                <Heading ml={"10%"}>Bienvenue</Heading>
-                <Text>Connectez-vous á votre compte</Text>
+               
                 <Input
                   type={"text"}
                   placeholder="Email"
