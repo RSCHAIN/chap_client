@@ -272,6 +272,7 @@ export default function Connexion() {
                     </Button>
                     
                     <Button
+                    display={["none","none","none","grid","grid"]}
                       as={Link}
                       width={"fit-content"}
                       mt={10}
