@@ -225,6 +225,7 @@ export default function Connexion() {
                   width={["200px", "200px", "350px", "350px", "350px"]}
                 />
                 <TransitionExample/>
+                <Center>
                 <Button
                 width={"fit-content"}
                   // borderRadius={"50px"}
@@ -242,6 +243,7 @@ export default function Connexion() {
               }} href={'/Inscription'}>
                   Inscription
                 </Link>
+                </Center>
               </Stack>
       {!isError ? (
         <FormHelperText>
