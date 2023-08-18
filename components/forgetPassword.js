@@ -63,7 +63,7 @@ export default function TransitionExample() {
         >
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader> <Heading lineHeight={1.1} fontSize={{ base: 'xl', md: '2xl' }}>
+            <ModalHeader> <Heading lineHeight={1.1} fontSize={{ base: 'lg', lg: '2xl' }}>
             MOT DE PASSE OUBLIE
           </Heading></ModalHeader>
             <ModalCloseButton />
