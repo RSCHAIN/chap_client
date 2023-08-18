@@ -180,6 +180,7 @@ export default function Connexion() {
    // <Button onClick={onOpen}>Show Alert</Button>
   )}
         <Flex
+        textAlign={"center"}
           bgColor={["white","white","white","white","white"]}
           borderRadius={5}
          
@@ -204,7 +205,7 @@ export default function Connexion() {
               
               <FormControl isInvalid={isError}>
               <Stack spacing={4}>
-                <Heading>Bienvenue</Heading>
+                <Heading ml={"10%"}>Bienvenue</Heading>
                 <Text>Connectez-vous á votre compte</Text>
                 <Input
                   type={"text"}
@@ -225,6 +226,7 @@ export default function Connexion() {
                 />
                 <TransitionExample/>
                 <Button
+                width={"fit-content"}
                   // borderRadius={"50px"}
                   bgColor={"#08566e"}
                   color={"white"}
@@ -235,7 +237,7 @@ export default function Connexion() {
                 >
                   Connexion{" "}
                 </Button>
-                <Link mt={20} fontSize={20} textAlign={'center'} height={"40px"} border={"1px solid #08566e"} borderRadius={"5%"}   _hover={{
+                <Link width={"fit-content"} mt={20} fontSize={20} textAlign={'center'} height={"40px"} border={"1px solid #08566e"} borderRadius={"5%"}   _hover={{
                 color: '#C0C0C0',
               }} href={'/Inscription'}>
                   Inscription
