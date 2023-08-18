@@ -271,7 +271,8 @@ export default function Connexion() {
                       Connexion{" "}
                     </Button>
                     
-                    <Link
+                    <Button
+                      as={Link}
                       width={"fit-content"}
                       mt={10}
                       fontSize={20}
@@ -285,7 +286,7 @@ export default function Connexion() {
                       href={"/Inscription"}
                     >
                       Inscription
-                    </Link>
+                    </Button>
                     </Box>
                 
                 </Stack>
