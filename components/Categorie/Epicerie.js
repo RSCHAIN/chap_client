@@ -818,6 +818,7 @@ export default function Epicerie(){
            </Box>
          </Center>
        </Flex>
+       <Center>
        <Flex display={["none", "none", "grid", "none", "none"]} width={"fit-content"} ml={["3%", "3%", "3%", "10%", "10%"]}>
         
         <Box display={"flex"} mb={5}>
@@ -907,6 +908,7 @@ export default function Epicerie(){
              )}
            </Text>
          </Flex>
+         <Center>
          <Box>
            <Box mt={5}>
              <Button
@@ -966,6 +968,7 @@ export default function Epicerie(){
             
            </Box>
            </Box>
+           </Center>
          <Flex>
            <Heading
              as={"h3"}
@@ -1055,7 +1058,7 @@ export default function Epicerie(){
          </Box>
        </Center> 
      </Flex>
-
+     </Center>
     <Center display={"grid"} width={"100%"} ml={0}>
     {data.length != 0 ? (
           <>
