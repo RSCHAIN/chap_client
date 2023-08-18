@@ -10,6 +10,8 @@ import {
 } from "@chakra-ui/react";
 import {
   Modal,
+  InputGroup,
+InputRightAddon,
   ModalOverlay,
   ModalContent,
   ModalHeader,
@@ -50,6 +52,9 @@ import { app } from "@/FIREBASE/clientApp";
 import TransitionExample from "@/components/forgetPassword";
 
 export default function Connexion() {
+  const [show, setShow] = useState(false)
+  const handleClick = () => setShow(!show)
+
   const {
     isOpen: isVisible,
     onClose,
@@ -228,14 +233,27 @@ export default function Connexion() {
                     }
                     color={"gray.500"}
                   />
-                  <Input
+                   <InputGroup size='md'>
+      <Input
+       onChange={(e) => setPassword(e.target.value)}
+        pr='4.5rem'
+        type={show ? 'text' : 'password'}
+        placeholder='Enter password'
+      />
+      <InputRightAddon width='4.5rem'>
+        <Button h='1.75rem' size='sm' onClick={handleClick}>
+          {show ? 'Hide' : 'Show'}
+        </Button>
+      </InputRightAddon>
+    </InputGroup>
+                  {/* <Input
                     type={"password"}
                     placeholder={"Mot de passe"}
                     border={"2px solid gray"}
                     // borderRadius={"50px"}
-                    onChange={(e) => setPassword(e.target.value)}
+                   
                     width={["200px", "200px", "350px", "350px", "350px"]}
-                  />
+                  /> */}
                   <TransitionExample />
                   <Center>
                     <Button
