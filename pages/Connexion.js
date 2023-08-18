@@ -238,7 +238,7 @@ export default function Connexion() {
        onChange={(e) => setPassword(e.target.value)}
         pr='4.5rem'
         type={show ? 'text' : 'password'}
-        placeholder='Enter password'
+        placeholder='ENtrez le mot de passe'
       />
       <InputRightAddon width='4.5rem'>
         <Button h='1.75rem' size='sm' onClick={handleClick}>
