@@ -409,7 +409,7 @@ export default function Carte() {
         >
           <Box>
             {cart.map((data, index) => (
-              <Center key={data.id}>
+              <Center key={data.id} width={"100%"}>
                 <SimpleGrid
                   columns={[2, 2, 2, 4, 4]}
                   // spacing={10}
