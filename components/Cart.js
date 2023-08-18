@@ -402,6 +402,7 @@ export default function Carte() {
 
     return (
       <>
+      <Center>
         <SimpleGrid
           columns={[1, 1, 1, 2, 2]}
           spacing={10}
@@ -1164,6 +1165,7 @@ export default function Carte() {
         </SimpleGrid>
 
         <FooterR />
+        </Center>
       </>
     );
   } else {

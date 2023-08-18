@@ -850,7 +850,7 @@ export default function Restaurant(){
               </Box>
             </Center>
           </Flex>
-          <Center>
+          
           <Flex display={["none", "none", "grid", "none", "none"]} width={"fit-content"} ml={["3%", "3%", "3%", "15%", "15%"]}>
            
              <Box display={"flex"} mb={5}>
@@ -1089,7 +1089,7 @@ export default function Restaurant(){
               </Box>
             </Center> 
           </Flex>
-          </Center>
+         
           <Modal isOpen={isOpen}  onClose={onClose}>
                         <ModalOverlay />
                         <ModalContent>

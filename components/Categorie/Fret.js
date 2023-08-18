@@ -690,8 +690,8 @@ export default function Fret() {
                 )}
               </Text>
             </Flex>
-            {/* <Center > */}
-            <SimpleGrid columns={2} spacingX={3}>
+            <Center > 
+            <Box>
               <Box mt={5}>
                 <Button
                   color={"#fff"}
@@ -750,8 +750,8 @@ export default function Fret() {
                 </Button>
               </Box>
               
-            </SimpleGrid>
-            {/* </Center> */}
+            </Boxs=>
+             </Center>
 
             <Flex>
               <Heading
@@ -931,7 +931,8 @@ export default function Fret() {
                 )}
               </Text>
             </Flex>
-            <SimpleGrid columns={2} spacingX={3}>
+            <Center>
+            <Box>
               <Box mt={5}>
                 <Button
                   color={"#fff"}
@@ -990,7 +991,8 @@ export default function Fret() {
                 </Button>
               </Box>
              
-            </SimpleGrid>
+            </Box>
+            </Center>
             <Flex>
               <Heading
                 as={"h3"}
