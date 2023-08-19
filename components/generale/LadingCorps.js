@@ -349,9 +349,10 @@ const LadingCorps = () => {
           <Box height={"100%"} width={"100%"}>
           <Flex width={"100%"} height={"15vh"} bgColor={"#08566e"} display={["flex","flex","flex","none","none"]} color={"white"}>
               <Center width={"100%"}>
-                <Box  display={"flex"}>
+                <Box  display={"grid"}>
                   <Box>
-                    <Text fontSize={"15px"} width={"full"}>
+
+                    <Text fontSize={"15px"} width={"full"} textAlign={"center"}>
                     Commerçant ? 
                     </Text>
                     <Text fontSize={"10px"} width={"full"}>
