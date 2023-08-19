@@ -352,19 +352,21 @@ const LadingCorps = () => {
                 <Box  display={"grid"}>
                   <Box>
 
-                    <Text fontSize={"15px"} width={"full"} textAlign={"center"}>
+                    <Text fontSize={"20px"} width={"full"} textAlign={"center"}>
                     Commerçant ? 
                     </Text>
-                    <Text fontSize={"10px"} width={"full"}>
+                    <Text fontSize={"15px"} width={"full"}>
                      Devenez partenaire et boostez votre commerce avec CHAP
                     </Text>
                     </Box>
+                    <Center>
                     <Button color={"white"}  bgColor={"black"} mt={2} _hover={{
                       bgColor:"black",
                       opacity:"0.7",
                       textDecoration:"none"
                     }}
                     py={2}
+                    width={"fit-content"}
                     as={Link}
                     href={"https://chapbackofficefournisseur.vercel.app/Connexion"}
 
@@ -372,48 +374,11 @@ const LadingCorps = () => {
 
                       Rejoignez-nous
                     </Button>
+                    </Center>
                     </Box>
                     </Center>
             </Flex>
-            <Center
-              width={"100%"}
-              display={["grid", "grid", "grid", "none", "none"]}
-            >
-              <Box>
-                <InputGroup mt={10} bgColor={"#ddd"} borderRadius={"100px"} mb={5}>
-                  <InputRightElement as={Text} width={"10em"}>
-                  {Object.values(final[0])[1]}
-                  </InputRightElement>
-                  <Input
-                    borderRadius={"100px"}
-                    type={"number"}
-                    placeholder="Entrez votre code postal "
-                    w={"20em"}
-                    maxLength={5}
-                    value={locate}
-                    // value={postal}
-                    onChange={(e) => {
-                      localStorage.setItem("postal", e.target.value),
-                      setCode(e.target.value),
-                      Search(code.slice(0,2))
-                    }}
-                    // onClick={onOpen}
-                  />
-                  <InputLeftElement
-                    as={Link}
-                    href={"#"}
-                    borderRaduis={"50%"}
-                    _hover={{
-                      textDecoration: "none",
-                    }}
-                    cursor={"pointer"}
-                  >
-                    <MdLocationOn />
-                  </InputLeftElement>
-                </InputGroup>
-              </Box>
-            </Center>
-          
+         
             <Flex width={"100%"} height={"15vh"} bgColor={"#08566e"} display={["none","none","none","flex","flex"]} mt={-3} color={"white"}>
               <Center width={"100%"}>
                 <Box  display={"flex"}>

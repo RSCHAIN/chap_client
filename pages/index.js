@@ -24,7 +24,9 @@ import {
   useDisclosure,
   useMediaQuery,
   useToast,
+  Link
 } from "@chakra-ui/react";
+import { MdLocationOn } from "react-icons/md";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { BiCurrentLocation } from "react-icons/bi";
@@ -35,6 +37,8 @@ import Cookies from "cookies";
 import { useRouter } from "next/router";
 
 export default function Home() {
+  const [final,setFinal] = useState([""]);
+  const [locate, setLocate] = useState("");
   const router = useRouter()
   const [getter,setGetter] = useState([])
   const [isLagerThan768] = useMediaQuery("(min-width: 768px)");
@@ -106,6 +110,45 @@ export default function Home() {
         <Center>  <Text fontSize={"25px"} color={"black"} fontWeight={"semibold"} fontFamily={"system-ui"}>Bienvenue sur Chap</Text></Center>
     
       </Box>
+      <Center
+              width={"100%"}
+              display={["grid", "grid", "grid", "none", "none"]}
+            >
+              <Box>
+                <InputGroup mt={2}  borderRadius={"100px"} mb={5}>
+                  <InputRightElement as={Text} width={"10em"}>
+                  {Object.values(final[0])[1]}
+                  </InputRightElement>
+                  <Input
+                    borderRadius={"100px"}
+                    type={"number"}
+                    placeholder="Entrez votre code postal "
+                    w={"20em"}
+                    maxLength={5}
+                    value={locate}
+                    // value={postal}
+                    onChange={(e) => {
+                      localStorage.setItem("postal", e.target.value),
+                      setCode(e.target.value),
+                      Search(code.slice(0,2))
+                    }}
+                    // onClick={onOpen}
+                  />
+                  <InputLeftElement
+                    as={Link}
+                    href={"#"}
+                    borderRaduis={"50%"}
+                    _hover={{
+                      textDecoration: "none",
+                    }}
+                    cursor={"pointer"}
+                  >
+                    <MdLocationOn />
+                  </InputLeftElement>
+                </InputGroup>
+              </Box>
+            </Center>
+          
       <SliderComponents />
       
       <LadingCorps />
