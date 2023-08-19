@@ -13,6 +13,7 @@ import {
   InputGroup,
 InputRightAddon,
 SimpleGrid,
+InputRightElement,
   ModalOverlay,
   ModalContent,
   ModalHeader,
@@ -206,7 +207,7 @@ export default function Connexion() {
             <Image
               h={[300,300,300,500,500]}
               alt={"logo"}
-              width={[200,200,250,650,650]}
+              width={[350,350,400,650,650]}
               src="/logo1.png"
             
             />
@@ -224,7 +225,9 @@ export default function Connexion() {
                   <Text display={["none", "none", "none", "grid", "grid"]}>
                     Connectez-vous á votre compte
                   </Text>
+                  <Center display={"grid"}>
                   <Input
+                 mb={2}
                     type={"text"}
                     placeholder="Email"
                     border={"2px solid gray"}
@@ -242,23 +245,19 @@ export default function Connexion() {
         type={show ? 'text' : 'password'}
         placeholder='Entrez le mot de passe'
       />
-      <InputRightAddon width='4.5rem'>
-        <Button h='1.75rem' size='sm' onClick={handleClick}>
+      {/* <InputRightElement width="fit-content">
+        <Button h='1.75rem'  onClick={handleClick}>
           {show ? 'Masquer' : 'voir'}
         </Button>
-      </InputRightAddon>
+      </InputRightElement> */}
     </InputGroup>
-                  {/* <Input
-                    type={"password"}
-                    placeholder={"Mot de passe"}
-                    border={"2px solid gray"}
-                    // borderRadius={"50px"}
-                   
-                    width={["200px", "200px", "350px", "350px", "350px"]}
-                  /> */}
+    </Center>
+                 
                   <TransitionExample />
                   <Box display={"grid"}>
+                    <Center>
                     <Button
+                    
                       width={"fit-content"}
                       // borderRadius={"50px"}
                       bgColor={"#08566e"}
@@ -270,12 +269,18 @@ export default function Connexion() {
                     >
                       Connexion{" "}
                     </Button>
+                    </Center>
                     <Button 
                     as={Link}
+                    bgColor={"white"}
+                    _hover={{
+                      textDecoration:"none",
+                      bgColor:"white"
+                    }}
                     >
-                      
+                  Pas de compte?  Créer un compte
                     </Button>
-                    <Button
+                    {/* <Button
                     display={["none","none","none","grid","grid"]}
                       as={Link}
                       width={"fit-content"}
@@ -291,7 +296,7 @@ export default function Connexion() {
                       href={"/Inscription"}
                     >
                       Inscription
-                    </Button>
+                    </Button> */}
                     </Box>
                 
                 </Stack>

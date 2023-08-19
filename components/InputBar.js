@@ -19,7 +19,7 @@ import {
   Button,
   Center,
   useToast,
-  InputLeftElement
+  InputLeftElement,
 } from "@chakra-ui/react";
 import { Search2Icon } from "@chakra-ui/icons";
 import { ChevronDownIcon } from "@chakra-ui/icons";
@@ -36,89 +36,83 @@ import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { app, authentic } from "@/FIREBASE/clientApp";
 import { useRouter } from "next/router";
 import CookieConsent from "react-cookie-consent";
-import {MdLocationOn} from 'react-icons/md'
+import { MdLocationOn } from "react-icons/md";
 import axios from "axios";
 
 const InputBar = () => {
   const auth = getAuth(app);
   const router = useRouter();
-  const [locate,setLocate] = useState("")
+  const [locate, setLocate] = useState("");
   const [total, setTotal] = useState("");
   const [lastTime, setLastTime] = useState();
-  const [data,setData] = useState([]);
-  const [code,setCode] = useState([]);
-  const [final,setFinal] = useState([""]);
-  const [check,setCheck] = useState(0);
-  const [contenu,setContenu] = useState(0);
+  const [data, setData] = useState([]);
+  const [code, setCode] = useState([]);
+  const [final, setFinal] = useState([""]);
+  const [check, setCheck] = useState(0);
+  const [contenu, setContenu] = useState(0);
 
-  const Search =(id)=>{
- 
-    if(data.filter(order => (order.num_dep === id)).length!=0){
-      setFinal(data.filter(order => (order.num_dep === id))) 
-   
-     
-   } 
-   else{
-    setFinal([""])
-   }
-  
-   
-}
-const Contenu = ()=>{
-  if(localStorage.getItem("Cart") != undefined || localStorage.getItem("Cart") != null){
-    setContenu(JSON.parse(localStorage.getItem("Cart")).length);
-  }
-  else{
-    setContenu(0)
-  }
-}
-
+  const Search = (id) => {
+    if (data.filter((order) => order.num_dep === id).length != 0) {
+      const Final = data.filter((order) => order.num_dep === id);
+      localStorage.setItem("location", Object.values(Final[0])[1]);
+    } 
+  };
+  const Contenu = () => {
+    if (
+      localStorage.getItem("Cart") != undefined ||
+      localStorage.getItem("Cart") != null
+    ) {
+      setContenu(JSON.parse(localStorage.getItem("Cart")).length);
+    } else {
+      setContenu(0);
+    }
+  };
 
   useEffect(() => {
+    setFinal(localStorage.getItem("location")?? "")
     Contenu();
-  if(check == 0 || check == 1){
-    const  GetAll= async ()=>{
-      await axios.get("/api/GetJson").then((response)=>{
+    if (check == 0 || check == 1) {
+      const GetAll = async () => {
+        await axios.get("/api/GetJson").then((response) => {
           // console.log(response.data);
           // console.log("object values", Object.values(response.data))
-          setData(JSON.parse(Object.values(response.data)))
-      })
-  };
-    GetAll();
-    setLocate(localStorage.getItem("postal") ?? "0");
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setTotal(2);
-      }
-    });
-    // console.log("check",check)
-    setCheck(check+1);
-  }
-  
-  
-  },[locate,total,auth,data,check,contenu]);
- 
+          setData(JSON.parse(Object.values(response.data)));
+        });
+      };
+      GetAll();
+      setLocate(localStorage.getItem("postal") ?? "0");
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          setTotal(2);
+        }
+      });
+      // console.log("check",check)
+      setCheck(check + 1);
+    }
+  }, [locate, total, auth, data, check, contenu]);
 
   const [isLagerThan768] = useMediaQuery("(min-width: 420px)");
-  const toast = useToast()
-  
+  const toast = useToast();
 
   return (
     <>
-     
-     <CookieConsent
-  location="bottom"
-  buttonText="J'accepte"
-  cookieName="CNSTMTCOOKIE"
-  declineButtonText="Je Refuse"
-  style={{ background: "#2B373B" }}
-  buttonStyle={{ backgroundColor: "#00CCBC", fontSize: "13px",color:"white" }}
-  expires={3}
-  enableDeclineButton
-> 
-  Nous utilisons des cookies dans le but de personnaliser, d’améliorer notre contenu et nos services et de diffuser des publicités pertinentes.
- 
-</CookieConsent>
+      <CookieConsent
+        location="bottom"
+        buttonText="J'accepte"
+        cookieName="CNSTMTCOOKIE"
+        declineButtonText="Je Refuse"
+        style={{ background: "#2B373B" }}
+        buttonStyle={{
+          backgroundColor: "#00CCBC",
+          fontSize: "13px",
+          color: "white",
+        }}
+        expires={3}
+        enableDeclineButton
+      >
+        Nous utilisons des cookies dans le but de personnaliser, d’améliorer
+        notre contenu et nos services et de diffuser des publicités pertinentes.
+      </CookieConsent>
       <Flex
         width={"100%"}
         height={"4em"}
@@ -140,7 +134,7 @@ const Contenu = ()=>{
               src={"/logo1.png"}
               alt={"Chap"}
               width={"80px"}
-              mt={[2,2,2,2,2]}
+              mt={[2, 2, 2, 2, 2]}
               mr={[0, 0, 0, "2px", "2px"]}
             />
           </Link>
@@ -155,10 +149,8 @@ const Contenu = ()=>{
           width={"auto"}
           height={"full"}
           mr={3}
-        > 
-         
-
-           <InputLg /> 
+        >
+          <InputLg />
         </Flex>
 
         {/* butons se connecter et s'inscrire  */}
@@ -168,10 +160,9 @@ const Contenu = ()=>{
           width={"auto"}
           height={"full"}
         >
-           <LoginSignButton />  <ResponsiveMenu />
-
+          <LoginSignButton /> <ResponsiveMenu />
           <Flex
-          display={["none","none","none","flex","flex"]}
+            display={["none", "none", "none", "flex", "flex"]}
             align={"center"}
             justifyContent={"center"}
             width={"auto"}
@@ -182,82 +173,113 @@ const Contenu = ()=>{
           <Icon as={AiOutlineUser} fontSize={30} mr={2}/> Se connecter
         </Link> */}
             <Popover>
-            <InputGroup   borderRadius={"100px"}>
-            <InputRightElement as={Text} width={"10em"}>
-                  {Object.values(final[0])[1]}
-                  </InputRightElement>
-                  <Input
+              <InputGroup borderRadius={"100px"}>
+                <InputRightElement as={Text} width={"10em"}>
+                  {final}
+                </InputRightElement>
+                <Input
                   borderRadius={"100px"}
-                    type={"number"}
-                    placeholder="Entrez votre code postal"
-                    w={"15em"}
-                    maxLength={5}
-                    
-                    value={locate}
-                    // value={postal}
-                    onChange={(e)=>{localStorage.setItem("postal",e.target.value),setLocate(e.target.value),Search(locate.slice(0,2))}}
-                    // onClick={onOpen}
-                  />
-                  <InputLeftElement as={Link} href={"#"} borderRaduis={"50%"}   _hover={{
+                  type={"number"}
+                  placeholder="Entrez votre code postal"
+                  w={"15em"}
+                  maxLength={5}
+                  value={locate}
+                  onChange={(e) => {
+                    localStorage.setItem("postal", e.target.value),
+                      setLocate(e.target.value),
+                      Search(locate.slice(0, 2));
+                      if((e.target.value).length>4){
+                        router.reload()
+                       }
+                  }}
+                  // onClick={onOpen}
+                />
+                <InputLeftElement
+                  as={Link}
+                  href={"#"}
+                  borderRaduis={"50%"}
+                  _hover={{
                     textDecoration: "none",
-                  
-                  }} cursor={"pointer"} >
-                    <MdLocationOn/>
-                  </InputLeftElement>
-                </InputGroup>
+                  }}
+                  cursor={"pointer"}
+                >
+                  <MdLocationOn />
+                </InputLeftElement>
+              </InputGroup>
               <PopoverContent width={"210px"}>
-             
-             {locate.length <=4 ?  <InputGroup   bgColor={"#ddd"} borderRadius={"100px"}>
-             <InputRightElement as={Text} width={"10em"}>
-                 
-                  </InputRightElement>
-                  <Input
-                  borderRadius={"100px"}
-                    type={"number"}
-                    placeholder="Entrez votre code posta"
-                    w={"15em"}
-                    maxLength={5}
-                    value={locate} 
-                    onChange={(e)=>{localStorage.setItem("postal",e.target.value),setLocate(e.target.value),Search(locate.slice(0,2))}}
-                  />
-                  <InputLeftElement as={Link} href={"#"} borderRaduis={"50%"}   _hover={{
-                    textDecoration: "none",
-                  
-                  }} cursor={"pointer"} >
-                    <MdLocationOn/>
-                  </InputLeftElement>
-                </InputGroup> : <> <InputGroup   bgColor={"#ddd"} borderRadius={"100px"}>
-           
-                  <Input
-                  borderRadius={"100px"}
-                    type={"number"}
-                    placeholder="Entrez votre code posta"
-                    w={"15em"}
-                    maxLength={5}
-                    value={locate} 
-                    onChange={(e)=>{localStorage.setItem("postal",e.target.value),setLocate(e.target.value),Search(locate.slice(0,2))}}
-                  />
-                  <InputLeftElement as={Link} href={"#"} borderRaduis={"50%"}   _hover={{
-                    textDecoration: "none",
-                  
-                  }} cursor={"pointer"} >
-                    <MdLocationOn/>
-                  </InputLeftElement>
-                </InputGroup> </>} 
+                {locate.length <= 4 ? (
+                  <InputGroup bgColor={"#ddd"} borderRadius={"100px"}>
+                    <InputRightElement
+                      as={Text}
+                      width={"10em"}
+                    ></InputRightElement>
+                    <Input
+                      borderRadius={"100px"}
+                      type={"number"}
+                      placeholder="Entrez votre code posta"
+                      w={"15em"}
+                      maxLength={5}
+                      value={locate}
+                      onChange={(e) => {
+                        localStorage.setItem("postal", e.target.value),
+                          setLocate(e.target.value),
+                          Search(locate.slice(0, 2));
+                      }}
+                    />
+                    <InputLeftElement
+                      as={Link}
+                      href={"#"}
+                      borderRaduis={"50%"}
+                      _hover={{
+                        textDecoration: "none",
+                      }}
+                      cursor={"pointer"}
+                    >
+                      <MdLocationOn />
+                    </InputLeftElement>
+                  </InputGroup>
+                ) : (
+                  <>
+                    {" "}
+                    <InputGroup bgColor={"#ddd"} borderRadius={"100px"}>
+                      <Input
+                        borderRadius={"100px"}
+                        type={"number"}
+                        placeholder="Entrez votre code posta"
+                        w={"15em"}
+                        maxLength={5}
+                        value={locate}
+                        onChange={(e) => {
+                          localStorage.setItem("postal", e.target.value),
+                            setLocate(e.target.value),
+                            Search(locate.slice(0, 2));
+                        }}
+                      />
+                      <InputLeftElement
+                        as={Link}
+                        href={"#"}
+                        borderRaduis={"50%"}
+                        _hover={{
+                          textDecoration: "none",
+                        }}
+                        cursor={"pointer"}
+                      >
+                        <MdLocationOn />
+                      </InputLeftElement>
+                    </InputGroup>{" "}
+                  </>
+                )}
               </PopoverContent>
             </Popover>
           </Flex>
-         
-
           <Flex
-          display={["none","none","none","flex","flex"]}
+            display={["none", "none", "none", "flex", "flex"]}
             align={"center"}
             justifyContent={"center"}
             width={"auto"}
             height={"100%"}
             mr={"1em"}
           >
-      
             <Popover>
               <PopoverTrigger>
                 <Link

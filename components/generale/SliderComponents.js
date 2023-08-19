@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import {
   Box,
   IconButton,
@@ -9,12 +9,15 @@ import {
   Input,
   InputGroup,
   InputRightElement,
-  Button
+  Button,
+  InputLeftAddon
 } from "@chakra-ui/react";
 import {RiSendPlaneLine} from "react-icons/ri"
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 // And react-slick as our Carousel Lib
 import Slider from "react-slick";
+import axios from "axios";
+import {useRouter} from "next/router";
 
 const settings = {
   dots: false,
@@ -41,6 +44,15 @@ const settings2 = {
   slidesToScroll: 1,
 };
 const SliderComponents = () => {
+  
+  const [locate, setLocate] = useState("");
+  const [check,setCheck] = useState(0);
+  const [data,setData] = useState([]);
+  const [final,setFinal] = useState([""]);
+  const router = useRouter();
+
+
+ const [code,setCode] = useState([]);
   const [slider, setSlider] = useState(null);
   const top = useBreakpointValue({ base: "90%", md: "50%" });
   const side = useBreakpointValue({ base: "30%", md: "10px" });
@@ -57,6 +69,45 @@ const SliderComponents = () => {
     "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/slider%2F6.png?alt=media&token=11b0ef49-fc5e-44bd-b104-bb750053d133"
   ];
   const [isLagerThan768] = useMediaQuery("(min-width: 768px)");
+
+
+
+
+  const Search = (id) => {
+    if (data.filter((order) => order.num_dep === id).length != 0) {
+      const Final = data.filter((order) => order.num_dep === id);
+      localStorage.setItem("location", Object.values(Final[0])[1]);
+    } 
+  };
+
+useEffect(() => {
+
+  if(check == 0 || check == 1){
+    const  GetAll= async ()=>{
+      setData([])
+      await axios.get("api/GetJson").then((response)=>{
+
+          setData(JSON.parse(Object.values(response.data)))
+      })
+  };
+  GetAll()
+    setCheck(check+1);
+  }
+ 
+
+  setFinal(localStorage.getItem("location")?? "")
+  setLocate(localStorage.getItem("postal") ?? "0");
+
+  //updateAll()
+}, [   locate,check]);
+
+
+
+
+
+
+
+
 
   return (
     <>
@@ -139,7 +190,10 @@ const SliderComponents = () => {
           <Box  width={"95%"} ml={"5%"} height={"xs"} mt={10} >
             <Text fontSize={"20px"} color={"black"}>Entrez votre adresse pour trouver les commerces à proximité</Text>
             <Flex mt={5}>
-            <InputGroup width={"60%"} mr={5} ml={3}>
+            <InputGroup  mr={5} ml={3}>
+              <InputLeftAddon as={Text} color={"black"} width={"fit-content"}>
+             {final}
+              </InputLeftAddon>
             <InputRightElement _hover={
                 {
                   cursor:"pointer"   ,
@@ -149,7 +203,19 @@ const SliderComponents = () => {
               }>
               <RiSendPlaneLine color={"cyan.700"} fontSize={"25px"} />
             </InputRightElement>
-            <Input placeholder={"Saisir le Code postal"} borderRadius={"4px"} bgColor={"#F1F1F1"}/>
+            <Input placeholder={"Saisir le Code postal"} borderRadius={"4px"} 
+             value={locate}
+                   
+             onChange={(e) => {
+               setLocate(e.target.value)
+               localStorage.setItem("postal", e.target.value),
+               setCode(e.target.value),
+               Search(code.slice(0,2))
+               if((e.target.value).length>4){
+                router.reload()
+               }
+             }}
+            />
             </InputGroup>
             <Button bgcolor={""}>Trouver</Button>
             </Flex>

@@ -351,13 +351,14 @@ const LadingCorps = () => {
               <Center width={"100%"}>
                 <Box  display={"grid"}>
                   <Box>
-
-                    <Text fontSize={"20px"} width={"full"} textAlign={"center"}>
+                    
+                    <Text fontSize={"15px"} width={"full"}>
                     Commerçant ? 
                     </Text>
-                    <Text fontSize={"15px"} width={"full"}>
+                    <Text fontSize={"10px"} width={"full"}>
                      Devenez partenaire et boostez votre commerce avec CHAP
                     </Text>
+                   
                     </Box>
                     <Center>
                     <Button color={"white"}  bgColor={"black"} mt={2} _hover={{
@@ -366,8 +367,8 @@ const LadingCorps = () => {
                       textDecoration:"none"
                     }}
                     py={2}
-                    width={"fit-content"}
                     as={Link}
+                    width={"fit-content"}
                     href={"https://chapbackofficefournisseur.vercel.app/Connexion"}
 
                     >
@@ -376,9 +377,11 @@ const LadingCorps = () => {
                     </Button>
                     </Center>
                     </Box>
+                    
                     </Center>
             </Flex>
-         
+        
+          
             <Flex width={"100%"} height={"15vh"} bgColor={"#08566e"} display={["none","none","none","flex","flex"]} mt={-3} color={"white"}>
               <Center width={"100%"}>
                 <Box  display={"flex"}>

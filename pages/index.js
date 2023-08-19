@@ -23,10 +23,8 @@ import {
   Text,
   useDisclosure,
   useMediaQuery,
-  useToast,
-  Link
+  Link,
 } from "@chakra-ui/react";
-import { MdLocationOn } from "react-icons/md";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { BiCurrentLocation } from "react-icons/bi";
@@ -35,45 +33,22 @@ import { onValue, ref } from "@firebase/database";
 import { db2 } from "@/FIREBASE/clientApp";
 import Cookies from "cookies";
 import { useRouter } from "next/router";
+import { MdLocationOn } from "react-icons/md";
 
 export default function Home() {
-  const [final,setFinal] = useState([""]);
   const [locate, setLocate] = useState("");
+const [code,setCode] = useState([]);
+    const [final,setFinal] = useState([""]);
   const router = useRouter()
   const [getter,setGetter] = useState([])
   const [isLagerThan768] = useMediaQuery("(min-width: 768px)");
   const [cat, setCat] = useState([]);
-  useEffect(()=>{
-    localStorage.setItem("index",0)
-    const verifPos = localStorage.getItem("location")
-    const postale = localStorage.getItem("postal")
-    if (verifPos== undefined) {
-      localStorage.setItem("location"," ")
+  const [check, setCheck] = useState(0);
+  const [data, setData] = useState([]);
 
-    }
-    if (postale == undefined || postale== null) {
-      router.reload()
-      localStorage.setItem("postal","0")
-    }
-    update()
-    updateAll()
-  })
-  const update = () =>{
-    const starCountRef = ref(db2, "/");
-    onValue(starCountRef, (snapshot) => {
-      const donnes = snapshot.val();
-      if (donnes != null) {
-        const categorie = Object.keys(donnes).map((key) => ({
-          id: key,
-          ...donnes[key],
-        }))
-        setCat(categorie)
-       
-        
-      }
-        
-    })
-  }
+
+
+
   const updateAll = () => {
   
     cat.map((index, key) => {
@@ -98,6 +73,71 @@ export default function Home() {
 
 
 
+  useEffect(()=>{
+    setFinal(localStorage.getItem("location")?? "")
+    if (check == 0 || check == 1) {
+      const GetAll = async () => {
+        await axios.get("/api/GetJson").then((response) => {
+          // console.log(response.data);
+          // console.log("object values", Object.values(response.data))
+          setData(JSON.parse(Object.values(response.data)));
+        });
+      };
+      GetAll();
+      setLocate(localStorage.getItem("postal") ?? "0");
+     
+      // console.log("check",check)
+      setCheck(check + 1);
+    }
+
+
+
+
+
+    localStorage.setItem("index",0)
+    const verifPos = localStorage.getItem("location")
+    const postale = localStorage.getItem("postal")
+    if (verifPos== undefined) {
+      localStorage.setItem("location"," ")
+
+    }
+    if (postale == undefined || postale== null) {
+      router.reload()
+      localStorage.setItem("postal","0")
+    }
+    update()
+    updateAll()
+  },[final,router,updateAll])
+
+
+
+  const Search = (id) => {
+    if (data.filter((order) => order.num_dep === id).length != 0) {
+      const Final = data.filter((order) => order.num_dep === id);
+      localStorage.setItem("location", Object.values(Final[0])[1]);
+    } 
+  };
+
+
+  const update = () =>{
+    const starCountRef = ref(db2, "/");
+    onValue(starCountRef, (snapshot) => {
+      const donnes = snapshot.val();
+      if (donnes != null) {
+        const categorie = Object.keys(donnes).map((key) => ({
+          id: key,
+          ...donnes[key],
+        }))
+        setCat(categorie)
+       
+        
+      }
+        
+    })
+  }
+ 
+
+
 
 
 
@@ -115,22 +155,25 @@ export default function Home() {
               display={["grid", "grid", "grid", "none", "none"]}
             >
               <Box>
-                <InputGroup mt={2}  borderRadius={"100px"} mb={5}>
+                <InputGroup mt={10} bgColor={"#ddd"} borderRadius={"100px"} mb={5}>
                   <InputRightElement as={Text} width={"10em"}>
-                  {Object.values(final[0])[1]}
+                  {final}
                   </InputRightElement>
                   <Input
                     borderRadius={"100px"}
                     type={"number"}
                     placeholder="Entrez votre code postal "
-                    w={"20em"}
+                    w={"15em"}
                     maxLength={5}
                     value={locate}
-                    // value={postal}
+                   
                     onChange={(e) => {
                       localStorage.setItem("postal", e.target.value),
-                      setCode(e.target.value),
-                      Search(code.slice(0,2))
+                        setLocate(e.target.value),
+                        Search(locate.slice(0, 2));
+                        if((e.target.value).length>4){
+                          router.reload()
+                         }
                     }}
                     // onClick={onOpen}
                   />
@@ -148,7 +191,6 @@ export default function Home() {
                 </InputGroup>
               </Box>
             </Center>
-          
       <SliderComponents />
       
       <LadingCorps />
