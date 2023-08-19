@@ -421,7 +421,7 @@ const LadingCorps = () => {
                     _hover={{
                       bgColor:"black",
                       opacity:"0.7",
-                      textDecoration:none
+                      textDecoration:"none"
                     }}
                     as={Link}
                     href={"https://chapbackofficefournisseur.vercel.app/Connexion"} >
