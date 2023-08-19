@@ -358,7 +358,7 @@ const LadingCorps = () => {
                      Devenez partenaire et boostez votre commerce avec CHAP
                     </Text>
                     </Box>
-                    <Button color={"white"}  bgColor={"black"} mt={5} _hover={{
+                    <Button color={"white"}  bgColor={"black"} mt={2} _hover={{
                       bgColor:"black",
                       opacity:"0.7",
                       textDecoration:"none"
