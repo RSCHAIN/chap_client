@@ -358,12 +358,12 @@ const LadingCorps = () => {
                      Devenez partenaire et boostez votre commerce avec CHAP
                     </Text>
                     </Box>
-                    <Button color={"white"} bgColor={"black"} mt={5} _hover={{
+                    <Button color={"white"}  bgColor={"black"} mt={5} _hover={{
                       bgColor:"black",
                       opacity:"0.7",
                       textDecoration:"none"
                     }}
-                    
+                    py={2}
                     as={Link}
                     href={"https://chapbackofficefournisseur.vercel.app/Connexion"}
 
@@ -437,6 +437,7 @@ const LadingCorps = () => {
                       textDecoration:"none"
                     }}
                     as={Link}
+                    py={2}
                     href={"https://chapbackofficefournisseur.vercel.app/Connexion"} >
                       Rejoignez-nous
                     </Button>
