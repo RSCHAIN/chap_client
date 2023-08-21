@@ -352,10 +352,10 @@ const LadingCorps = () => {
                 <Box  display={"grid"}>
                   <Box>
                     
-                    <Text fontSize={"15px"} width={"full"}>
+                    <Text fontSize={"20px"} width={"full"} ml={"10%"}>
                     Commerçant ? 
                     </Text>
-                    <Text fontSize={"10px"} width={"full"}>
+                    <Text fontSize={"15px"} width={"full"}>
                      Devenez partenaire et boostez votre commerce avec CHAP
                     </Text>
                    
