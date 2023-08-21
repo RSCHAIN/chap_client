@@ -1179,7 +1179,7 @@ export default function Carte() {
             width={"621px"}
             height={"205px"}
             border={"1px solid #e6e6e6"}
-            boxShadow={"0px 2px 10px"}
+            // boxShadow={"0px 2px 10px"}
             boxSizing={"border-box"}
             borderRadius={"9px"}
             fontSize={30}

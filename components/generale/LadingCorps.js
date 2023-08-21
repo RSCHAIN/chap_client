@@ -64,7 +64,7 @@ export function ItemCard({ item, card }) {
         marginBottom={40}
         mr={5}
         borderRadius={25}
-        mb={5}
+        
       >
         <Link
           height={"15vh"}
@@ -120,7 +120,7 @@ export function ItemCard({ item, card }) {
           </Flex>
         </Link>
         <Box>
-          <Text as={"h4"} pb={2} align={"center"}>
+          <Text as={"h4"} pb={5} align={"center"}>
             {item.adresse}
           </Text>
         </Box>
