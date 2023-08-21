@@ -676,6 +676,7 @@ export default function Co(){
                <Box mt={5}>
                  <Button
                  py={5}
+                 px={5}
                    color={"#fff"}
                    width={"150px"}
                    height={"30px"}
@@ -695,6 +696,7 @@ export default function Co(){
                <Box mt={5} >
                  <Button
                  py={5}
+                 px={5}
                    color={"#fff"}
                    width={"150px"}
                    height={"30px"}
@@ -717,6 +719,7 @@ export default function Co(){
                <Box mt={5}>
                  <Button
                  py={5}
+                 px={5}
                    color={"#fff"}
                    width={"150px"}
                    height={"30px"}
@@ -920,6 +923,7 @@ export default function Co(){
                <Box mt={5}>
                  <Button
                  py={5}
+                 px={5}
                    color={"#fff"}
                    width={"150px"}
                    height={"30px"}
@@ -939,6 +943,7 @@ export default function Co(){
                <Box mt={5} >
                  <Button
                  py={5}
+                 px={5}
                    color={"#fff"}
                    width={"150px"}
                    height={"30px"}
@@ -961,6 +966,7 @@ export default function Co(){
                <Box mt={5}>
                  <Button
                  py={5}
+                 px={5}
                    color={"#fff"}
                    width={"150px"}
                    height={"30px"}
