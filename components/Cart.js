@@ -1187,7 +1187,7 @@ export default function Carte() {
             // pb={10}
             marginBottom={20}
           >
-            <Text marginTop={20}>VOTRE PANIER EST VIDE</Text>
+            <Text marginTop={20}>Votre panier est vide</Text>
           </Flex>
         </Center>
       </>
