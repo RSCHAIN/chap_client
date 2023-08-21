@@ -64,6 +64,7 @@ export function ItemCard({ item, card }) {
         marginBottom={40}
         mr={5}
         borderRadius={25}
+        mb={5}
       >
         <Link
           height={"15vh"}
