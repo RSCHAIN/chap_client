@@ -356,7 +356,7 @@ const LadingCorps = () => {
                 <Box  display={"grid"}>
                   <Box>
                     
-                    <Text fontSize={"20px"} width={"full"} >
+                    <Text fontSize={"20px"} ml={"30%"} width={"full"} >
                     Commerçant ? 
                     </Text>
                     <Text fontSize={"13px"} width={"full"}>
