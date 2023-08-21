@@ -217,6 +217,7 @@ export function ContainerCard({ card }) {
         {/* contient les card's  */}
         <Flex
         mb={10}
+        pb={10}
           maxHeight={"auto"}
           width={"100%"}
           flexWrap={"wrap"}
@@ -244,6 +245,7 @@ export function ContainerCard({ card }) {
           <SimpleGrid 
         display={["flex","flex","flex","none","none"]}
         mb={10}
+        pb={10}
           width={"100%"} 
           flexWrap={"wrap"} 
           direction={"row"}
@@ -447,6 +449,7 @@ const LadingCorps = () => {
                 direction={"column"}
                 alignItems={"center"}
                 mb={10}
+                pb={5}
                 justifyContent={"center"}
               >
                 {cat.map((card, key) => {
