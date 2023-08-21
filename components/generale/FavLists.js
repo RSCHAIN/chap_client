@@ -91,10 +91,10 @@ export default function Favlist() {
             key={index} my={10}bgColor={"#eee2"} pb={5} boxShadow={"grey 1px 1px  5px"} width={["150px","150px","150px","150px","150px"]} borderRadius={"15px"}>
               <Image height={["100px","100px","100px","100px","100px"]}  width={["150px","150px","150px","150px","150px"]} src={data.imageUrl}  alt={data.nom} borderRadius={"15px 15px 0px 0px"} />
 
-              <Text fontWeight={"bold"} width={"fit-content"} noOfLines={1} pl={2} fontSize={["15px","15px","15px","20px","20px"]}>{data.nom}</Text>
+              <Text fontWeight={"bold"} width={"fit-content"} noOfLines={1} pl={2} fontSize={["15px","15px","15px","15px","15px"]}>{data.nom}</Text>
               <Flex justifyContent={"space-between"}>
-              <Text fontWeight={"bold"} width={"fit-content"} color={"orange.900"}  pl={2} fontSize={["13px","13px","13px","15px","15px"]}>{data.organisation}</Text>
-              <Text color={"black"}  fontWeight={"bold"} fontSize={["13px","13px","13px","15px","15px"]}>{data.prix}€</Text>
+              <Text fontWeight={"bold"} width={"fit-content"} color={"orange.900"}  pl={2} fontSize={["13px","13px","13px","13px","13px"]}>{data.organisation}</Text>
+              <Text color={"black"}  fontWeight={"bold"} fontSize={["13px","13px","13px","13px","13px"]}>{data.prix}€</Text>
               </Flex>
              
             </Box>
