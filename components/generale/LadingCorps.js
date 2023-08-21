@@ -161,6 +161,7 @@ export function ContainerCard({ card }) {
     <>
       {/* categorie*/}
       <Flex
+      mt={10}
         width={"95%"}
         height={"45vh"}
         // mb={10}
