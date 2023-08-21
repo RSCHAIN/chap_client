@@ -155,7 +155,7 @@ const [code,setCode] = useState([]);
               display={["grid", "grid", "grid", "none", "none"]}
             >
               <Box>
-                <InputGroup mt={10}  borderRadius={"100px"} mb={5}>
+                <InputGroup mt={2}  borderRadius={"100px"} mb={2}>
                   <InputRightElement as={Text} width={"10em"}>
                   {final}
                   </InputRightElement>
