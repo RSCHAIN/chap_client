@@ -356,11 +356,11 @@ const LadingCorps = () => {
                 <Box  display={"grid"}>
                   <Box>
                     <Center>
-                    <Text fontSize={"20px"}  width={"full"} >
+                    <Text fontSize={"20px"}  width={"fit-content"} >
                     Commerçant ? 
                     </Text>
                     </Center>
-                    <Text fontSize={"13px"} width={"full"}>
+                    <Text fontSize={"13px"} width={"fit-content"}>
                      Devenez partenaire et boostez votre commerce avec CHAP
                     </Text>
                    
