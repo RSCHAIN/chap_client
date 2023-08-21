@@ -93,8 +93,8 @@ export default function Favlist() {
 
               <Text fontWeight={"bold"} width={"fit-content"} noOfLines={1} pl={2} fontSize={["15px","15px","15px","15px","15px"]}>{data.nom}</Text>
               <Flex justifyContent={"space-between"}>
-              <Text fontWeight={"bold"} width={"fit-content"} color={"orange.900"}  pl={2} fontSize={["13px","13px","13px","13px","13px"]}>{data.organisation}</Text>
-              <Text color={"black"}  fontWeight={"bold"} fontSize={["13px","13px","13px","13px","13px"]}>{data.prix}€</Text>
+              <Text fontWeight={"bold"} width={"fit-content"} color={"orange.900"}  pl={2} fontSize={["10px","10px","10px","10px","10px"]}>{data.organisation}</Text>
+              <Text color={"black"}  fontWeight={"bold"} fontSize={["10px","10px","10px","10px","10px"]}>{data.prix}€</Text>
               </Flex>
              
             </Box>
