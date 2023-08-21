@@ -446,7 +446,7 @@ const LadingCorps = () => {
                 
                 direction={"column"}
                 alignItems={"center"}
-                
+                mb={10}
                 justifyContent={"center"}
               >
                 {cat.map((card, key) => {
