@@ -243,7 +243,7 @@ export function ContainerCard({ card }) {
           </SimpleGrid>
           <SimpleGrid 
         display={["flex","flex","flex","none","none"]}
-        
+        mb={10}
           width={"100%"} 
           flexWrap={"wrap"} 
           direction={"row"}
