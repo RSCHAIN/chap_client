@@ -396,7 +396,7 @@ const LadingCorps = () => {
                     }}>
                     Commerçant ?
                     </Text>
-                    <Text fontSize={"25px"} width={"full"} _hover={{
+                    <Text fontSize={"20px"} width={"full"} _hover={{
                       bgColor:"black",
                       opacity:"0.7"
                     }}>
