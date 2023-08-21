@@ -219,7 +219,7 @@ export default function Commande() {
       <Center>
         <Tabs
           isManual
-          orientation={"vertical"}
+          orientation={["horizontal","horizontal","horizontal","vertical","vertical"]}
           variant="outfitted"
           isLazy
           w={"1400px "}
