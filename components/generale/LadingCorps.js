@@ -389,7 +389,7 @@ const LadingCorps = () => {
             <Flex width={"100%"} height={"15vh"} bgColor={"#08566e"} display={["none","none","none","flex","flex"]} mt={-3} color={"white"}>
               <Center width={"100%"}>
                 <Box  display={"flex"}>
-                  <Box ml={10} textAlign={"center"}>
+                  <Box mr={10} textAlign={"center"}>
                     <Text fontSize={"25px"} width={"full"} _hover={{
                       bgColor:"black",
                       opacity:"0.7"
