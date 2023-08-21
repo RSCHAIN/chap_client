@@ -216,6 +216,7 @@ export function ContainerCard({ card }) {
 
         {/* contient les card's  */}
         <Flex
+        mb={10}
           maxHeight={"auto"}
           width={"100%"}
           flexWrap={"wrap"}
