@@ -347,15 +347,15 @@ const LadingCorps = () => {
         {/* <Location /> */}
         <Center width={"100%"} height={"auto"}>
           <Box height={"100%"} width={"100%"}>
-          <Flex width={"100%"} height={"15vh"} bgColor={"#08566e"} display={["flex","flex","flex","none","none"]} color={"white"}>
+          <Flex width={"100%"} height={"fit-content"} bgColor={"#08566e"} display={["flex","flex","flex","none","none"]} color={"white"}>
               <Center width={"100%"}>
                 <Box  display={"grid"}>
                   <Box>
                     
-                    <Text fontSize={"20px"} width={"full"} ml={"10%"}>
+                    <Text fontSize={"20px"} width={"full"} >
                     Commerçant ? 
                     </Text>
-                    <Text fontSize={"15px"} width={"full"}>
+                    <Text fontSize={"13px"} width={"full"}>
                      Devenez partenaire et boostez votre commerce avec CHAP
                     </Text>
                    
