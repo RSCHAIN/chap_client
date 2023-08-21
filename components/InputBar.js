@@ -167,7 +167,7 @@ const InputBar = () => {
             justifyContent={"center"}
             width={"auto"}
             height={"100%"}
-            mr={"1em"}
+            mr={"1em"} 
           >
             {/* <Link display={'flex'} mr={{ base: "3", md: "3" }} fontSize={20} href={"/Connexion"}>
           <Icon as={AiOutlineUser} fontSize={30} mr={2}/> Se connecter
