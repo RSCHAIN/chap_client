@@ -155,14 +155,14 @@ const [code,setCode] = useState([]);
               display={["grid", "grid", "grid", "none", "none"]}
             >
               <Box>
-                <InputGroup mt={10} bgColor={"#ddd"} borderRadius={"100px"} mb={5}>
+                <InputGroup mt={10}  borderRadius={"100px"} mb={5}>
                   <InputRightElement as={Text} width={"10em"}>
                   {final}
                   </InputRightElement>
                   <Input
                     borderRadius={"100px"}
                     type={"number"}
-                    placeholder="Entrez votre code postal "
+                    placeholder="Votre code postal "
                     w={"15em"}
                     maxLength={5}
                     value={locate}
