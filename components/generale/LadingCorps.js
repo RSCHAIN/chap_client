@@ -389,7 +389,7 @@ const LadingCorps = () => {
             <Flex width={"100%"} height={"15vh"} bgColor={"#08566e"} display={["none","none","none","flex","flex"]} mt={-3} color={"white"}>
               <Center width={"100%"}>
                 <Box  display={"flex"}>
-                  <Box mr={10} textAlign={"center"}>
+                  <Box mr={20} textAlign={"center"}>
                     <Text fontSize={"25px"} width={"full"} _hover={{
                       bgColor:"black",
                       opacity:"0.7"
@@ -410,7 +410,8 @@ const LadingCorps = () => {
                       textDecoration:"none"
                     }}
                     as={Link}
-                    mt={2}
+                    mt={5}
+
                     py={2}
                     href={"https://chapbackofficefournisseur.vercel.app/Connexion"} >
                       Rejoignez-nous
