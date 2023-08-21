@@ -174,7 +174,7 @@ export function ContainerCard({ card }) {
           id={card}
           height={"auto"}
           width={"100%"}
-          mt={2}
+          mt={5}
           alignItems={"center"}
           justifyContent={"space-between"}
         >
