@@ -178,7 +178,7 @@ const InputBar = () => {
                   {final}
                 </InputRightElement>
                 <Input
-                isDisabled={locate.length<=4}
+                isDisabled={locate.length>=4}
                   borderRadius={"100px"}
                   type={"number"}
                   placeholder="Entrez votre code postal"
