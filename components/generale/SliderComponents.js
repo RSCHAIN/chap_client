@@ -103,6 +103,16 @@ useEffect(() => {
 
 
 
+ function  coordonnees (pos)  {
+  let crd = pos.coords;
+
+  let latitude = crd.latitude;
+  let longitude = crd.longitude;
+  // await axios.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM").then((response)=>console.log(response)).catch((error)=>console.log(error))
+  console.log(latitude,longitude);
+  // 'Latitude : ' + latitude.toFixed(2);
+  // 'Longitude : ' + longitude.toFixed(2);
+}
 
 
 
@@ -217,7 +227,7 @@ useEffect(() => {
              }}
             />
             </InputGroup>
-            <Button bgcolor={""}>Trouver</Button>
+            <Button bgcolor={"dark"} onclick={()=>console.log("okay")}>Trouver</Button>
             </Flex>
  
           </Box>
