@@ -147,7 +147,7 @@ export function ItemCard({ item, card }) {
                 color={"green"}
                 textAlign={"center"}
                 fontWeight={"bold"}
-              >
+              > 
                 {nom}
               </Text> }
         </Box>
