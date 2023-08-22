@@ -50,8 +50,17 @@ export function ItemCard({ item, card }) {
   const [imageUrl, setImageUrl] = useState();
   const [adresse, setAdresse] = useState();
   const [numero, setNumero] = useState();
-  const [nom, setNom] = useState();
+  const [nom, setNom] = useState(" ");
+  
 
+  useEffect(()=>{
+    const jour = new Date();
+     if(item.horaire != undefined && item.horaire != null){
+    setNom(Object.values(item.horaire)[parseInt(jour.getDay())]);
+  }
+  },[item.horaire,nom])
+ 
+  
   const [categorie, setCategorie] = useState();
  
   return (
@@ -79,6 +88,7 @@ export function ItemCard({ item, card }) {
             sessionStorage.setItem("description", item.description);
             sessionStorage.setItem("nationalite", item.nationalite);
             sessionStorage.setItem("horaire", JSON.stringify(item.horaire));
+            console.log(item.horaire);
             sessionStorage.setItem(
               "paiement",
               JSON.stringify(item.methodeDePaiement)
@@ -108,6 +118,7 @@ export function ItemCard({ item, card }) {
               bg={"rgba(0, 0, 0, 0.277)"}
             >
               <Text
+              
                 fontSize={"xl"}
                 color={"#fff"}
                 textAlign={"center"}
@@ -115,6 +126,8 @@ export function ItemCard({ item, card }) {
               >
                 {item.organisation}
               </Text>
+            
+                
             </Flex>
           </Flex>
         </Link>
@@ -122,6 +135,21 @@ export function ItemCard({ item, card }) {
           <Text as={"h4"} pb={2} align={"center"}>
             {item.adresse}
           </Text>
+          {nom.length <=5 ?  <Text
+                fontSize={"lg"}
+                color={"red.500"}
+                textAlign={"center"}
+                fontWeight={"bold"}
+              >
+                Fermé
+              </Text> : <Text
+                fontSize={"lg"}
+                color={"green"}
+                textAlign={"center"}
+                fontWeight={"bold"}
+              >
+                {nom}
+              </Text> }
         </Box>
       </Box>
     </>
