@@ -148,7 +148,7 @@ export function ItemCard({ item, card }) {
                 textAlign={"center"}
                 fontWeight={"bold"}
               > 
-                {nom}
+                ouvert de : {" ",nom}
               </Text> }
         </Box>
       </Box>
