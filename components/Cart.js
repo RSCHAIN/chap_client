@@ -546,15 +546,15 @@ export default function Carte() {
                                 <Box display={"flex"} marginBottom={5}>
                                   <RadioGroup onChange={setHours} value={hours}>
                                     <Radio value="Soir(13h-16h)">
-                                      Apres-Midi(de 13h ----- 16h)
+                                      Apres-Midi (de 13h ----- 16h)
                                     </Radio>
                                     <br />
                                     <Radio value="Soir(16h-20h)">
-                                      Soir(de 16h ----- 20h)
+                                      Soir (de 16h ----- 20h)
                                     </Radio>
                                     <br />
                                     <Radio value="Soir(20h-00h)">
-                                      Nuit(de 20h ----- 00h)
+                                      Nuit (de 20h ----- 00h)
                                     </Radio>
                                   </RadioGroup>
                                 </Box>
@@ -567,15 +567,15 @@ export default function Carte() {
                                 <Box display={"flex"} marginBottom={5}>
                                   <RadioGroup onChange={setHours} value={hours}>
                                     <Radio value="Soir(13h-16h)">
-                                      Apres-Midi(de 13h ----- 16h)
+                                      Apres-Midi (de 13h ----- 16h)
                                     </Radio>
                                     <br />
                                     <Radio value="Soir(16h-20h)">
-                                      Soir(de 16h ----- 20h)
+                                      Soir (de 16h ----- 20h)
                                     </Radio>
                                     <br />
                                     <Radio value="Soir(20h-00h)">
-                                      Nuit(de 20h ----- 00h)
+                                      Nuit (de 20h ----- 00h)
                                     </Radio>
                                   </RadioGroup>
                                 </Box>
@@ -592,15 +592,15 @@ export default function Carte() {
                                     </Radio>
                                     <br />
                                     <Radio value="Soir(13h-16h)">
-                                      Apres-Midi(de 13h ----- 16h)
+                                      Apres-Midi (de 13h ----- 16h)
                                     </Radio>
                                     <br />
                                     <Radio value="Soir(16h-20h)">
-                                      Soir(de 16h ----- 20h)
+                                      Soir (de 16h ----- 20h)
                                     </Radio>
                                     <br />
                                     <Radio value="Soir(20h-00h)">
-                                      Nuit(de 20h ----- 00h)
+                                      Nuit (de 20h ----- 00h)
                                     </Radio>
                                   </RadioGroup>
                                 </Box>
@@ -988,15 +988,15 @@ export default function Carte() {
                                 <Box display={"flex"} marginBottom={5}>
                                   <RadioGroup onChange={setHours} value={hours}>
                                     <Radio value="Soir(13h-16h)">
-                                      Apres-Midi(de 13h ----- 16h)
+                                      Apres-Midi (de 13h ----- 16h)
                                     </Radio>
                                     <br />
                                     <Radio value="Soir(16h-20h)">
-                                      Soir(de 16h ----- 20h)
+                                      Soir (de 16h ----- 20h)
                                     </Radio>
                                     <br />
                                     <Radio value="Soir(20h-00h)">
-                                      Nuit(de 20h ----- 00h)
+                                      Nuit (de 20h ----- 00h)
                                     </Radio>
                                   </RadioGroup>
                                 </Box>
@@ -1009,15 +1009,15 @@ export default function Carte() {
                                 <Box display={"flex"} marginBottom={5}>
                                   <RadioGroup onChange={setHours} value={hours}>
                                     <Radio value="Soir(13h-16h)">
-                                      Apres-Midi(de 13h ----- 16h)
+                                      Apres-Midi (de 13h ----- 16h)
                                     </Radio>
                                     <br />
                                     <Radio value="Soir(16h-20h)">
-                                      Soir(de 16h ----- 20h)
+                                      Soir (de 16h ----- 20h)
                                     </Radio>
                                     <br />
                                     <Radio value="Soir(20h-00h)">
-                                      Nuit(de 20h ----- 00h)
+                                      Nuit (de 20h ----- 00h)
                                     </Radio>
                                   </RadioGroup>
                                 </Box>
@@ -1029,20 +1029,20 @@ export default function Carte() {
                                 </Text>
                                 <Box display={"flex"} marginBottom={5}>
                                   <RadioGroup onChange={setHours} value={hours}>
-                                    <Radio value="Matin">
-                                      Matin(de 09h30 ----- 12h)
+                                    <Radio value="Matin(9H30 ->12h30">
+                                      Matin (de 09h30 ----- 12h)
                                     </Radio>
                                     <br />
                                     <Radio value="Soir(13h-16h)">
-                                      Apres-Midi(de 13h ----- 16h)
+                                      Apres-Midi (de 13h ----- 16h)
                                     </Radio>
                                     <br />
                                     <Radio value="Soir(16h-20h)">
-                                      Soir(de 16h ----- 20h)
+                                      Soir (de 16h ----- 20h)
                                     </Radio>
                                     <br />
                                     <Radio value="Soir(20h-00h)">
-                                      Nuit(de 20h ----- 00h)
+                                      Nuit (de 20h ----- 00h)
                                     </Radio>
                                   </RadioGroup>
                                 </Box>

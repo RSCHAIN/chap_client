@@ -135,7 +135,7 @@ export function ItemCard({ item, card }) {
           <Text as={"h4"} pb={2} align={"center"}>
             {item.adresse}
           </Text>
-          {nom.length ==5 ?  <Text
+        {nom.length <=5 ?  <Text
                 fontSize={"lg"}
                 color={"red.500"}
                 textAlign={"center"}
@@ -148,8 +148,9 @@ export function ItemCard({ item, card }) {
                 textAlign={"center"}
                 fontWeight={"bold"}
               > 
-                ouvert de : {" ",nom} 
-              </Text> }
+                 {" ",nom} 
+              </Text> } 
+              
         </Box>
       </Box>
     </>
