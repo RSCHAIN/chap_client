@@ -140,7 +140,7 @@ useEffect(()=>{
               fontSize={{base:"1rem",xl:"1.25rem"}}
               _hover={{ textDecoration: "none", color: "#068DA9" }}
             >
-             Nous-contacter
+             Nous contacter
             </Link></Flex>
             {/* {postal.length ==5 ? <><Flex  mr={10}><Text mr={5}>Votre code postal</Text>{postal}</Flex></>:<></>} */}
             {/* <Menu isLazy>

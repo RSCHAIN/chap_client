@@ -35,7 +35,7 @@ const MenuItem_Link = () => {
             fontSize={"1rem"}
             _hover={{ textDecoration: "none", color: "#068DA9" }}
           >
-            Nous-contacter
+            Nous contacter
           </Link>
           <Link href="/Cart">Panier</Link>
           {/* <Link href='#'>Service</Link>

@@ -525,7 +525,7 @@ export default function Carte() {
                       <Box margin={2}>
                         <Text marginBottom={5} fontWeight={"semibold"}>
                           {" "}
-                          Jours de Livraison
+                          Date de Livraison
                         </Text>
                         <Box display={"flex"} marginBottom={2}>
                           <Tabs>
@@ -541,7 +541,7 @@ export default function Carte() {
                               <TabPanel>
                                 <Text marginBottom={5} fontWeight={"semibold"}>
                                   {" "}
-                                  Periode de livraison
+                                  Tranche horaire
                                 </Text>
                                 <Box display={"flex"} marginBottom={5}>
                                   <RadioGroup onChange={setHours} value={hours}>
@@ -562,7 +562,7 @@ export default function Carte() {
                               <TabPanel>
                                 <Text marginBottom={5} fontWeight={"semibold"}>
                                   {" "}
-                                  Periode de livraison
+                                  Tranche horaire
                                 </Text>
                                 <Box display={"flex"} marginBottom={5}>
                                   <RadioGroup onChange={setHours} value={hours}>
@@ -583,7 +583,7 @@ export default function Carte() {
                               <TabPanel>
                                 <Text marginBottom={5} fontWeight={"semibold"}>
                                   {" "}
-                                  Periode de livraison
+                                  Tranche horaire
                                 </Text>
                                 <Box display={"flex"} marginBottom={5}>
                                   <RadioGroup onChange={setHours} value={hours}>
@@ -924,13 +924,13 @@ export default function Carte() {
                          <Flex justifyContent={"space-between"} mb={2}>
                           <Text>Articles :</Text>
                           <Text>
-                          {prix} €
+                          {parseFloat(prix).toFixed(2)} €
                           </Text>
                          </Flex>
                          <Flex justifyContent={"space-between"}  mb={2} borderBottom={"1px solid grey"}>
                           <Text>Livraison :</Text>
                           <Text>
-                          {frais} €
+                          {parseFloat(frais).toFixed(2)} €
                           </Text>
                          </Flex>
                          <Flex justifyContent={"space-between"}>
@@ -944,7 +944,7 @@ export default function Carte() {
                            color={"red.600"}
                             fontWeight={"bold"}
                             marginBottom={5}>
-                          {parseFloat(prix + frais).toFixed(3)} €
+                          {parseFloat(prix + frais).toFixed(2)} €
                           </Text>
                          </Flex>
                          
@@ -967,7 +967,7 @@ export default function Carte() {
                       <Box margin={2}>
                         <Text marginBottom={5} fontWeight={"semibold"}>
                           {" "}
-                          Jours de recuperation
+                          Date de recuperation
                         </Text>
                         <Box display={"flex"} marginBottom={2}>
                           <Tabs>
@@ -983,7 +983,7 @@ export default function Carte() {
                               <TabPanel>
                                 <Text marginBottom={5} fontWeight={"semibold"}>
                                   {" "}
-                                  Disponibilité
+                                  Tranche horaire
                                 </Text>
                                 <Box display={"flex"} marginBottom={5}>
                                   <RadioGroup onChange={setHours} value={hours}>
@@ -1129,14 +1129,13 @@ export default function Carte() {
                           CONFIRMER
                         </Button>
                       </Box>
-                    </AccordionPanel>
-                    <Box>
+                      <Box>
                           <Text fontWeight={"bold"}fontSize={"19px"} > Récapitulatif de commande</Text>
                          
                          <Flex justifyContent={"space-between"} my={2} borderBottom={"1px solid grey"}>
                           <Text>Articles :</Text>
                           <Text>
-                          {prix} €
+                          {parseFloat(prix).toFixed(2)} €
                           </Text>
                          </Flex>
                          
@@ -1151,13 +1150,15 @@ export default function Carte() {
                            color={"red.600"}
                             fontWeight={"bold"}
                             marginBottom={5}>
-                          {prix} €
+                          {parseFloat(prix).toFixed(2)} €
                           </Text>
                          </Flex>
                          
                          
 
                         </Box>
+                    </AccordionPanel>
+                    
                   </AccordionItem>
                 </Accordion>
               </RadioGroup>
