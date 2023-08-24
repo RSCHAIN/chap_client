@@ -157,7 +157,7 @@ export function ItemCard({ item, card }) {
               </Text> } 
               </Box>
         <Box>
-          <Text as={"h4"} pb={2} align={"center"}>
+          <Text as={"h4"} pb={2} align={"center"}>  
             {item.adresse}
           </Text>
       
