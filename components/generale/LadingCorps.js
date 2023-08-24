@@ -68,6 +68,7 @@ export function ItemCard({ item, card }) {
       {/* card  */}
       <Box
         mt={5}
+        
         height={["20vh", "20vh", "20vh", "20vh", "20vh"]}
         width={{ base: "25%", md: "15%" }}
         marginBottom={40}
@@ -117,39 +118,49 @@ export function ItemCard({ item, card }) {
               width={"100%"}
               bg={"rgba(0, 0, 0, 0.277)"}
             >
+              <Box>
+
               <Text
               
-                fontSize={"xl"}
-                color={"#fff"}
-                textAlign={"center"}
-                fontWeight={"bold"}
-              >
-                {item.organisation}
-              </Text>
+              fontSize={"xl"}
+              color={"#fff"}
+              textAlign={"center"}
+              fontWeight={"bold"}
+            >
+              {item.organisation}
+            </Text>
+            
+              </Box>
+            
             
                 
             </Flex>
           </Flex>
         </Link>
+        <Box bgColor={"white"}width={"100%"} borderBottom={"1px solid black"}>
+              {nom.length >5 ?  <Text
+                fontSize={"sm"}
+                color={"green"}
+                textAlign={"center"}
+                fontWeight={"bold"}
+              >
+              Ouvert : {" ",nom} 
+              </Text> : <Text
+                fontSize={"sm"}
+                color={"red"}
+                textAlign={"center"}
+                fontWeight={"bold"}
+              >
+               
+               {nom.length <3 ? "Fermé" : `${" ",nom}`} 
+                 
+              </Text> } 
+              </Box>
         <Box>
           <Text as={"h4"} pb={2} align={"center"}>
             {item.adresse}
           </Text>
-        {nom.length <=5 ?  <Text
-                fontSize={"lg"}
-                color={"red.500"}
-                textAlign={"center"}
-                fontWeight={"bold"}
-              >
-                Fermé
-              </Text> : <Text
-                fontSize={"lg"}
-                color={"green"}
-                textAlign={"center"}
-                fontWeight={"bold"}
-              > 
-                 {" ",nom} 
-              </Text> } 
+      
               
         </Box>
       </Box>

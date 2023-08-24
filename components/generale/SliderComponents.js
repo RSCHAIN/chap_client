@@ -44,7 +44,11 @@ const settings2 = {
   slidesToScroll: 1,
 };
 const SliderComponents = () => {
-  
+  //position variable//
+
+  const [lat,setLat]= useState()
+  const [long,setLong]= useState()
+  //end
   const [locate, setLocate] = useState("");
   const [check,setCheck] = useState(0);
   const [data,setData] = useState([]);
@@ -103,18 +107,20 @@ useEffect(() => {
 
 
 
- function  coordonnees (pos)  {
+ async function  coordonnees (pos)  {
   let crd = pos.coords;
 
   let latitude = crd.latitude;
   let longitude = crd.longitude;
-  // await axios.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM").then((response)=>console.log(response)).catch((error)=>console.log(error))
+  await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM`).then((response)=>console.log(response)).catch((error)=>console.log(error))
   console.log(latitude,longitude);
   // 'Latitude : ' + latitude.toFixed(2);
   // 'Longitude : ' + longitude.toFixed(2);
 }
 
-
+const handleLocate = () => {
+  navigator.geolocation.watchPosition(coordonnees)
+}
 
 
 
@@ -227,7 +233,7 @@ useEffect(() => {
              }}
             />
             </InputGroup>
-            <Button bgcolor={"dark"} onclick={()=>console.log("okay")}>Trouver</Button>
+            <Button bgColor={"cyan.600"} color="white" onClick={()=>handleLocate()}>Trouver</Button>
             </Flex>
  
           </Box>
