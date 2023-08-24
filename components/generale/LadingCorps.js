@@ -153,7 +153,7 @@ export function ItemCard({ item, card }) {
               >
                
                {nom.length <4 ? "" : `${" ",nom}`} 
-                 
+                  
               </Text> } 
               </Box>
         <Box>
