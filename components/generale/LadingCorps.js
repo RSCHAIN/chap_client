@@ -152,7 +152,7 @@ export function ItemCard({ item, card }) {
                 fontWeight={"bold"}
               >
                
-               {nom.length <3 ? "Fermé" : `${" ",nom}`} 
+               {nom.length <4 ? "" : `${" ",nom}`} 
                  
               </Text> } 
               </Box>
