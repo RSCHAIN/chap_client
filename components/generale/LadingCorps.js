@@ -57,6 +57,7 @@ export function ItemCard({ item, card }) {
     const jour = new Date();
      if(item.horaire != undefined && item.horaire != null){
     setNom(Object.values(item.horaire)[parseInt(jour.getDay())]);
+    localStorage.setItem("jour",parseInt(jour.getDay()));
   }
   },[item.horaire,nom])
  
@@ -391,8 +392,8 @@ const LadingCorps = () => {
         {/* <Location /> */}
         <Center width={"100%"} height={"auto"}>
           <Box height={"100%"} width={"100%"}>
-          <Flex width={"100%"} height={"fit-content"} bgColor={"#08566e"} display={["flex","flex","flex","none","none"]} color={"white"}>
-              <Center width={"100%"}>
+          <Flex width={"100%"} height={"fit-content"} bgColor={"#08566e"} display={["grid","grid","grid","none","none"]} color={"white"}>
+              <Center width={"100%"} display={"grid"}>
                 <Box  display={"grid"}>
                   <Box>
                     <Center>
@@ -422,7 +423,143 @@ const LadingCorps = () => {
                     </Button>
                     </Center>
                     </Box>
+                    <Box  display={"grid"}>
+                  <Box mt={2}>
+                    <Center>
+                    <Text fontSize={"20px"}  width={"fit-content"} >
+                    Envie de livrer un colis ? 
+                    </Text>
+                    </Center>
+                    <Center>
+                    <Text textAlign={"center"} alignContent={"center"} fontSize={"13px"} width={"fit-content"}>
+                    Passer votre devis dès maintenant
+                    </Text>
+                    </Center>
+                    </Box>
+                    <Center>
+                    <Button
+                py={5}
+                px={5}
+                  color={"#fff"}
+                  width={"150px"}
+                  height={"30px"}
+                  as={"a"}
+                  // isDisabled={true}
+                  onClick={onOpen}
+                  bgColor={"cyan.700"}
+                  _hover={{
+                    backgroundColor: " cyan.900",
+                    color: "white ",
+                  }}
+                  // leftIcon={<BsTelephoneOutboundFill />}
+                >
+                  Devis
+                </Button>
+                <Modal isOpen={isOpen} onClose={onClose}>
+                  <ModalOverlay />
+                  <ModalContent>
+                    <ModalHeader>Demande de Devis</ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody>
+                      <Center>
+                      <Box >
+                        <Text>Date & heure expedition: </Text>
+
+                        <Input
+                          type="datetime-local"
+                          width={"180px"}
+                          onChange={(e) => {}}
+                        />
+                      </Box>
+                      </Center>
+                     
+                      <SimpleGrid columns={2}>
+                      <Box >
+                        <Text>Destination: </Text>
+                        <Input
+                          placeholder="lieu de destination"
+                          type="text"
+                          width={"180px"}
+                          onChange={(e) => {}}
+                        />
+                      </Box>
+                        <Box>
+                              <Text >Votre Numero : </Text>
+                              <Input
+                              placeholder="votre numero"
+                              
+                                type="number"
+                                width={"180px"}
+                                onChange={(e) => {}}
+                              />
+                            </Box>
+                     
+                      <Box >
+                        <Text>Longueur: </Text>
+                        <Input
+                          placeholder="longueur en metres"
+                          type="number"
+                          width={"180px"}
+                          onChange={(e) => {}}
+                        />
+                      </Box>
+                      
+                      <Box>
+                        <Text>Largeur: </Text>
+                        <Input
+                          placeholder="largeur en metres"
+                          type="number"
+                          width={"180px"}
+                          onChange={(e) => {}}
+                        />
+                      </Box>
+                     
+                      <Box>
+                        <Text>hauteur : </Text>
+                        <Input
+                          placeholder="hauteur en metres"
+                          type="number"
+                          width={"180px"}
+                          onChange={(e) =>{}}
+                        />
+                      </Box>
+                     
+                      <Box >
+                        <Text>Poids: </Text>
+                        <Input
+                          placeholder="poids  en kg"
+                          type="number"
+                          width={"180px"}
+                          onChange={(e) => {}}
+                        />
+                      </Box>
+                      </SimpleGrid>
+                      
                     
+                    
+                    </ModalBody>
+
+                    <ModalFooter>
+                      {/* <Button colorScheme="ghost" mr={3} onClick={onClose}>
+                    Annuler
+                  </Button> */}
+
+                      <Button
+                        bgColor={"cyan.700"}
+                        color={"white"}
+                        _hover={{ bgColor: "cyan.900" }}
+                        onClick={() => {
+                          alert("en cours de maintenance");
+                        }}
+                      >
+                        Valider
+                      </Button>
+                    </ModalFooter>
+                  </ModalContent>
+                </Modal>
+                    </Center>
+                    </Box>
+                     
                     </Center>
             </Flex>
         

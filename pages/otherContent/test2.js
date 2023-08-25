@@ -35,7 +35,7 @@ const PagButton = (props) => {
   };
 export default function Tested(){
    const router = useRouter()
-    
+   const [jour,setJour] =useState(0)
     const [imageUrl, setImageUrl] = useState([]);
     const [adresse, setAdresse] = useState([]);
     const [numero, setNumero] = useState([]);
@@ -76,38 +76,36 @@ function Next() {
 
 const Get = async ()=>{
   
-    if (datas==0 || num == undefined || num == null) {
+    if (datas==0) {
         const q = query(collection(db, "Admin"), where("categorie","==", `${localStorage.getItem("service")}`),orderBy("organisation"));
       
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      // adresse.push(doc.data().adresse);
-    //   imageUrl.push(doc.data().imageUrl);
-    //   numero.push(doc.data().number);
-    //   nom.push(doc.data().organisation);
-    //   categorie.push(doc.data().categorie);
-    //  console.log(doc.data().description)
-  
-      tout.push(doc.data())
+
+      tout.push(doc.data()) 
       
     })
+    setDatas(datas+1);
   }
-    setDatas(1);
-  
+    
+  setDatas(datas+1);
     
 }
 useEffect( ()=>{
+  
+  setJour(localStorage.getItem("jour"))
   setCategorie(localStorage.getItem("service"))
-    if (datas == 0) {
+    if (datas == 0 || datas ==1) {
+ 
       
    Get();
  
    Next();
-  
+   
+   
     }
     
-},[Get,datas,Next])
+},[Get,datas,Next,tout])
 
 
 
@@ -198,6 +196,25 @@ useEffect( ()=>{
                 </Flex>
               </Link>
               <Box>
+              <Box bgColor={"white"}width={"100%"} borderBottom={"1px solid black"}>
+              {Object.values(data.horaire)[jour].length >5 ?  <Text
+                fontSize={"sm"}
+                color={"green"}
+                textAlign={"center"}
+                fontWeight={"bold"}
+              >
+              Ouvert : {" ",Object.values(data.horaire)[jour]} 
+              </Text> : <Text
+                fontSize={"sm"}
+                color={"red"}
+                textAlign={"center"}
+                fontWeight={"bold"}
+              >
+               
+               {Object.values(data.horaire)[jour].length <4 ? " " : `${" ",Object.values(data.horaire)[jour]}`} 
+                  
+              </Text> } 
+              </Box> 
                 <Text as={"h4"} pb={5} align={"center"}>
                     { data.adresse}
                 </Text>
@@ -224,21 +241,22 @@ useEffect( ()=>{
         </Center>
         <Center mb={20}>
          
-        <SimpleGrid columns={[2,2,2,3,3]} spacingX={20}>
+        {/* <SimpleGrid columns={[2,2,2,3,3]} spacingX={20}> */}
        
-       <Button width={"fit-content"} 
-       bgColor={"white"}
-        // onClick={()=>{setActu(actu-1),Next(),setEtat1(false)}}
-        isDisabled={etat}></Button>
+       {/* <Button width={"fit-content"} 
+       bgColor={"white"} */}
+        {/* // onClick={()=>{setActu(actu-1),Next(),setEtat1(false)}} */}
+        {/* isDisabled={etat}></Button> */}
        <Heading>
-       <Flex  >{pages.map(page=>{return (<SimpleGrid key={`${page}`} columns={[7,7,7,9,9]} height={`${pages.length*5}px`}><Button bgColor={"white"} onClick={() =>{setActu(page),Next(),Next()} } _hover={{fontSize:"20px" ,bgColor:"cyan.500"}} key={page} >{page}</Button></SimpleGrid>)}
-       )}</Flex>
+       <Flex  width={"fit-content"} ><SimpleGrid width={"fit-content"}  columns={[5,5,5,9,9]} height={`fit-content`}>{pages.map(page=>{return (<Button key={`${page}`} bgColor={"white"} onClick={() =>{setActu(page),Next(),Next()} } _hover={{fontSize:"20px" ,bgColor:"cyan.500"}} >{page}</Button>)}
+       )}
+       </SimpleGrid></Flex>
        </Heading>
-       <Button width={"fit-content"} 
-        bgColor={"white"}
-        // onClick={()=>{setActu(actu+1),Next(),setEtat(false)}}
-        isDisabled={etat1}></Button>
-       </SimpleGrid> 
+       {/* <Button width={"fit-content"} 
+        // bgColor={"white"}
+        // // onClick={()=>{setActu(actu+1),Next(),setEtat(false)}}
+        // isDisabled={etat1}></Button> */}
+       {/* </SimpleGrid>  */}
        </Center>
         {/* </>} */}
        

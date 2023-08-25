@@ -26,9 +26,11 @@ export default function Intrmed2() {
   const [check, setCheck] = useState(0);
   const [categorie, setCategorie] = useState();
   const [modalData, setModalData] = useState([]);
+  const [jour,setJour] =useState([])
 
   useEffect(() => {
     setCategorie(localStorage.getItem("service"));
+    setJour(localStorage.getItem("jour"))
   }, []);
 
   const recherche = async (terms, categorie) => {
@@ -86,7 +88,6 @@ export default function Intrmed2() {
               mr={5}
               borderRadius={[10,10,50,50,50]}
             >
-                
               <Link
                 height={"15vh"}
                 width={{ base: "80%", md: "30%" }}
@@ -132,6 +133,25 @@ export default function Intrmed2() {
                   </Flex>
                 </Flex>
               </Link>
+              <Box bgColor={"white"}width={"100%"} borderBottom={"1px solid black"}>
+              {Object.values(doc.data().horaire)[jour].length >5 ?  <Text
+                fontSize={"sm"}
+                color={"green"}
+                textAlign={"center"}
+                fontWeight={"bold"}
+              >
+              Ouvert : {" ",Object.values(doc.data().horaire)[jour]} 
+              </Text> : <Text
+                fontSize={"sm"}
+                color={"red"}
+                textAlign={"center"}
+                fontWeight={"bold"}
+              >
+               
+               {Object.values(doc.data().horaire)[jour].length <4 ? "kolo" : `${" ",Object.values(doc.data().horaire)[jour]}`} 
+                  
+              </Text> } 
+              </Box> 
               <Box>
                 <Text as={"h4"} pb={5} align={"center"}>
                     {  doc.data().adresse}
