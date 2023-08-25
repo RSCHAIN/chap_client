@@ -1087,6 +1087,10 @@ export default function Co(){
               <Flex mt={10}>
                 <SimpleGrid columns={[1, 1, 1, 2, 2]}>
                   {data.map((data, key) => (
+                    <Link key={key} _hover={{
+                      textDecoration:"none"
+                    }}
+                    href={"/Details/detailsTextile"}>
                     <Box
                       key={data.id}
                       maxW={"fit-content"}
@@ -1182,6 +1186,7 @@ export default function Co(){
                         </Box>
                       </Box>
                     </Box>
+                    </Link>
                   ))}
                 </SimpleGrid>
               </Flex>
