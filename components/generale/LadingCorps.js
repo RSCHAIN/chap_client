@@ -455,7 +455,13 @@ const LadingCorps = () => {
                 >
                   Devis
                 </Button>
-                <Modal isOpen={isOpen} onClose={onClose}>
+               
+                    </Center>
+                    </Box>
+                     
+                    </Center>
+            </Flex>
+            <Modal isOpen={isOpen} onClose={onClose}>
                   <ModalOverlay />
                   <ModalContent>
                     <ModalHeader>Demande de Devis</ModalHeader>
@@ -557,11 +563,6 @@ const LadingCorps = () => {
                     </ModalFooter>
                   </ModalContent>
                 </Modal>
-                    </Center>
-                    </Box>
-                     
-                    </Center>
-            </Flex>
         
           
             <Flex width={"100%"} height={"15vh"} bgColor={"#08566e"} display={["none","none","none","flex","flex"]} mt={-3} color={"white"}>
