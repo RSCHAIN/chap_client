@@ -596,6 +596,7 @@ const LadingCorps = () => {
                     mt={5}
                     width={"fit-content"}
                     py={2}
+                    mb={5}
                     href={"https://chapbackofficefournisseur.vercel.app/Connexion"} >
                       Rejoignez-nous
                     </Button>
@@ -605,7 +606,7 @@ const LadingCorps = () => {
                     <Box  display={"grid"}>
                   <Box  textAlign={"center"}>
                     <Center display={"grid"}>
-                    <Text fontSize={"25px"} width={"full"} _hover={{
+                    <Text fontSize={"23px"} width={"full"} _hover={{
                       bgColor:"black",
                       opacity:"0.7"
                     }}>
@@ -630,6 +631,7 @@ const LadingCorps = () => {
                    
                     onClick={onOpen}
                     mt={5}
+                    mb={5}
                     width={"fit-content"}
                     py={2}
                     >
