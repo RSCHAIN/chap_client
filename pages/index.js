@@ -162,8 +162,8 @@ const [code,setCode] = useState([]);
                   <Input
                     borderRadius={"100px"}
                     type={"number"}
-                    placeholder="Votre code postal "
-                    w={"15em"}
+                    placeholder="Code postal "
+                    w={"17em"}
                     maxLength={5}
                     value={locate}
                    
