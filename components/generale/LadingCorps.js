@@ -461,7 +461,7 @@ const LadingCorps = () => {
                      
                     </Center>
             </Flex>
-            <Modal isOpen={isOpen} onClose={onClose}>
+             <Modal isOpen={isOpen} onClose={onClose}>
                   <ModalOverlay />
                   <ModalContent>
                     <ModalHeader>Demande de Devis</ModalHeader>
@@ -565,10 +565,11 @@ const LadingCorps = () => {
                 </Modal>
         
           
-            <Flex width={"100%"} height={"15vh"} bgColor={"#08566e"} display={["none","none","none","flex","flex"]} mt={-3} color={"white"}>
-              <Center width={"100%"}>
-                <Box  display={"flex"}>
-                  <Box mr={20} textAlign={"center"}>
+            <Flex width={"100%"} height={"fit-content"} bgColor={"#08566e"} display={["none","none","none","flex","flex"]} mt={-3} color={"white"}>
+              <Center width={"100%"} display={"flex"}>
+                <Box  display={"grid"} pr={10}>
+                  <Box  textAlign={"center"}>
+                    <Center display={"grid"}>
                     <Text fontSize={"25px"} width={"full"} _hover={{
                       bgColor:"black",
                       opacity:"0.7"
@@ -581,7 +582,10 @@ const LadingCorps = () => {
                     }}>
                     Devenez partenaire et boostez votre commerce avec CHAP
                     </Text>
+                    </Center>
+                   
                     </Box>
+                    <Center>
                     <Button color={"white"} bgColor={"black"} 
                     _hover={{
                       bgColor:"black",
@@ -590,11 +594,49 @@ const LadingCorps = () => {
                     }}
                     as={Link}
                     mt={5}
-
+                    width={"fit-content"}
                     py={2}
                     href={"https://chapbackofficefournisseur.vercel.app/Connexion"} >
                       Rejoignez-nous
                     </Button>
+                    </Center>
+                    
+                    </Box>
+                    <Box  display={"grid"}>
+                  <Box  textAlign={"center"}>
+                    <Center display={"grid"}>
+                    <Text fontSize={"25px"} width={"full"} _hover={{
+                      bgColor:"black",
+                      opacity:"0.7"
+                    }}>
+                    Envie de voir le prix de la livraison ?
+                    </Text>
+                    <Text fontSize={"20px"} width={"full"} _hover={{
+                      bgColor:"black",
+                      opacity:"0.7"
+                    }}>
+                    Super simple, dès a présent faite votre 
+                    </Text>
+                    </Center>
+                   
+                    </Box>
+                    <Center>
+                    <Button color={"white"} bgColor={"black"} 
+                    _hover={{
+                      bgColor:"black",
+                      opacity:"0.7",
+                      textDecoration:"none"
+                    }}
+                   
+                    onClick={onOpen}
+                    mt={5}
+                    width={"fit-content"}
+                    py={2}
+                    >
+                    Devis
+                    </Button>
+                    </Center>
+                    
                     </Box>
                     </Center>
             </Flex>
