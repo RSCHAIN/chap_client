@@ -161,7 +161,7 @@ export default function Profiles() {
               />
             </Flex>
          <Center>   <Button onClick={() => updatEmail()} mt={2}bgColor={"cyan.800"} color="white">Enregistrer</Button></Center>
-            <Heading pt={5} fontSize={"28px"} fontWeight={700}>Informations Personnelles</Heading>
+            <Heading pt={5} fontSize={"28px"} fontWeight={700}>Informations personnelles</Heading>
             <Flex pt={5}>
               <Text pt={2}>Nom</Text>
               <Input
@@ -173,7 +173,7 @@ export default function Profiles() {
               />
             </Flex>
             <Flex pt={5}>
-              <Text pt={2}>Prenom</Text>
+              <Text pt={2}>Prenom{"(s)"}</Text>
               <Input
                 type={"text"}
                 value={surname}
