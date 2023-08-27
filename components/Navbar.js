@@ -119,7 +119,9 @@ useEffect(()=>{
             bgColor={""}
               href={"/"}
               mr={10}
-              fontSize={{base:"1rem",xl:"1.25rem"}}
+              // fontSize={{base:"1rem",xl:"1.25rem"}}
+              // fontSize={["0.5em","0.5m","0.5em","0.5em","1.25em"]}
+              fontSize={"0.6em"}
               _hover={{ textDecoration: "none", color: "#068DA9" }}
             >
               Accueil
@@ -129,7 +131,9 @@ useEffect(()=>{
 
               href={"/Whoami"}
               mr={10}
-              fontSize={{base:"1rem",xl:"1.25rem"}}
+              // fontSize={{base:"1rem",xl:"1.25rem"}}
+              // fontSize={["0.5em","0.5m","0.5em","0.5em","1em"]}
+              fontSize={"0.6em"}
               _hover={{ textDecoration: "none", color: "#068DA9" }}
             >
               Qui sommes-nous?
@@ -137,7 +141,8 @@ useEffect(()=>{
             <Link
               href={"/Contactus"}
               mr={10}
-              fontSize={{base:"1rem",xl:"1.25rem"}}
+              // fontSize={{base:"1rem",xl:"1.25rem"}}
+              fontSize={"0.6em"}
               _hover={{ textDecoration: "none", color: "#068DA9" }}
             >
              Nous contacter

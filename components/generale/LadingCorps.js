@@ -320,6 +320,8 @@ const LadingCorps = () => {
     const [final,setFinal] = useState([""]);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [check,setCheck] = useState(0);
+
+  const devis =" Des colis a envoyé depuis et vers l'Afrique ?"
   //recherche un magasin
   const recherche = async (terms) => {
   
@@ -392,8 +394,8 @@ const LadingCorps = () => {
         {/* <Location /> */}
         <Center width={"100%"} height={"auto"}>
           <Box height={"100%"} width={"100%"}>
-          <Flex width={"100%"} height={"fit-content"} bgColor={"#08566e"} display={["grid","grid","grid","none","none"]} color={"white"}>
-              <Center width={"100%"} display={"grid"}>
+          <Flex width={"100%"} height={"fit-content"} display={["grid","grid","grid","none","none"]} color={"white"}>
+              <Center width={"50%"} display={"grid"} bgColor={"#08566e"} >
                 <Box  display={"grid"}>
                   <Box>
                     <Center>
@@ -430,8 +432,8 @@ const LadingCorps = () => {
              
         
           
-            <Flex width={"100%"} height={"fit-content"} bgColor={"#08566e"} display={["none","none","none","flex","flex"]} mt={-3} color={"white"}>
-              <Center width={"100%"} display={"flex"}>
+            <Flex width={"100%"} height={"fit-content"}  display={["none","none","none","flex","flex"]} mt={-3} color={"white"}>
+              <Center  width={"50%"} display={"flex"} bgColor={"cyan.700"}>
                 <Box  display={"grid"} pr={10}>
                   <Box  textAlign={"center"}>
                     <Center display={"grid"}>
@@ -464,6 +466,45 @@ const LadingCorps = () => {
                     mb={5}
                     href={"https://chapbackofficefournisseur.vercel.app/Connexion"} >
                       Rejoignez-nous
+                    </Button>
+                    </Center>
+                    
+                    </Box>
+                  
+                    </Center>
+                    <Center  width={"50%"} display={"flex"} bgColor={"#08566e"}>
+                <Box  display={"grid"} pr={10}>
+                  <Box  textAlign={"center"}>
+                    <Center display={"grid"}>
+                    <Text fontSize={"25px"} width={"full"} _hover={{
+                      bgColor:"black",
+                      opacity:"0.7"
+                    }}>
+                   {devis}
+                    </Text>
+                    {/* <Text fontSize={"20px"} width={"full"} _hover={{
+                      bgColor:"black",
+                      opacity:"0.7"
+                    }}>
+                    Devenez partenaire et boostez votre commerce avec CHAP
+                    </Text> */}
+                    </Center>
+                   
+                    </Box>
+                    <Center>
+                    <Button color={"white"} bgColor={"cyan.400"} 
+                    _hover={{
+                      // bgColor:"black",
+                      opacity:"0.7",
+                      textDecoration:"none"
+                    }}
+                    as={Link}
+                    mt={5}
+                    width={"fit-content"}
+                    py={2}
+                    mb={5}
+                    href={"/Devis"} >
+                      Faites un devis
                     </Button>
                     </Center>
                     
