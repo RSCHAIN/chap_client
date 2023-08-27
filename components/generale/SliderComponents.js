@@ -186,7 +186,7 @@ const handleLocate = () => {
         )}
 
         {/* Slider */}
-        <Flex width={"100%"} mb={10}>
+        <Flex width={"100%"} mb={[0,0,0,10,10]}>
           <Box width={["100%","100%","100%","70%","70%"]}  height={{ base: "xs", md: "xs", lg: "xl" }} mr={3}>
           <Slider {...settings} ref={(slider) => setSlider(slider)}>
           {cards.map((url, index) => (

@@ -394,16 +394,16 @@ const LadingCorps = () => {
         {/* <Location /> */}
         <Center width={"100%"} height={"auto"}>
           <Box height={"100%"} width={"100%"}>
-          <Flex width={"100%"} height={"fit-content"} display={["grid","grid","grid","none","none"]} color={"white"}>
-              <Center width={"50%"} display={"grid"} bgColor={"#08566e"} >
+          <Flex width={"100%"} height={"fit-content"} display={["flex","flex","flex","none","none"]} color={"white"}>
+              <Center width={"50%"} display={"grid"} bgColor={"cyan.600"} >
                 <Box  display={"grid"}>
                   <Box>
                     <Center>
-                    <Text fontSize={"20px"}  width={"fit-content"} >
+                    <Text fontSize={"15px"}  width={"fit-content"} >
                     Commerçant ? 
                     </Text>
                     </Center>
-                    <Text fontSize={"13px"} width={"fit-content"}>
+                    <Text fontSize={"10px"} width={"fit-content"}>
                      Devenez partenaire et boostez votre commerce avec CHAP
                     </Text>
                    
@@ -415,6 +415,7 @@ const LadingCorps = () => {
                       textDecoration:"none"
                     }}
                     py={2}
+                    fontSize={"10px"}
                     as={Link}
                     width={"fit-content"}
                     href={"https://chapbackofficefournisseur.vercel.app/Connexion"}
@@ -428,6 +429,48 @@ const LadingCorps = () => {
                   
                      
                     </Center>
+                    <Center  width={"50%"} display={"flex"} bgColor={"#08566e"}>
+                <Box  display={"grid"} >
+                  <Box  textAlign={"center"}>
+                    <Center display={"grid"}>
+                    <Text fontSize={"15px"} width={"full"}
+                    mt={5}
+                     _hover={{
+                      bgColor:"black",
+                      opacity:"0.7"
+                    }}>
+                   {devis}
+                    </Text>
+                    {/* <Text fontSize={"20px"} width={"full"} _hover={{
+                      bgColor:"black",
+                      opacity:"0.7"
+                    }}>
+                    Devenez partenaire et boostez votre commerce avec CHAP
+                    </Text> */}
+                    </Center>
+                   
+                    </Box>
+                    <Center>
+                    <Button color={"white"}
+                    fontSize={"10px"} bgColor={"cyan.400"} 
+                    _hover={{
+                      // bgColor:"black",
+                      opacity:"0.7",
+                      textDecoration:"none"
+                    }}
+                    as={Link}
+                    mt={5}
+                    width={"fit-content"}
+                    py={2}
+                    mb={5}
+                    href={"/Devis"} >
+                      Faites un devis
+                    </Button>
+                    </Center>
+                    
+                    </Box>
+                  
+                    </Center>   
             </Flex>
              
         

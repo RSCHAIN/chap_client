@@ -31,7 +31,7 @@ export default function Devis(){
                    </Box>
                    </Center>
                   
-                   <SimpleGrid columns={2}>
+                   <SimpleGrid columns={[1,1,2,2,2]}>
                    <Box >
                      <Text>Destination: </Text>
                      <Input
