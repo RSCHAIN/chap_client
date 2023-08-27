@@ -216,25 +216,28 @@ export default function Commande() {
           <Box>Aucune donnee</Box>
         )} */}
       {/* </Box> */}
-      <Center>
+      <Center width="100%">
         <Tabs
           isManual
           orientation={["horizontal","horizontal","horizontal","vertical","vertical"]}
           variant="outfitted"
           isLazy
-          w={"1400px "}
+          w={"100% "}
           // defaultIndex={1}
           mt={10}
         >
-          <TabList width={"300px"} h={"10em"} >
+          <Center>
+          <TabList width={"300px"} h={"10em"}  >
             <Tab id="Commandes"> Vos commandes</Tab>
             <Tab id="Compte" isSelected={true}>
               Votre compte
             </Tab>
           </TabList>
+
+          </Center>
           <TabPanels>
             <TabPanel>
-              <Tabs isManual isLazy ml={10} w={"80% "}>
+              <Tabs isManual isLazy  w={"80% "}>
                 <TabList>
                   <Tab>COMMANDES LIVRÉES/EN COURS</Tab>
                   <Tab>COMMANDES ANNULÉES</Tab>
