@@ -73,7 +73,7 @@ export default function Devis(){
         </Box>
         <Box width={"40%"}>
         <Image src='./pic2.jpg' alt="image livraison" />
-          <Heading>{slog}</Heading>
+          <Heading fontSize={"20px"}>{slog}</Heading>
        
           <Text fontWeight={"semibold"} textAlign={"justify"} width={"85%"}>
            {slog1}
