@@ -9,7 +9,7 @@ export default function Devis(){
     <>
     <InputBar />
     <Navbar></Navbar>
-    <Center width="100%" mt={20}>
+    <Center width="100%" mt={20} height="fit-content" mb={10}>
     <Box width="70%" >
       <Flex>
         <Box width={"70%"} height={"fit-content"} boxShadow={"lg"} rounded={'xl'} p={5} border={"1px solid black"} mr={10} >
