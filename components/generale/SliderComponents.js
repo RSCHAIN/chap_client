@@ -113,8 +113,8 @@ useEffect(() => {
 
   let latitude = crd.latitude;
   let longitude = crd.longitude;
-  await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM`).then((response)=>console.log(response)).catch((error)=>console.log(error))
-  console.log(latitude,longitude);
+  await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM`).then((response)=>localStorage.setItem("position",JSON.stringify(response.data.results[0].address_components[1].long_name))).catch((error)=>console.error(error))
+
   // 'Latitude : ' + latitude.toFixed(2);
   // 'Longitude : ' + longitude.toFixed(2);
 }
