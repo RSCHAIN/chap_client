@@ -74,6 +74,7 @@ useEffect(()=>{
   
     <Box display={["none","none","none","grid","grid"]} bgColor={"#08566e"} color={"white"} mt={4}>
       <Flex
+      width={"100%"}
        bgColor={"#08566e"}
         color={"white"}
         minH={"60px"}
@@ -99,7 +100,7 @@ useEffect(()=>{
           />
         </Flex>
         
-        <Box flex={{ base: 1 }} justify={{ base: "center", md: "center" }} ml={"5%"}>
+        <Box  justify={{ base: "center", md: "center" }} ml={["0","0","0","1%","5%"]}  width={"100%"}>
           {/* <Text
               textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
               fontFamily={'heading'}
@@ -110,7 +111,7 @@ useEffect(()=>{
           <Flex
             display={{ base: "none", md: "flex" }}
             // ml={"25%"}
-            fontSize={"30px"}
+            fontSize={["10px","10px","20px","21px","30px"]}
             color={"white"}
             justifyContent={"space-between"}
           >
@@ -121,7 +122,9 @@ useEffect(()=>{
               mr={10}
               // fontSize={{base:"1rem",xl:"1.25rem"}}
               // fontSize={["0.5em","0.5m","0.5em","0.5em","1.25em"]}
-              fontSize={"0.6em"}
+              // fontSize={"0.6em"}
+              fontSize={["0.4em","0.4m","0.4em","0.5em","0.6em"]}
+
               _hover={{ textDecoration: "none", color: "#068DA9" }}
             >
               Accueil
@@ -132,8 +135,8 @@ useEffect(()=>{
               href={"/Whoami"}
               mr={10}
               // fontSize={{base:"1rem",xl:"1.25rem"}}
-              // fontSize={["0.5em","0.5m","0.5em","0.5em","1em"]}
-              fontSize={"0.6em"}
+              fontSize={["0.4em","0.4em","0.4em","0.5em","0.6em"]}
+              // fontSize={"0.6em"}
               _hover={{ textDecoration: "none", color: "#068DA9" }}
             >
               Qui sommes-nous?
@@ -142,8 +145,9 @@ useEffect(()=>{
               href={"/Contactus"}
               mr={10}
               // fontSize={{base:"1rem",xl:"1.25rem"}}
-              fontSize={"0.6em"}
-              _hover={{ textDecoration: "none", color: "#068DA9" }}
+              // fontSize={"0.6em"}
+              fontSize={["0.4em","0.4em","0.4em","0.5em","0.6em"]}
+                  _hover={{ textDecoration: "none", color: "#068DA9" }}
             >
              Nous contacter
             </Link></Flex>

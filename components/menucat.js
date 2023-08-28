@@ -107,7 +107,9 @@ function DropdownMenu() {
             }}
             href={"/otherContent/intermed2"}
             // fontSize={{base:"1rem",xl:"1.25rem"}}
-            fontSize={"0.6em"}
+            // fontSize={"0.6em"}
+            fontSize={["0.4em","0.4m","0.4em","0.5em","0.6em"]}
+
             >
               <Text
                
