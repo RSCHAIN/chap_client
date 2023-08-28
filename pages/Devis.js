@@ -85,5 +85,5 @@ export default function Devis(){
     </Box>
     </Center>
     </>
-  )
+  ) 
 }
