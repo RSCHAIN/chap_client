@@ -13,14 +13,14 @@ export default function Devis(){
     <Box width="70%" >
       <Flex>
         <Box width={"70%"} height={"fit-content"} boxShadow={"lg"} rounded={'xl'} p={5} border={"1px solid black"} mr={10} >
-          <Box  mb={5} display={"flex"}>
-            <Box>
+          <Box  mb={5} display={"flex"} width={"100%"}>
+            <Box width={"50%"} mr={5}>
             <Text  mb={2}>Email : </Text>
-          <Input width={"50%"} placeholder={"email"} /> 
+          <Input width={"100%"} placeholder={"email"} /> 
             </Box>
-            <Box>
+            <Box width={"50%"}>
             <Text  mb={2}>Numéro : </Text>
-          <Input width={"50%"} placeholder={"email"} /> 
+          <Input width={"100%"} placeholder={"Numero"} /> 
             </Box>
           </Box>
           <Box>
