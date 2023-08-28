@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 
 export default function Devis(){
   const slog="Comparer différents transporteur et faites des économies avec CHAP  "
-  const slog1 = " Envoyez vos colis facilement sans inscription : comprarez les envois de vos colis, remplissez les informations d'expedition, payez et préparez le colis pour le transporteur. SUivez votre colis a tout moment sur le site web Packlink."
+  const slog1 = "Envoyez et colis vers vers l'Afrique de l'ouest par nos partenaires. Remplissez le formulaire et attendez notre retour mail si vous ne possédez pas un CHAP, sinon vérifiez l'onglet devis de votre compte. Un fois reçu les différentes propositions de nos partenaires, vous pourrez choisir, payer et préparer le colis pour le transporteur."
   return(
     <>
     <InputBar />
