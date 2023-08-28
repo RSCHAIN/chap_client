@@ -1,10 +1,14 @@
 import { Box,Flex,Center,Heading,Text,Image, Input,Button,InputGroup,InputRightElement, Select } from "@chakra-ui/react";
+import InputBar from "@/components/InputBar";
+import Navbar from "@/components/Navbar";
 
 export default function Devis(){
   const slog="Comparer différents transporteur et faites des économies avec CHAP  "
   const slog1 = " Envoyez vos colis facilement sans inscription : comprarez les envois de vos colis, remplissez les informations d'expedition, payez et préparez le colis pour le transporteur. SUivez votre colis a tout moment sur le site web Packlink."
   return(
     <>
+    <InputBar />
+    <Navbar></Navbar>
     <Center width="100%" mt={20}>
     <Box width="70%" >
       <Flex>
