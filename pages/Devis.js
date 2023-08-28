@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 
 export default function Devis(){
   const slog="Comparer différents transporteur et faites des économies avec CHAP  "
-  const slog1 = "Envoyez et colis vers vers l'Afrique de l'ouest par nos partenaires. Remplissez le formulaire et attendez notre retour mail si vous ne possédez pas un CHAP, sinon vérifiez l'onglet devis de votre compte. Un fois reçu les différentes propositions de nos partenaires, vous pourrez choisir, payer et préparer le colis pour le transporteur."
+  const slog1 = "Envoyez vos colis vers vers l'Afrique de l'ouest par nos partenaires. Remplissez le formulaire et attendez notre retour mail si vous ne possédez pas un CHAP, sinon vérifiez l'onglet devis de votre compte. Un fois reçu les différentes propositions de nos partenaires, vous pourrez choisir, payer et préparer le colis pour le transporteur."
   return(
     <>
     <InputBar />
@@ -79,7 +79,7 @@ export default function Devis(){
         
         </Box>
       </Flex>
-      <Text fontWeight={"semibold"} textAlign={"justify"} width={"100%"} my={5}>
+      <Text fontWeight={"semibold"} textAlign={"justify"} width={"100%"} my={"40px"}>
            {slog1}
           </Text>
     </Box>
