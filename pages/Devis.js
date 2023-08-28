@@ -75,12 +75,13 @@ export default function Devis(){
         <Image src='./pic2.jpg' alt="image livraison" />
           <Heading fontSize={"20px"}>{slog}</Heading>
        
-          <Text fontWeight={"semibold"} textAlign={"justify"} width={"85%"}>
-           {slog1}
-          </Text>
+         
         
         </Box>
       </Flex>
+      <Text fontWeight={"semibold"} textAlign={"justify"} width={"100%"} my={5}>
+           {slog1}
+          </Text>
     </Box>
     </Center>
     </>
