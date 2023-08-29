@@ -84,7 +84,7 @@ export default function Showconnex() {
     return (
       <>
         <Flex
-          display={["flex","flex","flex","flex","flex"]}
+          display={["grid","grid","grid","grid","grid"]}
           align={"center"}
           justifyContent={"center"}
           width={"auto"}
@@ -93,28 +93,9 @@ export default function Showconnex() {
           {/* <Link display={'flex'} mr={{ base: "3", md: "3" }} fontSize={20} href={"/Connexion"}>
           <Icon as={AiOutlineUser} fontSize={30} mr={2}/> Se connecter
         </Link> */}
-          <Popover>
-            <PopoverTrigger>
-              <Button
-               _hover={{
-                color: "cyan.700",
-                textDecoration: "none",
-              }}
-                leftIcon={
-                  <Icon
-                    as={AiOutlineUser}
-                   
-                    fontSize={30}
-                  />
-                }
-                rightIcon={<ChevronDownIcon />}
-                bgColor={"white"}
-              >
-                Bon retour,{name}
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent width={"210px"}>
-              <PopoverArrow />
+          
+             
+         
 
               {/* <PopoverBody>
               <Center><Button as={Link} href="/Connexion" bgColor="#08566E" color={"white"}_hover={{
@@ -122,7 +103,7 @@ export default function Showconnex() {
                 textDecoration: "none"
               }}> SE CONNECTER</Button></Center>
             </PopoverBody> */}
-              <PopoverBody>
+           
                 <Link
                 onClick={()=>localStorage.setItem("index",0)}
                   href="/Commandes/#1"
@@ -150,8 +131,7 @@ export default function Showconnex() {
                   </Button>
                 </Link>
                 {/* <Link href="/Mybuy" ><Button>Mes commandes</Button></Link> */}
-              </PopoverBody>
-              <PopoverFooter>
+             
                 <Center>
                   <Button
                     border={"none"}
@@ -160,12 +140,11 @@ export default function Showconnex() {
                     onClick={() => logout()}
                   >
                     {" "}
-                    Deconnexion
+                    Deconnexion de {name}
                   </Button>
                 </Center>
-              </PopoverFooter>
-            </PopoverContent>
-          </Popover>
+            
+         
         </Flex>
 
         {/* <Flex mr={{ base: 1, md: 10 }}>
@@ -224,7 +203,7 @@ export default function Showconnex() {
   } else {
     return (
       <Flex
-      display={["flex","flex","flex","flex","flex"]}
+      display={["grid","grid","grid","grid","grid"]}
         align={"center"}
         justifyContent={"center"}
         width={"auto"}
@@ -233,8 +212,7 @@ export default function Showconnex() {
         {/* <Link display={'flex'} mr={{ base: "3", md: "3" }} fontSize={20} href={"/Connexion"}>
           <Icon as={AiOutlineUser} fontSize={30} mr={2}/> Se connecter
         </Link> */}
-        <Popover>
-          <PopoverTrigger>
+        
             <Button
               leftIcon={<Icon as={AiOutlineUser} fontSize={30} mr={2} />}
               rightIcon={<ChevronDownIcon />}
@@ -242,11 +220,9 @@ export default function Showconnex() {
             >
               Se connecter
             </Button>
-          </PopoverTrigger>
-          <PopoverContent width={"210px"}>
-            <PopoverArrow />
+         
 
-            <PopoverBody>
+           
               <Center>
                 <Button
                   as={Link}
@@ -262,8 +238,7 @@ export default function Showconnex() {
                   SE CONNECTER
                 </Button>
               </Center>
-            </PopoverBody>
-            <PopoverFooter>
+           
               <Link
                 href="/Mybuy"
                 width={"full"}
@@ -289,9 +264,7 @@ export default function Showconnex() {
                 </Button>
               </Link>
               {/* <Link href="/Mybuy" ><Button>Mes commandes</Button></Link> */}
-            </PopoverFooter>
-          </PopoverContent>
-        </Popover>
+          
       </Flex>
     );
   }
