@@ -403,8 +403,8 @@ const LadingCorps = () => {
                     Commerçant ? 
                     </Text>
                     </Center>
-                    <Text fontSize={"10px"} width={"fit-content"}>
-                     Devenez partenaire et boostez votre commerce avec CHAP
+                    <Text fontSize={"10px"}  textAlign={"center"}width={"fit-content"}>
+                     Devenez partenaire et boostez votre commerce avec CHAP?
                     </Text>
                    
                     </Box>
@@ -490,7 +490,7 @@ const LadingCorps = () => {
                       bgColor:"black",
                       opacity:"0.7"
                     }}>
-                    Devenez partenaire et boostez votre commerce avec CHAP
+                    Devenez partenaire et boostez votre commerce avec CHAP?
                     </Text>
                     </Center>
                    
