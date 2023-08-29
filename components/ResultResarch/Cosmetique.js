@@ -33,7 +33,7 @@ export default function Cosmetique (data){
               mb={2}
               direction={"column"}
               alignItems={"center"}
-              pb={20}
+              // pb={20}
               justifyContent={"center"}
             >
 <Flex
@@ -104,7 +104,7 @@ export default function Cosmetique (data){
    height={"15vh"}
    width={{ base: "80%", md: "30%" }}
    mt={5}
-   mb={5}
+  //  mb={5}
    onClick={() => {
      sessionStorage.setItem(
        "savefrom",

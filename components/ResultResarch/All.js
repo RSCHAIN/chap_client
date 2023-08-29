@@ -19,37 +19,44 @@ export default function All (){
     const [modalData, setModalData] = useState([]);
 
 
-    const recherche = async (terms) => {
-        // console.log("Hello all i need help")
-        // console.log(terms)
-        // console.log(categorie)
-        const q = query(
-          collection(db, "Admin"),
-          where("codePostal", "==", String(terms).trim())
-        );
-    
-        const querySnapshot = await getDocs(q);
-        // if (querySnapshot.docs) {
-        //     querySnapshot.docs.forEach((doc)=>{
-        //         console.log(doc.data())
-        //     })
-        // }
-        setModalData(querySnapshot.docs);
-        // console.log(querySnapshot.docs)
-        // querySnapshot.forEach((doc) => {
-    
-        // // doc.data() is never undefined for query doc snapshots
-        // modalData.push(doc.data())
-        // });
+    const recherche = async (terms,terms2) => {
+        console.log(terms,terms2)
+        if(terms.length>=4){
+          const q = query(
+            collection(db, "Admin"),
+            where("codePostal", "==", String(terms).trim())
+          );
+      
+          const querySnapshot = await getDocs(q);
+         
+          setModalData(querySnapshot.docs);
+        }
+        if(terms2.length>3){
+          const q = query(
+            collection(db, "Admin"),
+            where("ville", "==", String(terms2).trim().replace('"'," ").replace('"'," "))
+          );
+      
+          const querySnapshot = await getDocs(q);
+         
+          setModalData(querySnapshot.docs);
+        }
+       
+        
       };
     useEffect(()=>{
         setPostal(localStorage.getItem("postal"))
-        recherche(localStorage.getItem("postal"))
+        // console.log(localStorage.getItem("location") )
+        if (localStorage.getItem("location") != undefined && localStorage.getItem("location") != null){
+          recherche(localStorage.getItem("postal"),localStorage.getItem("location"))
+        }else{
+          recherche(localStorage.getItem("postal")," ")
+        }
+        
     },[postal])
     return(
         <>
-        {/* <InputBar />
-        <Navbar /> */}
+       
         
         <Center mt={10}>
         <Box width={"100%"}>
@@ -62,78 +69,7 @@ export default function All (){
         <Fret data={modalData} />
         </Box>
         </Center>
-        {/* {modalData.length == 0 ? (
-                        <> Aucun commerce de disponible pres de chez vous </>
-                      ) : (
-                        <>
-                          <SimpleGrid columns={3}>
-                            {modalData.map((doc, index) => (
-                              <>
-                                <Box
-                                key={index}
-                                m={2}
-                                mt={5}
-                                as={Link}
-                                onClick={() => {
-                                  sessionStorage.setItem(
-                                    "savefrom",
-                                    doc.data().number
-                                  ),
-                                    sessionStorage.setItem(
-                                      "image",
-                                      doc.data().imageUrl
-                                    ),
-                                    sessionStorage.setItem(
-                                      "nom",
-                                      doc.data().organisation
-                                    ),
-                                    sessionStorage.setItem(
-                                      "adresse",
-                                      doc.data().adresse
-                                    ),
-                                    sessionStorage.setItem(
-                                      "categorie",
-                                      doc.data().categorie
-                                    );
-                                  sessionStorage.setItem(
-                                    "description",
-                                    doc.data().description
-                                  );
-                                  sessionStorage.setItem(
-                                    "horaire",
-                                    JSON.stringify(doc.data().horaire)
-                                  );
-                                  sessionStorage.setItem(
-                                    "paiement",
-                                    JSON.stringify(doc.data().methodeDePaiement)
-                                  );
-                                }}
-                                _hover={{ textDecoration: "none" }}
-                                href={"/otherContent/intermed1"}
-                              >
-                                <Image
-                                  alt={doc.data().organisation}
-                                  src={doc.data().imageUrl}
-                                  maxWidth={"150px"}
-                                  maxHeight={"100px"}
-                                  minHeight={"100px"}
-                                  minWidth={"150px"}
-                                />
-                                <Text fontWeight={"bold"} fontSize={"20px"}>
-                                  {doc.data().organisation}
-                                </Text>
-                                <Text fontWeight={"medium"}>
-                                  {doc.data().adresse}
-                                </Text>
-                              </Box>
-                              <Restaurant data={modalData}/>
-                              </>
-                            
-                              
-                            ))}
-                          </SimpleGrid>
-                        </>
-                      )} */}
+      
         </>
     )
 }

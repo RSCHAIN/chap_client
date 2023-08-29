@@ -384,7 +384,7 @@ const LadingCorps = () => {
      
       setDatas(1);
     }
-    setLocate(localStorage.getItem("postal") ?? "0");
+    setLocate(localStorage.getItem("postal") ?? " ");
 
     //updateAll()
   }, [datas, cat, postal, locate,check]);

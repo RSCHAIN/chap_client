@@ -182,9 +182,9 @@ const InputBar = () => {
                   borderRadius={"100px"}
                   type={"number"}
                   // placeholder="Entrez votre code postal"
-                  w={"15em"}
+                  w={"9em"}
                   maxLength={5}
-                  value={locate}
+                  // value={locate}
                   onChange={(e) => {
                     localStorage.setItem("postal", e.target.value),
                       setLocate(e.target.value),

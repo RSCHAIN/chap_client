@@ -45,8 +45,8 @@ const settings2 = {
 };
 const SliderComponents = () => {
   //position variable//
-
-  const [lat,setLat]= useState()
+//taille de l'input
+  const [lat,setLat]= useState("18em")
   const [long,setLong]= useState()
   //end
   const [locate, setLocate] = useState("");
@@ -54,6 +54,7 @@ const SliderComponents = () => {
   const [data,setData] = useState([]);
   const [final,setFinal] = useState([""]);
   const router = useRouter();
+  
 
 
  const [code,setCode] = useState([]);
@@ -100,7 +101,7 @@ useEffect(() => {
   }
  
 
-  setFinal(localStorage.getItem("location")?? "")
+  setFinal((localStorage.getItem("location"))?? "")
   setLocate(localStorage.getItem("postal") ?? "0");
 
   //updateAll()
@@ -113,10 +114,9 @@ useEffect(() => {
 
   let latitude = crd.latitude;
   let longitude = crd.longitude;
-  await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM`).then((response)=>localStorage.setItem("position",JSON.stringify(response.data.results[0].address_components[1].long_name))).catch((error)=>console.error(error))
+  await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM`).then((response)=>{setLat("7.5em"),localStorage.setItem("postal",response.data.results[0].address_components[2].long_name),localStorage.setItem("location",response.data.results[0].address_components[1].long_name)}).catch((error)=>console.error(error))
 
-  // 'Latitude : ' + latitude.toFixed(2);
-  // 'Longitude : ' + longitude.toFixed(2);
+  
 }
 
 const handleLocate = () => {
@@ -207,7 +207,8 @@ const handleLocate = () => {
           <Box  width={"95%"} ml={"5%"} height={"xs"} mt={10} >
             <Text fontSize={"20px"} color={"black"}>Entrez votre adresse pour trouver les commerces à proximité</Text>
             <Flex mt={5}>
-            <InputGroup  mr={5} ml={3}>
+            <InputGroup  mr={2} ml={3}
+            width={lat}>
               <InputLeftAddon as={Text} color={"black"} width={"fit-content"}>
              {final}
               </InputLeftAddon>

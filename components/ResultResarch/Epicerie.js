@@ -3,7 +3,7 @@ import { Box, SimpleGrid, Text,Image, Link, Heading, Flex, Button } from "@chakr
 import { useState } from "react"
 
 export default function Epicerie (data){
-   
+  
     const [filtered,setFiltered] = useState ([])
     const [check,setCheck] = useState(0)
     data.data.map((datos,index)=>{
@@ -33,7 +33,7 @@ export default function Epicerie (data){
               mb={2}
               direction={"column"}
               alignItems={"center"}
-              pb={20}
+              // pb={20}
               justifyContent={"center"}
             >
 <Flex
@@ -104,7 +104,7 @@ export default function Epicerie (data){
    height={"15vh"}
    width={{ base: "80%", md: "30%" }}
    mt={5}
-   mb={5}
+  //  mb={5}
    onClick={() => {
      sessionStorage.setItem(
        "savefrom",
