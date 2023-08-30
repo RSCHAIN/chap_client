@@ -34,6 +34,7 @@ import { db2 } from "@/FIREBASE/clientApp";
 import Cookies from "cookies";
 import { useRouter } from "next/router";
 import { MdLocationOn } from "react-icons/md";
+import {RiSendPlaneLine} from "react-icons/ri"
 
 export default function Home() {
   const [locate, setLocate] = useState("");
@@ -47,34 +48,67 @@ const [code,setCode] = useState([]);
   const [data, setData] = useState([]);
 
 
-
-
-  const updateAll = () => {
+  async function  coordonnees (pos)  {
+    let crd = pos.coords;
   
-    cat.map((index, key) => {
-      const starCountRef2 = ref(db2, index.id + "/");
-      onValue(starCountRef2, (snapshot) => {
-        const donnees = snapshot.val();
-        // console.log(snapshot.val())
-        if (donnees != null) {
-          const categorie = Object.keys(donnees).map((key) => ({
-            id: key,
-            ...donnees[key],
-          }))
-          
-          
-          // localStorage.setItem(index.id + "Datos", JSON.stringify(categorie));
-          // setGetter(JSON.parse(localStorage.getItem(index.id + "Datos")))
-        }
-      })
-    })
+    let latitude = crd.latitude;
+    let longitude = crd.longitude;
+    await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM`).then((response)=>{
+      
+    if(response.data.results[0].address_components.length >4){
+      
+      localStorage.setItem("location",response.data.results[0].address_components[2].long_name);
+      localStorage.setItem("postal",response.data.results[0].address_components[6].long_name);
+      router.reload();
+    }else{
+      
+      localStorage.setItem("location",response.data.results[0].address_components[2].long_name);
+      localStorage.setItem("postal",response.data.results[0].address_components[1].long_name);
+      router.reload();
+    }
+   
+    }).catch((error)=>console.error(error))
+  
     
   }
+  
+  const handleLocate = () => {
+    navigator.geolocation.watchPosition(coordonnees)
+  }
+  
+
+
+
+
+
 
 
 
   useEffect(()=>{
-    setFinal(localStorage.getItem("location")?? "")
+    setFinal((localStorage.getItem("location"))?? "")
+  setLocate(localStorage.getItem("postal") ?? "0")
+    const updateAll = () => {
+  
+      cat.map((index, key) => {
+        const starCountRef2 = ref(db2, index.id + "/");
+        onValue(starCountRef2, (snapshot) => {
+          const donnees = snapshot.val();
+          // console.log(snapshot.val())
+          if (donnees != null) {
+            const categorie = Object.keys(donnees).map((key) => ({
+              id: key,
+              ...donnees[key],
+            }))
+            
+            
+            // localStorage.setItem(index.id + "Datos", JSON.stringify(categorie));
+            // setGetter(JSON.parse(localStorage.getItem(index.id + "Datos")))
+          }
+        })
+      })
+      
+    }
+  
     if (check == 0 || check == 1) {
       const GetAll = async () => {
         await axios.get("/api/GetJson").then((response) => {
@@ -95,19 +129,10 @@ const [code,setCode] = useState([]);
 
 
     localStorage.setItem("index",0)
-    const verifPos = localStorage.getItem("location")
-    const postale = localStorage.getItem("postal")
-    if (verifPos== undefined) {
-      localStorage.setItem("location"," ")
-
-    }
-    if (postale == undefined || postale== null) {
-      router.reload()
-      localStorage.setItem("postal","0")
-    }
+   
     update()
     updateAll()
-  },[final,router,updateAll])
+  },[final,router,check,cat])
 
 
 
@@ -156,14 +181,18 @@ const [code,setCode] = useState([]);
             >
               <Box>
                 <InputGroup mt={2}  borderRadius={"100px"} mb={2}>
-                  <InputRightElement as={Text} width={"10em"}>
+                  <InputRightElement as={Text} width={"fit-content"} pr={2}>
                   {final}
+                  <RiSendPlaneLine color={"cyan.700"} fontSize={"25px"}  onClick={()=>handleLocate()} _hover={{
+                    cursor: "pointer"
+
+                  }} />
                   </InputRightElement>
                   <Input
                     borderRadius={"100px"}
                     type={"number"}
                     placeholder="Code postal "
-                    w={"17em"}
+                    w={"14em"}
                     maxLength={5}
                     value={locate}
                    
