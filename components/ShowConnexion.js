@@ -84,7 +84,7 @@ export default function Showconnex() {
     return (
       <>
         <Flex
-          display={["flex","flex","flex","flex","flex"]}
+            display={["none","none","none","flex","flex"]}
           align={"center"}
           justifyContent={"center"}
           width={"auto"}
@@ -167,64 +167,63 @@ export default function Showconnex() {
             </PopoverContent>
           </Popover>
         </Flex>
-
-        {/* <Flex mr={{ base: 1, md: 10 }}>
-        <Box flexDirection={"column"}>
-          <Menu>
-            <MenuButton rightIcon={<ChevronDownIcon />}>
-              <Avatar />
-            </MenuButton>
-            <MenuList>
-              <Center>
-                <Box
-                  textTransform={"capitalize"}
-                  cursor={"pointer"}
-                  flexDirection={"column"}
+        
+        <Flex
+            display={["grid","grid","grid","none","none"]}
+         
+          width={"auto"}
+          height={"100%"}
+        >
+             
+                <Link
+                onClick={()=>localStorage.setItem("index",0)}
+                  href="/Commandes/#1"
+                  width={"full"}
+                  _hover={{
+                    textDecoration: "none",
+                  }}
                 >
-                  <Text pb={3} _hover={{ color: "blue" }}>
-                    {users.email.toString()}
-                  </Text>
-                  
-                  <Link pb={2} _hover={{ color: "blue" }} href="/profiles">
-                    Profiles
-                  </Link>
-                  <br />
-                  <br />
-                  <Link pb={2} _hover={{ color: "blue" }} href="/Mybuy">
-                    Mes Commandes
-                  </Link>
-                  <br />
-                  <br />
-                  <Link pb={2} _hover={{ color: "blue" }} href="/#">
-                    Moyen de paiements
-                  </Link>
-                  <br />
-                  <br />
-                </Box>
-              </Center>
-
-              <Center>
-                <Button
-                  border={"none"}
-                  bgColor={"white"}
-                  _hover={{ bgcolor: "white" }}
-                  onClick={() => logout()}
+                  <Button width={"full"} bgColor={"white"}>
+                    {" "}
+                    Mes commandes
+                  </Button>
+                </Link>
+                <Link
+                onClick={()=>localStorage.setItem("index",1)}
+                href="/Commandes/#2"
+                width={"full"}
+                  _hover={{
+                    textDecoration: "none",
+                  }}
                 >
-                  {" "}
-                  Deconnexion
-                </Button>
-              </Center>
-            </MenuList>
-          </Menu>
-        </Box>
+                  <Button width={"full"} bgColor={"white"}>
+                    {" "}
+                    Mon profils
+                  </Button>
+                </Link>
+                {/* <Link href="/Mybuy" ><Button>Mes commandes</Button></Link> */}
+              
+                <Center>
+                  <Button
+                    border={"none"}
+                    bgColor={"white"}
+                    _hover={{ bgcolor: "white", color: "red.800" }}
+                    onClick={() => logout()}
+                  >
+                    {" "}
+                    Deconnexion de {name}
+                  </Button>
+                </Center>
+              
+        </Flex>
       
-      </Flex> */}
       </>
     );
   } else {
     return (
+      <>
       <Flex
-      display={["flex","flex","flex","flex","flex"]}
+      display={["none","none","none","flex","flex"]}
         align={"center"}
         justifyContent={"center"}
         width={"auto"}
@@ -293,6 +292,78 @@ export default function Showconnex() {
           </PopoverContent>
         </Popover>
       </Flex>
+
+<Flex
+display={["grid","grid","grid","none","none"]}
+  align={"center"}
+  justifyContent={"center"}
+  width={"auto"}
+  height={"100%"}
+>
+  {/* <Link display={'flex'} mr={{ base: "3", md: "3" }} fontSize={20} href={"/Connexion"}>
+    <Icon as={AiOutlineUser} fontSize={30} mr={2}/> Se connecter
+  </Link> */}
+  <Popover>
+    <PopoverTrigger>
+      <Button
+        leftIcon={<Icon as={AiOutlineUser} fontSize={30} mr={2} />}
+        rightIcon={<ChevronDownIcon />}
+        bgColor={"white"}
+      >
+        Se connecter
+      </Button>
+    </PopoverTrigger>
+    <PopoverContent width={"210px"}>
+      <PopoverArrow />
+
+      <PopoverBody>
+        <Center>
+          <Button
+            as={Link}
+            href="/Choose"
+            bgColor="#08566E"
+            color={"white"}
+            _hover={{
+              bgColor: "#0f7493",
+              textDecoration: "none",
+            }}
+          >
+            {" "}
+            SE CONNECTER
+          </Button>
+        </Center>
+      </PopoverBody>
+      <PopoverFooter>
+        <Link
+          href="/Mybuy"
+          width={"full"}
+          _hover={{
+            textDecoration: "none",
+          }}
+        >
+          <Button width={"full"} bgColor={"white"}>
+            {" "}
+            Mes commandes
+          </Button>
+        </Link>
+        <Link
+          href="/profiles"
+          width={"full"}
+          _hover={{
+            textDecoration: "none",
+          }}
+        >
+          <Button width={"full"} bgColor={"white"}>
+            {" "}
+            Mon profils
+          </Button>
+        </Link>
+        {/* <Link href="/Mybuy" ><Button>Mes commandes</Button></Link> */}
+      </PopoverFooter>
+    </PopoverContent>
+  </Popover>
+</Flex>
+</>
     );
   }
 }
