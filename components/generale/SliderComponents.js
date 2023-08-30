@@ -114,7 +114,21 @@ useEffect(() => {
 
   let latitude = crd.latitude;
   let longitude = crd.longitude;
-  await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM`).then((response)=>{setLat("7.5em"),localStorage.setItem("postal",response.data.results[0].address_components[2].long_name),localStorage.setItem("location",response.data.results[0].address_components[1].long_name)}).catch((error)=>console.error(error))
+  await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM`).then((response)=>{
+    
+  if(response.data.results[0].address_components.length >4){
+    
+    localStorage.setItem("location",response.data.results[0].address_components[2].long_name);
+    localStorage.setItem("postal",response.data.results[0].address_components[6].long_name);
+    router.reload();
+  }else{
+    
+    localStorage.setItem("location",response.data.results[0].address_components[2].long_name);
+    localStorage.setItem("postal",response.data.results[0].address_components[1].long_name);
+    router.reload();
+  }
+ 
+  }).catch((error)=>console.error(error))
 
   
 }

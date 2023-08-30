@@ -20,8 +20,8 @@ export default function All (){
 
 
     const recherche = async (terms,terms2) => {
-        console.log(terms,terms2)
-        if(terms.length>=4){
+        console.log(terms,typeof(terms2))
+          if(terms.length>=4){
           const q = query(
             collection(db, "Admin"),
             where("codePostal", "==", String(terms).trim())
@@ -48,7 +48,7 @@ export default function All (){
         setPostal(localStorage.getItem("postal"))
         // console.log(localStorage.getItem("location") )
         if (localStorage.getItem("location") != undefined && localStorage.getItem("location") != null){
-          recherche(localStorage.getItem("postal"),localStorage.getItem("location"))
+          recherche(localStorage.getItem("postal"),localStorage.getItem("postal"))
         }else{
           recherche(localStorage.getItem("postal")," ")
         }
