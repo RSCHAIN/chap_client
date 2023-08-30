@@ -232,7 +232,8 @@ const handleLocate = () => {
                   border:"3px solid cyan",
                   borderRadius:"10px"            
                  }
-              }>
+              }
+              onClick={()=>handleLocate()}>
               <RiSendPlaneLine color={"cyan.700"} fontSize={"25px"} />
             </InputRightElement>
             <Input placeholder={"Saisir le Code postal"} borderRadius={"4px"} 
@@ -249,7 +250,7 @@ const handleLocate = () => {
              }}
             />
             </InputGroup>
-            <Button bgColor={"cyan.600"} color="white" onClick={()=>handleLocate()}>Trouver</Button>
+            {/* <Button bgColor={"cyan.600"} color="white" o>Trouver</Button> */}
             </Flex>
  
           </Box>

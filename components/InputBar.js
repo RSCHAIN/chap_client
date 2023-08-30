@@ -47,7 +47,8 @@ const InputBar = () => {
   const [lastTime, setLastTime] = useState();
   const [data, setData] = useState([]);
   const [code, setCode] = useState([]);
-  const [final, setFinal] = useState([""]);
+  const [final, setFinal] = useState("");
+  const [last, setLast] = useState("");
   const [check, setCheck] = useState(0);
   const [contenu, setContenu] = useState(0);
 
@@ -70,6 +71,7 @@ const InputBar = () => {
 
   useEffect(() => {
     setFinal(localStorage.getItem("location")?? "")
+    setLast(localStorage.getItem("postal")?? "")
     Contenu();
     if (check == 0 || check == 1) {
       const GetAll = async () => {
@@ -174,8 +176,8 @@ const InputBar = () => {
         </Link> */}
             <Popover>
               <InputGroup borderRadius={"100px"}>
-                <InputRightElement as={Text} width={"10em"}>
-                  {final}
+                <InputRightElement as={Text} width={"fit-content"}>
+                 {last}, {final}
                 </InputRightElement>
                 <Input
                 isDisabled={true}
