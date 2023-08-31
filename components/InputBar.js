@@ -175,7 +175,7 @@ const InputBar = () => {
           <Icon as={AiOutlineUser} fontSize={30} mr={2}/> Se connecter
         </Link> */}
             <Popover>
-              <InputGroup borderRadius={"100px"}>
+              <InputGroup borderRadius={"100px"} width={"fit-content"}>
                 <InputRightElement as={Text} width={"fit-content"}>
                  {last}, {final}
                 </InputRightElement>
