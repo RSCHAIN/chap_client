@@ -1082,11 +1082,9 @@ export default function Epicerie(){
             <Flex mt={10}>
               <SimpleGrid columns={[1, 1, 2, 2, 2]}>
                 {data.map((data, key) => (
-                  <Link  key={data.id} href="/Details/detailsTextile" onClick={()=>{
-                    secureLocalStorage.setItem("items",data)
-                  }}>
+                 
                     <Box
-                   
+                   key={key}
                     maxW={"fit-content"}
                     // height={"400px"}
                     mb={5}
@@ -1202,7 +1200,8 @@ export default function Epicerie(){
                       </Box>
                     </Box>
                   </Box>
-                  </Link>
+                 
+              
                   
                 ))}
               </SimpleGrid>

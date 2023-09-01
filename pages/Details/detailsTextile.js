@@ -65,7 +65,7 @@ if(Object.values(data).length>0){
              {data.nom}
             </Heading>
             <Text
-              color={useColorModeValue('gray.900', 'gray.400')}
+              color={'gray.900'}
               fontWeight={300}
               fontSize={'2xl'}>
               {data.prix} €
