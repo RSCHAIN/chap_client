@@ -1,4 +1,4 @@
-import { Box,Flex,Center,Heading,Text,Image, Input,Button,InputGroup,InputRightElement, Select } from "@chakra-ui/react";
+import { Box,Flex,Center,Heading,Text,Image, Input,Button,InputGroup,InputRightElement, Select, SimpleGrid } from "@chakra-ui/react";
 import InputBar from "@/components/InputBar";
 import Navbar from "@/components/Navbar";
 
@@ -10,9 +10,11 @@ export default function Devis(){
     <InputBar />
     <Navbar></Navbar>
     <Center width="100%" mt={20} height="fit-content" mb={10}>
+      
     <Box width="70%" >
       <Flex>
-        <Box width={"70%"} height={"fit-content"} boxShadow={"lg"} rounded={'xl'} p={5} border={"1px solid black"} mr={10} >
+      <SimpleGrid columns={[1,1,1,2,2]} width={"100%"}>
+        <Box width={["100%","100%","100%","70%","70%"]} height={"fit-content"} boxShadow={"lg"} rounded={'xl'} p={5} border={"1px solid black"} mr={10} >
           <Box  mb={5} display={"flex"} width={"100%"}>
             <Box width={"50%"} mr={5}>
             <Text  mb={2}>Email : </Text>
@@ -38,7 +40,7 @@ export default function Devis(){
               <Select variant='outline' placeholder='VIlle ou code postal' />
               </Flex>
             </Box>
-            <Box mb={5}>
+            <Box mb={5} width={"100%"}>
               <Text mb={2}>COLIS</Text>
               <Flex width={"100%"}>
                 <InputGroup width={"40%"}>
@@ -71,18 +73,20 @@ export default function Devis(){
           </Box>
 
         </Box>
-        <Box width={"40%"}>
+        <Box width={["100%","100%","100%","40%","40%"]}>
         <Image src='./pic2.jpg' alt="image livraison" />
-          <Heading fontSize={"20px"}>{slog}</Heading>
+          <Heading fontSize={"20px"} textAlign={["right","right","right","left","left"]}>{slog}</Heading>
        
          
         
         </Box>
+        </SimpleGrid>
       </Flex>
       <Text fontWeight={"semibold"} textAlign={"justify"} width={"100%"} my={"40px"}>
            {slog1}
           </Text>
     </Box>
+  
     </Center>
     </>
   ) 
