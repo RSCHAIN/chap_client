@@ -76,11 +76,11 @@ if(Object.values(data).length>0){
             spacing={{ base: 4, sm: 6 }}
             direction={'column'}
             divider={
-              <StackDivider borderColor={useColorModeValue('gray.200', 'gray.600')} />
+              <StackDivider borderColor={'gray.200'} />
             }>
             <VStack spacing={{ base: 4, sm: 6 }}>
               <Text
-                color={useColorModeValue('gray.500', 'gray.400')}
+                color={'gray.500'}
                 fontSize={'2xl'}
                 fontWeight={'300'}>
                {data.description} 
@@ -116,7 +116,7 @@ if(Object.values(data).length>0){
             <Box>
               <Text
                 fontSize={{ base: '16px', lg: '18px' }}
-                color={useColorModeValue('yellow.500', 'yellow.300')}
+                color={'yellow.500'}
                 fontWeight={'500'}
                 textTransform={'uppercase'}
                 mb={'4'}>
@@ -177,8 +177,8 @@ if(Object.values(data).length>0){
             mt={8}
             size={'lg'}
             py={'7'}
-            bg={useColorModeValue('gray.900', 'gray.50')}
-            color={useColorModeValue('white', 'gray.900')}
+            bg={'gray.900'}
+            color={'white'}
             textTransform={'uppercase'}
             _hover={{
               transform: 'translateY(2px)',
