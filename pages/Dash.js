@@ -30,7 +30,7 @@ import {
 } from "@chakra-ui/icons";
 
 import { AiOutlineUser, AiOutlineShoppingCart } from "react-icons/ai";
-
+import secureLocalStorage from "react-secure-storage";
 import Slide from "@/components/slider";
 import Footer2 from "@/components/footer";
 // Settings for the slider
@@ -62,7 +62,7 @@ export default function CaptionCarousel() {
   // This can be static or loaded from a server
   const [cards, setCards] = useState([]);
   useEffect(() => {
-    JSON.parse(localStorage.getItem("AlimentationDatos")).map((card, index) => {
+    JSON.parse(secureLocalStorage.getItem("AlimentationDatos")).map((card, index) => {
       setCards(card);
     });
   }, []);

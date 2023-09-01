@@ -45,6 +45,7 @@ import { db2 } from "@/FIREBASE/clientApp";
 import { PayPalButtons } from "@paypal/react-paypal-js";
 import axios from "axios";
 import {BsCashCoin,BsPaypal} from 'react-icons/bs'
+import secureLocalStorage from "react-secure-storage";
 
 export default function Carte() {
  
@@ -77,7 +78,7 @@ export default function Carte() {
   const [dis, setDis] = useState();
   useEffect(() => {
     let PrixT = 0;
-    const Cart = localStorage.getItem("Cart");
+    const Cart = secureLocalStorage.getItem("Cart");
     const All = JSON.parse(Cart);
 
     setCart(JSON.parse(Cart));
@@ -117,14 +118,14 @@ export default function Carte() {
       }
     }
 
-    localStorage.setItem("prix", PrixT);
+    secureLocalStorage.setItem("prix", PrixT);
   }, [prix]);
 
   if (cart != undefined && cart.length != 0) {
     //liste des fonctions en rapport avec le produit et la commande
     function saveCommande() {
       let email = sessionStorage.getItem("email");
-      let Cart = JSON.parse(localStorage.getItem("Cart"));
+      let Cart = JSON.parse(secureLocalStorage.getItem("Cart"));
 
       if (
         (lieu != undefined && lieu != null && lieu.length > 3) &&
@@ -164,7 +165,7 @@ export default function Carte() {
           }).then((response)=>{alert("okay")})
         });
         
-        localStorage.removeItem("Cart");
+        secureLocalStorage.removeItem("Cart");
         setLieu("");
         setNom("");
         setNumero("");
@@ -184,7 +185,7 @@ export default function Carte() {
 
     function saveCommande3() {
       let email = sessionStorage.getItem("email");
-      let Cart = JSON.parse(localStorage.getItem("Cart"));
+      let Cart = JSON.parse(secureLocalStorage.getItem("Cart"));
 
       if (
         (lieu != undefined && lieu != null && lieu.length > 3) &&
@@ -224,7 +225,7 @@ export default function Carte() {
           }).then((response)=>{alert("okay")})
         });
         
-        localStorage.removeItem("Cart");
+        secureLocalStorage.removeItem("Cart");
         setLieu("");
         setNom("");
         setNumero("");
@@ -242,10 +243,10 @@ export default function Carte() {
 //// EN MAGASIN
     function saveCommande2() {
       let email = sessionStorage.getItem("email");
-      let Cart = JSON.parse(localStorage.getItem("Cart"));
-      let adress = localStorage.addresse;
-      let nom2 = localStorage.name;
-      let numero = localStorage.number;
+      let Cart = JSON.parse(secureLocalStorage.getItem("Cart"));
+      let adress = secureLocalStorage.addresse;
+      let nom2 = secureLocalStorage.name;
+      let numero = secureLocalStorage.number;
       let date = new Date();
       if (email != undefined && email != null && email.length > 3 &&  hours!=undefined && hours != null) {
         Cart.map(async (data, index) => {
@@ -281,7 +282,7 @@ export default function Carte() {
           }).then((response)=>{alert("okay")})
         });
         
-        localStorage.removeItem("Cart");
+        secureLocalStorage.removeItem("Cart");
         setLieu("");
         setNom("");
         setNumero("");
@@ -299,10 +300,10 @@ export default function Carte() {
     
     function saveCommande4() {
       let email = sessionStorage.getItem("email");
-      let Cart = JSON.parse(localStorage.getItem("Cart"));
-      let adress = localStorage.addresse;
-      let nom2 = localStorage.name;
-      let numero = localStorage.number;
+      let Cart = JSON.parse(secureLocalStorage.getItem("Cart"));
+      let adress = secureLocalStorage.addresse;
+      let nom2 = secureLocalStorage.name;
+      let numero = secureLocalStorage.number;
       let date = new Date();
       if (email != undefined && email != null && email.length > 3 &&  hours!=undefined && hours != null) {
         Cart.map(async (data, index) => {
@@ -338,7 +339,7 @@ export default function Carte() {
           }).then((response)=>{alert("okay")})
         });
         
-        localStorage.removeItem("Cart");
+        secureLocalStorage.removeItem("Cart");
         setLieu("");
         setNom("");
         setNumero("");
@@ -357,11 +358,11 @@ export default function Carte() {
 
 
     function saveCart(product) {
-      localStorage.setItem("Cart", JSON.stringify(product));
+      secureLocalStorage.setItem("Cart", JSON.stringify(product));
     }
 
     function getCart() {
-      let Cart = localStorage.getItem("Cart");
+      let Cart = secureLocalStorage.getItem("Cart");
       if (Cart == null) {
         return [];
       } else {
@@ -513,9 +514,9 @@ export default function Carte() {
                     <h2>
                       <AccordionButton
                         onClick={() => {
-                          setLieu(localStorage.getItem("addresse")),
-                            setNumero(localStorage.getItem("number")),
-                            setNom(localStorage.getItem("name"));
+                          setLieu(secureLocalStorage.getItem("addresse")),
+                            setNumero(secureLocalStorage.getItem("number")),
+                            setNom(secureLocalStorage.getItem("name"));
                         }}
                       >
                         <Radio value="4"> Livraison a domicile</Radio>
@@ -621,11 +622,11 @@ export default function Carte() {
                                   <AccordionButton
                                   display={conf3}
                                     onClick={() => {
-                                      setLieu(localStorage.getItem("addresse")),
+                                      setLieu(secureLocalStorage.getItem("addresse")),
                                         setNumero(
-                                          localStorage.getItem("number")
+                                          secureLocalStorage.getItem("number")
                                         ),
-                                        setNom(localStorage.getItem("name"));
+                                        setNom(secureLocalStorage.getItem("name"));
                                     }}
                                   >
                                     <Radio value="1">

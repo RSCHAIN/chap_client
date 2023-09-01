@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react';
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '@/FIREBASE/clientApp';
+import secureLocalStorage from "react-secure-storage";
 
 const SearcheIcone =  (message) => {
 
@@ -39,7 +40,7 @@ const SearcheIcone =  (message) => {
 
 
 useEffect(()=>{
-    setCategorie(localStorage.getItem("service"))
+    setCategorie(secureLocalStorage.getItem("service"))
     
              
     // if (message.message == "Recherchez un magasin") {

@@ -22,6 +22,7 @@ import {
   import { useEffect, useState } from "react";
   import { BiCurrentLocation } from "react-icons/bi";
   import { BsGeoAlt } from "react-icons/bs";
+  import secureLocalStorage from "react-secure-storage";
 
 
 export default function Location(){
@@ -41,7 +42,7 @@ export default function Location(){
         .then((response) => {
           // console.log(response.data.results[0].components);
           
-            localStorage.setItem("location",JSON.stringify(response.data.results[0].components))
+          secureLocalStorage.setItem("location",JSON.stringify(response.data.results[0].components))
             setLocal((response.data.results[0].components))
         })
         .catch((error) => {

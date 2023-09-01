@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useState } from "react";
 import DataTable from "datatables.net-dt";
+import secureLocalStorage from "react-secure-storage";
 
 export default function Exemple() {
   const [imageUrl, setImageUrl] = useState([]);
@@ -35,7 +36,7 @@ export default function Exemple() {
 
   useEffect(() => {
     if (datas == 0) {
-      setService(localStorage.getItem("service"));
+      setService(secureLocalStorage.getItem("service"));
       update(service);
     }
   }, [datas, update, service]);

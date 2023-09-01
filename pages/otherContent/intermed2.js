@@ -20,6 +20,7 @@ import { db } from "@/FIREBASE/clientApp";
 import Tested from "./test2";
 import { useEffect } from "react";
 import { useState } from "react";
+import secureLocalStorage from "react-secure-storage";
 
 export default function Intrmed2() {
   const [terms, setTerms] = useState("");
@@ -29,8 +30,8 @@ export default function Intrmed2() {
   const [jour,setJour] =useState([])
 
   useEffect(() => {
-    setCategorie(localStorage.getItem("service"));
-    setJour(localStorage.getItem("jour"))
+    setCategorie(secureLocalStorage.getItem("service"));
+    setJour(secureLocalStorage.getItem("jour"))
   }, []);
 
   const recherche = async (terms, categorie) => {

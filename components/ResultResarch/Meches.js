@@ -1,6 +1,7 @@
 import { ArrowForwardIcon } from "@chakra-ui/icons"
 import { Box, SimpleGrid, Text,Image, Link, Heading, Flex, Button } from "@chakra-ui/react"
 import { useState } from "react"
+import secureLocalStorage from "react-secure-storage";
 
 export default function Meches (data){
    
@@ -67,7 +68,7 @@ export default function Meches (data){
           <Link
             href="/Customize/showMore"
             onClick={() => {
-              localStorage.setItem("service", "Commerce de meches");
+              secureLocalStorage.setItem("service", "Commerce de meches");
             }}
             _hover={{ textDecoration: "none" }}
           >

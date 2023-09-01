@@ -96,10 +96,10 @@
 
 // ///fonction du panier
 // function saveCart(product) {
-//   localStorage.setItem("Cart", JSON.stringify(product));
+//   secureLocalStorage.setItem("Cart", JSON.stringify(product));
 // }
 // function getCart() {
-//   let Cart = localStorage.getItem("Cart");
+//   let Cart = secureLocalStorage.getItem("Cart");
 //   if (Cart == null) {
 //     return [];
 //   } else {
@@ -124,9 +124,9 @@
 // async function saveCommande2(data) {
 //   let email = sessionStorage.getItem("email");
 
-//   let adress = localStorage.addresse;
-//   let nom2 = localStorage.name;
-//   let numero = localStorage.number;
+//   let adress = secureLocalStorage.addresse;
+//   let nom2 = secureLocalStorage.name;
+//   let numero = secureLocalStorage.number;
 //   let date = new Date();
 
 //   push(ref(db2, "Commandes"), {
@@ -170,9 +170,9 @@
 // async function saveCommande3(d1, d2) {
 //   let email = sessionStorage.getItem("email");
 
-//   let adress = localStorage.addresse;
-//   let nom2 = localStorage.name;
-//   let numero = localStorage.number;
+//   let adress = secureLocalStorage.addresse;
+//   let nom2 = secureLocalStorage.name;
+//   let numero = secureLocalStorage.number;
 //   let date = new Date();
 
 //   if (d1.length != 0 && d2.length != 0) {

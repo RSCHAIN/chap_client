@@ -30,6 +30,7 @@ import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Firestore, collection, doc, getDocs, where } from "firebase/firestore";
 import { query } from "@firebase/database";
 import { AiOutlineUser } from "react-icons/ai";
+import secureLocalStorage from "react-secure-storage";
 
 export default function Showconnex() {
   const [users, setUsers] = useState("");
@@ -38,7 +39,7 @@ export default function Showconnex() {
 
   const logout = () => {
     signOut(auth);
-    localStorage.clear()
+    secureLocalStorage.clear()
     router.reload();
   };
 
@@ -58,10 +59,10 @@ export default function Showconnex() {
     for (let index = 0; index < dataQ.length; index++) {
       // console.log(dataQ[index].email,email,dataQ[index].email==email )
       if (dataQ[index].email == email) {
-        localStorage.setItem("addresse", dataQ[index].address);
+        secureLocalStorage.setItem("addresse", dataQ[index].address);
         setName(dataQ[index].name);
-        localStorage.setItem("name", dataQ[index].name);
-        localStorage.setItem("number", dataQ[index].number);
+        secureLocalStorage.setItem("name", dataQ[index].name);
+        secureLocalStorage.setItem("number", dataQ[index].number);
       } else {
         // console.log("echec")
       }
@@ -124,7 +125,7 @@ export default function Showconnex() {
             </PopoverBody> */}
               <PopoverBody>
                 <Link
-                onClick={()=>localStorage.setItem("index",0)}
+                onClick={()=>secureLocalStorage.setItem("index",0)}
                   href="/Commandes/#1"
                   width={"full"}
                   _hover={{
@@ -137,7 +138,7 @@ export default function Showconnex() {
                   </Button>
                 </Link>
                 <Link
-                onClick={()=>localStorage.setItem("index",1)}
+                onClick={()=>secureLocalStorage.setItem("index",1)}
                 href="/Commandes/#2"
                 width={"full"}
                   _hover={{
@@ -176,20 +177,29 @@ export default function Showconnex() {
         >
              
                 <Link
-                onClick={()=>localStorage.setItem("index",0)}
-                  href="/Commandes/#1"
-                  width={"full"}
+                onClick={()=>secureLocalStorage.setItem("index",0)}
+                  href="/Commandes  "
+                  textAlign={"center"}
                   _hover={{
                     textDecoration: "none",
                   }}
                 >
-                  <Button width={"full"} bgColor={"white"}>
-                    {" "}
-                    Mes commandes
-                  </Button>
+                  
+                    
+                    Mon compte
+                 
                 </Link>
                 <Link
-                onClick={()=>localStorage.setItem("index",1)}
+                    border={"none"}
+                    href={"#"}
+                    _hover={{ textDecoration : "none" }}
+                    onClick={() => logout()}
+                  >
+                    {" "}
+                    Deconnexion de {name}
+                  </Link>
+                {/* <Link
+                onClick={()=>secureLocalStorage.setItem("index",1)}
                 href="/Commandes/#2"
                 width={"full"}
                   _hover={{
@@ -200,20 +210,12 @@ export default function Showconnex() {
                     {" "}
                     Mon profils
                   </Button>
-                </Link>
+                </Link> */}
                 {/* <Link href="/Mybuy" ><Button>Mes commandes</Button></Link> */}
               
-                <Center>
-                  <Button
-                    border={"none"}
-                    bgColor={"white"}
-                    _hover={{ bgcolor: "white", color: "red.800" }}
-                    onClick={() => logout()}
-                  >
-                    {" "}
-                    Deconnexion de {name}
-                  </Button>
-                </Center>
+               
+                
+               
               
         </Flex>
       
@@ -303,8 +305,7 @@ display={["grid","grid","grid","none","none"]}
   {/* <Link display={'flex'} mr={{ base: "3", md: "3" }} fontSize={20} href={"/Connexion"}>
     <Icon as={AiOutlineUser} fontSize={30} mr={2}/> Se connecter
   </Link> */}
-  <Popover>
-    <PopoverTrigger>
+ 
       <Button
         leftIcon={<Icon as={AiOutlineUser} fontSize={30} mr={2} />}
         rightIcon={<ChevronDownIcon />}
@@ -312,12 +313,9 @@ display={["grid","grid","grid","none","none"]}
       >
         Se connecter
       </Button>
-    </PopoverTrigger>
-    <PopoverContent width={"210px"}>
-      <PopoverArrow />
+   
 
-      <PopoverBody>
-        <Center>
+         <Center>
           <Button
             as={Link}
             href="/Choose"
@@ -332,21 +330,20 @@ display={["grid","grid","grid","none","none"]}
             SE CONNECTER
           </Button>
         </Center>
-      </PopoverBody>
-      <PopoverFooter>
-        <Link
-          href="/Mybuy"
-          width={"full"}
+    
+        {/* <Link
+          href="/Commandes"
+        
           _hover={{
             textDecoration: "none",
           }}
         >
-          <Button width={"full"} bgColor={"white"}>
+          <Button  bgColor={"white"}>
             {" "}
-            Mes commandes
+            Mon compte
           </Button>
-        </Link>
-        <Link
+        </Link> */}
+        {/* <Link
           href="/profiles"
           width={"full"}
           _hover={{
@@ -357,11 +354,9 @@ display={["grid","grid","grid","none","none"]}
             {" "}
             Mon profils
           </Button>
-        </Link>
+        </Link> */}
         {/* <Link href="/Mybuy" ><Button>Mes commandes</Button></Link> */}
-      </PopoverFooter>
-    </PopoverContent>
-  </Popover>
+      
 </Flex>
 </>
     );

@@ -29,6 +29,7 @@ import { ref, onValue } from "firebase/database";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { MdChevronLeft, MdChevronRight, MdMenu } from "react-icons/md";
 import { ChevronDownIcon } from "@chakra-ui/icons";
+import secureLocalStorage from "react-secure-storage";
 
 export default function Menucat() {
   return <DropdownMenu />;
@@ -98,11 +99,11 @@ function DropdownMenu() {
             }}
             onClick={() => {
               if (index.nom == "Coiffure") {
-                localStorage.setItem("service", "Salon de Coiffure");
+                secureLocalStorage.setItem("service", "Salon de Coiffure");
               } else if (index.nom == "Mèches") {
-                localStorage.setItem("service", "Commerce de meches");
+                secureLocalStorage.setItem("service", "Commerce de meches");
               } else {
-                localStorage.setItem("service", index.nom);
+                secureLocalStorage.setItem("service", index.nom);
               }
             }}
             href={"/otherContent/intermed2"}

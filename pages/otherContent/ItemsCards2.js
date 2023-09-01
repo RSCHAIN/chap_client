@@ -5,13 +5,14 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Exemple from "./test";
 import { useRouter } from "next/router";
+import secureLocalStorage from "react-secure-storage";
 
 const Listing = ({categorie}) => {
    
     const [tab,setTab] = useState([])
     useEffect(()=>{
         // console.log("categorie")
-        // console.log(JSON.parse(localStorage.getItem(categorie)))
+        // console.log(JSON.parse(secureLocalStorage.getItem(categorie)))
 
     })
    
@@ -19,7 +20,7 @@ const Listing = ({categorie}) => {
     
     return(
     <>
-         <Exemple key={index} dat={JSON.parse(localStorage.getItem(categorie))} />
+         <Exemple key={index} dat={JSON.parse(secureLocalStorage.getItem(categorie))} />
     </>
     )
    
@@ -41,7 +42,7 @@ export default function Pagination() {
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
       cat.push(doc.id);
-    localStorage.setItem("all",cat) 
+    secureLocalStorage.setItem("all",cat) 
   
     });
     
@@ -62,7 +63,7 @@ export default function Pagination() {
         data.id = doc.id;
         return data;
       });
-      localStorage.setItem(`${data}`, JSON.stringify(docs));
+      secureLocalStorage.setItem(`${data}`, JSON.stringify(docs));
     });
     router.push("/otherContent/test")
   };

@@ -18,10 +18,26 @@ import {
   List,
   ListItem,
 } from '@chakra-ui/react'
+import { useEffect,useState } from 'react'
 import { MdLocalShipping } from 'react-icons/md'
+import secureLocalStorage from 'react-secure-storage'
+import Navbar from "@/components/Navbar";
+import InputBar from '@/components/InputBar'
 
 export default function Simple() {
+  const [data,setData] = useState({})
+
+  useEffect(()=>{
+    setData(secureLocalStorage.getItem("items"));
+ 
+  },[data])
+
+
+if(Object.values(data).length>0){
   return (
+    <>
+    <InputBar />
+<Navbar />
     <Container maxW={'7xl'}>
       <SimpleGrid
         columns={{ base: 1, lg: 2 }}
@@ -32,7 +48,7 @@ export default function Simple() {
             rounded={'md'}
             alt={'product image'}
             src={
-              'https://images.unsplash.com/photo-1596516109370-29001ec8ec36?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyODE1MDl8MHwxfGFsbHx8fHx8fHx8fDE2Mzg5MzY2MzE&ixlib=rb-1.2.1&q=80&w=1080'
+             data.imageUrl
             }
             fit={'cover'}
             align={'center'}
@@ -46,13 +62,13 @@ export default function Simple() {
               lineHeight={1.1}
               fontWeight={600}
               fontSize={{ base: '2xl', sm: '4xl', lg: '5xl' }}>
-              Automatic Watch
+             {data.nom}
             </Heading>
             <Text
               color={useColorModeValue('gray.900', 'gray.400')}
               fontWeight={300}
               fontSize={'2xl'}>
-              $350.00 USD
+              {data.prix} €
             </Text>
           </Box>
 
@@ -67,16 +83,14 @@ export default function Simple() {
                 color={useColorModeValue('gray.500', 'gray.400')}
                 fontSize={'2xl'}
                 fontWeight={'300'}>
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                eirmod tempor invidunt ut labore
+               {data.description} 
               </Text>
-              <Text fontSize={'lg'}>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid amet
-                at delectus doloribus dolorum expedita hic, ipsum maxime modi nam officiis
-                porro, quae, quisquam quos reprehenderit velit? Natus, totam.
-              </Text>
+              {/* // <Text fontSiz'lg'}>
+              //  {data.quantite} de provenant de la {data.origine}
+              // </Text> */}
+             
             </VStack>
-            <Box>
+            {/* <Box>
               <Text
                 fontSize={{ base: '16px', lg: '18px' }}
                 color={useColorModeValue('yellow.500', 'yellow.300')}
@@ -98,7 +112,7 @@ export default function Simple() {
                   <ListItem>Small seconds</ListItem>
                 </List>
               </SimpleGrid>
-            </Box>
+            </Box> */}
             <Box>
               <Text
                 fontSize={{ base: '16px', lg: '18px' }}
@@ -106,29 +120,29 @@ export default function Simple() {
                 fontWeight={'500'}
                 textTransform={'uppercase'}
                 mb={'4'}>
-                Product Details
+                Details Produit
               </Text>
 
               <List spacing={2}>
                 <ListItem>
                   <Text as={'span'} fontWeight={'bold'}>
-                    Between lugs:
+                    Quantité:
                   </Text>{' '}
-                  20 mm
+                  {data.quantite}
                 </ListItem>
                 <ListItem>
                   <Text as={'span'} fontWeight={'bold'}>
-                    Bracelet:
+                    Origine:
                   </Text>{' '}
-                  leather strap
+                  {data.origine}
                 </ListItem>
                 <ListItem>
                   <Text as={'span'} fontWeight={'bold'}>
-                    Case:
+                    Etat:
                   </Text>{' '}
-                  Steel
+                  {data.etat}
                 </ListItem>
-                <ListItem>
+                {/* <ListItem>
                   <Text as={'span'} fontWeight={'bold'}>
                     Case diameter:
                   </Text>{' '}
@@ -152,7 +166,7 @@ export default function Simple() {
                     Water resistance:
                   </Text>{' '}
                   5 bar (50 metres / 167 feet){' '}
-                </ListItem>
+                </ListItem> */}
               </List>
             </Box>
           </Stack>
@@ -177,5 +191,8 @@ export default function Simple() {
         </Stack>
       </SimpleGrid>
     </Container>
+    </>
   )
+}
+  
 }

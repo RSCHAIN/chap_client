@@ -35,6 +35,8 @@ import Cookies from "cookies";
 import { useRouter } from "next/router";
 import { MdLocationOn } from "react-icons/md";
 import {RiSendPlaneLine} from "react-icons/ri"
+import secureLocalStorage from "react-secure-storage";
+
 
 export default function Home() {
   const [locate, setLocate] = useState("");
@@ -57,13 +59,13 @@ const [code,setCode] = useState([]);
       
     if(response.data.results[0].address_components.length >4){
       
-      localStorage.setItem("location",response.data.results[0].address_components[2].long_name);
-      localStorage.setItem("postal",response.data.results[0].address_components[6].long_name);
+      secureLocalStorage.setItem("location",response.data.results[0].address_components[2].long_name);
+      secureLocalStorage.setItem("postal",response.data.results[0].address_components[6].long_name);
       router.reload();
     }else{
       
-      localStorage.setItem("location",response.data.results[0].address_components[2].long_name);
-      localStorage.setItem("postal",response.data.results[0].address_components[1].long_name);
+      secureLocalStorage.setItem("location",response.data.results[0].address_components[2].long_name);
+      secureLocalStorage.setItem("postal",response.data.results[0].address_components[1].long_name);
       router.reload();
     }
    
@@ -85,8 +87,8 @@ const [code,setCode] = useState([]);
 
 
   useEffect(()=>{
-    setFinal((localStorage.getItem("location"))?? "")
-  setLocate(localStorage.getItem("postal") ?? "0")
+    setFinal((secureLocalStorage.getItem("location"))?? "")
+  setLocate(secureLocalStorage.getItem("postal") ?? "0")
     const updateAll = () => {
   
       cat.map((index, key) => {
@@ -101,8 +103,8 @@ const [code,setCode] = useState([]);
             }))
             
             
-            // localStorage.setItem(index.id + "Datos", JSON.stringify(categorie));
-            // setGetter(JSON.parse(localStorage.getItem(index.id + "Datos")))
+            // secureLocalStorage.setItem(index.id + "Datos", JSON.stringify(categorie));
+            // setGetter(JSON.parse(secureLocalStorage.getItem(index.id + "Datos")))
           }
         })
       })
@@ -118,7 +120,7 @@ const [code,setCode] = useState([]);
         });
       };
       GetAll();
-      setLocate(localStorage.getItem("postal") ?? "0");
+      setLocate(secureLocalStorage.getItem("postal") ?? "0");
      
       // console.log("check",check)
       setCheck(check + 1);
@@ -128,7 +130,7 @@ const [code,setCode] = useState([]);
 
 
 
-    localStorage.setItem("index",0)
+    secureLocalStorage.setItem("index",0)
    
     update()
     updateAll()
@@ -139,7 +141,7 @@ const [code,setCode] = useState([]);
   const Search = (id) => {
     if (data.filter((order) => order.num_dep === id).length != 0) {
       const Final = data.filter((order) => order.num_dep === id);
-      localStorage.setItem("location", Object.values(Final[0])[1]);
+      secureLocalStorage.setItem("location", Object.values(Final[0])[1]);
     } 
   };
 
@@ -197,7 +199,7 @@ const [code,setCode] = useState([]);
                     value={locate}
                    
                     onChange={(e) => {
-                      localStorage.setItem("postal", e.target.value),
+                      secureLocalStorage.setItem("postal", e.target.value),
                         setLocate(e.target.value),
                         Search(locate.slice(0, 2));
                         if((e.target.value).length>4){

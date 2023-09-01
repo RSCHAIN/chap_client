@@ -4,6 +4,7 @@ import { Box, Button, Center, Flex, Heading, Link, Select, SimpleGrid, Text } fr
 import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import { useRouter } from "next/router";
 import React, {useState,useEffect} from "react"
+import secureLocalStorage from "react-secure-storage";
 const PagButton = (props) => {
     const activeStyle = {
       bg: "brand.600",
@@ -77,7 +78,7 @@ function Next() {
 const Get = async ()=>{
   
     if (datas==0) {
-        const q = query(collection(db, "Admin"), where("categorie","==", `${localStorage.getItem("service")}`),orderBy("organisation"));
+        const q = query(collection(db, "Admin"), where("categorie","==", `${secureLocalStorage.getItem("service")}`),orderBy("organisation"));
       
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
@@ -93,8 +94,8 @@ const Get = async ()=>{
 }
 useEffect( ()=>{
   
-  setJour(localStorage.getItem("jour"))
-  setCategorie(localStorage.getItem("service"))
+  setJour(secureLocalStorage.getItem("jour"))
+  setCategorie(secureLocalStorage.getItem("service"))
     if (datas == 0 || datas ==1) {
  
       

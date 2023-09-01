@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import DropIn from "braintree-web-drop-in-react";
 
 import { Button, Link, useToast } from '@chakra-ui/react';
-
+import secureLocalStorage from "react-secure-storage";
 
 export default class Subscriptions extends Component {
 instance;
@@ -13,7 +13,7 @@ state = {
 };
    
     async buy() {
-        const Cart = localStorage.prix
+        const Cart = secureLocalStorage.prix
        
         // Send the nonce to your server
         const { nonce } = await this.instance.requestPaymentMethod();
@@ -36,7 +36,7 @@ state = {
                 purchaseComplete: true
             });
             alert("votre achat de "+ Cart+ " a ete completer")
-            localStorage.removeItem('Cart')
+            secureLocalStorage.removeItem('Cart')
 
             
 

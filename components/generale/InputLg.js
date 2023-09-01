@@ -46,12 +46,13 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import axios from "axios";
+import secureLocalStorage from "react-secure-storage";
 
 function saveCart(product) {
-  localStorage.setItem("Cart", JSON.stringify(product));
+  secureLocalStorage.setItem("Cart", JSON.stringify(product));
 }
 function getCart() {
-  let Cart = localStorage.getItem("Cart");
+  let Cart = secureLocalStorage.getItem("Cart");
   if (Cart == null) {
     return [];
   } else {
@@ -178,7 +179,7 @@ const InputLg = () => {
               return(
                 <>
                 
-                <Link key={index}  onClick={()=>{localStorage.setItem("Fav",data.organisation)}}
+                <Link key={index}  onClick={()=>{secureLocalStorage.setItem("Fav",data.organisation)}}
             href={"/FavInt"}
             _hover={{
               textDecoration:"none"

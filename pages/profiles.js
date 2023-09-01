@@ -24,6 +24,7 @@ import {
 import { useEffect, useState } from "react";
 import { deleteDoc, doc, getDoc, getFirestore, setDoc, updateDoc } from "firebase/firestore";
 import { useRouter } from "next/router";
+import secureLocalStorage from "react-secure-storage";
 
 export default function Profiles() {
   const router = useRouter();
@@ -77,7 +78,7 @@ export default function Profiles() {
           isClosable: true,
         });
         signOut(auth);
-        localStorage.clear()
+        secureLocalStorage.clear()
   }
 
   const updateLang=async ()=>{

@@ -38,16 +38,6 @@ const MenuItem_Link = () => {
             Nous contacter
           </Link>
           <Link href="/Cart">Panier</Link>
-          {/* <Link href='#'>Service</Link>
-                    <Link href='#'>Paiement</Link> */}
-        </Flex>
-
-        <Flex
-          width={{ base: "100%", md: "auto" }}
-          height={{ base: "20%", md: "100%" }}
-          align={"center"}
-          justify={{ base: "space-around", md: "space-between" }}
-        >
           <Showconnex />
         </Flex>
       </Flex>

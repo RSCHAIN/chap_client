@@ -12,7 +12,7 @@ import Textile from "./Textile";
 import Fret from "./Fret";
 import InputBar from "../InputBar";
 import Navbar from "../Navbar";
-
+import secureLocalStorage from "react-secure-storage";
 
 export default function All (){
     const [postal,setPostal] = useState()
@@ -45,12 +45,12 @@ export default function All (){
         
       };
     useEffect(()=>{
-        setPostal(localStorage.getItem("postal"))
-        // console.log(localStorage.getItem("location") )
-        if (localStorage.getItem("location") != undefined && localStorage.getItem("location") != null){
-          recherche(localStorage.getItem("postal"),localStorage.getItem("postal"))
+        setPostal(secureLocalStorage.getItem("postal"))
+        // console.log(secureLocalStorage.getItem("location") )
+        if (secureLocalStorage.getItem("location") != undefined && secureLocalStorage.getItem("location") != null){
+          recherche(secureLocalStorage.getItem("postal"),secureLocalStorage.getItem("postal"))
         }else{
-          recherche(localStorage.getItem("postal")," ")
+          recherche(secureLocalStorage.getItem("postal")," ")
         }
         
     },[postal])

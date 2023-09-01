@@ -19,6 +19,7 @@ import Profiles from "./profiles";
 import Navbar from "@/components/Navbar";
 import InputBar from "@/components/InputBar";
 import FooterR from "@/components/footerResponsif";
+import secureLocalStorage from "react-secure-storage";
 
 function Cancel2(id, state) {
   // console.log(id);
@@ -199,7 +200,7 @@ export default function Commande() {
     Getall();
     setEmail(sessionStorage.getItem("email"));
 
-    setInde(parseInt(localStorage.index));
+    setInde(parseInt(secureLocalStorage.index));
   }, [setCommandeListe]);
   const [isLagerThan768] = useMediaQuery("(min-width: 768px)");
 

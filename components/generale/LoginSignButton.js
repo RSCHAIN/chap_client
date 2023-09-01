@@ -2,12 +2,13 @@ import { Editable, EditableInput, EditablePreview, Flex, Link, Text, Tooltip } f
 import Showconnex from "../ShowConnexion";
 import { useEffect } from "react";
 import { useState } from "react";
+import secureLocalStorage from "react-secure-storage";
 
 const LoginSignButton = () => {
     const [posta,setPosta]= useState("")
     const [paramText,setParamText]= useState("Votre code postal")
     useEffect(()=>{
-        setPosta(localStorage.getItem("postal"))
+        setPosta(secureLocalStorage.getItem("postal"))
     },[posta])
     return (
         <>
@@ -16,7 +17,7 @@ const LoginSignButton = () => {
         
             <Flex><Text mr={5} mt={1}>{paramText}</Text> <Tooltip label='click, pour editer'><Editable  defaultValue={posta}>
   <EditablePreview/>
-  <EditableInput value={posta} onChange={(e)=>{setPosta(e.target.value),localStorage.setItem("postal",e.target.value)}}/>
+  <EditableInput value={posta} onChange={(e)=>{setPosta(e.target.value),secureLocalStorage.setItem("postal",e.target.value)}}/>
 </Editable></Tooltip></Flex></>} */}
                   <Showconnex/>
                   </Flex>

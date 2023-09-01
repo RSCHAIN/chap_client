@@ -2,6 +2,7 @@ import { db } from "@/FIREBASE/clientApp";
 import { query,collection,where,getDocs} from "firebase/firestore";
 import { useRouter } from "next/router";
 import { useState,useEffect} from "react";
+import secureLocalStorage from "react-secure-storage";
 
 export default function FavInt(){
     const [mag,setMag] = useState("")
@@ -31,7 +32,7 @@ export default function FavInt(){
             "paiement",
             JSON.stringify(doc.data().methodeDePaiement)
           );
-            localStorage.removeItem("Fav")
+            secureLocalStorage.removeItem("Fav")
 
 
         });
@@ -39,8 +40,8 @@ export default function FavInt(){
        
       };
       useEffect(()=>{
-        if(localStorage.getItem("Fav")!= undefined && localStorage.getItem("Fav")!= null){
-            recherche(localStorage.getItem("Fav"))
+        if(secureLocalStorage.getItem("Fav")!= undefined && secureLocalStorage.getItem("Fav")!= null){
+            recherche(secureLocalStorage.getItem("Fav"))
         }else{
             router.push("/")
         }

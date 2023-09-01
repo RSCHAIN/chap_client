@@ -38,6 +38,7 @@ import { useRouter } from "next/router";
 import CookieConsent from "react-cookie-consent";
 import { MdLocationOn } from "react-icons/md";
 import axios from "axios";
+import secureLocalStorage from "react-secure-storage";
 
 const InputBar = () => {
   const auth = getAuth(app);
@@ -55,23 +56,23 @@ const InputBar = () => {
   const Search = (id) => {
     if (data.filter((order) => order.num_dep === id).length != 0) {
       const Final = data.filter((order) => order.num_dep === id);
-      localStorage.setItem("location", Object.values(Final[0])[1]);
+      secureLocalStorage.setItem("location", Object.values(Final[0])[1]);
     } 
   };
   const Contenu = () => {
     if (
-      localStorage.getItem("Cart") != undefined ||
-      localStorage.getItem("Cart") != null
+      secureLocalStorage.getItem("Cart") != undefined ||
+      secureLocalStorage.getItem("Cart") != null
     ) {
-      setContenu(JSON.parse(localStorage.getItem("Cart")).length);
+      setContenu(JSON.parse(secureLocalStorage.getItem("Cart")).length);
     } else {
       setContenu(0);
     }
   };
 
   useEffect(() => {
-    setFinal(localStorage.getItem("location")?? "")
-    setLast(localStorage.getItem("postal")?? "")
+    setFinal(secureLocalStorage.getItem("location")?? "")
+    setLast(secureLocalStorage.getItem("postal")?? "")
     Contenu();
     if (check == 0 || check == 1) {
       const GetAll = async () => {
@@ -82,8 +83,9 @@ const InputBar = () => {
         });
       };
       GetAll();
-      setLocate(localStorage.getItem("postal") ?? "0");
+      setLocate(secureLocalStorage.getItem("postal") ?? "0");
       onAuthStateChanged(auth, (user) => {
+      
         if (user) {
           setTotal(2);
         }
@@ -174,10 +176,16 @@ const InputBar = () => {
             {/* <Link display={'flex'} mr={{ base: "3", md: "3" }} fontSize={20} href={"/Connexion"}>
           <Icon as={AiOutlineUser} fontSize={30} mr={2}/> Se connecter
         </Link> */}
-            <Popover>
+      <Flex>
+      <MdLocationOn  />
+      <Text mt={-1}>
+      {last}, {final}
+      </Text>
+      </Flex>
+            {/* <Popover>
               <InputGroup borderRadius={"100px"} width={"fit-content"}>
                 <InputRightElement as={Text} width={"fit-content"}>
-                 {last}, {final}
+                {last}, {final}
                 </InputRightElement>
                 <Input
                 isDisabled={true}
@@ -188,7 +196,7 @@ const InputBar = () => {
                   maxLength={5}
                   // value={locate}
                   onChange={(e) => {
-                    localStorage.setItem("postal", e.target.value),
+                    secureLocalStorage.setItem("postal", e.target.value),
                       setLocate(e.target.value),
                       Search(locate.slice(0, 2));
                       if((e.target.value).length>4){
@@ -224,7 +232,7 @@ const InputBar = () => {
                       maxLength={5}
                       value={locate}
                       onChange={(e) => {
-                        localStorage.setItem("postal", e.target.value),
+                        secureLocalStorage.setItem("postal", e.target.value),
                           setLocate(e.target.value),
                           Search(locate.slice(0, 2));
                       }}
@@ -253,7 +261,7 @@ const InputBar = () => {
                         maxLength={5}
                         value={locate}
                         onChange={(e) => {
-                          localStorage.setItem("postal", e.target.value),
+                          secureLocalStorage.setItem("postal", e.target.value),
                             setLocate(e.target.value),
                             Search(locate.slice(0, 2));
                         }}
@@ -273,7 +281,7 @@ const InputBar = () => {
                   </>
                 )}
               </PopoverContent>
-            </Popover>
+            </Popover> */}
           </Flex>
           <Flex
             display={["none", "none", "none", "flex", "flex"]}
@@ -320,7 +328,7 @@ const InputBar = () => {
                     w={"15em"}
                     maxLength={5}
                     value={locate} 
-                    onChange={(e)=>{localStorage.setItem("postal",e.target.value),setLocate(e.target.value)}}
+                    onChange={(e)=>{secureLocalStorage.setItem("postal",e.target.value),setLocate(e.target.value)}}
                   />
                   <InputLeftElement as={Link} href={"#"} borderRaduis={"50%"}   _hover={{
                     textDecoration: "none",
@@ -336,7 +344,7 @@ const InputBar = () => {
                     w={"15em"}
                     maxLength={5}
                     value={locate} 
-                    onChange={(e)=>{localStorage.setItem("postal",e.target.value),setLocate(e.target.value)}}
+                    onChange={(e)=>{secureLocalStorage.setItem("postal",e.target.value),setLocate(e.target.value)}}
                   />
                   <InputLeftElement as={Link} href={"#"} borderRaduis={"50%"}   _hover={{
                     textDecoration: "none",

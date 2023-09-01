@@ -18,6 +18,7 @@ import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 import Slider from "react-slick";
 import axios from "axios";
 import {useRouter} from "next/router";
+import secureLocalStorage from "react-secure-storage";
 
 const settings = {
   dots: false,
@@ -82,7 +83,7 @@ const SliderComponents = () => {
   const Search = (id) => {
     if (data.filter((order) => order.num_dep === id).length != 0) {
       const Final = data.filter((order) => order.num_dep === id);
-      localStorage.setItem("location", Object.values(Final[0])[1]);
+      secureLocalStorage.setItem("location", Object.values(Final[0])[1]);
     } 
   };
 
@@ -101,8 +102,8 @@ useEffect(() => {
   }
  
 
-  setFinal((localStorage.getItem("location"))?? "")
-  setLocate(localStorage.getItem("postal") ?? "0");
+  setFinal((secureLocalStorage.getItem("location"))?? "")
+  setLocate(secureLocalStorage.getItem("postal") ?? "0");
 
   //updateAll()
 }, [   locate,check]);
@@ -118,13 +119,13 @@ useEffect(() => {
     
   if(response.data.results[0].address_components.length >4){
     
-    localStorage.setItem("location",response.data.results[0].address_components[2].long_name);
-    localStorage.setItem("postal",response.data.results[0].address_components[6].long_name);
+    secureLocalStorage.setItem("location",response.data.results[0].address_components[2].long_name);
+    secureLocalStorage.setItem("postal",response.data.results[0].address_components[6].long_name);
     router.reload();
   }else{
     
-    localStorage.setItem("location",response.data.results[0].address_components[2].long_name);
-    localStorage.setItem("postal",response.data.results[0].address_components[1].long_name);
+    secureLocalStorage.setItem("location",response.data.results[0].address_components[2].long_name);
+    secureLocalStorage.setItem("postal",response.data.results[0].address_components[1].long_name);
     router.reload();
   }
  
@@ -241,7 +242,7 @@ const handleLocate = () => {
                    
              onChange={(e) => {
                setLocate(e.target.value)
-               localStorage.setItem("postal", e.target.value),
+               secureLocalStorage.setItem("postal", e.target.value),
                setCode(e.target.value),
                Search(code.slice(0,2))
                if((e.target.value).length>4){

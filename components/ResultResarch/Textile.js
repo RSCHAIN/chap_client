@@ -1,6 +1,7 @@
 import { ArrowForwardIcon } from "@chakra-ui/icons"
 import { Box, SimpleGrid, Text,Image, Link, Heading, Flex, Button } from "@chakra-ui/react"
 import { useState } from "react"
+import secureLocalStorage from "react-secure-storage";
 
 export default function Textile (data){
    
@@ -67,7 +68,7 @@ export default function Textile (data){
           <Link
             href="/Customize/showMore"
             onClick={() => {
-              localStorage.setItem("service", "Textile");
+              secureLocalStorage.setItem("service", "Textile");
             }}
             _hover={{ textDecoration: "none" }}
           >

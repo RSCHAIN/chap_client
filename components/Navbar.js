@@ -34,6 +34,7 @@ import { getAuth } from "firebase/auth";
 import { app} from "@/FIREBASE/clientApp";
 import Menucat from "./menucat";
 import Keyword from "./Keywords";
+import secureLocalStorage from "react-secure-storage";
 export default function Navbar() {
  
   const { isOpen, onToggle } = useDisclosure();
@@ -43,7 +44,7 @@ export default function Navbar() {
  const numb=()=>{
 
 
-  const Cart = localStorage.getItem("Cart");
+  const Cart = secureLocalStorage.getItem("Cart");
   const All = JSON.parse(Cart);
   let tot=0
   if (All != null) {
@@ -53,16 +54,16 @@ export default function Navbar() {
     setTotal(tot);
   }
 
-  localStorage.setItem("total", total);
+  secureLocalStorage.setItem("total", total);
  
  
 };
   
 useEffect(()=>{
   numb()
-  const postale = localStorage.getItem("postal")
+  const postale = secureLocalStorage.getItem("postal")
   if (postale == undefined || postale== null ) {
-    localStorage.setItem("postal","0")
+    secureLocalStorage.setItem("postal","0")
   }
   
 },[numb])

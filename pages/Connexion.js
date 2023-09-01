@@ -50,7 +50,7 @@ import {
 } from "firebase/auth";
 import { useRouter } from "next/router";
 import { app } from "@/FIREBASE/clientApp";
-
+import secureLocalStorage from "react-secure-storage";
 import TransitionExample from "@/components/forgetPassword";
 
 export default function Connexion() {
@@ -73,7 +73,7 @@ export default function Connexion() {
   const getTime = () => {
     const currentTime = new Date();
     const timestanp = currentTime.getTime();
-    localStorage.setItem("time", timestanp);
+    secureLocalStorage.setItem("time", timestanp);
     // console.log("okay")
   };
 

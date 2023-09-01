@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import ReactDOM from 'react-dom';
 import Slider from "react-slick";
 import { useRouter } from "next/router";
-
+import secureLocalStorage from "react-secure-storage";
 
 const responsive = {
   superLargeDesktop: {
@@ -80,7 +80,7 @@ export default function Favlist() {
     <Carousel  responsive={responsive} style={"marginLeft='10px'"}
   >
           {Object.values(data).splice(0,8).map((data, index) => (
-            <Link key={index} onClick={()=>{localStorage.setItem("Fav",data.organisation)}}
+            <Link key={index} onClick={()=>{secureLocalStorage.setItem("Fav",data.organisation)}}
             href={"/FavInt"}
             _hover={{
               textDecoration:"none"

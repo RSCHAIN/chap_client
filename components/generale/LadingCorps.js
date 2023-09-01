@@ -44,6 +44,7 @@ import { useRouter } from "next/router";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import Favlist from "./FavLists";
 import axios from "axios";
+import secureLocalStorage from "react-secure-storage";
 
 // les card des differntes cartegories qui seront mapés
 export function ItemCard({ item, card }) {
@@ -57,7 +58,7 @@ export function ItemCard({ item, card }) {
     const jour = new Date();
      if(item.horaire != undefined && item.horaire != null){
     setNom(Object.values(item.horaire)[parseInt(jour.getDay())]);
-    localStorage.setItem("jour",parseInt(jour.getDay()));
+    secureLocalStorage.setItem("jour",parseInt(jour.getDay()));
   }
   },[item.horaire,nom])
  
@@ -235,11 +236,11 @@ export function ContainerCard({ card }) {
             href="/otherContent/intermed2"
             onClick={() => {
               if (card == "Coiffure") {
-                localStorage.setItem("service", "Salon de Coiffure");
+                secureLocalStorage.setItem("service", "Salon de Coiffure");
               } else if (card == "Mèches") {
-                localStorage.setItem("service", "Commerce de meches");
+                secureLocalStorage.setItem("service", "Commerce de meches");
               } else {
-                localStorage.setItem("service", card);
+                secureLocalStorage.setItem("service", card);
               }
             }}
             _hover={{ textDecoration: "none" }}
@@ -316,8 +317,8 @@ const LadingCorps = () => {
   const [locate, setLocate] = useState("");
   const [datas, setDatas] = useState(0);
   const [data,setData] = useState([]);
-    const [code,setCode] = useState([]);
-    const [final,setFinal] = useState([""]);
+  const [code,setCode] = useState([]);
+  const [final,setFinal] = useState([""]);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [check,setCheck] = useState(0);
 
@@ -325,11 +326,11 @@ const LadingCorps = () => {
   //recherche un magasin
   const recherche = async (terms) => {
   
-    const q = query(
+  const q = query(
       collection(db, "Admin"),
       where("codePostal", "==", String(terms).trim())
     );
-    const querySnapshot = await getDocs(q);
+  const querySnapshot = await getDocs(q);
     setModalData(querySnapshot.docs);
   };
 
@@ -381,10 +382,9 @@ const LadingCorps = () => {
 
     if (datas == 0) {
       update();
-     
       setDatas(1);
     }
-    setLocate(localStorage.getItem("postal") ?? " ");
+    setLocate(secureLocalStorage.getItem("postal") ?? " ");
 
     //updateAll()
   }, [datas, cat, postal, locate,check]);
