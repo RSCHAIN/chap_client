@@ -79,7 +79,7 @@ export default function Favlist() {
     <Box ml={[5,5,5,10,10]} width={"90%"}>
     <Carousel  responsive={responsive} style={"marginLeft='10px'"}
   >
-          {Object.values(data).splice(0,8).map((data, index) => (
+          {Object.values(data).map((data, index) => (
             <Link key={index} onClick={()=>{secureLocalStorage.setItem("Fav",data.organisation)}}
             href={"/FavInt"}
             _hover={{
