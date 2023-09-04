@@ -62,7 +62,7 @@ export default function Devis(){
                 <option value={"senegal"}>Senegal</option>
                 <option value={"Côte D'Ivoire"}>{CI}</option>
               </Select>
-              {dest == "france" ? <Input placeholder="entrez le code postal" onChange={(e)=>setCodeArriv(e.target.value)}/> : <></>}
+              {arriv == "france" ? <Input placeholder="entrez le code postal" onChange={(e)=>setCodeArriv(e.target.value)}/> : <></>}
               {/* <Select variant='outline' placeholder='Ville ou code postal' /> */}
               </Flex>
             </Box>
