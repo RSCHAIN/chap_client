@@ -10,7 +10,8 @@ import {
   InputGroup,
   InputRightElement,
   Button,
-  InputLeftAddon
+  InputLeftAddon,
+  InputLeftElement
 } from "@chakra-ui/react";
 import {RiSendPlaneLine} from "react-icons/ri"
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
@@ -84,7 +85,9 @@ const SliderComponents = () => {
     if (data.filter((order) => order.num_dep === id).length != 0) {
       const Final = data.filter((order) => order.num_dep === id);
       secureLocalStorage.setItem("location", Object.values(Final[0])[1]);
-    } 
+    }else{
+      secureLocalStorage.setItem("location"," ");
+    }
   };
 
 useEffect(() => {
@@ -103,7 +106,7 @@ useEffect(() => {
  
 
   setFinal((secureLocalStorage.getItem("location"))?? "")
-  setLocate(secureLocalStorage.getItem("postal") ?? "0");
+  setLocate(secureLocalStorage.getItem("postal") ?? " ");
 
   //updateAll()
 }, [   locate,check]);
@@ -223,10 +226,16 @@ const handleLocate = () => {
             <Text fontSize={"20px"} color={"black"}>Entrez votre adresse pour trouver les commerces à proximité</Text>
             <Flex mt={5}>
             <InputGroup  mr={2} ml={3}
-            width={lat}>
-              <InputLeftAddon as={Text} color={"black"} width={"fit-content"}>
-             {final}
-              </InputLeftAddon>
+           >
+              <Box   bgColor={"#5543"} borderRaduis={"20px"} width={"300px"}> {final}</Box>
+              {/* <InputLeftAddon as={Box}  bgColor={"#5543"} borderRaduis={"20px"} color={"black"} width={"50%"}>
+            
+             <Text  >
+            
+             </Text>
+             
+            
+              </InputLeftAddon> */}
             <InputRightElement _hover={
                 {
                   cursor:"pointer"   ,
@@ -239,7 +248,7 @@ const handleLocate = () => {
             </InputRightElement>
             <Input placeholder={"Saisir le Code postal"} borderRadius={"4px"} 
              value={locate}
-                   
+              height={"50px"}
              onChange={(e) => {
                setLocate(e.target.value)
                secureLocalStorage.setItem("postal", e.target.value),

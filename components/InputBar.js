@@ -176,9 +176,12 @@ const InputBar = () => {
             {/* <Link display={'flex'} mr={{ base: "3", md: "3" }} fontSize={20} href={"/Connexion"}>
           <Icon as={AiOutlineUser} fontSize={30} mr={2}/> Se connecter
         </Link> */}
-      <Flex>
+      <Flex width={"fit-content"} >
+      <Box mt={1}>
       <MdLocationOn  />
-      <Text mt={-1}>
+      </Box>
+    
+      <Text  width={"95%"} >
       {last}, {final}
       </Text>
       </Flex>

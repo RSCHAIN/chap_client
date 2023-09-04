@@ -63,7 +63,7 @@ useEffect(()=>{
   numb()
   const postale = secureLocalStorage.getItem("postal")
   if (postale == undefined || postale== null ) {
-    secureLocalStorage.setItem("postal","0")
+    secureLocalStorage.setItem("postal"," ")
   }
   
 },[numb])
