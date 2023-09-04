@@ -18,7 +18,7 @@ export default function Devis(){
   const [hauteur,setHauteur] = useState("")
   const [details,setDetails] = useState("")
   const [valeur,setValeur] = useState("")
-  const firestore = getFirestore(app);
+ 
   const toast = useToast()
   const makeDevis = async  ()=>{
     await addDoc(collection(db, "DevisPerso"), {
