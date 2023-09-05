@@ -18,10 +18,13 @@ export default function Who() {
   return (
     <>
       <InputBar />
-      {isLagerThan768 ? <Navbar></Navbar> : <></>}
+      <Navbar></Navbar>
       <Center>
         <Box width={"80%"} mx={"25%"} display={"flex"}>
-          <Image src="logo1.png" width={"500px"} />
+          <Box width={"50%"}>
+          <Image src="./logo1.png" alt="logo de chap" />
+          </Box>
+          
           <Box ml={10} mt={20}>
             <Heading>Qui Sommes Nous?</Heading>
             <Text textAlign={"justify"} fontSize={"1em"} mt={5}>
