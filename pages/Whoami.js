@@ -6,6 +6,7 @@ import {
   Flex,
   Heading,
   Image,
+  SimpleGrid,
   Text,
   useMediaQuery,
 } from "@chakra-ui/react";
@@ -19,13 +20,14 @@ export default function Who() {
     <>
       <InputBar />
       <Navbar></Navbar>
-      <Center>
-        <Box width={"80%"} mx={"25%"} display={"flex"}>
-          <Box width={"50%"}>
+      
+        <Box width={"90%"} display={"grid"}>
+          <SimpleGrid columns={[1,1,1,2,2]}>
+          <Box width={"100%"}>
           <Image src="./logo1.png" alt="logo de chap" />
           </Box>
           
-          <Box ml={10} mt={20}>
+          <Box mt={20}>
             <Heading>Qui Sommes Nous?</Heading>
             <Text textAlign={"justify"} fontSize={"1em"} mt={5}>
               {a1} Chap est un produit français qui a été conçu en France et
@@ -41,8 +43,9 @@ export default function Who() {
               économies.{" "}
             </Text>
           </Box>
+          </SimpleGrid>
         </Box>
-      </Center>
+    
     </>
   );
 }

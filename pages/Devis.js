@@ -113,7 +113,7 @@ export default function Devis() {
                       variant="outline"
                       placeholder="Pays"
                       onChange={(e) => setDest(e.target.value)}
-                      mr={5}
+                      // mr={5}
                     >
                       <option value={"france"}>France</option>
                       <option value={"mali"}>Mali</option>
@@ -122,6 +122,7 @@ export default function Devis() {
                     </Select>
                     {dest == "france" ? (
                       <Input
+                      ml={5}
                         placeholder="entrez votre code postal"
                         onChange={(e) => setCodeDest(e.target.value)}
                       />
@@ -138,7 +139,7 @@ export default function Devis() {
                       variant="outline"
                       placeholder="Pays"
                       onChange={(e) => setArriv(e.target.value)}
-                      mr={5}
+                      
                     >
                       <option value={"france"}>France</option>
                       <option value={"mali"}>Mali</option>
@@ -147,6 +148,7 @@ export default function Devis() {
                     </Select>
                     {arriv == "france" ? (
                       <Input
+                      ml={5}
                         placeholder="entrez le code postal"
                         onChange={(e) => setCodeArriv(e.target.value)}
                       />
@@ -156,8 +158,8 @@ export default function Devis() {
                     {/* <Select variant='outline' placeholder='Ville ou code postal' /> */}
                   </Flex>
                 </Box>
-                <Box mb={5} display={"flex"} width={"100%"}>
-                  <Box width={"50%"} mr={5}>
+                <Box mb={5} display={"grid"} width={"100%"}>
+                  <Box width={"100x %"}>
                     <Text mb={2}>Details : </Text>
                     <Input
                       width={"100%"}
@@ -165,7 +167,7 @@ export default function Devis() {
                       onChange={(e) => setDetails(e.target.value)}
                     />
                   </Box>
-                  <Box width={"50%"}>
+                  <Box width={"100%"}>
                     <Text mb={2}>Valeur du colis : </Text>
                     <Input
                       width={"100%"}
