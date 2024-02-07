@@ -589,7 +589,7 @@ export default function Resto({ categorie, magasin }) {
   const dateExp5 = new Date(dateExp4);
   const dateExp6 = dateExp5.toLocaleDateString();
   return (
-    <Box bgColor={"#d9d9d9"}>
+    <Box bgColor={"#f3f3f3"}>
       <InputBar />
       <Navbar />
     {categorie == "Restaurant" ? <BoxRestau mag={mag} categorie={categorie}/> : <BoxCommerce mag={mag} categorie={categorie}/>}

@@ -31,7 +31,7 @@ function BoxRestau({
 
 
   return (
-    <>
+    <Box bgColor={"white"}>
       <Image
         src={mag.imageUrl}
         display={"block"}
@@ -40,12 +40,12 @@ function BoxRestau({
         maxHeight={"70vh"}
         fit={"cover"}
         bgSize={"cover"}
-
       />
-       <Center display={"flex"} bgColor={"white"} pt={5}>
+      <Center display={"grid"}>
+       
       
-          
-      <Heading mr={"60%"} width={"fit-content"}>{mag.organisation}</Heading>
+        <Flex width={"100%"} justifyContent={"space-between"}>  
+      <Heading  width={"fit-content"}>{mag.organisation}</Heading>
       <Flex >
           <Button bgColor={"transparent"} _hover={{
               bgColor:'transparent2'
@@ -54,21 +54,24 @@ function BoxRestau({
               bgColor:'transparent2'
           }} leftIcon={<MdIosShare />}>Partager</Button>
       </Flex>
+      </Flex>
 
-</Center>
-      <Flex bgColor={"white"} justifyContent={"space-between"}>
-      <Box width={"80%"} bgColor={"white"} mb={10} display={"flex"} justifyContent={"center"} flexDirection={"column" } padding={{ base: 5, lg: 7 }}>
+
+      <Flex justifyContent={"space-between"}  width={"100%"} >
+      <Box  bgColor={"white"} mb={10} mr={10} display={"flex"}flexDirection={"column" }>
        
       
-        <Center> 
-        <Flex mr={"47%"} mt={2}>
+       
+        <Flex  mt={2} justifyContent={"left"}>
+          
             <MdLocationOn color='red' fontSize={25}/>
             <Text>{mag.adresse}</Text>
+
         </Flex>
-        <Flex></Flex>
-        </Center>
-        <Center>
-        <Flex mr={"32%"} mt={2}>
+       
+        
+        
+        <Flex mt={2}>
             <Box mt={2}>
             <StarM data={mag.feedback} />
             </Box>
@@ -141,9 +144,9 @@ function BoxRestau({
             </Box>
           </Flex>
           </Flex>
-        </Center>
-        <Center>
-        <Flex mr={"43%"}>
+       
+       
+        <Flex>
             <Text fontWeight={"bold"} pr={2}>
               Description :{" "}
             </Text>
@@ -157,8 +160,8 @@ function BoxRestau({
               </Text>
             )}
           </Flex>
-        </Center>
-        <Center justifyContent={"space-around"}>
+       
+        <Flex justifyContent={"space-between"}>
         <Flex>
             <Text fontWeight={"bold"}>Nationalité : </Text>
             {mag.nationalite == "undefined" ? (
@@ -222,16 +225,17 @@ function BoxRestau({
             </Box>
           </Collapse>
           </Flex>
-        </Center>
+        </Flex>
         <Center>
         {categorie == "Restaurant" ? <ReservationButton mag={mag.organisation} adresse={mag.adresse} imageMag={mag.imageUrl} /> : categorie == "Salon de Coiffure" ? <ReservationCoiff mag={mag.organisation} adresse={mag.adresse} imageMag={mag.imageUrl} /> : <></>}
         </Center>
       </Box>
-      <Box  bgColor={"white"} mt={10} mr={50} >
+      <Box  bgColor={"white"} mt={10} >
           <Mapped adresse={mag.adresse} numero={mag.number} web={mag.siteWeb} />
         </Box>
         </Flex>
-    </>
+        </Center>
+    </Box>
   )
 }
 
