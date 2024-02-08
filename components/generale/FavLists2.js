@@ -214,17 +214,17 @@ export default function Favlist2({ categorie, magasin }) {
   return (
     <>
       {data ? (
-        <Box ml={[5, 5, 5, 10, 10]} width={"95%"} my={[10, 10, 10, 10, 10]} height={"50vh"}>
+        <Box ml={[2, 2, 2, 5, 5]} width={"95%"} my={[10, 10, 10, 10, 10]} height={"35rem"}>
           <Carousel responsive={responsive} style={"marginLeft='10px'"}>
             {Object.values(data).map((data, index) => (
-              <Box bgColor={"white"} key={index} width={"98%"} height={"46vh"}>
+              <Box bgColor={"white"} key={index} width={"13rem"} height={"25rem"}>
                 <Box
                   bgColor={"white"}
                   p={5}
                   key={index}
-                  my={[0, 0, 0, 5, 5]}
-                  height={"40vh"}
-                  width={["200px", "200px", "200px", "200px", "200px"]}
+                  my={ 5}
+                  height={"21.25rem"}
+                  width={"13rem"}
                 >
                   {data.etat == "disponible" ? (
                     <Badge
@@ -259,7 +259,7 @@ export default function Favlist2({ categorie, magasin }) {
                     src={data.imageUrl}
                     alt={data.nom}
                   />
-                  <Box height={"10vh"} mb={2}>
+                  <Box height={"4.5rem"} mb={2}>
                     <Text
                       width={"200px"}
                       noOfLines={2}
