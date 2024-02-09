@@ -486,10 +486,10 @@ export default function Carte() {
                                         <span className="font-bold self-start text-2xl max-[680px]:self-auto max-[1133px]:self-auto">Votre adresse :</span>
                                         {/* <input type="text" value="nk_shaelah@gmail.com"/> */}
                                         <ul className="list-none"> {/**-ml-96 max-[680px]:-ml-0 max-[1133px]:-ml-0 */}
-                                            <li>Nadia Karène</li>
-                                            <li>21 BP Abidjan 04</li>
-                                            <li>+255 0X 1X 2X 3X 4X.</li>
-                                            <li>Abidjan, Côte d_Ivoire.</li> 
+                                            <li>{secureLocalStorage.getItem("name")}</li>
+                                            <li>{secureLocalStorage.getItem("addresse")}</li>
+                                            <li>{secureLocalStorage.getItem("number")}</li>
+                                            {/* <li>{secureLocalStorage.getItem("name")}</li>  */}
                                         </ul>
                                         <button className="bg-cyan-800 rounded-md text-white p-2" onClick={() =>setWay("other")}>Changer d{`'`}adresse</button>
                                     </div>
