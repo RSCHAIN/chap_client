@@ -214,7 +214,7 @@ export default function Favlist2({ categorie, magasin }) {
   return (
     <>
       {data ? (
-        <Box ml={[2, 2, 2, 5, 5]} width={"95%"} my={[10, 10, 10, 10, 10]} height={"35rem"}>
+        <Box ml={[2, 2, 2, 5, 5]}  width={"100%"} my={[10, 10, 10, 10, 10]} height={"35rem"}>
           <Carousel responsive={responsive} style={"marginLeft='10px'"}>
             {Object.values(data).map((data, index) => (
               <Box bgColor={"white"} key={index} width={"13rem"} height={"25rem"}>

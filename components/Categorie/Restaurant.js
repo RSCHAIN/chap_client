@@ -194,7 +194,7 @@ export function StarM2({ data }) {
   return (
     <>
       {total ? (
-        <Box>
+        <Box display={["none","none","none","flex","flex"]}>
           {/* {data.length} */}
           {/* {star} */}
 
@@ -233,7 +233,7 @@ export function StarM2({ data }) {
          </Flex>
         </Box>
       ) : (
-        <Box>
+        <Box display={["none","none","none","flex","flex"]}>
           {Array(5)
             .fill("")
             .map((_, i) => (
@@ -882,7 +882,7 @@ export default function Resto({ categorie, magasin }) {
             )
             )
 
-              : console.log("feed bad")}
+              : <></>}
           </SimpleGrid>
         </SimpleGrid>
       </Center>

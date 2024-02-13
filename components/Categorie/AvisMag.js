@@ -50,7 +50,7 @@ export default function AvisMag({mag,email}){
 
 
     return(
-        <Box bgColor={"white"}>
+        <Box bgColor={"white"} display={["none","none","none","grid","grid"]}>
           <Center>
          <Box  width={"50%"} mt={5}  >
            <Flex display={"flex"} justifyContent={"space-around"}>
