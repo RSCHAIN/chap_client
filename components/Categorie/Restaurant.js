@@ -145,7 +145,7 @@ export function StarM({ data }) {
               />
             ))}
           <Text width={"60px"} ml={1} mt={-1}>
-            {total} avis
+          {total} avis
           </Text>
         </Flex>
       ) : (
@@ -155,8 +155,8 @@ export function StarM({ data }) {
             .map((_, i) => (
               <StarIcon key={i} fontSize={"12px"} color={"gray.500"} />
             ))}
-          <Text  width={"50px"} ml={2} mt={-1}>
-            {total} avis
+          <Text width={"45px"} ml={2} mt={-1}>
+          {total} avis
           </Text>
         </Flex>
       )}
@@ -592,8 +592,8 @@ export default function Resto({ categorie, magasin }) {
     <Box bgColor={"#f3f3f3"}>
       <InputBar />
       <Navbar />
-    {categorie == "Restaurant" ? <BoxRestau mag={mag} categorie={categorie}/> : <BoxCommerce mag={mag} categorie={categorie}/>}
-
+    {/* {categorie == "Restaurant" ? <BoxRestau mag={mag} categorie={categorie}/> : <BoxCommerce mag={mag} categorie={categorie}/>} */}
+    <BoxRestau mag={mag} categorie={categorie}/>
 
       <Box display={"grid"} width={"100%"} mt={10} >
         {categorie == "Restaurant" ?

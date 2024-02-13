@@ -1,5 +1,5 @@
 import { ChevronDownIcon, ChevronUpIcon, StarIcon } from '@chakra-ui/icons';
-import { Box, Collapse, Flex, Heading, Image, Text,Link, Center, Button } from '@chakra-ui/react';
+import { Box, Collapse, Flex, Heading, Image, Text,Link, Center, Button, SimpleGrid } from '@chakra-ui/react';
 import React,{useState} from 'react'
 import { StarM } from '../Restaurant';
 import { MdFastfood, MdIosShare, MdLocationOn } from 'react-icons/md';
@@ -41,10 +41,10 @@ function BoxRestau({
         fit={"cover"}
         bgSize={"cover"}
       />
-      <Center display={"grid"}>
+      <Center display={["none","none","none","grid","grid"]}  >
        
       
-        <Flex width={"100%"} justifyContent={"space-between"}>  
+        <Flex width={"100%"} justifyContent={"space-between"} >  
       <Heading  width={"fit-content"}>{mag.organisation}</Heading>
       <Flex >
           <Button bgColor={"transparent"} _hover={{
@@ -57,7 +57,7 @@ function BoxRestau({
       </Flex>
 
 
-      <Flex justifyContent={"space-between"}  width={"100%"} >
+      <Flex justifyContent={"space-between"}  width={"100%"}  >
       <Box  bgColor={"white"} mb={10} mr={10} display={"flex"}flexDirection={"column" }>
        
       
@@ -151,11 +151,11 @@ function BoxRestau({
               Description :{" "}
             </Text>
             {mag.description == "undefined" ? (
-              <Text width={"80%"} maxWidth={"80%"} >
+              <Text width={"70%"} maxWidth={"70%"} >
                 {`${mag.categorie} Africain`}
               </Text>
             ) : (
-              <Text width={"80%"} maxWidth={"80%"} >
+              <Text width={"70%"} maxWidth={"70%"} >
                 {mag.description}
               </Text>
             )}
@@ -177,11 +177,7 @@ function BoxRestau({
           <Flex>
             <Text fontWeight={"bold"}>Reservation : </Text>
             <Text  textAlign={"justify"}>
-              {(mag.categorie != "Cosmetique" ||
-                mag.categorie != "Epicerie" ||
-                mag.categorie != "Commerce de meches" ||
-                mag.categorie != "Fret" ||
-                mag.categorie != "Salon de Coiffure") != 0 ? (
+              {(categorie == "Restaurant" ) != 0 ? (
                 <Text color={"messenger.500"} ml={2}>
                   En ligne
                 </Text>
@@ -234,6 +230,199 @@ function BoxRestau({
           <Mapped adresse={mag.adresse} numero={mag.number} web={mag.siteWeb} />
         </Box>
         </Flex>
+        </Center>
+
+
+        {/* Mobile */}
+        <Center display={["grid","grid","grid","none","none"]}>
+        <Flex width={"100%"} justifyContent={"space-around"} >  
+      <Heading  width={"fit-content"}>{mag.organisation}</Heading>
+      <Flex >
+          <Button bgColor={"transparent"} _hover={{
+              bgColor:'transparent2'
+          }} leftIcon={<FaEdit />}>Avis</Button>
+            <Button bgColor={"transparent"} _hover={{
+              bgColor:'transparent2'
+          }} leftIcon={<MdIosShare />}>Partager</Button>
+      </Flex>
+      </Flex>
+
+      <Box justifyContent={"space-around"}  width={"100%"}  >
+      <Box  bgColor={"white"} mb={10}  display={"grid"}flexDirection={"column" }>
+       
+      
+       
+        <Flex  mt={2} justifyContent={"left"}>
+          
+            <MdLocationOn color='red' fontSize={25}/>
+            <Text>{mag.adresse}</Text>
+
+        </Flex>
+       
+        
+        <Center>
+        <SimpleGrid columns={3} spacingX={5} mt={2}>
+            <Box>
+            <StarM data={mag.feedback} />
+            </Box>
+        
+        <Flex  as={Link} href={`tel:${mag.number}`}>
+              <BsFillTelephoneOutboundFill fontSize={20} />
+              <Text
+
+                fontSize={"15px"}
+                fontWeight={"medium"}
+                ml={2}
+                color={"green"}
+              >
+                {mag.number}
+              </Text>
+            </Flex>
+            <Flex  as={Link} href={`tel:${mag.number}`}>
+              <MdFastfood fontSize={20} />
+              <Text
+
+                fontSize={"15px"}
+                fontWeight={"medium"}
+                ml={2}
+                color={"green"}
+              >
+                Carte
+              </Text>
+            </Flex>      
+
+            {(mag.siteWeb && mag.siteWeb != "undefined" && mag.siteWeb != "non defini") ?
+              <Flex  cursor={"pointer"} display={{ base: "flex", lg: "flex" }}  as={Link} isExternal href={`${mag.siteWeb}`} >
+                <TfiWorld fontSize={20} />
+                <Text
+
+                  fontSize={"15px"}
+                  fontWeight={"medium"}
+                  ml={1}
+                  width={'70px'}
+                  color={"green"}
+                >
+                  Site web
+                </Text>
+              </Flex> : <Flex display={{ base: "flex", lg: "flex" }} mb={2} mt={2}  ml={5} >
+                <TfiWorld fontSize={20} />
+                <Text
+                  fontSize={"15px"}
+                  width={'90px'}
+                  fontWeight={"medium"}
+                  ml={2}
+                  color={"green"}
+                >
+                  Non defini
+                </Text>
+              </Flex>
+            }
+
+<Flex width={"100%"}  mt={2}>
+<BsCashCoin fontSize={20} />
+            <Box display={ "flex"} ml={2} mt={-1} width={"full"} >
+              {mag.methodeDePaiement != "undefined" &&
+                mag.methodeDePaiement != null
+                ? Object.values(mag.methodeDePaiement).map(methPaiement => {
+                  return (
+                    <Text key={methPaiement} mr={1} >
+                      {methPaiement}, {" "}
+                    </Text>
+                  );
+                })
+                : "Espèces"}
+            </Box>
+          </Flex>
+          </SimpleGrid>
+          </Center>
+       
+        <Flex>
+            <Text fontWeight={"bold"} pr={2}>
+              Description :{" "}
+            </Text>
+            {mag.description == "undefined" ? (
+              <Text width={"70%"} maxWidth={"70%"} >
+                {`${mag.categorie} Africain`}
+              </Text>
+            ) : (
+              <Text width={"70%"} maxWidth={"70%"} >
+                {mag.description}
+              </Text>
+            )}
+          </Flex>
+       
+        <SimpleGrid column={1}>
+        <Flex>
+            <Text fontWeight={"bold"}>Nationalité : </Text>
+            {mag.nationalite == "undefined" ? (
+              <Text ml={2} fontSize={"15px"}>
+                Africaine
+              </Text>
+            ) : (
+              <Text ml={2} fontSize={"15px"}>
+                {`${(" ", mag.nationalite)} `}
+              </Text>
+            )}
+          </Flex>
+          <Flex>
+            <Text fontWeight={"bold"}>Reservation : </Text>
+            <Text  textAlign={"justify"}>
+              {(categorie == "Restaurant" ) != 0 ? (
+                <Text color={"messenger.500"} ml={2}>
+                  En ligne
+                </Text>
+              ) : (
+                <Text color={"red.400"} ml={2}>
+                  Non Disponible
+                </Text>
+              )}
+            </Text>
+          </Flex>
+          <Flex >
+          <Heading
+            as={"h3"}
+            fontWeight={"bold"}
+            _hover={{
+              cursor: "pointer",
+            }}
+            onClick={handleToggle}
+            color={"blue.700"}
+            fontSize={"15px"}
+          
+          >
+            {"Horaire"}
+            {show ? (
+              <ChevronUpIcon fontSize={"20px"} />
+            ) : (
+              <ChevronDownIcon fontSize={"20px"} />
+            )}{" "}
+            :
+          </Heading>
+          <Collapse in={show}>
+            <Box ml={10}>
+              {day.map((data, index) => (
+                <Text key={index} fontSize={"15px"}>
+                  {data}:
+                  {mag.horaire != undefined && mag.horaire != null
+                    ? `${" "} ${mag.horaire[index] ? mag.horaire[index] : "Non Renseigné"}`
+                    : " Non Renseigné"}
+                </Text>
+              ))}
+            </Box>
+          </Collapse>
+          </Flex>
+        </SimpleGrid>
+        <Center>
+        {categorie == "Restaurant" ? <ReservationButton mag={mag.organisation} adresse={mag.adresse} imageMag={mag.imageUrl} /> : categorie == "Salon de Coiffure" ? <ReservationCoiff mag={mag.organisation} adresse={mag.adresse} imageMag={mag.imageUrl} /> : <></>}
+        </Center>
+      </Box>
+      <Center>
+      <Box  bgColor={"white"} mt={5}  pb={10}>
+          <Mapped adresse={mag.adresse} numero={mag.number} web={mag.siteWeb} />
+        </Box>
+      </Center>
+      
+        </Box>
         </Center>
     </Box>
   )
