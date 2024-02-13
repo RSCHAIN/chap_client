@@ -235,8 +235,8 @@ function BoxRestau({
 
         {/* Mobile */}
         <Center display={["grid","grid","grid","none","none"]}>
-        <Flex width={"100%"} justifyContent={"space-around"} >  
-      <Heading  width={"fit-content"}>{mag.organisation}</Heading>
+        <Flex width={"100%"} justifyContent={"space-between"} >  
+      <Heading  width={"fit-content"}  >{mag.organisation}</Heading>
       <Flex >
           <Button bgColor={"transparent"} _hover={{
               bgColor:'transparent2'
@@ -247,22 +247,22 @@ function BoxRestau({
       </Flex>
       </Flex>
 
-      <Box justifyContent={"space-around"}  width={"100%"}  >
-      <Box  bgColor={"white"} mb={10}  display={"grid"}flexDirection={"column" }>
+      <Box  width={"100%"}  >
+      <Box  bgColor={"white"} mb={10}  display={"grid"} >
        
       
-       
-        <Flex  mt={2} justifyContent={"left"}>
+      
+        <Flex  mt={2}  >
           
             <MdLocationOn color='red' fontSize={25}/>
             <Text>{mag.adresse}</Text>
-
+            
         </Flex>
        
         
         <Center>
-        <SimpleGrid columns={3} spacingX={5} mt={2}>
-            <Box>
+        <SimpleGrid columns={3} spacingX={2} mt={2}>
+            <Box ml={5}>
             <StarM data={mag.feedback} />
             </Box>
         
