@@ -50,13 +50,14 @@ import {
   signOut,
 } from "firebase/auth";
 import { useRouter } from "next/router";
-import { app, signinWithGoogle } from "@/FIREBASE/clientApp";
+import { app, db, signinWithGoogle } from "@/FIREBASE/clientApp";
 import secureLocalStorage from "react-secure-storage";
 import TransitionExample from "@/components/forgetPassword";
 // import ScriptComponent from '../components/ScriptComponent';
 import Head from "next/head";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
 import { FacebookIcon } from "next-share";
+import { doc, getDoc } from "firebase/firestore";
 
 export default function Connexion() {
   const [show, setShow] = useState(false)
@@ -87,12 +88,21 @@ export default function Connexion() {
 
   const loginUSer = async () => {
     await signInWithEmailAndPassword(auth, email.toLowerCase(), password)
-      .then((userCredential) => {
+      .then(async (userCredential) => {
 
         getTime();
         if (userCredential.user.emailVerified) {
           setEmail(userCredential.user.email);
           sessionStorage.setItem("email", userCredential.user.email);
+          const docRef = doc(db, "Utilisateurs/" + userCredential.user.email);
+          const docSnap = await getDoc(docRef);
+  
+          if (docSnap.exists()) {
+           secureLocalStorage.setItem("surname", docSnap.data().surname);
+          
+        } else {
+            secureLocalStorage.setItem("surname", "undefini");
+        }
           // router.back()
           toast({
             title: "ACCES AUTORISE.",

@@ -18,7 +18,7 @@ export async function getCartsByUserId(userId) {
     // console.log("successful")
     return userCarts;
   } catch (error) {
-    console.error("Erreur lors de la récupération des paniers :", error);
+    console.error("Erreur lors de la récupération du panier :", error);
     return [];
   }
 }

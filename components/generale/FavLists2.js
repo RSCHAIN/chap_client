@@ -263,7 +263,7 @@ export default function Favlist2({ categorie, magasin }) {
                     <Text
                       width={"200px"}
                       noOfLines={2}
-                      fontSize={"20px"}
+                      fontSize={"15px"}
                       fontWeight={700}
                     >
                       {data.nom}

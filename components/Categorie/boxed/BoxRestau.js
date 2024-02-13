@@ -101,7 +101,7 @@ function BoxRestau({
               </Text>
             </Flex>      
 
-            {mag.siteWeb ?
+            {(mag.siteWeb && mag.siteWeb != "undefined" && mag.siteWeb != "non defini") ?
               <Flex mb={2} cursor={"pointer"} display={{ base: "flex", lg: "flex" }} mt={2}   ml={5} as={Link} isExternal href={`${mag.siteWeb}`} >
                 <TfiWorld fontSize={20} />
                 <Text
@@ -114,11 +114,11 @@ function BoxRestau({
                 >
                   Site web
                 </Text>
-              </Flex> : <Flex display={{ base: "flex", lg: "flex" }} mb={2} mt={2} >
+              </Flex> : <Flex display={{ base: "flex", lg: "flex" }} mb={2} mt={2}  ml={5} >
                 <TfiWorld fontSize={20} />
                 <Text
                   fontSize={"15px"}
-
+                  width={'90px'}
                   fontWeight={"medium"}
                   ml={2}
                   color={"green"}
@@ -135,8 +135,8 @@ function BoxRestau({
                 mag.methodeDePaiement != null
                 ? Object.values(mag.methodeDePaiement).map(methPaiement => {
                   return (
-                    <Text key={methPaiement} >
-                      {methPaiement},
+                    <Text key={methPaiement} mr={1} >
+                      {methPaiement}, {" "}
                     </Text>
                   );
                 })
@@ -151,11 +151,11 @@ function BoxRestau({
               Description :{" "}
             </Text>
             {mag.description == "undefined" ? (
-              <Text width={"58%"} maxWidth={"58%"} textAlign={"justify"}>
+              <Text width={"80%"} maxWidth={"80%"} >
                 {`${mag.categorie} Africain`}
               </Text>
             ) : (
-              <Text width={"58%"} maxWidth={"58%"} textAlign={"justify"}>
+              <Text width={"80%"} maxWidth={"80%"} >
                 {mag.description}
               </Text>
             )}

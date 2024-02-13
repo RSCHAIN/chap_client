@@ -144,7 +144,7 @@ export function StarM({ data }) {
                 color={i < star / total ? "yellow" : "gray.500"}
               />
             ))}
-          <Text width={"80px"} ml={1} mt={-1}>
+          <Text width={"60px"} ml={1} mt={-1}>
             {total} avis
           </Text>
         </Flex>

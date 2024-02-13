@@ -4,18 +4,19 @@ import FooterR from "./footerResponsif";
 import { useRouter } from "next/router";
 import { FaTrashAlt } from "react-icons/fa";
 import { ref as rf, set, push,serverTimestamp } from "@firebase/database";
-import { db, db2 } from "@/FIREBASE/clientApp";
+import { authentic, db, db2 } from "@/FIREBASE/clientApp";
 import { PayPalButtons } from "@paypal/react-paypal-js";
 import axios from "axios";
 import { BsCashCoin, BsPaypal } from "react-icons/bs";
 import secureLocalStorage from "react-secure-storage";
-import { collection, deleteDoc, getDocs, query, updateDoc, where } from "firebase/firestore";
+import { collection, deleteDoc, doc, getDoc, getDocs, query, updateDoc, where } from "firebase/firestore";
 import { getCartsByUserId } from "./getcart";
 import {usePathname} from 'next/navigation'
 import sha256 from 'crypto-js/sha256';
 import CryptoJS from "crypto-js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faPhone, faCity, faRoad, faArrowRightToCity, faArrowUp19, faMailBulk } from '@fortawesome/free-solid-svg-icons'
+import { onAuthStateChanged } from "firebase/auth";
 
 
 
@@ -251,7 +252,7 @@ export default function Carte() {
     }
 
     useEffect(() => {
-    
+       
         setEmail(sessionStorage.getItem("email"))
     
         getCartsByUserId(email).then((userCarts) => {
@@ -417,7 +418,7 @@ export default function Carte() {
             <>
                 <div className="card-parent flex justify-center items-center gap-4 max-[680px]:flex-col max-[1390px]:flex-col">
                     <div className="card-right min-w-[60%] flex flex-col p-4">
-                        <h2 className="text-end min-w-[44rem] bg-slate-300 font-bold p-4 max-[1024px]:min-w-[24rem]">8 éléments</h2>
+                        <h2 className="text-end min-w-[44rem] bg-slate-300 font-bold p-4 max-[1024px]:min-w-[24rem]">{cart.length}  éléments</h2>
                         {cart.map((data) => (
                             <div className="" key={data.productId}>{/**850px */}
                                 <div className="min-w-[44rem] bg-white flex justify-between items-center p-4 mt-4 max-[680px]:flex-col max-[1024px]:flex-col max-[1024px]:min-w-[24rem] max-[1390px]:">
@@ -486,7 +487,7 @@ export default function Carte() {
                                         <span className="font-bold self-start text-2xl max-[680px]:self-auto max-[1133px]:self-auto">Votre adresse :</span>
                                         {/* <input type="text" value="nk_shaelah@gmail.com"/> */}
                                         <ul className="list-none"> {/**-ml-96 max-[680px]:-ml-0 max-[1133px]:-ml-0 */}
-                                            <li>{secureLocalStorage.getItem("name")}</li>
+                                            <li>{secureLocalStorage.getItem("name")} {secureLocalStorage.getItem("surname")}</li>
                                             <li>{secureLocalStorage.getItem("addresse")}</li>
                                             <li>{secureLocalStorage.getItem("number")}</li>
                                             {/* <li>{secureLocalStorage.getItem("name")}</li>  */}

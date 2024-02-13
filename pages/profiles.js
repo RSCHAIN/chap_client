@@ -13,7 +13,7 @@ import {
 } from "@chakra-ui/react";
 import Footer from "@/components/footer";
 import FooterR from "@/components/footerResponsif";
-import { app, db } from "@/FIREBASE/clientApp";
+import { app, authentic, db } from "@/FIREBASE/clientApp";
 import {
   getAuth,
   onAuthStateChanged,
@@ -37,6 +37,8 @@ export default function Profiles() {
   const [surname, setSurname] = useState("");
   const [number, setNumber] = useState("");
   const [address, setAddress] = useState("");
+  const [Ville, setVille] = useState("");
+  const [Postale, setPostale] = useState("");
   const firestore = getFirestore(app);
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
@@ -49,6 +51,8 @@ export default function Profiles() {
 
         if (docSnap.exists()) {
           setAddress(docSnap.data().address);
+          setVille(docSnap.data().ville);
+          setPostale(docSnap.data().code);
           setName(docSnap.data().name);
           setNumber(docSnap.data().number);
           setSurname(docSnap.data().surname);
@@ -73,12 +77,12 @@ export default function Profiles() {
         await setDoc(_user, Users);
         toast({
           title: "Mail Mise A Jour",
-          description: "Bonne Continuation!!",
+          description: "Vous serez deconnecté",
           status: "success",
           duration: 10000,
           isClosable: true,
         });
-        signOut(auth);
+        signOut(authentic);
         secureLocalStorage.clear()
   }
 
@@ -91,16 +95,19 @@ export default function Profiles() {
       number:number,
       address:address,
       email: email,
+      ville: Ville,
+      code: Postale,
       state: "active",
     };
     await updateDoc(_user, Users);
     toast({
       title: "Information Mise A Jour",
-      description: "Bonne Continuation!!",
+      description: "Vous serez deconnecté",
       status: "success",
       duration: 10000,
       isClosable: true,
     });
+    signOut(authentic);
   }
   const updatEmail = () => {
     updateEmail(auth.currentUser, users)
@@ -172,7 +179,7 @@ export default function Profiles() {
             overflow="hidden"
           >
             <Flex pt={5}>
-              <Text pt={2}>Email</Text>
+              <Text pt={2} width={"110px"} fontWeight={600} >Email</Text>
               <Input
                 type={"text"}
                 defaultValue={users.email}
@@ -181,20 +188,20 @@ export default function Profiles() {
                 ml={5}
               />
             </Flex>
-         <Center>   <Button onClick={() => updatEmail()} mt={2}bgColor={"cyan.800"} color="white">Enregistrer</Button></Center>
+         <Center>   <Button onClick={() => updatEmail()} mt={2}bgColor={"cyan.800"} color="white">Modifier</Button></Center>
             <Heading pt={5} fontSize={"28px"} fontWeight={700}>Informations personnelles</Heading>
             <Flex pt={5}>
-              <Text pt={2}>Nom</Text>
+              <Text pt={2} width={"110px"} fontWeight={600} >Nom</Text>
               <Input
                 type={"text"}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 w={"xs"}
-                ml={10}
+                ml={5}
               />
             </Flex>
             <Flex pt={5}>
-              <Text pt={2}>Prenom{"(s)"}</Text>
+              <Text pt={2} width={"110px"} fontWeight={600} >Prenom{"(s)"}</Text>
               <Input
                 type={"text"}
                 value={surname}
@@ -204,7 +211,7 @@ export default function Profiles() {
               />
             </Flex>            
             <Flex pt={5}>
-              <Text pt={2}>Numéro</Text>
+              <Text pt={2} width={"110px"} fontWeight={600} >Numéro</Text>
               <Input
                 type={"text"}
                 value={number}
@@ -214,26 +221,46 @@ export default function Profiles() {
               />
             </Flex>
             <Flex pt={5}>
-              <Text pt={2}>Addresse</Text>
+              <Text pt={2} width={"110px"} fontWeight={600} >Adresse</Text>
               <Input
                 type={"text"}
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
                 w={"xs"}
-                ml={2}
+                ml={5}
+              />
+            </Flex>
+            <Flex pt={5}>
+              <Text pt={2} width={"110px"} fontWeight={600} >Ville</Text>
+              <Input
+                type={"text"}
+                value={Ville}
+                onChange={(e) => setVille(e.target.value)}
+                w={"xs"}
+                ml={5}
+              />
+            </Flex>
+            <Flex pt={5}>
+              <Text pt={2} width={"110px"} fontWeight={600} >Code postale</Text>
+              <Input
+                type={"text"}
+                value={Postale}
+                onChange={(e) => setPostale(e.target.value)}
+                w={"xs"}
+                ml={5}
               />
             </Flex>
             <Center>
               <Flex mt={10}>
-                <Button onClick={()=>updateLang()} bgColor={"cyan.800"} color="white">Enregistrer</Button>
+                <Button onClick={()=>updateLang()} bgColor={"cyan.800"} color="white">Mettre à jour</Button>
               </Flex>
             </Center>
 
-            <Center>
+            {/* <Center>
               <Flex mt={10}>
                 <Button onClick={()=>sendVerif()} bgColor={"cyan.800"} color="white">Verifier</Button>
               </Flex>
-            </Center>
+            </Center> */}
           </Box>
         </Center>
       </Box>
