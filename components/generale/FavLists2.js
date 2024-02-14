@@ -24,23 +24,23 @@ import { authentic, db, db2 } from "@/FIREBASE/clientApp";
 const responsive = {
   superLargeDesktop: {
     breakpoint: { max: 4000, min: 3000 },
-    items: 12,
+    items: 13,
   },
   MDesktop: {
     breakpoint: { max: 3000, min: 2500 },
-    items: 11,
+    items: 12,
   },
   LargeDesktop: {
     breakpoint: { max: 2500, min: 2050 },
-    items: 10,
+    items: 11,
   },
   desktopM: {
     breakpoint: { max: 2050, min: 1750 },
-    items: 8,
+    items: 9,
   },
   desktopL: {
     breakpoint: { max: 1750, min: 1550 },
-    items: 7,
+    items: 8,
   },
   desktop: {
     breakpoint: { max: 1550, min: 1050 },
@@ -214,7 +214,7 @@ export default function Favlist2({ categorie, magasin }) {
   return (
     <>
       {data ? (
-        <Box ml={[2, 2, 2, 5, 5]}  width={"100%"} my={[10, 10, 10, 10, 10]} height={"35rem"}>
+        <Box ml={[2, 2, 2, 5, 5]}  width={"100%"} my={5} height={"26rem"}>
           <Carousel responsive={responsive} style={"marginLeft='10px'"}>
             {Object.values(data).map((data, index) => (
               <Box bgColor={"white"} key={index} width={"13rem"} height={"25rem"}>

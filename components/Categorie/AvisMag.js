@@ -50,6 +50,7 @@ export default function AvisMag({mag,email}){
 
 
     return(
+      <>
         <Box bgColor={"white"} display={["none","none","none","grid","grid"]}>
           <Center>
          <Box  width={"50%"} mt={5}  >
@@ -103,5 +104,59 @@ export default function AvisMag({mag,email}){
           </ModalContent>
       </Modal>
         </Box>
+          <Box bgColor={"white"} display={["grid","grid","grid","none","none"]}>
+          <Center>
+         <Box  width={"100%"} mt={5}  >
+           <Flex display={"flex"} mx={10} justifyContent={"space-between"}>
+            <Text fontWeight={700}  textDecoration={"underline"} fontSize={"20px"} fontFamily={"heading"} >Avis </Text>
+            <Button colorScheme="cyan"  color={"white"} onClick={onOpen}>Ecrire un avis</Button>
+           </Flex>
+          </Box>
+          </Center>
+       
+            <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent mr={5}>
+            <ModalHeader>Votre avis sur {mag}</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+            <Stack direction="row" spacing={2}>
+        {[1, 2, 3, 4, 5].map((star,index) => (
+          <Box
+          key={index}
+           
+            as="button"
+            onClick={() => handleRatingClick(star)}
+          >
+            <Icon
+              as={StarIcon}
+              w={6}
+              h={6}
+              color={star <= rating ? "yellow.400" : "gray.300"}
+            />
+          </Box>
+        ))}
+      </Stack>
+                <Box>
+                  
+                    <Text>{avis} : </Text>
+                    <Input type='text' onChange={(e)=>setAvisTitle(e.target.value)} maxLength={50}/>
+                  
+                    <Text>Avis : </Text>
+                    <Textarea width={"full"}onChange={(e)=>setAvisDesc(e.target.value)} maxLength={220} height={"20vh"} />
+                  
+                </Box>
+            </ModalBody>
+  
+            <ModalFooter>
+              <Button colorScheme='blue' isDisabled={avisTitle.length<3|| avisDesc.length<3} mr={3} onClick={()=>{SendReport()}}>
+                Enregistrer
+              </Button>
+              <Button  onClick={onClose} variant='ghost'>Fermer</Button>
+            </ModalFooter>
+          </ModalContent>
+      </Modal>
+        </Box>
+        </>
     )
 }

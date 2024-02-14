@@ -32,6 +32,17 @@ function BoxRestau({
 
   return (
     <Box bgColor={"white"}>
+      <Flex width={"100%"}  display={["flex","flex","flex","none","none"]} justifyContent={"space-between"} >  
+      <Heading  width={"fit-content"}  ></Heading>
+      <Flex >
+          <Button bgColor={"transparent"} _hover={{
+              bgColor:'transparent2'
+          }} leftIcon={<FaEdit />}>Avis</Button>
+            <Button bgColor={"transparent"} _hover={{
+              bgColor:'transparent2'
+          }} leftIcon={<MdIosShare />}>Partager</Button>
+      </Flex>
+      </Flex>
       <Image
         src={mag.imageUrl}
         display={"block"}
@@ -238,12 +249,12 @@ function BoxRestau({
         <Flex width={"100%"} justifyContent={"space-between"} >  
       <Heading  width={"fit-content"}  >{mag.organisation}</Heading>
       <Flex >
-          <Button bgColor={"transparent"} _hover={{
+          {/* <Button bgColor={"transparent"} _hover={{
               bgColor:'transparent2'
           }} leftIcon={<FaEdit />}>Avis</Button>
             <Button bgColor={"transparent"} _hover={{
               bgColor:'transparent2'
-          }} leftIcon={<MdIosShare />}>Partager</Button>
+          }} leftIcon={<MdIosShare />}>Partager</Button> */}
       </Flex>
       </Flex>
 
@@ -318,14 +329,15 @@ function BoxRestau({
               </Flex>
             }
 
-<Flex width={"100%"}  mt={2}>
-<BsCashCoin fontSize={20} />
-            <Box display={ "flex"} ml={2} mt={-1} width={"full"} >
+<Flex  mt={2} display={{ base: "flex", lg: "flex" }} >
+<TfiWorld fontSize={20} />
+      <BsCashCoin fontSize={20} />
+            <Box display={ "flex"} ml={2} mt={-1} width={["400px","400px","400px","full","full"]} >
               {mag.methodeDePaiement != "undefined" &&
                 mag.methodeDePaiement != null
                 ? Object.values(mag.methodeDePaiement).map(methPaiement => {
                   return (
-                    <Text key={methPaiement} mr={1} >
+                    <Text width={"fit-content"} key={methPaiement} mr={1} >
                       {methPaiement}, {" "}
                     </Text>
                   );

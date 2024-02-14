@@ -194,7 +194,8 @@ export function StarM2({ data }) {
   return (
     <>
       {total ? (
-        <Box display={["none","none","none","flex","flex"]}>
+       
+        <Box display={"block"}>
           {/* {data.length} */}
           {/* {star} */}
 
@@ -232,8 +233,9 @@ export function StarM2({ data }) {
           <Text>Mediocre ({Med})</Text>
          </Flex>
         </Box>
+      
       ) : (
-        <Box display={["none","none","none","flex","flex"]}>
+        <Box display={"block"}>
           {Array(5)
             .fill("")
             .map((_, i) => (
@@ -610,7 +612,7 @@ export default function Resto({ categorie, magasin }) {
 
 
               {" "}
-              <Box ml={["0%", "0%", "5%", "5%", "5%"]}>
+              <Box ml={["5%", "5%", "5%", "5%", "5%"]}>
                 <Center><Heading fontSize={"20px"} mt={10} fontWeight={700} ml={["5%", "5%", "0%", "0%", "0%"]}>
                   A la carte{" "}
                 </Heading></Center>
@@ -623,7 +625,7 @@ export default function Resto({ categorie, magasin }) {
                   <Box w={["400px", "450px", "450px", "100%", "100%"]} overflowX={"auto"} contentAlign={'center'} >
                    <Center>
                     <Tabs   >
-                      <TabList>
+                      <TabList ml={["15%","15%","15%","0%","0%"]}>
 
                         <Tab>Entrées</Tab>
                         <Tab>Plats</Tab>
@@ -635,30 +637,30 @@ export default function Resto({ categorie, magasin }) {
 
                       </TabList>
 
-                      <TabPanels>
-                        <TabPanel>
-                          <SimpleGrid columns={2} textAlign={"center"}  >
+                      <TabPanels ml={["15%","15%","15%","0%","0%"]}  >
+                        <TabPanel width={["400px","400px","400px","full","full"]}>
+                          <SimpleGrid columns={2} textAlign={"left"}  >
                             {produit.map((data, key) => (
                               <AffPlats key={key} data={data} type={"Entrées"} />
                             ))}
                           </SimpleGrid>
                         </TabPanel>
-                        <TabPanel>
-                          <SimpleGrid columns={2} textAlign={"center"}  >
+                        <TabPanel width={["400px","400px","400px","full","full"]}>
+                          <SimpleGrid columns={2} textAlign={"left"}  >
                             {produit.map((data, key) => (
                               <AffPlats key={key} data={data} type={"Plats"} />
                             ))}
                           </SimpleGrid>
                         </TabPanel>
-                        <TabPanel>
-                          <SimpleGrid columns={2} textAlign={"center"}  >
+                        <TabPanel width={["400px","400px","400px","full","full"]}>
+                          <SimpleGrid columns={2} textAlign={"left"}  >
                             {produit.map((data, key) => (
                               <AffPlats key={key} data={data} type={"Accompagnements"} />
                             ))}
                           </SimpleGrid>
                         </TabPanel>
-                        <TabPanel>
-                          <SimpleGrid columns={2} textAlign={"center"}  >
+                        <TabPanel width={["400px","400px","400px","full","full"]}>
+                          <SimpleGrid columns={2} textAlign={"left"}  >
                             {produit.map((data, key) => (
                               <AffPlats key={key} data={data} type={"Spécialités"} />
                             ))}
@@ -666,15 +668,15 @@ export default function Resto({ categorie, magasin }) {
                         </TabPanel>
 
 
-                        <TabPanel>
-                          <SimpleGrid columns={2} textAlign={"center"}  >
+                        <TabPanel width={["400px","400px","400px","full","full"]}>
+                          <SimpleGrid columns={2} textAlign={"left"}  >
                             {produit.map((data, key) => (
                               <AffPlats key={key} data={data} type={"Boissons"} />
                             ))}
                           </SimpleGrid>
                         </TabPanel>
-                        <TabPanel>
-                          <SimpleGrid columns={2} textAlign={"center"}  >
+                        <TabPanel width={["400px","400px","400px","full","full"]}>
+                          <SimpleGrid columns={2} spacingX={[0,0,0,2,2]} textAlign={"left"}  >
                             {produit.map((data, key) => (
                               <AffPlats key={key} data={data} type={"Cocktails"} />
                             ))}
@@ -691,12 +693,7 @@ export default function Resto({ categorie, magasin }) {
           ) : (
             <>
               <Box mb={5}></Box>
-              {/* <Heading fontSize={"30px"} mt={10} ml={5}>
-                A la carte{" "}
-              </Heading>
-            <Center mb={20}>
-              <Text fontSize={"25px"} fontWeight={600}>Aucun produit de disponibles</Text>
-            </Center> */}
+          
 
 
             </>
@@ -705,16 +702,16 @@ export default function Resto({ categorie, magasin }) {
           produit.length != 0 ? (
             <Box bgColor={"white"}>
               {" "}
-              <Box ml={["0%", "0%", "5%", "5%", "5%"]} >
-                <Heading fontSize={"20px"} mt={10} ml={["5%", "5%", "0%", "0%", "0%"]}>
+              <Box pl={["0%", "0%", "5%", "5%", "5%"]} bgColor={"#f3f3f3"}>
+                <Heading fontSize={"20px"}  ml={["5%", "5%", "0%", "0%", "0%"]}>
                   Les produits{" "}
                 </Heading>
-                <Flex mt={10} ml={[0, 0, 10, 0, 0]}>
+                <Flex mt={5} ml={[0, 0, 10, 0, 0]}>
 
                   <Center>
                     <SimpleGrid columns={[2, 2, 3, 3, 5]} >
                       {produit.map((data, key) => (
-                        <Box key={key} boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"} mx={[2, 2, 2, 5, 5]} mb={5} >
+                        <Box key={key} boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"} mx={[2, 2, 2, 5, 5]} mb={5} bgColor={"white"}>
                           <Link key={key} _hover={{
                             textDecoration: "none"
                           }}
@@ -853,20 +850,20 @@ export default function Resto({ categorie, magasin }) {
         }
 
       </Box>
-      <Box mt={10}  >
+      <Box mt={2}  >
         <Text fontWeight={700} fontSize={"20px"} ml={5}>Produits recommandés</Text>
         <Favlist2 categorie={categorie} magasin={magasin} />
       </Box>
       <AvisMag mag={magasin} email={mag.email} />
       <Center bgColor={"white"} >
-        <SimpleGrid mt={5} ml={['30%','30%','30%','20%','20%']} spacingX={20} display={"flex"} >
-          <Box mr={10}>
+        <SimpleGrid mt={2} columns={[1,1,1,2,2]} ml={['30%','30%','30%','20%','20%']} spacingX={20} display={["grid","grid","grid","flex","flex"]} >
+          <Box mr={10} display={["none","none","none","block","block"]}>
             <StarM2 data={mag.feedback} />
           </Box>
-          <SimpleGrid columns={1} bgColor={"white"} ml={[2, 2, 5, 10, 10]} >
+          <SimpleGrid columns={1}  bgColor={"white"} ml={[0, 0, 0, 10, 10]} >
             {mag.feedback ? (Object.values(mag.feedback).map((data) => {
               return (<>
-                <Box width={"400px"} justifyContent={"flex-start"} m={5} bgColor={"white"}>
+                <Box width={"400px"} justifyContent={"flex-start"} m={5} ml={0} bgColor={"white"}>
                   <Flex justifyContent={"start"}>
                     <StarAvis data={data.rating} />
                     <Text fontWeight={700} ml={10} mt={-1} fontSize={"15px"}>{data.dateDep ?? ""}</Text>
@@ -884,6 +881,9 @@ export default function Resto({ categorie, magasin }) {
 
               : <></>}
           </SimpleGrid>
+          <Box mr={10} display={["block","block","block","none","none"]}>
+            <StarM2 data={mag.feedback} />
+          </Box>
         </SimpleGrid>
       </Center>
       <FooterR />
