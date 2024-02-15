@@ -23,8 +23,8 @@ function AffichageComM({data}) {
     
     <Fade in={isOpen} >
         
-    {data.feedback ? (Object.values(data.feedback).map((data) => {
-              return (<Center display={"grid"} ml={5} mt={5}>
+    {data.feedback ? (Object.values(data.feedback).map((data,index) => {
+              return (<Center display={"grid"} ml={5} key={index} mt={5}>
                 <Flex  width={"200px"} >
                     <Avatar/>
                     <Box ml={2}>
