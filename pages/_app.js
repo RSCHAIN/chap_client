@@ -4,7 +4,7 @@ import '../styles/globals.css'
 import { PayPalScriptProvider } from '@paypal/react-paypal-js'
 import * as React from 'react'
 import '@/components/carousel.css';
-
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 
 export default function App({ Component, pageProps }) {
@@ -19,7 +19,7 @@ export default function App({ Component, pageProps }) {
    <>
      <ChakraProvider>
          <PayPalScriptProvider options={initialOptions}>
-       
+       <SpeedInsights/>
       <Component {...pageProps} />
       </PayPalScriptProvider>
     </ChakraProvider>
