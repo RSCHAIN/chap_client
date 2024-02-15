@@ -3,13 +3,14 @@ import { Box, Collapse, Flex, Heading, Image, Text,Link, Center, Button, SimpleG
 import React,{useState} from 'react'
 import { StarM } from '../Restaurant';
 import { MdFastfood, MdIosShare, MdLocationOn } from 'react-icons/md';
-import { TfiWorld } from 'react-icons/tfi';
-import { BsFillTelephoneOutboundFill } from 'react-icons/bs';
+import { TfiPencil, TfiWorld } from 'react-icons/tfi';
+import { BsFillTelephoneOutboundFill, BsTelephone } from 'react-icons/bs';
 import ReservationButton from '@/components/ReservationButton';
 import ReservationCoiff from '@/components/ReservationCoiffure';
 import Mapped from '../Map';
 import { FaEdit } from 'react-icons/fa';
 import { BsCashCoin } from "react-icons/bs";
+import { BiRestaurant } from 'react-icons/bi';
 
 function BoxRestau({
     mag,categorie
@@ -31,6 +32,7 @@ function BoxRestau({
 
 
   return (
+    <Center>
     <Box bgColor={"white"}>
       <Flex width={"100%"}  display={["flex","flex","flex","none","none"]} justifyContent={"space-between"} >  
       <Heading  width={"fit-content"}  ></Heading>
@@ -43,15 +45,7 @@ function BoxRestau({
           }} leftIcon={<MdIosShare />}>Partager</Button>
       </Flex>
       </Flex>
-      <Image
-        src={mag.imageUrl}
-        display={"block"}
-        alt={`logo de ${mag.organisation}`}
-        width={"100%"}
-        maxHeight={"70vh"}
-        fit={"cover"}
-        bgSize={"cover"}
-      />
+      
       <Center display={["none","none","none","grid","grid"]}  >
        
       
@@ -112,7 +106,7 @@ function BoxRestau({
               </Text>
             </Flex>      
 
-            {(mag.siteWeb && mag.siteWeb != "undefined" && mag.siteWeb != "non defini") ?
+            {(mag.siteWeb && mag.siteWeb != "undefined" && mag.siteWeb != "non defini" && mag.siteWeb != "Non défini" && mag.siteWeb != "non défini" && mag.siteWeb != "Non defini") ?
               <Flex mb={2} cursor={"pointer"} display={{ base: "flex", lg: "flex" }} mt={2}   ml={5} as={Link} isExternal href={`${mag.siteWeb}`} >
                 <TfiWorld fontSize={20} />
                 <Text
@@ -271,12 +265,53 @@ function BoxRestau({
         </Flex>
        
         
-        <Center>
-        <SimpleGrid columns={3} spacingX={2} mt={2}>
-            <Box ml={5}>
+        <Box display={"grid"}>
+        <Box ml={2} mt={2} >
             <StarM data={mag.feedback} />
             </Box>
-        
+            <Flex justifyContent={"space-between"} display={"flex"} mx={5} my={2}>
+            <Box as={Link}   href={`tel:${mag.number}`} _hover={{textDecoration:"none"}}>
+              <Box ml={4}>
+          <BsTelephone fontSize={"20px"}/>
+          </Box>
+          <Text>Appeler</Text>
+        </Box>
+
+        <Box    _hover={{textDecoration:"none"}}>
+              <Box >
+          <TfiPencil fontSize={"20px"}/>
+          </Box>
+          <Text>Avis</Text>
+        </Box>
+        <Box   _hover={{textDecoration:"none"}}>
+              <Box width={"fit-content"} height={"fit-content"} bgColor={"black"} ml={2}>
+          <BiRestaurant color='white'  fontSize={"20px"}/>
+          </Box>
+          <Text>Menu</Text>
+        </Box>
+        {(mag.siteWeb && mag.siteWeb != "undefined" && mag.siteWeb != "non defini"&& mag.siteWeb != "Non défini"&& mag.siteWeb != "") ?
+             
+                 <Box  as={Link} isExternal href={`${mag.siteWeb}`} _hover={{textDecoration:"none"}}>
+              <Box width={"fit-content"} height={"fit-content"} bgColor={"black"} ml={8}>
+          <BiRestaurant color='white'  fontSize={"20px"}/>
+          </Box>
+          <Text>Site internet </Text>
+        </Box>
+
+                :  <Box    _hover={{textDecoration:"none"}}>
+                <Box width={"fit-content"} height={"fit-content"} bgColor={"black"} ml={5}>
+            <BiRestaurant color='white'  fontSize={"20px"}/>
+            </Box>
+            <Text>Non défini </Text>
+          </Box>
+            }
+       
+        {/* <SimpleGrid columns={4} spacingX={2} mt={2}>
+            
+        <Box alignContent={"center"}>
+          <BsTelephone/>
+          <Text>Appeler</Text>
+        </Box>
         <Flex  as={Link} href={`tel:${mag.number}`}>
               <BsFillTelephoneOutboundFill fontSize={20} />
               <Text
@@ -345,8 +380,9 @@ function BoxRestau({
                 : "Espèces"}
             </Box>
           </Flex>
-          </SimpleGrid>
-          </Center>
+          </SimpleGrid> */}
+          </Flex>
+          </Box>
        
         <Flex>
             <Text fontWeight={"bold"} pr={2}>
@@ -437,6 +473,7 @@ function BoxRestau({
         </Box>
         </Center>
     </Box>
+    </Center>
   )
 }
 

@@ -64,6 +64,7 @@ import { MdLocationOn } from "react-icons/md";
 import AvisMag from "./AvisMag";
 import BoxRestau from "./boxed/BoxRestau";
 import BoxCommerce from "./boxed/BoxCommerce";
+import AffichageComM from "./AffichageCommentairesM";
 
 ///etoiles du feedback
 export function Star({ id, data }) {
@@ -195,7 +196,7 @@ export function StarM2({ data }) {
     <>
       {total ? (
        
-        <Box display={"block"}>
+        <Box display={["flex","flex","flex","block","block"]}>
           {/* {data.length} */}
           {/* {star} */}
 
@@ -205,30 +206,33 @@ export function StarM2({ data }) {
             .map((_, i) => (
               <StarIcon
                 key={i}
-                fontSize={"20px"}
+                fontSize={["15px","15px","15px","20px","20px"]}
                 color={i < star / total ? "yellow" : "gray.500"}
               />
             ))}
-          <Text ml={5} fontSize={"25px"} fontWeight={"bold"} mt={-1}>
+          <Text ml={5}  fontSize={["15px","15px","15px","25px","25px"]} fontWeight={"bold"} mt={-1}>
             {star / total}/ 5
           </Text>
-         <Flex>
+          <Text ml={5}  fontSize={["15px","15px","15px","25px","25px"]} fontWeight={"hairline"} mt={-1}>
+            ({total} avis)
+          </Text>
+         <Flex display={["none","none","block","flex","flex"]}>
           <Box width={'15px'} height={"15px"} mt={1} mr={2} border={"1px solid black"}></Box>
           <Text>Excellent ({ex})</Text>
          </Flex>
-         <Flex>
+         <Flex display={["none","none","none","flex","flex"]}>
           <Box width={'15px'} height={"15px"} mt={1} mr={2} border={"1px solid black"}></Box>
           <Text>Trés bien ({tB})</Text>
          </Flex>
-         <Flex>
+         <Flex display={["none","none","none","flex","flex"]}>
           <Box width={'15px'} height={"15px"} mt={1} mr={2} border={"1px solid black"}></Box>
           <Text>Bien ({B})</Text>
          </Flex>
-         <Flex>
+         <Flex display={["none","none","none","flex","flex"]}>
           <Box width={'15px'} height={"15px"} mt={1} mr={2} border={"1px solid black"}></Box>
           <Text>Moyen ({M})</Text>
          </Flex>
-         <Flex>
+         <Flex display={["none","none","none","flex","flex"]}>
           <Box width={'15px'} height={"15px"} mt={1} mr={2} border={"1px solid black"}></Box>
           <Text>Mediocre ({Med})</Text>
          </Flex>
@@ -594,8 +598,19 @@ export default function Resto({ categorie, magasin }) {
     <Box bgColor={"#f3f3f3"}>
       <InputBar />
       <Navbar />
+      <Image
+        src={mag.imageUrl}
+        display={"block"}
+        alt={`logo de ${mag.organisation}`}
+        width={"100%"}
+        maxHeight={"70vh"}
+        fit={"cover"}
+        bgSize={"cover"}
+      />
     {/* {categorie == "Restaurant" ? <BoxRestau mag={mag} categorie={categorie}/> : <BoxCommerce mag={mag} categorie={categorie}/>} */}
+   <Box bgColor={"white"}>
     <BoxRestau mag={mag} categorie={categorie}/>
+    </Box>
 
       <Box display={"grid"} width={"100%"} mt={10} >
         {categorie == "Restaurant" ?
@@ -613,7 +628,7 @@ export default function Resto({ categorie, magasin }) {
 
               {" "}
               <Box ml={["5%", "5%", "5%", "5%", "5%"]}>
-                <Center><Heading fontSize={"20px"} mt={10} fontWeight={700} ml={["5%", "5%", "0%", "0%", "0%"]}>
+                <Center><Heading fontSize={"20px"} mt={10} fontWeight={700} ml={["5%", "5%", "0%", "0%", "0%"]} id="carte" className="carte">
                   A la carte{" "}
                 </Heading></Center>
 
@@ -854,9 +869,11 @@ export default function Resto({ categorie, magasin }) {
         <Text fontWeight={700} fontSize={"20px"} ml={5}>Produits recommandés</Text>
         <Favlist2 categorie={categorie} magasin={magasin} />
       </Box>
+      <Box display={["none","none","none","block","block"]}>
       <AvisMag mag={magasin} email={mag.email} />
+      </Box>
       <Center bgColor={"white"} >
-        <SimpleGrid mt={2} columns={[1,1,1,2,2]} ml={['30%','30%','30%','20%','20%']} spacingX={20} display={["grid","grid","grid","flex","flex"]} >
+        <SimpleGrid mt={2} columns={[1,1,1,2,2]} ml={['30%','30%','30%','20%','20%']} spacingX={20} display={["none","none","none","flex","flex"]} >
           <Box mr={10} display={["none","none","none","block","block"]}>
             <StarM2 data={mag.feedback} />
           </Box>
@@ -886,6 +903,10 @@ export default function Resto({ categorie, magasin }) {
           </Box>
         </SimpleGrid>
       </Center>
+      <Box bgColor={"white"} height={"fit-content"} pb={10} display={["block","block","block","none","none"]}>
+      <AvisMag mag={magasin} email={mag.email} />
+      <AffichageComM data={mag}/>
+      </Box>
       <FooterR />
 
 
