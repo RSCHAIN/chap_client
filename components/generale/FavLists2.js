@@ -7,7 +7,7 @@ import {
   Flex,
   Tooltip,
   Badge,
-  Button,useToast
+  Button,useToast,Center
 } from "@chakra-ui/react";
 import { ref, onValue } from "@firebase/database";
 import Carousel from "react-multi-carousel";
@@ -175,8 +175,8 @@ export default function Favlist2({ categorie, magasin }) {
                 onValue(starCountRef, (snapshot) => {
                   setTout(dat);
                   setData(snapshot.val());
-                  Object.keys(snapshot.val()).map((data) => {
-                    dataK.push(data)
+                  Object.keys(snapshot.val()).map((data,index) => {
+                    dataK[index]=data
         
                   })
                 });
@@ -214,32 +214,44 @@ export default function Favlist2({ categorie, magasin }) {
   return (
     <>
       {data ? (
-        <Box ml={[2, 2, 2, 5, 5]}  width={"100%"} my={5} height={"30rem"}>
-          <Carousel responsive={responsive} style={"marginLeft='10px'"}>
-            {Object.values(data).map((data, index) => (
-              <Box as="a"  href={`#`} bgColor={"white"} key={index} width={"13rem"} pb={10} height={"29rem"}>
+        
+        <Box ml={[2, 2, 2, 5, 10]}  width={"100%"} my={5} >
+          <SimpleGrid columns={4} >
+            {Object.values(data).slice(0,4).map((data, index) => (
+              <Box as="a" key={index} href={`/Details/details?c=${tout}&m=${data.organisation}&p=${dataK[index]}`}  boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"} mx={[2, 2, 2, 5, 5]} mb={5} bgColor={"white"}>
+              
                 <Box
-                  bgColor={"white"}
-                  p={5}
-                  pb={10}
-                  key={index}
-                  my={5}
-                  height={"21.25rem"}
-                  width={"13rem"}
+                 mx={5}
+                 key={data.id}
+                 maxW={"fit-content"}
+                 // height={"400px"}
+                 my={[0, 0, 0, 5, 5]}
+                 borderRadius="lg"
+                 display={"grid"}
+                 pb={10}
+
+                  // bgColor={"white"}
+                  // p={5}
+                  // pb={10}
+                  // key={index}
+                  // my={5}
+                  // height={"21.25rem"}
+                  // width={"13rem"}
                 >
                   {data.etat == "disponible" ? (
-                    <Badge
-                      mt={-20}
+                    <Box
+                      mt={-7}
+                      mb={2}
                       ml={-6}
                       color={"white"}
-                      px={2}
-                      py={1}
+                      p={2}
                       borderRadius={25}
+                      width={"fit-content"}
                       height={"fit-content"}
                       bgColor="#7ed957"
                     >
                       Disponible
-                    </Badge>
+                    </Box>
                   ) : (
                     <Badge
                       mt={-20}
@@ -326,8 +338,9 @@ export default function Favlist2({ categorie, magasin }) {
                
               </Box>
             ))}
-          </Carousel>
+          </SimpleGrid>
         </Box>
+        
       ) : (
         <></>
       )}

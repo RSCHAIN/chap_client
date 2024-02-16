@@ -206,16 +206,18 @@ export function StarM2({ data }) {
             .map((_, i) => (
               <StarIcon
                 key={i}
-                fontSize={["15px","15px","15px","20px","20px"]}
+                fontSize={"20px "}
                 color={i < star / total ? "yellow" : "gray.500"}
               />
             ))}
-          <Text ml={5}  fontSize={["15px","15px","15px","25px","25px"]} fontWeight={"bold"} mt={-1}>
+            <Flex>
+          <Text   fontWeight={"bold"} mt={-1}>
             {star / total}/ 5
           </Text>
-          <Text ml={5}  fontSize={["15px","15px","15px","25px","25px"]} fontWeight={"hairline"} mt={-1}>
+          <Text   fontWeight={"hairline"} mt={-1}>
             ({total} avis)
           </Text>
+          </Flex>
          <Flex display={["none","none","block","flex","flex"]}>
           <Box width={'15px'} height={"15px"} mt={1} mr={2} border={"1px solid black"}></Box>
           <Text>Excellent ({ex})</Text>
@@ -639,7 +641,7 @@ export default function Resto({ categorie, magasin }) {
 
 
               {" "}
-              <Box ml={["5%", "5%", "5%", "5%", "5%"]}>
+              <Box mt={[0,0,0,-10,-10]}>
                 <Center><Heading fontSize={"20px"} mt={10} fontWeight={700} ml={["5%", "5%", "0%", "0%", "0%"]} id="carte" className="carte">
                   A la carte{" "}
                 </Heading></Center>
@@ -727,16 +729,17 @@ export default function Resto({ categorie, magasin }) {
           )
           :
           produit.length != 0 ? (
-            <Box bgColor={"white"}>
+            <Box bgColor={"#f3f3f3"} mx={20}>
               {" "}
+              <Center>
               <Box pl={["0%", "0%", "5%", "5%", "5%"]} bgColor={"#f3f3f3"}>
-                <Heading fontSize={"20px"}  ml={["5%", "5%", "0%", "0%", "0%"]}>
+                <Heading fontSize={"20px"}  >
                   Les produits{" "}
                 </Heading>
-                <Flex mt={5} ml={[0, 0, 10, 0, 0]}>
+                <Flex mt={5}  >
 
                   <Center>
-                    <SimpleGrid columns={[2, 2, 3, 3, 5]} >
+                    <SimpleGrid columns={[2, 2, 3, 3, 4]} >
                       {produit.map((data, key) => (
                         <Box key={key} boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"} mx={[2, 2, 2, 5, 5]} mb={5} bgColor={"white"}>
                           <Link key={key} _hover={{
@@ -869,6 +872,7 @@ export default function Resto({ categorie, magasin }) {
 
                 </Flex>
               </Box>
+              </Center>
             </Box>
           ) : (
             <></>
@@ -877,10 +881,12 @@ export default function Resto({ categorie, magasin }) {
         }
 
       </Box>
+      <Center>
       <Box mt={2}  >
         <Text fontWeight={700} fontSize={"20px"} ml={5}>Produits recommandés</Text>
         <Favlist2 categorie={categorie} magasin={magasin} />
       </Box>
+      </Center>
       <Box display={["none","none","none","block","block"]}>
       <AvisMag mag={magasin} email={mag.email} />
       </Box>
@@ -895,13 +901,13 @@ export default function Resto({ categorie, magasin }) {
                 <Box width={"400px"} justifyContent={"flex-start"} m={5} ml={0} bgColor={"white"}>
                   <Flex justifyContent={"start"}>
                     <StarAvis data={data.rating} />
-                    <Text fontWeight={700} ml={10} mt={-1} fontSize={"15px"}>{data.dateDep ?? ""}</Text>
+                    <Text fontWeight={600} ml={10} mt={-1} fontSize={"12px"}>{data.dateDep ?? ""}</Text>
 
 
                   </Flex>
-                  <Heading fontSize={"20px"}>{data.avisTitle}</Heading>
-                  <Text>{data.avisDesc}</Text>
-                  <Text fontSize={"15px"} >{data.usermail}</Text>
+                  <Heading fontSize={"15px"}>{data.avisTitle}</Heading>
+                  <Text fontSize={"15px"} fontWeight={"hairline"} fontFamily={"-apple-system"}>{data.avisDesc}</Text>
+                  <Text fontSize={"15px"} fontWeight={"hairline"} fontFamily={"-apple-system"}>{data.usermail}</Text>
                 </Box>
               </>)
             }

@@ -50,7 +50,7 @@ import {
   signOut,
 } from "firebase/auth";
 import { useRouter } from "next/router";
-import { app, db, signinWithGoogle } from "@/FIREBASE/clientApp";
+import { app, authentic, db, signinWithGoogle } from "@/FIREBASE/clientApp";
 import secureLocalStorage from "react-secure-storage";
 import TransitionExample from "@/components/forgetPassword";
 // import ScriptComponent from '../components/ScriptComponent';
@@ -115,7 +115,7 @@ export default function Connexion() {
           router.reload();
         } else {
 
-          signOut(auth);
+          signOut(authentic);
 
           setVerif(true);
 
