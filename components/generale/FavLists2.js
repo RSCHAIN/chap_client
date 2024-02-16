@@ -214,15 +214,16 @@ export default function Favlist2({ categorie, magasin }) {
   return (
     <>
       {data ? (
-        <Box ml={[2, 2, 2, 5, 5]}  width={"100%"} my={5} height={"26rem"}>
+        <Box ml={[2, 2, 2, 5, 5]}  width={"100%"} my={5} height={"30rem"}>
           <Carousel responsive={responsive} style={"marginLeft='10px'"}>
             {Object.values(data).map((data, index) => (
-              <Box bgColor={"white"} key={index} width={"13rem"} height={"25rem"}>
+              <Box as="a"  href={`#`} bgColor={"white"} key={index} width={"13rem"} pb={10} height={"29rem"}>
                 <Box
                   bgColor={"white"}
                   p={5}
+                  pb={10}
                   key={index}
-                  my={ 5}
+                  my={5}
                   height={"21.25rem"}
                   width={"13rem"}
                 >
@@ -269,6 +270,8 @@ export default function Favlist2({ categorie, magasin }) {
                       {data.nom}
                     </Text>
                     <Text
+                    cursor={"pointer"}
+                     as="a"  href={`/otherContent/intermed1?categorie=${tout}&magasin=${data.organisation}`}
                       fontWeight={"bold"}
                       width={"fit-content"}
                       color={"orange.900"}
@@ -319,44 +322,8 @@ export default function Favlist2({ categorie, magasin }) {
                     </Text>
                   </Flex>
                 </Box>
-                <Flex justifyContent={"space-between"}>
-                  <Button
-                    bgColor={"#956e52"}
-                    as={Link}
-                    href={`/otherContent/intermed1?categorie=${tout}&magasin=${data.organisation}`}
-                    _hover={{
-                      textDecoration: "none",
-                    }}
-                    height={"fit-content"}
-                    fontSize={10}
-                    width={"fit-content"}
-                    py={2}
-                    borderRadius={25}
-                    color={"white"}
-                  >
-                    Commerce
-                  </Button>
-
-                  <Button
-                    bgColor={"cyan.700"}
-                    _hover={{
-                      bgColor:"cyan.700"
-                    }}
-                    fontWeight={"bold"}
-                    fontSize={"15px"}
-                    borderRadius={25}
-                    mt={-1}
-                    height={"fit-content"}
-                    py={2}
-                    px={2}
-                    color={"white"}
-                    onClick={()=>{
-                      AddToCart(data,dataK[index]),console.log(data,dataK[index])
-                    }}
-                  >
-                    Ajouter
-                  </Button>
-                </Flex>
+               
+               
               </Box>
             ))}
           </Carousel>

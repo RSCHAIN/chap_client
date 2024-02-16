@@ -34,17 +34,6 @@ function BoxRestau({
   return (
     <Center>
     <Box bgColor={"white"}>
-      <Flex width={"100%"}  display={["flex","flex","flex","none","none"]} justifyContent={"space-between"} >  
-      <Heading  width={"fit-content"}  ></Heading>
-      <Flex >
-          <Button bgColor={"transparent"} _hover={{
-              bgColor:'transparent2'
-          }} leftIcon={<FaEdit />}>Avis</Button>
-            <Button bgColor={"transparent"} _hover={{
-              bgColor:'transparent2'
-          }} leftIcon={<MdIosShare />}>Partager</Button>
-      </Flex>
-      </Flex>
       
       <Center display={["none","none","none","grid","grid"]}  >
        
@@ -156,11 +145,11 @@ function BoxRestau({
               Description :{" "}
             </Text>
             {mag.description == "undefined" ? (
-              <Text width={"70%"} maxWidth={"70%"} >
+              <Text width={"500px"} maxWidth={"500px"} >
                 {`${mag.categorie} Africain`}
               </Text>
             ) : (
-              <Text width={"70%"} maxWidth={"70%"} >
+              <Text width={"500px"} maxWidth={"500px"} >
                 {mag.description}
               </Text>
             )}
@@ -284,23 +273,23 @@ function BoxRestau({
           <Text>Avis</Text>
         </Box>
         <Box   _hover={{textDecoration:"none"}}>
-              <Box width={"fit-content"} height={"fit-content"} bgColor={"black"} ml={2}>
-          <BiRestaurant color='white'  fontSize={"20px"}/>
+              <Box width={"fit-content"} height={"fit-content"}  ml={2}>
+          <MdFastfood   fontSize={"20px"}/>
           </Box>
           <Text>Menu</Text>
         </Box>
         {(mag.siteWeb && mag.siteWeb != "undefined" && mag.siteWeb != "non defini"&& mag.siteWeb != "Non défini"&& mag.siteWeb != "") ?
              
                  <Box  as={Link} isExternal href={`${mag.siteWeb}`} _hover={{textDecoration:"none"}}>
-              <Box width={"fit-content"} height={"fit-content"} bgColor={"black"} ml={8}>
-          <BiRestaurant color='white'  fontSize={"20px"}/>
+              <Box width={"fit-content"} height={"fit-content"}  ml={8}>
+          <TfiWorld   fontSize={"20px"}/>
           </Box>
           <Text>Site internet </Text>
         </Box>
 
                 :  <Box    _hover={{textDecoration:"none"}}>
-                <Box width={"fit-content"} height={"fit-content"} bgColor={"black"} ml={5}>
-            <BiRestaurant color='white'  fontSize={"20px"}/>
+                <Box width={"fit-content"} height={"fit-content"}  ml={5}>
+            <TfiWorld   fontSize={"20px"}/>
             </Box>
             <Text>Non défini </Text>
           </Box>

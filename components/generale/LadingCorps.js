@@ -429,7 +429,7 @@ const afrique = "Vers l'afrique"
 }}>
                   <Box textAlign={"center"}>
                     <Center display={"grid"}>
-                    <Image src={'./new/colis2.png'} ml={4} alt={"Envoie de colis"} bgColor={"rgba(255,255,255,0.2)"}  width={["90px","90px","90px","80px","80px"]} />
+                    <Image src={'./new/colis.png'} ml={5} alt={"Envoie de colis"} bgColor={"rgba(255,255,255,0.2)"}  width={["70px","70px","70px","80px","80px"]} />
                     <Text mt={-1} width={"120px"} borderRadius={"25px"} color={"black"} fontSize={"15px"} fontWeight={700}>ENVOYER </Text>
                     <Text width={"120px"} borderRadius={"25px"} color={"black"} fontWeight={600} fontSize={"10px"}>{afrique} </Text>
                     </Center>
@@ -465,7 +465,7 @@ href={
                       }}>
                   <Box textAlign={"center"}>
                     <Center display={"grid"}>
-                    <Image src={'./new/partnerTag.png'}  ml={8}  width={["70px","70px","70px","190px","190px"]}  alt={"Entrepreneur"}  />
+                    <Image src={'./new/partenaire.png'}  ml={8}  width={["70px","70px","70px","190px","190px"]}  alt={"Entrepreneur"}  />
                     <Text   color={"black"}  width={"130px"} borderRadius={"25px"}fontSize={"15px"} fontWeight={700} mt={2}>PARTENAIRE</Text>
                     <Text  color={"black"}  width={"120px"} borderRadius={"25px"}fontSize={"10px"} fontWeight={600}>Rejoignez nous </Text>
                     </Center>
@@ -497,8 +497,8 @@ href={
                 }}>
                   <Box textAlign={"center"}>
                     <Center display={"grid"}>
-                    <Image ml={4} src={'./new/colis2.png'} alt={"Envoie de colis"} bgColor={"rgba(255,255,255,0.2)"} width={"120px"}/>
-                    <Text mt={5} width={["100px","100px","100px","150px","150px"]} fontSize={["15px","15px","15px","25px","25px"]} textAlign={"center"} borderRadius={"25px"} color={"black"} fontWeight={700}>ENVOYER </Text>
+                    <Image ml={4} src={'./new/colis.png'} alt={"Envoie de colis"} bgColor={"rgba(255,255,255,0.2)"} width={"120px"}/>
+                    <Text width={["100px","100px","100px","150px","150px"]} fontSize={["15px","15px","15px","25px","25px"]} textAlign={"center"} borderRadius={"25px"} color={"black"} fontWeight={700}>ENVOYER </Text>
                     <Text width={["100px","100px","100px","150px","150px"]} fontSize={["10px","10px","10px","15px","15px"]} textAlign={"center"} borderRadius={"25px"} color={"black"} fontWeight={600} >{afrique} </Text>
                     </Center>
                   </Box>
@@ -535,8 +535,8 @@ href={
                       }}>
                   <Box textAlign={"center"}>
                     <Center display={"grid"}>
-                    <Image src={'./new/partnerTag.png'}  ml={5} width={"100px"} alt={"Entrepreneur"}  />
-                    <Text   color={"black"} mt={8} width={["100px","100px","100px","fit-content","fit-content"]} fontSize={["15px","15px","15px","25px","25px"]}textAlign={"center"} borderRadius={"25px"} fontWeight={700}>PARTENAIRE</Text>
+                    <Image src={'./new/partenaire.png'}  ml={5} width={"100px"} alt={"Entrepreneur"}  />
+                    <Text   color={"black"} mt={2} width={["100px","100px","100px","fit-content","fit-content"]} fontSize={["15px","15px","15px","25px","25px"]}textAlign={"center"} borderRadius={"25px"} fontWeight={700}>PARTENAIRE</Text>
                     <Text  color={"black"} width={["100px","100px","100px","150px","150px"]} fontSize={["10px","10px","10px","15px","15px"]}textAlign={"center"} borderRadius={"25px"} fontWeight={600}>Rejoignez nous </Text>
                     </Center>
                   </Box>

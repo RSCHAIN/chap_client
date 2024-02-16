@@ -54,13 +54,13 @@ import { BiWorld } from "react-icons/bi";
 import Favlist2 from "../generale/FavLists2";
 import FooterR from "../footerResponsif";
 import { IoMdAddCircle } from "react-icons/io";
-import { FaTruckPickup } from "react-icons/fa";
+import { FaEdit, FaTruckPickup } from "react-icons/fa";
 import AffPlats from "./AffichePlats";
 import { TfiWorld } from "react-icons/tfi";
 import secureLocalStorage from "react-secure-storage";
 import ReservationButton from "../ReservationButton";
 import ReservationCoiff from "../ReservationCoiffure";
-import { MdLocationOn } from "react-icons/md";
+import { MdIosShare, MdLocationOn } from "react-icons/md";
 import AvisMag from "./AvisMag";
 import BoxRestau from "./boxed/BoxRestau";
 import BoxCommerce from "./boxed/BoxCommerce";
@@ -598,6 +598,18 @@ export default function Resto({ categorie, magasin }) {
     <Box bgColor={"#f3f3f3"}>
       <InputBar />
       <Navbar />
+      <Flex width={"100%"} bgColor={"white"} display={["flex","flex","flex","none","none"]} justifyContent={"space-between"} >  
+      <Heading  width={"fit-content"}  ></Heading>
+      <Flex >
+          <Button bgColor={"transparent"} _hover={{
+              bgColor:'transparent2'
+          }} leftIcon={<FaEdit />}>Avis</Button>
+            <Button bgColor={"transparent"} _hover={{
+              bgColor:'transparent2'
+          }} leftIcon={<MdIosShare />}>Partager</Button>
+      </Flex>
+      </Flex>
+      
       <Image
         src={mag.imageUrl}
         display={"block"}
