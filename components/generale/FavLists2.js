@@ -48,11 +48,11 @@ const responsive = {
   },
   tabletl: {
     breakpoint: { max: 1050, min: 850 },
-    items: 4,
+    items: 2,
   },
   tablet: {
     breakpoint: { max: 850, min: 650 },
-    items: 3,
+    items: 2,
   },
   mobile: {
     breakpoint: { max: 650, min: 0 },
@@ -216,9 +216,9 @@ export default function Favlist2({ categorie, magasin }) {
       {data ? (
         
         <Box ml={[2, 2, 2, 5, 10]}  width={"100%"} my={5} >
-          <SimpleGrid columns={4} >
+          <SimpleGrid columns={[2,2,2,4,4]} >
             {Object.values(data).slice(0,4).map((data, index) => (
-              <Box as="a" key={index} href={`/Details/details?c=${tout}&m=${data.organisation}&p=${dataK[index]}`}  boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"} mx={[2, 2, 2, 5, 5]} mb={5} bgColor={"white"}>
+              <Box as="a" width={["200px", "200px", "200px", "200px", "200px"]} key={index} href={`/Details/details?c=${tout}&m=${data.organisation}&p=${dataK[index]}`}  boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"} mx={[2, 2, 2, 5, 5]} mb={5} bgColor={"white"}>
               
                 <Box
                  mx={5}
@@ -268,7 +268,7 @@ export default function Favlist2({ categorie, magasin }) {
                   )}
                   <Image
                     height={["150px", "150px", "150px", "150px", "150px"]}
-                    width={["200px", "200px", "200px", "200px", "200px"]}
+                    width={["150px", "150px", "200px", "200px", "200px"]}
                     src={data.imageUrl}
                     alt={data.nom}
                   />
