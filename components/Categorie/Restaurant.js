@@ -738,7 +738,7 @@ export default function Resto({ categorie, magasin }) {
                 </Heading>
                 <Flex mt={5}  >
 
-                  <Center>
+                  <Center display={["none", "none", "none", "block", "block"]}>
                     <SimpleGrid columns={[2, 2, 3, 3, 4]} >
                       {produit.map((data, key) => (
                         <Box key={key} boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"} mx={[2, 2, 2, 5, 5]} mb={5} bgColor={"white"}>
@@ -869,10 +869,148 @@ export default function Resto({ categorie, magasin }) {
                       ))}
                     </SimpleGrid>
                   </Center>
-
+               
                 </Flex>
               </Box>
               </Center>
+              <Box  bgColor={"#f3f3f3"}>
+              
+                <Flex mt={5}  >
+
+                
+                    <SimpleGrid columns={[1, 1, 2, 3, 4]}  >
+                      {produit.map((data, key) => (
+                        <Box key={key}  width={["200px", "200px", "200px", "200px", "200px"]} boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"} mx={[0, 0, 0, 5, 5]} mb={5} bgColor={"white"}>
+                          <Link key={key} _hover={{
+                            textDecoration: "none"
+                          }}
+                            href={`/Details/details?c=${categorie}&m=${data.organisation}&p=${produitKeys[key]}`}
+                            onClick={() => {
+                              
+                              secureLocalStorage.setItem("items", data)
+                              secureLocalStorage.setItem("i", produitKeys[key])
+                              
+
+                            }}>
+                            <Box
+                              mx={5}
+                              key={data.id}
+                              maxW={"fit-content"}
+                              // height={"400px"}
+                              my={[0, 0, 0, 5, 5]}
+                              borderRadius="lg"
+                              display={"grid"}
+                              pb={10}
+                            // border={"1px solid black"}
+                            >
+                              <Box
+                                width={["130px", "200px", "200px", "200px", "200px"]}
+                                height={"fit-content"}
+                              // pt={10}
+
+
+                              >
+                                <Image
+                                  src={data.imageUrl}
+                                  alt={data.nom}
+                                  width={["130px", "190px", "190px", "200px", "200px"]}
+                                  height={["110px", "160px", "160px", "200px", "200px"]}
+                                  maxH={["120px", "160px", "160px", "200px", "200px"]}
+                                  maxW={["140px", "200px", "200px", "200px", "200px"]}
+                                // borderRadius={"25px"}
+                                />
+                              </Box>
+
+                              <Box >
+                                <Box
+                                  height={"fit-content"}
+
+                                  fontWeight="semibold"
+
+                                  lineHeight="tight"
+
+                                  width={["150px", "190px", "190px", "200px", "200px"]}
+
+                                  display={"grid"}
+                                  justifyContent={"space-between"}
+                                >
+                                  <Box width={"100%"} >
+                                    <Text width={["150px", "150px", "150px", "200px", "200px"]} noOfLines={3} fontSize={"15px"} my={2}>
+                                      {data.nom}
+                                    </Text>
+                                    <Box mb={2}>
+                                      <Star id={produitKeys[key]} data={feed} />
+                                      {data.duree == "Expedié en 24h" ? <Text className={"Exp"} my={2}>Livré le {dateExp3} </Text> : <Text className={"Exp"} my={2}>Livré le {dateExp6} </Text>}
+                                      <Flex>
+                                        <Box mt={2}>
+                                          <BsCashCoin />
+                                        </Box>
+                                        <Text ml={2} mt={-1} fontSize={"12px"} my={2}>Payez en espèce</Text>
+                                      </Flex>
+                                    </Box>
+
+                                  </Box>
+
+                                </Box>
+
+                                <Flex>
+
+                                </Flex>
+                                <Flex  >
+                                  <FaTruckPickup />
+                                  <Tooltip label={`Livraison à partir de 2,99€`} >
+                                    <Flex>
+                                      <Text ml={2} fontSize={"10px"} fontWeight={700}>Livraison partout en France </Text>
+                                      <Text fontSize={"15px"} mt={-1} color={"red"}>*</Text>
+                                    </Flex>
+                                  </Tooltip>
+                                </Flex>
+                                <Flex width={"90%"} justifyContent={"space-between"}>
+                                  <Text></Text>
+                                  <Box textColor={"blue"} color={"blue.400"} fontWeight={"semibold"}>
+                                    {data.prix}
+                                    <Box as="span" fontSize="sm">
+                                      €
+                                    </Box>
+                                  </Box>
+                                </Flex>
+
+
+
+
+                              </Box>
+                            </Box>
+                          </Link>
+                          <Flex mb={5} justifyContent={"space-between"} width={"95%"}>
+                            <Text ></Text>
+                            <Button
+
+                              bgColor={"cyan.700"}
+                              // borderRadius={"66px"}
+                              width={"fit-content"}
+                              as={"a"}
+                              onClick={() => {
+                                AddToCart(data, produitKeys[key])
+
+                              }}
+                              color={"white"}
+                              _hover={{
+                                backgroundColor: " cyan.900",
+                                color: "white ",
+                              }}
+                              leftIcon={<IoMdAddCircle />}
+                            >
+                              {" "}
+                              Ajouter
+                            </Button>
+                          </Flex>
+                        </Box>
+                      ))}
+                    </SimpleGrid>
+                
+               
+                </Flex>
+              </Box>
             </Box>
           ) : (
             <></>

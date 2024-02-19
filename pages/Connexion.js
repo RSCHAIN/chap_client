@@ -87,7 +87,7 @@ export default function Connexion() {
   };
 
   const loginUSer = async () => {
-    await signInWithEmailAndPassword(auth, email.toLowerCase(), password)
+    await signInWithEmailAndPassword(authentic, email.toLowerCase(), password)
       .then(async (userCredential) => {
 
         getTime();
