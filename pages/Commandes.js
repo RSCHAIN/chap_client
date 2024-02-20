@@ -51,7 +51,7 @@ function Valide({ items, email }) {
       <Box
         mt={5}
         bgColor={"white"}
-        w={["300px","300px","300px","500px","500px"]}
+        w={["400px","400px","400px","500px","500px"]}
         maxH={"170px"}
         display={"flex"}
        
@@ -83,14 +83,14 @@ function Valide({ items, email }) {
           >
             {items.email}
           </Box> */}
-          <Flex pr={10} mt={2} fontSize={[14, 14, 14, 15, 15]}  w={"100%"} justifyContent={"space-between"}> 
+          <Flex pr={10} mt={2}  fontSize={[13, 13, 13, 15, 15]}  w={"100%"} justifyContent={"space-between"}> 
           <Box>
           <Box
             mt="1"
             fontWeight="light"
             as={Text}
             lineHeight="tight"
-            fontSize={[14, 14, 14, 15, 15]}
+            fontSize={[13, 13, 13, 15, 15]}
             noOfLines={2}
           >
            Référence : {items.commandeId}
@@ -106,13 +106,13 @@ function Valide({ items, email }) {
             </Box>
            </Box>
            <Box>
-           <Box fontSize={[14, 14, 14, 15, 15]} mt="1">
+           <Box  fontSize={[13, 13, 13, 15, 15]} mt="1">
               {items.totalPrice ? items.totalPrice : (items.Prix ? items.Prix : "0") + " "}
               <Box as="span" color="gray.600" fontSize="sm">
                 € TTC
               </Box>
             </Box>
-            <Text> Réglé en {items.modePaiement}</Text>
+            <Text  fontSize={[13, 13, 13, 15, 15]}> Réglé en {items.modePaiement}</Text>
            </Box>
           </Flex>
           {/* <Text> Vendu et expédie par <b>{items.organisation}</b> </Text> */}
@@ -225,7 +225,7 @@ function Cancel({ items, email }) {
       <Box
         mt={5}
         bgColor={"white"}
-        w={["300px","300px","300px","500px","500px"]}
+        w={["400px","400px","400px","500px","500px"]}
         maxH={"170px"}
         display={"flex"}
        
@@ -257,14 +257,14 @@ function Cancel({ items, email }) {
           >
             {items.email}
           </Box> */}
-          <Flex pr={10} mt={2} fontSize={[14, 14, 14, 15, 15]}  w={"100%"} justifyContent={"space-between"}> 
+          <Flex pr={10} mt={2}  fontSize={[13, 13, 13, 15, 15]}  w={"100%"} justifyContent={"space-between"}> 
           <Box>
           <Box
             mt="1"
             fontWeight="light"
             as={Text}
             lineHeight="tight"
-            fontSize={[14, 14, 14, 15, 15]}
+            fontSize={[13, 13, 13, 15, 15]}
             noOfLines={2}
           >
            Référence : {items.commandeId}
@@ -280,7 +280,7 @@ function Cancel({ items, email }) {
             </Box>
            </Box>
            <Box>
-           <Box fontSize={[14, 14, 14, 15, 15]} mt="1">
+           <Box  fontSize={[13, 13, 13, 15, 15]} mt="1">
               {items.totalPrice ? items.totalPrice : (items.Prix ? items.Prix : "0") + " "}
               <Box as="span" color="gray.600" fontSize="sm">
                 € TTC
@@ -399,7 +399,7 @@ function Launch({ items, email, id }) {
         <Box
           mt={5}
           bgColor={"white"}
-          w={["300px","300px","300px","500px","500px"]}
+          w={["400px","400px","400px","500px","500px"]}
           maxH={"170px"}
           display={"flex"}
          
@@ -431,14 +431,14 @@ function Launch({ items, email, id }) {
             >
               {items.email}
             </Box> */}
-            <Flex pr={10} mt={2} fontSize={[14, 14, 14, 15, 15]}  w={"100%"} justifyContent={"space-between"}> 
+            <Flex pr={10} mt={2}  fontSize={[13, 13, 13, 15, 15]}  w={"100%"} justifyContent={"space-between"}> 
             <Box>
             <Box
               mt="1"
               fontWeight="light"
               as={Text}
               lineHeight="tight"
-              fontSize={[14, 14, 14, 15, 15]}
+              fontSize={[13, 13, 13, 15, 15]}
               noOfLines={2}
             >
              Référence : {items.commandeId}
@@ -454,7 +454,7 @@ function Launch({ items, email, id }) {
               </Box>
              </Box>
              <Box>
-             <Box fontSize={[14, 14, 14, 15, 15]} mt="1">
+             <Box  fontSize={[13, 13, 13, 15, 15]} mt="1">
                 {items.totalPrice ? items.totalPrice : (items.Prix ? items.Prix : "0") + " "}
                 <Box as="span" color="gray.600" fontSize="sm">
                   € TTC

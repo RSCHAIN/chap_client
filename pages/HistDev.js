@@ -337,49 +337,36 @@ function Launch({ items, email,id }) {
     return (
       <>
           <Box
+          bgColor={"white"}
         mt={2}
-          maxW="fit-content"
-          maxH={"fit-content"}
-          display={["grid","grid","grid","flex","flex"]}
-          borderWidth="1px"
-          borderRadius="lg"
+        boxShadow={"rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;"}
+        w={["400px","400px","400px","500px","500px"]}
+        maxH={"170px"}
+       
+       
+        borderRadius="sm"
           overflow="hidden" 
         >
-          <Box alignItems={["center","center","center","normal","normal"]}>
-          <Image src={"./En cours.png"} alt={items.nom} h="150px" w="150px"/>
-          </Box>
-          <Box p="6" width={"fit-content"}>
-            <Box display="flex" alignItems="baseline">
-              <Badge borderRadius="full" px="2" colorScheme="blue">
-                {items.Status}
-              </Badge>
-              <Badge borderRadius="full" px="2" colorScheme="green">
-                {items.partenaire}
-              </Badge>
-              <Badge borderRadius="full" px="2" colorScheme="cyan">
-                {items.moyen}
-              </Badge> 
-            </Box>
+          <Flex justifyContent={"space-between"} width={"100%"}>
+          <Box pl={2} width={"fit-content"}>
+            
         
             <Box
-              mt="1"
-              fontWeight="semibold"
+            
+            fontSize={[13, 13, 13, 15, 15]}
               as="h4"
               lineHeight="tight"
               
             >
-              <Text>{id}</Text>
-              <Text> Numéro : {items.numero ? items.numero : "introuvable"}</Text>
-             <Flex><Text mr={2}>Depart : </Text>{items.depart}</Flex>
-             <Flex><Text mr={2}>Arrivé : </Text>{items.arrive}</Flex>
+              <Text>
+Référence: {id}</Text>
+              
+             <Flex><Text mr={2}>Date : </Text>{items.depart}</Flex>
+             <Text> Destination : {items.arrive}</Text>
+             {/* <Flex><Text mr={2}>Arrivé : </Text>{items.arrive}</Flex> */}
             </Box>
 
-            <Box>
-              {items.total + " "}
-              <Box as="span" color="gray.600" fontSize="sm">
-                €
-              </Box>
-            </Box>
+           
             <Box>
               <Button bgColor={'red.500'} _hover={{
                 bgColor:'#FF6969'
@@ -388,7 +375,26 @@ function Launch({ items, email,id }) {
               </Button>
             </Box>
            
-          </Box>      
+          </Box>   
+
+          <Box display="grid" height={"fit-content"}>
+              <Badge borderRadius="full" mb={2} px={6} bgColor="#ff914d" height={"fit-content"} width={"fit-content"} color={"white"} textTransform={"capitalize"}>
+                {items.status}
+              </Badge>
+         
+              <Badge borderRadius="full"  px={8} height={"fit-content"} width={"fit-content"}  bgColor={"#00bf63"} color={"white"}  textTransform={"capitalize"}>
+                {items.moyen}
+              </Badge> 
+               <Flex mt={2}>
+              <Text fontWeight={700}>{items.total + " "}</Text>
+              <Box as="span" color="gray.600" fontSize="sm">
+                <b>€</b> TTC
+              </Box>
+            </Flex>
+            </Box> 
+          </Flex>
+         
+           
         </Box>
       </>
     );
@@ -524,16 +530,21 @@ export default function HistDev() {
           <TabPanels>
             <TabPanel>
               <Tabs isManual isLazy  w={"100% "}>
+                <Center>
                 <TabList>
                   <Tab>Devis en cours</Tab>
                   <Tab>Devis validés</Tab>
                   <Tab>Devis reglés</Tab>
                   <Tab>Devis annulés</Tab>
                 </TabList>
+                </Center>
+              
                 <TabPanels>
-                  <TabPanel>
-                    <Box >
-                      <SimpleGrid columns={[1,1,1,3,3]}>
+                  <TabPanel bgColor={"#f3f3f3"} >
+                  <Center>
+                    <Box>
+                   
+                     
                       {commandeListe ? (
                         Object.values(commandeListe).map((items,index) => (
                           <Launch
@@ -545,9 +556,10 @@ export default function HistDev() {
                         ))
                       ) : (
                         <Box>Aucune donnee</Box>
-                      )}</SimpleGrid>
+                      )}
+                     
                     </Box>
-                   
+                    </Center>
                   </TabPanel>
                   <TabPanel>
                    <Box >
@@ -597,13 +609,14 @@ export default function HistDev() {
             </Box>
                   </TabPanel>
                 </TabPanels>
+          
               </Tabs>
             </TabPanel>
            
           </TabPanels>
         </Tabs>
        </Box>
-      <Center  mt={10} width="100%" display={{base:"grid",lg:"none"}}>
+      {/* <Center  mt={10} width="100%" display={{base:"grid",lg:"none"}}>
       <Text fontSize={"15px"} ml={5} display={{base:"block",lg:"none"}} fontWeight={600}>Mes devis</Text>
         <Tabs
           isManual
@@ -692,7 +705,7 @@ export default function HistDev() {
            
           </TabPanels>
         </Tabs>
-      </Center>
+      </Center> */}
  
     </>
   );
