@@ -603,9 +603,9 @@ export default function Resto({ categorie, magasin }) {
       <Flex width={"100%"} bgColor={"white"} display={["flex","flex","flex","none","none"]} justifyContent={"space-between"} >  
       <Heading  width={"fit-content"}  ></Heading>
       <Flex >
-          <Button bgColor={"transparent"} _hover={{
+          {/* <Button bgColor={"transparent"} _hover={{
               bgColor:'transparent2'
-          }} leftIcon={<FaEdit />}>Avis</Button>
+          }} leftIcon={<FaEdit />}>Avis</Button> */}
             <Button bgColor={"transparent"} _hover={{
               bgColor:'transparent2'
           }} leftIcon={<MdIosShare />}>Partager</Button>
