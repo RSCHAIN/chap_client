@@ -533,6 +533,7 @@ function MyComponent2() {
                       radio2={radio2}
                       imageUri=""
                       ville={ville}
+                      jour="1 Mois"
                       need={need}
                       inputGroups={inputGroups}
                       categorie={prix}
@@ -600,6 +601,7 @@ function MyComponent2() {
                       radio2={radio2}
                       imageUri=""
                       ville={ville}
+                      jour="1 Mois"
                       need={need}
                       inputGroups={inputGroups}
                       categorie={prix}

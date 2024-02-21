@@ -218,7 +218,6 @@ function MyComponent() {
   const [rue, setRue] = useState("");
 
   const [check, setCheck] = useState("none");
-
   const [selection, setSelection] = useState([{ id: "Textile" }]);
   const [fileInputsVisible, setFileInputsVisible] = useState([false]);
   var tab1 = 0;
@@ -808,6 +807,7 @@ function MyComponent() {
                       radio2={radio2}
                       imageUri={imageUri}
                       ville={ville}
+                      jour="2 jours"
                       inputGroups={inputGroups}
                       categorie={categorie}
                       rue={rue}
@@ -871,6 +871,7 @@ function MyComponent() {
                       radio2={radio2}
                       imageUri={imageUri}
                       ville={ville}
+                      jour="2 jours"
                       inputGroups={inputGroups}
                       categorie={categorie}
                       rue={rue}
@@ -939,6 +940,7 @@ function MyComponent() {
                         radio2={radio2}
                         imageUri={imageUri}
                         ville={ville}
+                        jour="3/4 semaines"
                         inputGroups={inputGroups}
                         categorie={categorie}
                         rue={rue}

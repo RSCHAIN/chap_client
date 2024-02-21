@@ -29,6 +29,7 @@ function PopUp({
     need,
     poste,
     arriv,
+    jour,
     radio2,
     imageUri,
     ville,
@@ -234,7 +235,7 @@ function PopUp({
                 moyen :"Aerien",
                 subject : `Demande de devis `,
                 price : PrixChoisi,
-                jour : "2 jours estimés",
+                jour : jour,
                 quantity : inputGroups.length,details : inputGroups
               })
                 .then((response) => {
@@ -286,6 +287,7 @@ function PopUp({
                   email: email.toString(),
                   adresse: rue,
                   nomExp:nom2, 
+                  devisId: `${idDev}${hash}`,
                 nomDest:nomDest,
                 prenomDest:prenomDest,
                   moyen: "Maritime",
@@ -295,8 +297,8 @@ function PopUp({
                   ville: ville,
                   postal: poste,
                   depot: radio2,
-                  jour:"30 jours estimés",
-                  quantity: inputGroups.length,
+                  jour:jour,
+                  quantity: inputGroups.length,details : inputGroups
                 })
                 .then((response) => {
                   alert(
