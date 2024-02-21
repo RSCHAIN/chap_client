@@ -41,22 +41,22 @@ function IntermediatePage() {
                         <h2>Epicerie</h2>
                         <Image src="./intermediate-img/epicerie.png" alt="Logo" />
                     </Link>
-                    <Link href="/otherContent/intermed2" className='text' onClick={() => secureLocalStorage.setItem("service", "Textile")}>
+                    <Link href="/otherContent/intermed2" className='text' onClick={() => secureLocalStorage.setItem("service", "Cosmetique")}>
                         <h2>Cosmétique</h2>
                         <Image src="./intermediate-img/cosmetics-icon.png" alt="Logo" /></Link>
-                    <Link href="/otherContent/intermed2" className='text' onClick={() => secureLocalStorage.setItem("service", "Restaurant")}>
+                    <Link href="/otherContent/intermed2" className='text' onClick={() => secureLocalStorage.setItem("service", "Fret")}>
                         <h2>Fret</h2>
                         <Image src="./intermediate-img/avionn.png" alt="Logo" />
                     </Link>
-                    <Link href="/otherContent/intermed2" className='text' onClick={() => secureLocalStorage.setItem("service",  "Cosmetique")}>
+                    <Link href="/otherContent/intermed2" className='text' onClick={() => secureLocalStorage.setItem("service",  "Restaurant")}>
                         <h2>Restaurant</h2>
                         <Image src="./intermediate-img/nourriture.png" alt="Logo" />
                     </Link>
-                    <Link href="/otherContent/intermed2" className='text' onClick={() => secureLocalStorage.setItem("service", "Commerce de meches")}>
+                    <Link href="/otherContent/intermed2" className='text' onClick={() => secureLocalStorage.setItem("service", "Textile")}>
                         <h2>Textille</h2>
                         <Image src="./intermediate-img/textile.jpg" alt="Logo" />
                     </Link>
-                    <Link href="/otherContent/intermed2" className='text' onClick={() => secureLocalStorage.setItem("service",  "Fret")}>
+                    <Link href="/otherContent/intermed2" className='text' onClick={() => secureLocalStorage.setItem("service",  "Commerce de meches")}>
                         <h2>Mèche/Tissage</h2>
                         <Image src="./intermediate-img/perruques.png" alt="Logo" />
                     </Link>

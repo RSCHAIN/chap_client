@@ -392,10 +392,13 @@ export default function Carte() {
             await axios
             .post("/api/sendmail", {
                 adresse:lieu,
+                commandeId:`${idCom}${hash}`,
                 email: email.toString(),
                 paiement:moyen,
-                
+                name:secureLocalStorage.getItem("name"),
                 product:Cart,
+                totalPrice:`€${parseFloat(prix +parseFloat(frais)).toFixed(2)}`,
+                frais:parseFloat(frais).toFixed(2)
             })
             .then((response) => {
                 toast({

@@ -204,7 +204,8 @@ function PopUp({
           total: PrixChoisi,
           produit: inputGroups,
           categories: categorie,
-          nomExpediteur: nom2
+          nomExpediteur: nom2,
+          createdAt: serverTimestamp()
         }).then(async (response) => {
           //  console.log(response.key)
           toast({

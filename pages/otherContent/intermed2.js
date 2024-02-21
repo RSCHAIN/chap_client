@@ -23,7 +23,7 @@ import { useState } from "react";
 import secureLocalStorage from "react-secure-storage";
 import Head from "next/head";
 
-export default function Intrmed2() {
+export default function Intermed2() {
   const [terms, setTerms] = useState("");
   const [check, setCheck] = useState(0);
   const [categorie, setCategorie] = useState();
