@@ -207,9 +207,9 @@ function MyComponent() {
   const CI = "Côte d'Ivoire";
   const router = useRouter();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [dest, setDest] = useState("");
+  const [dest, setDest] = useState("non modifier");
   // const [codeDest, setCodeDest] = useState("");
-  const [arriv, setArriv] = useState("");
+  const [arriv, setArriv] = useState("non modifier");
   const [radio2, setRadio2] = useState("");
   const [email, setEmail] = useState("");
 

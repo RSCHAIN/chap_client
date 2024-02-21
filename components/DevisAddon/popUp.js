@@ -77,7 +77,6 @@ function PopUp({
             .then((userCredential) => {
               getTime();
               if (userCredential.user.emailVerified) {
-                setEmail(userCredential.user.email);
                 sessionStorage.setItem("email", userCredential.user.email);
                 // router.back()
                 toast({
@@ -231,12 +230,12 @@ function PopUp({
                 rue : rue,
                 postal : poste,
                 ville : ville,
-  
+                devisId: `${idDev}${hash}`,
                 moyen :"Aerien",
                 subject : `Demande de devis `,
                 price : PrixChoisi,
                 jour : "2 jours estimés",
-                quantity : inputGroups.length,
+                quantity : inputGroups.length,details : inputGroups
               })
                 .then((response) => {
                   alert(
