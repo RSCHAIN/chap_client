@@ -16,7 +16,7 @@ import {
 } from '@chakra-ui/react'
 import { authentic, db, db2, storage } from "@/FIREBASE/clientApp";
 import axios from 'axios';
-import { push, ref, set } from "@firebase/database";
+import { push, ref, serverTimestamp, set } from "@firebase/database";
 import { onAuthStateChanged } from 'firebase/auth';
 import sha256 from 'crypto-js/sha256';
 import CryptoJS from "crypto-js";
@@ -35,7 +35,7 @@ function PopUp({
   ville,
   inputGroups,
   categorie,
-  rue, moyen,
+  rue, moyen,dateArrive
 }) {
 
   const [numeroExp, setNumeroExp] = useState("")
@@ -186,6 +186,7 @@ function PopUp({
       if (moyen == "Aerien") {
         set(ref(db2, `DevisPerso/${idDev}${hash}`), {
           email: email,
+          dateArrive: dateArrive,
           numeroExpediteur: numeroExp,
           numeroDestinataire: numeroDest,
           nomDestinataire: nomDest,
@@ -197,6 +198,7 @@ function PopUp({
           retrait_depot: radio2,
           imageColis: imageUri,
           ville: ville,
+          jour: jour,
           status: "En cours",
           devisId: `${idDev}${hash}`,
           rue: rue,

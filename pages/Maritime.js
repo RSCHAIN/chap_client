@@ -530,6 +530,7 @@ function MyComponent2() {
                       dest={dest}
                       poste={poste}
                       arriv={arriv}
+                      dateArrive={dateExp3}
                       radio2={radio2}
                       imageUri=""
                       ville={ville}
@@ -599,6 +600,7 @@ function MyComponent2() {
                       poste={poste}
                       arriv={arriv}
                       radio2={radio2}
+                      dateArrive={dateExp3}
                       imageUri=""
                       ville={ville}
                       jour="1 Mois"

@@ -553,10 +553,12 @@ function MyComponent() {
               <span className="font-bold">De</span>
               <div>
                 <select
+               
                   className="min-w-[22rem] p-2 bg-white border border-cyan-800 placeholder-gray-800 text-gray-800 text-md "
                   placeholder="Pays"
                   onChange={(e) => setDest(e.target.value)}
                 >
+                  <option value={"default"}>Choisir une destination</option>
                   <option value={"France"}>France</option>
                 </select>
               </div>
@@ -569,6 +571,7 @@ function MyComponent() {
                   placeholder="Pays"
                   onChange={(e) => setArriv(e.target.value)}
                 >
+                   <option value={"default"}>Choisir une destination</option>
                   <option value={"Côte D'Ivoire"}>{CI}</option>
                 </select>
               </div>
@@ -803,6 +806,7 @@ function MyComponent() {
                       email={email}
                       dest={dest}
                       poste={poste}
+                      dateArrive={dateExp3}
                       arriv={arriv}
                       radio2={radio2}
                       imageUri={imageUri}
@@ -867,6 +871,7 @@ function MyComponent() {
                       email={email}
                       dest={dest}
                       poste={poste}
+                      dateArrive={dateExp3}
                       arriv={arriv}
                       radio2={radio2}
                       imageUri={imageUri}
@@ -937,6 +942,7 @@ function MyComponent() {
                         dest={dest}
                         poste={poste}
                         arriv={arriv}
+                        dateArrive={dateExp3C}
                         radio2={radio2}
                         imageUri={imageUri}
                         ville={ville}

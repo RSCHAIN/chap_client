@@ -38,7 +38,7 @@ if (req.body.moyen === "Aerien") {
         <body>
           <div >
             <div >
-              <img style="margin-left: 40%;" width="200px" height="100px" src="https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/logo1.png?alt=media&token=67f99355-60b3-4b10-a38a-6a52dd89b107&_gl=1*11jre4b*_ga*MTE4ODU5MTEwLjE2ODc1MTg1NjQ.*_ga_CW55HF8NVT*MTY5NTg5NzM0OS4xODMuMS4xNjk1ODk3NDIzLjYwLjAuMA.." />
+              <img style="margin-left: 40%;" width="200px" height="100px" src="https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/logo1.png?alt=media&token=67f99355-60b3-4b10-a38a-6a52dd89b107" />
             </div>
           </div >
           <div style="margin-left: 5%;font-size: 20px;">

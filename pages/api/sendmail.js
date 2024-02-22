@@ -11,8 +11,8 @@ export default function handler(req, res) {
 
 
 
-  const client = req.body.client;
-  const comande = req.body.comande;
+  const client = req.body.name;
+  const comande = req.body.commandeId;
 
 
 
@@ -38,7 +38,8 @@ export default function handler(req, res) {
             <img class="h-48 w-full object-cover md:h-full md:w-48" src="../public/airplane.jpg" alt="Modern building architecture">
           </div> -->
           <div class="p-8">
-            <div class="uppercase tracking-wide text-sm p-10 text-center font-semibold">CHAP</div>
+          <center> <img src="https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/logo1.png?alt=media&token=67f99355-60b3-4b10-a38a-6a52dd89b107" width="100px" height="100px"/>
+          <p style="font-size: 40px; margin-top: -10px;">CHAP</p></center>
       
             <p  class="block mt-1 text-lg leading-tight p-10  font-medium text-black ">Bonjour Mr/M ${client}</p>
             <p class="mt-2 text-slate-500 p-10 ">Merci d'avoir choisi CHAP, votre commande <b>n° ${comande}</b> a été bien enregistrée et sera pris en compte dans de brefs delai.</p>
@@ -66,7 +67,7 @@ export default function handler(req, res) {
             </div>
             <div class="block  pl-10 ">
                 <p  class="block  text-lg leading-tight   font-medium text-black ">Frais de livraison : <span class="Livre">${req.body.frais}</span> </p>
-                <p  class="block  text-lg leading-tight  text-black ">Total TTC : <span class="ttc">${req.body.ttc}</span></p>
+                <p  class="block  text-lg leading-tight  text-black ">Total TTC : <span class="ttc">${req.body.totalPrice}</span></p>
             </div>
             <p class="mt-2 text-slate-500 pb-5 pl-10 text-blue-600">Adresse de livraison : <span class="Addr text-black">${req.body.adresse}</span> </p>
             <p class="mt-2 text-slate-500 pb-5 pl-10 text-blue-600">Mode de paiement: <span class="Paiement text-black">${req.body.paiement}</span></p>

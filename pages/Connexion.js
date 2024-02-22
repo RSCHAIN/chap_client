@@ -110,8 +110,8 @@ export default function Connexion() {
             status: "success",
             duration: 3000,
             isClosable: true,
-          });
-          router.push("/");
+          })
+          router.push("/")
           router.reload();
         } else {
 
@@ -189,7 +189,7 @@ export default function Connexion() {
       title: "Connexion établie", duration: 9000, status: "success"
     })
     router.push("/")
-    router.reload()
+    // router.reload()
     // handleRedirect()
   }
 
@@ -293,7 +293,7 @@ export default function Connexion() {
                       Connectez-vous á votre compte
                     </Text>
                     <Center display={"grid"} >
-                      <Button mb={5}
+                      <Button mb={2}
                          width={"fit-content"} borderBottom={"2px solid black"}
                         leftIcon={<FaGoogle />}
                       
@@ -308,23 +308,9 @@ export default function Connexion() {
                       >
                         Connexion avec Google
                       </Button>
-                      <Button
-                        width={"fit-content"} borderBottom={"2px solid black"}
-                        leftIcon={<FaFacebook />}
-                      
-                        // borderRadius={"50px"}
-                        bgColor={"#fff"}
-                        color={"black"}
-                        _hover={{
-                          bg: "#ccf",
-                        }}
-                        border={"1px solid black"}
-                        
-                      >
-                        Connexion avec Facebook
-                      </Button>
+                     
                     </Center>
-                    <Box position='relative' padding='10'>
+                    <Box position='relative' padding='5'>
                       <Divider />
                       <AbsoluteCenter bg='white' px='4'>
                         Où

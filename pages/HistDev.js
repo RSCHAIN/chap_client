@@ -44,6 +44,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { useRouter } from "next/router";
 import { PayPalButtons } from "@paypal/react-paypal-js";
 import Head from "next/head";
+import { ChevronRightIcon } from "@chakra-ui/icons";
 
 function Cancel2(id, state) {
   // console.log(id);
@@ -337,8 +338,10 @@ function Launch({ items, email,id }) {
     return (
       <>
           <Box
+          mb={5}
           bgColor={"white"}
-        mt={2}
+        mx={2}
+        py={2}
         boxShadow={"rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;"}
         w={["400px","400px","400px","500px","500px"]}
         maxH={"170px"}
@@ -361,19 +364,24 @@ function Launch({ items, email,id }) {
               <Text>
 Référence: {id}</Text>
               
-             <Flex><Text mr={2}>Date : </Text>{items.depart}</Flex>
-             <Text> Destination : {items.arrive}</Text>
+             <Flex><Text mr={2}>Date : </Text>{new Date(items.createdAt).toLocaleDateString(undefined, {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+})}</Flex>
+             <Text mb={5}> Destination : {items.arrive}</Text>
              {/* <Flex><Text mr={2}>Arrivé : </Text>{items.arrive}</Flex> */}
             </Box>
 
            
-            <Box>
+            {/* <Box>
               <Button bgColor={'red.500'} _hover={{
                 bgColor:'#FF6969'
               }} color={'white'} onClick={() => Cancel2(id, "Annulé")}>
                 Annuler
               </Button>
-            </Box>
+            </Box> */}
            
           </Box>   
 
@@ -392,8 +400,14 @@ Référence: {id}</Text>
               </Box>
             </Flex>
             </Box> 
+
+           
           </Flex>
-         
+          <Flex justifyContent={"space-between"}  width={"full"} >
+            <Text  mx={2}>Arrivée estimé: {items.dateArrive} </Text>
+            <Text>Reglé en espèce </Text>
+           <ChevronRightIcon fontSize={"30px"} color={"cyan.800"} fontWeight={700}/>
+          </Flex>
            
         </Box>
       </>
