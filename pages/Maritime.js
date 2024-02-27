@@ -1,7 +1,12 @@
 import React, { useState } from "react";
-import { AlertDescription, AlertIcon, AlertTitle, CloseButton, Switch, useMediaQuery } from "@chakra-ui/react";
-import { InputGroup, InputRightAddon, SimpleGrid, InputRightElement, Label, FormControl, FormLabel, Link, Checkbox, Image, Alert, Toast, FormHelperText, FormErrorMessage } from "@chakra-ui/react";
-import { Flex, Input, Button, ChakraProvider, VStack, HStack, Heading, Text, Box, Select, Radio, RadioGroup, Stack, useToast, ModalContent, ModalHeader, ModalCloseButton, ModalBody, Center, Modal, ModalOverlay, Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody, useDisclosure, Menu, MenuButton, useBoolean, MenuList, MenuItem } from "@chakra-ui/react";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMinusCircle, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+
+import { useDisclosure, MenuList, MenuItem } from "@chakra-ui/react";
+
+import { useMediaQuery } from "@chakra-ui/react";
+import { useToast, useBoolean } from "@chakra-ui/react";
 import axios from "axios";
 import { GrAddCircle } from "react-icons/gr";
 import { TiDelete } from "react-icons/ti";
@@ -16,18 +21,16 @@ import TransitionExample from "@/components/forgetPassword";
 import {ChevronDownIcon} from "@chakra-ui/icons"
 import Head from "next/head";
 import PopUp from "@/components/DevisAddon/popUp";
+import Link from "next/link";
 
-function MyComponent2() {
-    // gestion des dates
+function Maritime() {
+
     const date = new Date();
     const dateDep = date.toLocaleDateString();
     const date2 = new Date();
     const dateExp = date2.setDate(date2.getDate() + 31);
     const dateExp2 = new Date(dateExp);
     const dateExp3 = dateExp2.toLocaleDateString();
-
-    // fin gestion des dates
-    ///login variable//
 
     const [show, setShow] = useState(false);
     const handleClick = () => setShow(!show);
@@ -41,7 +44,6 @@ function MyComponent2() {
         const currentTime = new Date();
         const timestanp = currentTime.getTime();
         secureLocalStorage.setItem("time", timestanp);
-        // console.log("okay")
     };
 
     const loginUSer = async () => {
@@ -51,7 +53,6 @@ function MyComponent2() {
             if (userCredential.user.emailVerified) {
             setEmail(userCredential.user.email);
             sessionStorage.setItem("email", userCredential.user.email);
-            // router.back()
             toast({
                 title: "ACCES AUTORISE.",
                 description: "Bon Achat",
@@ -61,28 +62,14 @@ function MyComponent2() {
             });
             router.back();
             } else {
-            // sendEmailVerification(auth.currentUser)
             signOut(auth);
-            // toast({
-            //   title: "Email Non Verifié.",
-            //   description: "Verifier Vos Mails Afin De Confirmer La Transaction",
-            //   status: "error",
-            //   duration: 200000,
-            //   // isClosable: true,
-            // });
             setVerif(true);
-            // setTimeout( router.reload(), "10000")
-            // router.reload()
             }
         })
         .catch((error) => {
-            // throw error;
             const errorCode = error.code;
             const errorMessage = error.message;
-            // console.log(error.message)
-            // console.log(error.message)
             if (errorMessage == "Firebase: Error (auth/user-not-found).") {
-            // console.log("VEUILLEZ VERIFIER VOS INFOS DE CONNEXION");
             toast({
                 title: "ACCES REFUSE.",
                 description: "VEUILLEZ VERIFIER VOS ACCES",
@@ -119,22 +106,14 @@ function MyComponent2() {
                     isClosable: true,
                 });
                 } else {
-                // console.log(error);
                 }
             }
             }
         });
     };
+
     const isError = email2 === "";
-    //fin login variable
-
-    //Variable inscription//
-
-    //////Fin des variables
-
-    //variable commune insc/conn//
     const [interup, setInterup] = useState(false);
-    //fin des variables
 
     const [isOpenModal1, setIsOpenModal1] = useState(false);
     const toggleModal1 = () => setIsOpenModal1(!isOpenModal1);
@@ -142,8 +121,6 @@ function MyComponent2() {
     const router = useRouter();
     const CI = "Côte d'Ivoire";
     const toast = useToast();
-
-    // const [tab2,setTab2] = useState([])
     const { isOpen, onOpen, onClose } = useDisclosure();
 
     const [need, setNeed] = useState([{ besoin: 0 }]);
@@ -184,7 +161,6 @@ function MyComponent2() {
         if(poste.length == 5 && (poste.slice(0,2)==91||poste.slice(0,2)==94||poste.slice(0,2)==93||poste.slice(0,2)==92||poste.slice(0,2)==78||poste.slice(0,2)==77||poste.slice(0,2)==75)){
         onAuthStateChanged(authentic, (user) => {
             if (!user) {
-            // toggleModal1();
             } else {
             push(ref(db2, "DevisPerso"), {
                 email: email,
@@ -249,7 +225,6 @@ function MyComponent2() {
     };
 
     const handleInputChange = (groupId, id, value) => {
-        // Mettre à jour la valeur du champ de saisie en fonction de l'ID
 
         const updatedInputGroups = inputGroups.map((group, index) => {
         if (index === groupId) {
@@ -270,7 +245,8 @@ function MyComponent2() {
         setInputGroups(updatedInputGroups);
     };
 
-    const handleAddGroup = (groupId) => {
+    const handleAddGroup = (e) => {
+        e.preventDefault()
         const newGroup = Array.from({ length: 2 }, (_, index) => ({
         id: inputGroups.length > 0 ? inputGroups[0].length + 1 + index : 1,
 
@@ -293,416 +269,133 @@ function MyComponent2() {
     };
 
     const departAfricolis= ["09/10/2023","13/10/2023","16/10/2023","20/10/2023","23/10/2023","27/10/2023","30/10/2023","03/11/2023"]
-    return (
-        <ChakraProvider>
-            <Head>
-                <script async src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87" ></script>
-                <script strategy="lazyOnload">
-                    {`
-                        window.dataLayer = window.dataLayer || [];
-                        function gtag(){dataLayer.push(arguments)}
-                        gtag('js', new Date()); 
-                        gtag('config', 'G-RFSVQTGJ87');
-                    `}
-                </script>
-            </Head>
 
-            <main>
-                <div>
-                    <div className="flex gap-4 mt-4 max-[1390px]:flex-col max-[1390px]:min-w-[22rem] max-[1390px]:items-center max-[680px]:flex-col max-[680px]:items-center">
-                        <div className="flex flex-col gap-2">
-                            <div className="flex flex-col">
-                                <label className="font-bold">Email :</label>
-                                <input className="min-w-[22rem] max-[680px]:w-[10rem] max-[1390px]:w-[10rem]  p-1 rounded-sm border border-cyan-800 placeholder-gray-800" placeholder="Email" onChange={(e) => setEmail(e.target.value)}/>
+
+    return (
+        <>
+            <div className="container mx-auto flex flex-col lg:flex-row justify-between">
+                <div className="left flex-1 w-full lg:w-3/6 shadow-[0_0_12px_rgba(0,0,0,0.2)]">
+                    <form className="bg-white p-10">
+                        <div className="">
+                            <div className="">
+                                <div className="flex flex-col self-start lg:flex-row">
+                                    <div className="mb-4 lg:mb-0">
+                                        <label className="uppercase text-sm" htmlFor="">Email</label>
+                                        <input type="text" onChange={(e) => setEmail(e.target.value)} placeholder="Votre adresse email" className="sm:text-sm w-full lg:w-[21rem] border border-slate-800 p-3 rounded-sm"/>
+                                    </div>
+                                    <div className="lg:ml-4">
+                                        <label className="uppercase text-sm" htmlFor="">Code Postal</label>
+                                        <input type="text" onChange={(e) => { setPoste(e.target.value); }} placeholder="Code postal ou ville" className="sm:text-sm w-full lg:w-[21rem] border border-slate-800 p-3 rounded-sm"/>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="flex flex-col">
-                                <label className="font-bold">Adresse : </label>
-                                <input className="min-w-[22rem] max-[680px]:w-[10rem] max-[1390px]:w-[10rem]  p-1 rounded-sm border border-cyan-800 placeholder-gray-800" onChange={(e) => { setRue(e.target.value); }} placeholder={"n°Rue/Avenue"} mr={2}/>
+
+                            <div className="mt-10">
+                                <div className="flex flex-col self-start lg:flex-row justify-between">
+                                    <div className="mb-4 lg:mb-0">
+                                        <label className="uppercase text-sm" htmlFor="">Adresse</label>
+                                        <input type="text" onChange={(e) => { setRue(e.target.value); }}placeholder="Votre adresse" className="sm:text-sm w-full lg:w-[21rem] border border-slate-800 p-3 rounded-sm"/>
+                                    </div>
+                                    <div className="">
+                                        <label className="uppercase text-sm" htmlFor="">Ville</label>
+                                        <input type="text" onChange={(e) => { setVille(e.target.value); }} placeholder="Ville ou code postal" className="sm:text-sm w-full lg:w-[21rem] border border-slate-800 p-3 rounded-sm"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="mt-10">
+                                <span className="text-sm">DE</span>
+                                <div className="flex justify-between">
+                                    <select  placeholder="Pays" onChange={(e) => setDest(e.target.value)} className="w-full p-3 focus:outline-none bg-zinc-100">
+                                        <option value={"France"}>France</option>
+                                        <option value={"Côte d'Ivoire"}>Côte d'Ivoire</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div className="mt-10">
+                                <span className="text-sm">À</span>
+                                <div className="flex justify-between">
+                                    <select placeholder="Pays" onChange={(e) => setArriv(e.target.value)} className="w-full p-3 focus:outline-none bg-zinc-100">
+                                        <option value={"Côte D'Ivoire"}>Côte d'Ivoire</option>
+                                        <option value={"France"}>France</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div className="mt-10">
+                                <h2 className="text-2xl text-center font-bold">Reception du colis par la structure</h2>
+                                <div className="mt-6 mb-6" onChange={setRadio2} value={radio2}>
+                                    <ul class="flex flex-col lg:flex-row justify-between items-center w-full text-sm font-medium text-gray-900 bg-white border 
+                                        rounded-sm sm:flex dark:text-white gap-4 lg:gap-0">
+                                        <li class="w-full border border-gray-600">
+                                            <div class="flex items-center ps-3">
+                                                <input id="horizontal-list-radio-license" type="radio" value="En agence" name="list-radio" class="w-4 h-4 text-cyan-800 bg-gray-100 border-gray-300 focus:ring-cyan-800 dark:focus:ring-cyantext-cyan-800 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"/>
+                                                <label for="horizontal-list-radio-license" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-800">Dépôt en agence</label>
+                                            </div>
+                                        </li>
+                                        <li class="w-full border border-gray-600">
+                                            <div class="flex items-center ps-3">
+                                                <input id="horizontal-list-radio-id" type="radio" value="Retrait à domicile" name="list-radio" class="w-4 h-4 text-cyan-800 bg-gray-100 border-gray-300 focus:ring-cyan-800 dark:focus:ring-cyantext-cyan-800 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"/>
+                                                <label for="horizontal-list-radio-id" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-800">Retrait à domicile</label>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <span className="text-sm">COLIS</span>
+                                {inputGroups.map((group, groupId) => (
+                                    <div  className="mb-6">
+                                        <div className="flex flex-col lg:flex-row justify-between gap-4 lg:gap-0">
+                                            <textarea name="" id="" placeholder="Description ici..." cols="30" rows="3" className="sm:text-sm py-2 pl-4 border border-slate-800"></textarea>
+                                            <select name="" id="" className="w-full lg:w-[20rem] p-3 focus:outline-none border border-slate-800 bg-zinc-100">
+                                                <option value="">Carton 200 L</option>
+                                                <option value="">Carton 200 L</option>
+                                                <option value="">Carton 200 L</option>
+                                            </select>
+                                            <input type="text" placeholder="Valeur en euro" className="w-full lg:w-[20rem] p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm"/>
+                                            <button className="rounded-md text-cyan-800">
+                                                <div className="">
+                                                    {groupId === 0 ? (
+                                                        <FontAwesomeIcon onClick={handleAddGroup} className="size-8 ml-2" icon={faPlusCircle}/>
+                                                    ) : (
+                                                        <FontAwesomeIcon onClick={() => handleRemoveGroup(groupId)} className="size-8 ml-2" icon={faMinusCircle}/>
+                                                    )}
+                                                </div>
+                                            </button>
+                                        </div>
+                                        <div className="flex flex-col lg:flex-row justify-between items-center">
+                                            <div className="flex flex-col justify-between lg:flex-row mt-6 w-full gap-4 lg:gap-0">
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
                             </div>
                         </div>
-                        <div className="flex flex-col gap-2">
-                            <div className="flex flex-col">
-                                <label className="font-bold">Code postal :</label>
-                                <input className="min-w-[22rem] max-[680px]:w-[10rem] max-[1390px]:w-[10rem]  p-1 rounded-sm border border-cyan-800 placeholder-gray-800" onChange={(e) => { setPoste(e.target.value); }} placeholder={"Code postal"} mr={2}/>
-                            </div>
-                            <div className="flex flex-col">
-                                <label className="font-bold">Ville : </label>
-                                <input className="min-w-[22rem] max-[680px]:w-[10rem] max-[1390px]:w-[10rem]  p-1 rounded-sm border border-cyan-800 placeholder-gray-800" onChange={(e) => { setVille(e.target.value); }} placeholder={"Ville"}/>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="selects flex gap-4 max-[1390px]:flex-col max-[1390px]:items-center">
-                        <div className="mt-4">
-                            <span className="font-bold">De</span>
-                            <div>
-                                <select className="min-w-[22rem] p-2 bg-white border border-cyan-800 rounded-sm text-gray-800 text-md " placeholder="Pays" onChange={(e) => setDest(e.target.value)}>
-                                    <option value={"france"}>France</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div className="mt-4">
-                            <span className="font-bold">À</span>
-                            <div>
-                                <select className="min-w-[22rem] p-2 bg-white border border-cyan-800 rounded-sm text-gray-800 text-md "  placeholder="Pays" onChange={(e) => setArriv(e.target.value)}>
-                                    <option value={"Côte D'Ivoire"}>{CI}</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="mt-8 flex flex-col justify-center items-center gap-4">
-                        <h2 className="font-bold text-2xl">Reception du colis par la structure : </h2>
-                        <div className="flex justify-center items-center">
-                            <RadioGroup className="flex gap-4" onChange={setRadio2} value={radio2}>
-                                <Radio className="w-4 h-4 text-teal-600 bg-gray-100 border-gray-300 focus:ring-teal-500 dark:focus:ring-teal-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" value="En agence">Depot en agence</Radio>
-                                <Radio className="w-4 h-4 text-teal-600 bg-gray-100 border-gray-300 focus:ring-teal-500 dark:focus:ring-teal-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" value="Retrait à domicile">Retrait a domicile</Radio>
-                            </RadioGroup>
+                        <Link href={"/QuoteConfirmationMaritime"}>
+                            <button 
+                            // isDisabled={email.length < 10 || dest.length < 4 || radio2.length < 3}
+                            // onClick={() => {
+                            // LaunchAll();
+                            // }} 
+                            className="w-full bg-cyan-800 text-white font-bold p-2 rounded-md mt-20">Envoyez dès maintenant</button>
+                        </Link>
+                    </form>
+                </div>
+                <div className="right bg-orange-100 flex-1 w-full lg:w-3/6">
+                    <div className="flex flex-col p-10">
+                        <h2 className="text-2xl lg:text-6xl font-bold">Comparer différents transporteur et faites des économies avec CHAP.</h2>
+                        <p className="text-sm lg:text-lg mt-10">
+                            Envoyez vos colis vers vers l'Afrique de l'ouest par nos partenaires. Remplissez le formulaire et 
+                            attendez notre retour mail si vous ne possédez pas un CHAP, sinon vérifiez l'onglet devis de votre compte. 
+                            Un fois reçu les différentes propositions de nos partenaires, vous pourrez choisir, payer et préparer le colis 
+                            pour le transporteur.
+                        </p>
+                        <div className="lg:-mt-20">
+                            <img className="w-[36rem]" src="./images/livraison.png" alt="" />
                         </div>
                     </div>
                 </div>
-
-                {inputGroups.map((group, groupId) => (
-                    <>
-                        <div key={groupId} className="flex justify-center items-center gap-2 mt-4  max-[1390px]:flex-col max-[1390px]:min-w-[22rem] max-[1390px]:items-center max-[680px]:flex-col max-[680px]:items-center">
-                            <select  className="p-1.5 bg-white border border-cyan-800 text-gray-800 text-md"
-                                onChange={(e) => {
-                                    prix[groupId] = {
-                                        id: e.target.selectedOptions[0].innerHTML,
-                                        prix: parseInt(e.target.selectedOptions[0].value),
-                                        envoi:
-                                        e.target.selectedOptions[0].innerHTML == "Carton 200 L"
-                                            ? 110
-                                            : e.target.selectedOptions[0].innerHTML ==
-                                            "Barrique bleu 220 L"
-                                            ? 130
-                                            : e.target.selectedOptions[0].innerHTML ==
-                                            "Barrique noir 250 L"
-                                            ? 150
-                                            : 0,
-                                    };
-                                }}
-                            >
-                                {Option.map((data) => [
-                                    <option key={data.prix} value={data.prix}>
-                                        {data.id}
-                                    </option>,
-                                ])}
-                            </select>
-
-                            {group.map((field) => (
-                                <div key={field.id}>
-                                    {/* <div className="">
-                                        <input type="text" className="bg-white border border-cyan-800 p-1 placeholder-gray-800" value={field.value} placeholder={field.title} onChange={(e) => handleInputChange(groupId, field.id, e.target.value) }/>
-                                    </div> */}
-                                    <div className="">
-                                    {field.id == 1 ? (
-                                            <textarea className="p-1 border border-cyan-800 placeholder-gray-800" 
-                                            
-                                                placeholder={field.title}
-                                                value={field.value}
-                                                onChange={(e) =>
-                                                handleInputChange(groupId, field.id, e.target.value)
-                                                }
-                                            />
-                                        ) : (
-                                            <input className="p-1 border border-cyan-800 placeholder-gray-800 " 
-                                                type="text"
-                                                placeholder={field.title}
-                                                value={field.value}
-                                                onChange={(e) =>
-                                                handleInputChange(groupId, field.id, e.target.value)
-                                                }
-                                            />
-                                        )}
-                                    </div>
-                                </div>
-                            ))}
-                            <div className="flex justify-center items-center">
-                                {groupId === 0 ? (
-                                    <GrAddCircle className="border border-cyan-800 bg-white h-8 w-10" onClick={() => handleAddGroup(groupId)} />
-                                    ) : (
-                                    <TiDelete className="border border-cyan-800 bg-white h-8 w-10" onClick={() => handleRemoveGroup(groupId)} />
-                                )}
-                            </div>
-                        </div>
-
-                        <div className="mt-4 mb-8">
-                            <FormControl className="flex justify-center items-center gap-1">
-                                <input type="checkbox" className="w-4 h-4 text-cyan-800 bg-gray-100 border-gray-300 rounded focus:ring-cyan-800 dark:focus:ring-cyan-800 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" onChange={(e) => { e.target.checked ? (need[groupId].besoin = 10) : (need[groupId].besoin = 0); }} />
-                                <h2 className="text-cyan-800">Besoin du materiel ?</h2>
-                            </FormControl>
-                        </div>
-                    </>
-                ))}
-            </main>
-
-            <button className="bg-cyan-800 px-6 py-2 rounded-sm text-white font-bold hover:bg-teal-800" isDisabled={ email.length < 10 || dest.length < 4 || arriv.length < 3 || radio2.length < 3 } onClick={onOpen}>Envoyer</button>
-            
-
-            {/*UNE AUTRE PAGE information sur les differents fournisseurs et leur jour de livraison */}
-            <Drawer onClose={onClose} isOpen={isOpen} size={"full"}>
-                <DrawerOverlay />
-                <DrawerContent>
-                    <DrawerCloseButton />
-                    <nav className="css-1a4ibax m-10">
-                        <section class="step-wizard">
-                            <ul class="step-wizard-list">
-                                <li class="step-wizard-item">
-                                    <span class="progress-count">1</span>
-                                    <span class="progress-label">Sélection de service</span>
-                                </li>
-                                <li class="step-wizard-item current-item">
-                                    <span class="progress-count">2</span>
-                                    <span class="progress-label">Détails de l’expédition</span>
-                                </li>
-                                <li class="step-wizard-item">
-                                    <span class="progress-count">3</span>
-                                    <span class="progress-label">Détails de l’adresse</span>
-                                </li>
-                                <li class="step-wizard-item">
-                                    <span class="progress-count">4</span>
-                                    <span class="progress-label">Détails de paiement</span>
-                                </li>
-                            </ul>
-                        </section>
-                    </nav>
-
-                    <div className="h-full">
-                        <div className="container mx-auto flex flex-col gap-4">
-                            <div className="min-w-full flex justify-between rounded-md shadow-[0_15px_60px_-15px_rgba(0,0,0,0.3)]">
-                                <div className="w-full flex justify-evenly max-[768px]: max-[768px]:flex-col max-[768px]:p-2 ">
-                                    <div className="flex justify-between items-center">
-                                        <div className="flex flex-col py-4 px-12 gap-4 bg-orange-600 rounded-tl-lg max-[768px]:p2 max-[768px]:flex-row max-[768px]: max-[768px]:rounded-br-xl">
-                                            <div className="flex flex-col justify-center items-start text-white max-[768px]:flex-row">
-                                                <strong className="text-[3rem] max-[768px]:text-xl max-[768px]:-mt-1">30</strong>
-                                                <small className="font-bold max-[768px]:ml-2">Jours</small>
-                                            </div>
-                                            <span className="text-white font-bold text-[0.8rem] -mt-4 max-[768px]:-mt-0">Estimés</span>
-                                        </div>
-                                        <div className="flex flex-col justify-center items-center gap-2 mr-10 ml-10  max-[768px]:ml-0 max-[768px]:mr-4 max-[768px]:mt-4">
-                                            <Image className="w-40  max-[768px]:w-20" src="airplane.jpg" alt={"image Avion"}/>
-                                            <h2 className="uppercase">Africolis</h2>
-                                        </div>
-                                    </div>
-                                    <div className="w-full flex justify-between items-center">
-                                        <div className="flex flex-col gap-2">
-                                            <span  className="font-bold">Date de retrait estimée</span>
-                                            <span>{dateDep}</span>
-                                        </div>
-
-                                        <div className="flex flex-col gap-2">
-                                            <span  className="font-bold">Date de départ estimée</span>
-                                            <div>
-                                                <Menu className="bg-red-500">
-                                                    <MenuButton>
-                                                        <Flex>
-                                                            <h2 className="text-slate-800"> Voir Toutes les dates</h2>
-                                                            <ChevronDownIcon className="text-slate-800" fontSize={30} />
-                                                        </Flex>
-                                                    </MenuButton>
-                                                    <MenuList className="bg-yellow-400">
-                                                        {departAfricolis.map((data,index)=>
-                                                        (
-                                                        <MenuItem className="bg-yellow-400" key={index}>{data}</MenuItem>
-                                                        ))}
-                                                    </MenuList>
-                                                </Menu>
-                                            </div>
-                                        </div>
-
-                                        <div className="flex flex-col gap-2">
-                                            <span  className="font-bold">Date de livraison estimée{" "}</span>
-                                            <span>{dateExp3}{" "}</span>
-                                        </div>
-
-                                        <div>
-                                            {prix.map((prix, prixId) => {
-                                                tab1 =
-                                                tab1 +
-                                                (parseFloat(prix.prix) +
-                                                    parseFloat(need[prixId].besoin) +
-                                                    parseFloat(prix.envoi));
-                                            })}
-                                            <div className="flex flex-col gap-2 p-4">
-                                                <h2 className="flex justify-end text-red-600 text-2xl max-[768px]:text-xl max-[768px]:text-center">{parseFloat(tab1) + (parseFloat(tab1) * 5) / 100}€</h2>
-                                                <PopUp PrixChoisi={parseFloat(tab1) + (parseFloat(tab1) * 5) / 100}
-                    Partenaire="Africolis"
-                    email={email}
-                      dest={dest}
-                      poste={poste}
-                      arriv={arriv}
-                      dateArrive={dateExp3}
-                      radio2={radio2}
-                      imageUri=""
-                      ville={ville}
-                      jour="1 Mois"
-                      need={need}
-                      inputGroups={inputGroups}
-                      categorie={prix}
-                      rue={rue}
-                      moyen="Maritime"
-
-                  />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="min-w-full flex justify-between rounded-md shadow-[0_15px_60px_-15px_rgba(0,0,0,0.3)]">
-                                <div className="w-full flex justify-evenly max-[768px]: max-[768px]:flex-col max-[768px]:p-2 ">
-                                    <div className="flex justify-between items-center">
-                                        <div className="flex flex-col py-4 px-12 gap-4 bg-orange-600 rounded-tl-lg max-[768px]:p2 max-[768px]:flex-row max-[768px]: max-[768px]:rounded-br-xl">
-                                            <div className="flex flex-col justify-center items-start text-white max-[768px]:flex-row">
-                                                <strong className="text-[3rem] max-[768px]:text-xl max-[768px]:-mt-1">30</strong>
-                                                <small className="font-bold max-[768px]:ml-2">Jours</small>
-                                            </div>
-                                            <span className="text-white font-bold text-[0.8rem] -mt-4 max-[768px]:-mt-0">Estimés</span>
-                                        </div>
-                                        <div className="flex flex-col justify-center items-center gap-2 mr-10 ml-10  max-[768px]:ml-0 max-[768px]:mr-4 max-[768px]:mt-4">
-                                            <Image className="w-40  max-[768px]:w-20" src="airplane.jpg" alt={"image Avion"}/>
-                                            <h2 className="uppercase">Challenge</h2>
-                                        </div>
-                                    </div>
-                                    <div className="w-full flex justify-between items-center">
-                                        <div className="flex flex-col gap-2">
-                                            <span>Date de retrait estimée</span>
-                                            <span>{dateDep}</span>
-                                        </div>
-
-                                        <div className="flex flex-col gap-2">
-                                            <span>Date de départ estimée</span>
-                                            <span>{dateDep}</span>
-                                        </div>
-
-                                        <div className="flex flex-col gap-2">
-                                            <span>Date de livraison estimée{" "}</span>
-                                            <span>{dateExp3}{" "}</span>
-                                        </div>
-
-                                       
-                                        <div>
-                                            {" "}
-                                            {prix.map((prix, prixId) => {
-                                                {
-                                                    tab2 =
-                                                    tab2 +
-                                                    (parseFloat(prix.prix) +
-                                                    parseFloat(need[prixId].besoin) +
-                                                    parseFloat(prix.envoi));
-                                                }
-                                            })}
-                                            <div className="flex flex-col gap-2 p-4 ">
-                                                <h2 className="flex justify-end text-red-600 text-2xl max-[768px]:text-xl max-[768px]:text-center ">{parseFloat(tab2) + (parseFloat(tab2)) + (parseFloat(tab2) * 5) / 100}€</h2>
-                                                <PopUp PrixChoisi={parseFloat(tab2) + (parseFloat(tab2) * 5) / 100}
-                      Partenaire="Challenge N°1"
-                      email={email}
-                      dest={dest}
-                      poste={poste}
-                      arriv={arriv}
-                      radio2={radio2}
-                      dateArrive={dateExp3}
-                      imageUri=""
-                      ville={ville}
-                      jour="1 Mois"
-                      need={need}
-                      inputGroups={inputGroups}
-                      categorie={prix}
-                      rue={rue}
-                      moyen="Maritime"
-
-                    />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </DrawerContent>
-            </Drawer>
-
-
-
-            {/* <Modal isCentered isOpen={isOpenModal1} onClose={toggleModal1} size={"xl"}>
-                <ModalOverlay />
-                <ModalContent>
-                    <ModalHeader>Connexion/Inscription</ModalHeader>
-                    <ModalCloseButton />
-                    <ModalBody>
-                        <>
-                            <Center>
-                                <Text mr={4}>Connexion</Text>
-                                <Switch size="lg" onChange={(e) => setInterup(e.target.checked)} value={interup} />
-                                <Text ml={4}>Inscription</Text>
-                            </Center>
-                            {interup ? (
-                                <>
-                                    <SignUpForm2 />
-                                </>
-                            ) : (
-                                <Center display={"grid"}>
-                                    {verif ? (
-                                        <Alert status="error" w={"fit-content"}>
-                                            <AlertIcon />
-                                            <Box>
-                                                <AlertTitle>Mail Pas Verifié!</AlertTitle>
-                                                <AlertDescription>
-                                                <p>
-                                                    {" "}
-                                                    Merci de bien vouloir consulter vos mails afin de
-                                                    confirmer votre inscription sur notre site{" "}
-                                                </p>
-                                                </AlertDescription>
-                                            </Box>
-                                            <CloseButton alignSelf="flex-start" position="relative" right={-1} top={-1} onClick={onClose}/>
-                                        </Alert>
-                                    ) : (
-                                        <></>
-                                    )}
-                                    <Flex textAlign={"center"} bgColor={["white", "white", "white", "white", "white"]} borderRadius={5} w={"90%"} h={500} mx={[5, 5, 5, 5, 12]} my={5}>
-                                        <Center width={"fit-content"}>
-                                            <Box width={"full"} color={"black"}>
-                                                <FormControl isInvalid={isError}>
-                                                    <Stack spacing={4}>
-                                                        <Heading display={["none", "none", "none", "grid", "grid"]} ml={["10%", "10%", "10%", "0%", "0%"]}>
-                                                            Bienvenue
-                                                        </Heading>
-                                                        <Text display={["none", "none", "none", "grid", "grid"]}>Connectez-vous á votre compte</Text>
-                                                        <Center display={"grid"}>
-                                                            <Input mb={2} type={"text"} placeholder="Email" border={"2px solid gray"} width={[ "200px", "200px", "350px", "350px", "350px", ]} onChange={(ev) => setEmail2(ev.target.value.trim().toLowerCase() ) } color={"gray.500"}/>
-                                                            <InputGroup>
-                                                                <Input onChange={(e) => setPassword(e.target.value)} width={["200px", "200px", "350px", "350px", "350px"]} type={show ? "text" : "password"} placeholder="Entrez le mot de passe"/>
-                                                            </InputGroup>
-                                                        </Center>
-                                                        <TransitionExample />
-                                                        <Box display={"grid"}>
-                                                            <Center>
-                                                                <Button width={"fit-content"} bgColor={"#08566e"} color={"white"} _hover={{     bg: "#08566e", }} onClick={() => loginUSer()} > Connexion{" "} </Button>
-                                                            </Center>
-                                                            <Button as={Link} bgColor={"white"} _hover={{ textDecoration: "none", bgColor: "white", }}>
-                                                                Pas de compte? Créer un compte
-                                                            </Button>
-                                                        </Box>
-                                                    </Stack>
-                                                    {!isError ? (
-                                                        <FormHelperText></FormHelperText>
-                                                    ) : (
-                                                        <FormErrorMessage>Email is required.</FormErrorMessage>
-                                                    )}
-                                                </FormControl>
-                                            </Box>
-                                        </Center>
-                                    </Flex>
-                                </Center>
-                            )}
-                        </>
-                    </ModalBody>
-                </ModalContent>
-            </Modal> */}
-
-
-        </ChakraProvider>
-    );
+            </div>
+        </>
+    )
 }
 
-export default MyComponent2;
+export default Maritime

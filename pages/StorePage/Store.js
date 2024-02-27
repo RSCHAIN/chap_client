@@ -106,7 +106,7 @@ function Store() {
                             <h2 className="text-2xl lg:text-4xl tracking-[0.1rem] font-bold">Epicerie</h2>
                             <Link className="text-xs lg:text-sm font-bold underline" href={"/StorePage/EpicerieProducts"}>Voir plus</Link>
                         </div>
-                        <div className="flex -mx-4 overflow-scroll bg-violet-600">{/**flex-wrap */}
+                        <div className="flex -mx-4 overflow-x-scroll">{/**flex-wrap */}
                             {epice && epice !== "" ? 
                             Object.values(epice).map((item, index) => (
                                 <div key={index} className="w-full lg:w-1/5 px-4">
