@@ -74,7 +74,7 @@ export default function Contact() {
           
         </script>
         </Head>
-    <Container maxW="full" mt={0} centerContent overflow="hidden">
+    
       <InputBar />
       <Navbar></Navbar>
       <Flex>
@@ -230,7 +230,7 @@ export default function Contact() {
         </Box>
       </Flex>
       <FooterR />
-    </Container>
+   
     </>
   );
 }

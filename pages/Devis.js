@@ -37,13 +37,13 @@ export default function Devis() {
 
     const makeDevis = async () => {
         await addDoc(collection(db, "DevisPerso"), { email, numero, dest, codeDest, arriv, codeArriv, poids, longueur, largeur, hauteur, details, valeur, }).then(() => {
-        toast({
-            title: "Devis envoyé",
-            description: "Nous vous contacterons!!",
-            status: "success",
-            duration: 10000,
-            isClosable: true,
-        });
+            toast({
+                title: "Devis envoyé",
+                description: "Nous vous contacterons!!",
+                status: "success",
+                duration: 10000,
+                isClosable: true,
+            });
         });
     };
 
@@ -51,6 +51,7 @@ export default function Devis() {
     const CI = "Côte d'Ivoire";
     const slog = "Comparer différents transporteur et faites des économies avec CHAP  ";
     const slog1 = "Envoyez vos colis vers l'Afrique de l'ouest par nos partenaires. Remplissez le formulaire et attendez notre retour mail si vous ne possédez pas un CHAP, sinon vérifiez l'onglet devis de votre compte. Un fois reçu les différentes propositions de nos partenaires, vous pourrez choisir, payer et préparer le colis pour le transporteur.";
+    
     return (
         <>
             {/* <Head className = "bg-yellow-400">
@@ -64,6 +65,7 @@ export default function Devis() {
                     `}
                 </script>
             </Head> */}
+            
             <InputBar />
             <Navbar/>
 

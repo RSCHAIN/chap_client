@@ -57,6 +57,19 @@ function QuoteConfirmation() {
     const dateExp2C = new Date(dateExpC);
     const dateExp3C = dateExp2C.toLocaleDateString();
 
+
+    const [poidsFromSession, setPoidsFromSession] = useState(0);
+
+    useEffect(() => {
+        // Access count value from session storage
+        let poids = sessionStorage.getItem("detailscolis");
+        console.log("oui poids ::: ",typeof poids);
+        let currentData = JSON.parse(poids);
+        console.log("oui currentData ::: ", currentData);
+        setPoidsFromSession(parseFloat(currentData[0]))
+    }, []);
+
+
     return (
         <>
             <section className='bg-white'>
@@ -127,7 +140,10 @@ function QuoteConfirmation() {
                                         </div>
                                     </div>
                                     <div className="self-end mb-4">
-                                        <span className='bg-orange-600 text-2xl p-4 text-white rounded-md'>25 €</span>
+                                        <span className='bg-orange-600 text-2xl p-4 text-white rounded-md'>
+                                            {parseFloat(poidsFromSession) * 10 +
+                                            ((parseFloat(poidsFromSession) * 10* 5) / 100)} €
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -157,7 +173,10 @@ function QuoteConfirmation() {
                                         </div>
                                     </div>
                                     <div className="self-end mb-4">
-                                        <span className='bg-orange-600 text-2xl p-4 text-white rounded-md'>25 €</span>
+                                        <span className='bg-orange-600 text-2xl p-4 text-white rounded-md'>
+                                        {parseFloat(poidsFromSession) * 10 +
+                                            ((parseFloat(poidsFromSession) * 10* 5) / 100)} €
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -203,7 +222,8 @@ function QuoteConfirmation() {
                                 </div>
                                 <div className="flex flex-col mr-2">
                                     <div className="self-end flex flex-col mb-4">
-                                        <span className='text-3xl font-bold'>25<span className='ml-2'>€</span></span>
+                                        <span className='text-3xl font-bold'>{parseFloat(poidsFromSession) * 10 +
+                                            ((parseFloat(poidsFromSession) * 10* 5) / 100)}<span className='ml-2'>€</span></span>
                                     </div>
                                     <button className='bg-orange-600 text-white rounded-sm py-2 px-6'>
                                         <PopUp PrixChoisi={parseFloat(tab1) * 10 +
@@ -249,7 +269,10 @@ function QuoteConfirmation() {
                                 </div>
                                 <div className="flex flex-col mr-2">
                                     <div className="self-end flex flex-col mb-4">
-                                        <span className='text-3xl font-bold'>25€</span>
+                                        <span className='text-3xl font-bold'>
+                                        {parseFloat(poidsFromSession) * 10 +
+                                            ((parseFloat(poidsFromSession) * 10* 5) / 100)} €
+                                        </span>
                                     </div>
                                     <button className='bg-orange-600 text-white rounded-sm py-2 px-6'>
                                         <PopUp PrixChoisi={parseFloat(tab1) * 10 +

@@ -456,11 +456,7 @@ export default function Resto({ categorie, magasin }) {
       });
     }
   }
-
-
-
-
-
+  
   function AddToCart(product, productKey) {
 
 

@@ -73,7 +73,7 @@ useEffect(()=>{
   return (
     <>
   
-    <Box display={["none","none","none","grid","grid"]} bgColor={"#08566e"} color={"white"}>
+    <Box display={["none","none","none","grid","grid"]} w={"100%"} bgColor={"#08566e"} color={"white"}>
       <Flex
       width={"100%"}
        bgColor={"#08566e"}

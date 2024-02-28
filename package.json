@@ -66,7 +66,8 @@
     "react-transition-group": "^4.4.5",
     "read-file-json": "^1.1.0",
     "slick-carousel": "^1.8.1",
-    "styled-component": "^2.8.0"
+    "styled-component": "^2.8.0",
+    "zustand": "^4.5.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.16",

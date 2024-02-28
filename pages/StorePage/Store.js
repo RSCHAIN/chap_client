@@ -87,6 +87,85 @@ function Store() {
     }, [])
 
     console.log("epice ::: ", epice.id);
+
+    async function Exist(productKey, email, uid, product) {
+        const cartRef = collection(db, 'orders'); // Supposons que la collection se nomme 'carts'.
+        const q = query(cartRef, where('email', '==', email), where("productId", '==', productKey)); // Requête pour récupérer le panier par userId.
+    
+        const querySnapshot = await getDocs(q);
+    
+        if (querySnapshot.size === 1) {
+          const cartDoc = querySnapshot.docs[0];
+          const cartData = cartDoc.data();
+          // console.log(cartData)
+          const itemIndex = Object.values(cartData).find((item) => item.productId === productKey);
+          if (itemIndex !== -1) {
+            await updateDoc(cartDoc.ref, {
+              productId: productKey,
+              currentUID: uid,
+              orderDescription: product.description,
+              orderEtat: product.etat,
+              orderNote: product.note,
+              orderImageUrl: product.imageUrl,
+              orderName: product.nom,
+              orderPrice: product.prix,
+              orderOrganisation: product.organisation,
+              orderQte: querySnapshot.docs[0].data().quantity + 1,
+              email: email
+            });
+          }
+    
+    
+        } else {
+          await addDoc(collection(db, 'orders'), {
+            productId: productKey,
+            currentUID: uid,
+            orderDescription: product.description,
+            orderEtat: product.etat,
+            orderNote: product.note,
+            orderImageUrl: product.imageUrl,
+            orderName: product.nom,
+            orderPrice: product.prix,
+            orderOrganisation: product.organisation,
+            orderQte: 1,
+            email: email
+          });
+        }
+    }
+
+      
+    function AddToCart(product, productKey) {
+        onAuthStateChanged(authentic, async (user) => {
+          if (!user) {
+            toast({
+              title: "Connectez vous!!!",
+    
+              status: "error",
+              duration: 9000,
+              isClosable: true,
+            });
+            router.push("/Connexion");
+            router.reload();
+          } else {
+            try {
+              await Exist(productKey, user.email, user.uid, product);
+              router.reload()
+              toast({
+                title: "Produit ajouté!!!",
+    
+                status: "success",
+                duration: 9000,
+                isClosable: true,
+              });
+            } catch (error) {
+    
+            }
+    
+          }
+        })
+    
+    }
+
     return (
         <>{/**Activer le overflow x du parent des card, pour qu'ils puissent être scrollable vers la droite */}
             <header className="py-10 bg-white">
