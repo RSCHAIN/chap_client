@@ -1,3 +1,4 @@
+'use client'
 import { faHome, faHomeUser } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useEffect, useState } from 'react'
@@ -133,7 +134,7 @@ function QuoteConfirmation() {
                                         </div>
                                         <div className="flex flex-col">
                                             <h2 className='uppercase font-bold'>Retrait</h2>
-                                            <small className='text-slate-600'>{dateExp3}</small>
+                                            {/* <small className='text-slate-600'>{dateExp3}</small> */}
                                             <small className='text-slate-600'>Retrait a Abidjan-cocody</small>
                                         </div>
                                     </div>
@@ -166,7 +167,7 @@ function QuoteConfirmation() {
                                         </div>
                                         <div className="flex flex-col">
                                             <h2 className='uppercase font-bold'>Retrait</h2>
-                                            <small className='text-slate-600'>{dateExp3}</small>
+                                            {/* <small className='text-slate-600'>{dateExp3}</small> */}
                                             <small className='text-slate-600'>Retrait a Abidjan-cocody</small>
                                         </div>
                                     </div>
@@ -199,7 +200,7 @@ function QuoteConfirmation() {
                                         </div>
                                         <div className="flex flex-col">
                                             <h2 className='uppercase font-bold'>Retrait</h2>
-                                            <small className='text-slate-600'>{dateExp3}</small>
+                                            {/* <small className='text-slate-600'>{dateExp3}</small> */}
                                             <small className='text-slate-600'>Retrait a Abidjan-cocody</small>
                                         </div>
                                     </div>
@@ -297,7 +298,7 @@ function QuoteConfirmation() {
                                 </div>
                                 <div className="flex flex-col">
                                     <h2 className='font-bold uppercase'><FontAwesomeIcon icon={faHomeUser} className='mr-2'/>Retrait</h2>
-                                    <span>{dateExp3}</span>
+                                    {/* <span>{dateExp3}</span> */}
                                     <small className='text-slate-600'>Retrait a Abidjan-cocody</small>
                                 </div>
                                 <div className="flex flex-col mr-2">
@@ -350,7 +351,7 @@ function QuoteConfirmation() {
                                 </div>
                                 <div className="flex flex-col">
                                     <h2 className='font-bold uppercase'><FontAwesomeIcon icon={faHomeUser} className='mr-2'/>Retrait</h2>
-                                    <span>{dateExp3}</span>
+                                    {/* <span>{dateExp3}</span> */}
                                     <small className='text-slate-600'>Retrait a Abidjan-cocody</small>
 
                                 </div>

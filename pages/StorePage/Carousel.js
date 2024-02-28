@@ -31,13 +31,13 @@ export default function Carousel({ slides }) {
                 </button>
             </div>
 
-            <div className="absolute bottom-0 py-4 flex justify-center gap-3 w-full">
+            {/* <div className="absolute bottom-0 py-4 flex justify-center gap-3 w-full">
                 {slides.map((s, i) => {
                     return (
                         <div onClick={() => { setCurrent(i)}} key={"circle" + i} className={`rounded-full cursor-pointer  ${ i === current ? "bg-white" : "bg-gray-500" }`}></div>
                     );
                 })}
-            </div>
+            </div> */}
         </div>
     );
 }
