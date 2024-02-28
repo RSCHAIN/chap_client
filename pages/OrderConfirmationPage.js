@@ -427,7 +427,7 @@ function OrderConfirmationPage() {
                                             <li>{secureLocalStorage.getItem("number")}</li>
                                         </ul>
                                     </div>
-                                    <button onClick={toggleFunc} className="bg-cyan-800 text-white p-2 rounded-md">Changer d'adresse</button>
+                                    <button onClick={toggleFunc} className="bg-cyan-800 text-white p-2 rounded-md">Changer d{"'"}adresse</button>
                                 </div>
                             </div>
                             {toggle ?
@@ -573,7 +573,7 @@ function OrderConfirmationPage() {
                                 </div>
                             </div>
                         </div>
-                        <button onClick={()=>{ saveCommande3()}} className="bg-cyan-800 text-white rounded-md py-2 px-6 my-6">Confirmer l'achat</button>
+                        <button onClick={()=>{ saveCommande3()}} className="bg-cyan-800 text-white rounded-md py-2 px-6 my-6">Confirmer l{"'"}achat</button>
                     </div>
                 </div>
             </>

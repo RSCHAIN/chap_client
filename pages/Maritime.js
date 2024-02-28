@@ -308,7 +308,7 @@ function Maritime() {
                                 <div className="flex justify-between">
                                     <select  placeholder="Pays" onChange={(e) => setDest(e.target.value)} className="w-full p-3 focus:outline-none bg-zinc-100">
                                         <option value={"France"}>France</option>
-                                        <option value={"Côte d'Ivoire"}>Côte d'Ivoire</option>
+                                        <option value={"Côte d'Ivoire"}>Côte d{"'"}Ivoire</option>
                                     </select>
                                 </div>
                             </div>
@@ -316,7 +316,7 @@ function Maritime() {
                                 <span className="text-sm">À</span>
                                 <div className="flex justify-between">
                                     <select placeholder="Pays" onChange={(e) => setArriv(e.target.value)} className="w-full p-3 focus:outline-none bg-zinc-100">
-                                        <option value={"Côte D'Ivoire"}>Côte d'Ivoire</option>
+                                        <option value={"Côte D'Ivoire"}>Côte d{"'"}Ivoire</option>
                                         <option value={"France"}>France</option>
                                     </select>
                                 </div>
@@ -342,7 +342,7 @@ function Maritime() {
                                 </div>
                                 <span className="text-sm">COLIS</span>
                                 {inputGroups.map((group, groupId) => (
-                                    <div  className="mb-6">
+                                    <div key={groupId} className="mb-6">
                                         <div className="flex flex-col lg:flex-row justify-between gap-4 lg:gap-0">
                                             <textarea name="" id="" placeholder="Description ici..." cols="30" rows="3" className="sm:text-sm py-2 pl-4 border border-slate-800"></textarea>
                                             <select name="" id="" className="w-full lg:w-[20rem] p-3 focus:outline-none border border-slate-800 bg-zinc-100">
@@ -383,8 +383,8 @@ function Maritime() {
                     <div className="flex flex-col p-10">
                         <h2 className="text-2xl lg:text-6xl font-bold">Comparer différents transporteur et faites des économies avec CHAP.</h2>
                         <p className="text-sm lg:text-lg mt-10">
-                            Envoyez vos colis vers vers l'Afrique de l'ouest par nos partenaires. Remplissez le formulaire et 
-                            attendez notre retour mail si vous ne possédez pas un CHAP, sinon vérifiez l'onglet devis de votre compte. 
+                            Envoyez vos colis vers vers l{"'"}Afrique de l{"'"}uest par nos partenaires. Remplissez le formulaire et 
+                            attendez notre retour mail si vous ne possédez pas un CHAP, sinon vérifiez l{"'"}onglet devis de votre compte. 
                             Un fois reçu les différentes propositions de nos partenaires, vous pourrez choisir, payer et préparer le colis 
                             pour le transporteur.
                         </p>

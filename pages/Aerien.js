@@ -294,8 +294,8 @@ function Aerien() {
                     <div className="flex flex-col p-10">
                         <h2 className="text-2xl lg:text-6xl font-bold">Comparer différents transporteur et faites des économies avec CHAP.</h2>
                         <p className="text-sm lg:text-lg mt-10">
-                            Envoyez vos colis vers vers l'Afrique de l'ouest par nos partenaires. Remplissez le formulaire et 
-                            attendez notre retour mail si vous ne possédez pas un CHAP, sinon vérifiez l'onglet devis de votre compte. 
+                            Envoyez vos colis vers vers l{"'"}Afrique de l{"'"}ouest par nos partenaires. Remplissez le formulaire et 
+                            attendez notre retour mail si vous ne possédez pas un CHAP, sinon vérifiez l{"'"}onglet devis de votre compte. 
                             Un fois reçu les différentes propositions de nos partenaires, vous pourrez choisir, payer et préparer le colis 
                             pour le transporteur.
                         </p>
