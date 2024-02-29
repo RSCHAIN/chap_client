@@ -25,6 +25,13 @@ export default function Carte() {
     const toast = useToast();
     const router = useRouter();
 
+
+
+
+
+
+
+    
     ///Variable d'affichage
     const [sect1, setSect1] = useState("none");
     const [sect2, setSect2] = useState("none");

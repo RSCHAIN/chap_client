@@ -233,7 +233,7 @@ export default function Connexion() {
       {isLagerThan768 ? <Navbar></Navbar> : <></>}
       {/* <Navbar /> */}
 
-      <Center display={"grid"}>
+      <Center display={"grid"} height={"fit-content"} mb={40}>
         {verif ? (
           <Alert status="error" w={"fit-content"}>
             <AlertIcon />

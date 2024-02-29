@@ -157,16 +157,7 @@ function Valide({ items, email }) {
                       >
                         {item.orderName}
                       </Box>
-                      <Box
-                        fontSize={[14, 14, 14, 15, 15]}
-                        mt="1"
-                        fontWeight="light"
-                        as="h4"
-                        lineHeight="tight"
-                        noOfLines={3}
-                      >
-                        {item.orderDescription}
-                      </Box>
+                      
                       <Flex display={"grid"} fontSize={[14, 14, 14, 15, 15]}>
                         <Box display={"flex"} mr={2}
                           mt="1"
@@ -331,16 +322,7 @@ function Cancel({ items, email }) {
                       >
                         {item.orderName}
                       </Box>
-                      <Box
-                        fontSize={[14, 14, 14, 15, 15]}
-                        mt="1"
-                        fontWeight="light"
-                        as="h4"
-                        lineHeight="tight"
-                        noOfLines={3}
-                      >
-                        {item.orderDescription}
-                      </Box>
+                    
                       <Flex display={"grid"} fontSize={[14, 14, 14, 15, 15]}>
                         <Box display={"flex"} mr={2}
                           mt="1"
@@ -511,16 +493,7 @@ function Launch({ items, email, id }) {
                         >
                           {item.orderName}
                         </Box>
-                        <Box
-                          fontSize={[14, 14, 14, 15, 15]}
-                          mt="1"
-                          fontWeight="light"
-                          as="h4"
-                          lineHeight="tight"
-                          noOfLines={3}
-                        >
-                          {item.orderDescription}
-                        </Box>
+                       
                         <Flex display={"grid"} fontSize={[14, 14, 14, 15, 15]}>
                           <Box display={"flex"} mr={2}
                             mt="1"

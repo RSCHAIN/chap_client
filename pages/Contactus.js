@@ -17,6 +17,7 @@ import {
   InputLeftElement,
   Textarea,
   useToast,
+  Center,
 } from "@chakra-ui/react";
 import {
   MdPhone,
@@ -58,7 +59,7 @@ export default function Contact() {
 
 
   return (
-    <>
+    <Box width={"100%"}>
     <Head>
         <script
           async
@@ -77,7 +78,7 @@ export default function Contact() {
     
       <InputBar />
       <Navbar></Navbar>
-      <Flex>
+      <Center>
         <Box
           bg="#eeeeee "
           color="white"
@@ -228,9 +229,9 @@ export default function Contact() {
             </Wrap>
           </Box>
         </Box>
-      </Flex>
+      </Center>
       <FooterR />
    
-    </>
+    </Box>
   );
 }

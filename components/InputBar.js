@@ -155,7 +155,7 @@ const InputBar = () => {
               alt={"Chap"}
               width={"80px"}
               mt={[2, 2, 2, 2, 2]}
-              mr={["0", "0", "080px", "2px", "2px"]}
+              mr={["0", "0", "0", "2px", "2px"]}
             />
           </Link>
 

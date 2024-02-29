@@ -5,10 +5,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMoneyBillTransfer, faTruck, faStar } from '@fortawesome/free-solid-svg-icons'
 
 import Carousel from "./Carousel";
-import { authentic, db2 } from "@/FIREBASE/clientApp";
+import { authentic, db, db2 } from "@/FIREBASE/clientApp";
 import { onValue, ref, update } from "@firebase/database";
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from 'react';
+import { addDoc, collection, getDocs, query, updateDoc, where } from 'firebase/firestore';
+import { useRouter } from 'next/router';
+import { Box, useToast } from '@chakra-ui/react';
+import Head from 'next/head';
+import InputBar from '@/components/InputBar';
+import Navbar from '@/components/Navbar';
 
 function Store() {
 
@@ -24,7 +30,8 @@ function Store() {
         "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/slider%2F2.png?alt=media&token=caa391bd-bffb-491f-9679-a655d3fee05f",
         "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/slider%2F6.png?alt=media&token=11b0ef49-fc5e-44bd-b104-bb750053d133"
     ];
-
+const router = useRouter()
+const toast = useToast()
     const [productImg, setProductImg] = useState([])
     const [epice, setEpice] = useState([])
     const [textille, setTextille] = useState([])
@@ -39,7 +46,7 @@ function Store() {
                 Object.entries(epicerie).slice(0, 5)
             );
             setEpice(sliced)
-
+                console.log(epicerie)
             for(let epice in epicerie) {
                 setProductImg(epicerie[epice].imageUrl)
             }
@@ -79,6 +86,7 @@ function Store() {
         });
 
     }
+
     
     useEffect(() => {
         getEpicerieMarkets()
@@ -97,7 +105,8 @@ function Store() {
         if (querySnapshot.size === 1) {
           const cartDoc = querySnapshot.docs[0];
           const cartData = cartDoc.data();
-          // console.log(cartData)
+          console.log(cartData)
+          console.log(querySnapshot.docs[0].data().orderQte)
           const itemIndex = Object.values(cartData).find((item) => item.productId === productKey);
           if (itemIndex !== -1) {
             await updateDoc(cartDoc.ref, {
@@ -110,7 +119,7 @@ function Store() {
               orderName: product.nom,
               orderPrice: product.prix,
               orderOrganisation: product.organisation,
-              orderQte: querySnapshot.docs[0].data().quantity + 1,
+              orderQte:querySnapshot.docs[0].data().orderQte + 1,
               email: email
             });
           }
@@ -158,7 +167,7 @@ function Store() {
                 isClosable: true,
               });
             } catch (error) {
-    
+                console.log(error);
             }
     
           }
@@ -167,7 +176,28 @@ function Store() {
     }
 
     return (
-        <>{/**Activer le overflow x du parent des card, pour qu'ils puissent être scrollable vers la droite */}
+        <>
+        
+        <Head>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
+        ></script>
+        <script strategy="lazyOnload">
+          {` 
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments)}
+           gtag('js', new Date()); 
+           gtag('config', 'G-RFSVQTGJ87');
+           `}
+          
+        </script>
+        </Head>
+      <InputBar />
+      <Box display={{ base: "none", md: "grid" }} mt={10}>
+        <Navbar />
+      </Box>
+        {/**Activer le overflow x du parent des card, pour qu'ils puissent être scrollable vers la droite */}
             <header className="py-10 bg-white">
                 <div className='container mx-auto flex justify-center items-center'>
                     <div className="lg:w-[80%] lg:m-auto w-ful px-4 lg:px-0">
@@ -211,7 +241,7 @@ function Store() {
                                         <span className="self-end mb-2 text-xl lg:text-2xl text-red-600 font-bold">{item.prix}€</span>
                                         <div className="w-full mt-4 flex justify-between">
                                             <Link className="text-white font-bold bg-amber-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl" href={"#"}>Commerce</Link>
-                                            <button className="text-white font-bold bg-cyan-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl">+Ajouter</button>
+                                            <button className="text-white font-bold bg-cyan-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl" onClick={()=>AddToCart(item, Object.keys(epice)[index])}>+Ajouter</button>
                                         </div>
                                     </div>
                                 </div>
@@ -253,7 +283,7 @@ function Store() {
                                         <span className="self-end mb-2 text-xl lg:text-2xl text-red-600 font-bold">{item.prix}€</span>
                                         <div className="w-full mt-4 flex justify-between">
                                             <Link className="text-white font-bold bg-amber-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl" href={"#"}>Commerce</Link>
-                                            <button className="text-white font-bold bg-cyan-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl">+Ajouter</button>
+                                            <button className="text-white font-bold bg-cyan-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl" onClick={()=>AddToCart(item, Object.keys(textille)[index])}>+Ajouter</button>
                                         </div>
                                     </div>
                                 </div>
@@ -292,7 +322,7 @@ function Store() {
                                         <span className="self-end mb-2 text-xl lg:text-2xl text-red-600 font-bold">{item.prix}€</span>
                                         <div className="w-full mt-4 flex justify-between">
                                             <Link className="text-white font-bold bg-amber-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl" href={"#"}>Commerce</Link>
-                                            <button className="text-white font-bold bg-cyan-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl">+Ajouter</button>
+                                            <button className="text-white font-bold bg-cyan-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl" onClick={()=>AddToCart(item, Object.keys(cosmetic)[index])}>+Ajouter</button>
                                         </div>
                                     </div>
                                 </div>

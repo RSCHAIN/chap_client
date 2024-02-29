@@ -46,7 +46,7 @@ useEffect(()=>{
           {isLagerThan768 ? <Navbar></Navbar> : <></>}
              <Box mt={5}>
           
-            <Box>
+            <Box height={"fit-content"} mb={20}>
         
               {/* <Heading>Reservation </Heading> */}
               <Box>

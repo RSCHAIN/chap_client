@@ -91,184 +91,80 @@ function Valide({ items, email,id }) {
   if (items.status == "Validé" && items.email == email) {
     return (
       <>
-        <Box
-        mt={2}
-          maxW="fit-content"
-          maxH={"fit-content"}
-          display={["grid","grid","grid","flex","flex"]}
-          borderWidth="1px"
-          borderRadius="lg"
+          <Box
+          mb={5}
+          bgColor={"white"}
+        mx={2}
+        py={2}
+        boxShadow={"rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;"}
+        w={["400px","400px","400px","500px","500px"]}
+        maxH={"170px"}
+       
+       
+        borderRadius="sm"
           overflow="hidden" 
         >
-          <Image src={"./Valide.png"} alt={items.nom} h="150px" w="150px"/>
-
-          <Box p="6">
-            <Box display="flex" alignItems="baseline">
-              <Badge borderRadius="full" px="2" colorScheme="blue">
-                {items.Status}
-              </Badge>
-              <Badge borderRadius="full" px="2" colorScheme="green">
-                {items.partenaire}
-              </Badge>
-              <Badge borderRadius="full" px="2" colorScheme="cyan">
-                {items.moyen}
-              </Badge> 
-            </Box>
-
+          <Flex justifyContent={"space-between"} width={"100%"}>
+          <Box pl={2} width={"fit-content"}>
+            
+        
             <Box
-              mt="1"
-              fontWeight="semibold"
+            
+            fontSize={[13, 13, 13, 15, 15]}
               as="h4"
               lineHeight="tight"
               
-            > <Text> {id }</Text>
-            <Text> Numéro : {items.numero ? items.numero : "introuvable"}</Text>
-             <Flex><Text mr={2}>Départ : </Text>{items.depart}</Flex>
-             <Flex><Text mr={2}>Arrivé : </Text>{items.arrive}</Flex>
+            >
+              <Text>
+Référence: {id}</Text>
+              
+             <Flex><Text mr={2}>Date : </Text>{new Date(items.createdAt).toLocaleDateString(undefined, {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+})}</Flex>
+             <Text mb={5}> Destination : {items.arrive}</Text>
+             {/* <Flex><Text mr={2}>Arrivé : </Text>{items.arrive}</Flex> */}
             </Box>
 
-            <Box>
-              {items.total + " "}
-              <Box as="span" color="gray.600" fontSize="sm">
-                €
-              </Box>
-            </Box>
-            <Box>
-              <Button bgColor={'facebook.700'} _hover={{
-                bgColor:'messenger'
-              }} color={'white'} onClick={()=>onOpen()}>
-                Payer
+           
+            {/* <Box>
+              <Button bgColor={'red.500'} _hover={{
+                bgColor:'#FF6969'
+              }} color={'white'} onClick={() => Cancel2(id, "Annulé")}>
+                Annuler
               </Button>
-            </Box>
-          
-            <Drawer isOpen={isOpen} onClose={onClose} size={"full"}>
-              <DrawerOverlay/>
-              <DrawerContent>
-              <Center> <DrawerHeader width={"fit-content"} mt={10}>Validation du devis N°{id}</DrawerHeader></Center>
-                <DrawerCloseButton fontSize={"30px"}/>
-                <DrawerBody>
-                  { items.produit ?
-                  items.produit.map((data,index)=>(
-                    <>
-                    
-                    <Box width={"80%"}>
-                    <Flex justifyContent={"space-between"}>
-                      {data.length  == 3 ? <>
-                      <Text fontWeight={600} my={5}>Colis{index+1}</Text>
-                      <Text>Description</Text>
-                        
-                        <Text>Valeur</Text>
-                        <Text>poids</Text></>: <> 
-                       
-                        </>}
-                      </Flex>
-                    <Flex justifyContent={"space-between"}>
-                     {data.length ==3 ?  <>
-                      <Text>{}</Text> 
-                      <Text>{data[0].value ? data[0].value : "Non renseigné" }</Text>
-                      <Text>{data[1].value ? data[1].value : "Non renseigné" }</Text>
-                      <Text>{data[2].value ? data[2].value : "Non renseigné" }</Text>
-                      </>:<>
-                     
-                      </>}
-                    
-                    </Flex>
-                    </Box>
-                    </>
-                  )): 
-                  <>  </>}
-                   <Box >
-                    
-                      {items.contenant ? 
-                      items.contenant.map((data,index)=>(
-                        <>
-                         <Text fontWeight={600} my={5}>Colis{index+1}</Text>
-                        <Flex justifyContent={"space-between"}>
-                        
-                         
-                        <Text fontWeight={"medium"}>Contenant</Text>
-                        
-                    
-                        <Text  fontWeight={"medium"}>Prix envoi</Text>
-                        <Text  fontWeight={"medium"}>Prix du materiel</Text>
-                        <Text fontWeight={"medium"}>Besoin du materiel</Text>
-                        </Flex>
-                        <Flex justifyContent={"space-between"}>
-                          <Text>{data.id }</Text>
-                          <Text>{data.envoi }</Text>
-                          <Text>{data.prix }</Text>
-                         
-                         
-                      
-                          <Text>{items.besoin[index].besoin == 0 ? "non":`oui` }</Text>
-                        
-                          </Flex>
+            </Box> */}
+           
+          </Box>   
 
-                    
-                          </>
-                      )): <></>}
-                     
-                     </Box>
-                </DrawerBody>
-               <DrawerFooter>
-                <Box>
-                <Text>Total a payer : {' ' + items.total }€</Text>
-                <Button bgColor={"blue"} onClick={toggleModal1}>Payer</Button>
-                <Modal  isOpen={isOpenModal1} onClose={toggleModal1}>
-                  <ModalOverlay/>
-                  <ModalContent>
-                  {items.moyen == "Maritime" ?<></> : <ModalHeader>Especes/Paypal</ModalHeader>} 
-                    <ModalCloseButton/>
-                    <ModalBody>
-                        <RadioGroup justifyContent={"space-between"}>
-                          <Radio value={"1"}onClick={()=>{setPayp("none"),setEsp("Espéces")}} mr={10} >Espèces</Radio>
-                          <Radio value={"2"}onClick={()=>{setPayp("grid"),setEsp("Paypal")}}>Paypal</Radio>
-                        </RadioGroup>
-                        <Box display={payp}>
-                        <PayPalButtons
-                                    
-                                    
-                                    createOrder={(data, actions) => {
-                                      return actions.order.create({
-                                        purchase_units: [
-                                          {
-                                            amount: {
-                                              value: `${items.total}`,
-                                            },
-                                          },
-                                        ],
-                                      });
-                                    }}
-                                    onApprove={(data, actions) => {
-                                      return actions.order
-                                        .capture()
-                                        .then((details) => {
-                                          const name =
-                                            details.payer.name.given_name;
-                                            Paiement(id, esp);
-                                          toggleModal1;
-                                          
-                                        });
-                                    }}
-                                  />
-                        </Box>
-                       
-                    </ModalBody>
-                    <ModalFooter>
-                      <Button onClick={toggleModal1} mr={5}>Close</Button>
-                      <Button onClick={()=>{ Paiement(id, esp)}} color={"white"} bgColor={"messenger.700"} _hover={{
-                        bgColor:"messenger.500"
-                      }}>Valider</Button>
-                    </ModalFooter>
-                  </ModalContent>
-                </Modal>
-                </Box>
-               </DrawerFooter>
-              </DrawerContent>
-           </Drawer>
-          </Box>      
+          <Box display="grid" height={"fit-content"}>
+              <Badge borderRadius="full" mb={2} px={6} bgColor="#ff914d" height={"fit-content"} width={"fit-content"} color={"white"} textTransform={"capitalize"}>
+                {items.status}
+              </Badge>
+         
+              <Badge borderRadius="full"  px={8} height={"fit-content"} width={"fit-content"}  bgColor={"#00bf63"} color={"white"}  textTransform={"capitalize"}>
+                {items.moyen}
+              </Badge> 
+               <Flex mt={2}>
+              <Text fontWeight={700}>{items.total + " "}</Text>
+              <Box as="span" color="gray.600" fontSize="sm">
+                <b>€</b> TTC
+              </Box>
+            </Flex>
+            </Box> 
+
+           
+          </Flex>
+          <Flex justifyContent={"space-between"}  width={"full"} >
+            <Text  mx={2}>Arrivée estimé: {items.dateArrive} </Text>
+            <Text>Reglé en espèce </Text>
+           <ChevronRightIcon fontSize={"30px"} color={"cyan.800"} fontWeight={700}/>
+          </Flex>
+           
         </Box>
-    </>
+      </>
     );
   } else {
     return <></>;
@@ -277,64 +173,6 @@ function Valide({ items, email,id }) {
 function Cancel({ items, email,id }) {
   // console.log(items.Status);
   if (items.status == "Annulé" && items.email == email) {
-    return (
-     <>
-          <Box
-        mt={2}
-          maxW="fit-content"
-          maxH={"fit-content"}
-          display={["grid","grid","grid","flex","flex"]}
-          borderWidth="1px"
-          borderRadius="lg"
-          overflow="hidden" 
-        >
-          <Image src={"./Annule.png"} alt={items.nom} h="150px" w="150px"/>
-
-          <Box p="6">
-            <Box display="flex" alignItems="baseline">
-              <Badge borderRadius="full" px="2" colorScheme="blue">
-                {items.Status}
-              </Badge>
-              <Badge borderRadius="full" px="2" colorScheme="green">
-                {items.partenaire}
-              </Badge>
-              <Badge borderRadius="full" px="2" colorScheme="cyan">
-                {items.moyen}
-              </Badge> 
-            </Box>
-
-            <Box
-              mt="1"
-              fontWeight="semibold"
-              as="h4"
-              lineHeight="tight"
-              
-            >
-               <Text>{id}</Text>
-               <Text> Numéro : {items.numero ? items.numero : "introuvable"}</Text>
-             <Flex><Text mr={2}>Depart : </Text>{items.depart}</Flex>
-             <Flex><Text mr={2}>Arrivé : </Text>{items.arrive}</Flex>
-            </Box>
-
-            <Box>
-              {items.total + " "}
-              <Box as="span" color="gray.600" fontSize="sm">
-                €
-              </Box>
-            </Box>
-           
-           
-          </Box>      
-        </Box>
-      </>
-    );
-  } else {
-    return <></>;
-  }
-}
-function Launch({ items, email,id }) {
-  // console.log(items);
-  if (items.status == "En cours" && items.email == email) {
     return (
       <>
           <Box
@@ -416,58 +254,235 @@ Référence: {id}</Text>
     return <></>;
   }
 }
-function Regle({ items, email,id }) {
-  // console.log(items.Status);
-  if (items.status == "Reglé" && items.email == email) {
+function Launch({ items, email,id }) {
+  // console.log(items);
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  if ((items.status == "En attente" || items.status == "Reglé" ) && items.email == email) {
     return (
-     <>
-        <Box
-        mt={2}
-          maxW="fit-content"
-          maxH={"fit-content"}
-          display={["grid","grid","grid","flex","flex"]}
-          borderWidth="1px"
-          borderRadius="lg"
+      <>
+          <Box
+          onClick={onOpen}
+          mb={5}
+          bgColor={"white"}
+        mx={2}
+        py={2}
+        boxShadow={"rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;"}
+        w={["400px","400px","400px","500px","500px"]}
+        maxH={"170px"}
+       
+       
+        borderRadius="sm"
           overflow="hidden" 
         >
-          <Image src={"./Regle.jpg"} alt={items.nom} h="150px" w="150px"/>
-
-          <Box p="6">
-            <Box display="flex" alignItems="baseline">
-              <Badge borderRadius="full" px="2" colorScheme="blue">
-                {items.Status}
-              </Badge>
-              <Badge borderRadius="full" px="2" colorScheme="green">
-                {items.partenaire}
-              </Badge>
-              <Badge borderRadius="full" px="2" colorScheme="cyan">
-                {items.moyen}
-              </Badge> 
-            </Box>
-
+          <Flex justifyContent={"space-between"} width={"100%"}>
+          <Box pl={2} width={"fit-content"}>
+            
+        
             <Box
-              mt="1"
-              fontWeight="semibold"
+            
+            fontSize={[13, 13, 13, 15, 15]}
               as="h4"
               lineHeight="tight"
               
             >
-               <Text>{id}</Text>
-               <Text> Numéro : {items.numero ? items.numero : "introuvable"}</Text>
-             <Flex><Text mr={2}>Depart : </Text>{items.depart}</Flex>
-             <Flex><Text mr={2}>Arrivé : </Text>{items.arrive}</Flex>
-             <Flex><Text mr={2}>Remarque : </Text>{items.PayerLe}</Flex>
+              <Text>
+Référence: {id}</Text>
+              
+             <Flex><Text mr={2}>Date : </Text>{new Date(items.createdAt).toLocaleDateString(undefined, {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+})}</Flex>
+             <Text mb={5}> Destination : {items.arrive}</Text>
+             {/* <Flex><Text mr={2}>Arrivé : </Text>{items.arrive}</Flex> */}
             </Box>
 
-            <Box>
-              {items.total + " "}
+           
+            {/* <Box>
+              <Button bgColor={'red.500'} _hover={{
+                bgColor:'#FF6969'
+              }} color={'white'} onClick={() => Cancel2(id, "Annulé")}>
+                Annuler
+              </Button>
+            </Box> */}
+           
+          </Box>   
+
+          <Box display="grid" height={"fit-content"}>
+              <Badge borderRadius="full" mb={2} px={6} bgColor="#ff914d" height={"fit-content"} width={"fit-content"} color={"white"} textTransform={"capitalize"}>
+                {items.status}
+              </Badge>
+         
+              <Badge borderRadius="full"  px={8} height={"fit-content"} width={"fit-content"}  bgColor={"#00bf63"} color={"white"}  textTransform={"capitalize"}>
+                {items.moyen}
+              </Badge> 
+               <Flex mt={2}>
+              <Text fontWeight={700}>{items.total + " "}</Text>
               <Box as="span" color="gray.600" fontSize="sm">
-                €
+                <b>€</b> TTC
               </Box>
+            </Flex>
+            </Box> 
+
+           
+          </Flex>
+          <Flex justifyContent={"space-between"}  width={"full"} >
+            <Text  mx={2}>Arrivée estimé: {items.dateArrive} </Text>
+            <Text>Reglé en espèce </Text>
+           <ChevronRightIcon fontSize={"30px"} color={"cyan.800"} fontWeight={700}/>
+          </Flex>
+           
+        </Box>
+        <Modal isOpen={isOpen} onClose={onClose} size={"xl"}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader></ModalHeader>
+          <ModalCloseButton />  
+          <ModalBody>
+           
+            <Box bgColor={"white"}  w={"full"}>
+              <Flex justifyContent={"space-between"}>
+              <Flex>Référence : exemple</Flex>
+              <Flex>
+              <Badge borderRadius="full" mb={2} px={6} bgColor="#ff914d" height={"fit-content"} width={"fit-content"} color={"white"} textTransform={"capitalize"}>
+                {items.status}
+              </Badge>
+         
+              <Badge borderRadius="full"  px={8} height={"fit-content"} width={"fit-content"}  bgColor={"#00bf63"} color={"white"}  textTransform={"capitalize"}>
+                {items.moyen}
+              </Badge> 
+              </Flex>
+              
+              </Flex>
+              <Box>
+                <Flex>
+                  <Box>
+                    <Image width="80px" height="80px" src="./new/colis2.png" />
+                  </Box>
+                  <Box ml={20}>
+                    <Text> Retrait: </Text>
+                    <Text> Poids: </Text>
+                    <Text> Categorie: </Text>
+                    <Text> Retrait: </Text>
+                  </Box>
+                </Flex>
+                
+              </Box>
+              <Flex>
+                <Box>Arrive</Box>
+                <Box> dest</Box>
+              </Flex>
+              <Center color={"cyan.800"} fontWeight={"bold"} >Informations</Center>
+              <Flex>
+                <Box>Arrive</Box>
+                <Box> dest</Box>
+              </Flex>
+              <Center color={"cyan.800"} fontWeight={"bold"} >Livraison</Center>
+              
+                <Box>
+                <Text> Type : En agence </Text>
+                    <Text> Prestataire : Rschain</Text>
+                    <Text> Adresse : Carrefour prière, cocody-Abidjan</Text>
+                    <Text> Contact : 00225 - 07030908075</Text>
+                </Box>
+                
+             <Center><Button>Modifier les informations</Button></Center>
             </Box>
+            
+          </ModalBody>
+
+          <ModalFooter>
+            <Button variant='ghost' mr={3} onClick={onClose}>
+              Fermer
+            </Button>
+
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+      </>
+    );
+  } else {
+    return <></>;
+  }
+}
+function Regle({ items, email,id }) {
+  // console.log(items.Status);
+  if (items.status == "Disponible" && items.email == email) {
+    return (
+      <>
+          <Box
+          mb={5}
+          bgColor={"white"}
+        mx={2}
+        py={2}
+        boxShadow={"rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;"}
+        w={["400px","400px","400px","500px","500px"]}
+        maxH={"170px"}
+       
+       
+        borderRadius="sm"
+          overflow="hidden" 
+        >
+          <Flex justifyContent={"space-between"} width={"100%"}>
+          <Box pl={2} width={"fit-content"}>
+            
+        
+            <Box
+            
+            fontSize={[13, 13, 13, 15, 15]}
+              as="h4"
+              lineHeight="tight"
+              
+            >
+              <Text>
+Référence: {id}</Text>
+              
+             <Flex><Text mr={2}>Date : </Text>{new Date(items.createdAt).toLocaleDateString(undefined, {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+})}</Flex>
+             <Text mb={5}> Destination : {items.arrive}</Text>
+             {/* <Flex><Text mr={2}>Arrivé : </Text>{items.arrive}</Flex> */}
+            </Box>
+
            
+            {/* <Box>
+              <Button bgColor={'red.500'} _hover={{
+                bgColor:'#FF6969'
+              }} color={'white'} onClick={() => Cancel2(id, "Annulé")}>
+                Annuler
+              </Button>
+            </Box> */}
            
-          </Box>      
+          </Box>   
+
+          <Box display="grid" height={"fit-content"}>
+              <Badge borderRadius="full" mb={2} px={6} bgColor="#ff914d" height={"fit-content"} width={"fit-content"} color={"white"} textTransform={"capitalize"}>
+                {items.status}
+              </Badge>
+         
+              <Badge borderRadius="full"  px={8} height={"fit-content"} width={"fit-content"}  bgColor={"#00bf63"} color={"white"}  textTransform={"capitalize"}>
+                {items.moyen}
+              </Badge> 
+               <Flex mt={2}>
+              <Text fontWeight={700}>{items.total + " "}</Text>
+              <Box as="span" color="gray.600" fontSize="sm">
+                <b>€</b> TTC
+              </Box>
+            </Flex>
+            </Box> 
+
+           
+          </Flex>
+          <Flex justifyContent={"space-between"}  width={"full"} >
+            <Text  mx={2}>Arrivée estimé: {items.dateArrive} </Text>
+            <Text>Reglé en espèce </Text>
+           <ChevronRightIcon fontSize={"30px"} color={"cyan.800"} fontWeight={700}/>
+          </Flex>
+           
         </Box>
       </>
     );
@@ -548,7 +563,7 @@ export default function HistDev() {
                 <TabList>
                   <Tab>Devis en cours</Tab>
                   <Tab>Devis validés</Tab>
-                  <Tab>Devis reglés</Tab>
+                  <Tab>Historique</Tab>
                   <Tab>Devis annulés</Tab>
                 </TabList>
                 </Center>
@@ -575,9 +590,9 @@ export default function HistDev() {
                     </Box>
                     </Center>
                   </TabPanel>
-                  <TabPanel>
-                   <Box >
-                    <SimpleGrid columns={[1,1,1,3,3]}>
+                  <TabPanel bgColor={"#f3f3f3"}>
+                   <Center>
+                    <Box>
                       {commandeListe ? (
                         Object.values(commandeListe).map((items,index) => (
                           <Valide
@@ -589,13 +604,13 @@ export default function HistDev() {
                         ))
                       ) : (
                         <Box>Aucune donnee</Box>
-                      )}</SimpleGrid>
-                    </Box>
+                      )}</Box>
+                    </Center>
                   </TabPanel>
-                  <TabPanel>
+                  <TabPanel bgColor={"#f3f3f3"}>
                     
-                    <Box >
-                      <SimpleGrid columns={[1,1,1,3,3]}>
+                    <Center>
+                    <Box>
                       {commandeListe ? (
                         Object.values(commandeListe).map((items,index) => (
                           <Regle
@@ -607,20 +622,20 @@ export default function HistDev() {
                         ))
                       ) : (
                         <Box>Aucune donnee</Box>
-                      )}</SimpleGrid>
-                    </Box>
+                      )}</Box>
+                    </Center>
                   </TabPanel>
-                  <TabPanel>
-                  <Box >
-                    <SimpleGrid columns={[1,1,1,2,2]}>
+                  <TabPanel bgColor={"#f3f3f3"}>
+                  <Center>
+                    <Box>
                     {commandeListe ? (
               Object.values(commandeListe).map((items,index) => (
                 <Cancel key={items.key} items={items} id={id[index]} email={email} />
               ))
             ) : (
               <Box>Aucune donnee</Box>
-            )}</SimpleGrid>
-            </Box>
+            )}</Box>
+                    </Center>
                   </TabPanel>
                 </TabPanels>
           

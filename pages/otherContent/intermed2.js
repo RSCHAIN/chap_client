@@ -22,6 +22,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import secureLocalStorage from "react-secure-storage";
 import Head from "next/head";
+import { Search2Icon } from "@chakra-ui/icons";
 
 export default function Intermed2() {
   const [terms, setTerms] = useState("");
@@ -79,9 +80,10 @@ export default function Intermed2() {
               w={["12em", "12em", "12em", "20em", "20em"]}
               // onClick={onOpen}
             />
-            <InputRightAddon width={'fit-content'} pointerEvents="none">
+            <InputRightAddon  pointerEvents="none">
               {/* <Text width={'fit-content'}>Rechercher</Text> */}
-              <Image src="new/searchTag.png" />
+              <Search2Icon/>
+              {/* <Image src="./new/searchTag.png" /> */}
             </InputRightAddon>
           </InputGroup>
         </Flex>

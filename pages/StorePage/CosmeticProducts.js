@@ -5,6 +5,10 @@ import { onValue, ref, update } from "@firebase/database";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMoneyBillTransfer, faTruck, faStar } from '@fortawesome/free-solid-svg-icons'
 import Link from "next/link";
+import Head from 'next/head';
+import InputBar from '@/components/InputBar';
+import { Box } from '@chakra-ui/react';
+import Navbar from '@/components/Navbar';
 function CosmeticProducts() {
     let epicerieItems = []
     const [ordersDatas, setOrdersDatas] = useState([])
@@ -34,6 +38,25 @@ function CosmeticProducts() {
 
     return (
         <>
+         <Head>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
+        ></script>
+        <script strategy="lazyOnload">
+          {` 
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments)}
+           gtag('js', new Date()); 
+           gtag('config', 'G-RFSVQTGJ87');
+           `}
+          
+        </script>
+        </Head>
+      <InputBar />
+      <Box display={{ base: "none", md: "grid" }} mt={10}>
+        <Navbar />
+      </Box>
             <section className="py-10 bg-gray-100 w-full">
                 <div className='container mx-auto px-4 lg:px-0'>
                     <div className="flex flex-col justify-between">
@@ -67,7 +90,7 @@ function CosmeticProducts() {
                                             <span className="self-end mb-2 text-xl lg:text-2xl text-red-600 font-bold">{order.prix}€</span>
                                             <div className="w-full mt-4 flex justify-between">
                                                 <Link className="text-white font-bold bg-amber-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl" href={"#"}>Commerce</Link>
-                                                <button className="text-white font-bold bg-cyan-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl">+Ajouter</button>
+                                                <button className="text-white font-bold bg-cyan-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl" onClick={()=>AddToCart(order, Object.keys(ordersDatas)[index])}> +Ajouter</button>
                                             </div>
                                         </div>
                                     </div>

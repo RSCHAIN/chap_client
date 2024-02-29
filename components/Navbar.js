@@ -117,7 +117,9 @@ useEffect(()=>{
             justifyContent={"space-between"}
           >
             {/* <DesktopNav /> */}
-            <Flex>  <Link
+            <Center>
+            <Flex>
+              <Link
             bgColor={""}
               href={"/"}
               mr={10}
@@ -151,7 +153,9 @@ useEffect(()=>{
                   _hover={{ textDecoration: "none", color: "#068DA9" }}
             >
              Nous contacter
-            </Link></Flex>
+            </Link>
+            </Flex>
+            </Center>  
             {/* {postal.length ==5 ? <><Flex  mr={10}><Text mr={5}>Votre code postal</Text>{postal}</Flex></>:<></>} */}
             {/* <Menu isLazy>
               <MenuButton
