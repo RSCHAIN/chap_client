@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinusCircle, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
@@ -22,6 +22,7 @@ import {ChevronDownIcon} from "@chakra-ui/icons"
 import Head from "next/head";
 import PopUp from "@/components/DevisAddon/popUp";
 import Link from "next/link";
+import secureLocalStorage from "react-secure-storage";
 
 function Maritime() {
 
@@ -269,7 +270,11 @@ function Maritime() {
     };
 
     const departAfricolis= ["09/10/2023","13/10/2023","16/10/2023","20/10/2023","23/10/2023","27/10/2023","30/10/2023","03/11/2023"]
-
+    useEffect(()=>{
+        setEmail(sessionStorage.getItem("email") ?? "");
+        setRue(secureLocalStorage.getItem("addresse") ?? "");
+        setPoste(secureLocalStorage.getItem("po") ?? "");
+    },[])
 
     return (
         <>
@@ -281,11 +286,11 @@ function Maritime() {
                                 <div className="flex flex-col self-start lg:flex-row">
                                     <div className="mb-4 lg:mb-0">
                                         <label className="uppercase text-sm" htmlFor="">Email</label>
-                                        <input type="text" onChange={(e) => setEmail(e.target.value)} placeholder="Votre adresse email" className="sm:text-sm w-full lg:w-[21rem] border border-slate-800 p-3 rounded-sm"/>
+                                        <input type="text" onChange={(e) => setEmail(e.target.value)} value={email} placeholder="Votre adresse email" className="sm:text-sm w-full lg:w-[21rem] border border-slate-800 p-3 rounded-sm"/>
                                     </div>
                                     <div className="lg:ml-4">
                                         <label className="uppercase text-sm" htmlFor="">Code Postal</label>
-                                        <input type="text" onChange={(e) => { setPoste(e.target.value); }} placeholder="Code postal ou ville" className="sm:text-sm w-full lg:w-[21rem] border border-slate-800 p-3 rounded-sm"/>
+                                        <input type="text" onChange={(e) => { setPoste(e.target.value); }} value={poste} placeholder="Code postal ou ville" className="sm:text-sm w-full lg:w-[21rem] border border-slate-800 p-3 rounded-sm"/>
                                     </div>
                                 </div>
                             </div>
@@ -294,7 +299,7 @@ function Maritime() {
                                 <div className="flex flex-col self-start lg:flex-row justify-between">
                                     <div className="mb-4 lg:mb-0">
                                         <label className="uppercase text-sm" htmlFor="">Adresse</label>
-                                        <input type="text" onChange={(e) => { setRue(e.target.value); }}placeholder="Votre adresse" className="sm:text-sm w-full lg:w-[21rem] border border-slate-800 p-3 rounded-sm"/>
+                                        <input type="text" onChange={(e) => { setRue(e.target.value); }} value={rue} placeholder="Votre adresse" className="sm:text-sm w-full lg:w-[21rem] border border-slate-800 p-3 rounded-sm"/>
                                     </div>
                                     <div className="">
                                         <label className="uppercase text-sm" htmlFor="">Ville</label>

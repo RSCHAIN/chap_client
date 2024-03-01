@@ -46,6 +46,7 @@ function PopUp({ PrixChoisi,Partenaire,email, dest, need, poste, arriv, radio2, 
     const [password, setPassword] = useState();
     const [email2, setEmail2] = useState();
     const [nom2, setNom2] = useState();
+    const [prenom2, setPrenom2] = useState();
 
     const loginUSer = async () => {
         await signInWithEmailAndPassword(authentic, email2, password)
@@ -161,7 +162,8 @@ function PopUp({ PrixChoisi,Partenaire,email, dest, need, poste, arriv, radio2, 
                 total: PrixChoisi,
                 produit: inputGroups,
                 categories: categorie,
-                nomExpediteur:nom2
+                nomExpediteur:nom2,
+                prenomExpediteur:prenom2
                 }).then(async (response) => {
                 //  console.log(response.key)
                 toast({
@@ -202,7 +204,7 @@ function PopUp({ PrixChoisi,Partenaire,email, dest, need, poste, arriv, radio2, 
             else if(moyen== "Maritime"){
                 set(ref(db2, `DevisPerso/${idDev}${hash}`), {
                 email: email,
-            
+                devisId: `${idDev}${hash}`,
                 depart: dest,
                 CodePostalDepart: poste,
                 arrive: arriv,
@@ -218,7 +220,8 @@ function PopUp({ PrixChoisi,Partenaire,email, dest, need, poste, arriv, radio2, 
                 partenaire: Partenaire,
                 ville: ville,
                 codePostal: poste,
-                
+                nomExpediteur:nom2,
+                prenomExpediteur:prenom2,               
                 rue: rue,
                 besoin: need,
                 produit: inputGroups,
@@ -237,6 +240,7 @@ function PopUp({ PrixChoisi,Partenaire,email, dest, need, poste, arriv, radio2, 
                     email: email.toString(),
                     adresse: rue,
                     nomExp:nom2, 
+                    prenomExp:prenom2, 
                     nomDest:nomDest,
                     prenomDest:prenomDest,
                     moyen: "Maritime",
@@ -354,6 +358,7 @@ function PopUp({ PrixChoisi,Partenaire,email, dest, need, poste, arriv, radio2, 
       useEffect(()=>{
         setNumeroExp(secureLocalStorage.getItem("number")?? "")
         setNom2(secureLocalStorage.getItem("name")?? "")
+        setPrenom2(secureLocalStorage.getItem("surname")?? "")
       }, [])
       const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -370,12 +375,12 @@ function PopUp({ PrixChoisi,Partenaire,email, dest, need, poste, arriv, radio2, 
                     <div className='flex flex-col gap-4'>
                         <div className="client flex">
                             <div className='flex flex-col mr-2'>
-                                <label className='font-bold uppercase text-[0.9rem] tracking-wide'>Nom du client</label>
+                                <label className='font-bold uppercase text-[0.9rem] tracking-wide'>Nom expediteur</label>
                                 <input className='border p-2 shadow-[0_0_12px_rgba(0,0,0,0.2)]' type="text" placeholder='John' onChange={(e)=>setNom2(e.target.value)} value={nom2}/>
                             </div>
                             <div className='flex flex-col ml-2'>
-                                <label className='font-bold uppercase text-[0.9rem] tracking-wide'>Prenom du client</label>
-                                <input className='border p-2 shadow-[0_0_12px_rgba(0,0,0,0.2)]' type="text" placeholder='John' onChange={(e)=>setNom2(e.target.value)} value={nom2}/>
+                                <label className='font-bold uppercase text-[0.9rem] tracking-wide'>Prenom expediteur</label>
+                                <input className='border p-2 shadow-[0_0_12px_rgba(0,0,0,0.2)]' type="text" placeholder='John' onChange={(e)=>setPrenom2(e.target.value)} value={prenom2}/>
                             </div>
                         </div>
                     
@@ -396,6 +401,18 @@ function PopUp({ PrixChoisi,Partenaire,email, dest, need, poste, arriv, radio2, 
                                 <label className='font-bold uppercase text-[0.9rem] tracking-wide'>Prénom du destinataire</label>
                                 <input className='border p-2 shadow-[0_0_12px_rgba(0,0,0,0.2)]' type="text" placeholder="Doe" onChange={(e)=>setPrenomDest(e.target.value)}/>
                             </div>
+                        </div>
+                        <div className='flex flex-col'>
+                            <label className='font-bold uppercase text-[0.9rem] tracking-wide'>Adresse du destinataire</label>
+                            <input className='border p-2 shadow-[0_0_12px_rgba(0,0,0,0.2)]' type="text"  placeholder="14 Avenue De Bourgogne" onChange={(e)=>setNumeroDest(e.target.value)}/>
+                        </div>
+                        <div className='flex flex-col'>
+                            <label className='font-bold uppercase text-[0.9rem] tracking-wide'>Ville du destinataire</label>
+                            <input className='border p-2 shadow-[0_0_12px_rgba(0,0,0,0.2)]' type="text"  placeholder="2250605799059" onChange={(e)=>setNumeroDest(e.target.value)}/>
+                        </div>
+                        <div className='flex flex-col'>
+                            <label className='font-bold uppercase text-[0.9rem] tracking-wide'>Code postal du destinataire</label>
+                            <input className='border p-2 shadow-[0_0_12px_rgba(0,0,0,0.2)]' type="number" maxLength={5}  placeholder="95300" onChange={(e)=>setNumeroDest(e.target.value)}/>
                         </div>
                     </div>
                 </ModalBody>

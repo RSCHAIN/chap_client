@@ -30,8 +30,8 @@ function Store() {
         "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/slider%2F2.png?alt=media&token=caa391bd-bffb-491f-9679-a655d3fee05f",
         "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/slider%2F6.png?alt=media&token=11b0ef49-fc5e-44bd-b104-bb750053d133"
     ];
-const router = useRouter()
-const toast = useToast()
+    const router = useRouter()
+    const toast = useToast()
     const [productImg, setProductImg] = useState([])
     const [epice, setEpice] = useState([])
     const [textille, setTextille] = useState([])
@@ -232,6 +232,7 @@ const toast = useToast()
                                             <i className="text-xs"><FontAwesomeIcon className="mr-2" icon={faStar} /></i>
                                             <i className="text-xs"><FontAwesomeIcon className="mr-2" icon={faStar} /></i>
                                             <span className="text-black">0 avis</span>
+                                            <h1 className="text-6xl text-orange-600">{item.categorie}</h1>
                                         </div>
                                         <span className="italic text-slate-400 text-xs mb-2">Livré le 31/01/2024</span>
                                         <div className="flex flex-col mb-2">
@@ -240,7 +241,7 @@ const toast = useToast()
                                         </div>
                                         <span className="self-end mb-2 text-xl lg:text-2xl text-red-600 font-bold">{item.prix}€</span>
                                         <div className="w-full mt-4 flex justify-between">
-                                            <Link className="text-white font-bold bg-amber-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl" href={"#"}>Commerce</Link>
+                                            <Link href={`/otherContent/intermed1?categorie=${"Epicerie"}&magasin=${item.organisation}`} className="text-white font-bold bg-amber-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl">Commerce</Link>
                                             <button className="text-white font-bold bg-cyan-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl" onClick={()=>AddToCart(item, Object.keys(epice)[index])}>+Ajouter</button>
                                         </div>
                                     </div>
@@ -282,7 +283,7 @@ const toast = useToast()
                                         </div>
                                         <span className="self-end mb-2 text-xl lg:text-2xl text-red-600 font-bold">{item.prix}€</span>
                                         <div className="w-full mt-4 flex justify-between">
-                                            <Link className="text-white font-bold bg-amber-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl" href={"#"}>Commerce</Link>
+                                            <Link href={`/otherContent/intermed1?categorie=${"Textile"}&magasin=${item.organisation}`} className="text-white font-bold bg-amber-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl">Commerce</Link>
                                             <button className="text-white font-bold bg-cyan-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl" onClick={()=>AddToCart(item, Object.keys(textille)[index])}>+Ajouter</button>
                                         </div>
                                     </div>
@@ -321,7 +322,7 @@ const toast = useToast()
                                         </div>
                                         <span className="self-end mb-2 text-xl lg:text-2xl text-red-600 font-bold">{item.prix}€</span>
                                         <div className="w-full mt-4 flex justify-between">
-                                            <Link className="text-white font-bold bg-amber-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl" href={"#"}>Commerce</Link>
+                                            <Link href={`/otherContent/intermed1?categorie=${"Cosmetique"}&magasin=${item.organisation}`} className="text-white font-bold bg-amber-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl">Commerce</Link>
                                             <button className="text-white font-bold bg-cyan-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl" onClick={()=>AddToCart(item, Object.keys(cosmetic)[index])}>+Ajouter</button>
                                         </div>
                                     </div>

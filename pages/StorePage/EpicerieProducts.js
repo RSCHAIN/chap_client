@@ -89,7 +89,7 @@ function EpicerieProducts() {
                                             </div>
                                             <span className="self-end mb-2 text-xl lg:text-2xl text-red-600 font-bold">{order.prix}€</span>
                                             <div className="w-full mt-4 flex justify-between">
-                                                <Link className="text-white font-bold bg-amber-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl" href={"#"}>Commerce</Link>
+                                                <Link href={`/otherContent/intermed1?categorie=${"Epicerie"}&magasin=${order.organisation}`} className="text-white font-bold bg-amber-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl">Commerce</Link>
                                                 <button className="text-white font-bold bg-cyan-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl" onClick={()=>AddToCart(order, Object.keys(epicerieDetails)[index])}>+Ajouter</button>
                                             </div>
                                         </div>

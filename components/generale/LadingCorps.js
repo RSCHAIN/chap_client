@@ -381,14 +381,14 @@ const afrique = "Vers l'afrique"
       setDatas(1);
     };
     if (check == 0 || check == 1) {
-      const GetAll = async () => {
-        setData([]);
-        await axios.get("api/GetJson").then((response) => {
-          setData(JSON.parse(Object.values(response.data)));
-        });
-      };
-      GetAll();
-      setCheck(check + 1);
+        const GetAll = async () => {
+            setData([]);
+            await axios.get("api/GetJson").then((response) => {
+            setData(JSON.parse(Object.values(response.data)));
+            });
+        };
+        GetAll();
+        setCheck(check + 1);
     }
 
     if (datas == 0) {

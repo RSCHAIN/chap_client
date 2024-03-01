@@ -334,7 +334,7 @@ Référence: {id}</Text>
           </Flex>
            
         </Box>
-        <Modal isOpen={isOpen} onClose={onClose} size={"xl"}>
+        <Modal isOpen={isOpen} onClose={onClose} size={"2xl"}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader></ModalHeader>
@@ -343,7 +343,7 @@ Référence: {id}</Text>
            
             <Box bgColor={"white"}  w={"full"}>
               <Flex justifyContent={"space-between"}>
-              <Flex>Référence : exemple</Flex>
+              <Flex>Référence : {items.devisId}</Flex>
               <Flex>
               <Badge borderRadius="full" mb={2} px={6} bgColor="#ff914d" height={"fit-content"} width={"fit-content"} color={"white"} textTransform={"capitalize"}>
                 {items.status}
@@ -356,29 +356,44 @@ Référence: {id}</Text>
               
               </Flex>
               <Box>
-                <Flex>
-                  <Box>
-                    <Image width="80px" height="80px" src="./new/colis2.png" />
-                  </Box>
-                  <Box ml={20}>
-                    <Text> Retrait: </Text>
-                    <Text> Poids: </Text>
-                    <Text> Categorie: </Text>
-                    <Text> Retrait: </Text>
-                  </Box>
-                </Flex>
+                <SimpleGrid columns={2}>
+                  {items.categories.map((category,index) =>(
+                       <Flex  width={"100%"}>
+                       <Box>
+                         <Image width="80px" height="80px" src="./new/colis2.png" />
+                       </Box>
+                       <Box >
+                         <Text> Retrait: </Text>
+                         <Text> Poids: {items.produit[index][2].value} </Text>
+                         <Text> Categorie: {category.contenu}</Text>
+                         <Text> Prix:  </Text>
+                       </Box>
+                     </Flex>
+                  ))}
+               
+                </SimpleGrid>
+                
                 
               </Box>
-              <Flex>
-                <Box>Arrive</Box>
-                <Box> dest</Box>
-              </Flex>
+              
               <Center color={"cyan.800"} fontWeight={"bold"} >Informations</Center>
-              <Flex>
-                <Box>Arrive</Box>
-                <Box> dest</Box>
-              </Flex>
-              <Center color={"cyan.800"} fontWeight={"bold"} >Livraison</Center>
+              <SimpleGrid columns={2} justifyContent={"space-around"}>
+                <Box><Text color={"cyan.800"} fontWeight={700}>Destinataire</Text>
+                    <Text>Nom : {items.nomDestinataire}</Text>
+                    <Text>Prénom : {items.prenomDestinataire} </Text>
+                    <Text>Adresse : </Text>
+                    <Text>Contact : {items.numeroDestinataire}</Text>
+                    <Text>Email : </Text>
+                  </Box>
+                  <Box><Text color={"cyan.800"} fontWeight={700}>Expediteur</Text>
+                    <Text>Nom :{items.nomExpediteur} </Text>
+                    <Text>Prénom :{items.prenomExpediteur} </Text>
+                    <Text>Adresse :{items.rue}{items.ville} </Text>
+                    <Text>Contact : {items.numeroExpediteur}</Text>
+                    <Text>Email : {items.email}</Text>
+                  </Box>
+              </SimpleGrid>
+              <Center mt={5} color={"cyan.800"} fontWeight={"bold"} >Livraison</Center>
               
                 <Box>
                 <Text> Type : En agence </Text>
@@ -387,7 +402,10 @@ Référence: {id}</Text>
                     <Text> Contact : 00225 - 07030908075</Text>
                 </Box>
                 
-             <Center><Button>Modifier les informations</Button></Center>
+             <Center mt={5} justifyContent={"space-evenly"}>
+              <Text bgColor={"cyan.800"} color={"white"} width={"130px"} px={4} py={2}  fontWeight={600} textAlign={"center"} borderRadius={"xl"} height={"fit-content"}>Modifier les informations</Text> 
+              <Button colorScheme={"red"} width={"130px"} px={4} py={2} height={"65px"} borderRadius={"xl"}>Annuler</Button> 
+              </Center>
             </Box>
             
           </ModalBody>
