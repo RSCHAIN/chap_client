@@ -226,22 +226,21 @@ function QuoteConfirmation() {
                                             ((parseFloat(poidsFromSession) * 10* 5) / 100)}<span className='ml-2'>€</span></span>
                                     </div>
                                     <button className='bg-orange-600 text-white rounded-sm py-2 px-6'>
-                                    <PopUp PrixChoisi={parseFloat(tab1) + (parseFloat(tab1) * 5) / 100}
-                    Partenaire="Africolis"
-                    email={email}
-                      dest={dest}
-                      poste={poste}
-                      arriv={arriv}
-                      radio2={radio2}
-                      imageUri=""
-                      ville={ville}
-                      need={need}
-                      inputGroups={inputGroups}
-                      categorie={prix}
-                      rue={rue}
-                      moyen="Maritime"
-
-                  />
+                                    <PopUp PrixChoisi={parseFloat(tab1) * 10 +
+                                            ((parseFloat(tab1) * 10* 5 + parseFloat(PrixPc)) / 100) + parseFloat(PrixPc)}
+                                            Partenaire={"BAMBA BAGAGE"}
+                                            email={"email"}
+                                            dest={"dest"}
+                                            poste={"poste"}
+                                            arriv={"arriv"}
+                                            radio2={"radio2"}
+                                            imageUri={"imageUri"}
+                                            ville={"ville"}
+                                            inputGroups={inputGroups}
+                                            categorie={categorie}
+                                            rue={"rue"}
+                                            moyen={"Aerien"}
+                                        />
                                     </button>
                                 </div>
                             </div>
