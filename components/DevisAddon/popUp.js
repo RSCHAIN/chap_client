@@ -366,7 +366,7 @@ function PopUp({ PrixChoisi,Partenaire,email, dest, need, poste, arriv, radio2, 
         <>
         <button onClick={onOpen}>Reservez maintenant</button>
 
-        <Modal size={"lg"} isOpen={isOpen} onClose={onClose}>
+        <Modal size={"xl"} isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
             <ModalContent>
                 <ModalHeader className='text-center uppercase text-2xl mb-4'>Informations supplémentaires</ModalHeader>

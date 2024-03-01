@@ -358,7 +358,7 @@ Référence: {id}</Text>
               <Box>
                 <SimpleGrid columns={2}>
                   {items.categories.map((category,index) =>(
-                       <Flex  width={"100%"}>
+                       <Flex key={index} width={"100%"}>
                        <Box>
                          <Image width="80px" height="80px" src="./new/colis2.png" />
                        </Box>
