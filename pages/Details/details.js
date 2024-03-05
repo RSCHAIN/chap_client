@@ -22,6 +22,9 @@ import Head from "next/head";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMoneyBillTransfer, faTruck, faStar, faMap, faLocation, faLocationDot, faBoxesStacked, faBoxOpen } from '@fortawesome/free-solid-svg-icons'
 import Link from "next/link";
+// import Favlist2 from "../generale/FavLists2";
+import Favlist2 from "../../components/generale/FavLists2"
+
 
 const settings = {
     dots: false,
@@ -310,7 +313,7 @@ export default function DisplayArticleDetails() {
                                     </div>
 
                                     <div className="flex justify-between items-center">
-                                        <span>{data.nom}</span>
+                                        <span className="font-bold uppercase">{data.nom}</span>
                                         <div className="">
                                             <span className="text-2xl font-bold">{data.prix} € </span>
                                             <small className='-mb-2'>TTC</small>
@@ -347,20 +350,20 @@ export default function DisplayArticleDetails() {
                                                     } 
                                                 </div>
                                             </div>
-                                            <button onClick={()=>{AddToCart(data,id,color,taille)}} className="bg-cyan-800  max-[600px]:rounded-sm p-2 rounded-lg text-white">Ajouter au panier</button>
+                                            <button onClick={()=>{AddToCart(data,id,color,taille)}} className="bg-cyan-800 p-2 rounded-2xl text-white">Ajouter au panier</button>
                                         </div>
                                     </div>
 
                                     {data.taille ? 
                                     <div className="w-3/6">
                                         <h2 className='font-bold text-xl'>Taille</h2>
-                                        <div className="flex justify-between items-center mt-4">
-                                            <span className='bg-cyan-800 w-11 h-8 text-white rounded-full text-center py-1'>S</span>
-                                            <span className='bg-cyan-800 w-11 h-8 text-white rounded-full text-center py-1'>M</span>
-                                            <span className='bg-cyan-800 w-11 h-8 text-white rounded-full text-center py-1'>L</span>
-                                            <span className='bg-cyan-800 w-11 h-8 text-white rounded-full text-center py-1'>XL</span>
-                                            <span className='bg-cyan-800 w-11 h-8 text-white rounded-full text-center py-1'>2XL</span>
-                                            <span className='bg-cyan-800 w-11 h-8 text-white rounded-full text-center py-1'>3XL</span>
+                                        <div className="flex justify-between items-center mt-4 -mx-4">
+                                            <span className='bg-cyan-800 w-11 h-8 text-white rounded-full text-center py-1 ml-1 hover:opacity-80 cursor-pointer'>S</span>
+                                            <span className='bg-cyan-800 w-11 h-8 text-white rounded-full text-center py-1 ml-1 hover:opacity-80 cursor-pointer'>M</span>
+                                            <span className='bg-cyan-800 w-11 h-8 text-white rounded-full text-center py-1 ml-1 hover:opacity-80 cursor-pointer'>L</span>
+                                            <span className='bg-cyan-800 w-11 h-8 text-white rounded-full text-center py-1 ml-1 hover:opacity-80 cursor-pointer'>XL</span>
+                                            <span className='bg-cyan-800 w-11 h-8 text-white rounded-full text-center py-1 ml-1 hover:opacity-80 cursor-pointer'>2XL</span>
+                                            <span className='bg-cyan-800 w-11 h-8 text-white rounded-full text-center py-1 ml-1 hover:opacity-80 cursor-pointer'>3XL</span>
                                         </div>
                                     </div>
                                     : null}
@@ -383,6 +386,56 @@ export default function DisplayArticleDetails() {
                             </div>
                         </div>
                     </div>
+                    <div className="container mx-auto py-10">
+                        <h2>Produits recommandés</h2>
+                        <Favlist2 categorie={"Textile"} magasin={"magasin"} />
+                    </div>
+
+
+                    {/* <Center>
+                    <Box mt={2}  >
+                        <Text fontWeight={700} fontSize={"20px"} ml={5}>Produits recommandés</Text>
+                        <Favlist2 categorie={categorie} magasin={magasin} />
+                    </Box>
+                    </Center>
+                    <Box display={["none","none","none","block","block"]}>
+                    <AvisMag mag={magasin} email={mag.email} />
+                    </Box>
+                    <Center bgColor={"white"} >
+                        <SimpleGrid mt={2} columns={[1,1,1,2,2]} ml={['30%','30%','30%','20%','20%']} spacingX={20} display={["none","none","none","flex","flex"]} >
+                        <Box mr={10} display={["none","none","none","block","block"]}>
+                            <StarM2 data={mag.feedback} />
+                        </Box>
+                        <SimpleGrid columns={1}  bgColor={"white"} ml={[0, 0, 0, 10, 10]} >
+                            {mag.feedback ? (Object.values(mag.feedback).map((data) => {
+                            return (<>
+                                <Box width={"400px"} justifyContent={"flex-start"} m={5} ml={0} bgColor={"white"}>
+                                <Flex justifyContent={"start"}>
+                                    <StarAvis data={data.rating} />
+                                    <Text fontWeight={600} ml={10} mt={-1} fontSize={"12px"}>{data.dateDep ?? ""}</Text>
+
+
+                                </Flex>
+                                <Heading fontSize={"15px"}>{data.avisTitle}</Heading>
+                                <Text fontSize={"15px"} fontWeight={"hairline"} fontFamily={"-apple-system"}>{data.avisDesc}</Text>
+                                <Text fontSize={"15px"} fontWeight={"hairline"} fontFamily={"-apple-system"}>{data.usermail}</Text>
+                                </Box>
+                            </>)
+                            }
+                            )
+                            )
+
+                            : <></>}
+                        </SimpleGrid>
+                        <Box mr={10} display={["block","block","block","none","none"]}>
+                            <StarM2 data={mag.feedback} />
+                        </Box>
+                        </SimpleGrid>
+                    </Center>
+                    <Box bgColor={"white"} height={"fit-content"} pb={10} display={["block","block","block","none","none"]}>
+                    <AvisMag mag={magasin} email={mag.email} />
+                    <AffichageComM data={mag}/>
+                    </Box> */}
                 </>
             )
         }

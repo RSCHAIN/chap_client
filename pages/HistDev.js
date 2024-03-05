@@ -363,10 +363,10 @@ Référence: {id}</Text>
                          <Image width="80px" height="80px" src="./new/colis2.png" />
                        </Box>
                        <Box >
-                         <Text> Retrait: </Text>
-                         <Text> Poids: {items.produit[index][2].value} </Text>
-                         <Text> Categorie: {category.contenu}</Text>
-                         <Text> Prix:  </Text>
+                         <Text> <span className={"itemsDev"}>Retrait:</span> </Text>
+                         <Text><span className={"itemsDev"}> Poids:</span> {items.produit[index][2].value} </Text>
+                         <Text> <span className={"itemsDev"}>Categorie:</span> {category.contenu}</Text>
+                         <Text> <span className={"itemsDev"}>Prix:</span>  </Text>
                        </Box>
                      </Flex>
                   ))}
@@ -379,27 +379,27 @@ Référence: {id}</Text>
               <Center color={"cyan.800"} fontWeight={"bold"} >Informations</Center>
               <SimpleGrid columns={2} justifyContent={"space-around"}>
                 <Box><Text color={"cyan.800"} fontWeight={700}>Destinataire</Text>
-                    <Text>Nom : {items.nomDestinataire}</Text>
-                    <Text>Prénom : {items.prenomDestinataire} </Text>
-                    <Text>Adresse : </Text>
-                    <Text>Contact : {items.numeroDestinataire}</Text>
-                    <Text>Email : </Text>
+                    <Text><span className={"itemsDev"}>Nom :</span> {items.nomDestinataire}</Text>
+                    <Text><span className={"itemsDev"}>Prénom :</span> {items.prenomDestinataire} </Text>
+                    <Text><span className={"itemsDev"}>Adresse :</span>{items.adresseDest},{items.villeDest},{items.posteDest} </Text>
+                    <Text><span className={"itemsDev"}>Contact :</span> {items.numeroDestinataire}</Text>
+                    <Text><span className={"itemsDev"}>Email :</span>{items.emailDest} </Text>
                   </Box>
                   <Box><Text color={"cyan.800"} fontWeight={700}>Expediteur</Text>
-                    <Text>Nom :{items.nomExpediteur} </Text>
-                    <Text>Prénom :{items.prenomExpediteur} </Text>
-                    <Text>Adresse :{items.rue}{items.ville} </Text>
-                    <Text>Contact : {items.numeroExpediteur}</Text>
-                    <Text>Email : {items.email}</Text>
+                    <Text><span className={"itemsDev"}>Nom :</span>{items.nomExpediteur} </Text>
+                    <Text><span className={"itemsDev"}>Prénom :</span>{items.prenomExpediteur} </Text>
+                    <Text><span className={"itemsDev"}>Adresse :</span>{items.rue}{items.ville} </Text>
+                    <Text><span className={"itemsDev"}>Contact :</span> {items.numeroExpediteur}</Text>
+                    <Text><span className={"itemsDev"}>Email :</span> {items.email}</Text>
                   </Box>
               </SimpleGrid>
               <Center mt={5} color={"cyan.800"} fontWeight={"bold"} >Livraison</Center>
               
                 <Box>
-                <Text> Type : En agence </Text>
-                    <Text> Prestataire : Rschain</Text>
-                    <Text> Adresse : Carrefour prière, cocody-Abidjan</Text>
-                    <Text> Contact : 00225 - 07030908075</Text>
+                <Text> <span className={"itemsDev"}>Type :</span> En agence </Text>
+                    <Text><span className={"itemsDev"}> Prestataire :</span> Rschain</Text>
+                    <Text><span className={"itemsDev"}> Adresse :</span> Carrefour prière, cocody-Abidjan</Text>
+                    <Text> <span className={"itemsDev"}>Contact :</span> 00225 - 07030908075</Text>
                 </Box>
                 
              <Center mt={5} justifyContent={"space-evenly"}>
@@ -410,12 +410,12 @@ Référence: {id}</Text>
             
           </ModalBody>
 
-          <ModalFooter>
+          {/* <ModalFooter>
             <Button variant='ghost' mr={3} onClick={onClose}>
               Fermer
             </Button>
 
-          </ModalFooter>
+          </ModalFooter> */}
         </ModalContent>
       </Modal>
       </>

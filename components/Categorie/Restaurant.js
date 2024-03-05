@@ -96,7 +96,7 @@ export function Star({ id, data }) {
                 color={i < star / total ? "yellow" : "gray.500"}
               />
             ))}
-          <Text ml={1} mt={-1}>
+          <Text ml={1} fontSize={"12px"} mt={-1}>
             ({total})
           </Text>
         </Flex>
@@ -107,7 +107,7 @@ export function Star({ id, data }) {
             .map((_, i) => (
               <StarIcon key={i} fontSize={"12px"} color={"gray.500"} />
             ))}
-          <Text ml={2} mt={-1}>
+          <Text ml={2} fontSize={"12px"} mt={-1}>
             {total} avis
           </Text>
         </Flex>
@@ -145,7 +145,7 @@ export function StarM({ data }) {
                 color={i < star / total ? "yellow" : "gray.500"}
               />
             ))}
-          <Text width={"60px"} ml={1} mt={-1}>
+          <Text width={"60px"} fontSize={"12px"} ml={1} mt={-1}>
           {total} avis
           </Text>
         </Flex>
@@ -156,7 +156,7 @@ export function StarM({ data }) {
             .map((_, i) => (
               <StarIcon key={i} fontSize={"12px"} color={"gray.500"} />
             ))}
-          <Text width={"45px"} ml={2} mt={-1}>
+          <Text width={"45px"} fontSize={"12px"} ml={2} mt={-1}>
           {total} avis
           </Text>
         </Flex>
@@ -247,7 +247,7 @@ export function StarM2({ data }) {
             .map((_, i) => (
               <StarIcon key={i} fontSize={"12px"} color={"gray.500"} />
             ))}
-          <Text ml={2} mt={-1}>
+          <Text fontSize={"12px"} ml={2} mt={-1}>
             {total} avis
           </Text>
         </Box>

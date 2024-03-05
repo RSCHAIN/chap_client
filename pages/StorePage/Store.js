@@ -218,13 +218,14 @@ function Store() {
                         <div className="flex -mx-4 overflow-x-scroll">{/**flex-wrap */}
                             {epice && epice !== "" ? 
                             Object.values(epice).map((item, index) => (
-                                <div key={index} className="w-full lg:w-1/5 px-4">
+                                // <Link href={`/Details/details?c=${"Epicerie"}&m=${item.organisation}&p=${Object.keys(epice)[index]}`}></Link>
+                                <Link href={`/Details/details?c=${"Epicerie"}&m=${item.organisation}&p=${Object.keys(epice)[index]}`} key={index} className="w-full lg:w-1/5 px-4">
                                     <div className="bg-white p-4 my-4 lg:my-0 flex flex-col items-center relative">
                                         <div className="h-20 w-20 rounded-full mb-2">
                                             <img className="h-20 w-20" src={item.imageUrl} alt="" />
                                         </div>
                                         <h3 className="uppercase font-bold mb-2 text-xs lg:text-sm">{item.nom}</h3>
-                                        <small className="bg-red-600 p-1 rounded-2xl text-white absolute -top-2 left-0 capitalize">{item.etat}</small>
+                                        <small className="bg-green-600 p-1 rounded-2xl text-white absolute -top-2 left-0 capitalize">{item.etat}</small>
                                         <div className="text-yellow-300 mb-2">
                                             <i className="text-xs"><FontAwesomeIcon className="mr-2" icon={faStar} /></i>
                                             <i className="text-xs"><FontAwesomeIcon className="mr-2" icon={faStar} /></i>
@@ -245,10 +246,10 @@ function Store() {
                                             <button className="text-white font-bold bg-cyan-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl" onClick={()=>AddToCart(item, Object.keys(epice)[index])}>+Ajouter</button>
                                         </div>
                                     </div>
-                                </div>
+                                </Link>
                             )): 
                             (
-                              <p>Rien</p>  
+                              <p>Rien</p>
                             )}
                         </div>
                     </div>
@@ -261,7 +262,7 @@ function Store() {
                         <div className="flex -mx-4 overflow-x-scroll">{/**flex-wrap */}
                             {textille && textille !== " " ?
                                 Object.values(textille).map((item, index) => (
-                                <div key={index} className="w-full lg:w-1/5 px-4">
+                                <Link href={`/Details/details?c=${"Textile"}&m=${item.organisation}&p=${Object.keys(textille)[index]}`} key={index} className="w-full lg:w-1/5 px-4">
                                     <div className="bg-white p-4 my-4 lg:my-0 flex flex-col items-center relative">
                                         <div className="h-20 w-20 rounded-full mb-2">
                                             <img className="h-20 w-20" src={item.imageUrl} alt="" />
@@ -287,7 +288,7 @@ function Store() {
                                             <button className="text-white font-bold bg-cyan-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl" onClick={()=>AddToCart(item, Object.keys(textille)[index])}>+Ajouter</button>
                                         </div>
                                     </div>
-                                </div>
+                                </Link>
                             )) : (<p>Rien</p>)}
                         </div>
                     </div>
@@ -300,7 +301,7 @@ function Store() {
                         <div className="flex -mx-4 overflow-x-scroll">{/**flex-wrap */}
                             {cosmetic && cosmetic !== " " ?
                             Object.values(cosmetic).map((item, index) => (
-                                <div key={index} className="w-full lg:w-1/5 px-4">
+                                <Link href={`/Details/details?c=${"Cosmetique"}&m=${item.organisation}&p=${Object.keys(cosmetic)[index]}`} key={index} className="w-full lg:w-1/5 px-4">
                                     <div className="bg-white p-4 my-4 lg:my-0 flex flex-col items-center relative">
                                         <div className="h-20 w-20 rounded-full mb-2">
                                             <img className="h-20 w-20" src={item.imageUrl} alt="" />
@@ -326,7 +327,7 @@ function Store() {
                                             <button className="text-white font-bold bg-cyan-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl" onClick={()=>AddToCart(item, Object.keys(cosmetic)[index])}>+Ajouter</button>
                                         </div>
                                     </div>
-                                </div>
+                                </Link>
                             )) : (<p>rien</p>)}
                         </div>
                     </div>

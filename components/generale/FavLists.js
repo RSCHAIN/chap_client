@@ -74,14 +74,14 @@ export function Star ({id,data}){
   
     return(
       <>
-      {total ? <Flex mb={10}>
+      {total ? <Flex mb={10} fontSize={"12px"}>
        
         {Array(5)
               .fill('')
               .map((_, i) => (
                 <StarIcon
                   key={i}
-                  fontSize={"10px"}
+                  fontSize={"12px"}
                   color={i < star/total ? 'yellow' : 'gray.500'}
                 />
               ))}
@@ -93,12 +93,12 @@ export function Star ({id,data}){
               .map((_, i) => (   
                 <StarIcon
                   key={i}
-                  fontSize={"10px"}
+                  fontSize={"12px"}
                   color={'gray.500'}
                  
                 />
               ))}
-              <Text ml={2} mt={-1} fontSize={"10px"}>{total} avis</Text>
+              <Text ml={2} mt={-1} fontSize={"12px"}>{total} avis</Text>
               </Flex>}
       
     

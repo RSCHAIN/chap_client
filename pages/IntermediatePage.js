@@ -53,7 +53,7 @@ function IntermediatePage() {
                         <Image src="./intermediate-img/nourriture.png" alt="Logo" />
                     </Link>
                     <Link href="/otherContent/intermed2" className='text' onClick={() => secureLocalStorage.setItem("service", "Textile")}>
-                        <h2>Textille</h2>
+                        <h2>Textile</h2>
                         <Image src="./intermediate-img/textile.jpg" alt="Logo" />
                     </Link>
                     <Link href="/otherContent/intermed2" className='text' onClick={() => secureLocalStorage.setItem("service",  "Commerce de meches")}>

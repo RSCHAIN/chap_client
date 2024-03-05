@@ -67,7 +67,7 @@ function EpicerieProducts() {
                         <div className="flex -mx-4 flex-wrap">{/** overflow-x-scroll*/}
                             {epicerieDetails && epicerieDetails !== "" ?
                                 Object.values(epicerieDetails).map((order, index) => (
-                                    <div key={index} className="w-full lg:w-1/5 px-4">
+                                    <Link href={`/Details/details?c=${"Epicerie"}&m=${order.organisation}&p=${Object.keys(epicerieDetails)[index]}`} key={index} className="w-full lg:w-1/5 px-4">
                                         <div className="bg-white p-4 flex flex-col mb-10 items-center relative">{/** my-4 lg:my-0  */}
                                             <div className="h-20 w-20 rounded-full mb-2"> {/** bg-orange-500 */}
                                                 <img className="h-20 w-20" src={order.imageUrl} alt="" />
@@ -93,7 +93,7 @@ function EpicerieProducts() {
                                                 <button className="text-white font-bold bg-cyan-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl" onClick={()=>AddToCart(order, Object.keys(epicerieDetails)[index])}>+Ajouter</button>
                                             </div>
                                         </div>
-                                    </div>
+                                    </Link>
                                 )): (
                                 <p>Aucune donnee</p>
                             )}

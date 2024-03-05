@@ -218,7 +218,7 @@ export default function Favlist2({ categorie, magasin }) {
         <Box ml={[2, 2, 2, 5, 10]}  width={"100%"} my={5} >
           <SimpleGrid columns={[2,2,2,4,4]} >
             {Object.values(data).slice(0,4).map((data, index) => (
-              <Box as="a" width={["200px", "200px", "200px", "250px", "250px"]} key={index} href={`/Details/details?c=${tout}&m=${data.organisation}&p=${dataK[index]}`}  boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"} mx={[2, 2, 2, 5, 5]} mb={5} bgColor={"white"}>
+              <Box as="a"  key={index} href={`/Details/details?c=${tout}&m=${data.organisation}&p=${dataK[index]}`}  boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"} mx={[2, 2, 2, 5, 5]} mb={5} bgColor={"white"}>
               
                 <Box
                  mx={5}
@@ -322,7 +322,7 @@ export default function Favlist2({ categorie, magasin }) {
                     </Tooltip>
                   </Flex>
 
-                  <Flex justifyContent={"space-between"}>
+                  <Flex justifyContent={"space-between"} width={["90%","90%","100%","100%","100%"]}>
                     <Text></Text>
                     <Text
                       color={"cyan.700"}

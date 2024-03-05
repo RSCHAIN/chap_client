@@ -437,7 +437,7 @@ const afrique = "Vers l'afrique"
                  
                 </Box>
                 <Box display={"grid"} ml={"10px"}  my={20} mt={-1}  as={Link} 
- href={"#"}   _hover={{
+ href={"/StorePage/Store"}   _hover={{
   bgColor: "transparent",
   opacity: "0.7",
   textDecoration: "none",
