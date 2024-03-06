@@ -4,6 +4,9 @@ import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { getDatabase } from "firebase/database";
 import { getFirestore} from "firebase/firestore";
 import { getStorage } from 'firebase/storage';
+import { RouterContext } from "next/dist/shared/lib/router-context.shared-runtime";
+import { Router } from "next/router";
+
 import secureLocalStorage from "react-secure-storage";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -33,5 +36,4 @@ const db2 = getDatabase()
 const db = getFirestore(app)
 const storage = getStorage(); 
 const authentic= getAuth(app);
-const signinWithGoogle = () =>{ signInWithPopup(authentic,provider).then((res)=>{ secureLocalStorage.setItem("name", res.user.displayName),console.log("donnees google",res)}).catch((error)=>{})}
-export {app,db,db2,authentic,storage,signinWithGoogle}
+export {app,db,db2,authentic,storage,provider}

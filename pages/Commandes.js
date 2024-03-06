@@ -566,7 +566,7 @@ export default function Commande() {
     onAuthStateChanged(authentic, (user) => {
       if (!user) {
         router.push("/Choose");
-        router.reload()
+        // router.reload()
       }
     });
     Getall();

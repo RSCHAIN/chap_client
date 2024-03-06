@@ -252,9 +252,12 @@ function Aerien() {
                                         <div className="flex justify-between">
                                             <textarea placeholder="Description ici..." cols="30" rows="3" onChange={e => setDescription(e.target.value)} className="sm:text-sm py-2 pl-4 border border-slate-800"></textarea>
                                             <select onChange={(e) => {setCategorieChoice(e.target.value),console.log(e.target.value)}}  className="w-[20rem] p-3 focus:outline-none border border-cyan-200 lg:border-none bg-zinc-100">
-                                                <option  value={"Epicerie"}>Epicerie</option>
-                                                <option  value={"Textille"}>Textille</option>
-                                                <option  value={"Cosmétic"}>Cosmétic</option>
+                                                {/* <option  value={"Epicerie"}>Epicerie</option> */}
+                                                {Option.map((data,index) =>(
+                                                       <option  value={`${data.id}`}>{data.id}</option>
+                                                ) )}
+                                             
+                                                {/* <option  value={"Cosmétic"}>Cosmétic</option> */}
                                             </select>
                                         </div>
                                         <div className="flex flex-col lg:flex-row justify-between items-center">

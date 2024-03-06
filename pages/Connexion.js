@@ -47,10 +47,11 @@ import {
   getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
 } from "firebase/auth";
 import { useRouter } from "next/router";
-import { app, authentic, db, signinWithGoogle } from "@/FIREBASE/clientApp";
+import { app, authentic, db, provider, signinWithGoogle } from "@/FIREBASE/clientApp";
 import secureLocalStorage from "react-secure-storage";
 import TransitionExample from "@/components/forgetPassword";
 // import ScriptComponent from '../components/ScriptComponent';
@@ -96,13 +97,13 @@ export default function Connexion() {
           sessionStorage.setItem("email", userCredential.user.email);
           const docRef = doc(db, "Utilisateurs/" + userCredential.user.email);
           const docSnap = await getDoc(docRef);
-  
+
           if (docSnap.exists()) {
-           secureLocalStorage.setItem("surname", docSnap.data().surname);
-          
-        } else {
+            secureLocalStorage.setItem("surname", docSnap.data().surname);
+
+          } else {
             secureLocalStorage.setItem("surname", "undefini");
-        }
+          }
           // router.back()
           toast({
             title: "ACCES AUTORISE.",
@@ -198,20 +199,20 @@ export default function Connexion() {
   }
 
   const loginGoogle = async () => {
-    try{
-      const response = await signinWithGoogle().then((res)=>{ secureLocalStorage.setItem("name", response.user.displayName),console.log("donnees google",res)}
-    );
-   
-    }catch (error){
-      
-    }
-    
-    
+    try {
+      const response = await signinWithGoogle().then((res) => { secureLocalStorage.setItem("name", response.user.displayName), console.log("donnees google", res) }
+      );
 
-   
+    } catch (error) {
+
+    }
+
+
+
+
   }
 
-  
+  const signinWithGoogle = () => { signInWithPopup(authentic, provider).then((res) => { secureLocalStorage.setItem("name", res.user.displayName), console.log("donnees google", res),router.push("/") }).catch((error) => { }) }
   return (
     <>
       <Head>
@@ -294,9 +295,9 @@ export default function Connexion() {
                     </Text>
                     <Center display={"grid"} >
                       <Button mb={2}
-                         width={"fit-content"} borderBottom={"2px solid black"}
+                        width={"fit-content"} borderBottom={"2px solid black"}
                         leftIcon={<FaGoogle />}
-                      
+
                         // borderRadius={"50px"}
                         bgColor={"#fff"}
                         color={"black"}
@@ -308,7 +309,7 @@ export default function Connexion() {
                       >
                         Connexion avec Google
                       </Button>
-                     
+
                     </Center>
                     <Box position='relative' padding='5'>
                       <Divider />
@@ -376,11 +377,11 @@ export default function Connexion() {
                       >
                         Pas de compte?  Créer un compte
                       </Button>
-                      
+
                     </Box>
-                   
+
                   </Stack>
-                 
+
                 </FormControl>
               </Box>
             </Center>

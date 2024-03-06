@@ -46,6 +46,7 @@ export default function Showconnex() {
   const logout = async () => {
     await signOut(authentic);
     secureLocalStorage.clear()
+    sessionStorage.clear()
     router.reload();
   };
 
@@ -80,7 +81,7 @@ export default function Showconnex() {
   };
   const auth = getAuth(app);
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(authentic, (user) => {
       if (user) {
         setUsers(user);
         sessionStorage.setItem("email", user.email);
@@ -394,7 +395,7 @@ export default function Showconnex() {
                 </Button>
               </Center>
             </PopoverBody>
-            <PopoverFooter>
+            {/* <PopoverFooter>
               <Link
                 href="/Commandes"
                 width={"full"}
@@ -419,8 +420,8 @@ export default function Showconnex() {
                   Mon profils
                 </Button>
               </Link>
-              {/* <Link href="/Mybuy" ><Button>Mes commandes</Button></Link> */}
-            </PopoverFooter>
+              {/* <Link href="/Mybuy" ><Button>Mes commandes</Button></Link>
+            </PopoverFooter> */}
           </PopoverContent>
         </Popover>
       </Flex>
