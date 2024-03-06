@@ -212,7 +212,7 @@ export default function Connexion() {
 
   }
 
-  const signinWithGoogle = () => { signInWithPopup(authentic, provider).then((res) => { secureLocalStorage.setItem("name", res.user.displayName), console.log("donnees google", res),router.push("/") }).catch((error) => { }) }
+  const signinWithGoogle = () => { signInWithPopup(authentic, provider).then((res) => { secureLocalStorage.setItem("name", res.user.displayName), console.log("donnees google", res), router.push("/"), router.reload() }).catch((error) => { }) }
   return (
     <>
       <Head>
