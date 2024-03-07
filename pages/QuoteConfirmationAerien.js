@@ -5,7 +5,9 @@ import React, { useEffect, useState } from 'react'
 import { Flex, Input, Button, ChakraProvider, VStack, HStack, Heading, Text, Box, Select, Radio, RadioGroup, Stack, useToast, ModalContent, ModalHeader, ModalCloseButton, ModalBody, Center, Modal, ModalOverlay, Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody, useDisclosure, Menu, MenuButton, useBoolean, MenuList, MenuItem } from "@chakra-ui/react";
 import {ChevronDownIcon} from "@chakra-ui/icons"
 const departAfricolis= ["09/10/2023","13/10/2023","16/10/2023","20/10/2023","23/10/2023","27/10/2023","30/10/2023","03/11/2023"]
-import Link from "next/link";
+// import Link from "next/link";
+import { Link } from "@chakra-ui/react";
+
 import PopUp from "@/components/DevisAddon/popUp";
 
 function QuoteConfirmation() {
@@ -128,23 +130,40 @@ function QuoteConfirmation() {
                                 <div className="flex justify-between items-center">
                                     <div className="flex flex-col gap-8">
                                         <div className="flex flex-col">
-                                            <h2 className='uppercase font-bold'>Depôt</h2>
+                                            <h2 className='uppercase font-bold text-sm'>Depôt</h2>
                                             <small className='text-slate-600'>{dateDep}</small>
                                             <small className='text-slate-600'>Déposez votre colis dès aujourd’hui</small>
                                         </div>
                                         <div className="flex flex-col">
-                                            <h2 className='uppercase font-bold'>Retrait</h2>
+                                            <h2 className='uppercase font-bold text-sm'>Retrait</h2>
                                             {/* <small className='text-slate-600'>{dateExp3}</small> */}
                                             <small className='text-slate-600'>Retrait a Abidjan-cocody</small>
                                         </div>
                                     </div>
                                     <div className="self-end mb-4">
-                                        <span className='bg-orange-600 text-2xl p-4 text-white rounded-md'>
+                                        <span className='bg-orange-600 text-xl p-4 text-white rounded-md max-[370px]:text-lg max-[370px]:p-2'>
                                             {parseFloat(poidsFromSession) * 10 +
                                             ((parseFloat(poidsFromSession) * 10* 5) / 100)} €
                                         </span>
                                     </div>
                                 </div>
+                                <button className='bg-orange-600 text-white rounded-sm py-2 px-6'>
+                                    <PopUp PrixChoisi={parseFloat(tab1) * 10 +
+                                        ((parseFloat(tab1) * 10* 5 + parseFloat(PrixPc)) / 100) + parseFloat(PrixPc)}
+                                        Partenaire={"BAMBA BAGAGE"}
+                                        email={"email"}
+                                        dest={"dest"}
+                                        poste={"poste"}
+                                        arriv={"arriv"}
+                                        radio2={"radio2"}
+                                        imageUri={"imageUri"}
+                                        ville={"ville"}
+                                        inputGroups={inputGroups}
+                                        categorie={categorie}
+                                        rue={"rue"}
+                                        moyen={"Aerien"}
+                                    />
+                                </button>
                             </div>
                             <div className="bg-white p-4 border  shadow-[0_0_12px_rgba(0,0,0,0.2)] rounded-md flex flex-col gap-10 mt-6">
                                 <div className=" flex justify-between">
@@ -161,23 +180,40 @@ function QuoteConfirmation() {
                                 <div className="flex justify-between items-center">
                                     <div className="flex flex-col gap-8">
                                         <div className="flex flex-col">
-                                            <h2 className='uppercase font-bold'>Depôt</h2>
+                                            <h2 className='uppercase font-bold text-sm'>Depôt</h2>
                                             <small className='text-slate-600'>{dateDep}</small>
                                             <small className='text-slate-600'>Déposez votre colis dès aujourd’hui</small>
                                         </div>
                                         <div className="flex flex-col">
-                                            <h2 className='uppercase font-bold'>Retrait</h2>
+                                            <h2 className='uppercase font-bold text-sm'>Retrait</h2>
                                             {/* <small className='text-slate-600'>{dateExp3}</small> */}
                                             <small className='text-slate-600'>Retrait a Abidjan-cocody</small>
                                         </div>
                                     </div>
                                     <div className="self-end mb-4">
-                                        <span className='bg-orange-600 text-2xl p-4 text-white rounded-md'>
+                                        <span className='bg-orange-600 text-xl p-4 text-white rounded-md max-[370px]:text-lg max-[370px]:p-2'>
                                             {parseFloat(poidsFromSession) * 10 +
                                             ((parseFloat(poidsFromSession) * 10* 5) / 100)} €
                                         </span>
                                     </div>
                                 </div>
+                                <button className='bg-orange-600 text-white rounded-sm py-2 px-6'>
+                                    <PopUp PrixChoisi={parseFloat(tab1) * 10 +
+                                        ((parseFloat(tab1) * 10* 5 + parseFloat(PrixPc)) / 100) + parseFloat(PrixPc)}
+                                        Partenaire={"BAMBA BAGAGE"}
+                                        email={"email"}
+                                        dest={"dest"}
+                                        poste={"poste"}
+                                        arriv={"arriv"}
+                                        radio2={"radio2"}
+                                        imageUri={"imageUri"}
+                                        ville={"ville"}
+                                        inputGroups={inputGroups}
+                                        categorie={categorie}
+                                        rue={"rue"}
+                                        moyen={"Aerien"}
+                                    />
+                                </button>
                             </div>
                             <div className="bg-white p-4 border  shadow-[0_0_12px_rgba(0,0,0,0.2)] rounded-md flex flex-col gap-10 mt-6">
                                 <div className=" flex justify-between">
@@ -194,23 +230,40 @@ function QuoteConfirmation() {
                                 <div className="flex justify-between items-center">
                                     <div className="flex flex-col gap-8">
                                         <div className="flex flex-col">
-                                            <h2 className='uppercase font-bold'>Depôt</h2>
+                                            <h2 className='uppercase font-bold text-sm'>Depôt</h2>
                                             <small className='text-slate-600'>{dateDep}</small>
                                             <small className='text-slate-600'>Déposez votre colis dès aujourd’hui</small>
                                         </div>
                                         <div className="flex flex-col">
-                                            <h2 className='uppercase font-bold'>Retrait</h2>
+                                            <h2 className='uppercase font-bold text-sm'>Retrait</h2>
                                             {/* <small className='text-slate-600'>{dateExp3}</small> */}
                                             <small className='text-slate-600'>Retrait a Abidjan-cocody</small>
                                         </div>
                                     </div>
                                     <div className="self-end mb-4">
-                                        <span className='bg-orange-600 text-2xl p-4 text-white rounded-md'>
+                                        <span className='bg-orange-600 text-xl p-4 text-white rounded-md max-[370px]:text-lg max-[370px]:p-2'>
                                             {parseFloat(poidsFromSession) * 10 +
                                             ((parseFloat(poidsFromSession) * 10* 5) / 100)} €
                                         </span>
                                     </div>
                                 </div>
+                                <button className='bg-orange-600 text-white rounded-sm py-2 px-6'>
+                                    <PopUp PrixChoisi={parseFloat(tab1) * 10 +
+                                        ((parseFloat(tab1) * 10* 5 + parseFloat(PrixPc)) / 100) + parseFloat(PrixPc)}
+                                        Partenaire={"BAMBA BAGAGE"}
+                                        email={"email"}
+                                        dest={"dest"}
+                                        poste={"poste"}
+                                        arriv={"arriv"}
+                                        radio2={"radio2"}
+                                        imageUri={"imageUri"}
+                                        ville={"ville"}
+                                        inputGroups={inputGroups}
+                                        categorie={categorie}
+                                        rue={"rue"}
+                                        moyen={"Aerien"}
+                                    />
+                                </button>
                             </div>
                             
                         </div>

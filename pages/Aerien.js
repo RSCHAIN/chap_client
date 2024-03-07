@@ -65,12 +65,13 @@ function Aerien() {
     ]);
     
     const Option = [
-        { id: "Textile", prix: 0 },
-        { id: "Aliment", prix: 0 },
+        { id: "Textile", prix: "12/k" },
+        { id: "Document", prix: "prix en fonction du nombre de feuille, 1 feuille = 5e" },
+        { id: "Aliment", prix: "12/k" },
         { id: "Ordinateur", prix: 50 },
-        { id: "Appareil electronique", prix: 0 },
+        { id: "Appareil electronique", prix: "12/k" },
         { id: "Bijou", prix: 0 },
-        { id: "Cosmetique", prix: 0 },
+        { id: "Cosmétique", prix: 0 },
     ];
 
     const handleAddGroup = (e) => {
@@ -250,11 +251,13 @@ function Aerien() {
                                 {inputGroups.map((group, groupId) => (
                                     <div key={groupId} className="mb-6">
                                         <div className="flex justify-between">
-                                            <textarea placeholder="Description ici..." cols="30" rows="3" onChange={e => setDescription(e.target.value)} className="sm:text-sm py-2 pl-4 border border-slate-800"></textarea>
-                                            <select onChange={(e) => {setCategorieChoice(e.target.value),console.log(e.target.value)}}  className="w-[20rem] p-3 focus:outline-none border border-cyan-200 lg:border-none bg-zinc-100">
+                                            <textarea placeholder="Description ici..." cols="30" rows="3" onChange={e => setDescription(e.target.value)} 
+                                            className="w-full border border-slate-800 resize-none focus:outline-none"></textarea>
+                                            <select onChange={(e) => {setCategorieChoice(e.target.value),console.log(e.target.value)}} 
+                                            className="w-full border border-slate-800 focus:outline-none lg:border-none">
                                                 {/* <option  value={"Epicerie"}>Epicerie</option> */}
                                                 {Option.map((data,index) =>(
-                                                       <option  value={`${data.id}`}>{data.id}</option>
+                                                       <option className='w-full' value={`${data.id}`}>{data.id}</option>
                                                 ) )}
                                              
                                                 {/* <option  value={"Cosmétic"}>Cosmétic</option> */}

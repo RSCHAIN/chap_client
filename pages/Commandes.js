@@ -229,7 +229,7 @@ function Cancel({ items, email }) {
        <Flex  w={"100%"} justifyContent={"space-between"}>
        <Text></Text>
           <Box mt={-2} display="flex" alignItems="baseline">
-            <Badge borderRadius="full" px="2" colorScheme="blue">
+            <Badge borderRadius="full" px="2" colorScheme="red">
               {items.status}
             </Badge>
           </Box>

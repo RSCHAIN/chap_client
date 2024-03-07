@@ -58,7 +58,7 @@ import TransitionExample from "@/components/forgetPassword";
 import Head from "next/head";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
 import { FacebookIcon } from "next-share";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 
 export default function Connexion() {
   const [show, setShow] = useState(false)
@@ -72,9 +72,11 @@ export default function Connexion() {
   const [isLagerThan768] = useMediaQuery("(min-width: 768px)");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [phoneNumber, setNumber] = useState("");
   const [address, setAddress] = useState("");
   const [code, setCode] = useState(" ");
+  const [ville, setVille] = useState(" ");
   const [verif, setVerif] = useState();
   const auth = getAuth(app);
   const router = useRouter();
@@ -182,15 +184,29 @@ export default function Connexion() {
 
 
 
-  const handleSaved = () => {
+  const handleSaved = async () => {
     secureLocalStorage.setItem("number", phoneNumber);
     secureLocalStorage.setItem("addresse", address);
     secureLocalStorage.setItem("po", code);
+    const _user = doc(db, `Utilisateurs/${email.toString()}`);
+    // structure the todo data
+    const Users = {
+      name:username,
+      number:phoneNumber,
+      address,
+      email,
+    
+      ville,
+      code,
+
+      state: "active",
+    };
+    await setDoc(_user, Users);
     toast({
       title: "Connexion établie", duration: 9000, status: "success"
     })
     router.push("/")
-    // router.reload()
+    router.reload()
     // handleRedirect()
   }
 
@@ -212,7 +228,39 @@ export default function Connexion() {
 
   }
 
-  const signinWithGoogle = () => { signInWithPopup(authentic, provider).then((res) => { secureLocalStorage.setItem("name", res.user.displayName), console.log("donnees google", res), router.push("/"), router.reload() }).catch((error) => { }) }
+
+  
+
+  const signinWithGoogle = () => {
+    signInWithPopup(authentic, provider).then(async (res) => {
+      secureLocalStorage.setItem("name", res.user.displayName)
+      setUsername(res.user.displayName)
+      setEmail(res.user.email)
+      const docRef = doc(db, "Utilisateurs/" + res.user.email);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        secureLocalStorage.setItem("surname", docSnap.data().surname);
+        // setVerified("verify")
+       router.push("/"); 
+       router.reload()
+
+      } else {
+       onOpen();
+      }
+      
+      toast({
+        title: "ACCES AUTORISE.",
+        description: "Bon Achat",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      })
+      
+      // console.log("donnees google", res.user.email)
+        
+    }).catch((error) => { })
+  }
   return (
     <>
       <Head>
@@ -401,6 +449,8 @@ export default function Connexion() {
               <Input type="number" onChange={(e) => (setNumber(e.target.value))} />
               <Text>Addresse :</Text>
               <Input type="text" onChange={(e) => (setAddress(e.target.value))} />
+              <Text>Ville:</Text>
+              <Input type="text" onChange={(e) => (setVille(e.target.value))} />
               <Text>Code postal:</Text>
               <Input type="number" maxLength={5} onChange={(e) => (setCode(e.target.value))} />
             </Box>

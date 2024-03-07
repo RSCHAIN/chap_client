@@ -45,6 +45,7 @@ import { useRouter } from "next/router";
 import { PayPalButtons } from "@paypal/react-paypal-js";
 import Head from "next/head";
 import { ChevronRightIcon } from "@chakra-ui/icons";
+import Sold from "@/components/DevisAddon/Sold";
 
 function Cancel2(id, state) {
   // console.log(id);
@@ -309,12 +310,12 @@ Référence: {id}</Text>
            
           </Box>   
 
-          <Box display="grid" height={"fit-content"}>
-              <Badge borderRadius="full" mb={2} px={6} bgColor="#ff914d" height={"fit-content"} width={"fit-content"} color={"white"} textTransform={"capitalize"}>
+          <Box display="grid" height={"fit-content"} width={"fit-content"}>
+              <Badge borderRadius="full" mb={2} px={2} bgColor="#ff914d" height={"fit-content"} width={"fit-content"} color={"white"} textTransform={"capitalize"}>
                 {items.status}
               </Badge>
          
-              <Badge borderRadius="full"  px={8} height={"fit-content"} width={"fit-content"}  bgColor={"#00bf63"} color={"white"}  textTransform={"capitalize"}>
+              <Badge borderRadius="full"  px={4} height={"fit-content"} width={"fit-content"}  bgColor={"#00bf63"} color={"white"}  textTransform={"capitalize"}>
                 {items.moyen}
               </Badge> 
                <Flex mt={2}>
@@ -328,8 +329,9 @@ Référence: {id}</Text>
            
           </Flex>
           <Flex justifyContent={"space-between"}  width={"full"} >
-            <Text  mx={2}>Arrivée estimé: {items.dateArrive} </Text>
-            <Text>Reglé en espèce </Text>
+            <Text  mx={2}>Arrivée estimé: </Text>
+{console.log(items.createdAt+2)}
+            {items.moyenDePaiement ? <Text>payé en {items.moyenDePaiment}</Text>:<Text> Erreur au niveau du paiement</Text> }
            <ChevronRightIcon fontSize={"30px"} color={"cyan.800"} fontWeight={700}/>
           </Flex>
            
@@ -404,7 +406,7 @@ Référence: {id}</Text>
                 
              <Center mt={5} justifyContent={"space-evenly"}>
               <Text bgColor={"cyan.800"} color={"white"} width={"130px"} px={4} py={2}  fontWeight={600} textAlign={"center"} borderRadius={"xl"} height={"fit-content"}>Modifier les informations</Text> 
-              <Button colorScheme={"red"} width={"130px"} px={4} py={2} height={"65px"} borderRadius={"xl"}>Annuler</Button> 
+              <Button colorScheme={"red"} width={"130px"} px={4} py={2} height={"65px"} borderRadius={"xl"} onClick={() => Cancel2(id, "Annulé")}>Annuler</Button> 
               </Center>
             </Box>
             

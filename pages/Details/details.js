@@ -277,7 +277,7 @@ export default function DisplayArticleDetails() {
                         <div className="container mx-auto lg:flex">
                             <div className="left w-full lg:w-2/6">
                                 <div className="img w-5/6 lg:">
-                                    <div className="img-main border border-cyan-500 w-full">
+                                    <div className="img-main w-full">{/** border border-cyan-500 */}
                                         <Image className='w-[60rem] ' src={ data.imageUrl[indexed]} alt="" />
                                     </div>
                                     <div className="img-cards flex items-center mt-10">
@@ -387,7 +387,7 @@ export default function DisplayArticleDetails() {
                         </div>
                     </div>
                     <div className="container mx-auto py-10">
-                        <h2>Produits recommandés</h2>
+                        <h2 className="text-3xl font-bold mb-10">Produits recommandés</h2>
                         <Favlist2 categorie={"Textile"} magasin={"magasin"} />
                     </div>
 

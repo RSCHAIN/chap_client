@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, SimpleGrid, Input, useToast, Button, useDisclosure, Box, Text, Center, Switch } from '@chakra-ui/react'
+import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, SimpleGrid, Input, useToast, Button, useDisclosure, Box, Text, Center, Switch, Stack, Radio, RadioGroup } from '@chakra-ui/react'
 import { authentic, db, db2, storage } from "@/FIREBASE/clientApp";
 import axios from 'axios';
 import { push, ref, serverTimestamp, set } from "@firebase/database";
@@ -8,8 +8,11 @@ import sha256 from 'crypto-js/sha256';
 import CryptoJS from "crypto-js";
 import secureLocalStorage from 'react-secure-storage';
 import { useRouter } from 'next/router';
+import { BraintreePayPalButtons, PayPalButtons } from '@paypal/react-paypal-js';
 
 function PopUp({ PrixChoisi, Partenaire, email, dest, need, poste, arriv, radio2, imageUri, ville, inputGroups, categorie, rue, moyen }) {
+
+
 
   const [numeroExp, setNumeroExp] = useState("")
   const [numeroDest, setNumeroDest] = useState("")
@@ -51,6 +54,8 @@ function PopUp({ PrixChoisi, Partenaire, email, dest, need, poste, arriv, radio2
   const [adresseDest, setAdresseDest] = useState("");
   const [posteDest, setPosteDest] = useState(0);
   const [emailDest, setEmailDest] = useState("");
+  const [reglement, setReglement] = useState("");
+  const [methodeDePaiement, setMethodeDePaiement] = useState("None");
 
   const loginUSer = async () => {
     await signInWithEmailAndPassword(authentic, email2, password)
@@ -151,6 +156,8 @@ function PopUp({ PrixChoisi, Partenaire, email, dest, need, poste, arriv, radio2
           villeDest,
           adresseDest,
           posteDest,
+          methodeDePaiement,
+
           numeroExpediteur: numeroExp,
           numeroDestinataire: numeroDest,
           nomDestinataire: nomDest,
@@ -162,10 +169,10 @@ function PopUp({ PrixChoisi, Partenaire, email, dest, need, poste, arriv, radio2
           retrait_depot: radio2,
           imageColis: imageUri,
           ville: ville,
-          status: "En cours",
+          status: "En attente",
           devisId: `${idDev}${hash}`,
           rue: rue,
-          createdAt:serverTimestamp(),
+          createdAt: serverTimestamp(),
           partenaire: Partenaire,
           total: PrixChoisi,
           produit: inputGroups,
@@ -194,7 +201,7 @@ function PopUp({ PrixChoisi, Partenaire, email, dest, need, poste, arriv, radio2
             rue: rue,
             postal: poste,
             ville: ville,
-
+            details: inputGroups,
             moyen: "Aerien",
             subject: `Demande de devis `,
             price: PrixChoisi,
@@ -218,13 +225,14 @@ function PopUp({ PrixChoisi, Partenaire, email, dest, need, poste, arriv, radio2
           posteDest,
           devisId: `${idDev}${hash}`,
           depart: dest,
+          methodeDePaiement,
           CodePostalDepart: poste,
           arrive: arriv,
           numeroExpediteur: numeroExp,
           numeroDestinataire: numeroDest,
           nomDestinataire: nomDest,
           prenomDestinataire: prenomDest,
-          createdAt:serverTimestamp(),
+          createdAt: serverTimestamp(),
           moyen: "Maritime",
           status: "En attente",
           contenant: categorie,
@@ -236,6 +244,7 @@ function PopUp({ PrixChoisi, Partenaire, email, dest, need, poste, arriv, radio2
           nomExpediteur: nom2,
           prenomExpediteur: prenom2,
           rue: rue,
+
           besoin: need,
           produit: inputGroups,
           emailDest
@@ -263,6 +272,7 @@ function PopUp({ PrixChoisi, Partenaire, email, dest, need, poste, arriv, radio2
               rue: rue,
               ville: ville,
               postal: poste,
+              details: inputGroups,
               depot: radio2,
               jour: "30 jours estimés",
               quantity: inputGroups.length,
@@ -435,11 +445,58 @@ function PopUp({ PrixChoisi, Partenaire, email, dest, need, poste, arriv, radio2
                 <input className='border p-2 shadow-[0_0_12px_rgba(0,0,0,0.2)]' type="number" maxLength={5} placeholder="95300" onChange={(e) => setPosteDest(e.target.value)} />
               </div>
             </div>
+            <Center color={"cyan.700"} fontFamily={"-apple-system"} fontWeight={"bold"} fontSize={"20px"} my={2}>Paiement</Center>
+            <Center>
+              <div className="dest flex">
+                <RadioGroup onChange={setMethodeDePaiement} value={methodeDePaiement}>
+                  <Stack direction='row'>
+                    <Radio value='Espèces'>Espèces</Radio>
+                    <Radio value='Paypal'>Paypal</Radio>
+
+                  </Stack>
+                </RadioGroup>
+              </div>
+            </Center>
+            <Center>
+              {methodeDePaiement == "Paypal" ? <Box width={"300px"}> <PayPalButtons
+
+                createOrder={(data, actions) => {
+                  return actions.order.create({
+                    purchase_units: [
+                      {
+                        amount: {
+                          value: `${PrixChoisi}`,
+                        },
+                      },
+                    ],
+                  });
+                }}
+                onApprove={(data, actions) => {
+                  return actions.order
+                    .capture()
+                    .then(async (details) => {
+                      const name =
+                        details.payer.name.given_name;
+                      setReglement("yes")
+                      toast({
+                        title: "Achat effectué avec succès",
+                        description: `Merci ${name} pour votre achat!!! `,
+                        status: "success",
+                        duration: 9000,
+                        isClosable: true,
+                      });
+                      // secureLocalStorage.removeItem("Cart");
+                      // await DeleteAll()
+                      // router.reload();
+                    });
+                }}
+              /></Box> : <></>}
+            </Center>
           </ModalBody>
           <ModalFooter>
             <div className='w-full flex justify-between'>
               <button className='bg-orange-600 font-bold uppercase text-[0.9rem] text-white py-3 px-6 rounded-md' variant='ghost' onClick={onClose}>Fermer</button>
-              <button className='bg-cyan-800 font-bold uppercase text-[0.9rem] text-white py-3 px-6 rounded-md' isDisabled={numeroExp.length < 8 || numeroDest.length < 8 || nomDest.length < 2 || prenomDest.length < 2} onClick={() => makeDevis()}>Valider</button>
+              <Button colorScheme={"cyan"} className='bg-cyan-800 font-bold uppercase text-[0.9rem] text-white py-3 px-6 rounded-md' isDisabled={numeroExp.length < 8 || numeroDest.length < 8 || nomDest.length < 2 || prenomDest.length < 2 || methodeDePaiement == "None" || (methodeDePaiement == "Paypal" && reglement == "")} onClick={() => makeDevis()}>Valider</Button>
             </div>
           </ModalFooter>
         </ModalContent>
