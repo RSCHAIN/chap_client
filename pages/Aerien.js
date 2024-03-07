@@ -257,7 +257,7 @@ function Aerien() {
                                             className="w-full border border-slate-800 focus:outline-none lg:border-none">
                                                 {/* <option  value={"Epicerie"}>Epicerie</option> */}
                                                 {Option.map((data,index) =>(
-                                                       <option className='w-full' value={`${data.id}`}>{data.id}</option>
+                                                       <option key={index} className='w-full' value={`${data.id}`}>{data.id}</option>
                                                 ) )}
                                              
                                                 {/* <option  value={"Cosmétic"}>Cosmétic</option> */}
