@@ -26,6 +26,20 @@ import secureLocalStorage from "react-secure-storage";
 
 function Maritime() {
 
+    const [poidsFromSession, setPoidsFromSession] = useState(0);
+
+    // sessionStorage.setItem("email", user.email);
+
+
+    // useEffect(() => {
+    //     // Access count value from session storage
+    //     let poids = sessionStorage.getItem("detailscolis");
+    //     console.log("oui poids ::: ",typeof poids);
+    //     let currentData = JSON.parse(poids);
+    //     console.log("oui currentData ::: ", currentData);
+    //     setPoidsFromSession(parseFloat(currentData[0]))
+    // }, []);
+
     const date = new Date();
     const dateDep = date.toLocaleDateString();
     const date2 = new Date();
@@ -142,6 +156,9 @@ function Maritime() {
     const [poste, setPoste] = useState("");
     const [rue, setRue] = useState("");
     const [email, setEmail] = useState("");
+    const [lieuReceptionColis, setlieuReceptionColis] = useState("");
+    const [description, setDescription] = useState("");
+    const [choixCarton, setchoixCarton] = useState("");
 
     
     const [adr, setAdr] = useState("");
@@ -274,7 +291,16 @@ function Maritime() {
         setEmail(sessionStorage.getItem("email") ?? "");
         setRue(secureLocalStorage.getItem("addresse") ?? "");
         setPoste(secureLocalStorage.getItem("po") ?? "");
+        setVille(secureLocalStorage.getItem("ville") ?? "")
+        setDest(secureLocalStorage.getItem("destination") ?? "")
+        setArriv(secureLocalStorage.getItem("arrivee") ?? "")
+        setlieuReceptionColis(secureLocalStorage.getItem("receptioncolis") ?? "")
+        setlieuReceptionColis(secureLocalStorage.getItem("receptionColis") ?? "")
+        setlieuReceptionColis(secureLocalStorage.getItem("receptionColis") ?? "")
+        setDest
     },[])
+
+
 
     return (
         <>
@@ -333,13 +359,13 @@ function Maritime() {
                                         rounded-sm sm:flex dark:text-white gap-4 lg:gap-0">
                                         <li class="w-full border border-gray-600">
                                             <div class="flex items-center ps-3">
-                                                <input id="horizontal-list-radio-license" type="radio" value="En agence" name="list-radio" class="w-4 h-4 text-cyan-800 bg-gray-100 border-gray-300 focus:ring-cyan-800 dark:focus:ring-cyantext-cyan-800 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"/>
+                                                <input id="horizontal-list-radio-license" type="radio" onClick={(e) => setlieuReceptionColis(e.target.value)} value="En agence" name="list-radio" class="w-4 h-4 text-cyan-800 bg-gray-100 border-gray-300 focus:ring-cyan-800 dark:focus:ring-cyantext-cyan-800 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"/>
                                                 <label for="horizontal-list-radio-license" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-800">Dépôt en agence</label>
                                             </div>
                                         </li>
                                         <li class="w-full border border-gray-600">
                                             <div class="flex items-center ps-3">
-                                                <input id="horizontal-list-radio-id" type="radio" value="Retrait à domicile" name="list-radio" class="w-4 h-4 text-cyan-800 bg-gray-100 border-gray-300 focus:ring-cyan-800 dark:focus:ring-cyantext-cyan-800 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"/>
+                                                <input id="horizontal-list-radio-id" type="radio" onClick={(e) => setlieuReceptionColis(e.target.value)} value="Retrait à domicile" name="list-radio" class="w-4 h-4 text-cyan-800 bg-gray-100 border-gray-300 focus:ring-cyan-800 dark:focus:ring-cyantext-cyan-800 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"/>
                                                 <label for="horizontal-list-radio-id" class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-800">Retrait à domicile</label>
                                             </div>
                                         </li>
@@ -349,8 +375,8 @@ function Maritime() {
                                 {inputGroups.map((group, groupId) => (
                                     <div key={groupId} className="mb-6">
                                         <div className="flex flex-col lg:flex-row justify-between gap-4 lg:gap-0">
-                                            <textarea name="" id="" placeholder="Description ici..." cols="30" rows="3" className="sm:text-sm py-2 pl-4 border border-slate-800"></textarea>
-                                            <select name="" id="" className="w-full lg:w-[20rem] p-3 focus:outline-none border border-slate-800 bg-zinc-100">
+                                            <textarea name="" id="" onChange={(e) => setDescription(e.target.value)} placeholder="Description ici..." cols="30" rows="3" className="sm:text-sm py-2 pl-4 border border-slate-800"></textarea>
+                                            <select name="" id="" onChange={(e) => setchoixCarton(e.target.value)} className="w-full lg:w-[20rem] p-3 focus:outline-none border border-slate-800 bg-zinc-100">
                                                 <option value="">Carton 200 L</option>
                                                 <option value="">Carton 200 L</option>
                                                 <option value="">Carton 200 L</option>

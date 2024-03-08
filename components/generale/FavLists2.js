@@ -20,6 +20,7 @@ import { FaTruckPickup } from "react-icons/fa";
 import { AiOutlineStar } from "react-icons/ai";
 import { onAuthStateChanged } from "firebase/auth";
 import { authentic, db, db2 } from "@/FIREBASE/clientApp";
+import Slider from "react-slick";
 
 const responsive = {
   superLargeDesktop: {
@@ -59,6 +60,15 @@ const responsive = {
     items: 2,
   },
 };
+
+var settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+};
+
 
 export default function Favlist2({ categorie, magasin }) {
   const [data, setData] = useState([]);
@@ -214,9 +224,9 @@ export default function Favlist2({ categorie, magasin }) {
   return (
     <>
       {data ? (
-        
-        <Box ml={[0, 0, 0, 5, 10]} width={["90%","90%","100%","100%","100%"]} my={5} >
-          <SimpleGrid columns={[2,2,2,4,4]} >
+         <>
+        <Box display={{base:"none",lg:"block"}} ml={[0, 0, 0, 5, 10]}   width={["90%","90%","100%","100%","100%"]} my={5} >
+          <SimpleGrid columns={[1,1,2,4,4]} >
             {Object.values(data).slice(0,4).map((data, index) => (
               <Box as="a"  key={index} href={`/Details/details?c=${tout}&m=${data.organisation}&p=${dataK[index]}`}  boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"} mx={[2, 2, 2, 5, 5]} mb={5} bgColor={"white"}>
               
@@ -340,7 +350,140 @@ export default function Favlist2({ categorie, magasin }) {
             ))}
           </SimpleGrid>
         </Box>
-        
+
+
+        <Box display={{base:"grid",lg:"none"}} width={"100%"} mt={[0,0,0,10,10]}  bgColor={"white"}>
+        <Carousel responsive={responsive} style={"marginLeft='20px'"}>
+            {Object.values(data).slice(0,6).map((data, index) => (
+              <Box as="a"  key={index} href={`/Details/details?c=${tout}&m=${data.organisation}&p=${dataK[index]}`}  boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"} mx={[2, 2, 2, 5, 5]} mb={5} bgColor={"white"}>
+              
+                <Box
+                 mx={2}
+                 key={data.id}
+                 maxW={"200px"}
+                 // height={"400px"}
+                 my={[0, 0, 0, 5, 5]}
+                 pl={5}
+                 borderRadius="lg"
+                 display={"grid"}
+                 pb={10}
+                 bgColor={"white"}
+                 boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"}
+
+                  // bgColor={"white"}
+                  // p={5}
+                  // pb={10}
+                  // key={index}
+                  // my={5}
+                  // height={"21.25rem"}
+                  // width={"13rem"}
+                >
+                  {data.etat == "disponible" ? (
+                    <Box
+                      mt={-3}
+                      mb={2}
+                      ml={-8}
+                      px={1}
+                      color={"white"}
+                    fontSize={"15px"}
+                      borderRadius={25}
+                      width={"fit-content"}
+                      height={"fit-content"}
+                      bgColor="#7ed957"
+                    >
+                      Disponible
+                    </Box>
+                  ) : (
+                    <Box
+                      mt={-3}
+                      mb={2}
+                      ml={-8}
+                      px={1}
+                      color={"white"}
+                    fontSize={"15px"}
+                      borderRadius={25}
+                      width={"fit-content"}
+                      height={"fit-content"}
+                      bgColor="#7ed957"
+                    >
+                      Rupture
+                    </Box>
+                  )}
+                  <Image
+                    height={["150px", "150px", "150px", "150px", "150px"]}
+                    width={["150px", "150px", "150px", "200px", "200px"]}
+                    src={data.imageUrl}
+                    alt={data.nom}
+                  />
+                  <Box height={"4.5rem"} mb={2}>
+                    <Text
+                      width={["150px", "150px", "150px", "200px", "200px"]}
+                      noOfLines={2}
+                      fontSize={"15px"}
+                      fontWeight={700}
+                    >
+                      {data.nom}
+                    </Text>
+                    <Text
+                    cursor={"pointer"}
+                     as="a"  href={`/otherContent/intermed1?categorie=${tout}&magasin=${data.organisation}`}
+                      fontWeight={"bold"}
+                      width={"fit-content"}
+                      color={"orange.900"}
+                      fontSize={"10px"}
+                    >
+                      {data.organisation}
+                    </Text>
+                  </Box>
+                  <Flex>
+                    <AiOutlineStar fontSize={"12px"} />
+                    <AiOutlineStar fontSize={"12px"} />
+                    <AiOutlineStar fontSize={"12px"} />
+                    <AiOutlineStar fontSize={"12px"} />
+                    <AiOutlineStar fontSize={"12px"} />
+                  </Flex>
+                  {data.duree == "Expedié en 24h" ? (
+                    <Text fontWeight={"thin"} fontSize={10}>
+                      Livré le {dateExp3}{" "}
+                    </Text>
+                  ) : (
+                    <Text fontSize={"12px"}>{data.duree} </Text>
+                  )}
+                  <Flex>
+                    <FaTruckPickup />
+                    <Tooltip
+                      label={`Prix superieur à 30€ Ou être en île-de-france`}
+                    >
+                      <Flex>
+                        <Text ml={2} fontSize={"10px"} fontWeight={700}>
+                          Livraison gratuite{" "}
+                        </Text>
+                        <Text fontSize={"15px"} mt={-1} color={"red"}>
+                          *
+                        </Text>
+                      </Flex>
+                    </Tooltip>
+                  </Flex>
+
+                  <Flex justifyContent={"space-between"} width={["90%","80%","100%","100%","100%"]}>
+                    <Text></Text>
+                    <Text
+                      color={"cyan.700"}
+                      fontFamily={"sans-serif"}
+                      fontWeight={"semi-bold"}
+                      fontSize={"20px"}
+                    >
+                      {data.prix}€
+                    </Text>
+                  </Flex>
+                </Box>
+               
+               
+              </Box>
+            ))}
+        </Carousel>
+        </Box>
+        </>
       ) : (
         <></>
       )}

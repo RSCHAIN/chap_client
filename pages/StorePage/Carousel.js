@@ -2,6 +2,8 @@ import { useState } from "react";
 import { BsFillArrowRightCircleFill, BsFillArrowLeftCircleFill } from "react-icons/bs";
 
 export default function Carousel({ slides }) {
+
+    
     let [current, setCurrent] = useState(0);
 
     let previousSlide = () => {

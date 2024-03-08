@@ -331,7 +331,7 @@ Référence: {id}</Text>
           <Flex justifyContent={"space-between"}  width={"full"} >
             <Text  mx={2}>Arrivée estimé: </Text>
 {console.log(items.createdAt+2)}
-            {items.moyenDePaiement ? <Text>payé en {items.moyenDePaiment}</Text>:<Text> Erreur au niveau du paiement</Text> }
+            {items.methodeDePaiement ? <Text>payé en {items.methodeDePaiment}</Text>:<Text> Erreur au niveau du paiement</Text> }
            <ChevronRightIcon fontSize={"30px"} color={"cyan.800"} fontWeight={700}/>
           </Flex>
            
