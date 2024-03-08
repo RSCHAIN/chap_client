@@ -87,7 +87,7 @@ const horaire =["12:00 - 14:00","14:00 - 16:00","16:00 - 18:00","18:00 - 20:00",
 
     return(<>
      <Button colorScheme='blue' my={5}  onClick={onOpen} mr={3} py={2} px={4} >
-                            Reserver un jour
+                            Reserver un créneau
                         </Button>
 
    <Modal isOpen={isOpen} onClose={onClose} >

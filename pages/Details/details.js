@@ -358,12 +358,12 @@ export default function DisplayArticleDetails() {
                                     <div className="w-3/6">
                                         <h2 className='font-bold text-xl'>Taille</h2>
                                         <div className="flex justify-between items-center mt-4 -mx-4">
-                                            <span className='bg-cyan-800 w-11 h-8 text-white rounded-full text-center py-1 ml-1 hover:opacity-80 cursor-pointer'>S</span>
-                                            <span className='bg-cyan-800 w-11 h-8 text-white rounded-full text-center py-1 ml-1 hover:opacity-80 cursor-pointer'>M</span>
-                                            <span className='bg-cyan-800 w-11 h-8 text-white rounded-full text-center py-1 ml-1 hover:opacity-80 cursor-pointer'>L</span>
-                                            <span className='bg-cyan-800 w-11 h-8 text-white rounded-full text-center py-1 ml-1 hover:opacity-80 cursor-pointer'>XL</span>
-                                            <span className='bg-cyan-800 w-11 h-8 text-white rounded-full text-center py-1 ml-1 hover:opacity-80 cursor-pointer'>2XL</span>
-                                            <span className='bg-cyan-800 w-11 h-8 text-white rounded-full text-center py-1 ml-1 hover:opacity-80 cursor-pointer'>3XL</span>
+                                            <button onClick={""} className='bg-cyan-800 w-11 h-8 text-white rounded-full text-center py-1 ml-1 hover:opacity-80 cursor-pointer focus:bg-white focus:border focus:border-cyan-800 focus:text-cyan-800'>S</button>
+                                            <button onClick={""} className='bg-cyan-800 w-11 h-8 text-white rounded-full text-center py-1 ml-1 hover:opacity-80 cursor-pointer focus:bg-white focus:border focus:border-cyan-800 focus:text-cyan-800'>M</button>
+                                            <button onClick={""} className='bg-cyan-800 w-11 h-8 text-white rounded-full text-center py-1 ml-1 hover:opacity-80 cursor-pointer focus:bg-white focus:border focus:border-cyan-800 focus:text-cyan-800'>L</button>
+                                            <button onClick={""} className='bg-cyan-800 w-11 h-8 text-white rounded-full text-center py-1 ml-1 hover:opacity-80 cursor-pointer focus:bg-white focus:border focus:border-cyan-800 focus:text-cyan-800'>XL</button>
+                                            <button onClick={""} className='bg-cyan-800 w-11 h-8 text-white rounded-full text-center py-1 ml-1 hover:opacity-80 cursor-pointer focus:bg-white focus:border focus:border-cyan-800 focus:text-cyan-800'>2XL</button>
+                                            <button onClick={""} className='bg-cyan-800 w-11 h-8 text-white rounded-full text-center py-1 ml-1 hover:opacity-80 cursor-pointer focus:bg-white focus:border focus:border-cyan-800 focus:text-cyan-800'>3XL</button>
                                         </div>
                                     </div>
                                     : null}
@@ -387,7 +387,7 @@ export default function DisplayArticleDetails() {
                         </div>
                     </div>
                     <div className="container mx-auto py-10">
-                        <h2 className="text-3xl font-bold mb-10">Produits recommandés</h2>
+                        <h2 className="text-xl font-bold mb-10">Produits recommandés</h2>
                         <Favlist2 categorie={"Textile"} magasin={"magasin"} />
                     </div>
 

@@ -581,14 +581,33 @@ export default function HistDev() {
               <Tabs isManual isLazy  w={"100% "}>
                 <Center>
                 <TabList>
+                <Tab>Historique</Tab>
                   <Tab>Devis en cours</Tab>
                   <Tab>Devis validés</Tab>
-                  <Tab>Historique</Tab>
+       
                   <Tab>Devis annulés</Tab>
                 </TabList>
                 </Center>
               
                 <TabPanels>
+                <TabPanel bgColor={"#f3f3f3"}>
+                    
+                    <Center>
+                    <Box>
+                      {commandeListe ? (
+                        Object.values(commandeListe).map((items,index) => (
+                          <Regle
+                            key={items.key}
+                            items={items}
+                            id={id[index]}
+                            email={email}
+                          />
+                        ))
+                      ) : (
+                        <Box>Aucune donnee</Box>
+                      )}</Box>
+                    </Center>
+                  </TabPanel>
                   <TabPanel bgColor={"#f3f3f3"} >
                   <Center>
                     <Box>
@@ -627,24 +646,7 @@ export default function HistDev() {
                       )}</Box>
                     </Center>
                   </TabPanel>
-                  <TabPanel bgColor={"#f3f3f3"}>
-                    
-                    <Center>
-                    <Box>
-                      {commandeListe ? (
-                        Object.values(commandeListe).map((items,index) => (
-                          <Regle
-                            key={items.key}
-                            items={items}
-                            id={id[index]}
-                            email={email}
-                          />
-                        ))
-                      ) : (
-                        <Box>Aucune donnee</Box>
-                      )}</Box>
-                    </Center>
-                  </TabPanel>
+                 
                   <TabPanel bgColor={"#f3f3f3"}>
                   <Center>
                     <Box>

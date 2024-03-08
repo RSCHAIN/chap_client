@@ -62,6 +62,16 @@ function QuoteConfirmation() {
 
 
     const [poidsFromSession, setPoidsFromSession] = useState(0);
+    const [detailsColisFromSession, setDetailscolisFromSession] = useState("");
+    const [receptionColisFromSession, setReceptionColis] = useState("");
+    const [descriptionColisFromSession, setDescriptionColisFromSession] = useState("");
+    const [arriveeFromSession, setArriveeFromSession] = useState("");
+    const [destFromSession, setDestFromSession] = useState("");
+    const [emailFromSession, setEmailFromSession] = useState("");
+    const [categorieChoix, setCategorieChoix] = useState("");
+    const [ville, setVille] = useState("");
+    const [addpostal, setAddpostal] = useState("");
+    
 
     useEffect(() => {
         // Access count value from session storage
@@ -70,6 +80,51 @@ function QuoteConfirmation() {
         let currentData = JSON.parse(poids);
         console.log("oui currentData ::: ", currentData);
         setPoidsFromSession(parseFloat(currentData[0]))
+
+        // let detailsColis = sessionStorage.getItem("detailscolis");
+        // console.log("oui poids ::: ",typeof detailsColis);
+        // let currentDetailsColi = JSON.parse(detailsColis);
+        // setDetailscolisFromSession()
+
+        let reception = sessionStorage.getItem("receptioncolis");
+        console.log("oui poids ::: ",typeof reception);
+        let currentReception = JSON.parse(reception);
+        setReceptionColis(currentReception)
+
+        let description = sessionStorage.getItem("descriptioncolis");
+        console.log("oui poids ::: ",typeof description);
+        let currentDescription = JSON.parse(description);
+        setDescriptionColisFromSession(currentDescription)
+
+        let arrivee = sessionStorage.getItem("arrivee");
+        console.log("oui poids ::: ",typeof arrivee);
+        let currentarrivee = JSON.parse(arrivee);
+        setArriveeFromSession(currentarrivee)
+
+        let destination = sessionStorage.getItem("dest");
+        console.log("oui poids ::: ",typeof destination);
+        let currentDestination = JSON.parse(destination);
+        setDestFromSession(currentDestination)
+
+        let email = sessionStorage.getItem("email");
+        console.log("oui email ::: ",typeof email);
+        let currentEmail = JSON.parse(email);
+        setEmailFromSession(currentEmail)
+
+        let categoriechoix = sessionStorage.getItem("categoriechoix");
+        console.log("oui poids ::: ",typeof poids);
+        let currentCategoriechoix = JSON.parse(categoriechoix);
+        setCategorieChoix(currentCategoriechoix)
+
+        let addpostal = sessionStorage.getItem("addpostal");
+        console.log("oui addpostal ::: ",typeof addpostal);
+        let currentAddpostal = JSON.parse(addpostal);
+        setVille(currentAddpostal)
+
+        let ville = sessionStorage.getItem("ville");
+        console.log("oui poids ::: ",typeof poids);
+        let currentVille = JSON.parse(ville);
+        setAddpostal(currentVille)
     }, []);
 
     return (
@@ -201,15 +256,16 @@ function QuoteConfirmation() {
                                     <PopUp PrixChoisi={parseFloat(tab1) * 10 +
                                         ((parseFloat(tab1) * 10* 5 + parseFloat(PrixPc)) / 100) + parseFloat(PrixPc)}
                                         Partenaire={"BAMBA BAGAGE"}
-                                        email={"email"}
-                                        dest={"dest"}
-                                        poste={"poste"}
-                                        arriv={"arriv"}
-                                        radio2={"radio2"}
+                                        email={emailFromSession}
+                                        dest={destFromSession}
+                                        poste={addpostal}
+                                        arriv={arriveeFromSession}
+                                        radio2={receptionColisFromSession}
                                         imageUri={"imageUri"}
-                                        ville={"ville"}
+                                        ville={ville}
                                         inputGroups={inputGroups}
-                                        categorie={categorie}
+                                        // categorie={categorie}
+                                        categorie={categorieChoix}
                                         rue={"rue"}
                                         moyen={"Aerien"}
                                     />
@@ -251,15 +307,15 @@ function QuoteConfirmation() {
                                     <PopUp PrixChoisi={parseFloat(tab1) * 10 +
                                         ((parseFloat(tab1) * 10* 5 + parseFloat(PrixPc)) / 100) + parseFloat(PrixPc)}
                                         Partenaire={"BAMBA BAGAGE"}
-                                        email={"email"}
-                                        dest={"dest"}
-                                        poste={"poste"}
-                                        arriv={"arriv"}
-                                        radio2={"radio2"}
+                                        email={emailFromSession}
+                                        dest={destFromSession}
+                                        poste={addpostal}
+                                        arriv={arriveeFromSession}
+                                        radio2={receptionColisFromSession}
                                         imageUri={"imageUri"}
-                                        ville={"ville"}
+                                        ville={ville}
                                         inputGroups={inputGroups}
-                                        categorie={categorie}
+                                        categorie={categorieChoix}
                                         rue={"rue"}
                                         moyen={"Aerien"}
                                     />

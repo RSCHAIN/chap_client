@@ -222,7 +222,9 @@ function Store() {
                                 // <Link href={`/Details/details?c=${"Epicerie"}&m=${item.organisation}&p=${Object.keys(epice)[index]}`}></Link>
                                 // as={Link} 
                                 // href={"/StorePage/Store"}
-                                <Link href={`/Details/details?c=${"Epicerie"}&m=${item.organisation}&p=${Object.keys(epice)[index]}`} key={index} className="w-full lg:w-1/5 px-4 mt-6">
+                                <Link _hover={{
+                                    textDecor:"none"
+                                }} href={`/Details/details?c=${"Epicerie"}&m=${item.organisation}&p=${Object.keys(epice)[index]}`} key={index} className="w-full lg:w-1/5 px-4 mt-6">
                                     <div className="bg-white p-4 my-4 lg:my-0 flex flex-col items-center relative">
                                         <div className="h-20 w-20 rounded-full mb-2">
                                             <img className="h-20 w-20" src={item.imageUrl} alt="" />
@@ -245,7 +247,7 @@ function Store() {
                                         </div>
                                         <span className="self-end mb-2 text-xl lg:text-2xl text-red-600 font-bold">{item.prix}€</span>
                                         <div className="w-full mt-4 flex justify-between">
-                                            <Link href={`/otherContent/intermed1?categorie=${"Epicerie"}&magasin=${item.organisation}`}
+                                            <Link href={`/otherContent/intermed1?categorie=${"Epicerie"}&magasin=${item.organisation}`} color={"white"}
                                             className="text-white font-bold bg-amber-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl mx-2">Commerce</Link>
                                             <button className="text-white font-bold bg-cyan-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl mx-2" onClick={()=>AddToCart(item, Object.keys(epice)[index])}>+Ajouter</button>
                                         </div>

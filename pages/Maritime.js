@@ -159,6 +159,7 @@ function Maritime() {
     const [lieuReceptionColis, setlieuReceptionColis] = useState("");
     const [description, setDescription] = useState("");
     const [choixCarton, setchoixCarton] = useState("");
+    const [valeurEnEuro, setValeurEnEuro] = useState("");
 
     
     const [adr, setAdr] = useState("");
@@ -295,9 +296,9 @@ function Maritime() {
         setDest(secureLocalStorage.getItem("destination") ?? "")
         setArriv(secureLocalStorage.getItem("arrivee") ?? "")
         setlieuReceptionColis(secureLocalStorage.getItem("receptioncolis") ?? "")
-        setlieuReceptionColis(secureLocalStorage.getItem("receptionColis") ?? "")
-        setlieuReceptionColis(secureLocalStorage.getItem("receptionColis") ?? "")
-        setDest
+        setDescription(secureLocalStorage.getItem("descriptioncolis") ?? "")
+        setchoixCarton(secureLocalStorage.getItem("choixcarton") ?? "")
+        setValeurEnEuro(secureLocalStorage.getItem("valeureneuro") ?? "")
     },[])
 
 
@@ -381,7 +382,7 @@ function Maritime() {
                                                 <option value="">Carton 200 L</option>
                                                 <option value="">Carton 200 L</option>
                                             </select>
-                                            <input type="text" placeholder="Valeur en euro" className="w-full lg:w-[20rem] p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm"/>
+                                            <input type="text" onChange={(e) => setValeurEnEuro(e.target.value)} placeholder="Valeur en euro" className="w-full lg:w-[20rem] p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm"/>
                                             <button className="rounded-md text-cyan-800">
                                                 <div className="">
                                                     {groupId === 0 ? (
