@@ -390,8 +390,8 @@ export default function Resto({ categorie, magasin }) {
   const [couvert, setCouvert] = useState("")
   const [numero, setNumero] = useState("")
   const [detailsLink, setDetailsLink] = useState("")
-
-
+  const [ShowProd,setShowProd] = useState("none")
+const [ShowLoad,setShowLoad] = useState("block")
 
   ///Variable contenant des données
   const [feed, setFeed] = useState([]);
@@ -423,7 +423,7 @@ export default function Resto({ categorie, magasin }) {
       const cartData = cartDoc.data();
       // console.log(cartData)
       const itemIndex = Object.values(cartData).find((item) => item.productId === productKey);
-      if (itemIndex !== -1) {
+      if (itemIndex > -1) {
         await updateDoc(cartDoc.ref, {
           productId: productKey,
           currentUID: uid,
@@ -434,7 +434,7 @@ export default function Resto({ categorie, magasin }) {
           orderName: product.nom,
           orderPrice: product.prix,
           orderOrganisation: product.organisation,
-          orderQte: querySnapshot.docs[0].data().quantity + 1,
+          orderQte: querySnapshot.docs[0].data().orderQte + 1,
           email: email
         });
       }
@@ -474,14 +474,19 @@ export default function Resto({ categorie, magasin }) {
       } else {
         try {
           await Exist(productKey, user.email, user.uid, product);
-          router.reload()
-          toast({
+         toast({
             title: "Produit ajouté!!!",
 
             status: "success",
             duration: 9000,
             isClosable: true,
           });
+          
+          setTimeout(function() {
+            router.reload();
+          }, 2000);
+          
+         
         } catch (error) {
 
         }
@@ -592,6 +597,17 @@ export default function Resto({ categorie, magasin }) {
   const dateExp4 = date3.setDate(date3.getDate() + 2);
   const dateExp5 = new Date(dateExp4);
   const dateExp6 = dateExp5.toLocaleDateString();
+
+
+
+  setTimeout(function() {
+    setShowProd("block")
+    setShowLoad("none")
+  }, 10000);
+
+
+
+
   return (
     <Box bgColor={"#f3f3f3"}>
       <InputBar />
@@ -724,156 +740,172 @@ export default function Resto({ categorie, magasin }) {
             </>
           )
           :
-          produit.length != 0 ? (
-            <Box bgColor={"#f3f3f3"} mx={[2,2,2,20,20]}>
-              {" "}
-              <Center>
-              <Box pl={["0%", "0%", "5%", "5%", "5%"]} bgColor={"#f3f3f3"}>
-                <Heading fontSize={"20px"}  >
-                  Les produits{" "}
-                </Heading>
-                <Flex mt={5}  >
-
-                  <Center >
-                    <SimpleGrid columns={[2, 2, 3, 3, 4]} >
-                      {produit.map((data, key) => (
-                        <Box key={key} boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"} mx={[2, 2, 2, 5, 5]} mb={5} bgColor={"white"}>
-                          <Link key={key} _hover={{
-                            textDecoration: "none"
-                          }}
-                            href={`/Details/details?c=${categorie}&m=${data.organisation}&p=${produitKeys[key]}`}
-                            onClick={() => {
-                              
-                              secureLocalStorage.setItem("items", data)
-                              secureLocalStorage.setItem("i", produitKeys[key])
-                              
-
-                            }}>
-                            <Box
-                              mx={5}
-                              key={data.id}
-                              maxW={"fit-content"}
-                              // height={"400px"}
-                              my={[0, 0, 0, 5, 5]}
-                              borderRadius="lg"
-                              display={"grid"}
-                              pb={10}
-                            // border={"1px solid black"}
-                            >
-                              <Box
-                                width={["130px", "200px", "200px", "200px", "200px"]}
-                                height={"fit-content"}
-                              // pt={10}
-
-
-                              >
-                                <Image
-                                  src={data.imageUrl}
-                                  alt={data.nom}
-                                  width={["130px", "190px", "190px", "200px", "200px"]}
-                                  height={["110px", "160px", "160px", "200px", "200px"]}
-                                  maxH={["120px", "160px", "160px", "200px", "200px"]}
-                                  maxW={["140px", "200px", "200px", "200px", "200px"]}
-                                // borderRadius={"25px"}
-                                />
-                              </Box>
-
-                              <Box >
-                                <Box
-                                  height={"fit-content"}
-
-                                  fontWeight="semibold"
-
-                                  lineHeight="tight"
-
-                                  width={["150px", "190px", "190px", "200px", "200px"]}
-
-                                  display={"grid"}
-                                  justifyContent={"space-between"}
-                                >
-                                  <Box width={"100%"} >
-                                    <Text width={["150px", "150px", "150px", "200px", "200px"]} noOfLines={3} fontSize={"15px"} my={2}>
-                                      {data.nom}
-                                    </Text>
-                                    <Box mb={2}>
-                                      <Star id={produitKeys[key]} data={feed} />
-                                      {data.duree == "Expedié en 24h" ? <Text className={"Exp"} my={2}>Livré le {dateExp3} </Text> : <Text className={"Exp"} my={2}>Livré le {dateExp6} </Text>}
-                                      <Flex>
-                                        <Box mt={2}>
-                                          <BsCashCoin />
-                                        </Box>
-                                        <Text ml={2} mt={-1} fontSize={"12px"} my={2}>Payez en espèce</Text>
-                                      </Flex>
-                                    </Box>
-
-                                  </Box>
-
-                                </Box>
-
-                                <Flex>
-
-                                </Flex>
-                                <Flex  >
-                                  <FaTruckPickup />
-                                  <Tooltip label={`Livraison à partir de 2,99€`} >
-                                    <Flex>
-                                      <Text ml={2} fontSize={"10px"} fontWeight={700}>Livraison partout en France </Text>
-                                      <Text fontSize={"15px"} mt={-1} color={"red"}>*</Text>
-                                    </Flex>
-                                  </Tooltip>
-                                </Flex>
-                                <Flex width={"90%"} justifyContent={"space-between"}>
-                                  <Text></Text>
-                                  <Box textColor={"blue"} color={"blue.400"} fontWeight={"semibold"}>
-                                    {data.prix}
-                                    <Box as="span" fontSize="sm">
-                                      €
-                                    </Box>
-                                  </Box>
-                                </Flex>
-
-
-
-
-                              </Box>
-                            </Box>
-                          </Link>
-                          <Flex mb={5} justifyContent={"space-between"} width={"95%"}>
-                            <Text ></Text>
-                            <Button
-
-                              bgColor={"cyan.700"}
-                              // borderRadius={"66px"}
-                              width={"fit-content"}
-                              as={"a"}
+          <>
+          <Box display={ShowProd}>
+          {
+             produit.length != 0 ? (
+              <Box bgColor={"#f3f3f3"} mx={[2,2,2,20,20]}>
+                {" "}
+                <Center>
+                <Box pl={["0%", "0%", "5%", "5%", "5%"]} bgColor={"#f3f3f3"}>
+                  <Heading fontSize={"20px"} id="produit"  >
+                    Les produits{" "}
+                  </Heading>
+                  <Flex mt={5}  >
+  
+                    <Center >
+                      <SimpleGrid columns={[2, 2, 3, 3, 4]} >
+                        {produit.map((data, key) => (
+                          <Box key={key} boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"} mx={[2, 2, 2, 5, 5]} mb={5} bgColor={"white"}>
+                            <Link key={key} _hover={{
+                              textDecoration: "none"
+                            }}
+                              href={`/Details/details?c=${categorie}&m=${data.organisation}&p=${produitKeys[key]}`}
                               onClick={() => {
-                                AddToCart(data, produitKeys[key])
-
-                              }}
-                              color={"white"}
-                              _hover={{
-                                backgroundColor: " cyan.900",
-                                color: "white ",
-                              }}
-                              leftIcon={<IoMdAddCircle />}
-                            >
-                              {" "}
-                              Ajouter
-                            </Button>
-                          </Flex>
-                        </Box>
-                      ))}
-                    </SimpleGrid>
-                  </Center>
-               
-                </Flex>
+                                
+                                secureLocalStorage.setItem("items", data)
+                                secureLocalStorage.setItem("i", produitKeys[key])
+                                
+  
+                              }}>
+                              <Box
+                                mx={5}
+                                key={data.id}
+                                maxW={"fit-content"}
+                                // height={"400px"}
+                                my={[0, 0, 0, 5, 5]}
+                                borderRadius="lg"
+                                display={"grid"}
+                                pb={10}
+                              // border={"1px solid black"}
+                              >
+                                <Box
+                                  width={["130px", "200px", "200px", "200px", "200px"]}
+                                  height={"fit-content"}
+                                // pt={10}
+  
+  
+                                >
+                                  <Image
+                                    src={data.imageUrl}
+                                    alt={data.nom}
+                                    width={["130px", "190px", "190px", "200px", "200px"]}
+                                    height={["110px", "160px", "160px", "200px", "200px"]}
+                                    maxH={["120px", "160px", "160px", "200px", "200px"]}
+                                    maxW={["140px", "200px", "200px", "200px", "200px"]}
+                                  // borderRadius={"25px"}
+                                  />
+                                </Box>
+  
+                                <Box >
+                                  <Box
+                                    height={"fit-content"}
+  
+                                    fontWeight="semibold"
+  
+                                    lineHeight="tight"
+  
+                                    width={["150px", "190px", "190px", "200px", "200px"]}
+  
+                                    display={"grid"}
+                                    justifyContent={"space-between"}
+                                  >
+                                    <Box width={"100%"} >
+                                      <Text width={["150px", "150px", "150px", "200px", "200px"]} noOfLines={3} fontSize={"15px"} my={2}>
+                                        {data.nom}
+                                      </Text>
+                                      <Box mb={2}>
+                                        <Star id={produitKeys[key]} data={feed} />
+                                        {data.duree == "Expedié en 24h" ? <Text className={"Exp"} my={2}>Livré le {dateExp3} </Text> : <Text className={"Exp"} my={2}>Livré le {dateExp6} </Text>}
+                                        <Flex>
+                                          <Box mt={2}>
+                                            <BsCashCoin />
+                                          </Box>
+                                          <Text ml={2} mt={-1} fontSize={"12px"} my={2}>Payez en espèce</Text>
+                                        </Flex>
+                                      </Box>
+  
+                                    </Box>
+  
+                                  </Box>
+  
+                                  <Flex>
+  
+                                  </Flex>
+                                  <Flex  >
+                                    <FaTruckPickup />
+                                    <Tooltip label={`Livraison à partir de 2,99€`} >
+                                      <Flex>
+                                        <Text ml={2} fontSize={"10px"} fontWeight={700}>Livraison partout en France </Text>
+                                        <Text fontSize={"15px"} mt={-1} color={"red"}>*</Text>
+                                      </Flex>
+                                    </Tooltip>
+                                  </Flex>
+                                  <Flex width={"90%"} justifyContent={"space-between"}>
+                                    <Text></Text>
+                                    <Box textColor={"blue"} color={"blue.400"} fontWeight={"semibold"}>
+                                      {data.prix}
+                                      <Box as="span" fontSize="sm">
+                                        €
+                                      </Box>
+                                    </Box>
+                                  </Flex>
+  
+  
+  
+  
+                                </Box>
+                              </Box>
+                            </Link>
+                            <Flex mb={5} justifyContent={"space-between"} width={"95%"}>
+                              <Text ></Text>
+                              <Button
+  
+                                bgColor={"cyan.700"}
+                                // borderRadius={"66px"}
+                                width={"fit-content"}
+                                as={"a"}
+                                onClick={() => {
+                                  AddToCart(data, produitKeys[key])
+  
+                                }}
+                                color={"white"}
+                                _hover={{
+                                  backgroundColor: " cyan.900",
+                                  color: "white ",
+                                }}
+                                leftIcon={<IoMdAddCircle />}
+                              >
+                                {" "}
+                                Ajouter
+                              </Button>
+                            </Flex>
+                          </Box>
+                        ))}
+                      </SimpleGrid>
+                    </Center>
+                 
+                  </Flex>
+                </Box>
+                </Center>
+                
               </Box>
-              </Center>
-              
-            </Box>
-          ) : (
-            <></>
-          )
+            ) : (
+              <></>
+            )
+          }
+          </Box>
+          <Box display={ShowLoad}>
+            <Center>
+            <img width="50" height="50" src="https://img.icons8.com/ios/50/000000/iphone-spinner--v2.gif" alt="iphone-spinner--v2"/>
+            </Center>
+            <Center>
+              <Text>Chargement ...</Text>
+            </Center>
+          </Box>
+         
+          </>
+         
 
         }
 
@@ -884,6 +916,7 @@ export default function Resto({ categorie, magasin }) {
         <Favlist2 categorie={categorie} magasin={magasin} />
       </Box>
       </Center>
+<Box id="avis">
       <Box display={["none","none","none","block","block"]}>
       <AvisMag mag={magasin} email={mag.email} />
       </Box>
@@ -922,6 +955,7 @@ export default function Resto({ categorie, magasin }) {
       <AvisMag mag={magasin} email={mag.email} />
       <AffichageComM data={mag}/>
       </Box>
+</Box>
       <FooterR />
 
 

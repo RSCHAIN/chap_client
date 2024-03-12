@@ -109,7 +109,7 @@ export default function Favlist2({ categorie, magasin }) {
           orderName: product.nom,
           orderPrice: product.prix,
           orderOrganisation: product.organisation,
-          orderQte: querySnapshot.docs[0].data().quantity + 1,
+          orderQte: querySnapshot.docs[0].data().orderQte + 1,
           email: email,
         });
       }

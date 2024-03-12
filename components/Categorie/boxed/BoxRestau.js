@@ -41,11 +41,11 @@ function BoxRestau({
         <Flex width={"100%"} justifyContent={"space-between"} >  
       <Heading  width={"fit-content"}>{mag.organisation}</Heading>
       <Flex >
-          <Button bgColor={"transparent"} _hover={{
-              bgColor:'transparent2'
+          <Button bgColor={"transparent"} as={"a"} href='#avis' _hover={{
+              bgColor:'transparent',textDecor:"none"
           }} leftIcon={<FaEdit />}>Avis</Button>
             <Button bgColor={"transparent"} _hover={{
-              bgColor:'transparent2'
+              bgColor:'transparent',textDecor:"none"
           }} leftIcon={<MdIosShare />}>Partager</Button>
       </Flex>
       </Flex>
@@ -82,7 +82,7 @@ function BoxRestau({
                 {mag.number}
               </Text>
             </Flex>
-            <Flex mb={2}  mt={2}  ml={5} as={Link} href={`tel:${mag.number}`}>
+            { categorie == "Restaurant" ?    <Flex mb={2}  mt={2}  ml={5} as={Link} href={"#carte"}>
               <MdFastfood fontSize={20} />
               <Text
 
@@ -93,7 +93,25 @@ function BoxRestau({
               >
                 Carte
               </Text>
-            </Flex>      
+            </Flex>     
+            :
+
+              <Flex mb={2}  mt={2}  mx={5} as={"a"} href={"#produit"} >
+             
+<img width="20" height="20" src="https://img.icons8.com/external-itim2101-fill-itim2101/64/external-Product-business-and-financial-itim2101-fill-itim2101.png" alt="external-Product-business-and-financial-itim2101-fill-itim2101"/>
+
+
+              <Text
+
+                fontSize={"15px"}
+                fontWeight={"medium"}
+                ml={2}
+                color={"green"}
+              >
+                Produits
+              </Text>
+            </Flex>   }
+           
 
             {(mag.siteWeb && mag.siteWeb != "undefined" && mag.siteWeb != "non defini" && mag.siteWeb != "Non défini" && mag.siteWeb != "non défini" && mag.siteWeb != "Non defini") ?
               <Flex mb={2} cursor={"pointer"} display={{ base: "flex", lg: "flex" }} mt={2}   ml={5} as={Link} isExternal href={`${mag.siteWeb}`} >
@@ -266,18 +284,26 @@ function BoxRestau({
           <Text>Appeler</Text>
         </Box>
 
-        <Box    _hover={{textDecoration:"none"}}>
+        <Box    _hover={{textDecoration:"none"}} as='a' href='#avis'>
               <Box >
           <TfiPencil fontSize={"20px"}/>
           </Box>
           <Text>Avis</Text>
         </Box>
-        <Box   _hover={{textDecoration:"none"}}>
-              <Box width={"fit-content"} height={"fit-content"}  ml={2}>
+       { categorie == "Restaurant" ?  <Box   _hover={{textDecoration:"none"}}>
+              <Box width={"fit-content"} height={"fit-content"}  as='a' href='#carte'  ml={2}>
           <MdFastfood   fontSize={"20px"}/>
           </Box>
           <Text>Menu</Text>
-        </Box>
+        </Box>  : <Box   _hover={{textDecoration:"none"}} as='a' href='#produit'>
+          <Center>
+              <Box width={"fit-content"} height={"fit-content"}  ml={2}>
+              <img width="20" height="20" src="https://img.icons8.com/external-itim2101-fill-itim2101/64/external-Product-business-and-financial-itim2101-fill-itim2101.png" alt="external-Product-business-and-financial-itim2101-fill-itim2101"/>
+          </Box>
+          </Center>
+          <Text>Les Produits</Text>
+        </Box> }
+       
         {(mag.siteWeb && mag.siteWeb != "undefined" && mag.siteWeb != "non defini"&& mag.siteWeb != "Non défini"&& mag.siteWeb != "") ?
              
                  <Box  as={Link} isExternal href={`${mag.siteWeb}`} _hover={{textDecoration:"none"}}>

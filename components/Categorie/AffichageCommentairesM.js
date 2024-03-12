@@ -12,7 +12,7 @@ function AffichageComM({data}) {
     <Box>
         <Flex mx={10} mt={10} onClick={onToggle} justifyContent={'space-between'}  borderBottom={"1px solid gray"}>
         <Flex >
-    <Text>Avis  </Text>
+    <Text mr={2}>Avis  </Text>
     <StarM2 data={data.feedback} />
     </Flex>
 

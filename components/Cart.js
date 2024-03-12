@@ -428,7 +428,7 @@ export default function Carte() {
                                         <div className="flex justify-between">
                                             <div className="mr-4 border">
                                                 <button className="rounded-l-md px-2 py-1 border-r bg-white text-xl font-bold" onClick={() => Decrement(data.productId)}>-</button>
-                                                <span className=" px-2 py-1">{data.orderQte}</span>
+                                                <span className=" px-2 py-1">{data.orderQte == NaN ? 1:data.orderQte}</span>
                                                 <button className="rounded-r-md px-2 py-1 border-l bg-white text-xl font-bold" onClick={() => Increment(data.productId)}>+</button>
                                             </div>
                                                 <button className="bg-red-600 text-white rounded-md p-2" onClick={() => DeleteProduct(data.productId )}> Supprimer</button>

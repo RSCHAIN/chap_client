@@ -10,7 +10,7 @@ import secureLocalStorage from 'react-secure-storage';
 import { useRouter } from 'next/router';
 import { BraintreePayPalButtons, PayPalButtons } from '@paypal/react-paypal-js';
 
-function PopUp({ PrixChoisi, Partenaire, email, dest, need, poste, arriv, radio2, imageUri, ville, inputGroups, categorie, rue, moyen }) {
+function PopUp({ PrixChoisi, Partenaire, email, dest, need, poste, arriv, radio2, imageUri, ville, inputGroups, categorie, rue, moyen,description,  poids,  }) {
 
 
 
@@ -144,7 +144,8 @@ function PopUp({ PrixChoisi, Partenaire, email, dest, need, poste, arriv, radio2
   //fin des variables
 
   const makeDevis = async () => {
-    console.log("dans le else")
+    console.log("dans le else",poste,poste.length)
+    
     if (poste.length == 5) {
       const idDev = generateCustomKey();
       const hashDigest = sha256(idDev).toString(CryptoJS.enc.Hex);
@@ -172,6 +173,8 @@ function PopUp({ PrixChoisi, Partenaire, email, dest, need, poste, arriv, radio2
           status: "En attente",
           devisId: `${idDev}${hash}`,
           rue: rue,
+          description,
+          poids,
           createdAt: serverTimestamp(),
           partenaire: Partenaire,
           total: PrixChoisi,
@@ -193,7 +196,10 @@ function PopUp({ PrixChoisi, Partenaire, email, dest, need, poste, arriv, radio2
             id: `${idDev}${hash}`,
             email: email.toString(),
             partenaire: Partenaire,
+            devisId: `${idDev}${hash}`,
             nomExp: nom2,
+            description: description,
+            poids:poids,
             nomDest: nomDest,
             prenomDest: prenomDest,
             depot: radio2,
@@ -261,6 +267,7 @@ function PopUp({ PrixChoisi, Partenaire, email, dest, need, poste, arriv, radio2
             .post("/api/sendDevis", {
               id: `${idDev}${hash}`,
               email: email.toString(),
+              devisId: `${idDev}${hash}`,
               adresse: rue,
               nomExp: nom2,
               prenomExp: prenom2,
@@ -445,7 +452,7 @@ function PopUp({ PrixChoisi, Partenaire, email, dest, need, poste, arriv, radio2
                 <input className='border p-2 shadow-[0_0_12px_rgba(0,0,0,0.2)]' type="number" maxLength={5} placeholder="95300" onChange={(e) => setPosteDest(e.target.value)} />
               </div>
             </div>
-            <Center color={"cyan.700"} fontFamily={"-apple-system"} fontWeight={"bold"} fontSize={"20px"} my={2}>Paiement</Center>
+            <Center color={"cyan.700"} fontFamily={"-apple-system"} fontWeight={"bold"} fontSize={"20px"} mb={2} mt={5}>Méthode de paiement</Center>
             <Center>
               <div className="dest flex">
                 <RadioGroup onChange={setMethodeDePaiement} value={methodeDePaiement}>

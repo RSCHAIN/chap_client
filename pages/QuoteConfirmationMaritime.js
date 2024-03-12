@@ -12,12 +12,9 @@ function QuoteConfirmation() {
     const [width, setWidth] = useState()
     const [windowSize, setWindowSize] = useState([]);
 
-    var tab1 = 0;
-    var tab2 = 0;
-    var tab3 = 0;
-    var checker = 0;
-    var PrixPc = 0;
-
+    var besoin2 = 0;
+    var prixContenant = 0;
+  
     const [categorie, setCategorie] = useState([
         { contenu: "Textile", prix: 10 },
       ]);
@@ -58,15 +55,99 @@ function QuoteConfirmation() {
     const dateExp3C = dateExp2C.toLocaleDateString();
 
 
-    const [poidsFromSession, setPoidsFromSession] = useState(0);
+ 
+
+    
+
+
+    ////debut reforme
+    const [addpostal, setAddpostal] = useState("");//code postal
+    const [choixCarton, setChoixCarton] = useState([]);///le type de contenant
+    const [valeurEnEuro, setValeurEnEuro] = useState([]);/// la valeur en euro
+    const [descriptioncolis, setDescription] = useState([]);/// la description des colis
+    const [partenaire, setPartenaire] = useState("");/// le nom du partenaire
+    const [adr, setAdr] = useState("");/// l'adresse
+    const [priseColis,setPriseColis] = useState("");///pays de recuperation du colis
+    const [destinationColis,setDestinationColis] = useState("");///pays de livraison
+    const [email,setEmail] = useState("");///email
+    const[recup,setRecup] = useState("");///moyen de recuperation du colis
+    const [ville,setVille] = useState("");///
+    const [besoin,setBesoin] = useState([]);///
+ 
+
 
     useEffect(() => {
-        // Access count value from session storage
-        let poids = sessionStorage.getItem("detailscolis");
-        console.log("oui poids ::: ",typeof poids);
-        let currentData = JSON.parse(poids);
-        console.log("oui currentData ::: ", currentData);
-        setPoidsFromSession(parseFloat(currentData[0]))
+       
+
+        ///debut recuperation des champs 
+            setEmail(sessionStorage.getItem("email"));
+            setChoixCarton(JSON.parse(sessionStorage.getItem("choixcarton")));
+            setDescription(JSON.parse(sessionStorage.getItem("descriptioncolis")));
+            setValeurEnEuro(JSON.parse(sessionStorage.getItem("valeureneuro")));
+            setAddpostal(JSON.parse(sessionStorage.getItem("addpostal")));
+            setAdr(JSON.parse(sessionStorage.getItem("addresse")))
+            setPriseColis(JSON.parse(sessionStorage.getItem("arrivee")))
+            setDestinationColis(JSON.parse(sessionStorage.getItem("dest")))
+            setRecup(JSON.parse(sessionStorage.getItem("receptioncolis")))
+            setVille(JSON.parse(sessionStorage.getItem("ville")))
+            setBesoin(JSON.parse(sessionStorage.getItem("besoin")))
+            
+        ///Fin de la recuperation des champs
+
+
+
+
+        // // Access count value from session storage
+        // let poids = sessionStorage.getItem("detailscolis");
+        // console.log("oui poids ::: ", typeof poids);
+        // let currentData = JSON.parse(poids);
+        // console.log("oui currentData ::: ", currentData);
+        // setPoidsFromSession(parseFloat(currentData[0]))
+
+        // // let detailsColis = sessionStorage.getItem("detailscolis");
+        // // console.log("oui poids ::: ",typeof detailsColis);
+        // // let currentDetailsColi = JSON.parse(detailsColis);
+        // // setDetailscolisFromSession()
+
+        // let reception = sessionStorage.getItem("receptioncolis");
+        // console.log("oui poids ::: ", typeof reception);
+        // let currentReception = JSON.parse(reception);
+        // setReceptionColis(currentReception)
+
+        // let description = sessionStorage.getItem("descriptioncolis");
+        // console.log("oui poids ::: ", typeof description);
+        // let currentDescription = JSON.parse(description);
+        // setDescriptionColisFromSession(currentDescription)
+
+        // let arrivee = sessionStorage.getItem("arrivee");
+        // console.log("oui poids ::: ", typeof arrivee);
+        // let currentarrivee = JSON.parse(arrivee);
+        // setArriveeFromSession(currentarrivee)
+
+        // let destination = sessionStorage.getItem("dest");
+        // console.log("oui poids ::: ", typeof destination);
+        // let currentDestination = JSON.parse(destination);
+        // setDestFromSession(currentDestination)
+
+        // let email = sessionStorage.getItem("email");
+        // console.log("oui email ::: ", typeof email);
+        // let currentEmail = JSON.parse(email);
+        // setEmailFromSession(currentEmail)
+
+        // let categoriechoix = sessionStorage.getItem("categoriechoix");
+        // console.log("oui poids ::: ", typeof poids);
+        // let currentCategoriechoix = JSON.parse(categoriechoix);
+        // setCategorieChoix(currentCategoriechoix)
+
+        // let addpostal = sessionStorage.getItem("addpostal");
+        // console.log("oui addpostal ::: ", typeof addpostal);
+        // let currentAddpostal = JSON.parse(addpostal);
+        // setVille(currentAddpostal)
+
+        // let ville = sessionStorage.getItem("ville");
+        // console.log("oui poids ::: ", typeof poids);
+        // let currentVille = JSON.parse(ville);
+        // setAddpostal(currentVille)
     }, []);
 
 
@@ -102,16 +183,24 @@ function QuoteConfirmation() {
                     </ol>
 
                 </nav>
-                {categorie.map((data, indexe) => {
-                if (data.contenu == "Ordinateur") {
-                  PrixPc = PrixPc + 50;
-                } else {
-                  tab1 = tab1 + parseFloat(inputGroups[indexe][2].value);
+                {besoin.map((data, indexe) => {
+                if (data ==true) {
+                    besoin2 = parseInt(besoin2)+ 10
+                } 
+              })}
+                {choixCarton.map((data, indexe) => {
+                if (data == "Carton 200L") {
+                    prixContenant = parseInt(prixContenant)+ 110
+                } else if (data == "Barrique bleu 220L") {
+                    prixContenant = parseInt(prixContenant)+ 130
+                } else{
+                    prixContenant = parseInt(prixContenant)+ 150
                 }
                 // console.log(tab1,"tab1")
               })}
                 {/* <h2>Width: {windowSize[0]}</h2> */}
                 <div className="container mx-auto my-20">
+             
                     {windowSize[0] <= 1024 ?
                         <div className='px-6'>
                             <div className="bg-white p-4 border  shadow-[0_0_12px_rgba(0,0,0,0.2)] rounded-md flex flex-col gap-10 mt-6">
@@ -139,28 +228,28 @@ function QuoteConfirmation() {
                                             <small className='text-slate-600'>Retrait a Abidjan-cocody</small>
                                         </div>
                                     </div>
+                                  
                                     <div className="self-end mb-4">
                                         <span className='bg-orange-600 text-2xl p-4 text-white rounded-md max-[370px]:text-lg max-[370px]:p-2'>
-                                            {parseFloat(poidsFromSession) * 10 +
-                                            ((parseFloat(poidsFromSession) * 10* 5) / 100)} €
+                                        {parseFloat(prixContenant) +parseInt(besoin2) + ((parseFloat(prixContenant )+parseInt(besoin2) )* 5) / 100}€
                                         </span>
                                     </div>
                                 </div>
                                 <button className='bg-orange-600 text-white rounded-sm py-2 px-6'>
-                                    <PopUp PrixChoisi={parseFloat(tab1) * 10 +
-                                        ((parseFloat(tab1) * 10* 5 + parseFloat(PrixPc)) / 100) + parseFloat(PrixPc)}
-                                        Partenaire={"BAMBA BAGAGE"}
-                                        email={"email"}
-                                        dest={"dest"}
-                                        poste={"poste"}
-                                        arriv={"arriv"}
-                                        radio2={"radio2"}
+                                    <PopUp PrixChoisi= {parseFloat(prixContenant) +parseInt(besoin2) + ((parseFloat(prixContenant )+parseInt(besoin2) )* 5) / 100}
+                                        Partenaire={"AFRICOLIS"}
+                                        email={email}
+                                        dest={destinationColis}
+                                        poste={addpostal}
+                                        arriv={priseColis}
+                                        radio2={recup}
                                         imageUri={"imageUri"}
-                                        ville={"ville"}
+                                        ville={ville}
                                         inputGroups={inputGroups}
-                                        categorie={categorie}
-                                        rue={"rue"}
-                                        moyen={"Aerien"}
+                                        categorie={choixCarton}
+                                        rue={adr}
+                                        need={besoin}
+                                        moyen={"Maritime"}
                                     />
                                 </button>
                             </div>
@@ -191,26 +280,25 @@ function QuoteConfirmation() {
                                     </div>
                                     <div className="self-end mb-4">
                                         <span className='bg-orange-600 text-2xl p-4 text-white rounded-md max-[370px]:text-lg max-[370px]:p-2'>
-                                        {parseFloat(poidsFromSession) * 10 +
-                                            ((parseFloat(poidsFromSession) * 10* 5) / 100)} €
+                                       {parseFloat(prixContenant) +parseInt(besoin2) + ((parseFloat(prixContenant )+parseInt(besoin2) )* 5) / 100}€
                                         </span>
                                     </div>
                                 </div>
                                 <button className='bg-orange-600 text-white rounded-sm py-2 px-6'>
-                                    <PopUp PrixChoisi={parseFloat(tab1) * 10 +
-                                        ((parseFloat(tab1) * 10* 5 + parseFloat(PrixPc)) / 100) + parseFloat(PrixPc)}
-                                        Partenaire={"BAMBA BAGAGE"}
-                                        email={"email"}
-                                        dest={"dest"}
-                                        poste={"poste"}
-                                        arriv={"arriv"}
-                                        radio2={"radio2"}
+                                <PopUp PrixChoisi= {parseFloat(prixContenant) +parseInt(besoin2) + ((parseFloat(prixContenant )+parseInt(besoin2) )* 5) / 100}
+                                        Partenaire={"CHALLENGE"}
+                                        email={email}
+                                        dest={destinationColis}
+                                        poste={addpostal}
+                                        arriv={priseColis}
+                                        radio2={recup}
                                         imageUri={"imageUri"}
-                                        ville={"ville"}
+                                        ville={ville}
                                         inputGroups={inputGroups}
-                                        categorie={categorie}
-                                        rue={"rue"}
-                                        moyen={"Aerien"}
+                                        categorie={choixCarton}
+                                        rue={adr}
+                                        need={besoin}
+                                        moyen={"Maritime"}
                                     />
                                 </button>
                             </div>
@@ -256,25 +344,24 @@ function QuoteConfirmation() {
                                 </div>
                                 <div className="flex flex-col mr-2">
                                     <div className="self-end flex flex-col mb-4">
-                                        <span className='text-3xl font-bold'>{parseFloat(poidsFromSession) * 10 +
-                                            ((parseFloat(poidsFromSession) * 10* 5) / 100)}<span className='ml-2'>€</span></span>
+                                        <span className='text-3xl font-bold'>{parseFloat(prixContenant) +parseInt(besoin2) + ((parseFloat(prixContenant )+parseInt(besoin2) )* 5) / 100}<span className='ml-2'>€</span></span>
                                     </div>
                                     <button className='bg-orange-600 text-white rounded-sm py-2 px-6'>
-                                    <PopUp PrixChoisi={parseFloat(tab1) * 10 +
-                                            ((parseFloat(tab1) * 10* 5 + parseFloat(PrixPc)) / 100) + parseFloat(PrixPc)}
-                                            Partenaire={"BAMBA BAGAGE"}
-                                            email={"email"}
-                                            dest={"dest"}
-                                            poste={"poste"}
-                                            arriv={"arriv"}
-                                            radio2={"radio2"}
-                                            imageUri={"imageUri"}
-                                            ville={"ville"}
-                                            inputGroups={inputGroups}
-                                            categorie={categorie}
-                                            rue={"rue"}
-                                            moyen={"Aerien"}
-                                        />
+                                    <PopUp PrixChoisi= {parseFloat(prixContenant) +parseInt(besoin2) + ((parseFloat(prixContenant )+parseInt(besoin2) )* 5) / 100}
+                                        Partenaire={"AFRICOLIS"}
+                                        email={email}
+                                        dest={destinationColis}
+                                        poste={addpostal}
+                                        arriv={priseColis}
+                                        radio2={recup}
+                                        imageUri={"imageUri"}
+                                        ville={ville}
+                                        inputGroups={inputGroups}
+                                        categorie={choixCarton}
+                                        rue={adr}
+                                        need={besoin}
+                                        moyen={"Maritime"}
+                                    />
                                     </button>
                                 </div>
                             </div>
@@ -304,26 +391,25 @@ function QuoteConfirmation() {
                                 <div className="flex flex-col mr-2">
                                     <div className="self-end flex flex-col mb-4">
                                         <span className='text-3xl font-bold'>
-                                        {parseFloat(poidsFromSession) * 10 +
-                                            ((parseFloat(poidsFromSession) * 10* 5) / 100)} €
+                                        {parseFloat(prixContenant) +parseInt(besoin2) + ((parseFloat(prixContenant )+parseInt(besoin2) )* 5) / 100}€
                                         </span>
                                     </div>
                                     <button className='bg-orange-600 text-white rounded-sm py-2 px-6'>
-                                        <PopUp PrixChoisi={parseFloat(tab1) * 10 +
-                                            ((parseFloat(tab1) * 10* 5 + parseFloat(PrixPc)) / 100) + parseFloat(PrixPc)}
-                                            Partenaire={"BAMBA BAGAGE"}
-                                            email={"email"}
-                                            dest={"dest"}
-                                            poste={"poste"}
-                                            arriv={"arriv"}
-                                            radio2={"radio2"}
-                                            imageUri={"imageUri"}
-                                            ville={"ville"}
-                                            inputGroups={inputGroups}
-                                            categorie={categorie}
-                                            rue={"rue"}
-                                            moyen={"Aerien"}
-                                        />
+                                    <PopUp PrixChoisi= {parseFloat(prixContenant) +parseInt(besoin2) + ((parseFloat(prixContenant )+parseInt(besoin2) )* 5) / 100}
+                                        Partenaire={"CHALLENGE"}
+                                        email={email}
+                                        dest={destinationColis}
+                                        poste={addpostal}
+                                        arriv={priseColis}
+                                        radio2={recup}
+                                        imageUri={"imageUri"}
+                                        ville={ville}
+                                        inputGroups={inputGroups}
+                                        categorie={choixCarton}
+                                        rue={adr}
+                                        need={besoin}
+                                        moyen={"Maritime"}
+                                    />
                                     </button>
                                 </div>
                             </div>

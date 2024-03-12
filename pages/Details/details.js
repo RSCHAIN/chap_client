@@ -334,7 +334,7 @@ export default function DisplayArticleDetails() {
                                     </div>
                                     <div className="">
                                         {data.taille ? <h2 className='font-bold text-xl'>Couleur</h2> : <h2 className='font-bold text-xl'>Produit(s)</h2>}
-                                        <div className="flex justify-between items-center max-[600px]:">
+                                        <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center max-[600px]:">
                                             <div className="img flex mt-4">
                                                 <div className='h-20 w-20 '>
                                                     {data.imageUrl.length > 1 ?
@@ -350,7 +350,7 @@ export default function DisplayArticleDetails() {
                                                     } 
                                                 </div>
                                             </div>
-                                            <button onClick={()=>{AddToCart(data,id,color,taille)}} className="bg-cyan-800 p-2 rounded-2xl text-white">Ajouter au panier</button>
+                                            <button onClick={()=>{AddToCart(data,id,color,taille)}} className="bg-cyan-800 w-[10rem] p-2 mt-6 self-end lg:mt-0 rounded-2xl text-white">Ajouter au panier</button>
                                         </div>
                                     </div>
 

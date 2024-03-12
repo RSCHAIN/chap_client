@@ -116,7 +116,7 @@ if (req.body.moyen === "Aerien") {
           `<ul >${categorie.map((element, index) => (
             details.map((donnees, ind) => {
     
-              return `<li style="font-weight:semibold">${element.id}</li>
+              return `<li style="font-weight:semibold">${element}</li>
                <ul>
                   <li style="font-weight:lighter">${donnees[0].value}</li>
                   <li style="font-weight:lighter">${donnees[1].value}</li>
@@ -199,22 +199,23 @@ if (req.body.moyen === "Aerien") {
                     Le recapitulatif de votre demande de devis est le suivant : 
                   </p> 
                   <p style="margin-bottom: 10px;margin-left: 10px; text-decoration: underline;">
-                    ${quantity} Colis 
+                    ${categorie.length} Colis 
                   </p>
                   `+
           
           
                 `<ul >${categorie.map((element, index) => (
-                  details.map((donnees, ind) => {
+                  
           
-                    return `<li style="font-weight:semibold">${element.contenu}</li>
+                     `<li style="font-weight:semibold">${element}</li>
                      <ul>
-                        <li style="font-weight:lighter">${donnees[0].value}</li>
-                        <li style="font-weight:lighter">${donnees[1].value}</li>
-                        <li style="font-weight:lighter">${donnees[2].value}</li>
+                     <li style="font-weight:lighter">${req.body.description[index]}</li>
+                        <li style="font-weight:lighter">${req.body.poids[index]}</li>
+                        
+                        
                      </ul>
                      `
-                  })
+                  
                       ))
           }
                   </ul > `

@@ -21,22 +21,19 @@ function Aerien() {
     const [poste, setPoste] = useState("");
     const [rue, setRue] = useState("");
     const [reception, setReception] = useState("")
-    const [description, setDescription] = useState("")
-    const [categorieChoix, setCategorieChoice] = useState("")
-    const [poids, setPoids] = useState(0)
-    const [longueur, setLongueur] = useState(0)
-    const [hauteur, setHauteur] = useState(0)
-    const [largueur, setLargueur] = useState(0)
-    
+    const [description, setDescription] = useState([""])
+    const [categorieChoix, setCategorieChoice] = useState(["Textile"])
+    const [poids, setPoids] = useState([0])
+    const [longueur, setLongueur] = useState([0])
+    const [hauteur, setHauteur] = useState([0])
+    const [largueur, setLargueur] = useState([0])
 
 
-
-    
     useEffect(() => {
         setSelection(selection);
-        setEmail(sessionStorage.getItem("email") ?? "");
-        setRue(secureLocalStorage.getItem("addresse") ?? "");
-        setPoste(secureLocalStorage.getItem("po") ?? "");
+        setEmail(sessionStorage.getItem("email"));
+        setRue(secureLocalStorage.getItem("addresse"));
+        setPoste(secureLocalStorage.getItem("po"));
     }, [selection]);
 
     const [fileInputsVisible, setFileInputsVisible] = useState([false]);
@@ -52,18 +49,18 @@ function Aerien() {
     const [image, setImage] = useState([{ file: " ", nom: "" }]);
     const [imageUri, setImageUri] = useState([{ link: [], collection: "" }]);
     const toast = useToast();
-    
+
 
     const [inputGroups, setInputGroups] = useState([
         [
-          { id: 1, value: "", title: "Description" },
-    
-          { id: 2, value: "", title: "Valeur" },
-    
-          { id: 3, value: "", title: "Poids" },
+            { id: 1, value: "", title: "Description" },
+
+            { id: 2, value: "", title: "Valeur" },
+
+            { id: 3, value: "", title: "Poids" },
         ],
     ]);
-    
+
     const Option = [
         { id: "Textile", prix: "12/k" },
         { id: "Document", prix: "prix en fonction du nombre de feuille, 1 feuille = 5e" },
@@ -89,36 +86,69 @@ function Aerien() {
         imageUri.push({ link: [], collection: "" });
         setFileInputsVisible([...fileInputsVisible, false]);
         setInputGroups([...inputGroups, newGroup]);
+        ///prise en compte des champs lier au produit lors de l'appui sur le boutton +
+        description.push("");
+        categorieChoix.push("Textile");
+        poids.push(0);
+        longueur.push(0);
+        hauteur.push(0);
+        largueur.push(0);
+
+
     };
-    
+
 
     //sauvegarde dans la session storage 
-    const handleSaveDataInSessionStorage = (arrivee, destination, email, poste, rue, ville,reception, description, categorieChoix, InfoProd)=>{
-        sessionStorage.setItem("arrivee",arrivee);
-        sessionStorage.setItem("dest",destination);
-        sessionStorage.setItem("email",email);
-        sessionStorage.setItem("addpostal",poste);
-        sessionStorage.setItem("rue",rue);
-        sessionStorage.setItem("ville",ville);
-        sessionStorage.setItem("receptioncolis",reception);
-        sessionStorage.setItem("descriptioncolis",description);
-        sessionStorage.setItem("categoriechoix",categorieChoix);
+    const handleSaveDataInSessionStorage = (arrivee, destination, email, poste, rue, ville, reception, description, categorieChoix, InfoProd) => {
+        sessionStorage.setItem("arrivee", JSON.stringify(arrivee));
+        sessionStorage.setItem("dest", JSON.stringify(destination));
+      
+        sessionStorage.setItem("addpostal", JSON.stringify(poste));
+        sessionStorage.setItem("rue", JSON.stringify(rue));
+        sessionStorage.setItem("ville", JSON.stringify(ville));
+        sessionStorage.setItem("receptioncolis", JSON.stringify(reception));
+        sessionStorage.setItem("descriptioncolis", JSON.stringify(description));
+        sessionStorage.setItem("categoriechoix", JSON.stringify(categorieChoix));
+        sessionStorage.setItem("InputGroups", JSON.stringify(inputGroups));
         // sessionStorage.setItem("lieu ville",poids);
         // sessionStorage.setItem("lieu ville",longueur);
         // sessionStorage.setItem("lieu ville",hauteur);
         // sessionStorage.setItem("lieu ville",largueur);
         // sessionStorage.setItem("detailscolis",[poids,longueur,hauteur,largueur]);
 
-        sessionStorage.setItem("detailscolis",JSON.stringify(InfoProd));
-       
+        sessionStorage.setItem("detailscolis", JSON.stringify(InfoProd));
+
         // router.push("/QuoteConfirmationAerien")
     }
 
     const handleRemoveGroup = (groupId) => {
         console.log("inputgroupes", inputGroups[groupId]);
         console.log("categorie", categorie[groupId]);
+
+
+        ///gestion des champs lors de la suppression d'un colis
+        const descriptionUpdate = description.filter((_, index) => index !== groupId);
+        const categorieChoixUpdate = categorieChoix.filter((_, index) => index !== groupId);
+        const poidsUpdate = poids.filter((_, index) => index !== groupId);
+        const longueurUpdate = longueur.filter((_, index) => index !== groupId);
+        const hauteurUpdate = hauteur.filter((_, index) => index !== groupId);
+        const largueurUpdate = largueur.filter((_, index) => index !== groupId);
+
+        ///Mise a jour des differents champs
+        setDescription(descriptionUpdate);
+        setCategorieChoice(categorieChoixUpdate);
+        setPoids(poidsUpdate);
+        setLongueur(longueurUpdate);
+        setHauteur(hauteurUpdate);
+        setLargueur(largueurUpdate);
+        ///fin de la gestion
+
+
+
+
+
         const updatedInputGroups = inputGroups.filter(
-        (_, index) => index !== groupId
+            (_, index) => index !== groupId
         );
         const updatedCat = categorie.filter((_, index) => index !== groupId);
         const updatedimage = image.filter((_, index) => index !== groupId);
@@ -127,7 +157,7 @@ function Aerien() {
         setInputGroups(updatedInputGroups);
         setImage(updatedimage);
         setImageUri(updatedimageUri);
-    
+
         fileInputsVisible[groupId] = false;
     };
 
@@ -135,10 +165,10 @@ function Aerien() {
         const updatedInputGroups = inputGroups.map((group, index) => {
             if (index === groupId) {
                 const updatedFields = group.map((field) => {
-                if (field.id === id) {
-                    return { ...field, value };
-                }
-                return field;
+                    if (field.id === id) {
+                        return { ...field, value };
+                    }
+                    return field;
                 });
                 return updatedFields;
             }
@@ -151,7 +181,7 @@ function Aerien() {
         {
             inputGroups.map((group, groupId) => {
                 {
-                checker = checker + parseFloat(group[2].value);
+                    checker = checker + parseFloat(group[2].value);
                 }
             });
         }
@@ -165,6 +195,8 @@ function Aerien() {
         }
     };
 
+    console.log("categorieChoix ::: ", categorieChoix[0]);
+
     return (
         <>
             <div className="container mx-auto flex flex-col lg:flex-row justify-between">
@@ -176,15 +208,15 @@ function Aerien() {
                                     <div className="mb-4 lg:mb-0">
                                         <label className="uppercase text-sm" htmlFor="">Email</label>
                                         <input type="text" value={email}
-                                        onChange={(e) => {setEmail(e.target.value),console.log(e.target.value)}}
-                                        placeholder="Votre adresse email" className="sm:text-sm w-full lg:w-[21rem] border border-slate-800 p-3 rounded-sm"/>
+                                            onChange={(e) => { setEmail(e.target.value), console.log(e.target.value) }}
+                                            placeholder="Votre adresse email" className="sm:text-sm w-full lg:w-[21rem] border border-slate-800 p-3 rounded-sm" />
                                     </div>
                                     <div className="lg:ml-4">
                                         <label className="uppercase text-sm" htmlFor="">Code Postal</label>
                                         <input type="text" onChange={(e) => {
-                                        setPoste(e.target.value),console.log(e.target.value);
+                                            setPoste(e.target.value), console.log(e.target.value);
                                         }}
-                                        value={poste} placeholder="Code postal ou ville" className="sm:text-sm w-full lg:w-[21rem] border border-slate-800 p-3 rounded-sm"/>
+                                            value={poste} placeholder="Code postal ou ville" className="sm:text-sm w-full lg:w-[21rem] border border-slate-800 p-3 rounded-sm" />
                                     </div>
                                 </div>
                             </div>
@@ -194,15 +226,15 @@ function Aerien() {
                                     <div className="mb-4 lg:mb-0">
                                         <label className="uppercase text-sm" htmlFor="">Adresse</label>
                                         <input type="text" onChange={(e) => {
-                                        setRue(e.target.value),console.log(e.target.value);
+                                            setRue(e.target.value), console.log(e.target.value);
                                         }}
-                                        value={rue} placeholder="Votre adresse" className="sm:text-sm w-full lg:w-[21rem] border border-slate-800 p-3 rounded-sm"/>
+                                            value={rue} placeholder="Votre adresse" className="sm:text-sm w-full lg:w-[21rem] border border-slate-800 p-3 rounded-sm" />
                                     </div>
                                     <div className="">
                                         <label className="uppercase text-sm" htmlFor="">Ville</label>
                                         <input type="text" onChange={(e) => {
-                                        setVille(e.target.value),console.log(e.target.value);
-                                        }} placeholder="Ville ou code postal" className="sm:text-sm w-full lg:w-[21rem] border border-slate-800 p-3 rounded-sm"/>
+                                            setVille(e.target.value), console.log(e.target.value);
+                                        }} placeholder="Ville ou code postal" className="sm:text-sm w-full lg:w-[21rem] border border-slate-800 p-3 rounded-sm" />
                                     </div>
                                 </div>
                             </div>
@@ -210,7 +242,7 @@ function Aerien() {
                             <div className="mt-10">
                                 <span className="text-sm">DE</span>
                                 <div className="flex justify-between">
-                                    <select onChange={(e) => {setDestination(e.target.value),console.log(e.target.value)}} placeholder="Pays" className="w-full p-3 focus:outline-none bg-zinc-100">
+                                    <select onChange={(e) => { setDestination(e.target.value), console.log(e.target.value) }} placeholder="Pays" className="w-full p-3 focus:outline-none bg-zinc-100">
                                         <option value={"France"}>France</option>
                                         <option value={"Côte d'Ivoire"}>Côte d{"'"}Ivoire</option>
                                     </select>
@@ -219,14 +251,14 @@ function Aerien() {
                             <div className="mt-10">
                                 <span className="text-sm">À</span>
                                 <div className="flex justify-between">
-                                    <select onChange={(e) => {setArrivee(e.target.value),console.log(e.target.value)}} placeholder="Pays" className="w-full p-3 focus:outline-none bg-zinc-100">
+                                    <select onChange={(e) => { setArrivee(e.target.value), console.log(e.target.value) }} placeholder="Pays" className="w-full p-3 focus:outline-none bg-zinc-100">
                                         <option value={"Côte D'Ivoire"}>Côte d{"'"}Ivoire</option>
                                         <option value={"France"}>France</option>
                                     </select>
                                 </div>
                             </div>
                             <div onChange={setRadio2}
-                            value={radio2} className="mt-10">
+                                value={radio2} className="mt-10">
                                 <h2 className="text-2xl text-center font-bold">Reception du colis par la structure</h2>
                                 <div className="mt-6 mb-6">
                                     <ul className="flex flex-col lg:flex-row justify-between items-center w-full text-sm font-medium text-gray-900 bg-white border 
@@ -234,14 +266,14 @@ function Aerien() {
                                         <li className="w-full border border-gray-600">
                                             <div className="flex items-center ps-3">
                                                 <input id="horizontal-list-radio-license" type="radio" value="En agence" name="list-radio" onClick={(e) => setReception(e.target.value)}
-                                                className="w-4 h-4 text-cyan-800 bg-gray-100 border-gray-300 focus:ring-cyan-800 dark:focus:ring-cyantext-cyan-800 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"/>
+                                                    className="w-4 h-4 text-cyan-800 bg-gray-100 border-gray-300 focus:ring-cyan-800 dark:focus:ring-cyantext-cyan-800 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
                                                 <label for="horizontal-list-radio-license" className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-800">Dépôt en agence</label>
                                             </div>
                                         </li>
                                         <li className="w-full border border-gray-600">
                                             <div className="flex items-center ps-3">
                                                 <input id="horizontal-list-radio-id" type="radio" value="Retrait à domicile" name="list-radio" onClick={(e) => setReception(e.target.value)}
-                                                className="w-4 h-4 text-cyan-800 bg-gray-100 border-gray-300 focus:ring-cyan-800 dark:focus:ring-cyantext-cyan-800 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"/>
+                                                    className="w-4 h-4 text-cyan-800 bg-gray-100 border-gray-300 focus:ring-cyan-800 dark:focus:ring-cyantext-cyan-800 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
                                                 <label for="horizontal-list-radio-id" className="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-800">Retrait à domicile</label>
                                             </div>
                                         </li>
@@ -251,48 +283,283 @@ function Aerien() {
                                 {inputGroups.map((group, groupId) => (
                                     <div key={groupId} className="mb-6">
                                         <div className="flex justify-between">
-                                            <textarea placeholder="Description ici..." cols="30" rows="3" onChange={e => setDescription(e.target.value)} 
-                                            className="w-full border border-slate-800 resize-none focus:outline-none"></textarea>
-                                            <select onChange={(e) => {setCategorieChoice(e.target.value),console.log(e.target.value)}} 
-                                            className="w-full border border-slate-800 focus:outline-none lg:border-none">
+                                            <textarea placeholder="Description ici..." cols="30" rows="3" onChange={e => description[groupId] = e.target.value}
+                                                className="w-full border border-slate-800 resize-none focus:outline-none">
+                                            </textarea>
+                                            <select onChange={(e) => { categorieChoix[groupId] = e.target.value, console.log(e.target.value) }}
+                                                className="w-full border border-slate-800 focus:outline-none lg:border-none">
                                                 {/* <option  value={"Epicerie"}>Epicerie</option> */}
-                                                {Option.map((data,index) =>(
-                                                       <option key={index} className='w-full' value={`${data.id}`}>{data.id}</option>
-                                                ) )}
-                                             
+                                                {Option.map((data, index) => (
+                                                    <option key={index} className='w-full' value={`${data.id}`}>{data.id}</option>
+                                                ))}
+
                                                 {/* <option  value={"Cosmétic"}>Cosmétic</option> */}
                                             </select>
                                         </div>
-                                        <div className="flex flex-col lg:flex-row justify-between items-center">
-                                            <div className="flex flex-col justify-between lg:flex-row mt-6 w-full gap-4 lg:gap-0">
-                                                <input onChange={(e) => setPoids(e.target.value)} type="text" placeholder="Poids(kg)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm"/>
-                                                <input onChange={(e) => setLongueur(e.target.value)} type="text" placeholder="Longueur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm"/>
-                                                <input onChange={(e) => setHauteur(e.target.value)} type="text" placeholder="Hauteur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm"/>
-                                                <input onChange={(e) => setLargueur(e.target.value)} type="text" placeholder="Largueur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm"/>
-                                            </div>
-                                            <button className="rounded-md text-cyan-800 mt-8">
-                                                <div className="">
-                                                    {groupId === 0 ? (
-                                                        <FontAwesomeIcon onClick={handleAddGroup} className="size-8 ml-2" icon={faPlusCircle}/>
-                                                    ) : (
-                                                        <FontAwesomeIcon onClick={() => handleRemoveGroup(groupId)} className="size-8 ml-2" icon={faMinusCircle}/>
-                                                    )}
+                                        {/* {
+                                            categorieChoix && categorieChoix[groupId] === "Document" ?
+
+                                            <div className="flex flex-col lg:flex-row justify-between items-center">
+                                                <div className="flex flex-col justify-between lg:flex-row mt-6 w-full gap-4 lg:gap-0">
+                                                    <input onChange={(e) => console.log(e.target.value)} type="number" placeholder="Veuillez saisir le nombre de page ici svp." className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
                                                 </div>
-                                            </button>
-                                        </div>
+                                                <button className="rounded-md text-cyan-800 mt-8">
+                                                    <div className="">
+                                                        {groupId === 0 ? (
+                                                            <FontAwesomeIcon onClick={handleAddGroup} className="size-8 ml-2" icon={faPlusCircle} />
+                                                        ) : (
+                                                            <FontAwesomeIcon onClick={() => handleRemoveGroup(groupId)} className="size-8 ml-2" icon={faMinusCircle} />
+                                                        )}
+                                                    </div>
+                                                </button>
+                                            </div>
+                                            :
+                                            <div className="flex flex-col lg:flex-row justify-between items-center">
+                                                <div className="flex flex-col justify-between lg:flex-row mt-6 w-full gap-4 lg:gap-0">
+                                                    <input onChange={(e) => poids[groupId] = e.target.value} type="text" placeholder="Poids(kg)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                                    <input onChange={(e) => longueur[groupId] = e.target.value} type="text" placeholder="Longueur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                                    <input onChange={(e) => hauteur[groupId] = e.target.value} type="text" placeholder="Hauteur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                                    <input onChange={(e) => largueur[groupId] = e.target.value} type="text" placeholder="Largueur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                                </div>
+                                                <button className="rounded-md text-cyan-800 mt-8">
+                                                    <div className="">
+                                                        {groupId === 0 ? (
+                                                            <FontAwesomeIcon onClick={handleAddGroup} className="size-8 ml-2" icon={faPlusCircle} />
+                                                        ) : (
+                                                            <FontAwesomeIcon onClick={() => handleRemoveGroup(groupId)} className="size-8 ml-2" icon={faMinusCircle} />
+                                                        )}
+                                                    </div>
+                                                </button>
+                                            </div>
+                                        } */}
+
+
+                                        {categorieChoix && categorieChoix[groupId] === "Document" ? 
+                                            <div className="flex flex-col lg:flex-row justify-between items-center">
+                                                <div className="flex flex-col justify-between lg:flex-row mt-6 w-full gap-4 lg:gap-0">
+                                                    <input onChange={(e) => console.log(e.target.value)} type="number" placeholder="Veuillez saisir le nombre de page ici svp." className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                                </div>
+                                                <button className="rounded-md text-cyan-800 mt-8">
+                                                    <div className="">
+                                                        {groupId === 0 ? (
+                                                            <FontAwesomeIcon onClick={handleAddGroup} className="size-8 ml-2" icon={faPlusCircle} />
+                                                        ) : (
+                                                            <FontAwesomeIcon onClick={() => handleRemoveGroup(groupId)} className="size-8 ml-2" icon={faMinusCircle} />
+                                                        )}
+                                                    </div>
+                                                </button>
+                                            </div>
+
+                                        :
+                                            <div className="flex flex-col lg:flex-row justify-between items-center">
+                                                <div className="flex flex-col justify-between lg:flex-row mt-6 w-full gap-4 lg:gap-0">
+                                                    <input onChange={(e) => poids[groupId] = e.target.value} type="text" placeholder="Poids(kg)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                                    <input onChange={(e) => longueur[groupId] = e.target.value} type="text" placeholder="Longueur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                                    <input onChange={(e) => hauteur[groupId] = e.target.value} type="text" placeholder="Hauteur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                                    <input onChange={(e) => largueur[groupId] = e.target.value} type="text" placeholder="Largueur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                                </div>
+                                                <button className="rounded-md text-cyan-800 mt-8">
+                                                    <div className="">
+                                                        {groupId === 0 ? (
+                                                            <FontAwesomeIcon onClick={handleAddGroup} className="size-8 ml-2" icon={faPlusCircle} />
+                                                        ) : (
+                                                            <FontAwesomeIcon onClick={() => handleRemoveGroup(groupId)} className="size-8 ml-2" icon={faMinusCircle} />
+                                                        )}
+                                                    </div>
+                                                </button>
+                                            </div>
+                                        && categorieChoix && categorieChoix[groupId] === "Ordinateur" ? 
+                                        
+                                            <div className="flex flex-col lg:flex-row justify-between items-center">
+                                                <div className="flex flex-col justify-between lg:flex-row mt-6 w-full gap-4 lg:gap-0">
+                                                    <input onChange={(e) => console.log(e.target.value)} type="file" placeholder="Insérer un fichier" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                                </div>
+                                                <button className="rounded-md text-cyan-800 mt-8">
+                                                    <div className="">
+                                                        {groupId === 0 ? (
+                                                            <FontAwesomeIcon onClick={handleAddGroup} className="size-8 ml-2" icon={faPlusCircle} />
+                                                        ) : (
+                                                            <FontAwesomeIcon onClick={() => handleRemoveGroup(groupId)} className="size-8 ml-2" icon={faMinusCircle} />
+                                                        )}
+                                                    </div>
+                                                </button>
+                                            </div>
+                                        :
+                                            <div className="flex flex-col lg:flex-row justify-between items-center">
+                                                <div className="flex flex-col justify-between lg:flex-row mt-6 w-full gap-4 lg:gap-0">
+                                                    <input onChange={(e) => poids[groupId] = e.target.value} type="text" placeholder="Poids(kg)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                                    <input onChange={(e) => longueur[groupId] = e.target.value} type="text" placeholder="Longueur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                                    <input onChange={(e) => hauteur[groupId] = e.target.value} type="text" placeholder="Hauteur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                                    <input onChange={(e) => largueur[groupId] = e.target.value} type="text" placeholder="Largueur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                                </div>
+                                                <button className="rounded-md text-cyan-800 mt-8">
+                                                    <div className="">
+                                                        {groupId === 0 ? (
+                                                            <FontAwesomeIcon onClick={handleAddGroup} className="size-8 ml-2" icon={faPlusCircle} />
+                                                        ) : (
+                                                            <FontAwesomeIcon onClick={() => handleRemoveGroup(groupId)} className="size-8 ml-2" icon={faMinusCircle} />
+                                                        )}
+                                                    </div>
+                                                </button>
+                                            </div>
+
+                                        && categorieChoix && categorieChoix[groupId] === "Appareil electronique" ? 
+                                                                                
+                                            <div className="flex flex-col lg:flex-row justify-between items-center">
+                                                <div className="flex flex-col justify-between lg:flex-row mt-6 w-full gap-4 lg:gap-0">
+                                                    <input onChange={(e) => console.log(e.target.value)} type="file" placeholder="Insérer un fichier" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                                </div>
+                                                <button className="rounded-md text-cyan-800 mt-8">
+                                                    <div className="">
+                                                        {groupId === 0 ? (
+                                                            <FontAwesomeIcon onClick={handleAddGroup} className="size-8 ml-2" icon={faPlusCircle} />
+                                                        ) : (
+                                                            <FontAwesomeIcon onClick={() => handleRemoveGroup(groupId)} className="size-8 ml-2" icon={faMinusCircle} />
+                                                        )}
+                                                    </div>
+                                                </button>
+                                            </div>
+                                            :
+                                            <div className="flex flex-col lg:flex-row justify-between items-center">
+                                                <div className="flex flex-col justify-between lg:flex-row mt-6 w-full gap-4 lg:gap-0">
+                                                    <input onChange={(e) => poids[groupId] = e.target.value} type="text" placeholder="Poids(kg)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                                    <input onChange={(e) => longueur[groupId] = e.target.value} type="text" placeholder="Longueur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                                    <input onChange={(e) => hauteur[groupId] = e.target.value} type="text" placeholder="Hauteur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                                    <input onChange={(e) => largueur[groupId] = e.target.value} type="text" placeholder="Largueur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                                </div>
+                                                <button className="rounded-md text-cyan-800 mt-8">
+                                                    <div className="">
+                                                        {groupId === 0 ? (
+                                                            <FontAwesomeIcon onClick={handleAddGroup} className="size-8 ml-2" icon={faPlusCircle} />
+                                                        ) : (
+                                                            <FontAwesomeIcon onClick={() => handleRemoveGroup(groupId)} className="size-8 ml-2" icon={faMinusCircle} />
+                                                        )}
+                                                    </div>
+                                                </button>
+                                            </div>
+
+                                        && categorieChoix && categorieChoix[groupId] === "Bijou" ? 
+                                        
+                                            <div className="flex flex-col lg:flex-row justify-between items-center">
+                                                <div className="flex flex-col justify-between lg:flex-row mt-6 w-full gap-4 lg:gap-0">
+                                                    <input onChange={(e) => console.log(e.target.value)} type="file" placeholder="Insérer un fichier" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                                </div>
+                                                <button className="rounded-md text-cyan-800 mt-8">
+                                                    <div className="">
+                                                        {groupId === 0 ? (
+                                                            <FontAwesomeIcon onClick={handleAddGroup} className="size-8 ml-2" icon={faPlusCircle} />
+                                                        ) : (
+                                                            <FontAwesomeIcon onClick={() => handleRemoveGroup(groupId)} className="size-8 ml-2" icon={faMinusCircle} />
+                                                        )}
+                                                    </div>
+                                                </button>
+                                            </div>
+                                        :
+                                            <div className="flex flex-col lg:flex-row justify-between items-center">
+                                                <div className="flex flex-col justify-between lg:flex-row mt-6 w-full gap-4 lg:gap-0">
+                                                    <input onChange={(e) => poids[groupId] = e.target.value} type="text" placeholder="Poids(kg)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                                    <input onChange={(e) => longueur[groupId] = e.target.value} type="text" placeholder="Longueur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                                    <input onChange={(e) => hauteur[groupId] = e.target.value} type="text" placeholder="Hauteur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                                    <input onChange={(e) => largueur[groupId] = e.target.value} type="text" placeholder="Largueur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                                </div>
+                                                <button className="rounded-md text-cyan-800 mt-8">
+                                                    <div className="">
+                                                        {groupId === 0 ? (
+                                                            <FontAwesomeIcon onClick={handleAddGroup} className="size-8 ml-2" icon={faPlusCircle} />
+                                                        ) : (
+                                                            <FontAwesomeIcon onClick={() => handleRemoveGroup(groupId)} className="size-8 ml-2" icon={faMinusCircle} />
+                                                        )}
+                                                    </div>
+                                                </button>
+                                            </div>
+
+                                        && categorieChoix && categorieChoix[groupId] === "Cosmétique" ? 
+                                        
+                                            <div className="flex flex-col lg:flex-row justify-between items-center">
+                                                <div className="flex flex-col justify-between lg:flex-row mt-6 w-full gap-4 lg:gap-0">
+                                                    <input onChange={(e) => console.log(e.target.value)} type="file" placeholder="Insérer un fichier" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                                </div>
+                                                <button className="rounded-md text-cyan-800 mt-8">
+                                                    <div className="">
+                                                        {groupId === 0 ? (
+                                                            <FontAwesomeIcon onClick={handleAddGroup} className="size-8 ml-2" icon={faPlusCircle} />
+                                                        ) : (
+                                                            <FontAwesomeIcon onClick={() => handleRemoveGroup(groupId)} className="size-8 ml-2" icon={faMinusCircle} />
+                                                        )}
+                                                    </div>
+                                                </button>
+                                            </div>
+                                            :
+                                            <div className="flex flex-col lg:flex-row justify-between items-center">
+                                                <div className="flex flex-col justify-between lg:flex-row mt-6 w-full gap-4 lg:gap-0">
+                                                    <input onChange={(e) => poids[groupId] = e.target.value} type="text" placeholder="Poids(kg)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                                    <input onChange={(e) => longueur[groupId] = e.target.value} type="text" placeholder="Longueur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                                    <input onChange={(e) => hauteur[groupId] = e.target.value} type="text" placeholder="Hauteur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                                    <input onChange={(e) => largueur[groupId] = e.target.value} type="text" placeholder="Largueur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                                </div>
+                                                <button className="rounded-md text-cyan-800 mt-8">
+                                                    <div className="">
+                                                        {groupId === 0 ? (
+                                                            <FontAwesomeIcon onClick={handleAddGroup} className="size-8 ml-2" icon={faPlusCircle} />
+                                                        ) : (
+                                                            <FontAwesomeIcon onClick={() => handleRemoveGroup(groupId)} className="size-8 ml-2" icon={faMinusCircle} />
+                                                        )}
+                                                    </div>
+                                                </button>
+                                            </div>
+                                        }
+
+
+                                        {/* {
+                                            categorieChoix && categorieChoix[groupId] === "Ordinateur" ?
+
+                                            <div className="flex flex-col lg:flex-row justify-between items-center">
+                                                <div className="flex flex-col justify-between lg:flex-row mt-6 w-full gap-4 lg:gap-0">
+                                                    <input onChange={(e) => console.log(e.target.value)} type="file" placeholder="Insérer un fichier" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                                </div>
+                                                <button className="rounded-md text-cyan-800 mt-8">
+                                                    <div className="">
+                                                        {groupId === 0 ? (
+                                                            <FontAwesomeIcon onClick={handleAddGroup} className="size-8 ml-2" icon={faPlusCircle} />
+                                                        ) : (
+                                                            <FontAwesomeIcon onClick={() => handleRemoveGroup(groupId)} className="size-8 ml-2" icon={faMinusCircle} />
+                                                        )}
+                                                    </div>
+                                                </button>
+                                            </div>
+                                            :
+                                            <div className="flex flex-col lg:flex-row justify-between items-center">
+                                                <div className="flex flex-col justify-between lg:flex-row mt-6 w-full gap-4 lg:gap-0">
+                                                    <input onChange={(e) => poids[groupId] = e.target.value} type="text" placeholder="Poids(kg)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                                    <input onChange={(e) => longueur[groupId] = e.target.value} type="text" placeholder="Longueur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                                    <input onChange={(e) => hauteur[groupId] = e.target.value} type="text" placeholder="Hauteur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                                    <input onChange={(e) => largueur[groupId] = e.target.value} type="text" placeholder="Largueur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                                </div>
+                                                <button className="rounded-md text-cyan-800 mt-8">
+                                                    <div className="">
+                                                        {groupId === 0 ? (
+                                                            <FontAwesomeIcon onClick={handleAddGroup} className="size-8 ml-2" icon={faPlusCircle} />
+                                                        ) : (
+                                                            <FontAwesomeIcon onClick={() => handleRemoveGroup(groupId)} className="size-8 ml-2" icon={faMinusCircle} />
+                                                        )}
+                                                    </div>
+                                                </button>
+                                            </div> 
+                                        } */}
                                     </div>
+                                    
                                 ))}
                             </div>
                         </div>
                         {/* <QuoteConfirmation/> */}
                         <Link href={"/QuoteConfirmationAerien"}>
-                            <button 
-                            onClick={()=>{handleSaveDataInSessionStorage(arrivee, destination, email, poste, rue, ville,reception, description, categorieChoix, [poids,longueur,hauteur,largueur]),console.log(arrivee, destination, email, poste, rue, ville)}}
-                            // isDisabled={email.length < 10 || dest.length < 4 || radio2.length < 3}
-                            // onClick={() => {
-                            // LaunchAll();
-                            // }} 
-                            className="w-full bg-cyan-800 text-white font-bold p-2 rounded-md mt-20">Envoyez dès maintenant</button>
+                            <button
+                                onClick={() => { handleSaveDataInSessionStorage(arrivee, destination, email, poste, rue, ville, reception, description, categorieChoix, [poids, longueur, hauteur, largueur]), console.log(arrivee, destination, email, poste, rue, ville) }}
+                                // isDisabled={email.length < 10 || dest.length < 4 || radio2.length < 3}
+                                // onClick={() => {
+                                // LaunchAll();
+                                // }} 
+                                className="w-full bg-cyan-800 text-white font-bold p-2 rounded-md mt-20">Envoyez dès maintenant</button>
                         </Link>
                     </form>
                 </div>
@@ -300,9 +567,9 @@ function Aerien() {
                     <div className="flex flex-col p-10">
                         <h2 className="text-2xl lg:text-6xl font-bold">Comparer différents transporteur et faites des économies avec CHAP.</h2>
                         <p className="text-sm lg:text-lg mt-10">
-                            Envoyez vos colis vers vers l{"'"}Afrique de l{"'"}ouest par nos partenaires. Remplissez le formulaire et 
-                            attendez notre retour mail si vous ne possédez pas un CHAP, sinon vérifiez l{"'"}onglet devis de votre compte. 
-                            Un fois reçu les différentes propositions de nos partenaires, vous pourrez choisir, payer et préparer le colis 
+                            Envoyez vos colis vers vers l{"'"}Afrique de l{"'"}ouest par nos partenaires. Remplissez le formulaire et
+                            attendez notre retour mail si vous ne possédez pas un CHAP, sinon vérifiez l{"'"}onglet devis de votre compte.
+                            Un fois reçu les différentes propositions de nos partenaires, vous pourrez choisir, payer et préparer le colis
                             pour le transporteur.
                         </p>
                         <div className="lg:-mt-20">
