@@ -93,175 +93,6 @@ function Valide({ items, email,id }) {
     return (
       <>
           <Box
-          mb={5}
-          bgColor={"white"}
-        mx={2}
-        py={2}
-        boxShadow={"rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;"}
-        w={["400px","400px","400px","500px","500px"]}
-        maxH={"170px"}
-       
-       
-        borderRadius="sm"
-          overflow="hidden" 
-        >
-          <Flex justifyContent={"space-between"} width={"100%"}>
-          <Box pl={2} width={"fit-content"}>
-            
-        
-            <Box
-            
-            fontSize={[13, 13, 13, 15, 15]}
-              as="h4"
-              lineHeight="tight"
-              
-            >
-              <Text>
-Référence: {id}</Text>
-              
-             <Flex><Text mr={2}>Date : </Text>{new Date(items.createdAt).toLocaleDateString(undefined, {
-  weekday: 'long',
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-})}</Flex>
-             <Text mb={5}> Destination : {items.arrive}</Text>
-             {/* <Flex><Text mr={2}>Arrivé : </Text>{items.arrive}</Flex> */}
-            </Box>
-
-           
-            {/* <Box>
-              <Button bgColor={'red.500'} _hover={{
-                bgColor:'#FF6969'
-              }} color={'white'} onClick={() => Cancel2(id, "Annulé")}>
-                Annuler
-              </Button>
-            </Box> */}
-           
-          </Box>   
-
-          <Box display="grid" height={"fit-content"}>
-              <Badge borderRadius="full" mb={2} px={6} bgColor="#ff914d" height={"fit-content"} width={"fit-content"} color={"white"} textTransform={"capitalize"}>
-                {items.status}
-              </Badge>
-         
-              <Badge borderRadius="full"  px={8} height={"fit-content"} width={"fit-content"}  bgColor={"#00bf63"} color={"white"}  textTransform={"capitalize"}>
-                {items.moyen}
-              </Badge> 
-               <Flex mt={2}>
-              <Text fontWeight={700}>{items.total + " "}</Text>
-              <Box as="span" color="gray.600" fontSize="sm">
-                <b>€</b> TTC
-              </Box>
-            </Flex>
-            </Box> 
-
-           
-          </Flex>
-          <Flex justifyContent={"space-between"}  width={"full"} >
-            <Text  mx={2}>Arrivée estimé: {items.dateArrive} </Text>
-            <Text>Reglé en espèce </Text>
-           <ChevronRightIcon fontSize={"30px"} color={"cyan.800"} fontWeight={700}/>
-          </Flex>
-           
-        </Box>
-      </>
-    );
-  } else {
-    return <></>;
-  }
-}
-function Cancel({ items, email,id }) {
-  // console.log(items.Status);
-  if (items.status == "Annulé" && items.email == email) {
-    return (
-      <>
-          <Box
-          mb={5}
-          bgColor={"white"}
-        mx={2}
-        py={2}
-        boxShadow={"rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;"}
-        w={["400px","400px","400px","500px","500px"]}
-        maxH={"170px"}
-       
-       
-        borderRadius="sm"
-          overflow="hidden" 
-        >
-          <Flex justifyContent={"space-between"} width={"100%"}>
-          <Box pl={2} width={"fit-content"}>
-            
-        
-            <Box
-            
-            fontSize={[13, 13, 13, 15, 15]}
-              as="h4"
-              lineHeight="tight"
-              
-            >
-              <Text>
-Référence: {id}</Text>
-              
-             <Flex><Text mr={2}>Date : </Text>{new Date(items.createdAt).toLocaleDateString(undefined, {
-  weekday: 'long',
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-})}</Flex>
-             <Text mb={5}> Destination : {items.arrive}</Text>
-             {/* <Flex><Text mr={2}>Arrivé : </Text>{items.arrive}</Flex> */}
-            </Box>
-
-           
-            {/* <Box>
-              <Button bgColor={'red.500'} _hover={{
-                bgColor:'#FF6969'
-              }} color={'white'} onClick={() => Cancel2(id, "Annulé")}>
-                Annuler
-              </Button>
-            </Box> */}
-           
-          </Box>   
-
-          <Box display="grid" height={"fit-content"}>
-              <Badge borderRadius="full" mb={2} px={6} bgColor="#ff914d" height={"fit-content"} width={"fit-content"} color={"white"} textTransform={"capitalize"}>
-                {items.status}
-              </Badge>
-         
-              <Badge borderRadius="full"  px={8} height={"fit-content"} width={"fit-content"}  bgColor={"#00bf63"} color={"white"}  textTransform={"capitalize"}>
-                {items.moyen}
-              </Badge> 
-               <Flex mt={2}>
-              <Text fontWeight={700}>{items.total + " "}</Text>
-              <Box as="span" color="gray.600" fontSize="sm">
-                <b>€</b> TTC
-              </Box>
-            </Flex>
-            </Box> 
-
-           
-          </Flex>
-          <Flex justifyContent={"space-between"}  width={"full"} >
-            <Text  mx={2}>Arrivée estimé: {items.dateArrive} </Text>
-            <Text>Reglé en espèce </Text>
-           <ChevronRightIcon fontSize={"30px"} color={"cyan.800"} fontWeight={700}/>
-          </Flex>
-           
-        </Box>
-      </>
-    );
-  } else {
-    return <></>;
-  }
-}
-function Launch({ items, email,id }) {
-  // console.log(items);
-  const { isOpen, onOpen, onClose } = useDisclosure()
-  if ((items.status == "En attente" || items.status == "Reglé" ) && items.email == email) {
-    return (
-      <>
-          <Box
           onClick={onOpen}
           mb={5}
           bgColor={"white"}
@@ -275,6 +106,7 @@ function Launch({ items, email,id }) {
         borderRadius="sm"
           overflow="hidden" 
         >
+          
           <Flex justifyContent={"space-between"} width={"100%"}>
           <Box pl={2} width={"fit-content"}>
             
@@ -287,7 +119,7 @@ function Launch({ items, email,id }) {
               
             >
               <Text>
-Référence: {id}</Text>
+<span className="itemsDev"> Référence: </span> {id}</Text>
               
              <Flex><Text mr={2}>Date : </Text>{new Date(items.createdAt).toLocaleDateString(undefined, {
   weekday: 'long',
@@ -331,7 +163,7 @@ Référence: {id}</Text>
           <Flex justifyContent={"space-between"}  width={"full"} >
             <Text  mx={2}>Arrivée estimé: </Text>
 {console.log(items.createdAt+2)}
-            {items.methodeDePaiement ? <Text>payé en {items.methodeDePaiment}</Text>:<Text> Erreur au niveau du paiement</Text> }
+            {items.methodeDePaiement ?<> <Text>{items.methodeDePaiment}  </Text> {items.methodeDePaiment} </>:<Text> Erreur au niveau du paiement</Text> }
            <ChevronRightIcon fontSize={"30px"} color={"cyan.800"} fontWeight={700}/>
           </Flex>
            
@@ -345,7 +177,7 @@ Référence: {id}</Text>
            
             <Box bgColor={"white"}  w={"full"}>
               <Flex justifyContent={"space-between"}>
-              <Flex>Référence : {items.devisId}</Flex>
+              <Flex mb={5}><span className={"itemsDev"}>Référence :</span> {items.devisId}</Flex>
               <Flex>
               <Badge borderRadius="full" mb={2} px={6} bgColor="#ff914d" height={"fit-content"} width={"fit-content"} color={"white"} textTransform={"capitalize"}>
                 {items.status}
@@ -356,19 +188,19 @@ Référence: {id}</Text>
               </Badge> 
               </Flex>
               
-              </Flex>
-              <Box>
+              </Flex >
+              {items.moyen == "Aerien"?  <Box>
                 <SimpleGrid columns={2}>
                   {items.categories.map((category,index) =>(
                        <Flex key={index} width={"100%"}>
                        <Box>
                          <Image width="80px" height="80px" src="./new/colis2.png" />
                        </Box>
-                       <Box >
-                         <Text> <span className={"itemsDev"}>Retrait:</span> </Text>
-                         <Text><span className={"itemsDev"}> Poids:</span> {items.produit[index][2].value} </Text>
-                         <Text> <span className={"itemsDev"}>Categorie:</span> {category.contenu}</Text>
-                         <Text> <span className={"itemsDev"}>Prix:</span>  </Text>
+                       <Box mt={3}>
+                         {/* <Text> <span className={"itemsDev"}>Retrait:</span> </Text> */}
+                         <Text><span className={"itemsDev"}> Poids:</span> {items.poids[index]} </Text>
+                         <Text> <span className={"itemsDev"}>Categorie:</span> {category}</Text>
+                         {/* <Text> <span className={"itemsDev"}>Prix:</span>  </Text> */}
                        </Box>
                      </Flex>
                   ))}
@@ -376,14 +208,514 @@ Référence: {id}</Text>
                 </SimpleGrid>
                 
                 
-              </Box>
+              </Box> :
+               <Box >
+               <SimpleGrid columns={2}>
+                 {items.contenant.map((category,index) =>(
+                      <Flex key={index} width={"100%"}>
+                      <Box>
+                        <Image width="80px" height="80px" src="./new/colis2.png" />
+                      </Box>
+                      <Box mt={3}>
+                        {/* <Text> <span className={"itemsDev"}>Retrait:</span> </Text> */}
+                        <Text> <span className={"itemsDev"}>Contenant:</span> {category}</Text>
+                        <Text> <span className={"itemsDev"}>Besoin:</span> {items.besoin[index]? "Oui" : "Non"}</Text>
+                        {/* <Text><span className={"itemsDev"}> Poids:</span> {items.poids[index]} </Text> */}
+                       
+                        {/* <Text> <span className={"itemsDev"}>Prix:</span>  </Text> */}
+                      </Box>
+                    </Flex>
+                 ))}
               
-              <Center color={"cyan.800"} fontWeight={"bold"} >Informations</Center>
+               </SimpleGrid>
+               
+               
+             </Box> }
+
+             <SimpleGrid columns={2} mt={5} >
+                  <Box>
+                    <Flex>
+                    <img width="24" height="24" src="https://img.icons8.com/color/48/000000/address--v1.png" alt="address--v1"/>
+                    <Text> Départ : {items.depart}</Text>
+                    </Flex>
+                    <Text> Recuperation : {items.retrait_depot}</Text>
+                    <Flex><Text mr={2}>Départ estimée : </Text>{new Date(items.createdAt).toLocaleDateString(undefined, {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+})}</Flex>
+                  </Box>
+                  <Box>
+                    <Flex>
+                    <img width="24" height="24" src="https://img.icons8.com/color/48/000000/address--v1.png" alt="address--v1"/>
+                    <Text> Départ : {items.arrive}</Text>
+                    </Flex>
+                   
+                    <Flex><Text mr={2}>Retirée le  : </Text>{new Date(items.createdAt).toLocaleDateString(undefined, {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+})}</Flex>
+                  </Box>
+             </SimpleGrid>
+             
+              
+              <Center mt={5} mb={5} color={"cyan.800"} fontWeight={"bold"} >Informations</Center>
               <SimpleGrid columns={2} justifyContent={"space-around"}>
                 <Box><Text color={"cyan.800"} fontWeight={700}>Destinataire</Text>
                     <Text><span className={"itemsDev"}>Nom :</span> {items.nomDestinataire}</Text>
                     <Text><span className={"itemsDev"}>Prénom :</span> {items.prenomDestinataire} </Text>
                     <Text><span className={"itemsDev"}>Adresse :</span>{items.adresseDest},{items.villeDest},{items.posteDest} </Text>
+                    <Text><span className={"itemsDev"}>Prix :</span> {items.total}€</Text>
+                    <Text><span className={"itemsDev"}>Contact :</span> {items.numeroDestinataire}</Text>
+                    <Text><span className={"itemsDev"}>Email :</span>{items.emailDest} </Text>
+                  </Box>
+                  <Box><Text color={"cyan.800"} fontWeight={700}>Expediteur</Text>
+                    <Text><span className={"itemsDev"}>Nom :</span>{items.nomExpediteur} </Text>
+                    <Text><span className={"itemsDev"}>Prénom :</span>{items.prenomExpediteur} </Text>
+                    <Text><span className={"itemsDev"}>Adresse :</span>{items.rue}{items.ville} </Text>
+                    <Text><span className={"itemsDev"}>Contact :</span> {items.numeroExpediteur}</Text>
+                    <Text><span className={"itemsDev"}>Email :</span> {items.email}</Text>
+                  </Box>
+              </SimpleGrid>
+              <Center mt={5} color={"cyan.800"} fontWeight={"bold"} >Livraison</Center>
+              
+                <Box>
+                <Text> <span className={"itemsDev"}>Type :</span> En agence </Text>
+                    <Text><span className={"itemsDev"}> Prestataire :</span> Rschain</Text>
+                    <Text><span className={"itemsDev"}> Adresse :</span> Carrefour prière, cocody-Abidjan</Text>
+                    <Text> <span className={"itemsDev"}>Contact :</span> 00225 - 07030908075</Text>
+                </Box>
+                
+             <Center mt={5} justifyContent={"space-evenly"}>
+              <Text bgColor={"cyan.800"} color={"white"} width={"130px"} px={4} py={2}  fontWeight={600} textAlign={"center"} borderRadius={"xl"} height={"fit-content"}>Modifier les informations</Text> 
+              <Button colorScheme={"red"} width={"130px"} px={4} py={2} height={"65px"} borderRadius={"xl"} onClick={() => Cancel2(id, "Annulé")}>Annuler</Button> 
+              </Center>
+            </Box>
+            
+          </ModalBody>
+
+          {/* <ModalFooter>
+            <Button variant='ghost' mr={3} onClick={onClose}>
+              Fermer
+            </Button>
+
+          </ModalFooter> */}
+        </ModalContent>
+      </Modal>
+      </>
+    );
+  } else {
+    return <></>;
+  }
+}
+function Cancel({ items, email,id }) {
+  // console.log(items.Status);
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  if (items.status == "Annulé" && items.email == email) {
+    return (
+      <>
+          <Box
+          onClick={onOpen}
+          mb={5}
+          bgColor={"white"}
+        mx={2}
+        py={2}
+        boxShadow={"rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;"}
+        w={["400px","400px","400px","500px","500px"]}
+        maxH={"170px"}
+       
+       
+        borderRadius="sm"
+          overflow="hidden" 
+        >
+          
+          <Flex justifyContent={"space-between"} width={"100%"}>
+          <Box pl={2} width={"fit-content"}>
+            
+        
+            <Box
+            
+            fontSize={[13, 13, 13, 15, 15]}
+              as="h4"
+              lineHeight="tight"
+              
+            >
+              <Text>
+<span className="itemsDev"> Référence: </span> {id}</Text>
+              
+             <Flex><Text mr={2}>Date : </Text>{new Date(items.createdAt).toLocaleDateString(undefined, {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+})}</Flex>
+             <Text mb={5}> Destination : {items.arrive}</Text>
+             {/* <Flex><Text mr={2}>Arrivé : </Text>{items.arrive}</Flex> */}
+            </Box>
+
+           
+            {/* <Box>
+              <Button bgColor={'red.500'} _hover={{
+                bgColor:'#FF6969'
+              }} color={'white'} onClick={() => Cancel2(id, "Annulé")}>
+                Annuler
+              </Button>
+            </Box> */}
+           
+          </Box>   
+
+          <Box display="grid" height={"fit-content"} width={"fit-content"}>
+              <Badge borderRadius="full" mb={2} px={2} bgColor="#ff914d" height={"fit-content"} width={"fit-content"} color={"white"} textTransform={"capitalize"}>
+                {items.status}
+              </Badge>
+         
+              <Badge borderRadius="full"  px={4} height={"fit-content"} width={"fit-content"}  bgColor={"#00bf63"} color={"white"}  textTransform={"capitalize"}>
+                {items.moyen}
+              </Badge> 
+               <Flex mt={2}>
+              <Text fontWeight={700}>{items.total + " "}</Text>
+              <Box as="span" color="gray.600" fontSize="sm">
+                <b>€</b> TTC
+              </Box>
+            </Flex>
+            </Box> 
+
+           
+          </Flex>
+          <Flex justifyContent={"space-between"}  width={"full"} >
+            <Text  mx={2}>Arrivée estimé: </Text>
+{console.log(items.createdAt+2)}
+            {items.methodeDePaiement ?<> <Text>{items.methodeDePaiment}  </Text> {items.methodeDePaiment} </>:<Text> Erreur au niveau du paiement</Text> }
+           <ChevronRightIcon fontSize={"30px"} color={"cyan.800"} fontWeight={700}/>
+          </Flex>
+           
+        </Box>
+        <Modal isOpen={isOpen} onClose={onClose} size={"2xl"}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader></ModalHeader>
+          <ModalCloseButton />  
+          <ModalBody>
+           
+            <Box bgColor={"white"}  w={"full"}>
+              <Flex justifyContent={"space-between"}>
+              <Flex mb={5}><span className={"itemsDev"}>Référence :</span> {items.devisId}</Flex>
+              <Flex>
+              <Badge borderRadius="full" mb={2} px={6} bgColor="#ff914d" height={"fit-content"} width={"fit-content"} color={"white"} textTransform={"capitalize"}>
+                {items.status}
+              </Badge>
+         
+              <Badge borderRadius="full"  px={8} height={"fit-content"} width={"fit-content"}  bgColor={"#00bf63"} color={"white"}  textTransform={"capitalize"}>
+                {items.moyen}
+              </Badge> 
+              </Flex>
+              
+              </Flex >
+              {items.moyen == "Aerien"?  <Box>
+                <SimpleGrid columns={2}>
+                  {items.categories.map((category,index) =>(
+                       <Flex key={index} width={"100%"}>
+                       <Box>
+                         <Image width="80px" height="80px" src="./new/colis2.png" />
+                       </Box>
+                       <Box mt={3}>
+                         {/* <Text> <span className={"itemsDev"}>Retrait:</span> </Text> */}
+                         <Text><span className={"itemsDev"}> Poids:</span> {items.poids[index]} </Text>
+                         <Text> <span className={"itemsDev"}>Categorie:</span> {category}</Text>
+                         {/* <Text> <span className={"itemsDev"}>Prix:</span>  </Text> */}
+                       </Box>
+                     </Flex>
+                  ))}
+               
+                </SimpleGrid>
+                
+                
+              </Box> :
+               <Box >
+               <SimpleGrid columns={2}>
+                 {items.contenant.map((category,index) =>(
+                      <Flex key={index} width={"100%"}>
+                      <Box>
+                        <Image width="80px" height="80px" src="./new/colis2.png" />
+                      </Box>
+                      <Box mt={3}>
+                        {/* <Text> <span className={"itemsDev"}>Retrait:</span> </Text> */}
+                        <Text> <span className={"itemsDev"}>Contenant:</span> {category}</Text>
+                        <Text> <span className={"itemsDev"}>Besoin:</span> {items.besoin[index]? "Oui" : "Non"}</Text>
+                        {/* <Text><span className={"itemsDev"}> Poids:</span> {items.poids[index]} </Text> */}
+                       
+                        {/* <Text> <span className={"itemsDev"}>Prix:</span>  </Text> */}
+                      </Box>
+                    </Flex>
+                 ))}
+              
+               </SimpleGrid>
+               
+               
+             </Box> }
+
+             <SimpleGrid columns={2} mt={5} >
+                  <Box>
+                    <Flex>
+                    <img width="24" height="24" src="https://img.icons8.com/color/48/000000/address--v1.png" alt="address--v1"/>
+                    <Text> Départ : {items.depart}</Text>
+                    </Flex>
+                    <Text> Recuperation : {items.retrait_depot}</Text>
+                    <Flex><Text mr={2}>Départ estimée : </Text>{new Date(items.createdAt).toLocaleDateString(undefined, {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+})}</Flex>
+                  </Box>
+                  <Box>
+                    <Flex>
+                    <img width="24" height="24" src="https://img.icons8.com/color/48/000000/address--v1.png" alt="address--v1"/>
+                    <Text> Départ : {items.arrive}</Text>
+                    </Flex>
+                   
+                    <Flex><Text mr={2}>Retirée le  : </Text>{new Date(items.createdAt).toLocaleDateString(undefined, {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+})}</Flex>
+                  </Box>
+             </SimpleGrid>
+             
+              
+              <Center mt={5} mb={5} color={"cyan.800"} fontWeight={"bold"} >Informations</Center>
+              <SimpleGrid columns={2} justifyContent={"space-around"}>
+                <Box><Text color={"cyan.800"} fontWeight={700}>Destinataire</Text>
+                    <Text><span className={"itemsDev"}>Nom :</span> {items.nomDestinataire}</Text>
+                    <Text><span className={"itemsDev"}>Prénom :</span> {items.prenomDestinataire} </Text>
+                    <Text><span className={"itemsDev"}>Adresse :</span>{items.adresseDest},{items.villeDest},{items.posteDest} </Text>
+                    <Text><span className={"itemsDev"}>Prix :</span> {items.total}€</Text>
+                    <Text><span className={"itemsDev"}>Contact :</span> {items.numeroDestinataire}</Text>
+                    <Text><span className={"itemsDev"}>Email :</span>{items.emailDest} </Text>
+                  </Box>
+                  <Box><Text color={"cyan.800"} fontWeight={700}>Expediteur</Text>
+                    <Text><span className={"itemsDev"}>Nom :</span>{items.nomExpediteur} </Text>
+                    <Text><span className={"itemsDev"}>Prénom :</span>{items.prenomExpediteur} </Text>
+                    <Text><span className={"itemsDev"}>Adresse :</span>{items.rue}{items.ville} </Text>
+                    <Text><span className={"itemsDev"}>Contact :</span> {items.numeroExpediteur}</Text>
+                    <Text><span className={"itemsDev"}>Email :</span> {items.email}</Text>
+                  </Box>
+              </SimpleGrid>
+              <Center mt={5} color={"cyan.800"} fontWeight={"bold"} >Livraison</Center>
+              
+                <Box>
+                <Text> <span className={"itemsDev"}>Type :</span> En agence </Text>
+                    <Text><span className={"itemsDev"}> Prestataire :</span> Rschain</Text>
+                    <Text><span className={"itemsDev"}> Adresse :</span> Carrefour prière, cocody-Abidjan</Text>
+                    <Text> <span className={"itemsDev"}>Contact :</span> 00225 - 07030908075</Text>
+                </Box>
+                
+            
+            </Box>
+            
+          </ModalBody>
+
+          {/* <ModalFooter>
+            <Button variant='ghost' mr={3} onClick={onClose}>
+              Fermer
+            </Button>
+
+          </ModalFooter> */}
+        </ModalContent>
+      </Modal>
+      </>
+    );
+  } else {
+    return <></>;
+  }
+}
+function Launch({ items, email,id }) {
+  // console.log(items);
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  if ((items.status == "En attente" || items.status == "Reglé" ) && items.email == email) {
+    return (
+      <>
+          <Box
+          onClick={onOpen}
+          mb={5}
+          bgColor={"white"}
+        mx={2}
+        py={2}
+        boxShadow={"rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;"}
+        w={["400px","400px","400px","500px","500px"]}
+        maxH={"170px"}
+       
+       
+        borderRadius="sm"
+          overflow="hidden" 
+        >
+          
+          <Flex justifyContent={"space-between"} width={"100%"}>
+          <Box pl={2} width={"fit-content"}>
+            
+        
+            <Box
+            
+            fontSize={[13, 13, 13, 15, 15]}
+              as="h4"
+              lineHeight="tight"
+              
+            >
+              <Text>
+<span className="itemsDev"> Référence: </span> {id}</Text>
+              
+             <Flex><Text mr={2}>Date : </Text>{new Date(items.createdAt).toLocaleDateString(undefined, {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+})}</Flex>
+             <Text mb={5}> Destination : {items.arrive}</Text>
+             {/* <Flex><Text mr={2}>Arrivé : </Text>{items.arrive}</Flex> */}
+            </Box>
+
+           
+            {/* <Box>
+              <Button bgColor={'red.500'} _hover={{
+                bgColor:'#FF6969'
+              }} color={'white'} onClick={() => Cancel2(id, "Annulé")}>
+                Annuler
+              </Button>
+            </Box> */}
+           
+          </Box>   
+
+          <Box display="grid" height={"fit-content"} width={"fit-content"}>
+              <Badge borderRadius="full" mb={2} px={2} bgColor="#ff914d" height={"fit-content"} width={"fit-content"} color={"white"} textTransform={"capitalize"}>
+                {items.status}
+              </Badge>
+         
+              <Badge borderRadius="full"  px={4} height={"fit-content"} width={"fit-content"}  bgColor={"#00bf63"} color={"white"}  textTransform={"capitalize"}>
+                {items.moyen}
+              </Badge> 
+               <Flex mt={2}>
+              <Text fontWeight={700}>{items.total + " "}</Text>
+              <Box as="span" color="gray.600" fontSize="sm">
+                <b>€</b> TTC
+              </Box>
+            </Flex>
+            </Box> 
+
+           
+          </Flex>
+          <Flex justifyContent={"space-between"}  width={"full"} >
+            <Text  mx={2}>Arrivée estimé: </Text>
+{console.log(items.createdAt+2)}
+            {items.methodeDePaiement ?<> <Text>{items.methodeDePaiment}  </Text> {items.methodeDePaiment} </>:<Text> Erreur au niveau du paiement</Text> }
+           <ChevronRightIcon fontSize={"30px"} color={"cyan.800"} fontWeight={700}/>
+          </Flex>
+           
+        </Box>
+        <Modal isOpen={isOpen} onClose={onClose} size={"2xl"}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader></ModalHeader>
+          <ModalCloseButton />  
+          <ModalBody>
+           
+            <Box bgColor={"white"}  w={"full"}>
+              <Flex justifyContent={"space-between"}>
+              <Flex mb={5}><span className={"itemsDev"}>Référence :</span> {items.devisId}</Flex>
+              <Flex>
+              <Badge borderRadius="full" mb={2} px={6} bgColor="#ff914d" height={"fit-content"} width={"fit-content"} color={"white"} textTransform={"capitalize"}>
+                {items.status}
+              </Badge>
+         
+              <Badge borderRadius="full"  px={8} height={"fit-content"} width={"fit-content"}  bgColor={"#00bf63"} color={"white"}  textTransform={"capitalize"}>
+                {items.moyen}
+              </Badge> 
+              </Flex>
+              
+              </Flex >
+              {items.moyen == "Aerien"?  <Box>
+                <SimpleGrid columns={2}>
+                  {items.categories.map((category,index) =>(
+                       <Flex key={index} width={"100%"}>
+                       <Box>
+                         <Image width="80px" height="80px" src="./new/colis2.png" />
+                       </Box>
+                       <Box mt={3}>
+                         {/* <Text> <span className={"itemsDev"}>Retrait:</span> </Text> */}
+                         <Text><span className={"itemsDev"}> Poids:</span> {items.poids[index]} </Text>
+                         <Text> <span className={"itemsDev"}>Categorie:</span> {category}</Text>
+                         {/* <Text> <span className={"itemsDev"}>Prix:</span>  </Text> */}
+                       </Box>
+                     </Flex>
+                  ))}
+               
+                </SimpleGrid>
+                
+                
+              </Box> :
+               <Box >
+               <SimpleGrid columns={2}>
+                 {items.contenant.map((category,index) =>(
+                      <Flex key={index} width={"100%"}>
+                      <Box>
+                        <Image width="80px" height="80px" src="./new/colis2.png" />
+                      </Box>
+                      <Box mt={3}>
+                        {/* <Text> <span className={"itemsDev"}>Retrait:</span> </Text> */}
+                        <Text> <span className={"itemsDev"}>Contenant:</span> {category}</Text>
+                        <Text> <span className={"itemsDev"}>Besoin:</span> {items.besoin[index]? "Oui" : "Non"}</Text>
+                        {/* <Text><span className={"itemsDev"}> Poids:</span> {items.poids[index]} </Text> */}
+                       
+                        {/* <Text> <span className={"itemsDev"}>Prix:</span>  </Text> */}
+                      </Box>
+                    </Flex>
+                 ))}
+              
+               </SimpleGrid>
+               
+               
+             </Box> }
+
+             <SimpleGrid columns={2} mt={5} >
+                  <Box>
+                    <Flex>
+                    <img width="24" height="24" src="https://img.icons8.com/color/48/000000/address--v1.png" alt="address--v1"/>
+                    <Text> Départ : {items.depart}</Text>
+                    </Flex>
+                    <Text> Recuperation : {items.retrait_depot}</Text>
+                    <Flex><Text mr={2}>Départ estimée : </Text>{new Date(items.createdAt).toLocaleDateString(undefined, {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+})}</Flex>
+                  </Box>
+                  <Box>
+                    <Flex>
+                    <img width="24" height="24" src="https://img.icons8.com/color/48/000000/address--v1.png" alt="address--v1"/>
+                    <Text> Départ : {items.arrive}</Text>
+                    </Flex>
+                   
+                    <Flex><Text mr={2}>Retirée le  : </Text>{new Date(items.createdAt).toLocaleDateString(undefined, {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+})}</Flex>
+                  </Box>
+             </SimpleGrid>
+             
+              
+              <Center mt={5} mb={5} color={"cyan.800"} fontWeight={"bold"} >Informations</Center>
+              <SimpleGrid columns={2} justifyContent={"space-around"}>
+                <Box><Text color={"cyan.800"} fontWeight={700}>Destinataire</Text>
+                    <Text><span className={"itemsDev"}>Nom :</span> {items.nomDestinataire}</Text>
+                    <Text><span className={"itemsDev"}>Prénom :</span> {items.prenomDestinataire} </Text>
+                    <Text><span className={"itemsDev"}>Adresse :</span>{items.adresseDest},{items.villeDest},{items.posteDest} </Text>
+                    <Text><span className={"itemsDev"}>Prix :</span> {items.total}€</Text>
                     <Text><span className={"itemsDev"}>Contact :</span> {items.numeroDestinataire}</Text>
                     <Text><span className={"itemsDev"}>Email :</span>{items.emailDest} </Text>
                   </Box>
@@ -428,10 +760,12 @@ Référence: {id}</Text>
 }
 function Regle({ items, email,id }) {
   // console.log(items.Status);
+  const { isOpen, onOpen, onClose } = useDisclosure()
   if (items.status == "Disponible" && items.email == email) {
     return (
       <>
           <Box
+          onClick={onOpen}
           mb={5}
           bgColor={"white"}
         mx={2}
@@ -444,6 +778,7 @@ function Regle({ items, email,id }) {
         borderRadius="sm"
           overflow="hidden" 
         >
+          
           <Flex justifyContent={"space-between"} width={"100%"}>
           <Box pl={2} width={"fit-content"}>
             
@@ -456,7 +791,7 @@ function Regle({ items, email,id }) {
               
             >
               <Text>
-Référence: {id}</Text>
+<span className="itemsDev"> Référence: </span> {id}</Text>
               
              <Flex><Text mr={2}>Date : </Text>{new Date(items.createdAt).toLocaleDateString(undefined, {
   weekday: 'long',
@@ -479,12 +814,12 @@ Référence: {id}</Text>
            
           </Box>   
 
-          <Box display="grid" height={"fit-content"}>
-              <Badge borderRadius="full" mb={2} px={6} bgColor="#ff914d" height={"fit-content"} width={"fit-content"} color={"white"} textTransform={"capitalize"}>
+          <Box display="grid" height={"fit-content"} width={"fit-content"}>
+              <Badge borderRadius="full" mb={2} px={2} bgColor="#ff914d" height={"fit-content"} width={"fit-content"} color={"white"} textTransform={"capitalize"}>
                 {items.status}
               </Badge>
          
-              <Badge borderRadius="full"  px={8} height={"fit-content"} width={"fit-content"}  bgColor={"#00bf63"} color={"white"}  textTransform={"capitalize"}>
+              <Badge borderRadius="full"  px={4} height={"fit-content"} width={"fit-content"}  bgColor={"#00bf63"} color={"white"}  textTransform={"capitalize"}>
                 {items.moyen}
               </Badge> 
                <Flex mt={2}>
@@ -498,12 +833,150 @@ Référence: {id}</Text>
            
           </Flex>
           <Flex justifyContent={"space-between"}  width={"full"} >
-            <Text  mx={2}>Arrivée estimé: {items.dateArrive} </Text>
-            <Text>Reglé en espèce </Text>
+            <Text  mx={2}>Arrivée estimé: </Text>
+{console.log(items.createdAt+2)}
+            {items.methodeDePaiement ?<> <Text>{items.methodeDePaiment}  </Text> {items.methodeDePaiment} </>:<Text> Erreur au niveau du paiement</Text> }
            <ChevronRightIcon fontSize={"30px"} color={"cyan.800"} fontWeight={700}/>
           </Flex>
            
         </Box>
+        <Modal isOpen={isOpen} onClose={onClose} size={"2xl"}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader></ModalHeader>
+          <ModalCloseButton />  
+          <ModalBody>
+           
+            <Box bgColor={"white"}  w={"full"}>
+              <Flex justifyContent={"space-between"}>
+              <Flex mb={5}><span className={"itemsDev"}>Référence :</span> {items.devisId}</Flex>
+              <Flex>
+              <Badge borderRadius="full" mb={2} px={6} bgColor="#ff914d" height={"fit-content"} width={"fit-content"} color={"white"} textTransform={"capitalize"}>
+                {items.status}
+              </Badge>
+         
+              <Badge borderRadius="full"  px={8} height={"fit-content"} width={"fit-content"}  bgColor={"#00bf63"} color={"white"}  textTransform={"capitalize"}>
+                {items.moyen}
+              </Badge> 
+              </Flex>
+              
+              </Flex >
+              {items.moyen == "Aerien"?  <Box>
+                <SimpleGrid columns={2}>
+                  {items.categories.map((category,index) =>(
+                       <Flex key={index} width={"100%"}>
+                       <Box>
+                         <Image width="80px" height="80px" src="./new/colis2.png" />
+                       </Box>
+                       <Box mt={3}>
+                         {/* <Text> <span className={"itemsDev"}>Retrait:</span> </Text> */}
+                         <Text><span className={"itemsDev"}> Poids:</span> {items.poids[index]} </Text>
+                         <Text> <span className={"itemsDev"}>Categorie:</span> {category}</Text>
+                         {/* <Text> <span className={"itemsDev"}>Prix:</span>  </Text> */}
+                       </Box>
+                     </Flex>
+                  ))}
+               
+                </SimpleGrid>
+                
+                
+              </Box> :
+               <Box >
+               <SimpleGrid columns={2}>
+                 {items.contenant.map((category,index) =>(
+                      <Flex key={index} width={"100%"}>
+                      <Box>
+                        <Image width="80px" height="80px" src="./new/colis2.png" />
+                      </Box>
+                      <Box mt={3}>
+                        {/* <Text> <span className={"itemsDev"}>Retrait:</span> </Text> */}
+                        <Text> <span className={"itemsDev"}>Contenant:</span> {category}</Text>
+                        <Text> <span className={"itemsDev"}>Besoin:</span> {items.besoin[index]? "Oui" : "Non"}</Text>
+                        {/* <Text><span className={"itemsDev"}> Poids:</span> {items.poids[index]} </Text> */}
+                       
+                        {/* <Text> <span className={"itemsDev"}>Prix:</span>  </Text> */}
+                      </Box>
+                    </Flex>
+                 ))}
+              
+               </SimpleGrid>
+               
+               
+             </Box> }
+
+             <SimpleGrid columns={2} mt={5} >
+                  <Box>
+                    <Flex>
+                    <img width="24" height="24" src="https://img.icons8.com/color/48/000000/address--v1.png" alt="address--v1"/>
+                    <Text> Départ : {items.depart}</Text>
+                    </Flex>
+                    <Text> Recuperation : {items.retrait_depot}</Text>
+                    <Flex><Text mr={2}>Départ estimée : </Text>{new Date(items.createdAt).toLocaleDateString(undefined, {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+})}</Flex>
+                  </Box>
+                  <Box>
+                    <Flex>
+                    <img width="24" height="24" src="https://img.icons8.com/color/48/000000/address--v1.png" alt="address--v1"/>
+                    <Text> Départ : {items.arrive}</Text>
+                    </Flex>
+                   
+                    <Flex><Text mr={2}>Retirée le  : </Text>{new Date(items.createdAt).toLocaleDateString(undefined, {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+})}</Flex>
+                  </Box>
+             </SimpleGrid>
+             
+              
+              <Center mt={5} mb={5} color={"cyan.800"} fontWeight={"bold"} >Informations</Center>
+              <SimpleGrid columns={2} justifyContent={"space-around"}>
+                <Box><Text color={"cyan.800"} fontWeight={700}>Destinataire</Text>
+                    <Text><span className={"itemsDev"}>Nom :</span> {items.nomDestinataire}</Text>
+                    <Text><span className={"itemsDev"}>Prénom :</span> {items.prenomDestinataire} </Text>
+                    <Text><span className={"itemsDev"}>Adresse :</span>{items.adresseDest},{items.villeDest},{items.posteDest} </Text>
+                    <Text><span className={"itemsDev"}>Prix :</span> {items.total}€</Text>
+                    <Text><span className={"itemsDev"}>Contact :</span> {items.numeroDestinataire}</Text>
+                    <Text><span className={"itemsDev"}>Email :</span>{items.emailDest} </Text>
+                  </Box>
+                  <Box><Text color={"cyan.800"} fontWeight={700}>Expediteur</Text>
+                    <Text><span className={"itemsDev"}>Nom :</span>{items.nomExpediteur} </Text>
+                    <Text><span className={"itemsDev"}>Prénom :</span>{items.prenomExpediteur} </Text>
+                    <Text><span className={"itemsDev"}>Adresse :</span>{items.rue}{items.ville} </Text>
+                    <Text><span className={"itemsDev"}>Contact :</span> {items.numeroExpediteur}</Text>
+                    <Text><span className={"itemsDev"}>Email :</span> {items.email}</Text>
+                  </Box>
+              </SimpleGrid>
+              <Center mt={5} color={"cyan.800"} fontWeight={"bold"} >Livraison</Center>
+              
+                <Box>
+                <Text> <span className={"itemsDev"}>Type :</span> En agence </Text>
+                    <Text><span className={"itemsDev"}> Prestataire :</span> Rschain</Text>
+                    <Text><span className={"itemsDev"}> Adresse :</span> Carrefour prière, cocody-Abidjan</Text>
+                    <Text> <span className={"itemsDev"}>Contact :</span> 00225 - 07030908075</Text>
+                </Box>
+                
+             <Center mt={5} justifyContent={"space-evenly"}>
+              {/* <Text bgColor={"cyan.800"} color={"white"} width={"130px"} px={4} py={2}  fontWeight={600} textAlign={"center"} borderRadius={"xl"} height={"fit-content"}>Modifier les informations</Text>  */}
+              <Button colorScheme={"red"} width={"130px"} px={4} py={2} height={"65px"} borderRadius={"xl"} onClick={() => Cancel2(id, "Annulé")}>Annuler</Button> 
+              </Center>
+            </Box>
+            
+          </ModalBody>
+
+          {/* <ModalFooter>
+            <Button variant='ghost' mr={3} onClick={onClose}>
+              Fermer
+            </Button>
+
+          </ModalFooter> */}
+        </ModalContent>
+      </Modal>
       </>
     );
   } else {

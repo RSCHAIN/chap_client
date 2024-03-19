@@ -50,6 +50,7 @@ import queryString from "query-string";
 import { FaWhatsapp } from "react-icons/fa";
 import SearchMagg from "../SearchMagg";
 import Reservations from "../Reservations";
+import AllWeb from "../ResultResarch/AllWeb";
 
 // les card des differntes cartegories qui seront mapés
 export function ItemCard({ item, card}) {
@@ -410,50 +411,59 @@ const afrique = "Vers l'afrique"
               width={"100%"}
               height={"fit-content"}
               display={["flex", "flex", "flex", "none", "none"]}
-              mt={3}
+              
               color={"white"}
             >
-              <Flex width={"full"} display={"flex"} >
-                <SimpleGrid columns={[2,2,3,3,5]} >
-                  <Box  ml={"60px"} mr={10} my={10}>
+              <Flex width={"full"} display={"flex"} justifyContent={"center"} >
+                <SimpleGrid spacing={5} mt={5} columns={[3,3,3,3,5]} >
+                  <Box >
                      <Reservations/>
                   </Box>
-                  <Box  ml={10}  my={10}>
+                  <Box  >
               <SearchMagg/>
               </Box>
-              <Box display={"grid"} ml={"10px"}  my={[20,-1,10,10,10]} mt={-1}  as={Link} 
+              <Box display={"grid"}   as={Link} 
  href={"/Devis"}   _hover={{
   bgColor: "transparent",
   opacity: "0.7",
   textDecoration: "none",
 }}>
-                  <Box textAlign={"center"}>
-                    <Center display={"grid"}>
-                    <Image src={'./new/colis.png'} ml={5} alt={"Envoie de colis"} bgColor={"rgba(255,255,255,0.2)"}  width={["70px","70px","70px","80px","80px"]} />
-                    <Text mt={-1} width={"120px"} borderRadius={"25px"} color={"black"} fontSize={"15px"} fontWeight={700}>ENVOYER </Text>
-                    <Text width={"120px"} borderRadius={"25px"} color={"black"} fontWeight={600} fontSize={"10px"}>{afrique} </Text>
+                  <Box >
+                    <Center>
+                    <Image src={'./new/colis.png'}  alt={"Envoie de colis"} bgColor={"rgba(255,255,255,0.2)"}  width={["50px","50px","50px","80px","80px"]} />
+                    </Center>
+                    <Center>
+                    <Text width={"fit-content"} borderRadius={"25px"} color={"black"} fontSize={"15px"} fontWeight={700}>ENVOYER </Text>
+                    </Center>
+                    <Center>
+                    <Text width={"fit-content"} borderRadius={"25px"} color={"black"} fontWeight={600} fontSize={"10px"}>{afrique} </Text>
                     </Center>
                   </Box>
                  
                 </Box>
-                <Box display={"grid"} ml={"10px"}  my={20} mt={-1}  as={Link} 
+                <Box display={"grid"}     as={Link} 
  href={"/StorePage/Store"}   _hover={{
   bgColor: "transparent",
   opacity: "0.7",
   textDecoration: "none",
 }}>
                   <Box textAlign={"center"}>
-                    <Center display={"grid"}>
-                    <Image src={'./new/legume.png'} ml={6} alt={"Envoie de colis"} bgColor={"rgba(255,255,255,0.2)"}  width={["70px","70px","70px","80px","80px"]} />
-                    <Text mt={-1} width={"120px"} borderRadius={"25px"} color={"black"} fontSize={"15px"} fontWeight={700}>COURSES </Text>
-                    <Text width={"120px"} borderRadius={"25px"} color={"black"} fontWeight={600} fontSize={"10px"}>Africaine </Text>
+                    <Center >
+                    <Image src={'./new/legume.png'}  alt={"Envoie de colis"} bgColor={"rgba(255,255,255,0.2)"}  width={["70px","70px","70px","80px","80px"]} />
                     </Center>
+                    <Center>
+                    <Text width={"fit-content"} borderRadius={"25px"} color={"black"} fontSize={"15px"} fontWeight={700}>COURSES </Text>
+                    </Center>
+                    <Center>
+                    <Text width={"fit-content"} borderRadius={"25px"} color={"black"} fontWeight={600} fontSize={"10px"}>Africaine </Text>
+                    </Center>
+                 
                   </Box>
                   <Center>
                     
                   </Center>
                 </Box>
-                <Box display={"grid"} ml={10}  my={20} mt={-1}  as={Link}
+                <Box display={"grid"}   as={Link}
 href={
                         "https://chapbackofficefournisseur.vercel.app/Connexion"
                       }
@@ -464,10 +474,14 @@ href={
                         
                       }}>
                   <Box textAlign={"center"}>
-                    <Center display={"grid"}>
-                    <Image src={'./new/partenaire.png'}  ml={8}  width={["70px","70px","70px","190px","190px"]}  alt={"Entrepreneur"}  />
-                    <Text   color={"black"}  width={"130px"} borderRadius={"25px"}fontSize={"15px"} fontWeight={700} mt={2}>PARTENAIRE</Text>
-                    <Text  color={"black"}  width={"120px"} borderRadius={"25px"}fontSize={"10px"} fontWeight={600}>Rejoignez nous </Text>
+                    <Center >
+                    <Image src={'./new/partenaire.png'}   width={["60px","60px","60px","190px","190px"]}  alt={"Entrepreneur"}  />
+                    </Center>
+                    <Center>
+                    <Text   color={"black"}  width={"fit-content"} borderRadius={"25px"}fontSize={"15px"} fontWeight={700} mt={2}>PARTENAIRE</Text>
+                    </Center>
+                    <Center>
+                    <Text  color={"black"}  width={"fit-content"} borderRadius={"25px"}fontSize={"10px"} fontWeight={600}>Rejoignez nous </Text>
                     </Center>
                   </Box>
                   <Center>
@@ -483,30 +497,35 @@ href={
               width={"100%"}
               height={"fit-content"}
               display={["none", "none", "none", "flex", "flex"]}
-              mt={-3}
+              mt={2}
               color={"white"}
+              justifyContent={"center"}
             >
-              <Center width={"100%"} display={"flex"} >
+              <SimpleGrid columns={5}  spacing={10} >
               <Reservations/>
               <SearchMagg/>
-              <Box display={"grid"} pr={10} as={Link} ml={20}
+              <Box display={"grid"} as={Link} 
                 href={"/Devis"}   _hover={{
                   bgColor: "transparent",
                   opacity: "0.7",
                   textDecoration: "none",
                 }}>
-                  <Box textAlign={"center"}>
-                    <Center display={"grid"}>
-                    <Image ml={4} src={'./new/colis.png'} alt={"Envoie de colis"} bgColor={"rgba(255,255,255,0.2)"} width={"120px"}/>
-                    <Text width={["100px","100px","100px","150px","150px"]} fontSize={["15px","15px","15px","25px","25px"]} textAlign={"center"} borderRadius={"25px"} color={"black"} fontWeight={700}>ENVOYER </Text>
-                    <Text width={["100px","100px","100px","150px","150px"]} fontSize={["10px","10px","10px","15px","15px"]} textAlign={"center"} borderRadius={"25px"} color={"black"} fontWeight={600} >{afrique} </Text>
+                  <Box>
+                    <Center>
+                    <Image  src={'./new/colis.png'} alt={"Envoie de colis"} bgColor={"rgba(255,255,255,0.2)"} width={"100px"}/>
+                    </Center>
+                   <Center>
+                    <Text width={"fit-content"} fontSize={["15px","15px","15px","25px","25px"]} textAlign={"center"} borderRadius={"25px"} color={"black"} fontWeight={700}>ENVOYER </Text>
+                    </Center>
+                    <Center>
+                    <Text width={"fit-content"} fontSize={["10px","10px","10px","15px","15px"]} textAlign={"center"} borderRadius={"25px"} color={"black"} fontWeight={600} >{afrique} </Text>
                     </Center>
                   </Box>
                   <Center>
                     
                   </Center>
                 </Box>
-                <Box display={"grid"} pr={10} as={Link} ml={5}
+                <Box display={"grid"}  as={Link} 
                   href={"/StorePage/Store"}  _hover={{
                     bgColor: "transparent",
                     opacity: "0.7",
@@ -514,17 +533,21 @@ href={
                   }}>
                   <Box textAlign={"center"}>
                     <Center display={"grid"}>
-                    <Image ml={4} src={'./new/legume.png'} alt={"Envoie de colis"} bgColor={"rgba(255,255,255,0.2)"} width={"120px"}/>
-                    <Text  width={["100px","100px","100px","150px","150px"]} fontSize={["15px","15px","15px","25px","25px"]} textAlign={"center"} borderRadius={"25px"} color={"black"} fontWeight={700}>COURSES </Text>
-                    <Text width={["100px","100px","100px","150px","150px"]} fontSize={["10px","10px","10px","15px","15px"]} textAlign={"center"} borderRadius={"25px"} color={"black"} fontWeight={600} >Africaine </Text>
+                    <Image src={'./new/legume.png'} alt={"Envoie de colis"} bgColor={"rgba(255,255,255,0.2)"} width={"100px"}/>
                     </Center>
+                    <Center>
+                    <Text  width={["100px","100px","100px","150px","150px"]} fontSize={["15px","15px","15px","25px","25px"]} textAlign={"center"} borderRadius={"25px"} color={"black"} fontWeight={700}>COURSES </Text>
+                    </Center>
+                    <Center>
+                    <Text width={["100px","100px","100px","150px","150px"]} fontSize={["10px","10px","10px","15px","15px"]} textAlign={"center"} borderRadius={"25px"} color={"black"} fontWeight={600} >Africaine </Text>
+                    </Center> 
                   </Box>
                   <Center>
                     
                   </Center>
                 </Box>
                 
-                <Box display={"grid"} pr={10} as={Link}
+                <Box display={"grid"}  as={Link}
                   href={
                         "https://chapbackofficefournisseur.vercel.app/Connexion"
                       }
@@ -535,17 +558,22 @@ href={
                       }}>
                   <Box textAlign={"center"}>
                     <Center display={"grid"}>
-                    <Image src={'./new/partenaire.png'}  ml={5} width={"100px"} alt={"Entrepreneur"}  />
-                    <Text   color={"black"} mt={2} width={["100px","100px","100px","fit-content","fit-content"]} fontSize={["15px","15px","15px","25px","25px"]}textAlign={"center"} borderRadius={"25px"} fontWeight={700}>PARTENAIRE</Text>
-                    <Text  color={"black"} width={["100px","100px","100px","150px","150px"]} fontSize={["10px","10px","10px","15px","15px"]}textAlign={"center"} borderRadius={"25px"} fontWeight={600}>Rejoignez nous </Text>
+                    <Image src={'./new/partenaire.png'}   width={"100px"} alt={"Entrepreneur"}  />
                     </Center>
+                    <Center>
+                    <Text   color={"black"} width={["100px","100px","100px","fit-content","fit-content"]} fontSize={["15px","15px","15px","25px","25px"]}textAlign={"center"} borderRadius={"25px"} fontWeight={700}>PARTENAIRE</Text>
+                    
+                    </Center>
+                    <Center>
+                      <Text  color={"black"} width={["100px","100px","100px","150px","150px"]} fontSize={["10px","10px","10px","15px","15px"]}textAlign={"center"} borderRadius={"25px"} fontWeight={600}>Rejoignez nous </Text>
+                      </Center>
                   </Box>
                   <Center>
                     
                   </Center>
                 </Box>
                 
-              </Center>
+              </SimpleGrid>
              
             </Flex>
             {/* <Heading
@@ -596,6 +624,7 @@ href={
             </Center>
             {/* l'entet principale */}
             <Heading
+            display={["none", "none", "none", "grid", "grid" ]}
               textAlign={"start"}
               fontSize={"25px"}
               color={"#08566e"}
@@ -603,9 +632,18 @@ href={
             >
               Nos Services
             </Heading>
-
-            {/* la box de toutes les cartegorie */}
-            {locate.length <= 4 ? (
+            <Heading
+            display={["grid", "grid", "grid", "none", "none" ]}
+              
+              fontSize={"25px"}
+              color={"#08566e"}
+              mt={[10, 10, 10, 9, 9]}
+              textAlign={"center"}
+            >
+              Recommandés
+            </Heading>
+<Box  display={["none", "none", "none", "grid", "grid" ]}>
+{locate.length <= 4 ? (
               <Flex
                 height={"fit-content"}
                 position={"relative"}
@@ -632,8 +670,22 @@ href={
                 <All />
               </>
             )}
+</Box>
+            {/* la box de toutes les cartegorie zweb*/}
+
+
+
+
+
+            {/* box affichage mobile */}
+           
+            
           </Box>
         </Center>
+        <Box display={["grid", "grid", "grid", "none", "none" ]}>
+            {locate.length <= 4 ? <AllWeb/> : <All/>}
+            
+            </Box>
       </>
     );
   }

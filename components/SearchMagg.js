@@ -63,49 +63,62 @@ export default function SearchMagg() {
   return (
     <>
       <Box
+      textAlign={"center"}
        as={Link}
        href={"/IntermediatePage"}
-        ml={[-3, -3, -3, 5, 5]}
-        width={["100px", "100px", "100px", "130px", "130px"]}
+     
+        width={["100px", "100px", "100px", "150px", "150px"]}
+      
         _hover={{
           bgColor: "white",
           opacity: "0.7",
           textDecoration: "none",
         }}
       >
+        <SimpleGrid columns={1} textAlign={"center"}>
+
+        
+        <Center>
         <Image
-        mb={2}
-          ml={[12, 12, 12, 10, 10]}
+       
+          
           bgColor= "white"
-          width={["50px", "50px", "50px", "90px", "90px"]}
+          width={["50px", "50px", "50px", "100px", "100px"]}
           src="./new/searchTag.png"
           cursor={"pointer"}
           alt="search mag"
         />
+        </Center>
+<Center >
 
         <Text
-         ml={[4, 4, 4, 0, 0]}
-          mt={[-1, -1, -1, 7, 7]}
-          width={["130px", "130px", "130px", "180px", "180px"]}
+        
+        width={"fit-content"}
+         
           fontSize={["15px", "15px", "15px", "25px", "25px"]}
-          textAlign={"center"}
+          // textAlign={"center"}
           borderRadius={"25px"}
           fontWeight={700}
           color={"black"}
         >
           RECHERCHER
         </Text>
+        </Center>
+        <Center>
         <Text
-          ml={8}
-          width={["100px", "100px", "100px", "150px", "150px"]}
+       
+        width={"fit-content"}
           fontSize={["10px", "10px", "10px", "15px", "15px"]}
-          textAlign={"center"}
+          // textAlign={"center"}
           borderRadius={"25px"}
           color={"black"}
           fontWeight={600}
         >
           Un commerce
         </Text>
+        </Center>
+        </SimpleGrid>
+        
       </Box>
      
     </>

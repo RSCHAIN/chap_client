@@ -18,22 +18,22 @@ import {
   Text,
   useMediaQuery,
   Modal,
-ModalOverlay,
-ModalContent,
-ModalHeader,
-ModalCloseButton,
-ModalBody,
-ModalFooter,
-useDisclosure,
-Heading,
-Drawer,
-DrawerOverlay,
-DrawerContent,
-DrawerCloseButton,
-DrawerHeader,
-DrawerBody,
-CloseButton,
-AspectRatio,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  ModalFooter,
+  useDisclosure,
+  Heading,
+  Drawer,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  DrawerHeader,
+  DrawerBody,
+  CloseButton,
+  AspectRatio,
 } from "@chakra-ui/react";
 import { onValue, ref, update } from "@firebase/database";
 import { useEffect, useState } from "react";
@@ -65,69 +65,114 @@ function Valide2(id, state) {
 }
 
 
-function Cancel({ items, email,id }) {
+function Cancel({ items, email, id }) {
   // console.log(items.Status);
+  const { isOpen, onOpen, onClose } = useDisclosure()
   if (items.status == "Annulé" && items.email == email) {
     return (
-     <>
-      {/* <Box>
-        <Flex>
-          <Box width={"10%"}><Image src="./photoRes.jpg" alt="image restaurant" width={"100px"} height={"100px"}/> </Box>
-          <Box width={"30%"}>
-            <Heading>{items.magasin}</Heading>
-            <Badge  borderRadius='full' px='2' colorScheme='red'>{items.Status}</Badge>
-          </Box>
-          <Box mt={10}>
-            <ArrowRightIcon/>
-          </Box>
-        </Flex>
-
-      </Box> */}
-       <Box mb={5}>
-        <Flex>
-          <Box width={["30%","30%","20%","10%","10%"]}><Image src={items.imageMag} alt="image restaurant" width={"100px"} height={"100px"}/> </Box>
-          <Box width={["60%","60%","40%","40%","40%"]} >
-            <Heading>{items.magasin}</Heading>
-            <Badge  borderRadius='full' px='2' colorScheme='red'>{items.status}</Badge>
-            <Text>ref : {id}</Text>
-          </Box>
-          {/* <Box mt={10}>
-            <ArrowRightIcon/>
-          </Box> */}
-        </Flex>
-        <Flex mt={5} py={2} px={4} bgColor={"gray.100"} borderRadius={"25px"} border={"1px solid black"} justifyContent={"space-evenly"} width={["100%","100%","60%","50%","50%"]}>
-          <Flex>
-            <CalendarIcon mr={2} mt={1}/><Text>{items.dateReservation}</Text>
-          </Flex>
-          <Flex>
-            <Box  mr={2} mt={1}>
-            <BsClock /></Box>
-            <Text>{items.heureReservation}</Text>
-          </Flex>
-          <Flex>
-          <Box  mr={2} mt={1}>
-            <BsPerson mr={2} mt={1}/>
+      <>
+          <Box mb={5} bgColor={"white"} cursor={"pointer"} onClick={onOpen} borderRadius="sm"
+          overflow="hidden" mx={2} px={5} pt={2} pb={2}
+           boxShadow={"rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;"}
+          w={["400px", "400px", "400px", "500px", "500px"]}>
+          <Flex justifyContent={"space-between"}>
+            <Box ><Image src={items.imageMag} alt="image restaurant" width={"100px"} height={"100px"} /> </Box>
+            <Box>
+              <Heading>{items.magasin}</Heading>
+              <Badge borderRadius='full' px='2' colorScheme='red'>{items.status}</Badge>
+              <Text>ref : {id}</Text>
             </Box>
-            <Text>{items.nbrePerson}</Text>
+            <Box mt={10}>
+              <ArrowRightIcon cursor={"pointer"} onClick={onOpen} />
+            </Box>
           </Flex>
-        </Flex>
-     
+          <Flex mt={5} py={2} px={4} bgColor={"gray.100"} borderRadius={"25px"} border={"1px solid black"} justifyContent={"space-evenly"} width={"100%"}>
+            <Flex>
+              <CalendarIcon mr={2} mt={1} /><Text>{items.dateReservation}</Text>
+            </Flex>
+            <Flex>
+              <Box mr={2} mt={1}>
+                <BsClock /></Box>
+              <Text>{items.heureReservation}</Text>
+            </Flex>
+            <Flex>
+              <Box mr={2} mt={1}>
+                <BsPerson mr={2} mt={1} />
+              </Box>
+              <Text>{items.nbrePerson}</Text>
+            </Flex>
+          </Flex>
 
-      </Box>
-     
+        </Box>
+
+
+
+
+
+        <Drawer onClose={onClose} isOpen={isOpen} size={"full"}>
+          <DrawerOverlay />
+          <DrawerContent>
+            <DrawerCloseButton />
+            <DrawerHeader> Gérer ma réservation</DrawerHeader>
+            <DrawerBody>
+              <Center>
+                <Box mt={5} px={4} py={2} boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"} borderRadius={"25px"} width={["100%", "100%", "50%", "50%", "50%"]}>
+                  <Flex justifyContent={"space-between"}>
+                    <Heading>{items.magasin}</Heading>
+                    <Badge colorScheme="red" borderRadius='full' width={"fit-content"} height={"fit-content"} py={2} px={4}>{items.status}</Badge>
+                  </Flex>
+                  <Flex mt={5} py={2} px={4} bgColor={"gray.100"} borderRadius={"25px"} border={"1px solid black"} justifyContent={"space-evenly"} width={"100%"} mx={0}>
+                    <Flex>
+                      <CalendarIcon mr={2} mt={1} /><Text>{items.dateReservation}</Text>
+                    </Flex>
+                    <Flex>
+                      <Box mr={2} mt={1}>
+                        <BsClock /></Box>
+                      <Text>{items.heureReservation}</Text>
+                    </Flex>
+                    <Flex>
+                      <Box mr={2} mt={1}>
+                        <BsPerson mr={2} mt={1} />
+                      </Box>
+                      <Text>{items.nbrePerson}</Text>
+                    </Flex>
+                  </Flex>
+                  {/* <Button rightIcon={CloseIcon}></Button> */}
+                  
+                </Box>
+
+              </Center>
+              <Center>
+                <Box width={["100%", "100%", "50%", "50%", "50%"]} mt={5} borderRadius={"25px"} boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"} py={2} px={4}>
+                  <Flex>
+                    <Flex mb={2}>
+                      <CiLocationOn fontSize={"25px"} color="black" /> <Heading fontSize={["15px", "15px", "15px", "20px", "20px"]}>{items.adresse}</Heading>
+                    </Flex>
+                  </Flex>
+                  <AspectRatio ratio={{ base: 16 / 6, lg: 16 / 5 }}>
+                    <iframe
+                      src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM&q=${items.adresse}`}
+                    />
+                  </AspectRatio>
+                </Box>
+              </Center>
+            </DrawerBody>
+          </DrawerContent>
+        </Drawer>
+
       </>
     );
   } else {
     return <></>;
   }
 }
-function Launch({ items, email,id }) {
+function Launch({ items, email, id }) {
   const { isOpen, onOpen, onClose } = useDisclosure()
   // console.log(items);
   if (items.email == email && items.status == "En cours") {
     return (
       <>
-          {/* <Box
+        {/* <Box
         mt={2}
           maxW="fit-content"
           maxH={"fit-content"}
@@ -167,96 +212,99 @@ function Launch({ items, email,id }) {
            
           </Box>      
         </Box> */}
-         <Box mb={5}>
-        <Flex>
-          <Box width={["30%","30%","20%","10%","10%"]}><Image src={items.imageMag} alt="image restaurant" width={"100px"} height={"100px"}/> </Box>
-          <Box width={["60%","60%","40%","40%","40%"]} ml={2}>
-            <Heading>{items.magasin}</Heading>
-            <Badge  borderRadius='full' px='2' colorScheme='teal'>{items.status}</Badge>
-            <Text>ref : {id}</Text>
-          </Box>
-          <Box mt={10}>
-            <ArrowRightIcon cursor={"pointer"}  onClick={onOpen}/>
-          </Box>
-        </Flex>
-        <Flex mt={5} py={2} px={4} bgColor={"gray.100"} borderRadius={"25px"} border={"1px solid black"} justifyContent={"space-evenly"} width={["100%","100%","60%","50%","50%"]}>
-          <Flex>
-            <CalendarIcon mr={2} mt={1}/><Text>{items.dateReservation}</Text>
-          </Flex>
-          <Flex>
-            <Box  mr={2} mt={1}>
-            <BsClock /></Box>
-            <Text>{items.heureReservation}</Text>
-          </Flex>
-          <Flex>
-          <Box  mr={2} mt={1}>
-            <BsPerson mr={2} mt={1}/>
-            </Box>
-            <Text>{items.nbrePerson}</Text>
-          </Flex>
-        </Flex>
-
-      </Box>
-     
-
-
-
-
-      <Drawer onClose={onClose} isOpen={isOpen} size={"full"}>
-        <DrawerOverlay />
-        <DrawerContent>
-          <DrawerCloseButton />
-          <DrawerHeader> Gérer ma réservation</DrawerHeader>
-          <DrawerBody>
-            <Center>
-           <Box mt={5} px={4} py={2}boxShadow={ "rgba(0, 0, 0, 0.24) 0px 3px 8px"} borderRadius={"25px"}  width={["100%","100%","50%","50%","50%"]}>
-            <Flex justifyContent={"space-between"}>
+        <Box mb={5} bgColor={"white"} cursor={"pointer"} onClick={onOpen} borderRadius="sm"
+          overflow="hidden" mx={2} px={5} pt={2} pb={2}
+           boxShadow={"rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;"}
+          w={["400px", "400px", "400px", "500px", "500px"]}>
+          <Flex justifyContent={"space-between"}>
+            <Box ><Image src={items.imageMag} alt="image restaurant" width={"100px"} height={"100px"} /> </Box>
+            <Box>
               <Heading>{items.magasin}</Heading>
-              <Badge colorScheme="teal" borderRadius='full' width={"fit-content"} height={"fit-content"} py={2} px={4}>{items.status}</Badge>
-            </Flex>
-            <Flex mt={5} py={2} px={4} bgColor={"gray.100"} borderRadius={"25px"} border={"1px solid black"} justifyContent={"space-evenly"} width={"100%"} mx={0}>
-          <Flex>
-            <CalendarIcon mr={2} mt={1}/><Text>{items.dateReservation}</Text>
-          </Flex>
-          <Flex>
-            <Box  mr={2} mt={1}>
-            <BsClock /></Box>
-            <Text>{items.heureReservation}</Text>
-          </Flex>
-          <Flex>
-          <Box  mr={2} mt={1}>
-            <BsPerson mr={2} mt={1}/>
+              <Badge borderRadius='full' px='2' colorScheme='teal'>{items.status}</Badge>
+              <Text>ref : {id}</Text>
             </Box>
-            <Text>{items.nbrePerson}</Text>
+            <Box mt={10}>
+              <ArrowRightIcon cursor={"pointer"} onClick={onOpen} />
+            </Box>
           </Flex>
-        </Flex>
-        {/* <Button rightIcon={CloseIcon}></Button> */}
-        <Box cursor={"pointer"} color={"red"} onClick={()=>Cancel2(id, "Annulé")} fontSize={"20px"} py={5} mt={5} borderTop={"1px solid black"} >
-          <Center display={"grid"}>
-          <CloseButton ml={5}/>
-          <Text>Annuler</Text>
-          </Center>
-        </Box>
-           </Box>
-       
-           </Center>
-           <Center>
-           <Box width={["100%","100%","50%","50%","50%"]} mt={5} borderRadius={"25px"} boxShadow={ "rgba(0, 0, 0, 0.24) 0px 3px 8px"} py={2} px={4}>
+          <Flex mt={5} py={2} px={4} bgColor={"gray.100"} borderRadius={"25px"} border={"1px solid black"} justifyContent={"space-evenly"} width={"100%"}>
             <Flex>
-              <Flex mb={2}>
-                <CiLocationOn fontSize={"25px"} color="black"/> <Heading  fontSize={["15px","15px","15px","20px","20px"]}>{items.adresse}</Heading>
-              </Flex>
+              <CalendarIcon mr={2} mt={1} /><Text>{items.dateReservation}</Text>
             </Flex>
-      <AspectRatio ratio={ {base: 16/6, lg: 16/5} }>
-  <iframe
-    src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM&q=${items.adresse}`}
-  />
-</AspectRatio>
-      </Box>
-      </Center>
-          </DrawerBody>
-        </DrawerContent>
-      </Drawer>
+            <Flex>
+              <Box mr={2} mt={1}>
+                <BsClock /></Box>
+              <Text>{items.heureReservation}</Text>
+            </Flex>
+            <Flex>
+              <Box mr={2} mt={1}>
+                <BsPerson mr={2} mt={1} />
+              </Box>
+              <Text>{items.nbrePerson}</Text>
+            </Flex>
+          </Flex>
+
+        </Box>
+
+
+
+
+
+        <Drawer onClose={onClose} isOpen={isOpen} size={"full"}>
+          <DrawerOverlay />
+          <DrawerContent>
+            <DrawerCloseButton />
+            <DrawerHeader> Gérer ma réservation</DrawerHeader>
+            <DrawerBody>
+              <Center>
+                <Box mt={5} px={4} py={2} boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"} borderRadius={"25px"} width={["100%", "100%", "50%", "50%", "50%"]}>
+                  <Flex justifyContent={"space-between"}>
+                    <Heading>{items.magasin}</Heading>
+                    <Badge colorScheme="teal" borderRadius='full' width={"fit-content"} height={"fit-content"} py={2} px={4}>{items.status}</Badge>
+                  </Flex>
+                  <Flex mt={5} py={2} px={4} bgColor={"gray.100"} borderRadius={"25px"} border={"1px solid black"} justifyContent={"space-evenly"} width={"100%"} mx={0}>
+                    <Flex>
+                      <CalendarIcon mr={2} mt={1} /><Text>{items.dateReservation}</Text>
+                    </Flex>
+                    <Flex>
+                      <Box mr={2} mt={1}>
+                        <BsClock /></Box>
+                      <Text>{items.heureReservation}</Text>
+                    </Flex>
+                    <Flex>
+                      <Box mr={2} mt={1}>
+                        <BsPerson mr={2} mt={1} />
+                      </Box>
+                      <Text>{items.nbrePerson}</Text>
+                    </Flex>
+                  </Flex>
+                  {/* <Button rightIcon={CloseIcon}></Button> */}
+                  <Box cursor={"pointer"} color={"red"} onClick={() => Cancel2(id, "Annulé")} fontSize={"20px"} py={5} mt={5} borderTop={"1px solid black"} >
+                    <Center display={"grid"}>
+                      <CloseButton ml={5} />
+                      <Text>Annuler</Text>
+                    </Center>
+                  </Box>
+                </Box>
+
+              </Center>
+              <Center>
+                <Box width={["100%", "100%", "50%", "50%", "50%"]} mt={5} borderRadius={"25px"} boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"} py={2} px={4}>
+                  <Flex>
+                    <Flex mb={2}>
+                      <CiLocationOn fontSize={"25px"} color="black" /> <Heading fontSize={["15px", "15px", "15px", "20px", "20px"]}>{items.adresse}</Heading>
+                    </Flex>
+                  </Flex>
+                  <AspectRatio ratio={{ base: 16 / 6, lg: 16 / 5 }}>
+                    <iframe
+                      src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM&q=${items.adresse}`}
+                    />
+                  </AspectRatio>
+                </Box>
+              </Center>
+            </DrawerBody>
+          </DrawerContent>
+        </Drawer>
 
 
 
@@ -266,43 +314,101 @@ function Launch({ items, email,id }) {
     return <></>;
   }
 }
-function Regle({ items, email,id }) {
+function Regle({ items, email, id }) {
   // console.log(items.Status);
+  const { isOpen, onOpen, onClose } = useDisclosure()
   if (items.email == email && items.status == "Validé") {
     return (
-     <>
-    <Box mb={5}>
-        <Flex>
-          <Box width={["30%","30%","20%","10%","10%"]}><Image src={items.imageMag} alt="image restaurant" width={"100px"} height={"100px"}/> </Box>
-          <Box width={["60%","60%","40%","40%","40%"]} >
-            <Heading>{items.magasin}</Heading>
-            <Badge  borderRadius='full' px='2' colorScheme='green'>{items.status}</Badge>
-            <Text>ref : {id}</Text>
-          </Box>
-          {/* <Box mt={10}>
-            <ArrowRightIcon/>
-          </Box> */}
-        </Flex>
-        <Flex mt={5} py={2} px={4} bgColor={"gray.100"} borderRadius={"25px"} border={"1px solid black"} justifyContent={"space-evenly"} width={["100%","100%","60%","50%","50%"]}>
-          <Flex>
-            <CalendarIcon mr={2} mt={1}/><Text>{items.dateReservation}</Text>
-          </Flex>
-          <Flex>
-            <Box  mr={2} mt={1}>
-            <BsClock /></Box>
-            <Text>{items.heureReservation}</Text>
-          </Flex>
-          <Flex>
-          <Box  mr={2} mt={1}>
-            <BsPerson mr={2} mt={1}/>
+      <>
+        <Box mb={5} bgColor={"white"} cursor={"pointer"} onClick={onOpen} borderRadius="sm"
+          overflow="hidden" mx={2} px={5} pt={2} pb={2}
+           boxShadow={"rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;"}
+          w={["400px", "400px", "400px", "500px", "500px"]}>
+          <Flex justifyContent={"space-between"}>
+            <Box ><Image src={items.imageMag} alt="image restaurant" width={"100px"} height={"100px"} /> </Box>
+            <Box>
+              <Heading>{items.magasin}</Heading>
+              <Badge borderRadius='full' px='2' colorScheme='teal'>{items.status}</Badge>
+              <Text>ref : {id}</Text>
             </Box>
-            <Text>{items.nbrePerson}</Text>
+            <Box mt={10}>
+              <ArrowRightIcon cursor={"pointer"} onClick={onOpen} />
+            </Box>
           </Flex>
-        </Flex>
-     
+          <Flex mt={5} py={2} px={4} bgColor={"gray.100"} borderRadius={"25px"} border={"1px solid black"} justifyContent={"space-evenly"} width={"100%"}>
+            <Flex>
+              <CalendarIcon mr={2} mt={1} /><Text>{items.dateReservation}</Text>
+            </Flex>
+            <Flex>
+              <Box mr={2} mt={1}>
+                <BsClock /></Box>
+              <Text>{items.heureReservation}</Text>
+            </Flex>
+            <Flex>
+              <Box mr={2} mt={1}>
+                <BsPerson mr={2} mt={1} />
+              </Box>
+              <Text>{items.nbrePerson}</Text>
+            </Flex>
+          </Flex>
 
-      </Box>
-     
+        </Box>
+
+
+
+
+
+        <Drawer onClose={onClose} isOpen={isOpen} size={"full"}>
+          <DrawerOverlay />
+          <DrawerContent>
+            <DrawerCloseButton />
+            <DrawerHeader> Gérer ma réservation</DrawerHeader>
+            <DrawerBody>
+              <Center>
+                <Box mt={5} px={4} py={2} boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"} borderRadius={"25px"} width={["100%", "100%", "50%", "50%", "50%"]}>
+                  <Flex justifyContent={"space-between"}>
+                    <Heading>{items.magasin}</Heading>
+                    <Badge colorScheme="teal" borderRadius='full' width={"fit-content"} height={"fit-content"} py={2} px={4}>{items.status}</Badge>
+                  </Flex>
+                  <Flex mt={5} py={2} px={4} bgColor={"gray.100"} borderRadius={"25px"} border={"1px solid black"} justifyContent={"space-evenly"} width={"100%"} mx={0}>
+                    <Flex>
+                      <CalendarIcon mr={2} mt={1} /><Text>{items.dateReservation}</Text>
+                    </Flex>
+                    <Flex>
+                      <Box mr={2} mt={1}>
+                        <BsClock /></Box>
+                      <Text>{items.heureReservation}</Text>
+                    </Flex>
+                    <Flex>
+                      <Box mr={2} mt={1}>
+                        <BsPerson mr={2} mt={1} />
+                      </Box>
+                      <Text>{items.nbrePerson}</Text>
+                    </Flex>
+                  </Flex>
+                  {/* <Button rightIcon={CloseIcon}></Button> */}
+                  
+                </Box>
+
+              </Center>
+              <Center>
+                <Box width={["100%", "100%", "50%", "50%", "50%"]} mt={5} borderRadius={"25px"} boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"} py={2} px={4}>
+                  <Flex>
+                    <Flex mb={2}>
+                      <CiLocationOn fontSize={"25px"} color="black" /> <Heading fontSize={["15px", "15px", "15px", "20px", "20px"]}>{items.adresse}</Heading>
+                    </Flex>
+                  </Flex>
+                  <AspectRatio ratio={{ base: 16 / 6, lg: 16 / 5 }}>
+                    <iframe
+                      src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAoJQLE8uAbWnyPHCv-_udEUhH7HQooJlM&q=${items.adresse}`}
+                    />
+                  </AspectRatio>
+                </Box>
+              </Center>
+            </DrawerBody>
+          </DrawerContent>
+        </Drawer>
+
       </>
     );
   } else {
@@ -341,7 +447,7 @@ export default function HistRes() {
     setEmail(sessionStorage.getItem("email"));
 
     setInde(parseInt(secureLocalStorage.index));
-  }, [setCommandeListe,router]);
+  }, [setCommandeListe, router]);
   const [isLagerThan768] = useMediaQuery("(min-width: 768px)");
 
   return (
@@ -358,88 +464,94 @@ export default function HistRes() {
            gtag('js', new Date()); 
            gtag('config', 'G-RFSVQTGJ87');
            `}
-          
+
         </script>
-        </Head>
-        <Box display={{base:"grid",lg:"none"}}>
+      </Head>
+      <Box display={{ base: "grid", lg: "none" }}>
         <InputBar />
         {isLagerThan768 ? <Navbar></Navbar> : <></>}
-        </Box>
+      </Box>
       <Center width="100%">
         <Tabs
           isManual
-          orientation={["horizontal","horizontal","horizontal","vertical","vertical"]}
+          orientation={["horizontal", "horizontal", "horizontal", "vertical", "vertical"]}
           variant="outfitted"
           isLazy
           w={"100% "}
           // defaultIndex={1}
           mt={10}
         >
-         
+
           <TabPanels>
             <TabPanel>
-              <Tabs isManual isLazy  w={"100% "}>
-                <TabList>
-                  <Tab>Reservation en cours</Tab>
-                  
-                  <Tab>Reservation validés</Tab>
-                  <Tab>Reservation annulés</Tab>
-                </TabList>
-                <TabPanels>
+              <Tabs isManual isLazy w={"100% "}>
+                <Center>
+                  <TabList>
+                    <Tab>Reservation en cours</Tab>
+
+                    <Tab>Reservation validés</Tab>
+                    <Tab>Reservation annulés</Tab>
+                  </TabList>
+                </Center>
+                <TabPanels bgColor={"#f3f3f3"}>
                   <TabPanel>
-                    <Box >
-                      {commandeListe ? (
-                        Object.values(commandeListe).map((items,index) => (
-                          <Launch
-                            key={items.key}
-                            items={items}
-                            id={id[index]}
-                            email={email}
-                          />
-                        ))
-                      ) : (
-                        <Box>Aucune donnee</Box>
-                      )}
-                    </Box>
-                   
+                    <Center>
+                      <Box >
+                        {commandeListe ? (
+                          Object.values(commandeListe).map((items, index) => (
+                            <Launch
+                              key={items.key}
+                              items={items}
+                              id={id[index]}
+                              email={email}
+                            />
+                          ))
+                        ) : (
+                          <Box>Aucune donnee</Box>
+                        )}
+                      </Box>
+                    </Center>
                   </TabPanel>
-                 
+
                   <TabPanel>
-                    
-                    <Box >
-                      {commandeListe ? (
-                        Object.values(commandeListe).map((items,index) => (
-                          <Regle
-                            key={items.key}
-                            items={items}
-                            id={id[index]}
-                            email={email}
-                          />
-                        ))
-                      ) : (
-                        <Box>Aucune donnee</Box>
-                      )}
-                    </Box>
+                    <Center>
+                      <Box >
+                        {commandeListe ? (
+                          Object.values(commandeListe).map((items, index) => (
+                            <Regle
+                              key={items.key}
+                              items={items}
+                              id={id[index]}
+                              email={email}
+                            />
+                          ))
+                        ) : (
+                          <Box>Aucune donnee</Box>
+                        )}
+                      </Box>
+                    </Center>
                   </TabPanel>
                   <TabPanel>
-                  <Box >
-                    {commandeListe ? (
-              Object.values(commandeListe).map((items,index) => (
-                <Cancel key={items.key} items={items} id={id[index]} email={email} />
-              ))
-            ) : (
-              <Box>Aucune donnee</Box>
-            )}
-            </Box>
+                    <Center>
+                      <Box >
+                        {commandeListe ? (
+                          Object.values(commandeListe).map((items, index) => (
+                            <Cancel key={items.key} items={items} id={id[index]} email={email} />
+                          ))
+                        ) : (
+                          <Box>Aucune donnee</Box>
+                        )}
+                      </Box>
+                    </Center>
                   </TabPanel>
                 </TabPanels>
               </Tabs>
             </TabPanel>
-           
+
           </TabPanels>
         </Tabs>
       </Center>
- 
+
     </>
   );
 }

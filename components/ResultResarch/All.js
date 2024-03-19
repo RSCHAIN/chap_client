@@ -58,7 +58,7 @@ export default function All (){
         <>
        
         
-        <Center mt={10}>
+        <Center mt={10} >
         <Box width={"100%"}>
         <Restaurant data={modalData} />
         <Epicerie data={modalData} />

@@ -7,6 +7,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useToast } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/react";
+import { ref as _rf, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { storage } from '@/FIREBASE/clientApp';
 // import QuoteConfirmation from "./pages/QuoteConfirmation"
 
 function Aerien() {
@@ -27,6 +29,7 @@ function Aerien() {
     const [longueur, setLongueur] = useState([0])
     const [hauteur, setHauteur] = useState([0])
     const [largueur, setLargueur] = useState([0])
+    const [NbDoc, setNbDoc] = useState([0])
 
 
     useEffect(() => {
@@ -93,32 +96,29 @@ function Aerien() {
         longueur.push(0);
         hauteur.push(0);
         largueur.push(0);
-
-
+        NbDoc.push(0);
     };
 
 
     //sauvegarde dans la session storage 
     const handleSaveDataInSessionStorage = (arrivee, destination, email, poste, rue, ville, reception, description, categorieChoix, InfoProd) => {
+        image.map((data,index)=>Tester(data, index))
+        
+        
         sessionStorage.setItem("arrivee", JSON.stringify(arrivee));
         sessionStorage.setItem("dest", JSON.stringify(destination));
-      
+        sessionStorage.setItem("NbDoc", JSON.stringify(NbDoc));
         sessionStorage.setItem("addpostal", JSON.stringify(poste));
         sessionStorage.setItem("rue", JSON.stringify(rue));
         sessionStorage.setItem("ville", JSON.stringify(ville));
+      
         sessionStorage.setItem("receptioncolis", JSON.stringify(reception));
         sessionStorage.setItem("descriptioncolis", JSON.stringify(description));
         sessionStorage.setItem("categoriechoix", JSON.stringify(categorieChoix));
         sessionStorage.setItem("InputGroups", JSON.stringify(inputGroups));
-        // sessionStorage.setItem("lieu ville",poids);
-        // sessionStorage.setItem("lieu ville",longueur);
-        // sessionStorage.setItem("lieu ville",hauteur);
-        // sessionStorage.setItem("lieu ville",largueur);
-        // sessionStorage.setItem("detailscolis",[poids,longueur,hauteur,largueur]);
-
         sessionStorage.setItem("detailscolis", JSON.stringify(InfoProd));
 
-        // router.push("/QuoteConfirmationAerien")
+      
     }
 
     const handleRemoveGroup = (groupId) => {
@@ -195,7 +195,43 @@ function Aerien() {
         }
     };
 
-    console.log("categorieChoix ::: ", categorieChoix[0]);
+///enregistrer les images
+    const handleFileUpload = async (ed, files, emai) => {
+        const storageRef = _rf(storage, `Devis/${emai}/${files.name}`);
+    
+        const snapshot = await uploadBytes(storageRef, files);
+        const downloadURL = await getDownloadURL(snapshot.ref);
+        console.log("downloadURL", downloadURL)
+       
+          if (ed > imageUri.length) {
+         
+            const getInd = ed - 1
+            imageUri[getInd].collection = `colis${ed}`
+            imageUri[getInd].link.push(downloadURL)
+            console.log("imageUri", imageUri)
+          } else {
+            imageUri[ed].collection = `colis${ed}`
+            imageUri[ed].link.push(downloadURL)
+            console.log("imageUri2", imageUri)
+          }
+          sessionStorage.setItem("imageUri", JSON.stringify(imageUri));
+      };
+    
+
+      const Tester = (data, index) => {
+        console.log(data)
+        const donnee = data.file;
+    
+    
+        for (let i = 0; i < donnee.length; i++) {
+          console.log("for de tester", donnee[i])
+          // makeDevis(0,0,0,index,donnee[i])
+          handleFileUpload(index, donnee[i], email)
+        }
+    
+      }
+    
+  ////fin d'enregistrement
 
     return (
         <>
@@ -299,7 +335,7 @@ function Aerien() {
                                         {/* {
                                             categorieChoix && categorieChoix[groupId] === "Document" ?
 
-                                            <div className="flex flex-col lg:flex-row justify-between items-center">
+                                            <div className="fl ex flex-col lg:flex-row justify-between items-center">
                                                 <div className="flex flex-col justify-between lg:flex-row mt-6 w-full gap-4 lg:gap-0">
                                                     <input onChange={(e) => console.log(e.target.value)} type="number" placeholder="Veuillez saisir le nombre de page ici svp." className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
                                                 </div>
@@ -334,10 +370,10 @@ function Aerien() {
                                         } */}
 
 
-                                        {categorieChoix && categorieChoix[groupId] === "Document" ? 
+                                        {categorieChoix && categorieChoix[groupId] === "Document" ?
                                             <div className="flex flex-col lg:flex-row justify-between items-center">
                                                 <div className="flex flex-col justify-between lg:flex-row mt-6 w-full gap-4 lg:gap-0">
-                                                    <input onChange={(e) => console.log(e.target.value)} type="number" placeholder="Veuillez saisir le nombre de page ici svp." className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                                    <input onChange={(e) => { NbDoc[groupId] = e.target.value, console.log(e.target.value) }} type="number" placeholder="Veuillez saisir le nombre de page ici svp." className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
                                                 </div>
                                                 <button className="rounded-md text-cyan-800 mt-8">
                                                     <div className="">
@@ -350,75 +386,6 @@ function Aerien() {
                                                 </button>
                                             </div>
 
-                                        :
-                                            <div className="flex flex-col lg:flex-row justify-between items-center">
-                                                <div className="flex flex-col justify-between lg:flex-row mt-6 w-full gap-4 lg:gap-0">
-                                                    <input onChange={(e) => poids[groupId] = e.target.value} type="text" placeholder="Poids(kg)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
-                                                    <input onChange={(e) => longueur[groupId] = e.target.value} type="text" placeholder="Longueur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
-                                                    <input onChange={(e) => hauteur[groupId] = e.target.value} type="text" placeholder="Hauteur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
-                                                    <input onChange={(e) => largueur[groupId] = e.target.value} type="text" placeholder="Largueur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
-                                                </div>
-                                                <button className="rounded-md text-cyan-800 mt-8">
-                                                    <div className="">
-                                                        {groupId === 0 ? (
-                                                            <FontAwesomeIcon onClick={handleAddGroup} className="size-8 ml-2" icon={faPlusCircle} />
-                                                        ) : (
-                                                            <FontAwesomeIcon onClick={() => handleRemoveGroup(groupId)} className="size-8 ml-2" icon={faMinusCircle} />
-                                                        )}
-                                                    </div>
-                                                </button>
-                                            </div>
-                                        && categorieChoix && categorieChoix[groupId] === "Ordinateur" ? 
-                                        
-                                            <div className="flex flex-col lg:flex-row justify-between items-center">
-                                                <div className="flex flex-col justify-between lg:flex-row mt-6 w-full gap-4 lg:gap-0">
-                                                    <input onChange={(e) => console.log(e.target.value)} type="file" placeholder="Insérer un fichier" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
-                                                </div>
-                                                <button className="rounded-md text-cyan-800 mt-8">
-                                                    <div className="">
-                                                        {groupId === 0 ? (
-                                                            <FontAwesomeIcon onClick={handleAddGroup} className="size-8 ml-2" icon={faPlusCircle} />
-                                                        ) : (
-                                                            <FontAwesomeIcon onClick={() => handleRemoveGroup(groupId)} className="size-8 ml-2" icon={faMinusCircle} />
-                                                        )}
-                                                    </div>
-                                                </button>
-                                            </div>
-                                        :
-                                            <div className="flex flex-col lg:flex-row justify-between items-center">
-                                                <div className="flex flex-col justify-between lg:flex-row mt-6 w-full gap-4 lg:gap-0">
-                                                    <input onChange={(e) => poids[groupId] = e.target.value} type="text" placeholder="Poids(kg)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
-                                                    <input onChange={(e) => longueur[groupId] = e.target.value} type="text" placeholder="Longueur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
-                                                    <input onChange={(e) => hauteur[groupId] = e.target.value} type="text" placeholder="Hauteur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
-                                                    <input onChange={(e) => largueur[groupId] = e.target.value} type="text" placeholder="Largueur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
-                                                </div>
-                                                <button className="rounded-md text-cyan-800 mt-8">
-                                                    <div className="">
-                                                        {groupId === 0 ? (
-                                                            <FontAwesomeIcon onClick={handleAddGroup} className="size-8 ml-2" icon={faPlusCircle} />
-                                                        ) : (
-                                                            <FontAwesomeIcon onClick={() => handleRemoveGroup(groupId)} className="size-8 ml-2" icon={faMinusCircle} />
-                                                        )}
-                                                    </div>
-                                                </button>
-                                            </div>
-
-                                        && categorieChoix && categorieChoix[groupId] === "Appareil electronique" ? 
-                                                                                
-                                            <div className="flex flex-col lg:flex-row justify-between items-center">
-                                                <div className="flex flex-col justify-between lg:flex-row mt-6 w-full gap-4 lg:gap-0">
-                                                    <input onChange={(e) => console.log(e.target.value)} type="file" placeholder="Insérer un fichier" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
-                                                </div>
-                                                <button className="rounded-md text-cyan-800 mt-8">
-                                                    <div className="">
-                                                        {groupId === 0 ? (
-                                                            <FontAwesomeIcon onClick={handleAddGroup} className="size-8 ml-2" icon={faPlusCircle} />
-                                                        ) : (
-                                                            <FontAwesomeIcon onClick={() => handleRemoveGroup(groupId)} className="size-8 ml-2" icon={faMinusCircle} />
-                                                        )}
-                                                    </div>
-                                                </button>
-                                            </div>
                                             :
                                             <div className="flex flex-col lg:flex-row justify-between items-center">
                                                 <div className="flex flex-col justify-between lg:flex-row mt-6 w-full gap-4 lg:gap-0">
@@ -438,121 +405,124 @@ function Aerien() {
                                                 </button>
                                             </div>
 
-                                        && categorieChoix && categorieChoix[groupId] === "Bijou" ? 
-                                        
-                                            <div className="flex flex-col lg:flex-row justify-between items-center">
-                                                <div className="flex flex-col justify-between lg:flex-row mt-6 w-full gap-4 lg:gap-0">
-                                                    <input onChange={(e) => console.log(e.target.value)} type="file" placeholder="Insérer un fichier" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
-                                                </div>
-                                                <button className="rounded-md text-cyan-800 mt-8">
-                                                    <div className="">
-                                                        {groupId === 0 ? (
-                                                            <FontAwesomeIcon onClick={handleAddGroup} className="size-8 ml-2" icon={faPlusCircle} />
-                                                        ) : (
-                                                            <FontAwesomeIcon onClick={() => handleRemoveGroup(groupId)} className="size-8 ml-2" icon={faMinusCircle} />
-                                                        )}
-                                                    </div>
-                                                </button>
-                                            </div>
-                                        :
-                                            <div className="flex flex-col lg:flex-row justify-between items-center">
-                                                <div className="flex flex-col justify-between lg:flex-row mt-6 w-full gap-4 lg:gap-0">
-                                                    <input onChange={(e) => poids[groupId] = e.target.value} type="text" placeholder="Poids(kg)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
-                                                    <input onChange={(e) => longueur[groupId] = e.target.value} type="text" placeholder="Longueur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
-                                                    <input onChange={(e) => hauteur[groupId] = e.target.value} type="text" placeholder="Hauteur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
-                                                    <input onChange={(e) => largueur[groupId] = e.target.value} type="text" placeholder="Largueur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
-                                                </div>
-                                                <button className="rounded-md text-cyan-800 mt-8">
-                                                    <div className="">
-                                                        {groupId === 0 ? (
-                                                            <FontAwesomeIcon onClick={handleAddGroup} className="size-8 ml-2" icon={faPlusCircle} />
-                                                        ) : (
-                                                            <FontAwesomeIcon onClick={() => handleRemoveGroup(groupId)} className="size-8 ml-2" icon={faMinusCircle} />
-                                                        )}
-                                                    </div>
-                                                </button>
-                                            </div>
+                                                && categorieChoix && (categorieChoix[groupId] === "Ordinateur" || categorieChoix[groupId] === "Cosmétique" || categorieChoix[groupId] === "Bijou") ?
 
-                                        && categorieChoix && categorieChoix[groupId] === "Cosmétique" ? 
-                                        
-                                            <div className="flex flex-col lg:flex-row justify-between items-center">
-                                                <div className="flex flex-col justify-between lg:flex-row mt-6 w-full gap-4 lg:gap-0">
-                                                    <input onChange={(e) => console.log(e.target.value)} type="file" placeholder="Insérer un fichier" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
-                                                </div>
-                                                <button className="rounded-md text-cyan-800 mt-8">
-                                                    <div className="">
-                                                        {groupId === 0 ? (
-                                                            <FontAwesomeIcon onClick={handleAddGroup} className="size-8 ml-2" icon={faPlusCircle} />
-                                                        ) : (
-                                                            <FontAwesomeIcon onClick={() => handleRemoveGroup(groupId)} className="size-8 ml-2" icon={faMinusCircle} />
-                                                        )}
+                                                <div className="flex flex-col lg:flex-row justify-between items-center">
+                                                    <div className="flex flex-col justify-between lg:flex-row mt-6 w-full gap-4 lg:gap-0">
+                                                        <input onChange={(e) => {
+                                                            image[groupId].file = e.target.files;
+                                                            image[groupId].nom = `colis${groupId}`;
+                                                        }} multiple type="file" placeholder="Insérer un fichier" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
                                                     </div>
-                                                </button>
-                                            </div>
-                                            :
-                                            <div className="flex flex-col lg:flex-row justify-between items-center">
-                                                <div className="flex flex-col justify-between lg:flex-row mt-6 w-full gap-4 lg:gap-0">
-                                                    <input onChange={(e) => poids[groupId] = e.target.value} type="text" placeholder="Poids(kg)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
-                                                    <input onChange={(e) => longueur[groupId] = e.target.value} type="text" placeholder="Longueur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
-                                                    <input onChange={(e) => hauteur[groupId] = e.target.value} type="text" placeholder="Hauteur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
-                                                    <input onChange={(e) => largueur[groupId] = e.target.value} type="text" placeholder="Largueur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                                    <button className="rounded-md text-cyan-800 mt-8">
+                                                        <div className="">
+                                                            {groupId === 0 ? (
+                                                                <FontAwesomeIcon onClick={handleAddGroup} className="size-8 ml-2" icon={faPlusCircle} />
+                                                            ) : (
+                                                                <FontAwesomeIcon onClick={() => handleRemoveGroup(groupId)} className="size-8 ml-2" icon={faMinusCircle} />
+                                                            )}
+                                                        </div>
+                                                    </button>
                                                 </div>
-                                                <button className="rounded-md text-cyan-800 mt-8">
-                                                    <div className="">
-                                                        {groupId === 0 ? (
-                                                            <FontAwesomeIcon onClick={handleAddGroup} className="size-8 ml-2" icon={faPlusCircle} />
-                                                        ) : (
-                                                            <FontAwesomeIcon onClick={() => handleRemoveGroup(groupId)} className="size-8 ml-2" icon={faMinusCircle} />
-                                                        )}
+                                                :
+                                                <div className="flex flex-col lg:flex-row justify-between items-center">
+                                                    <div className="flex flex-col justify-between lg:flex-row mt-6 w-full gap-4 lg:gap-0">
+                                                        <input onChange={(e) => poids[groupId] = e.target.value} type="text" placeholder="Poids(kg)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                                        <input onChange={(e) => longueur[groupId] = e.target.value} type="text" placeholder="Longueur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                                        <input onChange={(e) => hauteur[groupId] = e.target.value} type="text" placeholder="Hauteur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                                        <input onChange={(e) => largueur[groupId] = e.target.value} type="text" placeholder="Largueur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
                                                     </div>
-                                                </button>
-                                            </div>
+                                                    <button className="rounded-md text-cyan-800 mt-8">
+                                                        <div className="">
+                                                            {groupId === 0 ? (
+                                                                <FontAwesomeIcon onClick={handleAddGroup} className="size-8 ml-2" icon={faPlusCircle} />
+                                                            ) : (
+                                                                <FontAwesomeIcon onClick={() => handleRemoveGroup(groupId)} className="size-8 ml-2" icon={faMinusCircle} />
+                                                            )}
+                                                        </div>
+                                                    </button>
+                                                </div>
+
+                                            // && categorieChoix &&  ?
+
+                                            //     <div className="flex flex-col lg:flex-row justify-between items-center">
+                                            //         <div className="flex flex-col justify-between lg:flex-row mt-6 w-full gap-4 lg:gap-0">
+                                            //             <input onChange={(e) => { categorieChoix[groupId] = e.target.value, console.log(e.target.value) }} type="file" placeholder="Insérer un fichier" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                            //         </div>
+                                            //         <button className="rounded-md text-cyan-800 mt-8">
+                                            //             <div className="">
+                                            //                 {groupId === 0 ? (
+                                            //                     <FontAwesomeIcon onClick={handleAddGroup} className="size-8 ml-2" icon={faPlusCircle} />
+                                            //                 ) : (
+                                            //                     <FontAwesomeIcon onClick={() => handleRemoveGroup(groupId)} className="size-8 ml-2" icon={faMinusCircle} />
+                                            //                 )}
+                                            //             </div>
+                                            //         </button>
+                                            //     </div>
+                                            //     :
+                                            //     <div className="flex flex-col lg:flex-row justify-between items-center">
+                                            //         <div className="flex flex-col justify-between lg:flex-row mt-6 w-full gap-4 lg:gap-0">
+                                            //             <input onChange={(e) => poids[groupId] = e.target.value} type="text" placeholder="Poids(kg)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                            //             <input onChange={(e) => longueur[groupId] = e.target.value} type="text" placeholder="Longueur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                            //             <input onChange={(e) => hauteur[groupId] = e.target.value} type="text" placeholder="Hauteur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                            //             <input onChange={(e) => largueur[groupId] = e.target.value} type="text" placeholder="Largueur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                            //         </div>
+                                            //         <button className="rounded-md text-cyan-800 mt-8">
+                                            //             <div className="">
+                                            //                 {groupId === 0 ? (
+                                            //                     <FontAwesomeIcon onClick={handleAddGroup} className="size-8 ml-2" icon={faPlusCircle} />
+                                            //                 ) : (
+                                            //                     <FontAwesomeIcon onClick={() => handleRemoveGroup(groupId)} className="size-8 ml-2" icon={faMinusCircle} />
+                                            //                 )}
+                                            //             </div>
+                                            //         </button>
+                                            //     </div>
+
+                                            // && categorieChoix &&  ? 
+
+                                            //     <div className="flex flex-col lg:flex-row justify-between items-center">
+                                            //         <div className="flex flex-col justify-between lg:flex-row mt-6 w-full gap-4 lg:gap-0">
+                                            //             <input onChange={(e) => {categorieChoix[groupId] = e.target.value, console.log(e.target.value)}} type="file" placeholder="Insérer un fichier" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                            //         </div>
+                                            //         <button className="rounded-md text-cyan-800 mt-8">
+                                            //             <div className="">
+                                            //                 {groupId === 0 ? (
+                                            //                     <FontAwesomeIcon onClick={handleAddGroup} className="size-8 ml-2" icon={faPlusCircle} />
+                                            //                 ) : (
+                                            //                     <FontAwesomeIcon onClick={() => handleRemoveGroup(groupId)} className="size-8 ml-2" icon={faMinusCircle} />
+                                            //                 )}
+                                            //             </div>
+                                            //         </button>
+                                            //     </div>
+                                            // :
+                                            //     <div className="flex flex-col lg:flex-row justify-between items-center">
+                                            //         <div className="flex flex-col justify-between lg:flex-row mt-6 w-full gap-4 lg:gap-0">
+                                            //             <input onChange={(e) => poids[groupId] = e.target.value} type="text" placeholder="Poids(kg)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                            //             <input onChange={(e) => longueur[groupId] = e.target.value} type="text" placeholder="Longueur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                            //             <input onChange={(e) => hauteur[groupId] = e.target.value} type="text" placeholder="Hauteur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                            //             <input onChange={(e) => largueur[groupId] = e.target.value} type="text" placeholder="Largueur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
+                                            //         </div>
+                                            //         <button className="rounded-md text-cyan-800 mt-8">
+                                            //             <div className="">
+                                            //                 {groupId === 0 ? (
+                                            //                     <FontAwesomeIcon onClick={handleAddGroup} className="size-8 ml-2" icon={faPlusCircle} />
+                                            //                 ) : (
+                                            //                     <FontAwesomeIcon onClick={() => handleRemoveGroup(groupId)} className="size-8 ml-2" icon={faMinusCircle} />
+                                            //                 )}
+                                            //             </div>
+                                            //         </button>
+                                            //     </div>
+
                                         }
 
-
-                                        {/* {
-                                            categorieChoix && categorieChoix[groupId] === "Ordinateur" ?
-
-                                            <div className="flex flex-col lg:flex-row justify-between items-center">
-                                                <div className="flex flex-col justify-between lg:flex-row mt-6 w-full gap-4 lg:gap-0">
-                                                    <input onChange={(e) => console.log(e.target.value)} type="file" placeholder="Insérer un fichier" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
-                                                </div>
-                                                <button className="rounded-md text-cyan-800 mt-8">
-                                                    <div className="">
-                                                        {groupId === 0 ? (
-                                                            <FontAwesomeIcon onClick={handleAddGroup} className="size-8 ml-2" icon={faPlusCircle} />
-                                                        ) : (
-                                                            <FontAwesomeIcon onClick={() => handleRemoveGroup(groupId)} className="size-8 ml-2" icon={faMinusCircle} />
-                                                        )}
-                                                    </div>
-                                                </button>
-                                            </div>
-                                            :
-                                            <div className="flex flex-col lg:flex-row justify-between items-center">
-                                                <div className="flex flex-col justify-between lg:flex-row mt-6 w-full gap-4 lg:gap-0">
-                                                    <input onChange={(e) => poids[groupId] = e.target.value} type="text" placeholder="Poids(kg)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
-                                                    <input onChange={(e) => longueur[groupId] = e.target.value} type="text" placeholder="Longueur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
-                                                    <input onChange={(e) => hauteur[groupId] = e.target.value} type="text" placeholder="Hauteur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
-                                                    <input onChange={(e) => largueur[groupId] = e.target.value} type="text" placeholder="Largueur(cm)" className="w-full p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
-                                                </div>
-                                                <button className="rounded-md text-cyan-800 mt-8">
-                                                    <div className="">
-                                                        {groupId === 0 ? (
-                                                            <FontAwesomeIcon onClick={handleAddGroup} className="size-8 ml-2" icon={faPlusCircle} />
-                                                        ) : (
-                                                            <FontAwesomeIcon onClick={() => handleRemoveGroup(groupId)} className="size-8 ml-2" icon={faMinusCircle} />
-                                                        )}
-                                                    </div>
-                                                </button>
-                                            </div> 
-                                        } */}
                                     </div>
-                                    
-                                ))}
+
+                                ))
+                                }
                             </div>
                         </div>
                         {/* <QuoteConfirmation/> */}
-                        <Link href={"/QuoteConfirmationAerien"}>
+                        <Link href={"/QuoteConfirmationAerien"} >
                             <button
                                 onClick={() => { handleSaveDataInSessionStorage(arrivee, destination, email, poste, rue, ville, reception, description, categorieChoix, [poids, longueur, hauteur, largueur]), console.log(arrivee, destination, email, poste, rue, ville) }}
                                 // isDisabled={email.length < 10 || dest.length < 4 || radio2.length < 3}

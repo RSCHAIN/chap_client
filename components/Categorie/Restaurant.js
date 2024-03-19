@@ -741,7 +741,7 @@ const [ShowLoad,setShowLoad] = useState("block")
           )
           :
           <>
-          <Box display={ShowProd}>
+          <Box >
           {
              produit.length != 0 ? (
               <Box bgColor={"#f3f3f3"} mx={[2,2,2,20,20]}>
@@ -895,14 +895,7 @@ const [ShowLoad,setShowLoad] = useState("block")
             )
           }
           </Box>
-          <Box display={ShowLoad}>
-            <Center>
-            <img width="50" height="50" src="https://img.icons8.com/ios/50/000000/iphone-spinner--v2.gif" alt="iphone-spinner--v2"/>
-            </Center>
-            <Center>
-              <Text>Chargement ...</Text>
-            </Center>
-          </Box>
+         
          
           </>
          

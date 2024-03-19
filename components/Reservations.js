@@ -63,29 +63,30 @@ export default function Reservations() {
       <Box
         as={Link}
         href={"/RestRes"}
-        ml={[0, 0, 0, 8, 8]}
+        
         _hover={{
           bgColor: "transparent",
           opacity: "0.7",
           textDecoration: "none",
         }}
       >
-        <Center display={"grid"}>
+        <Center >
           <Image
-           mt={2}
-            width={["50px", "50px", "50px", "70px", "70px"]}
-            ml={[6, 6, 6, 8, 8]}
+           
+            width={["35px", "35px", "35px", "70px", "70px"]}
+           
             src="./new/reservation2.png"
             cursor={"pointer"}
             alt="Reservation"
           />
+          </Center>
           {/* <Button mt={2} display={["none","none","none","block","block"]} bgColor={"cyan.800"} _hover={{
         bgColor:"cyan.800"
       }}>Réserver une table</Button> */}
-          <Center display={"grid"}>
+          <Center>
             <Text
-              mt={[0, 0, 0, 5, 5]}
-              width={["100px", "100px", "100px", "150px", "150px"]}
+            
+              width={"fit-content"}
               fontSize={["15px", "15px", "15px", "25px", "25px"]}
               textAlign={"center"}
               fontWeight={700}
@@ -94,9 +95,10 @@ export default function Reservations() {
             >
               RESERVER
             </Text>
-
+            </Center>
+            <Center>
             <Text
-              width={["100px", "100px", "100px", "150px", "150px"]}
+              width={"fit-content"}
               fontSize={["10px", "10px", "10px", "15px", "15px"]}
               textAlign={"center"}
               borderRadius={"25px"}
@@ -105,8 +107,8 @@ export default function Reservations() {
             >
               Une table
             </Text>
-          </Center>
-        </Center>
+            </Center>
+        
       </Box>
       <Drawer onClose={onClose} isOpen={isOpen} size={"full"}>
         <DrawerOverlay />

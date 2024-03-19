@@ -20,6 +20,7 @@ function QuoteConfirmation() {
     var tab3 = 0;
     var checker = 0;
     var PrixPc = 0;
+    var PrixDoc = 0;
 
     const [categorie, setCategorie] = useState([
         { contenu: "Textile", prix: 10 },
@@ -71,10 +72,17 @@ function QuoteConfirmation() {
     const [categorieChoix, setCategorieChoix] = useState([]);
     const [ville, setVille] = useState("");
     const [rue, setRue] = useState("");
+    const [imageUri, setImageUri] = useState([]);
+    const [NbDoc, setNbDoc] = useState([]);
     const [addpostal, setAddpostal] = useState("");
 
 
     useEffect(() => {
+
+        setNbDoc(JSON.parse(sessionStorage.getItem("NbDoc")))
+        setImageUri(JSON.parse(sessionStorage.getItem("imageUri")))
+
+
         // Access count value from session storage
         let poids = sessionStorage.getItem("detailscolis");
 
@@ -180,6 +188,8 @@ function QuoteConfirmation() {
                     console.log(data, "data")
                     if ((data == "Ordinateur")) {
                         PrixPc = PrixPc + 50;
+                    }else if ((data == "Document")) {
+                        PrixDoc = PrixDoc +(parseInt(NbDoc)*5);
                     } else {
                         tab1 = tab1 + parseFloat(poidsFromSession[indexe]);
                         console.log("poids", poidsFromSession[indexe])
@@ -217,7 +227,7 @@ function QuoteConfirmation() {
                                     <div className="self-end mb-4">
                                         <span className='bg-orange-600 text-xl p-4 text-white rounded-md max-[370px]:text-lg max-[370px]:p-2'>
                                             {parseFloat(tab1) * 13 +
-                                                ((parseFloat(tab1) * 13 * 5 + parseFloat(PrixPc)) / 100) + parseFloat(PrixPc)} €
+                                                ((parseFloat(tab1) * 13  + parseFloat(PrixPc)+parseFloat(PrixDoc))* 5 / 100) + parseFloat(PrixPc) +parseFloat(PrixDoc)} €
 
 
                                         </span>
@@ -225,14 +235,14 @@ function QuoteConfirmation() {
                                 </div>
                                 <button className='bg-orange-600 text-white rounded-sm py-2 px-6'>
                                     <PopUp PrixChoisi={parseFloat(tab1) * 13 +
-                                        ((parseFloat(tab1) * 13 * 5 + parseFloat(PrixPc)) / 100) + parseFloat(PrixPc)}
+                                        ((parseFloat(tab1) * 13  + parseFloat(PrixPc)+parseFloat(PrixDoc)) * 5/ 100) + parseFloat(PrixPc)+parseFloat(PrixDoc)}
                                         Partenaire={"CICV"}
                                         email={emailFromSession}
                                         dest={destFromSession}
                                         poste={addpostal}
                                         arriv={arriveeFromSession}
                                         radio2={receptionColisFromSession}
-                                        imageUri={"imageUri"}
+                                        imageUri={imageUri}
                                         ville={ville}
                                         inputGroups={inputGroups}
                                         description={descriptionColisFromSession}
@@ -271,20 +281,20 @@ function QuoteConfirmation() {
                                     <div className="self-end mb-4">
                                         <span className='bg-orange-600 text-xl p-4 text-white rounded-md max-[370px]:text-lg max-[370px]:p-2'>
                                             {parseFloat(tab1) * 10 +
-                                                ((parseFloat(tab1) * 10 * 5 + parseFloat(PrixPc)) / 100) + parseFloat(PrixPc)} €
+                                                ((parseFloat(tab1) * 10 + parseFloat(PrixPc)+parseFloat(PrixDoc))  * 5 / 100) + parseFloat(PrixPc)+parseFloat(PrixDoc)} €
                                         </span>
                                     </div>
                                 </div>
                                 <button className='bg-orange-600 text-white rounded-sm py-2 px-6'>
                                     <PopUp PrixChoisi={parseFloat(tab1) * 10 +
-                                        ((parseFloat(tab1) * 10 * 5 + parseFloat(PrixPc)) / 100) + parseFloat(PrixPc)}
+                                        ((parseFloat(tab1) * 10  + parseFloat(PrixPc)+parseFloat(PrixDoc))* 5 / 100) + parseFloat(PrixPc)+parseFloat(PrixDoc)}
                                         Partenaire={"BAMBA BAGAGE"}
                                         email={emailFromSession}
                                         dest={destFromSession}
                                         poste={addpostal}
                                         arriv={arriveeFromSession}
                                         radio2={receptionColisFromSession}
-                                        imageUri={"imageUri"}
+                                        imageUri={imageUri}
                                         ville={ville}
                                         inputGroups={inputGroups}
                                         description={descriptionColisFromSession}
@@ -323,20 +333,20 @@ function QuoteConfirmation() {
                                     <div className="self-end mb-4">
                                         <span className='bg-orange-600 text-xl p-4 text-white rounded-md max-[370px]:text-lg max-[370px]:p-2'>
                                             {parseFloat(tab1) * 5 +
-                                                ((parseFloat(tab1) * 5 * 5 + parseFloat(PrixPc)) / 100) + parseFloat(PrixPc)} €
+                                                ((parseFloat(tab1) * 5 + parseFloat(PrixPc)+parseFloat(PrixDoc)) * 5 / 100) + parseFloat(PrixPc)+parseFloat(PrixDoc)} €
                                         </span>
                                     </div>
                                 </div>
                                 <button className='bg-orange-600 text-white rounded-sm py-2 px-6'>
                                     <PopUp PrixChoisi={parseFloat(tab1) * 5 +
-                                        ((parseFloat(tab1) * 5 * 5 + parseFloat(PrixPc)) / 100) + parseFloat(PrixPc)}
+                                        ((parseFloat(tab1) * 5  + parseFloat(PrixPc)+parseFloat(PrixDoc)) * 5/ 100) + parseFloat(PrixPc)+parseFloat(PrixDoc)}
                                         Partenaire={"CHAP"}
                                         email={emailFromSession}
                                         dest={destFromSession}
                                         poste={addpostal}
                                         arriv={arriveeFromSession}
                                         radio2={receptionColisFromSession}
-                                        imageUri={"imageUri"}
+                                        imageUri={imageUri}
                                         ville={ville}
                                         inputGroups={inputGroups}
                                         description={descriptionColisFromSession}
@@ -392,19 +402,19 @@ function QuoteConfirmation() {
                                     <div className="self-end flex flex-col mb-4">
                                         <span className='text-3xl font-bold'>
                                             {parseFloat(tab1) * 13 +
-                                                ((parseFloat(tab1) * 13 * 5 + parseFloat(PrixPc)) / 100) + parseFloat(PrixPc)}
+                                                ((parseFloat(tab1) * 13  + parseFloat(PrixPc)+parseFloat(PrixDoc)) * 5/ 100) + parseFloat(PrixPc)+parseFloat(PrixDoc)}
                                             <span className='ml-2'>€</span></span>
                                     </div>
                                     <button className='bg-orange-600 text-white rounded-sm py-2 px-6'>
                                         <PopUp PrixChoisi={parseFloat(tab1) * 13 +
-                                            ((parseFloat(tab1) * 13 * 5 + parseFloat(PrixPc)) / 100) + parseFloat(PrixPc)}
+                                            ((parseFloat(tab1) * 13  + parseFloat(PrixPc)+parseFloat(PrixDoc))* 5 / 100) + parseFloat(PrixPc)+parseFloat(PrixDoc)}
                                             Partenaire={"CICV"}
                                             email={emailFromSession}
                                             dest={destFromSession}
                                             poste={addpostal}
                                             arriv={arriveeFromSession}
                                             radio2={receptionColisFromSession}
-                                            imageUri={"imageUri"}
+                                            imageUri={imageUri}
                                             ville={ville}
                                             inputGroups={inputGroups}
                                             description={descriptionColisFromSession}
@@ -442,7 +452,7 @@ function QuoteConfirmation() {
                                     <div className="self-end flex flex-col mb-4">
                                         <span className='text-3xl font-bold'>
                                             {parseFloat(tab1) * 10 +
-                                                ((parseFloat(tab1) * 10 * 5 + parseFloat(PrixPc)) / 100) + parseFloat(PrixPc)}€
+                                                ((parseFloat(tab1) * 10 + parseFloat(PrixPc)+parseFloat(PrixDoc))  * 5/ 100) + parseFloat(PrixPc)+parseFloat(PrixDoc)}€
                                         </span>
                                         {/* {parseFloat(tab1) * 13 +
                                         (parseFloat(tab1) * 13 * 5 + parseFloat(PrixPc)) /
@@ -452,14 +462,14 @@ function QuoteConfirmation() {
                                     </div>
                                     <button className='bg-orange-600 text-white rounded-sm py-2 px-6'>
                                         <PopUp PrixChoisi={parseFloat(tab1) * 10 +
-                                            ((parseFloat(tab1) * 10 * 5 + parseFloat(PrixPc)) / 100) + parseFloat(PrixPc)}
+                                            ((parseFloat(tab1) * 10  + parseFloat(PrixPc)+parseFloat(PrixDoc)) * 5/ 100) + parseFloat(PrixPc)+parseFloat(PrixDoc)}
                                             Partenaire={"BAMBA BAGAGE"}
                                             email={emailFromSession}
                                             dest={destFromSession}
                                             poste={addpostal}
                                             arriv={arriveeFromSession}
                                             radio2={receptionColisFromSession}
-                                            imageUri={"imageUri"}
+                                            imageUri={imageUri}
                                             ville={ville}
                                             inputGroups={inputGroups}
                                             description={descriptionColisFromSession}
@@ -498,19 +508,19 @@ function QuoteConfirmation() {
                                     <div className="self-end flex flex-col mb-4">
                                         <span className='text-3xl font-bold'>
                                             {parseFloat(tab1) * 5 +
-                                                ((parseFloat(tab1) * 5 * 5 + parseFloat(PrixPc)) / 100) + parseFloat(PrixPc)}€
+                                                ((parseFloat(tab1) * 5 + parseFloat(PrixPc)+parseFloat(PrixDoc)) * 5 / 100) + parseFloat(PrixPc)+parseFloat(PrixDoc)}€
                                         </span>
                                     </div>
                                     <button className='bg-orange-600 text-white rounded-sm py-2 px-6'>
                                         <PopUp PrixChoisi={parseFloat(tab1) * 5 +
-                                            ((parseFloat(tab1) * 5 * 5 + parseFloat(PrixPc)) / 100) + parseFloat(PrixPc)}
+                                            ((parseFloat(tab1) * 5  + parseFloat(PrixPc)+parseFloat(PrixDoc))* 5 / 100) + parseFloat(PrixPc)+parseFloat(PrixDoc)}
                                             Partenaire={"CHAP"}
                                             email={emailFromSession}
                                             dest={destFromSession}
                                             poste={addpostal}
                                             arriv={arriveeFromSession}
                                             radio2={receptionColisFromSession}
-                                            imageUri={"imageUri"}
+                                            imageUri={imageUri}
                                             ville={ville}
                                             inputGroups={inputGroups}
                                             description={descriptionColisFromSession}
