@@ -1,4 +1,4 @@
-import { Button, Modal, ModalContent, ModalHeader, ModalOverlay, useDisclosure } from '@chakra-ui/react'
+import { Button, Modal, ModalContent, ModalHeader, ModalOverlay, useDisclosure,ModalCloseButton, ModalBody, ModalFooter } from '@chakra-ui/react'
 import React from 'react'
 
 function Sold({prix}) {
@@ -12,7 +12,7 @@ function Sold({prix}) {
           <ModalHeader>Modal Title</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Lorem count={2} />
+           
           </ModalBody>
 
           <ModalFooter>

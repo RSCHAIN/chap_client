@@ -232,7 +232,7 @@ export default function AllWeb (){
     
 
         {modalData.slice(0,modalData.length/2).map((mag,index) => (
-          <ItemCard item={mag}/>
+          <ItemCard item={mag} key={index}/>
   //         <Box  width={"350px"} height={"250px"}>
   // <Box  width={"350px"} height={"250px"} key={index} as="a" href="" mb={10}>
    
