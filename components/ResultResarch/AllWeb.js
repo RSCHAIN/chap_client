@@ -127,15 +127,15 @@ export function ItemCard({ item}) {
       {/* card  */}
       <Box
         mt={5}
-        height={["20vh", "20vh", "20vh", "20vh", "20vh"]}
-        width={"300px"}
+        height={["15vh", "15vh", "15vh", "20vh", "20vh"]}
+        width={"200px"}
         marginBottom={[40, 40, 40, 10, 10]}
         mr={5}
         borderRadius={25}
       >
         <Link
-          height={"15vh"}
-          width={"300px"}
+          height={"10vh"}
+          width={"200px"}
           mt={5}
           mr={{ base: "0%", md: "0%" }}
           _hover={{ textDecoration: "none" }}
@@ -143,7 +143,7 @@ export function ItemCard({ item}) {
         >
           <Box
             height={"100%"}
-            width={"250px"}
+            width={"150px"}
             alignItems={"center"}
             justifyContent={"center"}
             borderRadius={25}
@@ -210,7 +210,7 @@ export default function AllWeb ({postal}){
     
     const recherche = async () => {
       if (postal.length > 4) {
-        console.log("dans le if")
+  
         const q = query(
           collection(db, "Admin"),
           where("codePostal", "==", String(postal).trim())
@@ -224,7 +224,7 @@ export default function AllWeb ({postal}){
       modalData.push(doc.data())
     })
       } else {
-        console.log("dans le else")
+      
         const q = query(collection(db, "favorisMagasinAppMobile"));
   
       const querySnapshot = await getDocs(q);
@@ -246,7 +246,6 @@ export default function AllWeb ({postal}){
     return(
         <>
        
-        
        {/* {console.log(modalData)} */}
         <Box display={"flex"} overflowX={"auto"}  my={10}>
          
