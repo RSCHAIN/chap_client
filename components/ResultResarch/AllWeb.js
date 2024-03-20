@@ -64,55 +64,60 @@ export function ItemCard({ item}) {
   const [adresse, setAdresse] = useState();
   const [numero, setNumero] = useState();
   const [url, se] = useState();
-  const [etat, setEtat] = useState(" ");
+  const [etat, setEtat] = useState("Voir details");
   const router = useRouter();
 
   useEffect(() => {
     const jour = new Date();
     const heure = jour.getHours();
     const minute = jour.getMinutes();
-    if (item.horaire != undefined && item.horaire != null) {
-      Object.values(item.horaire)[parseInt(jour.getDay())];
-      //  console.log( Object.values(item.horaire)[parseInt(jour.getDay())].length)
-
-      // console.log(Object.values(item.horaire)[parseInt(jour.getDay())].slice(0,5))
-      if (Object.values(item.horaire)[parseInt(jour.getDay())] === "24h/24") {
-        setEtat("Ouvert 24h/24h");
-      } else if (
-        Object.values(item.horaire)[parseInt(jour.getDay())].length == 0
-      ) {
-        setEtat("Non défini");
-      } else if (
-        Object.values(item.horaire)[parseInt(jour.getDay())] === "Fermé"
-      ) {
-        setEtat("Fermé");
-      } else {
-        //  console.log(((Object.values(item.horaire)[parseInt(jour.getDay())])).slice(6,8));
-        //  console.log(((Object.values(item.horaire)[parseInt(jour.getDay())])).slice(0,2));
-        //  console.log(item.horaire);
-        // console.log(parseInt(((Object.values(item.horaire)[parseInt(jour.getDay())])).slice(6,8))+24>parseInt(heure))
-        if (
-          Object.values(item.horaire)[parseInt(jour.getDay())].slice(0, 2) <=
-          `${heure}`
+    try {
+      if (item.horaire != undefined && item.horaire != null) {
+        Object.values(item.horaire)[parseInt(jour.getDay())];
+        //  console.log( Object.values(item.horaire)[parseInt(jour.getDay())].length)
+  
+        // console.log(Object.values(item.horaire)[parseInt(jour.getDay())].slice(0,5))
+        if (Object.values(item.horaire)[parseInt(jour.getDay())] === "24h/24") {
+          setEtat("Ouvert 24h/24h");
+        } else if (
+          Object.values(item.horaire)[parseInt(jour.getDay())].length == 0
         ) {
+          setEtat("Non défini");
+        } else if (
+          Object.values(item.horaire)[parseInt(jour.getDay())] === "Fermé"
+        ) {
+          setEtat("Fermé");
+        } else {
+          //  console.log(((Object.values(item.horaire)[parseInt(jour.getDay())])).slice(6,8));
+          //  console.log(((Object.values(item.horaire)[parseInt(jour.getDay())])).slice(0,2));
+          //  console.log(item.horaire);
+          // console.log(parseInt(((Object.values(item.horaire)[parseInt(jour.getDay())])).slice(6,8))+24>parseInt(heure))
           if (
-            parseInt(
-              Object.values(item.horaire)[parseInt(jour.getDay())].slice(6, 8)
-            ) +
-              24 >
-            parseInt(heure)
+            Object.values(item.horaire)[parseInt(jour.getDay())].slice(0, 2) <=
+            `${heure}`
           ) {
-            setEtat("Ouvert");
+            if (
+              parseInt(
+                Object.values(item.horaire)[parseInt(jour.getDay())].slice(6, 8)
+              ) +
+                24 >
+              parseInt(heure)
+            ) {
+              setEtat("Ouvert");
+            } else {
+              setEtat("Fermé");
+            }
           } else {
             setEtat("Fermé");
           }
-        } else {
-          setEtat("Fermé");
         }
+  
+        secureLocalStorage.setItem("jour", parseInt(jour.getDay()));
       }
-
-      secureLocalStorage.setItem("jour", parseInt(jour.getDay()));
+    } catch (error) {
+      
     }
+    
   }, [item.horaire, etat]);
 
   const [categorie, setCategorie] = useState();
@@ -123,14 +128,14 @@ export function ItemCard({ item}) {
       <Box
         mt={5}
         height={["20vh", "20vh", "20vh", "20vh", "20vh"]}
-        width={"350px"}
+        width={"300px"}
         marginBottom={[40, 40, 40, 10, 10]}
         mr={5}
         borderRadius={25}
       >
         <Link
           height={"15vh"}
-          width={"350px"}
+          width={"300px"}
           mt={5}
           mr={{ base: "0%", md: "0%" }}
           _hover={{ textDecoration: "none" }}
@@ -198,14 +203,29 @@ export function ItemCard({ item}) {
 
 
 
-export default function AllWeb (){
+export default function AllWeb ({postal}){
    
     const [modalData, setModalData] = useState([]);
     const [checker,setChecker] = useState(0)
-
+    
     const recherche = async () => {
-      
-      const q = query(collection(db, "favorisMagasinAppMobile"));
+      if (postal.length > 4) {
+        console.log("dans le if")
+        const q = query(
+          collection(db, "Admin"),
+          where("codePostal", "==", String(postal).trim())
+        );
+    
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+          // doc.data() is never undefined for query doc snapshots
+      // console.log(doc.data())
+      // console.log(doc.data())
+      modalData.push(doc.data())
+    })
+      } else {
+        console.log("dans le else")
+        const q = query(collection(db, "favorisMagasinAppMobile"));
   
       const querySnapshot = await getDocs(q);
     
@@ -215,6 +235,8 @@ export default function AllWeb (){
     // console.log(doc.data())
     modalData.push(doc.data())
   })
+      }
+      
        
       };
     useEffect(()=>{

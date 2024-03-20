@@ -683,7 +683,7 @@ href={
           </Box>
         </Center>
         <Box display={["grid", "grid", "grid", "none", "none" ]}>
-            {locate.length <= 4 ? <AllWeb/> : <All/>}
+            <AllWeb postal={locate}/>
             
             </Box>
       </>
