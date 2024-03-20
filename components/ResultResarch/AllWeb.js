@@ -247,7 +247,7 @@ export default function AllWeb ({postal}){
         <>
        
        {/* {console.log(modalData)} */}
-        <Box display={"flex"} overflowX={"auto"}  my={10}>
+        <Box display={"flex"} overflowX={"auto"}  my={2}>
          
         {/* <Carousel  responsive={responsive} style={"marginLeft='10px'"}> */}
     
