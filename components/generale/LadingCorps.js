@@ -635,10 +635,10 @@ href={
             <Heading
             display={["grid", "grid", "grid", "none", "none" ]}
               
-              fontSize={"25px"}
+              fontSize={"20px"}
               color={"#08566e"}
               mt={[10, 10, 10, 9, 9]}
-              textAlign={"center"}
+              
             >
               Recommandés
             </Heading>
