@@ -159,7 +159,7 @@ const [code,setCode] = useState([]);
       <InputBar />
       {isLagerThan768 ? <Navbar></Navbar> : <></>}
       <Box width={"100%"} height={"3em"}  mb={4} display={["grid","grid","grid","none","none"]}>
-        <Center>  <Text fontSize={"25px"} color={"black"} fontWeight={"semibold"} fontFamily={"system-ui"}>Bienvenue sur Chap</Text></Center>
+        <Center>  <Text fontSize={"25px"} color={"cyan.800"} fontWeight={"semibold"} fontFamily={"system-ui"}>Bienvenue sur Chap</Text></Center>
     
       </Box>
      
@@ -211,9 +211,9 @@ const [code,setCode] = useState([]);
                     <MdLocationOn />
                   </InputLeftElement>
                 </InputGroup>
-                <Center width={"fit-content"}display={"flex"}>
-                 <Text textAlign={"center"} fontSize={"12px"} mr={2}>Dernière position :</Text>  
-                  <Text fontSize={"12px"}> {final}</Text>
+                <Center width={"full"}display={"flex"}>
+                 <Text textAlign={"center"} fontSize={"15px"} mr={2}>Dernière position :</Text>  
+                  <Text fontSize={"15px"} color={"cyan.800"}> {final}</Text>
                 </Center>
               </Box>
             </Center>
