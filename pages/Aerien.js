@@ -3,10 +3,10 @@ import secureLocalStorage from "react-secure-storage";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinusCircle, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
-import Link from "next/link";
+// import Link from "next/link";
 import { useRouter } from "next/router";
-import { useToast } from "@chakra-ui/react";
-import { useDisclosure } from "@chakra-ui/react";
+import { Button, useToast } from "@chakra-ui/react";
+import { useDisclosure, Link } from "@chakra-ui/react";
 import { ref as _rf, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { storage } from '@/FIREBASE/clientApp';
 // import QuoteConfirmation from "./pages/QuoteConfirmation"
@@ -522,14 +522,25 @@ function Aerien() {
                             </div>
                         </div>
                         {/* <QuoteConfirmation/> */}
-                        <Link href={"/QuoteConfirmationAerien"} >
-                            <button
+                        <Link  href={"/QuoteConfirmationAerien"} >
+                            <Button
+                                bgColor={"cyan.800"}
+                                w={"full"}
+                                fontWeight={"bold"}
+                                color={"white"}
+                                p={2}
+                                borderRadius={"md"}
+                                mt={20}
+                                _hover={{
+                                    bgColor: "cyan.700",
+                                    color: "white",
+                                }}
                                 onClick={() => { handleSaveDataInSessionStorage(arrivee, destination, email, poste, rue, ville, reception, description, categorieChoix, [poids, longueur, hauteur, largueur]), console.log(arrivee, destination, email, poste, rue, ville) }}
                                 // isDisabled={email.length < 10 || dest.length < 4 || radio2.length < 3}
                                 // onClick={() => {
                                 // LaunchAll();
                                 // }} 
-                                className="w-full bg-cyan-800 text-white font-bold p-2 rounded-md mt-20">Envoyez dès maintenant</button>
+                                >Envoyez dès maintenant</Button>
                         </Link>
                     </form>
                 </div>

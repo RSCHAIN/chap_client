@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinusCircle, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 
-import { useDisclosure, MenuList, MenuItem } from "@chakra-ui/react";
+import { useDisclosure, MenuList, MenuItem,Link,Button } from "@chakra-ui/react";
 
 import { useMediaQuery } from "@chakra-ui/react";
 import { useToast, useBoolean } from "@chakra-ui/react";
@@ -21,7 +21,7 @@ import TransitionExample from "@/components/forgetPassword";
 import { ChevronDownIcon } from "@chakra-ui/icons"
 import Head from "next/head";
 import PopUp from "@/components/DevisAddon/popUp";
-import Link from "next/link";
+// import Link from "next/link";
 import secureLocalStorage from "react-secure-storage";
 
 function Maritime() {
@@ -440,8 +440,18 @@ function Maritime() {
                             </div>
                         </div>
                         <Link href={"/QuoteConfirmationMaritime"}>
-                            <button onClick={() => { handleSaveDataInSessionStorage(arriv, dest, email, poste, rue, ville, lieuReceptionColis, description, choixCarton, valeurEnEuro) }}
-                                className="w-full bg-cyan-800 text-white font-bold p-2 rounded-md mt-20">Envoyez dès maintenant</button>
+                            <Button  bgColor={"cyan.800"}
+                                w={"full"}
+                                fontWeight={"bold"}
+                                color={"white"}
+                                p={2}
+                                borderRadius={"md"}
+                                mt={20}
+                                _hover={{
+                                    bgColor: "cyan.700",
+                                    color: "white",
+                                }} onClick={() => { handleSaveDataInSessionStorage(arriv, dest, email, poste, rue, ville, lieuReceptionColis, description, choixCarton, valeurEnEuro) }}
+                                >Envoyez dès maintenant</Button>
                         </Link>
                     </form>
                 </div>

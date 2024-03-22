@@ -398,7 +398,7 @@ function PopUp({ PrixChoisi, Partenaire, email, dest, need, poste, arriv, radio2
 
   return (
     <>
-      <button onClick={onOpen}>Reservez maintenant</button>
+      <button onClick={onOpen}>Reservez </button>
 
       <Modal size={"xl"} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
@@ -407,16 +407,16 @@ function PopUp({ PrixChoisi, Partenaire, email, dest, need, poste, arriv, radio2
           <ModalCloseButton />
           <ModalBody>
             <div className='flex flex-col gap-4'>
-              <div className="client flex">
-                <div className='flex flex-col mr-2'>
+              {/* <div className="client flex"> */}
+                <div className='flex flex-col'>
                   <label className='font-bold uppercase text-[0.9rem] tracking-wide'>Nom expediteur</label>
                   <input className='border p-2 shadow-[0_0_12px_rgba(0,0,0,0.2)]' type="text" placeholder='John' onChange={(e) => setNom2(e.target.value)} value={nom2} />
                 </div>
-                <div className='flex flex-col ml-2'>
+                <div className='flex flex-col'>
                   <label className='font-bold uppercase text-[0.9rem] tracking-wide'>Prenom expediteur</label>
                   <input className='border p-2 shadow-[0_0_12px_rgba(0,0,0,0.2)]' type="text" placeholder='John' onChange={(e) => setPrenom2(e.target.value)} value={prenom2} />
                 </div>
-              </div>
+              {/* </div> */}
 
               <div className='flex flex-col'>
                 <label className='font-bold uppercase text-[0.9rem] tracking-wide'>Numéro expediteur</label>
@@ -426,16 +426,16 @@ function PopUp({ PrixChoisi, Partenaire, email, dest, need, poste, arriv, radio2
                 <label className='font-bold uppercase text-[0.9rem] tracking-wide'>Numéro du destinataire</label>
                 <input className='border p-2 shadow-[0_0_12px_rgba(0,0,0,0.2)]' type="number" placeholder="2250605799059" onChange={(e) => setNumeroDest(e.target.value)} />
               </div>
-              <div className="dest flex">
-                <div className='flex flex-col mr-2'>
+              {/* <div className="dest flex"> */}
+                <div className='flex flex-col'>
                   <label className='font-bold uppercase text-[0.9rem] tracking-wide'>Nom du destinataire</label>
                   <input className='border p-2 shadow-[0_0_12px_rgba(0,0,0,0.2)]' type="text" placeholder='John' onChange={(e) => setNomDest(e.target.value)} />
                 </div>
-                <div className='flex flex-col ml-2'>
+                <div className='flex flex-col'>
                   <label className='font-bold uppercase text-[0.9rem] tracking-wide'>Prénom du destinataire</label>
                   <input className='border p-2 shadow-[0_0_12px_rgba(0,0,0,0.2)]' type="text" placeholder="Doe" onChange={(e) => setPrenomDest(e.target.value)} />
                 </div>
-              </div>
+              {/* </div> */}
               <div className='flex flex-col'>
                 <label className='font-bold uppercase text-[0.9rem] tracking-wide'>Email du destinataire</label>
                 <input className='border p-2 shadow-[0_0_12px_rgba(0,0,0,0.2)]' type="text" placeholder="johnDoe@.....com" onChange={(e) => setEmailDest(e.target.value)} />

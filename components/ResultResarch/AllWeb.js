@@ -1,7 +1,7 @@
 import { Text,SimpleGrid,Box,Image,Link, Center, Flex } from "@chakra-ui/react"
 import { useEffect } from "react"
 import { useState } from "react"
-import { collection, query, where, getDocs } from "firebase/firestore";
+import { collection, query, where, getDocs, limit } from "firebase/firestore";
 import { db } from "@/FIREBASE/clientApp";
 import Restaurant from "./Restaurant";
 import Epicerie from "./Epicerie";
@@ -207,22 +207,25 @@ export default function AllWeb ({postal}){
    
     const [modalData, setModalData] = useState([]);
     const [checker,setChecker] = useState(0)
+    const [loader,setLoader] = useState("flex")
+    const [result,setResult] = useState("none")
     
     const recherche = async () => {
       if (postal.length > 4) {
   
         const q = query(
           collection(db, "Admin"),
-          where("codePostal", "==", String(postal).trim())
+          where("codePostal", "==", String(postal).trim()),
+          limit(20)
         );
     
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
-          // doc.data() is never undefined for query doc snapshots
-      // console.log(doc.data())
-      // console.log(doc.data())
+         
       modalData.push(doc.data())
     })
+    setLoader("none")
+setResult("flex")
       } else {
       
         const q = query(collection(db, "favorisMagasinAppMobile"));
@@ -235,6 +238,8 @@ export default function AllWeb ({postal}){
     // console.log(doc.data())
     modalData.push(doc.data())
   })
+  setLoader("none")
+setResult("flex")
       }
       
        
@@ -247,7 +252,7 @@ export default function AllWeb ({postal}){
         <>
        
        {/* {console.log(modalData)} */}
-        <Box display={"flex"} overflowX={"auto"}  my={2}>
+        <Box display={result} overflowX={"auto"}  my={2}>
          
        {modalData.length>=1 ?
         modalData.slice(0,modalData.length/2).map((mag,index) => (
@@ -260,6 +265,7 @@ export default function AllWeb ({postal}){
 
 
         </Box>
+        <Flex justifyContent={"center"} display={loader} width={"full"}><img src={"./loading.gif"} width={"100px"} alt="loading.gif" /> </Flex>
        
       
         </>
