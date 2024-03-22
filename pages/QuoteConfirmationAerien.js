@@ -188,171 +188,172 @@ function QuoteConfirmation() {
                         console.log("tab1", tab1)
                     }
                 })}
-                <h2>Width: {windowSize[0]}</h2>
+                {/* <h2>Width: {windowSize[0]}</h2> */}
                 <div className="container mx-auto my-20">
-                    {windowSize[0] <= 1024 ?
-                        <div className='px-6'>
-                            <div className="bg-white p-4 border  shadow-[0_0_12px_rgba(0,0,0,0.2)] rounded-md flex flex-col gap-10 mt-6">
-                                <div className=" flex justify-between">
-                                    <div className="bg-cyan-800 text-white flex items-center px-8 rounded-r-full -ml-4">
-                                        <strong className='text-xl'>2</strong>
-                                        <small className='ml-2'>Jours</small>
-                                        <span className='ml-6'>Estimés</span>
-                                    </div>
-                                    <div className="h-10">
-                                        <img src="./images/transfer.png" alt="" className='size-16' />
-                                    </div>
-                                </div>
-                                <div className="flex justify-between items-center">
-                                    <div className="flex flex-col gap-8">
-                                        <div className="flex flex-col">
-                                            <h2 className='uppercase font-bold text-sm'>Depôt</h2>
-                                            <small className='text-slate-600'>{dateDep}</small>
-                                            <small className='text-slate-600'>Déposez votre colis dès aujourd’hui</small>
+                    {/* {windowSize[0] <= 1024 ? */}
+                        <div className='lg:hidden'>
+                            <div className='px-6'>
+                                <div className="bg-white p-4 border  shadow-[0_0_12px_rgba(0,0,0,0.2)] rounded-md flex flex-col gap-10 mt-6">
+                                    <div className=" flex justify-between">
+                                        <div className="bg-cyan-800 text-white flex items-center px-8 rounded-r-full -ml-4">
+                                            <strong className='text-xl'>2</strong>
+                                            <small className='ml-2'>Jours</small>
+                                            <span className='ml-6'>Estimés</span>
                                         </div>
-                                        <div className="flex flex-col">
-                                            <h2 className='uppercase font-bold text-sm'>Retrait</h2>
-                                            {/* <small className='text-slate-600'>{dateExp3}</small> */}
-                                            <small className='text-slate-600'>Retrait a Abidjan-cocody</small>
+                                        <div className="h-10">
+                                            <img src="./images/transfer.png" alt="" className='size-16' />
                                         </div>
                                     </div>
-                                    <div className="self-end mb-4">
-                                        <span className='bg-orange-600 text-xl p-4 text-white rounded-md max-[370px]:text-lg max-[370px]:p-2'>
-                                            {parseFloat(tab1) * 13 +
-                                                ((parseFloat(tab1) * 13  + parseFloat(PrixPc)+parseFloat(PrixDoc))* 5 / 100) + parseFloat(PrixPc) +parseFloat(PrixDoc)} €
+                                    <div className="flex justify-between items-center">
+                                        <div className="flex flex-col gap-8">
+                                            <div className="flex flex-col">
+                                                <h2 className='uppercase font-bold text-sm'>Depôt</h2>
+                                                <small className='text-slate-600'>{dateDep}</small>
+                                                <small className='text-slate-600'>Déposez votre colis dès aujourd’hui</small>
+                                            </div>
+                                            <div className="flex flex-col">
+                                                <h2 className='uppercase font-bold text-sm'>Retrait</h2>
+                                                {/* <small className='text-slate-600'>{dateExp3}</small> */}
+                                                <small className='text-slate-600'>Retrait a Abidjan-cocody</small>
+                                            </div>
+                                        </div>
+                                        <div className="self-end mb-4">
+                                            <span className='bg-orange-600 text-xl p-4 text-white rounded-md max-[370px]:text-lg max-[370px]:p-2'>
+                                                {parseFloat(tab1) * 13 +
+                                                    ((parseFloat(tab1) * 13  + parseFloat(PrixPc)+parseFloat(PrixDoc))* 5 / 100) + parseFloat(PrixPc) +parseFloat(PrixDoc)} €
 
 
-                                        </span>
+                                            </span>
+                                        </div>
                                     </div>
+                                    <button className='bg-orange-600 text-white rounded-sm py-2 px-6'>
+                                        <PopUp PrixChoisi={parseFloat(tab1) * 13 +
+                                            ((parseFloat(tab1) * 13  + parseFloat(PrixPc)+parseFloat(PrixDoc)) * 5/ 100) + parseFloat(PrixPc)+parseFloat(PrixDoc)}
+                                            Partenaire={"CICV"}
+                                            email={emailFromSession}
+                                            dest={destFromSession}
+                                            poste={addpostal}
+                                            arriv={arriveeFromSession}
+                                            radio2={receptionColisFromSession}
+                                            imageUri={imageUri}
+                                            ville={ville}
+                                            inputGroups={inputGroups}
+                                            description={descriptionColisFromSession}
+                                            poids={poidsFromSession}
+                                            categorie={categorieChoix}
+                                            rue={rue}
+                                            moyen={"Aerien"}
+                                        />
+                                    </button>
                                 </div>
-                                <button className='bg-orange-600 text-white rounded-sm py-2 px-6'>
-                                    <PopUp PrixChoisi={parseFloat(tab1) * 13 +
-                                        ((parseFloat(tab1) * 13  + parseFloat(PrixPc)+parseFloat(PrixDoc)) * 5/ 100) + parseFloat(PrixPc)+parseFloat(PrixDoc)}
-                                        Partenaire={"CICV"}
-                                        email={emailFromSession}
-                                        dest={destFromSession}
-                                        poste={addpostal}
-                                        arriv={arriveeFromSession}
-                                        radio2={receptionColisFromSession}
-                                        imageUri={imageUri}
-                                        ville={ville}
-                                        inputGroups={inputGroups}
-                                        description={descriptionColisFromSession}
-                                        poids={poidsFromSession}
-                                        categorie={categorieChoix}
-                                        rue={rue}
-                                        moyen={"Aerien"}
-                                    />
-                                </button>
+                                <div className="bg-white p-4 border  shadow-[0_0_12px_rgba(0,0,0,0.2)] rounded-md flex flex-col gap-10 mt-6">
+                                    <div className=" flex justify-between">
+                                        <div className="bg-cyan-800 text-white flex items-center px-8 rounded-r-full -ml-4">
+                                            <strong className='text-xl'>2</strong>
+                                            <small className='ml-2'>Jours</small>
+                                            <span className='ml-6'>Estimés</span>
+                                        </div>
+                                        <div className=" h-10">
+                                            <img src="./images/transfer.png" alt="" className='size-16' />
+                                        </div>
+                                    </div>
+
+                                    <div className="flex justify-between items-center">
+                                        <div className="flex flex-col gap-8">
+                                            <div className="flex flex-col">
+                                                <h2 className='uppercase font-bold text-sm'>Depôt</h2>
+                                                <small className='text-slate-600'>{dateDep}</small>
+                                                <small className='text-slate-600'>Déposez votre colis dès aujourd’hui</small>
+                                            </div>
+                                            <div className="flex flex-col">
+                                                <h2 className='uppercase font-bold text-sm'>Retrait</h2>
+                                                {/* <small className='text-slate-600'>{dateExp3}</small> */}
+                                                <small className='text-slate-600'>Retrait a Abidjan-cocody</small>
+                                            </div>
+                                        </div>
+                                        <div className="self-end mb-4">
+                                            <span className='bg-orange-600 text-xl p-4 text-white rounded-md max-[370px]:text-lg max-[370px]:p-2'>
+                                                {parseFloat(tab1) * 10 +
+                                                    ((parseFloat(tab1) * 10 + parseFloat(PrixPc)+parseFloat(PrixDoc))  * 5 / 100) + parseFloat(PrixPc)+parseFloat(PrixDoc)} €
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <button className='bg-orange-600 text-white rounded-sm py-2 px-6'>
+                                        <PopUp PrixChoisi={parseFloat(tab1) * 10 +
+                                            ((parseFloat(tab1) * 10  + parseFloat(PrixPc)+parseFloat(PrixDoc))* 5 / 100) + parseFloat(PrixPc)+parseFloat(PrixDoc)}
+                                            Partenaire={"BAMBA BAGAGE"}
+                                            email={emailFromSession}
+                                            dest={destFromSession}
+                                            poste={addpostal}
+                                            arriv={arriveeFromSession}
+                                            radio2={receptionColisFromSession}
+                                            imageUri={imageUri}
+                                            ville={ville}
+                                            inputGroups={inputGroups}
+                                            description={descriptionColisFromSession}
+                                            poids={poidsFromSession}
+                                            categorie={categorieChoix}
+                                            rue={rue}
+                                            moyen={"Aerien"}
+                                        />
+                                    </button>
+                                </div>
+                                <div className="bg-white p-4 border  shadow-[0_0_12px_rgba(0,0,0,0.2)] rounded-md flex flex-col gap-10 mt-6">
+                                    <div className=" flex justify-between">
+                                        <div className="bg-cyan-800 text-white flex items-center px-8 rounded-r-full -ml-4">
+                                            <strong className='text-xl'>3/4</strong>
+                                            <small className='ml-2'>Semaines</small>
+                                            <span className='ml-6'>Estimés</span>
+                                        </div>
+                                        <div className=" h-10">
+                                            <img src="./images/transfer.png" alt="" className='size-16' />
+                                        </div>
+                                    </div>
+
+                                    <div className="flex justify-between items-center">
+                                        <div className="flex flex-col gap-8">
+                                            <div className="flex flex-col">
+                                                <h2 className='uppercase font-bold text-sm'>Depôt</h2>
+                                                <small className='text-slate-600'>{dateDep}</small>
+                                                <small className='text-slate-600'>Déposez votre colis dès aujourd’hui</small>
+                                            </div>
+                                            <div className="flex flex-col">
+                                                <h2 className='uppercase font-bold text-sm'>Retrait</h2>
+                                                {/* <small className='text-slate-600'>{dateExp3}</small> */}
+                                                <small className='text-slate-600'>Retrait a Abidjan-cocody</small>
+                                            </div>
+                                        </div>
+                                        <div className="self-end mb-4">
+                                            <span className='bg-orange-600 text-xl p-4 text-white rounded-md max-[370px]:text-lg max-[370px]:p-2'>
+                                                {parseFloat(tab1) * 5 +
+                                                    ((parseFloat(tab1) * 5 + parseFloat(PrixPc)+parseFloat(PrixDoc)) * 5 / 100) + parseFloat(PrixPc)+parseFloat(PrixDoc)} €
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <button className='bg-orange-600 text-white rounded-sm py-2 px-6'>
+                                        <PopUp PrixChoisi={parseFloat(tab1) * 5 +
+                                            ((parseFloat(tab1) * 5  + parseFloat(PrixPc)+parseFloat(PrixDoc)) * 5/ 100) + parseFloat(PrixPc)+parseFloat(PrixDoc)}
+                                            Partenaire={"CHAP"}
+                                            email={emailFromSession}
+                                            dest={destFromSession}
+                                            poste={addpostal}
+                                            arriv={arriveeFromSession}
+                                            radio2={receptionColisFromSession}
+                                            imageUri={imageUri}
+                                            ville={ville}
+                                            inputGroups={inputGroups}
+                                            description={descriptionColisFromSession}
+                                            poids={poidsFromSession}
+                                            categorie={categorieChoix}
+                                            rue={rue}
+                                            moyen={"Aerien"}
+                                        />
+                                    </button>
+                                </div>
                             </div>
-                            <div className="bg-white p-4 border  shadow-[0_0_12px_rgba(0,0,0,0.2)] rounded-md flex flex-col gap-10 mt-6">
-                                <div className=" flex justify-between">
-                                    <div className="bg-cyan-800 text-white flex items-center px-8 rounded-r-full -ml-4">
-                                        <strong className='text-xl'>2</strong>
-                                        <small className='ml-2'>Jours</small>
-                                        <span className='ml-6'>Estimés</span>
-                                    </div>
-                                    <div className=" h-10">
-                                        <img src="./images/transfer.png" alt="" className='size-16' />
-                                    </div>
-                                </div>
-
-                                <div className="flex justify-between items-center">
-                                    <div className="flex flex-col gap-8">
-                                        <div className="flex flex-col">
-                                            <h2 className='uppercase font-bold text-sm'>Depôt</h2>
-                                            <small className='text-slate-600'>{dateDep}</small>
-                                            <small className='text-slate-600'>Déposez votre colis dès aujourd’hui</small>
-                                        </div>
-                                        <div className="flex flex-col">
-                                            <h2 className='uppercase font-bold text-sm'>Retrait</h2>
-                                            {/* <small className='text-slate-600'>{dateExp3}</small> */}
-                                            <small className='text-slate-600'>Retrait a Abidjan-cocody</small>
-                                        </div>
-                                    </div>
-                                    <div className="self-end mb-4">
-                                        <span className='bg-orange-600 text-xl p-4 text-white rounded-md max-[370px]:text-lg max-[370px]:p-2'>
-                                            {parseFloat(tab1) * 10 +
-                                                ((parseFloat(tab1) * 10 + parseFloat(PrixPc)+parseFloat(PrixDoc))  * 5 / 100) + parseFloat(PrixPc)+parseFloat(PrixDoc)} €
-                                        </span>
-                                    </div>
-                                </div>
-                                <button className='bg-orange-600 text-white rounded-sm py-2 px-6'>
-                                    <PopUp PrixChoisi={parseFloat(tab1) * 10 +
-                                        ((parseFloat(tab1) * 10  + parseFloat(PrixPc)+parseFloat(PrixDoc))* 5 / 100) + parseFloat(PrixPc)+parseFloat(PrixDoc)}
-                                        Partenaire={"BAMBA BAGAGE"}
-                                        email={emailFromSession}
-                                        dest={destFromSession}
-                                        poste={addpostal}
-                                        arriv={arriveeFromSession}
-                                        radio2={receptionColisFromSession}
-                                        imageUri={imageUri}
-                                        ville={ville}
-                                        inputGroups={inputGroups}
-                                        description={descriptionColisFromSession}
-                                        poids={poidsFromSession}
-                                        categorie={categorieChoix}
-                                        rue={rue}
-                                        moyen={"Aerien"}
-                                    />
-                                </button>
-                            </div>
-                            <div className="bg-white p-4 border  shadow-[0_0_12px_rgba(0,0,0,0.2)] rounded-md flex flex-col gap-10 mt-6">
-                                <div className=" flex justify-between">
-                                    <div className="bg-cyan-800 text-white flex items-center px-8 rounded-r-full -ml-4">
-                                        <strong className='text-xl'>3/4</strong>
-                                        <small className='ml-2'>Semaines</small>
-                                        <span className='ml-6'>Estimés</span>
-                                    </div>
-                                    <div className=" h-10">
-                                        <img src="./images/transfer.png" alt="" className='size-16' />
-                                    </div>
-                                </div>
-
-                                <div className="flex justify-between items-center">
-                                    <div className="flex flex-col gap-8">
-                                        <div className="flex flex-col">
-                                            <h2 className='uppercase font-bold text-sm'>Depôt</h2>
-                                            <small className='text-slate-600'>{dateDep}</small>
-                                            <small className='text-slate-600'>Déposez votre colis dès aujourd’hui</small>
-                                        </div>
-                                        <div className="flex flex-col">
-                                            <h2 className='uppercase font-bold text-sm'>Retrait</h2>
-                                            {/* <small className='text-slate-600'>{dateExp3}</small> */}
-                                            <small className='text-slate-600'>Retrait a Abidjan-cocody</small>
-                                        </div>
-                                    </div>
-                                    <div className="self-end mb-4">
-                                        <span className='bg-orange-600 text-xl p-4 text-white rounded-md max-[370px]:text-lg max-[370px]:p-2'>
-                                            {parseFloat(tab1) * 5 +
-                                                ((parseFloat(tab1) * 5 + parseFloat(PrixPc)+parseFloat(PrixDoc)) * 5 / 100) + parseFloat(PrixPc)+parseFloat(PrixDoc)} €
-                                        </span>
-                                    </div>
-                                </div>
-                                <button className='bg-orange-600 text-white rounded-sm py-2 px-6'>
-                                    <PopUp PrixChoisi={parseFloat(tab1) * 5 +
-                                        ((parseFloat(tab1) * 5  + parseFloat(PrixPc)+parseFloat(PrixDoc)) * 5/ 100) + parseFloat(PrixPc)+parseFloat(PrixDoc)}
-                                        Partenaire={"CHAP"}
-                                        email={emailFromSession}
-                                        dest={destFromSession}
-                                        poste={addpostal}
-                                        arriv={arriveeFromSession}
-                                        radio2={receptionColisFromSession}
-                                        imageUri={imageUri}
-                                        ville={ville}
-                                        inputGroups={inputGroups}
-                                        description={descriptionColisFromSession}
-                                        poids={poidsFromSession}
-                                        categorie={categorieChoix}
-                                        rue={rue}
-                                        moyen={"Aerien"}
-                                    />
-                                </button>
-                            </div>
-
                         </div>
-                        :
-                        <div className="">
+                        {/* : */}
+                        <div className="max-[1023px]:hidden">
                             <div className="flex justify-between items-center border shadow-[0_0_12px_rgba(0,0,0,0.2)] mt-6">
                                 <div className="w-[10rem] flex flex-col items-center p-1 gap-2 bg-cyan-800 text-white rounded-tl-md">
                                     <strong className='text-6xl'>2</strong>
@@ -707,7 +708,7 @@ function QuoteConfirmation() {
                                 </div>
                             </div> */}
                         </div>
-                    }
+                    {/* } */}
                 </div>
             </section>
         </>
