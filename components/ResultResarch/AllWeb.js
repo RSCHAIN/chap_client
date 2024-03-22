@@ -249,29 +249,16 @@ export default function AllWeb ({postal}){
        {/* {console.log(modalData)} */}
         <Box display={"flex"} overflowX={"auto"}  my={2}>
          
-        {/* <Carousel  responsive={responsive} style={"marginLeft='10px'"}> */}
-    
-
-        {modalData.slice(0,modalData.length/2).map((mag,index) => (
+       {modalData.length>=1 ?
+        modalData.slice(0,modalData.length/2).map((mag,index) => (
           <ItemCard item={mag} key={index}/>
-  //         <Box  width={"350px"} height={"250px"}>
-  // <Box  width={"350px"} height={"250px"} key={index} as="a" href="" mb={10}>
-   
+)
+):<Center w={"full"} ><Text textAlign={"center"} fontWeight={600}>Aucun commerce près de chez vous</Text></Center>}
     
- 
-  //   <Image borderRadius={"xl"} src={mag.imageUrl} alt={mag.organisation}  width={"200px"} height={"200px"}/>
-  //   <Text mt={-20} fontWeight={700} color={"cyan.700"}  width={"250px"}  >{mag.organisation}</Text>
-    
-   
-    
-  // </Box>
-  // <Text fontWeight={500} fontStyle={"oblique"} width={"fit-content"}>{mag.ville}</Text>
-  // </Box>
-))}
 
         
 
-        {/* </Carousel> */}
+
         </Box>
        
       

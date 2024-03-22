@@ -271,6 +271,7 @@ function PopUp({ PrixChoisi, Partenaire, email, dest, need, poste, arriv, radio2
               adresse: rue,
               nomExp: nom2,
               prenomExp: prenom2,
+              besoin: need,
               nomDest: nomDest,
               prenomDest: prenomDest,
               moyen: "Maritime",
@@ -282,7 +283,7 @@ function PopUp({ PrixChoisi, Partenaire, email, dest, need, poste, arriv, radio2
               details: inputGroups,
               depot: radio2,
               jour: "30 jours estimés",
-              quantity: inputGroups.length,
+              quantity: categorie.length,
             })
             .then((response) => {
               alert(

@@ -245,7 +245,7 @@ function QuoteConfirmation() {
                                         radio2={recup}
                                         imageUri={"imageUri"}
                                         ville={ville}
-                                        inputGroups={inputGroups}
+                                        inputGroups={descriptioncolis}
                                         categorie={choixCarton}
                                         rue={adr}
                                         need={besoin}
@@ -356,7 +356,7 @@ function QuoteConfirmation() {
                                         radio2={recup}
                                         imageUri={"imageUri"}
                                         ville={ville}
-                                        inputGroups={inputGroups}
+                                        inputGroups={descriptioncolis}
                                         categorie={choixCarton}
                                         rue={adr}
                                         need={besoin}

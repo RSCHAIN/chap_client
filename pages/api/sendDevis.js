@@ -15,7 +15,7 @@ export default function handler(req, res) {
   const quantity = req.body.quantity;
   const details = req.body.details;
 
-
+console.log(details)
 
 if (req.body.moyen === "Aerien") {
  
@@ -86,6 +86,7 @@ if (req.body.moyen === "Aerien") {
 
           if (req.method === "POST") {
     if(req.body.moyen=="Maritime"){
+      const besoin = req.body.besoin;
       const message3 = {
         from: email,
         to: req.body.email,
@@ -113,18 +114,20 @@ if (req.body.moyen === "Aerien") {
             `+
     
     
-          `<ul >${categorie.map((element, index) => (
-            details.map((donnees, ind) => {
-    
+          `<ul >${categorie.map((element, index) => {
+            
+              
               return `<li style="font-weight:semibold">${element}</li>
                <ul>
-                  <li style="font-weight:lighter">${donnees[0].value}</li>
-                  <li style="font-weight:lighter">${donnees[1].value}</li>
+                  <li >Descitption: ${details[index]}</li>
+                  <li >Besoin de materiel?<b>${besoin[index]?"oui":"non"}</b></li>
+                
+                
                   
                </ul>
                `
-            })
-                ))
+           
+              })
     }
             </ul > `
              
