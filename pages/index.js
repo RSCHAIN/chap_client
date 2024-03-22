@@ -212,7 +212,7 @@ const [code,setCode] = useState([]);
                   </InputLeftElement>
                 </InputGroup>
                 <Center width={"fit-content"}display={"flex"}>
-                 <Text textAlign={"center"} fontSize={"15px"} mr={2}>Dernière position :</Text>  
+                 <Text textAlign={"center"} fontSize={"12px"} mr={2}>Dernière position :</Text>  
                   <Text> {final}</Text>
                 </Center>
               </Box>

@@ -82,7 +82,6 @@ function QuoteConfirmation() {
         setNbDoc(JSON.parse(sessionStorage.getItem("NbDoc")))
         setImageUri(JSON.parse(sessionStorage.getItem("imageUri")))
 
-
         // Access count value from session storage
         let poids = sessionStorage.getItem("detailscolis");
 
@@ -143,13 +142,6 @@ function QuoteConfirmation() {
         console.log("categorie", typeof (categorieChoix));
         console.log("poidsFromSession", poidsFromSession)
         console.log("descriptionColisFromSession", descriptionColisFromSession)
-
-
-
-
-
-
-
     }, []);
 
     return (
@@ -196,7 +188,7 @@ function QuoteConfirmation() {
                         console.log("tab1", tab1)
                     }
                 })}
-                {/* <h2>Width: {windowSize[0]}</h2> */}
+                <h2>Width: {windowSize[0]}</h2>
                 <div className="container mx-auto my-20">
                     {windowSize[0] <= 1024 ?
                         <div className='px-6'>
