@@ -221,8 +221,6 @@ function QuoteConfirmation() {
                                             <span className='bg-orange-600 text-xl p-4 text-white rounded-md max-[370px]:text-lg max-[370px]:p-2'>
                                                 {parseFloat(tab1) * 13 +
                                                     ((parseFloat(tab1) * 13  + parseFloat(PrixPc)+parseFloat(PrixDoc))* 5 / 100) + parseFloat(PrixPc) +parseFloat(PrixDoc)} €
-
-
                                             </span>
                                         </div>
                                     </div>

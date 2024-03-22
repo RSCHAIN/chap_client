@@ -398,7 +398,7 @@ function PopUp({ PrixChoisi, Partenaire, email, dest, need, poste, arriv, radio2
 
   return (
     <>
-      <button onClick={onOpen}>Reservez </button>
+      <button onClick={onOpen}>Choisir</button>
 
       <Modal size={"xl"} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
