@@ -353,7 +353,7 @@ function QuoteConfirmation() {
                             </div>
                         </div>
                         {/* : */}
-                        <div className="max-[1023px]:hidden">
+                        <div className="max-[1024px]:hidden">
                             <div className="flex justify-between items-center border shadow-[0_0_12px_rgba(0,0,0,0.2)] mt-6">
                                 <div className="w-[10rem] flex flex-col items-center p-1 gap-2 bg-cyan-800 text-white rounded-tl-md">
                                     <strong className='text-6xl'>2</strong>
