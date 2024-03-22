@@ -162,14 +162,17 @@ const [code,setCode] = useState([]);
         <Center>  <Text fontSize={"25px"} color={"black"} fontWeight={"semibold"} fontFamily={"system-ui"}>Bienvenue sur Chap</Text></Center>
     
       </Box>
+     
+         
+      <SliderComponents />
       <Center
               width={"100%"}
               display={["grid", "grid", "grid", "none", "none"]}
             >
-              <Box mb={2} ml={"5%"}>
+              <Box  ml={"5%"} mb={2}>
                 
              
-                <InputGroup mt={2}  borderRadius={"100px"} mb={2} width={"fit-content"} >
+                <InputGroup  borderRadius={"100px"} mb={2} width={"fit-content"} >
                   <InputRightElement as={Text} width={"fit-content"} pr={2}>
                   
                   <RiSendPlaneLine color={"cyan.700"} fontSize={"25px"}  onClick={()=>handleLocate()} _hover={{
@@ -214,9 +217,6 @@ const [code,setCode] = useState([]);
                 </Center>
               </Box>
             </Center>
-         
-      <SliderComponents />
-     
       <LadingCorps />
 
       <FooterR />
