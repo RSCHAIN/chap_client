@@ -942,7 +942,7 @@ function Regle({ items, email, id }) {
 
                 <Center mt={5} mb={5} color={"cyan.800"} fontWeight={"bold"} >Informations</Center>
                 <SimpleGrid columns={{ base: 1, lg: 2 }} spacingY={{ base: 5, lg: 2 }} justifyContent={"space-around"}>
-                  <Box><Text color={"cyan.800"} fontWeight={700}>Destinataire</Text>
+                  <Box><Text color={"black"} fontSize={{base:"15px",lg:"20px"}} fontWeight={700}>Destinataire</Text>
                     <Text><span className={"itemsDev"}>Nom :</span> {items.nomDestinataire}</Text>
                     <Text><span className={"itemsDev"}>Prénom :</span> {items.prenomDestinataire} </Text>
                     <Text><span className={"itemsDev"}>Adresse :</span>{items.adresseDest},{items.villeDest},{items.posteDest} </Text>
@@ -950,7 +950,7 @@ function Regle({ items, email, id }) {
                     <Text><span className={"itemsDev"}>Contact :</span> {items.numeroDestinataire}</Text>
                     <Text><span className={"itemsDev"}>Email :</span>{items.emailDest} </Text>
                   </Box>
-                  <Box><Text color={"cyan.800"} fontWeight={700}>Expediteur</Text>
+                  <Box><Text color={"black"} fontSize={{base:"15px",lg:"20px"}} fontWeight={700}>Expediteur</Text>
                     <Text><span className={"itemsDev"}>Nom :</span>{items.nomExpediteur} </Text>
                     <Text><span className={"itemsDev"}>Prénom :</span>{items.prenomExpediteur} </Text>
                     <Text><span className={"itemsDev"}>Adresse :</span>{items.rue}{items.ville} </Text>
@@ -958,7 +958,7 @@ function Regle({ items, email, id }) {
                     <Text><span className={"itemsDev"}>Email :</span> {items.email}</Text>
                   </Box>
                 </SimpleGrid>
-                <Center mt={5} color={"cyan.800"} fontWeight={"bold"} >Livraison</Center>
+                <Center mt={5} color={"black"} fontSize={{base:"15px",lg:"20px"}} fontWeight={700} >Livraison</Center>
 
                 <Box>
                   <Text> <span className={"itemsDev"}>Type :</span> En agence </Text>

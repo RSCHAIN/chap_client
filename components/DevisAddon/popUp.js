@@ -144,7 +144,7 @@ function PopUp({ PrixChoisi, Partenaire, email, dest, need, poste, arriv, radio2
   //fin des variables
 
   const makeDevis = async () => {
-    console.log("dans le else",poste,poste.length)
+   
     
     if (poste.length == 5) {
       const idDev = generateCustomKey();
@@ -215,11 +215,12 @@ function PopUp({ PrixChoisi, Partenaire, email, dest, need, poste, arriv, radio2
             quantity: inputGroups.length,
           })
             .then((response) => {
-              alert(
-                "Veuillez verifier vos mails afin de prendre connaissance des details de votre devis"
-              );
               router.push('/SuccesDevis')
               router.reload();
+              // alert(
+              //   "Veuillez verifier vos mails afin de prendre connaissance des details de votre devis"
+              // );
+              
             });
         });
       }
@@ -286,11 +287,12 @@ function PopUp({ PrixChoisi, Partenaire, email, dest, need, poste, arriv, radio2
               quantity: categorie.length,
             })
             .then((response) => {
+              router.push('/SuccesDevis')
+              router.reload();
               alert(
                 "Veuillez verifier vos mails afin de prendre connaissance des details de votre devis"
               );
-              router.push('/SuccesDevis')
-              router.reload();
+              
             }).catch((error) => {
               alert(
                 "Une erreur est survenu lors de l'enregistrement, veuillez reesayer ou le referer à notre support "
