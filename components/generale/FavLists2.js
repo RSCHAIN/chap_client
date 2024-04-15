@@ -248,7 +248,7 @@ export default function Favlist2({ categorie, magasin }) {
                   // height={"21.25rem"}
                   // width={"13rem"}
                 >
-                  {data.etat == "disponible" ? (
+                  {data.etat == "Disponible" ? (
                     <Box
                       mt={-5}
                       mb={2}
@@ -266,14 +266,17 @@ export default function Favlist2({ categorie, magasin }) {
                     </Box>
                   ) : (
                     <Badge
-                      mt={-20}
-                      ml={-6}
-                      color={"white"}
-                      px={2}
-                      py={1}
-                      borderRadius={25}
-                      height={"fit-content"}
-                      bgColor="#e33924"
+                    mt={-5}
+                    mb={2}
+                    ml={-5}
+                    color={"white"}
+                 
+                    fontSize={"12px"}
+                    borderRadius={25}
+                    px={2}
+                    width={"80px"}
+                    height={"fit-content"}
+                    bgColor="red"
                     >
                       Rupture
                     </Badge>
@@ -378,33 +381,33 @@ export default function Favlist2({ categorie, magasin }) {
                   // height={"21.25rem"}
                   // width={"13rem"}
                 >
-                  {data.etat == "disponible" ? (
+                  {data.etat == "Disponible" ? (
                     <Box
-                      mt={-3}
-                      mb={2}
-                      ml={-8}
-                      px={1}
-                      color={"white"}
-                    fontSize={"15px"}
-                      borderRadius={25}
-                      width={"fit-content"}
-                      height={"fit-content"}
-                      bgColor="#7ed957"
+                    mb={2}
+                    ml={-5}
+                    px={2}
+                    color={"white"}
+                  fontSize={"15px"}
+                    borderRadius={25}
+                    width={"fit-content"}
+                    height={"fit-content"}
+                    bgColor="#7ed957"
+                    
                     >
                       Disponible
                     </Box>
                   ) : (
                     <Box
-                      mt={-3}
-                      mb={2}
-                      ml={-8}
-                      px={1}
-                      color={"white"}
-                    fontSize={"15px"}
-                      borderRadius={25}
-                      width={"fit-content"}
-                      height={"fit-content"}
-                      bgColor="#7ed957"
+                  
+                    mb={2}
+                    ml={-5}
+                    px={2}
+                    color={"white"}
+                  fontSize={"15px"}
+                    borderRadius={25}
+                    width={"fit-content"}
+                    height={"fit-content"}
+                    bgColor="red"
                     >
                       Rupture
                     </Box>

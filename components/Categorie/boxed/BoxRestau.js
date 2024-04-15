@@ -44,10 +44,10 @@ const router =useRouter()
         <Flex width={"100%"} justifyContent={"space-between"} >  
       <Heading  width={"fit-content"}>{mag.organisation}</Heading>
       <Flex >
-          <Button bgColor={"transparent"} as={"a"} href='#avis' _hover={{
-              bgColor:'transparent',textDecor:"none"
+          <Button mt={3}  bgColor={"transparent"} as={"a"} href='#avis' _hover={{
+              bgColor:'gray.50' ,textDecor:"none",p:5
           }} leftIcon={<FaEdit />}>Avis</Button>
-           <Accordion defaultIndex={[1]} allowMultiple>
+           <Accordion   defaultIndex={[1]} allowMultiple>
   <AccordionItem>
     <h2>
       <AccordionButton >
@@ -201,7 +201,8 @@ const router =useRouter()
        
         <Flex justifyContent={"space-between"}>
         <Flex>
-            <Text fontWeight={"bold"}>Nationalité : </Text>
+          {categorie == "Restaurant" ?<Text fontWeight={"bold"}>Specialités : </Text> : <Text fontWeight={"bold"}>Nationalité : </Text> }
+            
             {mag.nationalite == "undefined" ? (
               <Text ml={2} fontSize={"15px"}>
                 Africaine

@@ -349,7 +349,7 @@ export default function DisplayArticleDetails() {
                                     </div>
                                     <div className="">
                                         <p>{data.description}</p>
-                                    </div>
+                                    </div>  
                                     <div className="">
                                         {data.taille ? <h2 className='font-bold text-xl'>Couleur</h2> : <h2 className='font-bold text-xl'>Produit(s)</h2>}
                                         <div className="flex flex-col gap-8 lg:flex-row lg:justify-between lg:items-center lg:gap-0 p-4">
@@ -368,7 +368,8 @@ export default function DisplayArticleDetails() {
                                                     }
                                                 </div>
                                             </div>
-                                            <button onClick={() => { AddToCart(data, id, color, taille) }} className="bg-cyan-800 w-full lg:w-[10rem] p-2 self-end lg:mt-0 rounded-2xl text-white">Ajouter au panier</button>
+                                            {data.etat == "Indisponible"? <Button bgColor={"red.800"} alignSelf={"end"} _hover={{bgColor:"red.700"}} p={2} w={{base:"full", lg: "10rem"}} color={"white"}  onClick={() => { toast({title:"Produit en rupture",duration:9000,status:"warning"}) }} >Ajouter au panier</Button> : <Button bgColor={"cyan.800"} alignSelf={"end"} _hover={{bgColor:"cyan.700"}} p={2} w={{base:"full", lg: "10rem"}} color={"white"}  onClick={() => { AddToCart(data, id, color, taille) }} >Ajouter au panier</Button>}
+                                            
                                         </div>
                                     </div>
 
