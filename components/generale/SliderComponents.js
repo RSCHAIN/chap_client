@@ -66,6 +66,7 @@ const SliderComponents = () => {
   const top = useBreakpointValue({ base: "90%", md: "50%" });
   const side = useBreakpointValue({ base: "30%", md: "10px" });
   const cards = [
+    "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/Epicerie%2FNayou%2FCommandez%20Maintenant(2).png?alt=media&token=eb6f80dc-37df-4140-afde-f5ef0cdc1cef",
     "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/Epicerie%2FDissoa%20Caju%2FYellow%20And%20White%20Home%20Appliances%20Promo%20Instagram%20Post.png?alt=media&token=c2a5f999-4114-4cc9-8940-66e2b3b2cf98",
     "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/slider%2FabjPars.png?alt=media&token=c037631d-b5d7-47e8-b844-beb8b7fdca71",
     "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/slide%2FBakery.png?alt=media&token=574eecdf-7fc8-449f-a8d0-e5f9e14f9325",
