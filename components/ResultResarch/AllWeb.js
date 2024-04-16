@@ -15,6 +15,8 @@ import Navbar from "../Navbar";
 import secureLocalStorage from "react-secure-storage";
 import Carousel from "react-multi-carousel";
 import { useRouter } from "next/router";
+import Favlist2 from "../generale/FavLists2";
+import Favlist from "../generale/FavLists";
 
 
 const responsive = {
@@ -260,7 +262,9 @@ setResult("flex")
         modalData.slice(0,modalData.length/2).map((mag,index) => (
           <ItemCard item={mag} key={index}/>
 )
-):<Center w={"full"} ><Text textAlign={"center"} fontWeight={600}>Aucun commerce près de chez vous</Text></Center>}
+
+):
+<Center w={"full"} ><Text textAlign={"center"} fontWeight={600}>Aucun commerce près de chez vous</Text></Center>}
     
 
         

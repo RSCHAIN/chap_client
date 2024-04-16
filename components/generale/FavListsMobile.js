@@ -107,7 +107,7 @@ export function Star ({id,data}){
   }
 
 
-export default function Favlist(card) {
+export default function FavlistMobile(card) {
   const [data,setData] = useState([])
   const [data2,setData2] = useState([])
   const [dataKey,setDataKey] = useState([])

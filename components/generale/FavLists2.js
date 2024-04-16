@@ -16,7 +16,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { addDoc,collection, query, where,updateDoc, getDocs } from "firebase/firestore";
-import { FaTruckPickup } from "react-icons/fa";
+import { FaTruck, FaTruckPickup } from "react-icons/fa";
 import { AiOutlineStar } from "react-icons/ai";
 import { onAuthStateChanged } from "firebase/auth";
 import { authentic, db, db2 } from "@/FIREBASE/clientApp";
@@ -323,7 +323,7 @@ export default function Favlist2({ categorie, magasin }) {
                     <Text fontWeight={"thin"} fontStyle={"oblique"} fontSize={"12px"}>{data.duree} </Text>
                   )}
                   <Flex>
-                    <FaTruckPickup />
+                    <FaTruck />
                     <Tooltip
                       label={`Prix superieur à 30€ Ou être en île-de-france`}
                     >
@@ -453,7 +453,7 @@ export default function Favlist2({ categorie, magasin }) {
                     <Text fontWeight={"thin"} fontSize={"12px"}>{data.duree} </Text>
                   )}
                   <Flex>
-                    <FaTruckPickup />
+                    <FaTruck />
                     <Tooltip
                       label={`Prix superieur à 30€ Ou être en île-de-france`}
                     >

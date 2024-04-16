@@ -48,7 +48,7 @@ import { BiWorld } from "react-icons/bi";
 import Favlist2 from "../generale/FavLists2";
 import FooterR from "../footerResponsif";
 import { IoMdAddCircle } from "react-icons/io";
-import { FaTruckPickup } from "react-icons/fa";
+import { FaTruck, FaTruckPickup } from "react-icons/fa";
 import Link from "next/link";
 
 ///etoiles du feedback
@@ -526,7 +526,7 @@ const [detailsLink,setDetailsLink] = useState("")
              
               </Flex>
                         <Flex  >
-                <FaTruckPickup />
+                <FaTruck />
                 <Tooltip label={`Livraison à partir de 2,99€`} >
                   <Flex>
                 <Text ml={2} fontSize={"10px"} fontWeight={700}>Livraison partout en France </Text>

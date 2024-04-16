@@ -51,6 +51,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import SearchMagg from "../SearchMagg";
 import Reservations from "../Reservations";
 import AllWeb from "../ResultResarch/AllWeb";
+import FavlistMobile from "./FavListsMobile";
 
 // les card des differntes cartegories qui seront mapés
 export function ItemCard({ item, card}) {
@@ -687,7 +688,17 @@ href={
         </Center>
         <Box display={["grid", "grid", "grid", "none", "none" ]}>
             <AllWeb postal={locate}/>
-            
+            <Heading  fontSize={"20px"}>Produits recommandés</Heading>
+            {cat.map((card, key) => (
+                  // console.log('card',card)
+              (card != "Restaurant" && card != "Mèches"&& card != "Fret" && card != "Coiffure") ?
+                  (
+                    <>
+                     <Heading fontSize={"20px"} mb={2} color={"cyan.700"}>{card}</Heading> 
+                      <FavlistMobile card={card} />
+                    </>
+                  ): (<></>)
+                ))}
             </Box>
       </>
     );

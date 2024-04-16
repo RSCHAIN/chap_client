@@ -59,7 +59,7 @@ import { BiWorld } from "react-icons/bi";
 import Favlist2 from "../generale/FavLists2";
 import FooterR from "../footerResponsif";
 import { IoMdAddCircle } from "react-icons/io";
-import { FaEdit, FaTruckPickup } from "react-icons/fa";
+import { FaEdit, FaTruck, FaTruckPickup } from "react-icons/fa";
 import AffPlats from "./AffichePlats";
 import { TfiWorld } from "react-icons/tfi";
 import secureLocalStorage from "react-secure-storage";
@@ -867,7 +867,7 @@ const [ShowLoad,setShowLoad] = useState("block")
   
                                   </Flex>
                                   <Flex  >
-                                    <FaTruckPickup />
+                                    <FaTruck />
                                     <Tooltip label={`Livraison à partir de 2,99€`} >
                                       <Flex>
                                         <Text ml={2} fontSize={"10px"} fontWeight={700}>Livraison partout en France </Text>
