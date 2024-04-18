@@ -1,262 +1,495 @@
-import { db2 } from "@/FIREBASE/clientApp";
-import { Box, Image, SimpleGrid, Text,Link,Flex,Tooltip} from "@chakra-ui/react";
-import { ref, onValue  } from "@firebase/database";
+import {
+  Box,
+  Image,
+  SimpleGrid,
+  Text,
+  Link,
+  Flex,
+  Tooltip,
+  Badge,
+  Button,useToast,Center
+} from "@chakra-ui/react";
+import { ref, onValue } from "@firebase/database";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { useState,} from "react";
+import { useState } from "react";
 import { useEffect } from "react";
-import ReactDOM from 'react-dom';
-import Slider from "react-slick";
 import { useRouter } from "next/router";
-import secureLocalStorage from "react-secure-storage";
-import { db } from "@/FIREBASE/clientApp";
-import { collection, query, where, getDocs } from "firebase/firestore";
-import { useCallback } from "react";
+import { addDoc,collection, query, where,updateDoc, getDocs } from "firebase/firestore";
 import { FaTruck, FaTruckPickup } from "react-icons/fa";
 import { AiOutlineStar } from "react-icons/ai";
-import { BsCashCoin } from "react-icons/bs";
-import { StarIcon } from "@chakra-ui/icons";
+import { onAuthStateChanged } from "firebase/auth";
+import { authentic, db, db2 } from "@/FIREBASE/clientApp";
+import Slider from "react-slick";
+
 const responsive = {
   superLargeDesktop: {
-    breakpoint: { max:4000, min: 3000 },
-    items: 12
-  }, 
+    breakpoint: { max: 4000, min: 3000 },
+    items: 13,
+  },
   MDesktop: {
     breakpoint: { max: 3000, min: 2500 },
-    items: 11
-  }, 
+    items: 12,
+  },
   LargeDesktop: {
     breakpoint: { max: 2500, min: 2050 },
-    items: 10
-  }, 
+    items: 11,
+  },
   desktopM: {
     breakpoint: { max: 2050, min: 1750 },
-    items: 8
+    items: 9,
   },
   desktopL: {
     breakpoint: { max: 1750, min: 1550 },
-    items: 7
+    items: 8,
   },
   desktop: {
     breakpoint: { max: 1550, min: 1050 },
-    items: 5
+    items: 5,
   },
   tabletl: {
     breakpoint: { max: 1050, min: 850 },
-    items: 4
+    items: 2,
   },
   tablet: {
     breakpoint: { max: 850, min: 650 },
-    items: 3
-  }, 
+    items: 2,
+  },
   mobile: {
     breakpoint: { max: 650, min: 0 },
-    items: 2
-  }
-};  
-export function Star ({id,data}){
-  let total = 0
-  let star = 0
-  if(data){
-    Object.values(data).map((dat,key)=>{
-      if(id== dat.productID)
-      {
-        star = star + parseInt(dat.rate)
-        total = total+1
-       
-      }
-     }
-     )
-     
-  }
-  
-    
-  
-    return(
-      <>
-      {total ? <Flex mb={10} fontSize={"12px"}>
-       
-        {Array(5)
-              .fill('')
-              .map((_, i) => (
-                <StarIcon
-                  key={i}
-                  fontSize={"12px"}
-                  color={i < star/total ? 'yellow' : 'gray.500'}
-                />
-              ))}
-                <Text ml={1} mt={-1}>({total})</Text>
-      </Flex> : <Flex mb={10}> 
-      
-      {Array(5)
-              .fill('')
-              .map((_, i) => (   
-                <StarIcon
-                  key={i}
-                  fontSize={"12px"}
-                  color={'gray.500'}
-                 
-                />
-              ))}
-              <Text ml={2} mt={-1} fontSize={"12px"}>{total} avis</Text>
-              </Flex>}
-      
-    
-      </>
-    )
-  }
+    items: 2,
+  },
+};
+
+var settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+};
 
 
-export default function FavlistMobile(card) {
-  const [data,setData] = useState([])
-  const [data2,setData2] = useState([])
-  const [dataKey,setDataKey] = useState([])
-  const [tout,setTout] = useState("")
-  const [tou,setTou] = useState("")
-  const [check,setCheck] = useState(0)
-  
-  const route = useRouter()
-  const [all,setAll] = useState("none")
+export default function FavlistMobile() {
+  const [data, setData] = useState([]);
+  const [dataK, setDataK] = useState([]);
+  const [tout, setTout] = useState("");
+  const [tou, setTou] = useState("");
+  const [check, setCheck] = useState(0);
+  const toast = useToast();
 
-  const Fav2 = async () => {
-    
-    const starCountRef = ref(db2, "Feedback");
-    onValue(starCountRef, (snapshot) => {
-      setData2(snapshot.val());
-    
-    });
+  const router = useRouter();
+  const [all, setAll] = useState("none");
 
-    
-    // const db = getDatabase();
-   
-  };
+  async function Exist(productKey, email, uid, product) {
+    const cartRef = collection(db, "orders"); // Supposons que la collection se nomme 'carts'.
+    const q = query(
+      cartRef,
+      where("email", "==", email),
+      where("productId", "==", productKey)
+    ); // Requête pour récupérer le panier par userId.
 
-  const Fav = async (card) => {
-
-    const q = query(collection(db, "ServicesFav"));
-  
     const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-  // console.log(doc.data())
-  // console.log(card)
-  Object.keys(doc.data()).map((dat,index)=>{
-    // console.log(dat)
-   
-    if(dat == card.card){
-      setAll("grid")
-      // console.log(doc.data())
-      doc.data()[dat].map((datee,index)=>{
-        if(datee.length >=3){
-          console.log(datee,dat)
-          const starCountRef = ref(db2, `${dat}/${datee}`);
-          onValue(starCountRef, (snapshot) => {
-            setData(snapshot.val());
-            // console.log(snapshot.val())
+
+    if (querySnapshot.size === 1) {
+      const cartDoc = querySnapshot.docs[0];
+      const cartData = cartDoc.data();
+      // console.log(cartData)
+      const itemIndex = Object.values(cartData).find(
+        (item) => item.productId === productKey
+      );
+      if (itemIndex !== -1) {
+        await updateDoc(cartDoc.ref, {
+          productId: productKey,
+          currentUID: uid,
+          orderDescription: product.description,
+          orderEtat: product.etat,
+          orderNote: product.note,
+          orderImageUrl: product.imageUrl,
+          orderName: product.nom,
+          orderPrice: product.prix,
+          orderOrganisation: product.organisation,
+          orderQte: querySnapshot.docs[0].data().orderQte + 1,
+          email: email,
+        });
+      }
+    } else {
+      await addDoc(collection(db, "orders"), {
+        productId: productKey,
+        currentUID: uid,
+        orderDescription: product.description,
+        orderEtat: product.etat,
+        orderNote: product.note,
+        orderImageUrl: product.imageUrl,
+        orderName: product.nom,
+        orderPrice: product.prix,
+        orderOrganisation: product.organisation,
+        orderQte: 1,
+        email: email,
+      });
+    }
+  }
+
+  function AddToCart(product, productKey) {
+    onAuthStateChanged(authentic, async (user) => {
+      if (!user) {
+        toast({
+          title: "Veuillez vous connectez !!!",
+
+          status: "error",
+          duration: 10000,
+          isClosable: true,
+        });
+        
+      } else {
+        try {
+          await Exist(productKey, user.email, user.uid, product);
+          // router.reload();
+          router.replace(router.asPath)
+          toast({
+            title: "Produit ajouté!!!",
+
+            status: "success",
+            duration: 9000,
+            isClosable: true,
           });
-        }
-       
-        })
-      
-     
-      
-    }
-  })
+        } catch (error) { console.log(error)}
+      }
     });
+  }
 
+  const Fav = async () => {
+    try {
+      //   const starCountRef = ref(db2, `${categorie}/${magasin}`);
+      // onValue(starCountRef, (snapshot) => {
+      //   setData(snapshot.val());
+      //   // console.log(snapshot.val())
+      // });
+      const starCountRef = ref(db2, "Epicerie/Massy Market");
+                onValue(starCountRef, (snapshot) => {
+                  setTout("Epicerie");
+                  setData(snapshot.val());
+                  Object.keys(snapshot.val()).map((data,index) => {
+                    dataK[index]=data
+        
+                  })
+                });
+      // const q = query(collection(db, "ServicesFav"));
 
-    
-    // const db = getDatabase();
-   
-  };
- 
+      // const querySnapshot = await getDocs(q);
+      // querySnapshot.forEach((doc) => {
+      //   // doc.data() is never undefined for query doc snapshots
+      //   // console.log(doc.data())
+      //   // console.log(card)
+      //   Object.keys(doc.data()).map((dat, index) => {
+      //     // console.log(dat)
 
   
-
-
-
-  
-  useEffect(()=>{
-    if(check == 0 || check == 1){
-      Fav(card)
-      Fav2()
-      setDataKey(Object.keys(data))
-     
-      setCheck(check+1)
+      //       // console.log(doc.data())
+            
+             
+              
+                
+             
+           
+         
+      //   });
+      // });
+    } catch {
+      (error) => {
+        console.log("Waiting time 2!!!");
+      };
     }
-   
+
+    // const db = getDatabase();
+  };
+
+  useEffect(() => {
+    if (check == 0 || check == 1) {
+      Fav();
+
+      setCheck(check + 1);
+    }
+
     // setTout(data.length())
-  },[check,card,Fav,data])
+  }, [check, Fav]);
 
+  const [slider, setSlider] = useState(null);
 
-
-
-  const date = new Date();
-  const dateDep = date.toLocaleDateString();
   const date2 = new Date();
   const dateExp = date2.setDate(date2.getDate() + 1);
   const dateExp2 = new Date(dateExp);
   const dateExp3 = dateExp2.toLocaleDateString();
-  
-  return <>
-    <Box ml={[5,5,5,10,10]} width={"95%"} mt={[0,0,0,10,10]} display={all}>
-    <Carousel  responsive={responsive} style={"marginLeft='10px'"}
-  >
-    
-          {Object.values(data).map((dat, index) => (
-            <Link key={index} 
-            href={`/otherContent/intermed1?categorie=${card.card}&magasin=${dat.organisation}`}
-          
-            _hover={{
-              textDecoration:"none"
-            }}
-            >
-             <Box
-            
-            key={index} my={[0,0,0,5,5]} height={"fit-content"} pb={10}   width={["150px","150px","150px","200px","200px"]} >
-              <Image height={["100px","100px","150px","150px","150px"]}  width={["150px","150px","150px","200px","200px"]} src={dat.imageUrl}  alt={dat.nom} />
-              <Box height={["10vh","10vh","10vh","10vh","10vh"]} >
-              <Text width={["150px","150px","150px","200px","200px"]}  noOfLines={2}  fontSize={"15px"}>{dat.nom}</Text>
-              <Text fontWeight={"bold"} width={"fit-content"} color={"orange.900"}   fontSize={"10px"}>{dat.organisation}</Text>
-              <Flex >
-                {}
-                {/* {console.log("data",data)} */}
-              
-                {/* {console.log("feedback",data2)} */}
-                <Star id={Object.keys(data)[index]} data={data2}/>
-              </Flex>
-              </Box>
-              <Box>
-              {dat.duree == "Expedié en 24h" ? <Text className={"Exp"}  mb={2}>Livré le {dateExp3} </Text> : <Text  className={"Exp"} mb={2}>{ dat.duree} </Text>}
-              </Box>
-              <Flex mb={1}>
-                <BsCashCoin/>
-                <Text ml={2} fontSize={"10px"} >Payez en espèce</Text>
-              </Flex>
-              
-              
 
-              <Flex  >
-                <FaTruck />
-                <Tooltip label={`Livraison à partir de 2,99€`} >
+  return (
+    <>
+      {data ? (
+         <>
+        <Box display={{base:"none",lg:"block"}} ml={[0, 0, 0, 5, 10]}   width={["90%","90%","100%","100%","100%"]} my={5} >
+          <SimpleGrid columns={[1,1,2,4,4]} >
+            {Object.values(data).slice(0,4).map((data, index) => (
+              <Box as="a"  key={index} href={`/Details/details?c=${tout}&m=${data.organisation}&p=${dataK[index]}`}  boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"} mx={[2, 2, 2, 5, 5]} mb={5} bgColor={"white"}>
+              
+                <Box
+                 mx={5}
+                 key={data.id}
+                 maxW={"fit-content"}
+                 // height={"400px"}
+                 my={[0, 0, 0, 5, 5]}
+                 borderRadius="lg"
+                 display={"grid"}
+                 pb={10}
+
+                  // bgColor={"white"}
+                  // p={5}
+                  // pb={10}
+                  // key={index}
+                  // my={5}
+                  // height={"21.25rem"}
+                  // width={"13rem"}
+                >
+                  {data.etat == "Disponible" ? (
+                    <Box
+                      mt={-5}
+                      mb={2}
+                      ml={-5}
+                      color={"white"}
+                   
+                      fontSize={"12px"}
+                      borderRadius={25}
+                      px={2}
+                      width={"80px"}
+                      height={"fit-content"}
+                      bgColor="#7ed957"
+                    >
+                      Disponible
+                    </Box>
+                  ) : (
+                    <Badge
+                    mt={-5}
+                    mb={2}
+                    ml={-5}
+                    color={"white"}
+                 
+                    fontSize={"12px"}
+                    borderRadius={25}
+                    px={2}
+                    width={"80px"}
+                    height={"fit-content"}
+                    bgColor="red"
+                    >
+                      Rupture
+                    </Badge>
+                  )}
+                  <Image
+                    height={["150px", "150px", "150px", "150px", "150px"]}
+                    width={["150px", "150px", "150px", "200px", "200px"]}
+                    src={data.imageUrl}
+                    alt={data.nom}
+                  />
+                  <Box height={"fit-content"} >
+                    <Text
+                      width={["150px", "150px", "150px", "200px", "200px"]}
+                      noOfLines={2}
+                      fontSize={"15px"}
+                      fontWeight={700}
+                      lineHeight={1.1}
+                    >
+                      {data.nom}
+                    </Text>
+                    <Text
+                    cursor={"pointer"}
+                     as="a"  href={`/otherContent/intermed1?categorie=${tout}&magasin=${data.organisation}`}
+                      fontWeight={"bold"}
+                      width={"fit-content"}
+                      color={"orange.900"}
+                      fontSize={"10px"}
+                    >
+                      {data.organisation}
+                    </Text>
+                  </Box>
                   <Flex>
-                <Text ml={2} fontSize={"10px"} fontWeight={700}>Livraison partout en France </Text>
-                <Text fontSize={"15px"} mt={-1} color={"red"}>*</Text>
-                </Flex>
-                </Tooltip>
-              </Flex>
-             
-              <Flex justifyContent={"space-between"}  
-              >
-              <Text></Text>
-           
-              <Text color={"cyan.700"}  fontWeight={"bold"} fontSize={"20px"}>{dat.prix}€</Text>
-              </Flex>
+                    <AiOutlineStar fontSize={"12px"} />
+                    <AiOutlineStar fontSize={"12px"} />
+                    <AiOutlineStar fontSize={"12px"} />
+                    <AiOutlineStar fontSize={"12px"} />
+                    <AiOutlineStar fontSize={"12px"} />
+                  </Flex>
+                  {data.duree == "Expedié en 24h" ? (
+                    <Text fontWeight={"thin"} fontSize={10}>
+                      Livré le {dateExp3}{" "}
+                    </Text>
+                  ) : (
+                    <Text fontWeight={"thin"} fontStyle={"oblique"} fontSize={"12px"}>{data.duree} </Text>
+                  )}
+                  <Flex>
+                    <FaTruck />
+                    <Tooltip
+                      label={`Prix superieur à 30€ Ou être en île-de-france`}
+                    >
+                      <Flex>
+                        <Text ml={2} fontSize={"10px"} fontWeight={700}>
+                          Livraison gratuite{" "}
+                        </Text>
+                        <Text fontSize={"15px"} mt={-1} color={"red"}>
+                          *
+                        </Text>
+                      </Flex>
+                    </Tooltip>
+                  </Flex>
+
+                  <Flex justifyContent={"space-between"} width={["90%","80%","100%","100%","100%"]}>
+                    <Text></Text>
+                    <Text
+                     textColor={"blue"} color={"blue.400"} fontWeight={"bold"} fontSize={"15px"}  
+                    >
+                      {data.prix}€
+                    </Text>
+                  </Flex>
+                </Box>
                
-            </Box>  
-            </Link> 
-          ))}</Carousel>      
-    </Box>
-   
-  </>;
+               
+              </Box>
+            ))}
+          </SimpleGrid>
+        </Box>
+
+
+        <Box display={{base:"grid",lg:"none"}} width={"100%"} mt={[0,0,0,10,10]}  bgColor={"white"}>
+        <Carousel responsive={responsive} style={"marginLeft='20px'"}>
+            {Object.values(data).slice(0,6).map((data, index) => (
+              <Box as="a"  key={index} href={`/Details/details?c=${tout}&m=${data.organisation}&p=${dataK[index]}`}  boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"} mx={[2, 2, 2, 5, 5]} mb={5} bgColor={"white"}>
+              
+                <Box
+                 mx={2}
+                 key={data.id}
+                 maxW={"200px"}
+                 // height={"400px"}
+                 my={[0, 0, 0, 5, 5]}
+                 pl={5}
+                 borderRadius="lg"
+                 display={"grid"}
+                 pb={10}
+                 bgColor={"white"}
+                 boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"}
+
+                  // bgColor={"white"}
+                  // p={5}
+                  // pb={10}
+                  // key={index}
+                  // my={5}
+                  // height={"21.25rem"}
+                  // width={"13rem"}
+                >
+                  {data.etat == "Disponible" ? (
+                    <Box
+                    mb={2}
+                    ml={-5}
+                    px={2}
+                    color={"white"}
+                  fontSize={"15px"}
+                    borderRadius={25}
+                    width={"fit-content"}
+                    height={"fit-content"}
+                    bgColor="#7ed957"
+                    
+                    >
+                      Disponible
+                    </Box>
+                  ) : (
+                    <Box
+                  
+                    mb={2}
+                    ml={-5}
+                    px={2}
+                    color={"white"}
+                  fontSize={"15px"}
+                    borderRadius={25}
+                    width={"fit-content"}
+                    height={"fit-content"}
+                    bgColor="red"
+                    >
+                      Rupture
+                    </Box>
+                  )}
+                  <Image
+                    height={["150px", "150px", "150px", "150px", "150px"]}
+                    width={["150px", "150px", "150px", "200px", "200px"]}
+                    src={data.imageUrl}
+                    alt={data.nom}
+                  />
+                  <Box height={"fit-content"} mb={2}>
+                    <Text
+                      width={["150px", "150px", "150px", "200px", "200px"]}
+                      noOfLines={2}
+                      fontSize={"15px"}
+                      fontWeight={700}
+                    >
+                      {data.nom}
+                    </Text>
+                    <Text
+                    cursor={"pointer"}
+                     as="a"  href={`/otherContent/intermed1?categorie=${tout}&magasin=${data.organisation}`}
+                      fontWeight={"bold"}
+                      width={"fit-content"}
+                      color={"orange.900"}
+                      fontSize={"10px"}
+                    >
+                      {data.organisation}
+                    </Text>
+                  </Box>
+                  <Flex>
+                    <AiOutlineStar fontSize={"12px"} />
+                    <AiOutlineStar fontSize={"12px"} />
+                    <AiOutlineStar fontSize={"12px"} />
+                    <AiOutlineStar fontSize={"12px"} />
+                    <AiOutlineStar fontSize={"12px"} />
+                  </Flex>
+                  {data.duree == "Expedié en 24h" ? (
+                    <Text fontWeight={"thin"} fontSize={10}>
+                      Livré le {dateExp3}{" "}
+                    </Text>
+                  ) : (
+                    <Text fontWeight={"thin"} fontSize={"12px"}>{data.duree} </Text>
+                  )}
+                  <Flex>
+                    <FaTruck />
+                    <Tooltip
+                      label={`Prix superieur à 30€ Ou être en île-de-france`}
+                    >
+                      <Flex>
+                        <Text ml={2} fontSize={"10px"} fontWeight={700}>
+                          Livraison gratuite{" "}
+                        </Text>
+                        <Text fontSize={"15px"} mt={-1} color={"red"}>
+                          *
+                        </Text>
+                      </Flex>
+                    </Tooltip>
+                  </Flex>
+
+                  <Flex justifyContent={"space-between"} width={["90%","80%","100%","100%","100%"]}>
+                    <Text></Text>
+                    <Text
+                      color={"cyan.700"}
+                      
+                      fontWeight={"bold"}
+                      // fontSize={"20px"}
+                    >
+                      {data.prix}€
+                    </Text>
+                  </Flex>
+                </Box>
+               
+               
+              </Box>
+            ))}
+        </Carousel>
+        </Box>
+        </>
+      ) : (
+        <></>
+      )}
+    </>
+  );
 }

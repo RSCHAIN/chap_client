@@ -131,7 +131,7 @@ export function ItemCard({ item}) {
         mt={2}
         height={["15vh", "15vh", "15vh", "20vh", "20vh"]}
         width={"200px"}
-        marginBottom={[40, 40, 40, 10, 10]}
+        marginBottom={[10, 10, 10, 10, 10]}
         mr={5}
         borderRadius={25}
       >
