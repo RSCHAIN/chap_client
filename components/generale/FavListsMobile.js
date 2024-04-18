@@ -413,14 +413,14 @@ export default function FavlistMobile() {
                     </Box>
                   )}
                   <Image
-                    height={["100px", "100px", "100px", "100px", "100px"]}
-                    width={["100px", "100px", "100px", "100px", "100px"]}
+                    height={["150px", "150px", "150px", "100px", "100px"]}
+                    width={["150px", "150px", "150px", "100px", "100px"]}
                     src={data.imageUrl}
                     alt={data.nom}
                   />
-                  <Box height={"fit-content"} mb={2}>
+                  <Box height={"fit-content"} >
                     <Text
-                      width={["100px", "100px", "100px", "100px", "100px"]}
+                      width={["150px", "150px", "150px", "100px", "100px"]}
                       noOfLines={2}
                       fontSize={"12px"}
                       fontWeight={700}
@@ -434,11 +434,12 @@ export default function FavlistMobile() {
                       width={"fit-content"}
                       color={"orange.900"}
                       fontSize={"10px"}
+                     
                     >
                       {data.organisation}
                     </Text>
                   </Box>
-                  <Flex>
+                  <Flex mb={2}>
                     <AiOutlineStar fontSize={"12px"} />
                     <AiOutlineStar fontSize={"12px"} />
                     <AiOutlineStar fontSize={"12px"} />
@@ -452,7 +453,7 @@ export default function FavlistMobile() {
                   ) : (
                     <Text fontWeight={"thin"} fontSize={"12px"}>{data.duree} </Text>
                   )}
-                  <Flex>
+                  <Flex mb={2}>
                     <FaTruck />
                     <Tooltip
                       label={`Prix superieur à 30€ Ou être en île-de-france`}

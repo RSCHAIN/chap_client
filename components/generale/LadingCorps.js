@@ -690,7 +690,8 @@ href={
         </Center>
         <Box display={["grid", "grid", "grid", "none", "none" ]}>
             <AllWeb postal={locate}/>
-            <Heading  fontSize={"20px"}>Produits recommandés</Heading>
+            <Heading    fontSize={"15px"}
+              color={"#08566e"}>Produits recommandés</Heading>
            
                       <FavlistMobile/>
                  
