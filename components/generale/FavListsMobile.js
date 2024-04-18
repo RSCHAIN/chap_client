@@ -369,7 +369,7 @@ export default function FavlistMobile() {
                  pl={5}
                  borderRadius="lg"
                  display={"grid"}
-                 pb={10}
+                //  pb={10}
                  bgColor={"white"}
                  boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"}
 
