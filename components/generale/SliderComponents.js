@@ -66,10 +66,7 @@ const SliderComponents = () => {
   const top = useBreakpointValue({ base: "90%", md: "50%" });
   const side = useBreakpointValue({ base: "30%", md: "10px" });
   const cards = [
-    "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/Epicerie%2FNayou%2FCommandez%20Maintenant(2).png?alt=media&token=eb6f80dc-37df-4140-afde-f5ef0cdc1cef",
-    "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/Epicerie%2FDissoa%20Caju%2FYellow%20And%20White%20Home%20Appliances%20Promo%20Instagram%20Post.png?alt=media&token=c2a5f999-4114-4cc9-8940-66e2b3b2cf98",
-    "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/slider%2FabjPars.png?alt=media&token=c037631d-b5d7-47e8-b844-beb8b7fdca71",
-    "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/slide%2FBakery.png?alt=media&token=574eecdf-7fc8-449f-a8d0-e5f9e14f9325",
+   
     "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/slide%2FMicrosoftTeams-image1.png?alt=media&token=58788349-42b9-4b70-ae4e-6de227c5cb04",
     "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/slider%2F3.png?alt=media&token=e5393663-2adf-4ea1-96be-a097839ec561",
     "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/slider%2F4.png?alt=media&token=7eaa7ac6-28cb-4d7b-877f-e2014116b87a",
@@ -77,7 +74,10 @@ const SliderComponents = () => {
     "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/slider%2F7.png?alt=media&token=9938ab34-a4eb-4fa5-9527-d1e741f048c3",
     "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/slider%2F1.png?alt=media&token=b6f83978-875d-429f-88ab-1dd2d962b49e",
     "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/slider%2F2.png?alt=media&token=caa391bd-bffb-491f-9679-a655d3fee05f",
-    "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/slider%2F6.png?alt=media&token=11b0ef49-fc5e-44bd-b104-bb750053d133"
+    "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/slider%2F6.png?alt=media&token=11b0ef49-fc5e-44bd-b104-bb750053d133",
+    "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/slider%2F100.png?alt=media&token=dd7b475f-1538-4a2e-ad17-b2e011673cc9",
+    "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/slider%2F101.png?alt=media&token=400c9676-00f1-40ae-ac29-6ab8ab06ba18",
+    "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/slider%2F102.png?alt=media&token=871f799e-0063-4f6a-a079-6b0694a3221e",
   ];
   const [isLagerThan768] = useMediaQuery("(min-width: 768px)");
 
