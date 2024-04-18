@@ -225,7 +225,7 @@ export default function FavlistMobile() {
     <>
       {data ? (
          <>
-        <Box display={{base:"none",lg:"block"}} ml={[0, 0, 0, 5, 10]}   width={["90%","90%","100%","100%","100%"]} my={5} >
+        <Box display={{base:"none",lg:"block"}} ml={[0, 0, 0, 5, 10]}   width={["90%","90%","100%","100%","100%"]} mt={5} >
           <SimpleGrid columns={[1,1,2,4,4]} >
             {Object.values(data).slice(0,4).map((data, index) => (
               <Box as="a"  key={index} href={`/Details/details?c=${tout}&m=${data.organisation}&p=${dataK[index]}`}  boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"} mx={[2, 2, 2, 5, 5]} mb={5} bgColor={"white"}>
@@ -413,8 +413,8 @@ export default function FavlistMobile() {
                     </Box>
                   )}
                   <Image
-                    height={["150px", "150px", "150px", "150px", "150px"]}
-                    width={["150px", "150px", "150px", "200px", "200px"]}
+                    height={["100px", "100px", "100px", "100px", "100px"]}
+                    width={["100px", "100px", "100px", "100px", "100px"]}
                     src={data.imageUrl}
                     alt={data.nom}
                   />
