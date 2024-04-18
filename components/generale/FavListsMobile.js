@@ -165,7 +165,7 @@ export default function FavlistMobile() {
       //   setData(snapshot.val());
       //   // console.log(snapshot.val())
       // });
-      const starCountRef = ref(db2, "Epicerie/Massy Market");
+      const starCountRef = ref(db2, "Epicerie/Nayou");
                 onValue(starCountRef, (snapshot) => {
                   setTout("Epicerie");
                   setData(snapshot.val());
@@ -420,9 +420,9 @@ export default function FavlistMobile() {
                   />
                   <Box height={"fit-content"} mb={2}>
                     <Text
-                      width={["150px", "150px", "150px", "200px", "200px"]}
+                      width={["100px", "100px", "100px", "100px", "100px"]}
                       noOfLines={2}
-                      fontSize={"15px"}
+                      fontSize={"12px"}
                       fontWeight={700}
                     >
                       {data.nom}
@@ -459,7 +459,7 @@ export default function FavlistMobile() {
                     >
                       <Flex>
                         <Text ml={2} fontSize={"10px"} fontWeight={700}>
-                          Livraison gratuite{" "}
+                          Livraison partout en France{" "}
                         </Text>
                         <Text fontSize={"15px"} mt={-1} color={"red"}>
                           *
