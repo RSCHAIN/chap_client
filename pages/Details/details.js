@@ -286,7 +286,7 @@ export default function DisplayArticleDetails() {
                 <> {/**Compte des utilisateurs, devis */}
                     <InputBar />
                     <Navbar />
-                    <div className="w-full py-20 px-10">
+                    <div className="w-full py-10 px-10">
                         <div className="container mx-auto lg:flex">
                             <div className="left w-full lg:w-2/6">
                                 <div className="img w-5/6 lg:">
@@ -405,8 +405,8 @@ export default function DisplayArticleDetails() {
                             </div>
                         </div>
                     </div>
-                    <div className="container mx-auto py-10">
-                        <h2 className="text-xl font-bold mb-10">Produits recommandés</h2>
+                    <div className="container mx-auto ">
+                        <h2 className="text-xl font-bold mb-5">Produits recommandés</h2>
                         <Favlist2 categorie={"Textile"} magasin={"magasin"} />
                     </div>
                     <Flex display={["none","none","none","flex","flex"]} justifyContent={{base:"center",lg:"space-around"}}>
