@@ -502,12 +502,12 @@ if(data != null){
                 </Text>
   
                 <List spacing={2}>
-                  <ListItem>
+                  {/* <ListItem>
                     <Text as={'span'} fontSize={"15px"}fontWeight={'bold'}>
                       Quantité:
                     </Text>{' '}
                     {data.quantite}
-                  </ListItem>
+                  </ListItem> */}
                   <ListItem>
                     <Text as={'span'}  fontSize={"15px"}fontWeight={'bold'}>
                       Origine:
