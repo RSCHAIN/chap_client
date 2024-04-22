@@ -233,12 +233,12 @@ function QuoteConfirmation() {
                                     
                                         <div className="self-end mb-4">
                                             <span className='bg-orange-600 text-2xl p-4 text-white rounded-md max-[370px]:text-lg max-[370px]:p-2'>
-                                            {parseFloat(prixContenant) +parseInt(besoin2) + ((parseFloat(prixContenant )+parseInt(besoin2) )* 5) / 100}€
+                                            {parseFloat(prixContenant) +parseInt(besoin2) + 5}€
                                             </span>
                                         </div>
                                     </div>
                                     <button className='bg-orange-600 text-white rounded-sm py-2 px-6'>
-                                        <PopUp PrixChoisi= {parseFloat(prixContenant) +parseInt(besoin2) + ((parseFloat(prixContenant )+parseInt(besoin2) )* 5) / 100}
+                                        <PopUp PrixChoisi= {parseFloat(prixContenant) +parseInt(besoin2) + 5}
                                             Partenaire={"AFRICOLIS"}
                                             email={email}
                                             dest={destinationColis}
@@ -283,12 +283,12 @@ function QuoteConfirmation() {
                                         </div>
                                         <div className="self-end mb-4">
                                             <span className='bg-orange-600 text-2xl p-4 text-white rounded-md max-[370px]:text-lg max-[370px]:p-2'>
-                                        {parseFloat(prixContenant) +parseInt(besoin2) + ((parseFloat(prixContenant )+parseInt(besoin2) )* 5) / 100}€
+                                        {parseFloat(prixContenant) +parseInt(besoin2) + 5}€
                                             </span>
                                         </div>
                                     </div>
                                     <button className='bg-orange-600 text-white rounded-sm py-2 px-6'>
-                                    <PopUp PrixChoisi= {parseFloat(prixContenant) +parseInt(besoin2) + ((parseFloat(prixContenant )+parseInt(besoin2) )* 5) / 100}
+                                    <PopUp PrixChoisi= {parseFloat(prixContenant) +parseInt(besoin2) + 5}
                                             Partenaire={"CHALLENGE"}
                                             email={email}
                                             dest={destinationColis}
@@ -348,10 +348,10 @@ function QuoteConfirmation() {
                                 </div>
                                 <div className="flex flex-col mr-2">
                                     <div className="self-end flex flex-col mb-4">
-                                        <span className='text-3xl font-bold'>{parseFloat(prixContenant) +parseInt(besoin2) + ((parseFloat(prixContenant )+parseInt(besoin2) )* 5) / 100}<span className='ml-2'>€</span></span>
+                                        <span className='text-3xl font-bold'>{parseFloat(prixContenant) +parseInt(besoin2) + 5}<span className='ml-2'>€</span></span>
                                     </div>
                                     <button className='bg-orange-600 text-white rounded-sm py-2 px-6'>
-                                    <PopUp PrixChoisi= {parseFloat(prixContenant) +parseInt(besoin2) + ((parseFloat(prixContenant )+parseInt(besoin2) )* 5) / 100}
+                                    <PopUp PrixChoisi= {parseFloat(prixContenant) +parseInt(besoin2) + 5}
                                         Partenaire={"AFRICOLIS"}
                                         email={email}
                                         dest={destinationColis}
@@ -395,11 +395,11 @@ function QuoteConfirmation() {
                                 <div className="flex flex-col mr-2">
                                     <div className="self-end flex flex-col mb-4">
                                         <span className='text-3xl font-bold'>
-                                        {parseFloat(prixContenant) +parseInt(besoin2) + ((parseFloat(prixContenant )+parseInt(besoin2) )* 5) / 100}€
+                                        {parseFloat(prixContenant) +parseInt(besoin2) + 5}€
                                         </span>
                                     </div>
                                     <button className='bg-orange-600 text-white rounded-sm py-2 px-6'>
-                                    <PopUp PrixChoisi= {parseFloat(prixContenant) +parseInt(besoin2) + ((parseFloat(prixContenant )+parseInt(besoin2) )* 5) / 100}
+                                    <PopUp PrixChoisi= {parseFloat(prixContenant) +parseInt(besoin2) + 5}
                                         Partenaire={"CHALLENGE"}
                                         email={email}
                                         dest={destinationColis}
