@@ -151,7 +151,7 @@ function EpicerieProducts() {
                             <h1 className='text-center text-2xl lg:text-4xl font-bold'>Tous nos produits du marché d{"'"}épicerie.</h1>
                         </div>
                         <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-6">
-                        {epicerieDetails && epicerieDetails !== "" ?
+                            {epicerieDetails && epicerieDetails !== "" ?
                                 Object.values(epicerieDetails).map((order, index) => (
                                     <Link href={`/Details/details?c=${"Epicerie"}&m=${order.organisation}&p=${Object.keys(epicerieDetails)[index]}`} key={index} className="">
                                         <div className="bg-white p-4 flex flex-col mb-10 items-center relative">
