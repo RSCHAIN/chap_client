@@ -315,7 +315,7 @@ function Aerien() {
                                         </li>
                                     </ul>
                                 </div>
-                                <span className="text-sm">COLIS</span>
+                                <span className="text-sm">Description </span>
                                 {inputGroups.map((group, groupId) => (
                                     <div key={groupId} className="mb-6">
                                         <div className="flex justify-between">

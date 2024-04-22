@@ -406,7 +406,7 @@ function Maritime() {
                                         </li>
                                     </ul>
                                 </div>
-                                <span className="text-sm">COLIS</span>
+                                <span className="text-sm">Description</span>
                                 {inputGroups.map((group, groupId) => (
                                     <div key={groupId} className="mb-6">
                                         <div className="flex flex-col lg:flex-row justify-between gap-4 lg:gap-0">

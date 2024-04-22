@@ -190,11 +190,11 @@ function QuoteConfirmation() {
               })}
                 {choixCarton.map((data, indexe) => {
                 if (data == "Carton 200L") {
-                    prixContenant = parseInt(prixContenant)+ 110
+                    prixContenant = parseInt(prixContenant)+ 110+10
                 } else if (data == "Barrique bleu 220L") {
-                    prixContenant = parseInt(prixContenant)+ 130
+                    prixContenant = parseInt(prixContenant)+ 130+50
                 } else{
-                    prixContenant = parseInt(prixContenant)+ 150
+                    prixContenant = parseInt(prixContenant)+ 150+50
                 }
                 // console.log(tab1,"tab1")
               })}
@@ -226,7 +226,7 @@ function QuoteConfirmation() {
                                             </div>
                                             <div className="flex flex-col">
                                                 <h2 className='uppercase font-bold text-sm'>Retrait</h2>
-                                                <small className='text-slate-600'>{dateExp3}</small>
+                                                <small className='text-slate-600'>{dateExp3C}</small>
                                                 <small className='text-slate-600'>Retrait a Abidjan-cocody</small>
                                             </div>
                                         </div>
@@ -277,7 +277,7 @@ function QuoteConfirmation() {
                                             </div>
                                             <div className="flex flex-col">
                                                 <h2 className='uppercase font-bold text-sm'>Retrait</h2>
-                                                <small className='text-slate-600'>{dateExp3}</small>
+                                                <small className='text-slate-600'>{dateExp3C}</small>
                                                 <small className='text-slate-600'>Retrait a Abidjan-cocody</small>
                                             </div>
                                         </div>
@@ -388,7 +388,7 @@ function QuoteConfirmation() {
                                 </div>
                                 <div className="flex flex-col">
                                     <h2 className='font-bold uppercase'><FontAwesomeIcon icon={faHomeUser} className='mr-2'/>Retrait</h2>
-                                    <span>{dateExp3}</span>
+                                    <span>{dateExp3C}</span>
                                     <small className='text-slate-600'>Retrait a Abidjan-cocody</small>
 
                                 </div>
