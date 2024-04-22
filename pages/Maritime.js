@@ -414,7 +414,7 @@ function Maritime() {
                                             <select name="" id="" onChange={(e) => choixCarton[groupId] = e.target.value} className="w-full lg:w-[20rem] p-3 focus:outline-none border border-slate-800 bg-zinc-100">
                                                 <option value="Carton 200L">Carton 200 L</option>
                                                 <option value="Barrique bleu 220L">Barrique bleu 220L</option>
-                                                <option value="Barrique noir 250L">Barrique noir 250L</option>
+                                                <option value="Barrique noir 270L">Barrique noir 270L</option>
                                             </select>
                                             <input type="text" onChange={(e) => valeurEnEuro[groupId] = e.target.value} placeholder="Valeur en euro" className="w-full lg:w-[20rem] p-2 border placeholder:text-slate-400 block bg-white border-slate-800 rounded-sm py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-cyan-800 focus:ring-cyan-800 focus:ring-1 sm:text-sm" />
                                             <button className="rounded-md text-cyan-800">
