@@ -396,7 +396,7 @@ export default function DisplayArticleDetails() {
                                         <div className="flex justify-start items-center mt-4">
                                             <span><FontAwesomeIcon icon={faBoxOpen} className="size-8 mr-2" /></span>
                                             <ul>
-                                                {/* <li>Quantité : {data.quantite}</li> */}
+                                                <li>Quantité : {data.quantite}</li>
                                                 <li>Origine : {data.origine}</li>
                                             </ul>
                                         </div>
