@@ -72,7 +72,8 @@ function Store() {
     }
 
     const getTextilleMarkets = async () => {
-        const starCountRef = ref(db2, "/Textile/Djeni Market");
+        // const starCountRef = ref(db2, "/Textile/Djeni Market");/
+        const starCountRef = ref(db2, "/All Products");
         onValue(starCountRef, (snapshot) => {
             const textille = snapshot.val()
             const sliced = Object.fromEntries(
