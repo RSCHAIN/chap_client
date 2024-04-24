@@ -9,7 +9,7 @@ import {
   Badge,
   Button,useToast,Center
 } from "@chakra-ui/react";
-import { ref, onValue } from "@firebase/database";
+import { ref, onValue, get, child, getDatabase } from "@firebase/database";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { useState } from "react";
@@ -19,8 +19,9 @@ import { addDoc,collection, query, where,updateDoc, getDocs } from "firebase/fir
 import { FaTruck, FaTruckPickup } from "react-icons/fa";
 import { AiOutlineStar } from "react-icons/ai";
 import { onAuthStateChanged } from "firebase/auth";
-import { authentic, db, db2 } from "@/FIREBASE/clientApp";
+import { app, authentic, db, db2 } from "@/FIREBASE/clientApp";
 import Slider from "react-slick";
+import DisplayFavlistMobileM from "./DisplayFavlistMobileM";
 
 const responsive = {
   superLargeDesktop: {
@@ -158,34 +159,57 @@ export default function FavlistMobile() {
     });
   }
 
+  const FavTest = async () => {
+    console.log("dans favtest");
+    const q = query(collection(db, "serviceFav2"));
+    
+    const dbRef = ref(getDatabase());
+
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((docs) => {
+      get(child(dbRef, `${docs.data().Categorie}/${docs.data().Organisation}`)).then((snapshot) => {
+        if (snapshot.exists()) {
+          data.push(snapshot.val()); 
+        } else {
+          console.log("No data available");
+        }
+      }).catch((error) => {
+        console.error(error);
+      })
+    })
+    
+  }
+
+
+
+
   const Fav = async () => {
     try {
-      //   const starCountRef = ref(db2, `${categorie}/${magasin}`);
-      // onValue(starCountRef, (snapshot) => {
-      //   setData(snapshot.val());
-      //   // console.log(snapshot.val())
-      // });
-      const starCountRef = ref(db2, "Epicerie/Nayou");
-                onValue(starCountRef, (snapshot) => {
-                  setTout("Epicerie");
-                  setData(snapshot.val());
+      
+      
+      const q = query(collection(db, "serviceFav2"));
+
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        // console.log(doc.data())
+        console.log("Doc",doc)
+        
+        const starCountRef = ref(db2, `${doc.data().Categorie}/${doc.data().Organisation}`);
+                onValue(starCountRef, (snapshot, index) => {
+                  setTout(doc.data().Categorie);
+                  data[index]=snapshot.val();
+               
                   Object.keys(snapshot.val()).map((data,index) => {
                     dataK[index]=data
         
                   })
                 });
-      // const q = query(collection(db, "ServicesFav"));
-
-      // const querySnapshot = await getDocs(q);
-      // querySnapshot.forEach((doc) => {
-      //   // doc.data() is never undefined for query doc snapshots
-      //   // console.log(doc.data())
-      //   // console.log(card)
-      //   Object.keys(doc.data()).map((dat, index) => {
-      //     // console.log(dat)
+        // Object.values(doc.data()).map((dat, index) => {
+        //   console.log("donnee",dat) 
 
   
-      //       // console.log(doc.data())
+        //     // console.log(doc.data())
             
              
               
@@ -193,8 +217,8 @@ export default function FavlistMobile() {
              
            
          
-      //   });
-      // });
+        // });
+      });
     } catch {
       (error) => {
         console.log("Waiting time 2!!!");
@@ -205,9 +229,10 @@ export default function FavlistMobile() {
   };
 
   useEffect(() => {
+    
     if (check == 0 || check == 1) {
-      Fav();
-
+      // Fav();
+      FavTest()
       setCheck(check + 1);
     }
 
@@ -223,11 +248,13 @@ export default function FavlistMobile() {
 
   return (
     <>
+    {console.log("data",data.slice(0, 2))}
       {data ? (
          <>
         <Box display={{base:"none",lg:"block"}} ml={[0, 0, 0, 5, 10]}   width={["90%","90%","100%","100%","100%"]} mt={5} >
           <SimpleGrid columns={[1,1,2,4,4]} >
-            {Object.values(data).slice(0,4).map((data, index) => (
+            {Object.values(data).slice(0,2).map((datas, index) => (
+
               <Box as="a"  key={index} href={`/Details/details?c=${tout}&m=${data.organisation}&p=${dataK[index]}`}  boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"} mx={[2, 2, 2, 5, 5]} mb={5} bgColor={"white"}>
               
                 <Box
@@ -355,137 +382,16 @@ export default function FavlistMobile() {
         </Box>
 
 
-        <Box display={{base:"grid",lg:"none"}} width={"100%"} mt={[0,0,0,10,10]}  bgColor={"white"}>
-        <Carousel responsive={responsive} style={"marginLeft='20px'"}>
-            {Object.values(data).slice(0,6).map((data, index) => (
-              <Box as="a"  key={index} href={`/Details/details?c=${tout}&m=${data.organisation}&p=${dataK[index]}`}  boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"} mx={[2, 2, 2, 5, 5]} mb={5} bgColor={"white"}>
+        <Box display={{base:"flex",lg:"none"}} overflowX={"auto"}  mt={[0,0,0,10,10]}  bgColor={"white"}>
+        {/* <Carousel responsive={responsive} style={"marginLeft='20px'"}> */}
+            {Object.values(data).slice(0,2).map((datas, index) => (
+             
+
               
-                <Box
-                 mx={2}
-                 key={data.id}
-                 maxW={"200px"}
-                 // height={"400px"}
-                 my={[0, 0, 0, 5, 5]}
-                 pl={5}
-                 borderRadius="lg"
-                 display={"grid"}
-                //  pb={10}
-                 bgColor={"white"}
-                 boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"}
-
-                  // bgColor={"white"}
-                  // p={5}
-                  // pb={10}
-                  // key={index}
-                  // my={5}
-                  // height={"21.25rem"}
-                  // width={"13rem"}
-                >
-                  {data.etat == "Disponible" ? (
-                    <Box
-                    mb={2}
-                    ml={-5}
-                    px={2}
-                    color={"white"}
-                  fontSize={"15px"}
-                    borderRadius={25}
-                    width={"fit-content"}
-                    height={"fit-content"}
-                    bgColor="#7ed957"
-                    
-                    >
-                      Disponible
-                    </Box>
-                  ) : (
-                    <Box
-                  
-                    mb={2}
-                    ml={-5}
-                    px={2}
-                    color={"white"}
-                  fontSize={"15px"}
-                    borderRadius={25}
-                    width={"fit-content"}
-                    height={"fit-content"}
-                    bgColor="red"
-                    >
-                      Rupture
-                    </Box>
-                  )}
-                  <Image
-                    height={["150px", "150px", "150px", "100px", "100px"]}
-                    width={["150px", "150px", "150px", "100px", "100px"]}
-                    src={data.imageUrl}
-                    alt={data.nom}
-                  />
-                  <Box height={"fit-content"} >
-                    <Text
-                      width={["150px", "150px", "150px", "100px", "100px"]}
-                      noOfLines={2}
-                      fontSize={"12px"}
-                      fontWeight={700}
-                    >
-                      {data.nom}
-                    </Text>
-                    <Text
-                    cursor={"pointer"}
-                     as="a"  href={`/otherContent/intermed1?categorie=${tout}&magasin=${data.organisation}`}
-                      fontWeight={"bold"}
-                      width={"fit-content"}
-                      color={"orange.900"}
-                      fontSize={"10px"}
-                     
-                    >
-                      {data.organisation}
-                    </Text>
-                  </Box>
-                  <Flex mb={2}>
-                    <AiOutlineStar fontSize={"12px"} />
-                    <AiOutlineStar fontSize={"12px"} />
-                    <AiOutlineStar fontSize={"12px"} />
-                    <AiOutlineStar fontSize={"12px"} />
-                    <AiOutlineStar fontSize={"12px"} />
-                  </Flex>
-                  {data.duree == "Expedié en 24h" ? (
-                    <Text fontWeight={"thin"} fontSize={10}>
-                      Livré le {dateExp3}{" "}
-                    </Text>
-                  ) : (
-                    <Text fontWeight={"thin"} fontSize={"12px"}>{data.duree} </Text>
-                  )}
-                  <Flex mb={2}>
-                    <FaTruck />
-                    <Tooltip
-                      label={`Prix superieur à 30€ Ou être en île-de-france`}
-                    >
-                      <Flex>
-                        <Text ml={2} fontSize={"10px"} fontWeight={700}>
-                          Livraison partout en France{" "}
-                        </Text>
-                        <Text fontSize={"15px"} mt={-1} color={"red"}>
-                          *
-                        </Text>
-                      </Flex>
-                    </Tooltip>
-                  </Flex>
-
-                  <Flex justifyContent={"space-between"} width={["90%","80%","100%","100%","100%"]}>
-                    <Text></Text>
-                    <Text
-                      color={"cyan.700"}
-                      
-                      fontWeight={"bold"}
-                      // fontSize={"20px"}
-                    >
-                      {data.prix}€
-                    </Text>
-                  </Flex>
-                </Box>
-               
-               
-              </Box>
+              <DisplayFavlistMobileM datass={datas} indexed={index} datak={dataK} tout={tout}/>
+             
             ))}
-        </Carousel>
+        {/* </Carousel> */}
         </Box>
         </>
       ) : (

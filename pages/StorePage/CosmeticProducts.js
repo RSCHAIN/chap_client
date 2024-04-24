@@ -151,18 +151,18 @@ function CosmeticProducts() {
                             {ordersDatas && ordersDatas !== "" ?
                                 Object.values(ordersDatas).map((order, index) => (
                                     <Link href={`/Details/details?c=${"Cosmetique"}&m=${order.organisation}&p=${Object.keys(ordersDatas)[index]}`} key={index} className="">{/**md:grid md:grid-rows-4 md:grid-flow-col md:gap-4 */}
-                                        <div className="bg-white p-4 flex flex-col mb-10 items-center relative">{/** bg-orange-500 my-4 lg:my-0  */}
+                                        <div className="bg-white p-4 flex flex-col mb-10 relative">{/** bg-orange-500 my-4 lg:my-0  */}
                                             <div className="w-ful rounded-full mb-2">
                                                 <img className="w-full h-[10rem]" key={index} src={order.imageUrl} alt="" />
                                             </div>
                                             <h3 className="uppercase font-bold mb-2 text-xs lg:text-sm">{order.nom}</h3>
                                             <small className="bg-green-600 p-1 rounded-2xl text-white absolute -top-2 left-0 capitalize">{order.etat}</small>
                                             <div className="text-yellow-300 mb-2">
-                                                <i className="text-xs"><FontAwesomeIcon className="mr-2" icon={faStar} /></i>
-                                                <i className="text-xs"><FontAwesomeIcon className="mr-2" icon={faStar} /></i>
-                                                <i className="text-xs"><FontAwesomeIcon className="mr-2" icon={faStar} /></i>
-                                                <i className="text-xs"><FontAwesomeIcon className="mr-2" icon={faStar} /></i>
-                                                <i className="text-xs"><FontAwesomeIcon className="mr-2" icon={faStar} /></i>
+                                                <i className="text-[10px]"><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                <i className="text-[10px]"><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                <i className="text-[10px]"><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                <i className="text-[10px]"><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                <i className="text-[10px]"><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
                                                 <span className="text-black">0 avis</span>
                                             </div>
                                             {/* <span className="italic text-slate-400 text-xs mb-2">Livré le 31/01/2024</span> */}

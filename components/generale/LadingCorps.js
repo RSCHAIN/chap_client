@@ -496,8 +496,6 @@ href={
              
             </Flex>
             </Center>
-
-
             
             <Flex                            
               width={"100%"}

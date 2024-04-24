@@ -154,18 +154,18 @@ function EpicerieProducts() {
                             {epicerieDetails && epicerieDetails !== "" ?
                                 Object.values(epicerieDetails).map((order, index) => (
                                     <Link href={`/Details/details?c=${"Epicerie"}&m=${order.organisation}&p=${Object.keys(epicerieDetails)[index]}`} key={index} className="">
-                                        <div className="bg-white p-4 flex flex-col mb-10 items-center relative">
+                                        <div className="bg-white p-4 flex flex-col mb-10 relative">
                                             <div className="w-fullrounded-full mb-2">
                                                 <img className="w-full h-[6rem] lg:h-[10rem]" src={order.imageUrl} alt="" />
                                             </div>
                                             <h3 className="uppercase font-bold mb-2 text-xs lg:text-sm">{order.nom}</h3>
                                             <small className="bg-green-600 p-1 rounded-2xl capitalize text-white absolute -top-2 left-0">{order.etat}</small>
                                             <div className="text-yellow-300 mb-2">
-                                                <i className="text-xs max-[538px]:text-[10px]"><FontAwesomeIcon className="mr-2" icon={faStar} /></i>
-                                                <i className="text-xs max-[538px]:text-[10px]"><FontAwesomeIcon className="mr-2" icon={faStar} /></i>
-                                                <i className="text-xs max-[538px]:text-[10px]"><FontAwesomeIcon className="mr-2" icon={faStar} /></i>
-                                                <i className="text-xs max-[538px]:text-[10px]"><FontAwesomeIcon className="mr-2" icon={faStar} /></i>
-                                                <i className="text-xs max-[538px]:text-[10px]"><FontAwesomeIcon className="mr-2" icon={faStar} /></i>
+                                                <i className="text-[10px]"><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                <i className="text-[10px]"><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                <i className="text-[10px]"><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                <i className="text-[10px]"><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                <i className="text-[10px]"><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
                                                 <span className="text-black">0 avis</span>
                                             </div>
                                             <span className="italic text-slate-400 text-xs mb-2">Livré le 31/01/2024</span>

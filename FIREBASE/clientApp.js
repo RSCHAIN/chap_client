@@ -32,7 +32,7 @@ provider.setCustomParameters({
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db2 = getDatabase()
+const db2 = getDatabase(app)
 const db = getFirestore(app)
 const storage = getStorage(); 
 const authentic= getAuth(app);

@@ -334,13 +334,13 @@ function Store() {
                             <Link className="text-xs lg:text-sm font-bold underline" href={"/StorePage/EpicerieProducts"}>Voir plus</Link>
                         </div>
                         <div className="flex -mx-4 overflow-x-scroll">
-                            <div className="w-full lg:w-1/4 px-4 mt-6 text-white">
+                            <div className="w-full lg:w-1/5 px-4 mt-6 text-white">
                                 {dissoaCajouProduct && dissoaCajouProduct !== " " ?
                                     Object.values(dissoaCajouProduct).map((item, index) => (
                                     <Link _hover={{ textDecor:"none"}} href={`/Details/details?c=${"Epicerie"}&m=${item.organisation}&p=${Object.keys(epice)[index]}`} key={index}>
                                         <div className="bg-white p-4 my-4 lg:my-0 flex flex-col items-center relative">
                                             <div className="w-full rounded-full mb-2">
-                                                <img className="w-full h-[12rem]" src={item.imageUrl} alt="" />
+                                                <img className="w-full h-[10rem]" src={item.imageUrl} alt="" />
                                             </div>
                                             <h3 className="uppercase font-bold mb-2 text-xs lg:text-sm">{item.nom}</h3>
                                             <small className="bg-green-600 p-1 rounded-2xl text-white absolute -top-2 left-0 capitalize">{item.etat}</small>
@@ -366,13 +366,13 @@ function Store() {
                                     </Link>
                                 )) : 'null'}
                             </div>
-                            <div className="w-full lg:w-1/4 px-4 mt-6 text-white">
+                            <div className="w-full lg:w-1/5 px-4 mt-6 text-white">
                                 {nayouProduct && nayouProduct !== " " ?
                                     Object.values(nayouProduct).map((item, index) => (
 <Link _hover={{ textDecor:"none"}} href={`/Details/details?c=${"Epicerie"}&m=${item.organisation}&p=${Object.keys(epice)[index]}`} key={index}>
                                         <div className="bg-white p-4 my-4 lg:my-0 flex flex-col items-center relative">
                                             <div className="w-full rounded-full mb-2">
-                                                <img className="w-full h-[12rem]" src={item.imageUrl} alt="" />
+                                                <img className="w-full h-[10rem]" src={item.imageUrl} alt="" />
                                             </div>
                                             <h3 className="uppercase font-bold mb-2 text-xs lg:text-sm">{item.nom}</h3>
                                             <small className="bg-green-600 p-1 rounded-2xl text-white absolute -top-2 left-0 capitalize">{item.etat}</small>
@@ -398,13 +398,13 @@ function Store() {
 </Link>
                                 )) : 'null'}
                             </div>
-                            <div className="w-full lg:w-1/4 px-4 mt-6 text-white">
+                            <div className="w-full lg:w-1/5 px-4 mt-6 text-white">
                                 {massyProduct && massyProduct !== " " ?
                                     Object.values(massyProduct).map((item, index) => (
                                         <Link _hover={{ textDecor:"none"}} href={`/Details/details?c=${"Epicerie"}&m=${item.organisation}&p=${Object.keys(epice)[index]}`} key={index}>
                                         <div className="bg-white p-4 my-4 lg:my-0 flex flex-col items-center relative">
                                             <div className="w-full rounded-full mb-2">
-                                                <img className="w-full h-[12rem]" src={item.imageUrl} alt="" />
+                                                <img className="w-full h-[10rem]" src={item.imageUrl} alt="" />
                                             </div>
                                             <h3 className="uppercase font-bold mb-2 text-xs lg:text-sm">{item.nom}</h3>
                                             <small className="bg-green-600 p-1 rounded-2xl text-white absolute -top-2 left-0 capitalize">{item.etat}</small>
@@ -430,13 +430,13 @@ function Store() {
                                         </Link>
                                 )) : 'null'}
                             </div>
-                            <div className="w-full lg:w-1/4 px-4 mt-6 text-white">
+                            <div className="w-full lg:w-1/5 px-4 mt-6 text-white">
                                 {omarcheGouroProduct && omarcheGouroProduct !== " " ?
                                     Object.values(omarcheGouroProduct).map((item, index) => (
                                         <Link _hover={{ textDecor:"none"}} href={`/Details/details?c=${"Epicerie"}&m=${item.organisation}&p=${Object.keys(epice)[index]}`} key={index}>
                                         <div className="bg-white p-4 my-4 lg:my-0 flex flex-col items-center relative">
                                             <div className="w-full rounded-full mb-2">
-                                                <img className="w-full h-[12rem]" src={item.imageUrl} alt="" />
+                                                <img className="w-full  h-[10rem]" src={item.imageUrl} alt="" />
                                             </div>
                                             <h3 className="uppercase font-bold mb-2 text-xs lg:text-sm">{item.nom}</h3>
                                             <small className="bg-green-600 p-1 rounded-2xl text-white absolute -top-2 left-0 capitalize">{item.etat}</small>
