@@ -7,7 +7,7 @@ import { faMoneyBillTransfer, faTruck, faStar } from '@fortawesome/free-solid-sv
 import Link from "next/link";
 import Head from 'next/head';
 import InputBar from '@/components/InputBar';
-import { Box, useToast } from '@chakra-ui/react';
+import { Box, useToast, Link as Lk } from '@chakra-ui/react';
 import Navbar from '@/components/Navbar';
 import { useRouter } from 'next/router';
 import { onAuthStateChanged } from 'firebase/auth';
@@ -154,7 +154,7 @@ function EpicerieProducts() {
                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 lg:gap-6">
                             {epicerieDetails && epicerieDetails !== "" ?
                                 Object.values(epicerieDetails).map((order, index) => (
-                                    <Link href={`/Details/details?c=${"Epicerie"}&m=${order.organisation}&p=${Object.keys(epicerieDetails)[index]}`} key={index} className="">
+                                    <Lk href={`/Details/details?c=${"Epicerie"}&m=${order.organisation}&p=${Object.keys(epicerieDetails)[index]}`} key={index} className="">
                                         <div className="bg-white p-4 flex flex-col mb-10 relative">
                                             <div className="w-fullrounded-full mb-2">
                                                 <img className="w-full h-[6rem] lg:h-[10rem]" src={order.imageUrl} alt="" />
@@ -181,7 +181,7 @@ function EpicerieProducts() {
                                                 <button className="text-white font-bold bg-cyan-800 text-xs lg:text-[1rem] py-2 px-4 rounded-lg lg:rounded-3xl" onClick={()=>AddToCart(order, Object.keys(epicerieDetails)[index])}>+Ajouter</button>
                                             </div> */}
                                         </div>
-                                    </Link>
+                                    </Lk>
                                 )): (
                                 <p>Aucune donnee</p>
                             )}

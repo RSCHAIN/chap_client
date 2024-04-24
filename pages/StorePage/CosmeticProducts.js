@@ -7,7 +7,7 @@ import { faMoneyBillTransfer, faTruck, faStar } from '@fortawesome/free-solid-sv
 import Link from "next/link";
 import Head from 'next/head';
 import InputBar from '@/components/InputBar';
-import { Box, useToast } from '@chakra-ui/react';
+import { Box, useToast, Link as Lk } from '@chakra-ui/react';
 import Navbar from '@/components/Navbar';
 import { onAuthStateChanged } from 'firebase/auth';
 import { addDoc, collection, getDocs, query, updateDoc, where } from 'firebase/firestore';
@@ -150,7 +150,7 @@ function CosmeticProducts() {
                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">{/** overflow-x-scroll*/}
                             {ordersDatas && ordersDatas !== "" ?
                                 Object.values(ordersDatas).map((order, index) => (
-                                    <Link href={`/Details/details?c=${"Cosmetique"}&m=${order.organisation}&p=${Object.keys(ordersDatas)[index]}`} key={index} className="">{/**md:grid md:grid-rows-4 md:grid-flow-col md:gap-4 */}
+                                    <Lk href={`/Details/details?c=${"Cosmetique"}&m=${order.organisation}&p=${Object.keys(ordersDatas)[index]}`} key={index} className="">{/**md:grid md:grid-rows-4 md:grid-flow-col md:gap-4 */}
                                         <div className="bg-white p-4 flex flex-col mb-10 relative">{/** bg-orange-500 my-4 lg:my-0  */}
                                             <div className="w-ful rounded-full mb-2">
                                                 <img className="w-full h-[10rem]" key={index} src={order.imageUrl} alt="" />
@@ -172,11 +172,11 @@ function CosmeticProducts() {
                                             </div>
                                             <span className="self-end mb-2 text-xl lg:text-2xl text-red-600 font-bold">{order.prix}€</span>
                                             <div className="w-full mt-4 flex flex-col gap-2 lg:gap-0 lg:flex-row justify-between">
-                                                <Link href={`/otherContent/intermed1?categorie=${"Cosmetique"}&magasin=${order.organisation}`} className="text-white font-bold bg-amber-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl">Commerce</Link>
+                                                <Lk href={`/otherContent/intermed1?categorie=${"Cosmetique"}&magasin=${order.organisation}`} className="text-white font-bold bg-amber-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl">Commerce</Lk>
                                                 <button className="text-white font-bold bg-cyan-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl" onClick={()=>AddToCart(order, Object.keys(ordersDatas)[index])}> +Ajouter</button>
                                             </div>
                                         </div>
-                                    </Link>
+                                    </Lk>
                                 )): (
                                 <p>Aucune donnee</p>
                             )}
