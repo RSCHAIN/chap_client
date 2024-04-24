@@ -388,7 +388,7 @@ export default function FavlistMobile() {
              
 
               
-              <DisplayFavlistMobileM datass={datas} indexed={index} datak={dataK} tout={tout}/>
+              <DisplayFavlistMobileM key={index} datass={datas} indexed={index} datak={dataK} tout={tout}/>
              
             ))}
         {/* </Carousel> */}
