@@ -127,23 +127,50 @@ export default function DisplayArticleDetails() {
         });
     };
     const RetreiveProd = (cat, org, pid) => {
-        const starCountRef = ref(
-            db2,
-            `${cat}/${org}/${pid}`
-        );
-
-        onValue(starCountRef, (snapshot) => {
-            // console.log(snapshot.val());
-            const donnes = snapshot.val();
-            setData(donnes);
-            // console.log(donnes);
-        })
-
-        setId(pid)
+        if (query.p> 5) {
+            const starCountRef = ref(
+                db2,
+                `${cat}/${org}/${pid}`
+            );
+    
+            onValue(starCountRef, (snapshot) => {
+                // console.log(snapshot.val());
+                const donnes = snapshot.val();
+                setData(donnes);
+                // console.log(donnes);
+            })
+    
+            setId(pid) 
+        }else{
+           
+            const starCountRef = ref(
+                db2,
+                `${cat}/${org}/`
+            );
+    
+            onValue(starCountRef, (snapshot) => {
+                // console.log(snapshot.val());
+                try {
+                    const donnes = snapshot.val();
+                
+                setData(Object.values(donnes)[0]);
+                setId(Object.keys(donnes)[0]) 
+                // console.log(donnes);
+                } catch (error) {
+                    // setData(Object.values(donnes)[0]);
+                    // setId(Object.keys(donnes)[0]) 
+                }
+                
+            })
+    
+            
+        }
+      
     }
 
     useEffect(() => {
         Fav()
+          
         RetreiveProd(query.c, query.m, query.p)
     }, [data, query])
 

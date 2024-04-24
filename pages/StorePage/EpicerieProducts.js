@@ -23,7 +23,8 @@ function EpicerieProducts() {
 
 
     const getEpicerieMarkets = async () => {
-        let datas = ref(db2, "/Epicerie/Massy Market");
+        // let datas = ref(db2, "/Epicerie/Massy Market");
+        let datas = ref(db2, "/courseEpicerie");
         onValue(datas, snapshot => {
             const data = snapshot.val()
             setEpicerieDetails(data)
@@ -168,6 +169,7 @@ function EpicerieProducts() {
                                                 <i className="text-[10px]"><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
                                                 <span className="text-black">0 avis</span>
                                             </div>
+                                            <span className="my-2 font-semibold">{order.organisation}</span>
                                             <span className="italic text-slate-400 text-xs mb-2">Livré le 31/01/2024</span>
                                             <div className="flex flex-col mb-2">
                                                 <span className="text-slate-700 text-sm mb-2 max-[538px]:text-[10px]"><FontAwesomeIcon className="mr-2" icon={faTruck} />Livraison dans toute la France</span>
