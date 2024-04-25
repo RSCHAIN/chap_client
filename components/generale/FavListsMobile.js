@@ -74,7 +74,7 @@ var settings = {
 export default function FavlistMobile() {
   const [data, setData] = useState([]);
   const [dataK, setDataK] = useState([]);
-  const [tout, setTout] = useState("");
+  const [tout, setTout] = useState([]);
   const [tou, setTou] = useState("");
   const [check, setCheck] = useState(0);
   const toast = useToast();
@@ -170,11 +170,14 @@ export default function FavlistMobile() {
       get(child(dbRef, `${docs.data().Categorie}/${docs.data().Organisation}`)).then((snapshot) => {
         if (snapshot.exists()) {
           data.push(snapshot.val()); 
+          tout.push(docs.data().Categorie);
+         console.log(Object.keys(snapshot.val())); 
+           
         } else {
           console.log("No data available");
         }
       }).catch((error) => {
-        console.error(error);
+        // console.error(error);
       })
     })
     
@@ -249,7 +252,10 @@ export default function FavlistMobile() {
   return (
     <>
     {console.log("data",data.slice(0, 2))}
-      {data ? (
+    {console.log("dataK",dataK)}
+    
+      {data ?
+       (
          <>
         <Box display={{base:"none",lg:"block"}} ml={[0, 0, 0, 5, 10]}   width={["90%","90%","100%","100%","100%"]} mt={5} >
           <SimpleGrid columns={[1,1,2,4,4]} >
@@ -384,12 +390,14 @@ export default function FavlistMobile() {
 
         <Box display={{base:"flex",lg:"none"}} overflowX={"auto"}  mt={[0,0,0,10,10]}  bgColor={"white"}>
         {/* <Carousel responsive={responsive} style={"marginLeft='20px'"}> */}
-            {Object.values(data).slice(0,2).map((datas, index) => (
+            {Object.values(data).slice(0,Object.keys(data).length/2).map((datas, index) => (
+             <>
+             {console.log("tout",tout)}
              
-
+             
               
-              <DisplayFavlistMobileM key={index} datass={datas} indexed={index} datak={dataK} tout={tout}/>
-             
+              <DisplayFavlistMobileM key={index} datass={datas}  datak={Object.keys(datas)} tout={tout[index]}/>
+              </>
             ))}
         {/* </Carousel> */}
         </Box>

@@ -3,10 +3,10 @@ import React from 'react'
 import { AiOutlineStar } from 'react-icons/ai'
 import { FaTruck } from 'react-icons/fa'
 
-function DisplayFavlistMobileM({datass, tout, datak, indexed}) {
+function DisplayFavlistMobileM({datass, tout, datak}) {
   return (
     Object.values(datass).map((data,index) => (
-        <Box as="a"   key={index} href={`/Details/details?c=${tout}&m=${data.organisation}&p=${datak[indexed]}`}   mx={[2, 2, 2, 5, 5]} mb={5} bgColor={"white"}>
+        <Box as="a"   key={index} href={`/Details/details?c=${tout}&m=${data.organisation}&p=${datak[index]}`}   mx={[2, 2, 2, 5, 5]} mb={5} bgColor={"white"}>
               
                 <Box
                  mx={2}
