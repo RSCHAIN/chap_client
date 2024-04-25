@@ -157,7 +157,7 @@ function PopUp({ PrixChoisi, Partenaire, email, dest, need, poste, arriv, radio2
           villeDest,
           adresseDest,
           posteDest,
-          methodeDePaiement,
+          modePaiement:methodeDePaiement,
 
           numeroExpediteur: numeroExp,
           numeroDestinataire: numeroDest,
@@ -232,7 +232,7 @@ function PopUp({ PrixChoisi, Partenaire, email, dest, need, poste, arriv, radio2
           posteDest,
           devisId: `${idDev}${hash}`,
           depart: dest,
-          methodeDePaiement,
+          modePaiement:methodeDePaiement,
           CodePostalDepart: poste,
           arrive: arriv,
           numeroExpediteur: numeroExp,
@@ -460,7 +460,7 @@ function PopUp({ PrixChoisi, Partenaire, email, dest, need, poste, arriv, radio2
               <div className="dest flex">
                 <RadioGroup onChange={setMethodeDePaiement} value={methodeDePaiement}>
                   <Stack direction='row'>
-                    <Radio value='Espèces'>Espèces</Radio>
+                    <Radio value='Espèce'>Espèces</Radio>
                     <Radio value='Paypal'>Paypal</Radio>
 
                   </Stack>
