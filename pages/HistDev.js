@@ -63,7 +63,7 @@ function Valide2(id, state) {
 function Paiement(id, state) {
   // console.log(id);
   const date = new Date();
-  if (state == "Espéces") {
+  if (state == "Espéce") {
     update(ref(db2, "DevisPerso/" + String(id)), {
       Paiement: state,
       status: "Reglé",
@@ -90,7 +90,7 @@ function Valide({ items, email, id }) {
   const [esp, setEsp] = useState("")
 
 
-  if (items.status == "Validé" && items.email == email) {
+  if (items.status == "Validée" && items.email == email) {
     return (
       <>
         <Box
@@ -295,7 +295,7 @@ function Valide({ items, email, id }) {
                   posteDest={items.posteDest} emailDest={items.emailDest } 
                   nomArr={ items.nomExpediteur} prenomArr={items.prenomExpediteur } 
                   villeArr={items.ville} adrArr={items.rue} telArr={items.numeroExpediteur} emailArr={items.email}  />
-                  <Button colorScheme={"red"} width={"130px"} px={4} py={2} height={"65px"} borderRadius={"xl"} onClick={() => Cancel2(id, "Annulé")}>Annuler</Button>
+                  <Button colorScheme={"red"} width={"130px"} px={4} py={2} height={"65px"} borderRadius={"xl"} onClick={() => Cancel2(id, "Annulée")}>Annuler</Button>
                 </Center>
               </Box>
 
@@ -318,7 +318,7 @@ function Valide({ items, email, id }) {
 function Cancel({ items, email, id }) {
   // console.log(items.Status);
   const { isOpen, onOpen, onClose } = useDisclosure()
-  if (items.status == "Annulé" && items.email == email) {
+  if (items.status == "Annulée" && items.email == email) {
     return (
       <>
         <Box
@@ -540,7 +540,7 @@ function Cancel({ items, email, id }) {
 function Launch({ items, email, id }) {
   // console.log(items);
   const { isOpen, onOpen, onClose } = useDisclosure()
-  if ((items.status == "En attente" || items.status == "Reglé") && items.email == email) {
+  if ((items.status == "En attente" || items.status == "Reglée") && items.email == email) {
     return (
       <>
         <Box
@@ -745,7 +745,7 @@ function Launch({ items, email, id }) {
                 <Draw id={items.devisId} nomDest={ items.nomDestinataire} prenomDest={ items.prenomDestinataire} 
                   adrDest={items.adresseDest } telDest={ items.numeroDestinataire} villeDest={items.villeDest} posteDest={items.posteDest} emailDest={items.emailDest } 
                   nomArr={ items.nomExpediteur} prenomArr={items.prenomExpediteur } villeArr={items.ville} adrArr={items.rue} telArr={items.numeroExpediteur} emailArr={items.email}  />
-                  <Button colorScheme={"red"} width={"130px"} px={4} py={2} height={"65px"} borderRadius={"xl"} onClick={() => Cancel2(id, "Annulé")}>Annuler</Button>
+                  <Button colorScheme={"red"} width={"130px"} px={4} py={2} height={"65px"} borderRadius={"xl"} onClick={() => Cancel2(id, "Annulée")}>Annuler</Button>
                 </Center>
               </Box>
 
@@ -969,7 +969,7 @@ function Regle({ items, email, id }) {
 
                 <Center mt={5} justifyContent={"space-evenly"}>
                   {/* <Text bgColor={"cyan.800"} color={"white"} width={"130px"} px={4} py={2}  fontWeight={600} textAlign={"center"} borderRadius={"xl"} height={"fit-content"}>Modifier les informations</Text>  */}
-                  <Button colorScheme={"red"} width={"130px"} px={4} py={2} height={"65px"} borderRadius={"xl"} onClick={() => Cancel2(id, "Annulé")}>Annuler</Button>
+                  <Button colorScheme={"red"} width={"130px"} px={4} py={2} height={"65px"} borderRadius={"xl"} onClick={() => Cancel2(id, "Annulée")}>Annuler</Button>
                 </Center>
               </Box>
 

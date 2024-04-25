@@ -73,7 +73,7 @@ async function saveCommande2(data) {
     organisation: data.organisation,
     totalPrix: data.prix,
     initiateur: email,
-    Status: "Demande de Devis",
+    status: "Demande de Devis",
     ville: adress,
     rue: adress,
     code_postal: adress,
@@ -113,7 +113,7 @@ async function saveCommande3(d1, d2) {
   if (d1.length != 0 && d2.length != 0) {
     push(ref(db2, "Devis"), {
       initiateur: email,
-      Status: "Demande de Devis",
+      status: "Demande de Devis",
       ville: adress,
       // rue: adress,
       // code_postal: adress,

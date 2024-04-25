@@ -279,7 +279,7 @@ function Launch({ items, email, id }) {
                     </Flex>
                   </Flex>
                   {/* <Button rightIcon={CloseIcon}></Button> */}
-                  <Box cursor={"pointer"} color={"red"} onClick={() => Cancel2(id, "Annulé")} fontSize={"20px"} py={5} mt={5} borderTop={"1px solid black"} >
+                  <Box cursor={"pointer"} color={"red"} onClick={() => Cancel2(id, "Annulée")} fontSize={"20px"} py={5} mt={5} borderTop={"1px solid black"} >
                     <Center display={"grid"}>
                       <CloseButton ml={5} />
                       <Text>Annuler</Text>
@@ -486,7 +486,7 @@ export default function HistRes() {
             <TabPanel>
               <Tabs isManual isLazy w={"100% "}>
                 <Center>
-                  <TabList>
+                  <TabList >
                     <Tab>Reservation en cours</Tab>
 
                     <Tab>Reservation validés</Tab>

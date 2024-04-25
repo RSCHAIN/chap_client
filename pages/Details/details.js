@@ -127,7 +127,8 @@ export default function DisplayArticleDetails() {
         });
     };
     const RetreiveProd = (cat, org, pid) => {
-        if (query.p> 5) {
+        
+        if (String(query.p).length > 5) {
             const starCountRef = ref(
                 db2,
                 `${cat}/${org}/${pid}`
