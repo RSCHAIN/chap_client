@@ -337,7 +337,7 @@ function Store() {
                             <div className="w-full lg:w-1/5 px-4 mt-6 text-white">
                                 {dissoaCajouProduct && dissoaCajouProduct !== " " ?
                                     Object.values(dissoaCajouProduct).map((item, index) => (
-                                    <Link _hover={{ textDecor:"none"}} href={`/Details/details?c=${"Epicerie"}&m=${item.organisation}&p=${Object.keys(epice)[index]}`} key={index}>
+                                    <Link _hover={{ textDecor:"none"}} href={`/Details/details?c=${"Epicerie"}&m=${item.organisation}&p=${Object.keys(dissoaCajouProduct)[index]}`} key={index}>
                                         <div className="bg-white p-4 my-4 lg:my-0 flex flex-col items-center relative">
                                             <div className="w-full rounded-full mb-2">
                                                 <img className="w-full h-[10rem]" src={item.imageUrl} alt="" />
@@ -369,7 +369,7 @@ function Store() {
                             <div className="w-full lg:w-1/5 px-4 mt-6 text-white">
                                 {nayouProduct && nayouProduct !== " " ?
                                     Object.values(nayouProduct).map((item, index) => (
-<Link _hover={{ textDecor:"none"}} href={`/Details/details?c=${"Epicerie"}&m=${item.organisation}&p=${Object.keys(epice)[index]}`} key={index}>
+<Link _hover={{ textDecor:"none"}} href={`/Details/details?c=${"Epicerie"}&m=${item.organisation}&p=${Object.keys(nayouProduct)[index]}`} key={index}>
                                         <div className="bg-white p-4 my-4 lg:my-0 flex flex-col items-center relative">
                                             <div className="w-full rounded-full mb-2">
                                                 <img className="w-full h-[10rem]" src={item.imageUrl} alt="" />
@@ -433,7 +433,7 @@ function Store() {
                             <div className="w-full lg:w-1/5 px-4 mt-6 text-white">
                                 {omarcheGouroProduct && omarcheGouroProduct !== " " ?
                                     Object.values(omarcheGouroProduct).map((item, index) => (
-                                        <Link _hover={{ textDecor:"none"}} href={`/Details/details?c=${"Epicerie"}&m=${item.organisation}&p=${Object.keys(epice)[index]}`} key={index}>
+                                        <Link _hover={{ textDecor:"none"}} href={`/Details/details?c=${"Epicerie"}&m=${item.organisation}&p=${Object.keys(omarcheGouroProduct)[index]}`} key={index}>
                                         <div className="bg-white p-4 my-4 lg:my-0 flex flex-col items-center relative">
                                             <div className="w-full rounded-full mb-2">
                                                 <img className="w-full  h-[10rem]" src={item.imageUrl} alt="" />

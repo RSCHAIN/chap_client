@@ -154,6 +154,8 @@ function EpicerieProducts() {
                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 lg:gap-6">
                             {epicerieDetails && epicerieDetails !== "" ?
                                 Object.values(epicerieDetails).map((order, index) => (
+                                    <>
+                                    {console.log(order,"order")}
                                     <Lk href={`/Details/details?c=${"Epicerie"}&m=${order.organisation}&p=${Object.keys(epicerieDetails)[index]}`} key={index} className="">
                                         <div className="bg-white p-4 flex flex-col mb-10 relative">
                                             <div className="w-fullrounded-full mb-2">
@@ -182,6 +184,7 @@ function EpicerieProducts() {
                                             </div> */}
                                         </div>
                                     </Lk>
+                                    </>
                                 )): (
                                 <p>Aucune donnee</p>
                             )}
