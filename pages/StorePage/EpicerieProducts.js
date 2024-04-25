@@ -155,7 +155,7 @@ function EpicerieProducts() {
                             {epicerieDetails && epicerieDetails !== "" ?
                                 Object.values(epicerieDetails).map((order, index) => (
                                     <>
-                                    {console.log(order,"order")}
+                                   
                                     <Lk href={`/Details/details?c=${"Epicerie"}&m=${order.organisation}&p=${Object.keys(epicerieDetails)[index]}`} key={index} className="">
                                         <div className="bg-white p-4 flex flex-col mb-10 relative">
                                             <div className="w-fullrounded-full mb-2">
