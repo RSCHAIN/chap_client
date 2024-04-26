@@ -54,8 +54,8 @@ export function Comment({ id, data }) {
                     <Flex>
                         <Avatar size='md' name='' src='' mr={5} />
                         <Box>
-                            <Flex justify={"space-between"}>
-                                <Text fontWeight={700}>{data.title}</Text>
+                            <Flex justify={"space-around"} >
+                                <Text width={"70%"} fontWeight={700} mr={5}>{data.title}</Text>
                                 <Text fontWeight={700}>{data.date}</Text>
                             </Flex>
 
@@ -168,11 +168,12 @@ export default function DisplayArticleDetails() {
         }
       
     }
-
+    
     useEffect(() => {
         Fav()
           
         RetreiveProd(query.c, query.m, query.p)
+    
     }, [data, query])
 
     const avis = "Titre de l'avis"
@@ -210,6 +211,14 @@ export default function DisplayArticleDetails() {
                     message: avisDesc,
                     date: dateDep,
                 });
+                toast({
+                    title: "Avis sauvegardé",
+                    position:"top",
+                    status: "success",
+                    duration: 5000,
+                    isClosable: true,
+                })
+                onClose();
             }
         });
     }
@@ -371,14 +380,15 @@ export default function DisplayArticleDetails() {
                                         </div> */}
                                     </div>
                                     <div className="-mt-4">
-                                        <small className='text-yellow-300 max-[600px]:'>
+                                        {/* <small className='text-yellow-300 max-[600px]:'>
                                             <FontAwesomeIcon icon={faStar} />
                                             <FontAwesomeIcon icon={faStar} />
                                             <FontAwesomeIcon icon={faStar} />
                                             <FontAwesomeIcon icon={faStar} />
                                             <FontAwesomeIcon icon={faStar} />
                                         </small>
-                                        <span className='ml-2'>0 avis</span>
+                                        <span className='ml-2'>{Object.keys(data1).length} avis</span> */}
+                                        <Star id={query.p} data={data1}/>
                                     </div>
                                     <div className="">
                                         <p>{data.description}</p>
@@ -445,9 +455,11 @@ export default function DisplayArticleDetails() {
                     <Flex display={["none","none","none","flex","flex"]} justifyContent={{base:"center",lg:"space-around"}}>
                                     <Box mr={20}>
                                         <Text mt={10} fontSize={["20px","20px","20px","25px","25px"]} fontWeight={600}>Avis des clients</Text>
-                                        <Box> 
+                                        
+                                        <Box > 
                                             {data1 ?Object.values(data1).map((data,key)=>(<Comment key={key} id={id} data={data}/>)) : <></>}
                                         </Box>
+                                       
                                     </Box>
                                     <Button  bgColor={"cyan.500"} color={"white"} _hover={{
                                         bgColor:"cyan.900"

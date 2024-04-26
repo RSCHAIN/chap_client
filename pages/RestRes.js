@@ -23,7 +23,7 @@ export default function RestRes(){
         const querySnapshot = await getDocs(q);
   
         const data1 = querySnapshot.docs[0].data();
-  
+        console.log(data1);
         etat[index]=data1;
         //console.log(querySnapshot.docs[0].data());
         setAll(etat)

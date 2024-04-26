@@ -22,6 +22,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { app, authentic, db, db2 } from "@/FIREBASE/clientApp";
 import Slider from "react-slick";
 import DisplayFavlistMobileM from "./DisplayFavlistMobileM";
+import { StarIcon } from "@chakra-ui/icons";
 
 const responsive = {
   superLargeDesktop: {
@@ -70,14 +71,67 @@ var settings = {
   slidesToScroll: 1,
 };
 
+export function Star ({id,data}){
+  let total = 0
+  let star = 0
+  if(data){
+    Object.values(data).map((dat,key)=>{
+      if(id== dat.productID)
+      {
+        star = star + parseInt(dat.rate)
+        total = total+1
+       
+      }
+     }
+     )
+     
+  }
+  
+    
+  
+    return(
+      <>
+      {total ? <Flex mb={10} fontSize={"12px"}>
+       
+        {Array(5)
+              .fill('')
+              .map((_, i) => (
+                <StarIcon
+                  key={i}
+                  fontSize={"12px"}
+                  color={i < star/total ? 'yellow' : 'gray.500'}
+                />
+              ))}
+                <Text ml={1} mt={-1}>({total})</Text>
+      </Flex> : <Flex mb={10}> 
+      
+      {Array(5)
+              .fill('')
+              .map((_, i) => (   
+                <StarIcon
+                  key={i}
+                  fontSize={"12px"}
+                  color={'gray.500'}
+                 
+                />
+              ))}
+              <Text ml={2} mt={-1} fontSize={"12px"}>{total} avis</Text>
+              </Flex>}
+      
+    
+      </>
+    )
+  }
 
 export default function FavlistMobile() {
   const [data, setData] = useState([]);
+  const [data1, setData1] = useState([]);
   const [dataK, setDataK] = useState([]);
   const [tout, setTout] = useState([]);
   const [tou, setTou] = useState("");
   const [check, setCheck] = useState(0);
   const toast = useToast();
+
 
   const router = useRouter();
   const [all, setAll] = useState("none");
@@ -184,7 +238,12 @@ export default function FavlistMobile() {
   }
 
 
-
+  const Feeds = async () => {
+    const starCountRef = ref(db2, "Feedback");
+    onValue(starCountRef, (snapshot) => {
+        setData1(snapshot.val());
+    });
+};
 
   const Fav = async () => {
     try {
@@ -232,9 +291,9 @@ export default function FavlistMobile() {
   };
 
   useEffect(() => {
-    
+    Feeds()
     if (check == 0 || check == 1) {
-      // Fav();
+      
       FavTest()
       setCheck(check + 1);
     }
@@ -251,8 +310,7 @@ export default function FavlistMobile() {
 
   return (
     <>
-    {console.log("data",data.slice(0, 2))}
-    {console.log("dataK",dataK)}
+   
     
       {data ?
        (
@@ -342,11 +400,7 @@ export default function FavlistMobile() {
                     </Text>
                   </Box>
                   <Flex>
-                    <AiOutlineStar fontSize={"12px"} />
-                    <AiOutlineStar fontSize={"12px"} />
-                    <AiOutlineStar fontSize={"12px"} />
-                    <AiOutlineStar fontSize={"12px"} />
-                    <AiOutlineStar fontSize={"12px"} />
+                  <Star id={dataK[index]} data={data1}/>
                   </Flex>
                   {data.duree == "Expedié en 24h" ? (
                     <Text fontWeight={"thin"} fontSize={10}>

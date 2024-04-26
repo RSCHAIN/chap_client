@@ -248,14 +248,7 @@ export function StarM2({ data }) {
       
       ) : (
         <Box display={["flex","flex","flex","block","block"]} mt={2}>
-          {Array(5)
-            .fill("")
-            .map((_, i) => (
-              <StarIcon key={i} fontSize={"12px"} color={"gray.500"} />
-            ))}
-          <Text fontSize={"12px"} ml={2} mt={-1}>
-            {total} avis
-          </Text>
+         <Text fontWeight={"bold"} fontSize={{base:"12px",lg:"15px"}}>Aucun avis pour l'instant.</Text>
         </Box>
       )}
     </>

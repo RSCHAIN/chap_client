@@ -1,9 +1,75 @@
+import { db2 } from '@/FIREBASE/clientApp'
+import { StarIcon } from '@chakra-ui/icons'
 import { Box, Flex, Image, Text, Tooltip } from '@chakra-ui/react'
-import React from 'react'
+import { onValue, ref } from '@firebase/database'
+import React, { useEffect, useState } from 'react'
 import { AiOutlineStar } from 'react-icons/ai'
 import { FaTruck } from 'react-icons/fa'
+export function Star ({id,data}){
+  let total = 0
+  let star = 0
+  if(data){
+    Object.values(data).map((dat,key)=>{
+      if(id== dat.productID)
+      {
+        star = star + parseInt(dat.rate)
+        total = total+1
+       
+      }
+     }
+     )
+     
+  }
+  
+    
+  
+    return(
+      <>
+      {total ? <Flex  fontSize={"12px"}>
+       
+        {Array(5)
+              .fill('')
+              .map((_, i) => (
+                <StarIcon
+                  key={i}
+                  fontSize={"12px"}
+                  color={i < star/total ? 'yellow' : 'gray.500'}
+                />
+              ))}
+                <Text ml={1} mt={-1}>({total})</Text>
+      </Flex> : <Flex> 
+      
+      {Array(5)
+              .fill('')
+              .map((_, i) => (   
+                <StarIcon
+                  key={i}
+                  fontSize={"12px"}
+                  color={'gray.500'}
+                 
+                />
+              ))}
+              <Text ml={2} mt={-1} fontSize={"12px"}>{total} avis</Text>
+              </Flex>}
+      
+    
+      </>
+    )
+  }
+
+
 
 function DisplayFavlistMobileM({datass, tout, datak}) {
+  const [data1, setData1] = useState([]);
+  const Feeds = async () => {
+    const starCountRef = ref(db2, "Feedback");
+    onValue(starCountRef, (snapshot) => {
+        setData1(snapshot.val());
+    });
+};
+useEffect(() =>{
+  Feeds();
+},[]);
   return (
     Object.values(datass).map((data,index) => (
         <Box as="a"   key={index} href={`/Details/details?c=${tout}&m=${data.organisation}&p=${datak[index]}`}   mx={[2, 2, 2, 5, 5]} mb={5} bgColor={"white"}>
@@ -88,11 +154,7 @@ function DisplayFavlistMobileM({datass, tout, datak}) {
                     </Text>
                   </Box>
                   <Flex mb={2}>
-                    <AiOutlineStar fontSize={"12px"} />
-                    <AiOutlineStar fontSize={"12px"} />
-                    <AiOutlineStar fontSize={"12px"} />
-                    <AiOutlineStar fontSize={"12px"} />
-                    <AiOutlineStar fontSize={"12px"} />
+                  <Star id={datak[index]} data={data1}/>
                   </Flex>
                   {data.duree == "Expedié en 24h" ? (
                     <Text fontWeight={"thin"} fontSize={10}>
