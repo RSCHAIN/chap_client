@@ -519,10 +519,10 @@ function OrderConfirmationPage() {
                                         </Box>
                                 </div>
                             </div>
-                            <div className="bg-white p-10 rounded-lg shadow-[0_0_12px_rgba(0,0,0,0.2)]">
+                            {/* <div className="bg-white p-10 rounded-lg shadow-[0_0_12px_rgba(0,0,0,0.2)]">
                                 <div className="flex flex-col justify-center items-center">
                                     <h2 className="text-xl lg:text-2xl mb-6 font-bold">Date de livraison</h2>
-                                    <ul className="flex justify-between items-center w-full lg:text-[1rem] text-sm font-medium text-gray-900 bg-white sm:flex">{/** onChange={setDay} value={day} onClick={() => setSect2("grid")}  */}
+                                    <ul className="flex justify-between items-center w-full lg:text-[1rem] text-sm font-medium text-gray-900 bg-white sm:flex">{/** onChange={setDay} value={day} onClick={() => setSect2("grid")}  
                                         <li className="w-full border-gray-200 dark:border-gray-600">
                                             <div className="flex items-center ps-3">
                                                 <input id="horizontal-list-radio-license" type="radio" value="Mercredi" name="date-livraison" className="w-4 h-4 text-cyan-800 bg-slate-800 border-l-slate-800 focus:ring-cyan-800 dark:focus:ring-cyan-800"
@@ -546,8 +546,8 @@ function OrderConfirmationPage() {
                                         </li>
                                     </ul>
                                 </div>
-                            </div>
-                            <div className="bg-white p-10 rounded-lg shadow-[0_0_12px_rgba(0,0,0,0.2)]">
+                            </div> */}
+                            {/* <div className="bg-white p-10 rounded-lg shadow-[0_0_12px_rgba(0,0,0,0.2)]">
                                 <div className="flex flex-col justify-center items-center">
                                     <h2 className="text-xl lg:text-2xl mb-6 font-bold">Heure de livraison</h2>
                                     {getDeliveryDay === "Samedi" ? (
@@ -607,7 +607,7 @@ function OrderConfirmationPage() {
                                         </ul>
                                     )}
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                         <button onClick={()=>{ saveCommande3()}} className="bg-cyan-800 text-white rounded-md py-2 px-6 my-6">Confirmer l{"'"}achat</button>
                     </div>

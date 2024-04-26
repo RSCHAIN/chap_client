@@ -27,6 +27,7 @@ export default function ReservationButton({ mag, adresse, imageMag }) {
     const [numero, setNumero] = useState("")
     const [journée, setJournée] = useState("")
     const [note, setNote] = useState("")
+    const [erreurRes, setErreurRes] = useState("")
     const [personnes, setPersonnes] = useState(1)
     const [heures, setHeures] = useState("")
     
@@ -36,6 +37,7 @@ export default function ReservationButton({ mag, adresse, imageMag }) {
     const horaire = ["12:00 - 14:00", "14:00 - 16:00", "16:00 - 18:00", "18:00 - 20:00", "20:00 - 22:00", "22:00 - 24:00"]
     const [colour,setColour] = useState (["white", "white", "white", "white", "white", "white"])
     const [tcolour,setTColour] = useState (["black", "black", "black", "black", "black", "black"])
+
     function generateCustomKey() {
         // Obtenez le timestamp actuel en millisecondes
         const timestamp = Date.now();
@@ -76,55 +78,75 @@ export default function ReservationButton({ mag, adresse, imageMag }) {
         const hashDigest = sha256("RE" + year + month + day + hours + minutes + seconds).toString(CryptoJS.enc.Hex);
 
         const hash = hashDigest.slice(0, 3).toString()
-
-        set(ref(db2, `Reservation/${idRes}${hash}`), {
-            nom,
-
-            numero,
-            dateReservation: journée,
-            reservationId: `${idRes}${hash}`,
-            note,
-            nbrePerson: personnes,
-            type: "Reservation restaurant",
-            heureReservation: heures,
-            organisation: mag,
-            status: "En attente",
-            email,
-            adresse,
-            imageMag
-
-        }).then(async (response) => {
-
-            toast({
-                description: "Nous vous contacterons pour la confirmation",
-                title: "Reservation enregistrée",
-                status: "success",
-                duration: 9000,
-
-            })
-            await axios.post("/api/SendReservation", {
-                email: email,
-                client: nom,
-                partner: mag,
-                note: note,
-                date: journée,
-                Restaurant: mag,
-                couverts: personnes,
-                horaire: heures,
-            });
-            onClose()
+        if (nom.length>0) {
+            if (numero.length>=10) {
+                if (journée.length>5) {
+                    if (heures.length>5)  {
+                        set(ref(db2, `Reservation/${idRes}${hash}`), {
+                            nom,
+                
+                            numero,
+                            dateReservation: journée,
+                            reservationId: `${idRes}${hash}`,
+                            note,
+                            nbrePerson: personnes,
+                            type: "Reservation restaurant",
+                            heureReservation: heures,
+                            organisation: mag,
+                            status: "En attente",
+                            email,
+                            adresse,
+                            imageMag
+                
+                        }).then(async (response) => {
+                
+                            toast({
+                                description: "Nous vous contacterons pour la confirmation",
+                                title: "Reservation enregistrée",
+                                status: "success",
+                                duration: 9000,
+                
+                            })
+                            await axios.post("/api/SendReservation", {
+                                email: email,
+                                client: nom,
+                                partner: mag,
+                                note: note,
+                                date: journée,
+                                Restaurant: mag,
+                                couverts: personnes,
+                                horaire: heures,
+                            });
+                            onClose()
+                            setLoader(false)
+                        }).catch((error) => {
+                            console.log(error)
+                            setLoader(false)
+                            toast({
+                                description: "Veuillez verifier votre saisies",
+                                title: "Erreur lors de la reservation",
+                                status: "error",
+                                duration: 9000,
+                
+                            })
+                        });
+                    }else{
+                        setErreurRes("Veuillez choisir une heure")
+                        setLoader(false)
+                    }
+                }else{
+                    setErreurRes("Veuillez choisir une journée")
+                    setLoader(false)
+                }
+            }else{
+                setErreurRes("Veuillez saisir un numéro de téléphone valide")
+                setLoader(false)
+            }
+        }else{
+            setErreurRes("Veuillez saisir votre nom")
             setLoader(false)
-        }).catch((error) => {
-            console.log(error)
-            setLoader(false)
-            toast({
-                description: "Veuillez verifier votre saisies",
-                title: "Erreur lors de la reservation",
-                status: "error",
-                duration: 9000,
-
-            })
-        });
+        }
+       
 
     }
 
@@ -168,7 +190,7 @@ export default function ReservationButton({ mag, adresse, imageMag }) {
                 <ModalHeader>Reservation chez {mag}</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
-
+                    <Text color={"red.600"} fontSize={"15px"} fontWeight={"semibold"}>{erreurRes}</Text>
                     <SimpleGrid columns={[1, 1, 1, 2, 2]} spacingX={5} spacingY={5}>
                         <InputGroup display={"grid"}>
                             <Text>Nom : </Text>
