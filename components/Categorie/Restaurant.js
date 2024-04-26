@@ -248,7 +248,7 @@ export function StarM2({ data }) {
       
       ) : (
         <Box display={["flex","flex","flex","block","block"]} mt={2}>
-         <Text fontWeight={"bold"} fontSize={{base:"12px",lg:"15px"}}>Aucun avis pour l'instant.</Text>
+         <Text fontWeight={"bold"} fontSize={{base:"12px",lg:"15px"}}>Aucun avis pour l{"'"}instant.</Text>
         </Box>
       )}
     </>
