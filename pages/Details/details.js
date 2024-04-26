@@ -328,7 +328,7 @@ export default function DisplayArticleDetails() {
                             <div className="left w-full lg:w-2/6">
                                 <div className="img w-5/6 lg:">
                                     <div className="img-main w-full flex items-center justify-center">{/** border border-cyan-500 */}
-                                        <Image className='w-40 lg:w-[40rem] ' src={data.imageUrl[indexed]} alt="" />
+                                        <Image className='w-4/6 lg:w-[40rem] ' src={data.imageUrl[indexed]} alt="" />
                                     </div>
                                     <div className="img-cards flex items-center">
                                         {/* <div className="h-20 w-20 border">
@@ -368,7 +368,7 @@ export default function DisplayArticleDetails() {
                                             </WhatsappShareButton> 
                                         </div>
                                         <div className="">
-                                            <span className="text-2xl font-bold text-red-500">{data.prix} € </span>
+                                            <span className="text-2xl font-bold text-black">{data.prix} € </span>
                                             <small className='-mb-2'>TTC</small>
                                         </div>
                                     </div>
