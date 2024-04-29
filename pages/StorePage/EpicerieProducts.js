@@ -155,13 +155,13 @@ function EpicerieProducts() {
                             {epicerieDetails && epicerieDetails !== "" ?
                                 Object.values(epicerieDetails).map((order, index) => (
                                     <>
-                                        <Lk href={`/Details/details?c=${"Epicerie"}&m=${order.organisation}&p=${Object.keys(epicerieDetails)[index]}`} key={index}
-                                            className="flex flex-col relative bg-white shadow-md">
+                                        <Lk _hover={{ textDecor:"none"}} href={`/Details/details?c=${"Epicerie"}&m=${order.organisation}&p=${Object.keys(epicerieDetails)[index]}`} key={index}
+                                            className="flex flex-col relative bg-white shadow-md rounded-md">
                                                 <div className='w-full flex items-center justify-center'>
                                                     <img className='h-[10rem]' src={order.imageUrl}/>
                                                 </div>
                                                 <div className='flex flex-col gap-1 p-2'>
-                                                    <h3 className="text-[1rem] text-gray-700 font-bold">{order.nom}</h3>
+                                                    <h3 className="text-sm text-gray-700 font-bold">{order.nom}</h3>
                                                     <small className={`${order.etat === 'Disponible'? 'bg-green-600 ' : 'bg-red-600'} p-1 rounded-2xl capitalize text-white absolute -top-2 left-0`}>{order.etat}</small>
                                                     <div className="text-[0.6rem] text-yellow-400 flex items-center">
                                                         <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
@@ -174,7 +174,7 @@ function EpicerieProducts() {
                                                     <span className="text-sm">{order.organisation}</span>
                                                     <span className="text-[0.7rem]">Livré le 31/01/2024</span>
                                                     <span className="text-[0.7rem]"><FontAwesomeIcon className="mr-2" icon={faTruck} />Livraison dans toute la France</span>
-                                                    <span className="text-2xl self-end text-red-500">{order.prix}€</span>
+                                                    <span className="text-lg text-red-500">{order.prix}€</span>
                                                 </div>
                                         </Lk>
                                     

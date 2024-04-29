@@ -649,7 +649,7 @@ const [ShowLoad,setShowLoad] = useState("block")
           }} leftIcon={<MdIosShare />}>Partager</Button> */}
       </Flex>
       </Flex>
-      
+      {console.log("imageurl : ", mag.imageurl,mag.organisation,mag.email)}
       <Image
         src={mag.imageUrl}
         display={"block"}

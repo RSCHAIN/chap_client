@@ -69,7 +69,10 @@ useEffect(()=>{
                 </Center> */}
                 <SimpleGrid columns={[2, 2, 2, 3, 3]}>
                   {all.map((data, index) => (
+                  <>
+                  { console.log(data)}
                     <Modaliser key={index} data={data} jour={jour} />
+                    </>
                   ))}
                 </SimpleGrid>
               </Box>
