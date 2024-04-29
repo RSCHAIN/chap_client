@@ -547,67 +547,7 @@ function OrderConfirmationPage() {
                                     </ul>
                                 </div>
                             </div> */}
-                            {/* <div className="bg-white p-10 rounded-lg shadow-[0_0_12px_rgba(0,0,0,0.2)]">
-                                <div className="flex flex-col justify-center items-center">
-                                    <h2 className="text-xl lg:text-2xl mb-6 font-bold">Heure de livraison</h2>
-                                    {getDeliveryDay === "Samedi" ? (
-                                        <ul className="items-center w-full lg:text-[1rem] text-sm font-medium text-gray-900 bg-whitesm:flex">
-                                            <li className="w-full border-gray-200 dark:border-gray-600">
-                                                <div className="flex items-center ps-3">
-                                                    <input id="horizontal-list-radio-license" type="radio" value="Soir(13h-16h)" name="heure-livraison" className="w-4 h-4 text-cyan-800 bg-slate-800 border-l-slate-800 focus:ring-cyan-800 dark:focus:ring-cyan-800"
-                                                    onClick={(e) => setDeliveryTimes(e.target.value)}/>
-                                                    <label for="horizontal-list-radio-license" className="w-full py-3 ms-2 lg:text-[1rem] text-sm font-medium text-gray-900 dark:text-lateborder-l-slate-800">Apres-Midi (de 13h -- 16h)</label>
-                                                </div>
-                                            </li>
-                                            <li className="w-full border-gray-200 dark:border-gray-600">
-                                                <div className="flex items-center ps-3">
-                                                    <input id="horizontal-list-radio-id" type="radio" value="Soir(16h-20h)" name="heure-livraison" className="w-4 h-4 text-cyan-800 bg-slate-800 border-l-slate-800 focus:ring-cyan-800 dark:focus:ring-cyan-800"
-                                                    onClick={(e) => setDeliveryTimes(e.target.value)}/>
-                                                    <label for="horizontal-list-radio-id" className="w-full py-3 ms-2 lg:text-[1rem] text-sm font-medium text-gray-900 dark:text-lateborder-l-slate-800">Soir (de 16h -- 20h)</label>
-                                                </div>
-                                            </li>
-                                            <li className="w-full border-gray-200 dark:border-gray-600">
-                                                <div className="flex items-center ps-3">
-                                                    <input id="horizontal-list-radio-id" type="radio" value="Soir(20h-00h)" name="heure-livraison" className="w-4 h-4 text-cyan-800 bg-slate-800 border-l-slate-800 focus:ring-cyan-800 dark:focus:ring-cyan-800"
-                                                    onClick={(e) => setDeliveryTimes(e.target.value)}/>
-                                                    <label for="horizontal-list-radio-id" className="w-full py-3 ms-2 lg:text-[1rem] text-sm font-medium text-gray-900 dark:text-lateborder-l-slate-800">Nuit (de 20h -- 00h)</label>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    ) : (
-                                        <ul className="flex lg:flex-row flex-col justify-center items-center w-full lg:text-[1rem] text-sm font-medium text-gray-900 bg-whitesm:flex">
-                                            <li className="w-full border-gray-200 dark:border-gray-600">
-                                                <div className="flex items-center ps-3">
-                                                    <input id="horizontal-list-radio-license" type="radio" value="Matin" name="heure-livraison" className="w-4 h-4 text-cyan-800 bg-slate-800 border-l-slate-800 focus:ring-cyan-800 dark:focus:ring-cyan-800"
-                                                    onClick={(e) => setDeliveryTimes(e.target.value)}/>
-                                                    <label for="horizontal-list-radio-license" className="w-full py-3 ms-2 lg:text-[1rem] text-sm font-medium text-gray-900 dark:text-lateborder-l-slate-800">Matin(de 09h30 -- 12h)</label>
-                                                </div>
-                                            </li>
-                                            <li className="w-full border-gray-200 dark:border-gray-600">
-                                                <div className="flex items-center ps-3">
-                                                    <input id="horizontal-list-radio-id" type="radio" value="Soir(13h-16h)" name="heure-livraison" className="w-4 h-4 text-cyan-800 bg-slate-800 border-l-slate-800 focus:ring-cyan-800 dark:focus:ring-cyan-800"
-                                                    onClick={(e) => setDeliveryTimes(e.target.value)}/>
-                                                    <label for="horizontal-list-radio-id" className="w-full py-3 ms-2 lg:text-[1rem] text-sm font-medium text-gray-900 dark:text-lateborder-l-slate-800">Apres-Midi (de 13h -- 16h)</label>
-                                                </div>
-                                            </li>
-                                            <li className="w-full border-gray-200 dark:border-gray-600">
-                                                <div className="flex items-center ps-3">
-                                                    <input id="horizontal-list-radio-id" type="radio" value="Soir(16h-20h)" name="heure-livraison" className="w-4 h-4 text-cyan-800 bg-slate-800 border-l-slate-800 focus:ring-cyan-800 dark:focus:ring-cyan-800"
-                                                    onClick={(e) => setDeliveryTimes(e.target.value)}/>
-                                                    <label for="horizontal-list-radio-id" className="w-full py-3 ms-2 lg:text-[1rem] text-sm font-medium text-gray-900 dark:text-lateborder-l-slate-800">Soir (de 16h -- 20h)</label>
-                                                </div>
-                                            </li>
-                                            <li className="w-full border-gray-200 dark:border-gray-600">
-                                                <div className="flex items-center ps-3">
-                                                    <input id="horizontal-list-radio-id" type="radio" value="Soir(20h-00h)" name="heure-livraison" className="w-4 h-4 text-cyan-800 bg-slate-800 border-l-slate-800 focus:ring-cyan-800 dark:focus:ring-cyan-800"
-                                                    onClick={(e) => setDeliveryTimes(e.target.value)}/>
-                                                    <label for="horizontal-list-radio-id" className="w-full py-3 ms-2 lg:text-[1rem] text-sm font-medium text-gray-900 dark:text-lateborder-l-slate-800">Nuit (de 20h -- 00h)</label>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    )}
-                                </div>
-                            </div> */}
+                            {/*   */}
                         </div>
                         <button onClick={()=>{ saveCommande3()}} className="bg-cyan-800 text-white rounded-md py-2 px-6 my-6">Confirmer l{"'"}achat</button>
                     </div>

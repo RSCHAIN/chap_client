@@ -116,44 +116,22 @@ export default function Modaliser({ data, jour }) {
         if (data.horaire != undefined && data.horaire != null) {
             Object.values(data.horaire)[parseInt(jour.getDay())];
             //  console.log( Object.values(item.horaire)[parseInt(jour.getDay())].length)
-
+           
             // console.log(Object.values(item.horaire)[parseInt(jour.getDay())].slice(0,5))
             if (Object.values(data.horaire)[parseInt(jour.getDay())] === "24h/24") {
                 setEtat("Ouvert 24h/24h");
-            } else if (
-                Object.values(data.horaire)[parseInt(jour.getDay())].length == 0
-            ) {
-                setEtat("Non défini");
+           
             } else if (
                 Object.values(data.horaire)[parseInt(jour.getDay())] === "Fermé"
             ) {
                 setEtat("Fermé");
             } else {
-                //  console.log(((Object.values(item.horaire)[parseInt(jour.getDay())])).slice(6,8));
-                //  console.log(((Object.values(item.horaire)[parseInt(jour.getDay())])).slice(0,2));
-                //  console.log(item.horaire);
-                // // console.log(parseInt(((Object.values(item.horaire)[parseInt(jour.getDay())])).slice(6,8))+24>parseInt(heure))
-                if (
-                    Object.values(data.horaire)[parseInt(jour.getDay())].slice(0, 2) <=
-                    `${heure}`
-                ) {
-                    if (
-                        parseInt(
-                            Object.values(data.horaire)[parseInt(jour.getDay())].slice(6, 8)
-                        ) +
-                        24 >
-                        parseInt(heure)
-                    ) {
-                        setEtat("Ouvert");
-                    } else {
-                        setEtat("Fermé");
-                    }
-                } else {
-                    setEtat("Fermé");
-                }
+                setEtat(Object.values(data.horaire)[parseInt(jour.getDay())])
             }
 
 
+        }else{
+            setEtat(Object.values("Inconnu"));
         }
         
     })

@@ -176,7 +176,8 @@ useEffect( ()=>{
                 _hover={{ textDecoration: "none" }}
                 href={`/otherContent/intermed1?categorie=${data.categorie}&magasin=${data.organisation}`}
               >
-                <Flex
+                {console.log(data.organisation,data.email)}
+                {data.imageUrl ?<Flex
                   height={"100%"}
                   width={"100%"}
                   alignItems={"center"}
@@ -199,7 +200,55 @@ useEffect( ()=>{
                       { data.organisation}
                     </Text>
                   </Flex>
-                </Flex>
+                </Flex> : <Flex
+                  height={"100%"}
+                  width={"100%"}
+                  alignItems={"center"}
+                  justifyContent={"center"}
+                  borderRadius={50}
+                  // backgroundImage={data.imageUrl}
+                  bgColor={"red"}
+                  backgroundPosition={"center"}
+                  backgroundSize={"cover"}
+                  backgroundRepeat={"no-repeat"}
+                >
+                  <Flex
+                    alignItems={"center"}
+                    justifyContent={"center"}
+                    borderRadius={50}
+                    height={"100%"}
+                    width={"100%"}
+                    bg={"rgba(0, 0, 0, 0.277)"}
+                  >
+                    <Text fontSize={"xl"} color={"#fff"} textAlign={"center"}>
+                      { data.organisation}
+                    </Text>
+                  </Flex>
+                </Flex>}
+                {/* <Flex
+                  height={"100%"}
+                  width={"100%"}
+                  alignItems={"center"}
+                  justifyContent={"center"}
+                  borderRadius={50}
+                  backgroundImage={data.imageUrl}
+                  backgroundPosition={"center"}
+                  backgroundSize={"cover"}
+                  backgroundRepeat={"no-repeat"}
+                >
+                  <Flex
+                    alignItems={"center"}
+                    justifyContent={"center"}
+                    borderRadius={50}
+                    height={"100%"}
+                    width={"100%"}
+                    bg={"rgba(0, 0, 0, 0.277)"}
+                  >
+                    <Text fontSize={"xl"} color={"#fff"} textAlign={"center"}>
+                      { data.organisation}
+                    </Text>
+                  </Flex>
+                </Flex> */}
               </Link>
               <Box>
               <Box bgColor={"white"}width={"100%"} borderBottom={"1px solid black"}>

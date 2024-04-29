@@ -41,16 +41,14 @@ export default function Modaliser({ data, jour }) {
        
         const heureActu = jour.getHours()
         const plage = data.horaire[parseInt(jour.getDay())]
-        console.log(plage)
+        
         try{
             let debut = plage.slice(0,5)
             let fin = plage.slice(6,8)
             if(fin == 24){
                 fin=0
             }
-            console.log("debut",parseInt(debut))
-            console.log("actu",heureActu)
-            console.log("fin",fin)
+         
             let i = 0;
             let deadline = debut;
             for (let index = 0; index < 24; index++) {
@@ -141,6 +139,8 @@ export default function Modaliser({ data, jour }) {
             }
 
 
+        }else{
+            setEtat(Object.values("Inconnu"));
         }
         try{
             const starCountRef = ref(
