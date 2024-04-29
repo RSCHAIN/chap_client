@@ -88,24 +88,9 @@ export function ItemCard({ item, card}) {
         //  console.log(((Object.values(item.horaire)[parseInt(jour.getDay())])).slice(0,2));
         //  console.log(item.horaire);
         // console.log(parseInt(((Object.values(item.horaire)[parseInt(jour.getDay())])).slice(6,8))+24>parseInt(heure))
-        if (
-          Object.values(item.horaire)[parseInt(jour.getDay())].slice(0, 2) <=
-          `${heure}`
-        ) {
-          if (
-            parseInt(
-              Object.values(item.horaire)[parseInt(jour.getDay())].slice(6, 8)
-            ) +
-              24 >
-            parseInt(heure)
-          ) {
-            setEtat("Ouvert");
-          } else {
-            setEtat("Fermé");
-          }
-        } else {
-          setEtat("Fermé");
-        }
+       
+        setEtat("Non défini");
+        
       }
 
       secureLocalStorage.setItem("jour", parseInt(jour.getDay()));

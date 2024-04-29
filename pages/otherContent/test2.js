@@ -1,11 +1,12 @@
 import { db } from "@/FIREBASE/clientApp";
 import FooterR from "@/components/footerResponsif";
-import { Box, Button, Center, Flex, Heading, Link, Select, SimpleGrid, Text } from "@chakra-ui/react";
+import { Box, Button, Center, Flex, Heading, Image, Link, Select, SimpleGrid, Text } from "@chakra-ui/react";
 import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import { useRouter } from "next/router";
 import React, {useState,useEffect} from "react"
 import secureLocalStorage from "react-secure-storage";
 import Head from "next/head";
+import Horaire from "./Horaire";
 const PagButton = (props) => {
     const activeStyle = {
       bg: "brand.600",
@@ -109,7 +110,9 @@ useEffect( ()=>{
     
 },[Get,datas,Next,tout])
 
-
+const jours = new Date();
+const heure = jours.getHours();
+const minute = jours.getMinutes();
 
     return(
         <>
@@ -156,11 +159,12 @@ useEffect( ()=>{
         >
          
           {visible.map((data, index) => (
+           <>
            
             <Box
               key={index}
               height={["50%", "20vh", "20vh", "20vh", "20vh"]}
-              width={{ base: "70%", md: "45%" }}
+              width={{ base: "70%", md: "100%" }}
               marginBottom={40}
               mr={5}
               borderRadius={[10,10,50,50,50]}
@@ -176,55 +180,86 @@ useEffect( ()=>{
                 _hover={{ textDecoration: "none" }}
                 href={`/otherContent/intermed1?categorie=${data.categorie}&magasin=${data.organisation}`}
               >
-                {console.log(data.organisation,data.email)}
-                {data.imageUrl ?<Flex
-                  height={"100%"}
-                  width={"100%"}
-                  alignItems={"center"}
-                  justifyContent={"center"}
-                  borderRadius={50}
-                  backgroundImage={data.imageUrl}
-                  backgroundPosition={"center"}
-                  backgroundSize={"cover"}
-                  backgroundRepeat={"no-repeat"}
+                 <Box
+        mt={5}
+        height={["20vh", "20vh", "20vh", "20vh", "20vh"]}
+        width={{ base: "100%", md: "50%" }}
+        marginBottom={[40, 40, 40, 10, 10]}
+        mr={5}
+        borderRadius={25}
+      >
+        <Link
+          height={"15vh"}
+          width={{ base: "80%", md: "100%" }}
+          mt={5}
+          mr={{ base: "0%", md: "0%" }}
+          _hover={{ textDecoration: "none" }}
+          href={`/otherContent/intermed1?categorie=${data.categorie}&magasin=${data.organisation}`}
+        >
+           <Box
+            height={"100%"}
+            width={"100%"}
+            alignItems={"center"}
+            justifyContent={"center"}
+            borderRadius={25}
+           >
+
+           
+           
+               <Image src={data.imageUrl} alt={"image du magasin"} width={"100%"} height={"100%"} borderRadius={25}/>
+              
+           
+            <Box mt={"-100px"}>
+                <Text
+                  fontSize={"lg"}
+                  color={"#fff"}
+                  textAlign={"center"}
+                  fontWeight={"bold"}
                 >
-                  <Flex
-                    alignItems={"center"}
-                    justifyContent={"center"}
-                    borderRadius={50}
-                    height={"100%"}
-                    width={"100%"}
-                    bg={"rgba(0, 0, 0, 0.277)"}
-                  >
-                    <Text fontSize={"xl"} color={"#fff"} textAlign={"center"}>
-                      { data.organisation}
-                    </Text>
-                  </Flex>
-                </Flex> : <Flex
-                  height={"100%"}
-                  width={"100%"}
-                  alignItems={"center"}
-                  justifyContent={"center"}
-                  borderRadius={50}
-                  // backgroundImage={data.imageUrl}
-                  bgColor={"red"}
-                  backgroundPosition={"center"}
-                  backgroundSize={"cover"}
-                  backgroundRepeat={"no-repeat"}
-                >
-                  <Flex
-                    alignItems={"center"}
-                    justifyContent={"center"}
-                    borderRadius={50}
-                    height={"100%"}
-                    width={"100%"}
-                    bg={"rgba(0, 0, 0, 0.277)"}
-                  >
-                    <Text fontSize={"xl"} color={"#fff"} textAlign={"center"}>
-                      { data.organisation}
-                    </Text>
-                  </Flex>
-                </Flex>}
+                  {data.organisation}
+                </Text>
+              </Box>
+          </Box> 
+         
+        </Link>
+         <Box
+          bgColor={"white"}
+          width={"100%"}
+          borderBottom={"1px solid black"}
+          textAlign={"center"}
+        >
+         
+
+
+
+
+              {(data.horaire != undefined && data.horaire != null)?
+              console.log(Object.values(data.horaire)[parseInt(jours.getDay())],data.organisation) : console.log(data.organisation) }
+
+
+         {(data.horaire != undefined && data.horaire != null)? (
+         Object.values(data.horaire)[parseInt(jours.getDay())] === "24h/24"?
+         <Text fontSize={"15px"} color={"green"}>Ouvert 24h/24h</Text>
+         : Object.values(data.horaire)[parseInt(jours.getDay())] === "Fermé"?
+         <Text fontSize={"15px"} color={"red"}>Fermé</Text> :
+          (Object.values(data.horaire)[parseInt(jours.getDay())]!="undefined" 
+            && Object.values(data.horaire)[parseInt(jours.getDay())]!=undefined  
+            && Object.values(data.horaire)[parseInt(jours.getDay())]!="") ? <Text fontSize={"15px"} color={"green"}>Ouvert de : {Object.values(data.horaire)[parseInt(jours.getDay())]}</Text> :  <Text fontSize={"15px"} color={"red"}>Non défini</Text>
+        )    
+         :
+         <Text fontSize={"15px"} color={"red"}>
+         Non défini
+            </Text>}
+
+        
+        </Box>
+        <Box>
+          <Text as={"h4"} pb={2} align={"center"}>
+            {data.adresse}
+          </Text>
+        </Box> 
+      </Box>
+                                 
                 {/* <Flex
                   height={"100%"}
                   width={"100%"}
@@ -251,7 +286,7 @@ useEffect( ()=>{
                 </Flex> */}
               </Link>
               <Box>
-              <Box bgColor={"white"}width={"100%"} borderBottom={"1px solid black"}>
+              {/* <Box bgColor={"white"}width={"100%"} borderBottom={"1px solid black"}> */}
               {/* {Object.values(data.horaire)[jour].length >5 ?  <Text
                 fontSize={"sm"}
                 color={"green"}
@@ -269,14 +304,14 @@ useEffect( ()=>{
                {Object.values(data.horaire)[jour].length <4 ? " " : `${" ",Object.values(data.horaire)[jour]}`} 
                   
               </Text> }  */}
-              </Box> 
-                <Text as={"h4"} pb={5} align={"center"}>
+              {/* </Box>  */}
+                {/* <Text as={"h4"} pb={5} align={"center"}>
                     { data.adresse}
-                </Text>
+                </Text> */}
               </Box>
               
             </Box>
-            
+            </>
           ))}
         </SimpleGrid>
         {/* {numero[4] == 1 ? <>
