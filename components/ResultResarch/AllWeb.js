@@ -66,56 +66,40 @@ export function ItemCard({ item}) {
   const [adresse, setAdresse] = useState();
   const [numero, setNumero] = useState();
   const [url, se] = useState();
-  const [etat, setEtat] = useState("Voir details");
+  const [etat, setEtat] = useState("");
   const router = useRouter();
 
   useEffect(() => {
-    const jour = new Date();
+    
+    try {
+      const jour = new Date();
     const heure = jour.getHours();
     const minute = jour.getMinutes();
-    try {
       if (item.horaire != undefined && item.horaire != null) {
-        Object.values(item.horaire)[parseInt(jour.getDay())];
-        //  console.log( Object.values(item.horaire)[parseInt(jour.getDay())].length)
-  
+        // Object.values(data.horaire)[parseInt(jour.getDay())];
+        //  console.log(Object.values(data.horaire)[parseInt(jour.getDay())] ? `horaire defini,${Object.values(data.horaire)[parseInt(jour.getDay())]}` :  `indefini,${Object.values(data.horaire)[parseInt(jour.getDay())]}`)
+
         // console.log(Object.values(item.horaire)[parseInt(jour.getDay())].slice(0,5))
         if (Object.values(item.horaire)[parseInt(jour.getDay())] === "24h/24") {
-          setEtat("Ouvert 24h/24h");
+            setEtat("Ouvert 24h/24h");
         } else if (
-          Object.values(item.horaire)[parseInt(jour.getDay())].length == 0
-        ) {
-          setEtat("Non défini");
-        } else if (
-          Object.values(item.horaire)[parseInt(jour.getDay())] === "Fermé"
-        ) {
-          setEtat("Fermé");
-        } else {
-          //  console.log(((Object.values(item.horaire)[parseInt(jour.getDay())])).slice(6,8));
-          //  console.log(((Object.values(item.horaire)[parseInt(jour.getDay())])).slice(0,2));
-          //  console.log(item.horaire);
-          // console.log(parseInt(((Object.values(item.horaire)[parseInt(jour.getDay())])).slice(6,8))+24>parseInt(heure))
-          if (
-            Object.values(item.horaire)[parseInt(jour.getDay())].slice(0, 2) <=
-            `${heure}`
+            Object.values(item.horaire)[parseInt(jour.getDay())] === "Fermé"
           ) {
-            if (
-              parseInt(
-                Object.values(item.horaire)[parseInt(jour.getDay())].slice(6, 8)
-              ) +
-                24 >
-              parseInt(heure)
-            ) {
-              setEtat("Ouvert");
-            } else {
-              setEtat("Fermé");
-            }
-          } else {
             setEtat("Fermé");
-          }
+          } else if (Object.values(item.horaire)[parseInt(jour.getDay())]!="undefined" && Object.values(item.horaire)[parseInt(jour.getDay())]!=undefined  && Object.values(item.horaire)[parseInt(jour.getDay())]!="") {
+            setEtat(`Ouvert de : ${Object.values(item.horaire)[parseInt(jour.getDay())]}`);
         }
-  
-        secureLocalStorage.setItem("jour", parseInt(jour.getDay()));
-      }
+          else {
+            
+            setEtat( "Non défini");
+
+        }
+
+
+    }else{
+      console.log("Ouvert de",etat);
+        setEtat("Non définis");
+    }
     } catch (error) {
       
     }
@@ -136,7 +120,7 @@ export function ItemCard({ item}) {
         borderRadius={25}
       >
         <Link
-          height={"10vh"}
+          height={"11vh"}
           width={"200px"}
           mt={5}
           mr={{ base: "0%", md: "0%" }}
@@ -184,12 +168,12 @@ export function ItemCard({ item}) {
           borderBottom={"1px solid black"}
           textAlign={"center"}
         >
-          {etat == "Ouvert" || etat == "Ouvert 24h/24h" ? (
-            <Text fontSize={"12px"} color={"green"}>
+          {etat == "Fermé" || etat == "Non défini" ? (
+            <Text fontSize={"12px"} color={"red"}>
               {etat}
             </Text>
           ) : (
-            <Text fontSize={"12px"} color={"red"}>
+            <Text fontSize={"12px"} color={"green"}>
               {etat}
             </Text>
           )}

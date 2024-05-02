@@ -89,7 +89,7 @@ function TextileProducts() {
                                                     <span className="text-sm">{order.organisation}</span>
                                                     <span className="text-[0.7rem]">Livré le 31/01/2024</span>
                                                     <span className="text-[0.7rem]"><FontAwesomeIcon className="mr-2" icon={faTruck} />Livraison dans toute la France</span>
-                                                    <span className="text-lg text-red-500">{order.prix}€</span>
+                                                    <span className="self-end mb-2 text-xl lg:text-2xl text-red-600 font-bold">{order.prix}€</span>
                                                 </div>
                                         </Lk>
                                     // <Lk _hover={{ textDecor:"none"}}  href={`/Details/details?c=${"Textile"}&m=${order.organisation}&p=${Object.keys(ordersDatas)[index]}`} key={index} className="">

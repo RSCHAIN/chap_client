@@ -35,6 +35,7 @@ const router =useRouter()
 
   return (
     <>
+    
      <Center>
     <Box bgColor={"white"}>
       
@@ -262,7 +263,7 @@ const router =useRouter()
           </Flex>
         </Flex>
         <Center>
-        {mag.ReservationPos ? <ReservationButton mag={mag.organisation} adresse={mag.adresse} imageMag={mag.imageUrl} /> : categorie == "Salon de Coiffure" ? <ReservationCoiff mag={mag.organisation} adresse={mag.adresse} imageMag={mag.imageUrl} /> : <></>}
+        {mag.ReservationPos ? <ReservationButton mag={mag.organisation} adresse={mag.adresse} imageMag={mag.imageUrl} /> : categorie == "Salon de Coiffure" ? <ReservationCoiff mag={mag.organisation} adresse={mag.adresse} imageMag={mag.imageUrl} categorie={categorie}/> : <></>}
         </Center>
       </Box>
       <Box  bgColor={"white"} mt={10} >

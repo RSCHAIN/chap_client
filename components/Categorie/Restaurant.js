@@ -71,6 +71,7 @@ import BoxRestau from "./boxed/BoxRestau";
 import BoxCommerce from "./boxed/BoxCommerce";
 import AffichageComM from "./AffichageCommentairesM";
 import { FacebookIcon, FacebookShareButton, WhatsappIcon, WhatsappShareButton } from "next-share";
+import AffService from "./AfficheService";
 
 ///etoiles du feedback
 export function Star({ id, data }) {
@@ -661,25 +662,14 @@ const [ShowLoad,setShowLoad] = useState("block")
       />
     {/* {categorie == "Restaurant" ? <BoxRestau mag={mag} categorie={categorie}/> : <BoxCommerce mag={mag} categorie={categorie}/>} */}
    <Box bgColor={"white"}>
-    <BoxRestau mag={mag} categorie={categorie}/>
+    <BoxRestau mag={mag}  categorie={categorie} />
     </Box>
 
       <Box display={"grid"} width={"100%"} mt={10} >
         {categorie == "Restaurant" ?
           produit.length > 0 ? (
             <Box bgColor={"white"}>
-
-
-{console.log("================================",produit.length)}
-{console.log("================================",produit)}
-
-
-
-
-
-
-
-              {" "}
+              
               <Box mt={[0,0,0,-10,-10]}>
                 <Center><Heading fontSize={"20px"} mt={10} fontWeight={700} ml={["5%", "5%", "0%", "0%", "0%"]} id="carte" className="carte">
                   A la carte{" "}
@@ -767,6 +757,68 @@ const [ShowLoad,setShowLoad] = useState("block")
             </>
           )
           :
+          categorie == "Salon de Coiffure" ?
+          produit.length > 0 ? (
+            <Box bgColor={"white"}>
+              
+              <Box mt={[0,0,0,-10,-10]}>
+                <Center><Heading fontSize={"20px"} mt={10} fontWeight={700} ml={["5%", "5%", "0%", "0%", "0%"]} id="carte" className="carte">
+                 Nos services{" "}
+                </Heading></Center>
+
+
+
+
+                <Flex mt={2} width={"100%"}>
+
+                  <Box w={["400px", "450px", "450px", "100%", "100%"]} overflowX={"auto"} contentAlign={'center'} >
+                   <Center>
+                    <Tabs   >
+                      <TabList ml={["15%","15%","15%","0%","0%"]}>
+
+                        <Tab>Hommes</Tab>
+                        <Tab>Mix</Tab>
+                        <Tab>Femmes</Tab>
+                       
+
+                      </TabList>
+
+                      <TabPanels ml={["15%","15%","15%","0%","0%"]}  >
+                        <TabPanel width={["400px","400px","400px","full","full"]}>
+                          <SimpleGrid columns={2} textAlign={"left"}  >
+                            {produit.map((data, key) => (
+                              <AffService key={key} data={data} type={"Homme"} />
+                            ))}
+                          </SimpleGrid>
+                        </TabPanel>
+                        <TabPanel width={["400px","400px","400px","full","full"]}>
+                          <SimpleGrid columns={2} textAlign={"left"}  >
+                            {produit.map((data, key) => (
+                              <AffService key={key} data={data} type={"Mix"} />
+                            ))}
+                          </SimpleGrid>
+                        </TabPanel>
+                        <TabPanel width={["400px","400px","400px","full","full"]}>
+                          <SimpleGrid columns={2} textAlign={"left"}  >
+                            {produit.map((data, key) => (
+                              <AffService key={key} data={data} type={"Femme"} />
+                            ))}
+                          </SimpleGrid>
+                        </TabPanel>
+                      </TabPanels>
+                    </Tabs>
+                    </Center>
+                  </Box>
+
+                </Flex>
+              </Box>
+            </Box>
+          ) : (
+            <>
+              <Box mb={5}></Box>
+            </>
+          )
+          : 
           <>
           <Box >
           {
@@ -925,8 +977,6 @@ const [ShowLoad,setShowLoad] = useState("block")
          
          
           </>
-         
-
         }
 
       </Box>

@@ -16,7 +16,7 @@ import { push, ref } from '@firebase/database'
 import { useEffect, useState } from 'react'
 
 
-export default function ReservationCoiff({mag,adresse,imageMag}){
+export default function ReservationCoiff({mag,adresse,imageMag,categorie}){
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     const [nom,setNom] = useState("")
@@ -24,6 +24,7 @@ export default function ReservationCoiff({mag,adresse,imageMag}){
     const [numero,setNumero] = useState("")
     const [journée,setJournée] = useState("")
     const [note,setNote] = useState("")
+    const [coiffure,setCoiffure] = useState("None")
     const [personnes,setPersonnes] = useState(1)
     const [heures,setHeures] = useState("")
     const toast = useToast()
@@ -39,6 +40,7 @@ const horaire =["12:00 - 14:00","14:00 - 16:00","16:00 - 18:00","18:00 - 20:00",
            numero,
            journée,
            note,
+           coiffure,
         type:"Reservation coiffure",
            heures,magasin:mag,status:"En attente",email,adresse,imageMag
            
@@ -55,7 +57,7 @@ const horaire =["12:00 - 14:00","14:00 - 16:00","16:00 - 18:00","18:00 - 20:00",
           }).catch((error)=>{
             setLoader(false)
             toast({
-                description:"Veuille",
+                description:"Veuillez reesayer",
                 title:"Erreur lors de la reservation",
                 status:"error",
                 duration:9000,
@@ -110,6 +112,14 @@ const horaire =["12:00 - 14:00","14:00 - 16:00","16:00 - 18:00","18:00 - 20:00",
                             <Box>
                             <Text mb={0}>Date : </Text>
                             <Input type="date" onChange={(e)=>setJournée(e.target.value)} bgColor={"white"} /></Box>
+                            <Box>
+                            <Text mb={0}>Coiffure : </Text>
+                            <Select type="date" onChange={(e)=>setCoiffure(e.target.value)} bgColor={"white"}>
+                                {/* {data.map((d,i)=>(
+                                    <option key={i} value={d}>{d}</option>
+                                ))} */}
+                            </Select>
+                            </Box>
                         </SimpleGrid>
                         <Box mt={5}>
                         <Text color>heure :</Text>

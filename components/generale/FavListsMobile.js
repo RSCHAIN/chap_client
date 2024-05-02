@@ -214,7 +214,7 @@ export default function FavlistMobile() {
   }
 
   const FavTest = async () => {
-    console.log("dans favtest");
+    
     const q = query(collection(db, "serviceFav2"));
     
     const dbRef = ref(getDatabase());
@@ -446,7 +446,7 @@ export default function FavlistMobile() {
         {/* <Carousel responsive={responsive} style={"marginLeft='20px'"}> */}
             {Object.values(data).slice(0,Object.keys(data).length/2).map((datas, index) => (
              <>
-             {console.log("tout",tout)}
+             {/* {console.log("tout",tout)} */}
              
              
               

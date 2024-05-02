@@ -69,32 +69,29 @@ export function ItemCard({ item, card}) {
     const heure = jour.getHours();
     const minute = jour.getMinutes();
     if (item.horaire != undefined && item.horaire != null) {
-      Object.values(item.horaire)[parseInt(jour.getDay())];
-      //  console.log( Object.values(item.horaire)[parseInt(jour.getDay())].length)
+      // Object.values(data.horaire)[parseInt(jour.getDay())];
+      //  console.log(Object.values(data.horaire)[parseInt(jour.getDay())] ? `horaire defini,${Object.values(data.horaire)[parseInt(jour.getDay())]}` :  `indefini,${Object.values(data.horaire)[parseInt(jour.getDay())]}`)
 
       // console.log(Object.values(item.horaire)[parseInt(jour.getDay())].slice(0,5))
       if (Object.values(item.horaire)[parseInt(jour.getDay())] === "24h/24") {
-        setEtat("Ouvert 24h/24h");
+          setEtat("Ouvert 24h/24h");
       } else if (
-        Object.values(item.horaire)[parseInt(jour.getDay())].length == 0
-      ) {
-        setEtat("Non défini");
-      } else if (
-        Object.values(item.horaire)[parseInt(jour.getDay())] === "Fermé"
-      ) {
-        setEtat("Fermé");
-      } else {
-        //  console.log(((Object.values(item.horaire)[parseInt(jour.getDay())])).slice(6,8));
-        //  console.log(((Object.values(item.horaire)[parseInt(jour.getDay())])).slice(0,2));
-        //  console.log(item.horaire);
-        // console.log(parseInt(((Object.values(item.horaire)[parseInt(jour.getDay())])).slice(6,8))+24>parseInt(heure))
-       
-        setEtat("Non défini");
+          Object.values(item.horaire)[parseInt(jour.getDay())] === "Fermé"
+        ) {
+          setEtat("Fermé");
+        } else if (Object.values(item.horaire)[parseInt(jour.getDay())]!="undefined" && Object.values(item.horaire)[parseInt(jour.getDay())]!=undefined  && Object.values(item.horaire)[parseInt(jour.getDay())]!="") {
+          setEtat(`Ouvert de : ${Object.values(item.horaire)[parseInt(jour.getDay())]}`);
+      }
+        else {
         
+          setEtat( "Non défini");
+
       }
 
-      secureLocalStorage.setItem("jour", parseInt(jour.getDay()));
-    }
+
+  }else{
+      setEtat("Non défini");
+  }
   }, [item.horaire, etat]);
 
   const [categorie, setCategorie] = useState();
@@ -157,12 +154,12 @@ export function ItemCard({ item, card}) {
           borderBottom={"1px solid black"}
           textAlign={"center"}
         >
-          {etat == "Ouvert" || etat == "Ouvert 24h/24h" ? (
-            <Text fontSize={"15px"} color={"green"}>
+          {etat == "Fermé" || etat == "Non défini" ? (
+            <Text fontSize={"15px"} color={"red"}>
               {etat}
             </Text>
           ) : (
-            <Text fontSize={"15px"} color={"red"}>
+            <Text fontSize={"15px"} color={"green"}>
               {etat}
             </Text>
           )}

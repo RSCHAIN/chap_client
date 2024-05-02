@@ -352,7 +352,8 @@ function Store() {
                                                 <i className="text-xs"><FontAwesomeIcon className="mr-2" icon={faStar} /></i>
                                                 <span className="text-black">0 avis</span>
                                             </div>
-                                            <span className='text-gray-700 my-2 font-semibold'>{item.organisation}</span>
+                                            <span className='text-gray-700 my-2 font-semibold text-sm'>{item.nom}</span>
+                                            <span className='text-gray-700 my-2 font-semibold text-xs'>{item.organisation}</span>
                                             <div className="flex flex-col mb-2">
                                                 <span className="text-slate-700 max-[444px]:text-xs text-sm mb-2"><FontAwesomeIcon className="mr-2" icon={faTruck} />Livraison dans toute la France</span>
                                                 <span className="text-slate-700 text-sm mb-2"><FontAwesomeIcon className="mr-2" icon={faMoneyBillTransfer} />Payez en espèce</span>
@@ -384,7 +385,8 @@ function Store() {
                                                 <i className="text-xs"><FontAwesomeIcon className="mr-2" icon={faStar} /></i>
                                                 <span className="text-black">0 avis</span>
                                             </div>
-                                            <span className='text-gray-700 my-2 font-semibold'>{item.organisation}</span>
+                                            <span className='text-gray-700 my-2 font-semibold text-sm'>{item.nom}</span>
+                                            <span className='text-gray-700 my-2 font-semibold text-xs'>{item.organisation}</span>
                                             <div className="flex flex-col mb-2">
                                                 <span className="text-slate-700 max-[444px]:text-xs text-sm mb-2"><FontAwesomeIcon className="mr-2" icon={faTruck} />Livraison dans toute la France</span>
                                                 <span className="text-slate-700 text-sm mb-2"><FontAwesomeIcon className="mr-2" icon={faMoneyBillTransfer} />Payez en espèce</span>
@@ -416,7 +418,8 @@ function Store() {
                                                 <i className="text-xs"><FontAwesomeIcon className="mr-2" icon={faStar} /></i>
                                                 <span className="text-black">0 avis</span>
                                             </div>
-                                            <span className='text-gray-700 my-2 font-semibold'>{item.organisation}</span>
+                                            <span className='text-gray-700 my-2 font-semibold text-sm'>{item.nom}</span>
+                                            <span className='text-gray-700 my-2 font-semibold text-xs'>{item.organisation}</span>
                                             <div className="flex flex-col mb-2">
                                                 <span className="text-slate-700 max-[444px]:text-xs text-sm mb-2"><FontAwesomeIcon className="mr-2" icon={faTruck} />Livraison dans toute la France</span>
                                                 <span className="text-slate-700 text-sm mb-2"><FontAwesomeIcon className="mr-2" icon={faMoneyBillTransfer} />Payez en espèce</span>
@@ -448,7 +451,8 @@ function Store() {
                                                 <i className="text-xs"><FontAwesomeIcon className="mr-2" icon={faStar} /></i>
                                                 <span className="text-black">0 avis</span>
                                             </div>
-                                            <span className='text-gray-700 my-2 font-semibold'>{item.organisation}</span>
+                                            <span className='text-gray-700 my-2 font-semibold text-sm'>{item.nom}</span>
+                                            <span className='text-gray-700 my-2 font-semibold text-xs'>{item.organisation}</span>
                                             <div className="flex flex-col mb-2">
                                                 <span className="text-slate-700 max-[444px]:text-xs text-sm mb-2"><FontAwesomeIcon className="mr-2" icon={faTruck} />Livraison dans toute la France</span>
                                                 <span className="text-slate-700 text-sm mb-2"><FontAwesomeIcon className="mr-2" icon={faMoneyBillTransfer} />Payez en espèce</span>
