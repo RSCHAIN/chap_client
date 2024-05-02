@@ -10,145 +10,215 @@ import {
     Heading,
     Center,
     useDisclosure,
-    Button,SimpleGrid,InputGroup,Input,Select,Box, Text, useToast, Textarea
-  } from '@chakra-ui/react'
-import { push, ref } from '@firebase/database'
+    Button, SimpleGrid, InputGroup, Input, Select, Box, Text, useToast, Textarea
+} from '@chakra-ui/react'
+import { onValue, push, ref, set } from '@firebase/database'
 import { useEffect, useState } from 'react'
+import sha256 from 'crypto-js/sha256';
+import CryptoJS from "crypto-js";
 
 
-export default function ReservationCoiff({mag,adresse,imageMag,categorie}){
+export default function ReservationCoiff({ mag, adresse, imageMag, categorie }) {
     const { isOpen, onOpen, onClose } = useDisclosure()
 
-    const [nom,setNom] = useState("")
-    const [email,setEmail] = useState("Non connecté")
-    const [numero,setNumero] = useState("")
-    const [journée,setJournée] = useState("")
-    const [note,setNote] = useState("")
-    const [coiffure,setCoiffure] = useState("None")
-    const [personnes,setPersonnes] = useState(1)
-    const [heures,setHeures] = useState("")
+    const [produit, setProduit] = useState([])
+    const [produitKeys, setProduitKeys] = useState([])
+    const [nom, setNom] = useState("")
+    const [email, setEmail] = useState("Non connecté")
+    const [numero, setNumero] = useState("")
+    const [journée, setJournée] = useState("")
+    const [note, setNote] = useState("")
+    const [coiffure, setCoiffure] = useState("None")
+    const [personnes, setPersonnes] = useState(1)
+    const [heures, setHeures] = useState("")
     const toast = useToast()
     const [loader, setLoader] = useState(false)
 
-const horaire =["12:00 - 14:00","14:00 - 16:00","16:00 - 18:00","18:00 - 20:00","20:00 - 22:00","22:00 - 24:00"]
+    const horaire = ["12:00 - 14:00", "14:00 - 16:00", "16:00 - 18:00", "18:00 - 20:00", "20:00 - 22:00", "22:00 - 24:00"]
+    const [colour, setColour] = useState(["white", "white", "white", "white", "white", "white"])
+    const [tcolour, setTColour] = useState(["black", "black", "black", "black", "black", "black"])
 
+    function generateCustomKey() {
+        // Obtenez le timestamp actuel en millisecondes
+        const timestamp = Date.now();
+
+        // Utilisez un format de date pour formater le timestamp
+        const dateFormat = new Intl.DateTimeFormat('fr-FR', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            timeZone: 'UTC'
+        });
+
+        const [{ value: month }, , { value: day }, , { value: year }, , { value: hour }, , { value: minute }, , { value: second }] = dateFormat.formatToParts(timestamp);
+
+        // Créez la clé personnalisée en utilisant le timestamp formaté
+        const formattedTimestamp = `${year}${day}${month}${hour}${minute}${second}`;
+
+        return `RE${formattedTimestamp}`;
+    }
 
     const handleSubmit = () => {
         setLoader(true)
-        push(ref(db2, "Reservation"), {
-           nom,
-           numero,
-           journée,
-           note,
-           coiffure,
-        type:"Reservation coiffure",
-           heures,magasin:mag,status:"En attente",email,adresse,imageMag
-           
-          }).then((response)=>{
+        const dat = new Date;
+
+        const year = dat.getUTCFullYear();
+        const day = dat.getUTCDate();
+        const month = dat.getUTCMonth() + 1;
+        const hours = dat.getUTCHours();
+        const minutes = dat.getUTCMinutes();
+        const seconds = dat.getUTCSeconds();
+
+        const idRes = generateCustomKey()
+
+
+        const hashDigest = sha256("RE" + year + month + day + hours + minutes + seconds).toString(CryptoJS.enc.Hex);
+
+        const hash = hashDigest.slice(0, 3).toString()
+        set(ref(db2, `Reservation/${idRes}${hash}`), {
+            nom,
+            numero,
+            reservationId: `${idRes}${hash}`,
+            note,
+            coiffure,
+            type: "Reservation coiffure",
+            heures, magasin: mag, status: "En attente", email, adresse, imageMag
+        }).then((response) => {
             toast({
-                description:"Nous vous contacterons pour la confirmation",
-                title:"Reservation enregistrée",
-                status:"success",
-                duration:9000,
-                
+                description: "Nous vous contacterons pour la confirmation",
+                title: "Reservation enregistrée",
+                status: "success",
+                duration: 9000,
+
             })
             onClose()
             setLoader(false)
-          }).catch((error)=>{
+        }).catch((error) => {
             setLoader(false)
             toast({
-                description:"Veuillez reesayer",
-                title:"Erreur lors de la reservation",
-                status:"error",
-                duration:9000,
-                
+                description: "Veuillez reesayer",
+                title: "Erreur lors de la reservation",
+                status: "error",
+                duration: 9000,
+
             })
-          });
+        });
     }
+  
 
-   
 
-    const handleSaveHours = (data) =>{
+    const handleSaveHours = (data,index) => {
         setHeures(data),
-        toast({
-            status:"info",position:"top",title:"Heure enregistré"
+        colour.map((couleur,indexed)=>{
+            if(index == indexed ){
+               colour[indexed] = "cyan.600";
+               tcolour[indexed] = "white";
+               console.log(indexed,"cyan.600");
+            }else{
+                colour[indexed] = "white";
+                tcolour[indexed] = "black";
+            }
         })
     }
 
 
-    useEffect(()=>{
-        try{
+    useEffect(() => {
+        try {
+            const starCountRef = ref(db2, `${categorie}/${mag}`);
+
+            onValue(starCountRef, (snapshot) => {
+                // console.log(snapshot.val());
+                const donnes = snapshot.val();
+                if (donnes != null && donnes != undefined) {
+                    Object.keys(donnes).map((data) => {
+                        produitKeys.push(data)
+
+                    })
+                }
+
+                if (donnes != null) {
+                    const newProducts = Object.keys(donnes).map((key) => ({
+                        id: key,
+                        ...donnes[key],
+                    }));
+
+                    setProduit(newProducts);
+                }
+            });
             setEmail(sessionStorage.getItem("email"))
-        }catch{
+        } catch {
             console.log("inexistant")
         }
-    },[])
+    }, [])
 
 
 
 
-    return(<>
-     <Button colorScheme='blue' my={5}  onClick={onOpen} mr={3} py={2} px={4} >
-                            Reserver un créneau
-                        </Button>
+    return (<>
+        <Button colorScheme='blue' my={5} onClick={onOpen} mr={3} py={2} px={4} >
+            Reserver un créneau
+        </Button>
 
-   <Modal isOpen={isOpen} onClose={onClose} >
-                <ModalOverlay />
-                <ModalContent >
-                    <ModalHeader>Reservation chez {mag}</ModalHeader>
-                    <ModalCloseButton />
-                    <ModalBody>
+        <Modal isOpen={isOpen} onClose={onClose} >
+            <ModalOverlay />
+            <ModalContent >
+                <ModalHeader>Reservation chez {mag}</ModalHeader>
+                <ModalCloseButton />
+                <ModalBody>
 
-                        <SimpleGrid columns={[1, 1, 1, 2, 2]} spacingX={5} spacingY={5}>
-                            <InputGroup display={"grid"}>
+                    <SimpleGrid columns={[1, 1, 1, 2, 2]} spacingX={5} spacingY={5}>
+                        <InputGroup display={"grid"}>
                             <Text>Nom : </Text>
-                            <Input type="text" onChange={(e)=>setNom(e.target.value)} bgColor={"white"} placeholder="Nom" />
-                            </InputGroup>
-                            <InputGroup display={"grid"}>
+                            <Input type="text" onChange={(e) => setNom(e.target.value)} bgColor={"white"} placeholder="Nom" />
+                        </InputGroup>
+                        <InputGroup display={"grid"}>
                             <Text>Numéro : </Text>
-                            <Input type="number" maxLength={10} onChange={(e)=>setNumero(e.target.value)} bgColor={"white"} placeholder="Numéro" />
-                            </InputGroup>
-                          
-                            <Box>
+                            <Input type="number" maxLength={10} onChange={(e) => setNumero(e.target.valueAsNumber)} bgColor={"white"} placeholder="Numéro" />
+                        </InputGroup>
+
+                        <Box>
                             <Text mb={0}>Date : </Text>
-                            <Input type="date" onChange={(e)=>setJournée(e.target.value)} bgColor={"white"} /></Box>
-                            <Box>
+                            <Input type="date" onChange={(e) => setJournée(e.target.value)} bgColor={"white"} /></Box>
+                        <Box>
                             <Text mb={0}>Coiffure : </Text>
-                            <Select type="date" onChange={(e)=>setCoiffure(e.target.value)} bgColor={"white"}>
-                                {/* {data.map((d,i)=>(
-                                    <option key={i} value={d}>{d}</option>
-                                ))} */}
+                            <Select onChange={(e) => setCoiffure(e.target.value)} bgColor={"white"}>
+                                {produit ? produit.map((d, i) => (  
+                                    <option key={i} value={d.nom}>{d.nom}</option>
+                                )):<></>}
                             </Select>
-                            </Box>
-                        </SimpleGrid>
-                        <Box mt={5}>
+                        </Box>
+                    </SimpleGrid>
+                    <Box mt={5}>
                         <Text color>heure :</Text>
                         <Box bgColor={"white"} width={"100%"} pl={10} height={"fit-content"} py={2} border={"1px solid black"} mt={2} borderRadius={"5px"}>
-                           
-                        <SimpleGrid columns={2} >
-                            {horaire.map((data,index)=><Text key={index} onClick={()=>{handleSaveHours(data)}} _hover={{bgColor:"cyan.500"}}>{data<10? `0${data}` : data}</Text>)}
-                        </SimpleGrid>
-                      
-                        </Box>
-                        </Box>
-                        <Box>
-                            <Text mr={2} fontWeight={700}>
-                                Note:
-                            </Text>
-                            <Textarea bgColor={"white"} onChange={(e)=>setNote(e.target.value)}/>
-                        </Box>
-                       
-                    </ModalBody>
 
-                    <ModalFooter>
-                        <Button colorScheme='blue' isLoading={loader} onClick={()=>{handleSubmit()}} mr={3} py={2} px={4} >
-                            Reserver
-                        </Button>
-                        <Button color={"white"}  py={2} px={4} bgColor={"red"} _hover={{
-                            bgColor:"red.700"
-                        }} onClick={onClose}>Annuler</Button>
-                    </ModalFooter>
-                </ModalContent>
-            </Modal>
+                            <SimpleGrid columns={2} >
+                            {horaire.map((data, index) => <Text p={2} color={tcolour[index]} borderRadius={"25px"} w={"fit-content"} key={index} onClick={() => { handleSaveHours(data,index) }}bgColor={colour[index]}>{data < 10 ? `0${data}` : data}</Text>)}
+                            </SimpleGrid>
+
+                        </Box>
+                    </Box>
+                    <Box>
+                        <Text mr={2} fontWeight={700}>
+                            Note:
+                        </Text>
+                        <Textarea bgColor={"white"} onChange={(e) => setNote(e.target.value)} />
+                    </Box>
+
+                </ModalBody>
+
+                <ModalFooter>
+                    <Button colorScheme='blue' isLoading={loader} onClick={() => { handleSubmit() }} mr={3} py={2} px={4} >
+                        Reserver
+                    </Button>
+                    <Button color={"white"} py={2} px={4} bgColor={"red"} _hover={{
+                        bgColor: "red.700"
+                    }} onClick={onClose}>Annuler</Button>
+                </ModalFooter>
+            </ModalContent>
+        </Modal>
     </>)
 }
