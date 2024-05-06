@@ -126,12 +126,18 @@ useEffect(() =>{
                       Rupture
                     </Box>
                   )}
-                  <Image
+                  {data.imageUrl ? <Image
                     height={["150px", "150px", "150px", "100px", "100px"]}
                     width={["150px", "150px", "150px", "100px", "100px"]}
                     src={data.imageUrl}
                     alt={data.nom}
-                  />
+                  />: <Image
+                  height={["150px", "150px", "150px", "100px", "100px"]}
+                  width={["150px", "150px", "150px", "100px", "100px"]}
+                  src={"https://placehold.co/600x400@3x.png"}
+                  alt={data.nom}
+                /> }
+                  
                   <Box height={"fit-content"} >
                     <Text
                       width={["150px", "150px", "150px", "100px", "100px"]}

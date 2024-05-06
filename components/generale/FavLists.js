@@ -136,6 +136,7 @@ export default function Favlist(card) {
     const q = query(collection(db, "ServicesFav"));
   
     const querySnapshot = await getDocs(q);
+    // console.log("docs",querySnapshot.data())
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
   // console.log(doc.data())
@@ -151,7 +152,16 @@ export default function Favlist(card) {
           console.log(datee,dat)
           const starCountRef = ref(db2, `${dat}/${datee}`);
           onValue(starCountRef, (snapshot) => {
-            setData(snapshot.val());
+            const donnes = snapshot.val();
+            if (donnes != null) {
+              const newProducts = Object.keys(donnes).map((key) => ({
+                id: key,
+                ...donnes[key],
+              }));
+              
+              setData(newProducts);
+            // data.push(snapshot.val());
+            }
             // console.log(snapshot.val())
           });
         }

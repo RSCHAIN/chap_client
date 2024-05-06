@@ -799,11 +799,11 @@ export default function Commande() {
           <TabPanel bgColor={"white"}>
             <Tabs isManual isLazy w={"100% "}  pb={10}>
               <Center>
-              <TabList>
-                <Tab>Commandes en cours</Tab>
-                <Tab>Commandes validée(s)</Tab>
-                <Tab>Commandes Livrée(s)</Tab>
-                <Tab>Commandes annulée(s)</Tab>
+              <TabList >
+                <Tab fontSize={{base:"12px", lg:"20px"}} ml={5}>Commandes en cours</Tab>
+                <Tab fontSize={{base:"12px", lg:"20px"}}>Commandes validée(s)</Tab>
+                <Tab fontSize={{base:"12px", lg:"20px"}}>Commandes Livrée(s)</Tab>
+                <Tab fontSize={{base:"12px", lg:"20px"}} mr={5}>Commandes annulée(s)</Tab>
               </TabList>
               </Center>
               <TabPanels  bgColor={"#f3f3f3"}>

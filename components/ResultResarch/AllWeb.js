@@ -144,8 +144,18 @@ export function ItemCard({ item}) {
               width={"100%"}
               bg={"rgba(0, 0, 0, 0.277)"}
             >
-               <Image src={item.imageUrl} alt={"image du magasin"} width={"100%"} height={"100%"} borderRadius={25}/>
-              
+               {/* <Image src={item.imageUrl} alt={"image du magasin"} width={"100%"} height={"100%"} borderRadius={25}/> */}
+               {item.imageUrl ? <Image
+                    width={"100%"} height={"100%"}
+                    src={item.imageUrl}
+                    alt={item.nom}
+                    borderRadius={25}
+                  />: <Image
+                  width={"100%"} height={"100%"}
+                  borderRadius={25}
+                  src={"https://placehold.co/600x400@3x.png"}
+                  alt={item.nom}
+                /> }
             </Flex>
             
             <Box mt={"-50px"}>

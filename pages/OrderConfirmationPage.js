@@ -56,9 +56,9 @@ function OrderConfirmationPage() {
     ////fin
     const [email,setEmail] = useState("")
     const [cart, setCart] = useState([]);
-    const [lieu, setLieu] = useState(" NON DEFINI");
-    const [numero, setNumero] = useState("NON DEFINI ");
-    const [nom, setNom] = useState(" NON DEFINI");
+    const [lieu, setLieu] = useState(secureLocalStorage.getItem("addresse"));
+    const [numero, setNumero] = useState(secureLocalStorage.getItem("number"));
+    const [nom, setNom] = useState(secureLocalStorage.getItem("name")+secureLocalStorage.getItem("surname"));
     const [prix, setPrix] = useState();
     const { isOpen, onOpen, onClose } = useDisclosure();
     const path =usePathname()
@@ -510,44 +510,16 @@ function OrderConfirmationPage() {
                                                     duration: 9000,
                                                     isClosable: true,
                                                   });
-                                                  // secureLocalStorage.removeItem("Cart");
+                                                 
                                                   await DeleteAll()
-                                                  // router.reload();
+                                                  
                                               });
                                           }}
                                         />
                                         </Box>
                                 </div>
                             </div>
-                            {/* <div className="bg-white p-10 rounded-lg shadow-[0_0_12px_rgba(0,0,0,0.2)]">
-                                <div className="flex flex-col justify-center items-center">
-                                    <h2 className="text-xl lg:text-2xl mb-6 font-bold">Date de livraison</h2>
-                                    <ul className="flex justify-between items-center w-full lg:text-[1rem] text-sm font-medium text-gray-900 bg-white sm:flex">{/** onChange={setDay} value={day} onClick={() => setSect2("grid")}  
-                                        <li className="w-full border-gray-200 dark:border-gray-600">
-                                            <div className="flex items-center ps-3">
-                                                <input id="horizontal-list-radio-license" type="radio" value="Mercredi" name="date-livraison" className="w-4 h-4 text-cyan-800 bg-slate-800 border-l-slate-800 focus:ring-cyan-800 dark:focus:ring-cyan-800"
-                                                onClick={(e) => setGetDeliveryDay(e.target.value)}/>
-                                                <label for="horizontal-list-radio-license" id="list-radio" className="w-full py-3 ms-2 lg:text-[1rem] text-sm font-medium text-gray-900 dark:text-lateborder-l-slate-800">Mercredi</label>
-                                            </div>
-                                        </li>
-                                        <li className="w-full border-gray-200 dark:border-gray-600">
-                                            <div className="flex items-center ps-3">
-                                                <input id="horizontal-list-radio-id" type="radio" value="Vendredi" name="date-livraison" className="w-4 h-4 text-cyan-800 bg-slate-800 border-l-slate-800 focus:ring-cyan-800 dark:focus:ring-cyan-800"
-                                                onClick={(e) => setGetDeliveryDay(e.target.value)}/>
-                                                <label for="horizontal-list-radio-id" id="list-radio" className="w-full py-3 ms-2 lg:text-[1rem] text-sm font-medium text-gray-900 dark:text-lateborder-l-slate-800">Vendredi</label>
-                                            </div>
-                                        </li>
-                                        <li className="w-full border-gray-200 dark:border-gray-600">
-                                            <div className="flex items-center ps-3">
-                                                <input id="horizontal-list-radio-id" type="radio" value="Samedi" name="date-livraison" className="w-4 h-4 text-cyan-800 bg-slate-800 border-l-slate-800 focus:ring-cyan-800 dark:focus:ring-cyan-800"
-                                                onClick={(e) => setGetDeliveryDay(e.target.value)}/>
-                                                <label for="horizontal-list-radio-id" id="list-radio" className="w-full py-3 ms-2 lg:text-[1rem] text-sm font-medium text-gray-900 dark:text-lateborder-l-slate-800">Samedi</label>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div> */}
-                            {/*   */}
+                        
                         </div>
                         <button onClick={()=>{ saveCommande3()}} className="bg-cyan-800 text-white rounded-md py-2 px-6 my-6">Confirmer l{"'"}achat</button>
                     </div>

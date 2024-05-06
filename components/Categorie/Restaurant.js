@@ -31,7 +31,8 @@ import {
   AccordionItem,
   AccordionButton,
   AccordionIcon,
-  AccordionPanel
+  AccordionPanel,
+  useBreakpointValue
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
@@ -72,6 +73,11 @@ import BoxCommerce from "./boxed/BoxCommerce";
 import AffichageComM from "./AffichageCommentairesM";
 import { FacebookIcon, FacebookShareButton, WhatsappIcon, WhatsappShareButton } from "next-share";
 import AffService from "./AfficheService";
+import Slider from "react-slick";
+import SliderComponents from "../generale/SliderComponents";
+import SliderComponents2 from "../generale/SliderComponents2";
+
+
 
 ///etoiles du feedback
 export function Star({ id, data }) {
@@ -544,7 +550,13 @@ const [ShowLoad,setShowLoad] = useState("block")
       // onOpen();
     }
   };
-
+const tester = [
+  "https://placehold.co/3840x2160.png",
+  "https://placehold.co/9000x6000.png",
+  "https://placehold.co/3000x2000@3x.png",
+  "https://placehold.co/2000x600.png",  
+  "https://placehold.co/600x400@3x.png",
+]
   useEffect(() => {
     categorie == "Epicerie" ? setDetailsLink("/Details/detailsEp") : categorie == "Textile" ? setDetailsLink("/Details/details") : setDetailsLink("/Details/detailsCo")
     if (categorie == "Resto") {
@@ -605,13 +617,63 @@ const [ShowLoad,setShowLoad] = useState("block")
     setShowLoad("none")
   }, 10000);
 
-
+  const [slider, setSlider] = useState(null);
+  const top = useBreakpointValue({ base: "90%", md: "50%" });
+  const side = useBreakpointValue({ base: "30%", md: "10px" });
 
 
   return (
-    <Box bgColor={"#f3f3f3"}>
+    <>
+       <link
+          rel="stylesheet"
+          type="text/css"
+          charSet="UTF-8"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+        />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+        />
+
+  
+    <Box bgColor={"#f3f3f3"} >
+      
       <InputBar />
       <Navbar />
+  
+      
+      {/* <SliderComponents2 prod={mag.imageUrl}  /> */}
+    {mag.imageUrl ?( typeof(mag.imageUrl) == 'string' ? 
+          <Image
+          src={mag.imageUrl}
+          display={"block"}
+          alt={`logo de ${mag.organisation}`}
+          width={"100%"}
+          maxHeight={"70vh"}
+          fit={"cover"}
+          bgSize={"cover"} 
+        />
+      :
+      <Box  width={["100%","100%","100%","100%","100%"]}  height={{ base: "xs", md: "xs", lg: "xl" }} mr={3}>
+      <Slider {...settings} ref={(slider) => setSlider(slider)}>
+          {(mag.imageUrl).map((url, index) => (
+            <>
+            <Box
+              
+              key={index}
+              overflow={"auto"}
+              height={{ base: "xs", md: "xs", lg: "xl" }}
+              minw={{ base: "full", md: "full", lg: "full" }}
+              position="relative"
+              backgroundPosition="center"
+              backgroundRepeat="no-repeat"
+              backgroundSize="contain"
+              backgroundImage={url}
+            ></Box>
+            </>
+          ))}</Slider> </Box>)
+  : <></> }
       <Flex width={"100%"} bgColor={"white"} display={["flex","flex","flex","none","none"]} justifyContent={"space-between"} >  
       <Heading  width={"fit-content"}  ></Heading>
       <Flex >
@@ -650,19 +712,14 @@ const [ShowLoad,setShowLoad] = useState("block")
           }} leftIcon={<MdIosShare />}>Partager</Button> */}
       </Flex>
       </Flex>
-      {console.log("imageurl : ", mag.imageurl,mag.organisation,mag.email)}
-      <Image
-        src={mag.imageUrl}
-        display={"block"}
-        alt={`logo de ${mag.organisation}`}
-        width={"100%"}
-        maxHeight={"70vh"}
-        fit={"cover"}
-        bgSize={"cover"}
-      />
+      
+  
+     
+       {console.log("imageurl : ",mag)}
+       {console.log(typeof(mag.imageUrl))}
     {/* {categorie == "Restaurant" ? <BoxRestau mag={mag} categorie={categorie}/> : <BoxCommerce mag={mag} categorie={categorie}/>} */}
    <Box bgColor={"white"}>
-    <BoxRestau mag={mag}  categorie={categorie} />
+    <BoxRestau mag={mag}  categorie={categorie} donnee={produit} />
     </Box>
 
       <Box display={"grid"} width={"100%"} mt={10} >
@@ -1034,5 +1091,6 @@ const [ShowLoad,setShowLoad] = useState("block")
 
 
     </Box>
+    </>
   );
 }

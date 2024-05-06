@@ -18,11 +18,10 @@ import sha256 from 'crypto-js/sha256';
 import CryptoJS from "crypto-js";
 
 
-export default function ReservationCoiff({ mag, adresse, imageMag, categorie }) {
+export default function ReservationCoiff({ mag, adresse, imageMag, categorie,produit }) {
     const { isOpen, onOpen, onClose } = useDisclosure()
 
-    const [produit, setProduit] = useState([])
-    const [produitKeys, setProduitKeys] = useState([])
+    
     const [nom, setNom] = useState("")
     const [email, setEmail] = useState("Non connecté")
     const [numero, setNumero] = useState("")
@@ -127,27 +126,8 @@ export default function ReservationCoiff({ mag, adresse, imageMag, categorie }) 
 
     useEffect(() => {
         try {
-            const starCountRef = ref(db2, `${categorie}/${mag}`);
-
-            onValue(starCountRef, (snapshot) => {
-                // console.log(snapshot.val());
-                const donnes = snapshot.val();
-                if (donnes != null && donnes != undefined) {
-                    Object.keys(donnes).map((data) => {
-                        produitKeys.push(data)
-
-                    })
-                }
-
-                if (donnes != null) {
-                    const newProducts = Object.keys(donnes).map((key) => ({
-                        id: key,
-                        ...donnes[key],
-                    }));
-
-                    setProduit(newProducts);
-                }
-            });
+           
+          
             setEmail(sessionStorage.getItem("email"))
         } catch {
             console.log("inexistant")
@@ -158,6 +138,7 @@ export default function ReservationCoiff({ mag, adresse, imageMag, categorie }) 
 
 
     return (<>
+ 
         <Button colorScheme='blue' my={5} onClick={onOpen} mr={3} py={2} px={4} >
             Reserver un créneau
         </Button>
@@ -176,7 +157,7 @@ export default function ReservationCoiff({ mag, adresse, imageMag, categorie }) 
                         </InputGroup>
                         <InputGroup display={"grid"}>
                             <Text>Numéro : </Text>
-                            <Input type="number" maxLength={10} onChange={(e) => setNumero(e.target.valueAsNumber)} bgColor={"white"} placeholder="Numéro" />
+                            <Input type="number" maxLength={10} onChange={(e) => setNumero(e.target.value)} bgColor={"white"} placeholder="Numéro" />
                         </InputGroup>
 
                         <Box>

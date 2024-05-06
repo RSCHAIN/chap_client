@@ -15,7 +15,7 @@ import { FacebookIcon, FacebookShareButton, WhatsappIcon, WhatsappShareButton } 
 import { useRouter } from 'next/router';
 
 function BoxRestau({
-    mag,categorie
+    mag,categorie,donnee
 }) {
     const day = [
         "lundi",
@@ -35,7 +35,7 @@ const router =useRouter()
 
   return (
     <>
-    
+ 
      <Center>
     <Box bgColor={"white"}>
       
@@ -263,7 +263,7 @@ const router =useRouter()
           </Flex>
         </Flex>
         <Center>
-        {mag.ReservationPos ? <ReservationButton mag={mag.organisation} adresse={mag.adresse} imageMag={mag.imageUrl} /> : categorie == "Salon de Coiffure" ? <ReservationCoiff mag={mag.organisation} adresse={mag.adresse} imageMag={mag.imageUrl} categorie={categorie}/> : <></>}
+        {mag.ReservationPos ? <ReservationButton mag={mag.organisation} adresse={mag.adresse} imageMag={mag.imageUrl} /> : categorie == "Salon de Coiffure" ? <ReservationCoiff mag={mag.organisation} adresse={mag.adresse} imageMag={mag.imageUrl} categorie={categorie} produit={donnee}/> : <></>}
         </Center>
       </Box>
       <Box  bgColor={"white"} mt={10} >
