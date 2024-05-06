@@ -415,7 +415,7 @@ function OrderConfirmationPage() {
             }
         return (
             <>
-                <div className="bg-slate-300">
+                <div className="bg-slate-300 h-screen">
                     <div className="container mx-auto px-10 lg:px-0 flex flex-col justify-center items-center">
                         <h1 className="text-xl lg:text-3xl py-10 font-bold">Validation de la commande</h1>
                         <div className="flex flex-col gap-6">
