@@ -2,7 +2,7 @@ import { Box, Center, Flex, Text, Image, Button, Input, Heading, Icon, SimpleGri
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { FaTrashAlt } from "react-icons/fa";
-import { ref as rf, set, push,serverTimestamp } from "@firebase/database";
+import { ref as rf, set, push, serverTimestamp } from "@firebase/database";
 import { authentic, db, db2 } from "@/FIREBASE/clientApp";
 import { PayPalButtons } from "@paypal/react-paypal-js";
 import axios from "axios";
@@ -16,7 +16,7 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 
 
-import {usePathname} from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { getCartsByUserId } from "../components/getcart";
 import sha256 from 'crypto-js/sha256';
 import CryptoJS from "crypto-js";
@@ -25,7 +25,14 @@ import InputBar from "@/components/InputBar";
 
 
 function OrderConfirmationPage() {
-    
+    const restrictEsp = ["91",
+        "92",
+        "93",
+        "94",
+        "95",
+        "75",
+        "77",
+        "78"]
     const toast = useToast();
     const router = useRouter();
     const [isLagerThan768] = useMediaQuery("(min-width: 768px)");
@@ -49,24 +56,24 @@ function OrderConfirmationPage() {
 
     // const [lieu,setLieu]= useState("")
     const [rue, setRue] = useState("NON DEFINI");
-    const [postal, setPostal] = useState("NON DEFINI");
+    const [postal, setPostal] = useState(secureLocalStorage.getItem("po"));
     const [ville, setVille] = useState("non renseigner");
     const [batiment, setBatiment] = useState("NON DEFINI");
 
     ////fin
-    const [email,setEmail] = useState("")
+    const [email, setEmail] = useState("")
     const [cart, setCart] = useState([]);
-    const [lieu, setLieu] = useState(secureLocalStorage.getItem("addresse"));
+    const [lieu, setLieu] = useState(secureLocalStorage.getItem("addresse") ?? rue + postal + ville);
     const [numero, setNumero] = useState(secureLocalStorage.getItem("number"));
-    const [nom, setNom] = useState(secureLocalStorage.getItem("name")+secureLocalStorage.getItem("surname"));
+    const [nom, setNom] = useState(secureLocalStorage.getItem("name") + secureLocalStorage.getItem("surname"));
     const [prix, setPrix] = useState();
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const path =usePathname()
+    const path = usePathname()
 
     const [frais, setFrais] = useState();
     const [dis, setDis] = useState();
     const [month2, setMonth2] = useState("");
-    const [day2, setDay2] = useState("");
+    const [showesp, setShowEsp] = useState(false);
 
 
     const toggleFunc = () => {
@@ -74,70 +81,70 @@ function OrderConfirmationPage() {
     }
 
 
-    const getCart2 = async (email)=>{
+    const getCart2 = async (email) => {
         try {
             const cartRef = collection(db, 'orders'); // Assurez-vous que la collection est correcte.
             const q = query(cartRef, where('email', '==', email));
-        
+
             const querySnapshot = await getDocs(q);
             if (querySnapshot.size >= 1) {
                 const cartDoc = querySnapshot.docs;
                 const po = secureLocalStorage.getItem("po")
                 // console.log("po",po)
                 let PrixT = 0;
-                
+
                 const All = cartDoc;
-            
-                
+
+
                 if (All != null) {
                     All.map((data, index) => {
                         PrixT = parseFloat(data.data().orderPrice) + PrixT;
                     });
                     setPrix(PrixT);
-                    }
-                    if (PrixT <= 30) {
-                        setDis("grid");
-                        (po.slice(0, 2) == 91 ||
+                }
+                if (PrixT <= 30) {
+                    setDis("grid");
+                    (po.slice(0, 2) == 91 ||
                         po.slice(0, 2) == 94 ||
                         po.slice(0, 2) == 93 ||
                         po.slice(0, 2) == 92 ||
                         po.slice(0, 2) == 78 ||
                         po.slice(0, 2) == 77 ||
-                        po.slice(0, 2) == 75) ?setFrais("2.99") : setFrais("5.99");
-                
-                    } else {
-                        setDis("grid");
-                        if (PrixT < 40 && PrixT > 29) {
-                            setFrais((PrixT * 10) / 100);
-                        }   
-                        else {
-                            if (PrixT < 51) {
-                                setFrais((PrixT * 9) / 100);
+                        po.slice(0, 2) == 75) ? setFrais("2.99") : setFrais("5.99");
+
+                } else {
+                    setDis("grid");
+                    if (PrixT < 40 && PrixT > 29) {
+                        setFrais((PrixT * 10) / 100);
+                    }
+                    else {
+                        if (PrixT < 51) {
+                            setFrais((PrixT * 9) / 100);
+                        } else {
+                            if (PrixT < 71) {
+                                setFrais((PrixT * 8) / 100);
                             } else {
-                                if (PrixT < 71) {
-                                    setFrais((PrixT * 8) / 100);
+                                if (PrixT < 81) {
+                                    setFrais((PrixT * 7) / 100);
                                 } else {
-                                    if (PrixT < 81) {
-                                        setFrais((PrixT * 7) / 100);
+                                    if (PrixT < 91) {
+                                        setFrais((PrixT * 6) / 100);
                                     } else {
-                                        if (PrixT < 91) {
-                                            setFrais((PrixT * 6) / 100);
-                                        } else {
-                                            if (90 < PrixT) {
-                                                setFrais((PrixT * 5) / 100);
-                                            }
+                                        if (90 < PrixT) {
+                                            setFrais((PrixT * 5) / 100);
                                         }
                                     }
-                                }    
+                                }
                             }
                         }
-                                
-                                
-                            
                     }
-            
+
+
+
+                }
+
                 secureLocalStorage.setItem("prix", PrixT);
-            
+
                 return cartDoc;
             } else {
                 return null; // Aucun panier trouvé pour cet utilisateur.
@@ -149,36 +156,36 @@ function OrderConfirmationPage() {
     }
 
     useEffect(() => {
-       
+
         setEmail(sessionStorage.getItem("email"))
-    
+
         getCartsByUserId(email).then((userCarts) => {
-        
+
             if (userCarts.length > 0) {
                 setCart(userCarts);
                 const po = secureLocalStorage.getItem("po")
                 // console.log("po",po)
                 let PrixT = 0;
-                
+
                 const All = userCarts;
 
-            
+
                 if (All != null) {
                     All.map((data, index) => {
-                        PrixT = (parseFloat(data.orderPrice)* data.orderQte )+ PrixT;
+                        PrixT = (parseFloat(data.orderPrice) * data.orderQte) + PrixT;
                     });
                     setPrix(PrixT);
                 }
                 if (PrixT <= 30) {
                     setDis("grid");
                     (po.slice(0, 2) == 91 ||
-                    po.slice(0, 2) == 94 ||
-                    po.slice(0, 2) == 93 ||
-                    po.slice(0, 2) == 92 ||
-                    po.slice(0, 2) == 78 ||
-                    po.slice(0, 2) == 77 ||
-                    po.slice(0, 2) == 75) ?setFrais("2.99") : setFrais("5.99");
-                    
+                        po.slice(0, 2) == 94 ||
+                        po.slice(0, 2) == 93 ||
+                        po.slice(0, 2) == 92 ||
+                        po.slice(0, 2) == 78 ||
+                        po.slice(0, 2) == 77 ||
+                        po.slice(0, 2) == 75) ? setFrais("2.99") : setFrais("5.99");
+
                 } else {
                     setDis("grid");
                     if (PrixT < 40 && PrixT > 29) {
@@ -211,19 +218,20 @@ function OrderConfirmationPage() {
                 setCart([])
             }
         });
-        
-    }, [email,cart]);
+       
+       
+    }, [email, cart]);
 
 
-    const DeleteProduct = async (product)=>{
-        try{
+    const DeleteProduct = async (product) => {
+        try {
             const cartRef = collection(db, 'orders'); // Supposons que la collection se nomme 'carts'.
-            const q = query(cartRef, where('email', '==', email),where("productId", '==' , product));
+            const q = query(cartRef, where('email', '==', email), where("productId", '==', product));
             const querySnapshot = await getDocs(q);
-            const cartDoc = querySnapshot.docs[0]; 
+            const cartDoc = querySnapshot.docs[0];
             await deleteDoc(cartDoc.ref)
             router.replace(path)
-        }catch(error){
+        } catch (error) {
             toast({
                 title: "Veuillez reesayer!!!",
                 status: "error",
@@ -231,17 +239,17 @@ function OrderConfirmationPage() {
                 isClosable: true,
             });
         }
-    
+
     }
 
-    const DeleteAll = async ()=>{
-        try{
+    const DeleteAll = async () => {
+        try {
             console.log(email)
             const cartRef = collection(db, 'orders'); // Supposons que la collection se nomme 'carts'.
             const q = query(cartRef, where('email', '==', email));
             const querySnapshot = await getDocs(q);
             const size = querySnapshot.size
-            querySnapshot.docs.map(async (data,index)=>{
+            querySnapshot.docs.map(async (data, index) => {
                 await deleteDoc(data.ref)
             })
             // const cartDoc = querySnapshot.docs[0]; 
@@ -253,7 +261,7 @@ function OrderConfirmationPage() {
                 isClosable: true,
             });
             router.replace(path)
-        }catch(error){
+        } catch (error) {
             toast({
                 title: "Veuillez reesayer!!!",
 
@@ -264,15 +272,15 @@ function OrderConfirmationPage() {
         }
     }
 
-    const Increment = async (product)=>{
-        try{
+    const Increment = async (product) => {
+        try {
             const cartRef = collection(db, 'orders'); // Supposons que la collection se nomme 'carts'.
-            const q = query(cartRef, where('email', '==', email),where("productId", '==' , product));
+            const q = query(cartRef, where('email', '==', email), where("productId", '==', product));
             const querySnapshot = await getDocs(q);
-            const cartDoc = querySnapshot.docs[0]; 
-            await updateDoc(cartDoc.ref,{orderQte:querySnapshot.docs[0].data().orderQte+1})
+            const cartDoc = querySnapshot.docs[0];
+            await updateDoc(cartDoc.ref, { orderQte: querySnapshot.docs[0].data().orderQte + 1 })
             router.replace(path)
-        }catch(error){
+        } catch (error) {
             toast({
                 title: "Veuillez reesayer!!!",
 
@@ -283,20 +291,20 @@ function OrderConfirmationPage() {
         }
     }
 
-    const Decrement = async (product)=>{
-        try{
+    const Decrement = async (product) => {
+        try {
             const cartRef = collection(db, 'orders'); // Supposons que la collection se nomme 'carts'.
-            const q = query(cartRef, where('email', '==', email),where("productId", '==' , product));
+            const q = query(cartRef, where('email', '==', email), where("productId", '==', product));
             const querySnapshot = await getDocs(q);
-            const cartDoc = querySnapshot.docs[0]; 
-            if(querySnapshot.docs[0].data().orderQte<2){
+            const cartDoc = querySnapshot.docs[0];
+            if (querySnapshot.docs[0].data().orderQte < 2) {
                 await DeleteProduct(product)
-            }else{
-                await updateDoc(cartDoc.ref,{orderQte:querySnapshot.docs[0].data().orderQte-1})
+            } else {
+                await updateDoc(cartDoc.ref, { orderQte: querySnapshot.docs[0].data().orderQte - 1 })
             }
 
             router.replace(path)
-        }catch(error){
+        } catch (error) {
             toast({
                 title: "Veuillez reesayer!!!",
 
@@ -306,7 +314,7 @@ function OrderConfirmationPage() {
             });
         }
     }
-    const [ref,setRef] = useState([])
+    const [ref, setRef] = useState([])
 
     function generateCustomKey() {
         // Obtenez le timestamp actuel en millisecondes
@@ -323,7 +331,7 @@ function OrderConfirmationPage() {
             timeZone: 'UTC'
         });
 
-        const [{ value: month },,{ value: day },,{ value: year },,{ value: hour },,{ value: minute },,{ value: second }] = dateFormat.formatToParts(timestamp);
+        const [{ value: month }, , { value: day }, , { value: year }, , { value: hour }, , { value: minute }, , { value: second }] = dateFormat.formatToParts(timestamp);
 
         // Créez la clé personnalisée en utilisant le timestamp formaté
         const formattedTimestamp = `${year}${day}${month}${hour}${minute}${second}`;
@@ -331,39 +339,39 @@ function OrderConfirmationPage() {
         return `CO${formattedTimestamp}`;
     }
 
-
-    if (cart != undefined && cart.length != 0){
+ let evaluated = false;
+    if (cart != undefined && cart.length != 0) {
         async function saveCommande3() {
-        
-        let email = sessionStorage.getItem("email");
-        let Cart = cart;
-        const dat = new Date;
-        
-        const year =dat.getUTCFullYear();
-        const day =dat.getUTCDate();
-        const month =dat.getUTCMonth()+1;
-        const hours =dat.getUTCHours();
-        const minutes =dat.getUTCMinutes();
-        const seconds =dat.getUTCSeconds();
 
-        const idCom = generateCustomKey();
+            let email = sessionStorage.getItem("email");
+            let Cart = cart;
+            const dat = new Date;
 
-        
-        const hashDigest = sha256(idCom).toString(CryptoJS.enc.Hex);
-        
-        const hash = hashDigest.slice(0,3).toString()
+            const year = dat.getUTCFullYear();
+            const day = dat.getUTCDate();
+            const month = dat.getUTCMonth() + 1;
+            const hours = dat.getUTCHours();
+            const minutes = dat.getUTCMinutes();
+            const seconds = dat.getUTCSeconds();
 
-        const dateCommande = `${day}/${month}/${year}`
-            
+            const idCom = generateCustomKey();
+
+
+            const hashDigest = sha256(idCom).toString(CryptoJS.enc.Hex);
+
+            const hash = hashDigest.slice(0, 3).toString()
+
+            const dateCommande = `${day}/${month}/${year}`
+
             set(rf(db2, `Commandes/${idCom}${hash}`), {
-                cartlist:Cart,
+                cartlist: Cart,
                 payment: moyen,
-                commandeId:`${idCom}${hash}`,
-                livraison:methodPayment,
-                modelivraison:methodPayment,
+                commandeId: `${idCom}${hash}`,
+                livraison: methodPayment,
+                modelivraison: methodPayment,
                 email,
-                way:methodPayment,
-                address:secureLocalStorage.getItem("addresse"),
+                way: methodPayment,
+                address: lieu,
                 status: "En attente",
                 ville: ville,
                 rue: rue,
@@ -377,44 +385,54 @@ function OrderConfirmationPage() {
                 modePaiement: methodPayment,
                 moment: getDeliveryDay,
                 dateCommande,
-                subtotalPrice:`€${prix}`,
-                totalPrice:`€${parseFloat(prix +parseFloat(frais)).toFixed(2)}`,
-                createdAt: serverTimestamp()}
-            );
-            
-        
-            await axios
-            .post("/api/sendmail", {
-                adresse:lieu,
-                commandeId:`${idCom}${hash}`,
-                email: email.toString(),
-                way:way,
-                paiement: moyen,
-                adresse:secureLocalStorage.getItem("addresse"),
-                paiement:moyen,
-                name:secureLocalStorage.getItem("name"),
-                product:Cart,
-                totalPrice:`€${parseFloat(prix +parseFloat(frais)).toFixed(2)}`,
-                frais:parseFloat(frais).toFixed(2)
-            })
-            .then((response) => {
-                toast({
-                    title: "SUCCES",
-                    description: `merci pour la confiance`,
-                    status: "success",
-                    duration: 9000,
-                    isClosable: true,
-                });
-            })
-            .catch((error)=>{});
-            await  DeleteAll()
-                setLieu("");
-                setNom("");
-                setNumero("");
-                // router.reload();
+                subtotalPrice: `€${prix}`,
+                totalPrice: `€${parseFloat(prix + parseFloat(frais)).toFixed(2)}`,
+                createdAt: serverTimestamp()
             }
+            );
+
+
+            await axios
+                .post("/api/sendmail", {
+                    adresse: lieu,
+                    commandeId: `${idCom}${hash}`,
+                    email: email.toString(),
+                    way: way,
+                    paiement: moyen,
+                    adresse: secureLocalStorage.getItem("addresse"),
+                    paiement: moyen,
+                    name: secureLocalStorage.getItem("name"),
+                    product: Cart,
+                    totalPrice: `€${parseFloat(prix + parseFloat(frais)).toFixed(2)}`,
+                    frais: parseFloat(frais).toFixed(2)
+                })
+                .then((response) => {
+                    toast({
+                        title: "SUCCES",
+                        description: `merci pour la confiance`,
+                        status: "success",
+                        duration: 9000,
+                        isClosable: true,
+                    });
+                })
+                .catch((error) => { });
+            await DeleteAll()
+            setLieu("");
+            setNom("");
+            setNumero("");
+            // router.reload();
+        }
+
+      
         return (
             <>
+               { restrictEsp.map((data,index)=>{
+            if ((data.slice(0,2) == postal.slice(0,2)) && postal.length>=5) {
+                
+            evaluated = true;
+
+       }
+        })}
                 <div className="bg-slate-300 h-screen">
                     <div className="container mx-auto px-10 lg:px-0 flex flex-col justify-center items-center">
                         <h1 className="text-xl lg:text-3xl py-10 font-bold">Validation de la commande</h1>
@@ -436,102 +454,103 @@ function OrderConfirmationPage() {
                                 <div className="w-full lg:w-3/6 mx-auto bg-white p-10 rounded-lg shadow-[0_0_12px_rgba(0,0,0,0.9)]">
                                     <form className="flex flex-col justify-center items-center gap-3">
                                         <div className="flex justify-start w-full">
-                                            <span className="size-10 flex justify-center items-center bg-cyan-800 text-white"><FontAwesomeIcon icon={faUser}/></span>
-                                            <input type="text" className="border w-full focus:outline-none focus:border-cyan-800 placeholder:text-slate-400 block bg-white rounded-sm py-2 pl-9 pr-3 shadow-sm focus:ring-cyan-800 focus:ring-1 sm:text-sm" placeholder="Nom"/>
+                                            <span className="size-10 flex justify-center items-center bg-cyan-800 text-white"><FontAwesomeIcon icon={faUser} /></span>
+                                            <input type="text" value={nom} onChange={(e) => setNom(e.target.value)} className="border w-full focus:outline-none focus:border-cyan-800 placeholder:text-slate-400 block bg-white rounded-sm py-2 pl-9 pr-3 shadow-sm focus:ring-cyan-800 focus:ring-1 sm:text-sm" placeholder="Nom" />
                                         </div>
                                         <div className="flex justify-start w-full">
-                                            <span className="size-10 flex justify-center items-center bg-cyan-800 text-white"><FontAwesomeIcon icon={faPhone}/></span>
-                                            <input type="text" className="border w-full focus:outline-none focus:border-cyan-800 placeholder:text-slate-400 block bg-white rounded-sm py-2 pl-9 pr-3 shadow-sm focus:ring-cyan-800 focus:ring-1 sm:text-sm" placeholder="Numéro de téléphone"/>
+                                            <span className="size-10 flex justify-center items-center bg-cyan-800 text-white"><FontAwesomeIcon icon={faPhone} /></span>
+                                            <input type="text" onChange={(e) => setNumero(e.target.value)} className="border w-full focus:outline-none focus:border-cyan-800 placeholder:text-slate-400 block bg-white rounded-sm py-2 pl-9 pr-3 shadow-sm focus:ring-cyan-800 focus:ring-1 sm:text-sm" placeholder="Numéro de téléphone" />
                                         </div>
                                         <div className="flex justify-start w-full">
-                                            <span className="size-10 flex justify-center items-center bg-cyan-800 text-white"><FontAwesomeIcon icon={faCity}/></span>
-                                            <input type="text" className="border w-full focus:outline-none focus:border-cyan-800 placeholder:text-slate-400 block bg-white rounded-sm py-2 pl-9 pr-3 shadow-sm focus:ring-cyan-800 focus:ring-1 sm:text-sm" placeholder="Ville"/>
+                                            <span className="size-10 flex justify-center items-center bg-cyan-800 text-white"><FontAwesomeIcon icon={faCity} /></span>
+                                            <input type="text" onChange={(e) => setVille(e.target.value)} className="border w-full focus:outline-none focus:border-cyan-800 placeholder:text-slate-400 block bg-white rounded-sm py-2 pl-9 pr-3 shadow-sm focus:ring-cyan-800 focus:ring-1 sm:text-sm" placeholder="Ville" />
                                         </div>
                                         <div className="flex justify-start w-full">
-                                            <span className="size-10 flex justify-center items-center bg-cyan-800 text-white"><FontAwesomeIcon icon={faRoad}/></span>
-                                            <input type="text" className="border w-full focus:outline-none focus:border-cyan-800 placeholder:text-slate-400 block bg-white rounded-sm py-2 pl-9 pr-3 shadow-sm focus:ring-cyan-800 focus:ring-1 sm:text-sm" placeholder="Nom de la rue"/>
+                                            <span className="size-10 flex justify-center items-center bg-cyan-800 text-white"><FontAwesomeIcon icon={faRoad} /></span>
+                                            <input type="text" onChange={(e) => setRue(e.target.value)} className="border w-full focus:outline-none focus:border-cyan-800 placeholder:text-slate-400 block bg-white rounded-sm py-2 pl-9 pr-3 shadow-sm focus:ring-cyan-800 focus:ring-1 sm:text-sm" placeholder="Nom de la rue" />
                                         </div>
                                         <div className="flex justify-start w-full">
-                                            <span className="size-10 flex justify-center items-center bg-cyan-800 text-white"><FontAwesomeIcon icon={faArrowUp19}/></span>
-                                            <input type="text" className="border w-full focus:outline-none focus:border-cyan-800 placeholder:text-slate-400 block bg-white rounded-sm py-2 pl-9 pr-3 shadow-sm focus:ring-cyan-800 focus:ring-1 sm:text-sm" placeholder="Numéro du batiment"/>
+                                            <span className="size-10 flex justify-center items-center bg-cyan-800 text-white"><FontAwesomeIcon icon={faArrowUp19} /></span>
+                                            <input type="text" onChange={(e) => setBatiment(e.target.value)} className="border w-full focus:outline-none focus:border-cyan-800 placeholder:text-slate-400 block bg-white rounded-sm py-2 pl-9 pr-3 shadow-sm focus:ring-cyan-800 focus:ring-1 sm:text-sm" placeholder="Numéro du batiment" />
                                         </div>
                                         <div className="flex justify-start w-full">
                                             <span className="size-10 flex justify-center items-center bg-cyan-800 text-white"><FontAwesomeIcon icon={faMailBulk} /></span>
-                                            <input type="text" className="border w-full focus:outline-none focus:border-cyan-800 placeholder:text-slate-400 block bg-white rounded-sm py-2 pl-9 pr-3 shadow-sm focus:ring-cyan-800 focus:ring-1 sm:text-sm" placeholder="Code postal"/>
+                                            <input type="text" onChange={(e) => setPostal(e.target.value)} className="border w-full focus:outline-none focus:border-cyan-800 placeholder:text-slate-400 block bg-white rounded-sm py-2 pl-9 pr-3 shadow-sm focus:ring-cyan-800 focus:ring-1 sm:text-sm" placeholder="Code postal" />
                                         </div>
                                     </form>
                                 </div>
-                            :
+                                :
                                 null
                             }
                             <div className="bg-white p-10 rounded-lg shadow-[0_0_12px_rgba(0,0,0,0.2)]">
                                 <div className="flex flex-col justify-center items-center">
                                     <h2 className="text-xl lg:text-2xl mb-6 font-bold">Mode de paiement</h2>
                                     <ul className="flex justify-between items-center w-full lg:text-[1rem] text-sm font-medium text-gray-900 bg-white sm:flex">
-                                        <li className="w-full border-gray-200 dark:border-gray-600">
-                                            <div className="flex items-center ps-3">
+                                       {evaluated ?<li className="w-full border-gray-200 dark:border-gray-600">
+                                            <div  className="flex items-center ps-3">
                                                 <input id="horizontal-list-radio-license" type="radio" value="Espèce" name="paiement" className="w-4 h-4 text-cyan-800 bg-slate-800 border-l-slate-800 focus:ring-cyan-800 dark:focus:ring-cyan-800"
-                                                onClick={(e) => setMethodPayment(e.target.value)}/>
-                                                <label for="horizontal-list-radio-license" className="w-full py-3 ms-2 lg:text-[1rem] text-sm font-medium text-gray-900 dark:text-lateborder-l-slate-800"><BsCashCoin/>Espèces</label>
+                                                    onClick={(e) => setMethodPayment(e.target.value)} />
+                                                <label  for="horizontal-list-radio-license" className="w-full py-3 ms-2 lg:text-[1rem] text-sm font-medium text-gray-900 dark:text-lateborder-l-slate-800"><BsCashCoin />Espèces</label>
                                             </div>
-                                        </li>
+                                        </li> : <></> } 
+                                       
                                         <li className="w-full border-gray-200 dark:border-gray-600">
                                             <div className="flex items-center ps-3">
                                                 <input id="horizontal-list-radio-id" type="radio" value="Paypal" name="paiement" className="w-4 h-4 text-cyan-800 bg-slate-800 border-l-slate-800 focus:ring-cyan-800 dark:focus:ring-cyan-800"
-                                                onClick={(e) => setMethodPayment(e.target.value)}/>
-                                                <label for="horizontal-list-radio-id" className="w-full py-3 ms-2 lg:text-[1rem] text-sm font-medium text-gray-900 dark:text-lateborder-l-slate-800"><BsPaypal/>Paypal</label>
+                                                    onClick={(e) => setMethodPayment(e.target.value)} />
+                                                <label for="horizontal-list-radio-id" className="w-full py-3 ms-2 lg:text-[1rem] text-sm font-medium text-gray-900 dark:text-lateborder-l-slate-800"><BsPaypal />Paypal</label>
                                             </div>
                                         </li>
                                     </ul>
-                                    <Box display={methodPayment == "Paypal"? "Block" : "none"}>
-                                    <PayPalButtons
-                                          
-                                          createOrder={(data, actions) => {
-                                            return actions.order.create({
-                                              purchase_units: [
-                                                {
-                                                  amount: {
-                                                    value: `${parseFloat(prix +parseFloat(frais)).toFixed(2)}`,
-                                                  },
-                                                },
-                                              ],
-                                            });
-                                          }}
-                                          onApprove={(data, actions) => {
-                                            return actions.order
-                                              .capture()
-                                              .then(async (details) => {
-                                                const name =
-                                                  details.payer.name.given_name;
-                                                  toast({
-                                                    title: "Achat effectué avec succès",
-                                                    description: `Merci ${name} pour votre achat!!! `,
-                                                    status: "success",
-                                                    duration: 9000,
-                                                    isClosable: true,
-                                                  });
-                                                 
-                                                  await DeleteAll()
-                                                  
-                                              });
-                                          }}
+                                    <Box display={methodPayment == "Paypal" ? "Block" : "none"}>
+                                        <PayPalButtons
+
+                                            createOrder={(data, actions) => {
+                                                return actions.order.create({
+                                                    purchase_units: [
+                                                        {
+                                                            amount: {
+                                                                value: `${parseFloat(prix + parseFloat(frais)).toFixed(2)}`,
+                                                            },
+                                                        },
+                                                    ],
+                                                });
+                                            }}
+                                            onApprove={(data, actions) => {
+                                                return actions.order
+                                                    .capture()
+                                                    .then(async (details) => {
+                                                        const name =
+                                                            details.payer.name.given_name;
+                                                        toast({
+                                                            title: "Achat effectué avec succès",
+                                                            description: `Merci ${name} pour votre achat!!! `,
+                                                            status: "success",
+                                                            duration: 9000,
+                                                            isClosable: true,
+                                                        });
+
+                                                        await DeleteAll()
+
+                                                    });
+                                            }}
                                         />
-                                        </Box>
+                                    </Box>
                                 </div>
                             </div>
-                        
+
                         </div>
-                        <button onClick={()=>{ saveCommande3()}} className="bg-cyan-800 text-white rounded-md py-2 px-6 my-6">Confirmer l{"'"}achat</button>
+                        <button onClick={() => { saveCommande3() }} className="bg-cyan-800 text-white rounded-md py-2 px-6 my-6">Confirmer l{"'"}achat</button>
                     </div>
                 </div>
             </>
         )
-    }else {
+    } else {
         return (
             <>
                 <InputBar />
                 {isLagerThan768 ? <Navbar></Navbar> : <></>}
-                <div className="bg-slate-200">
+                <div className="bg-slate-200 h-screen">
                     <div className="container mx-auto">
                         <div className="flex flex-col justify-center items-center">
                             <h1 className="text-3xl mt-10 mb-10 font-bold text-teal-800">Panier</h1>

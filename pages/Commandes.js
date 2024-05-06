@@ -801,6 +801,7 @@ export default function Commande() {
               <Center>
               <TabList >
                 <Tab fontSize={{base:"12px", lg:"20px"}} ml={5}>Commandes en cours</Tab>
+                
                 <Tab fontSize={{base:"12px", lg:"20px"}}>Commandes validée(s)</Tab>
                 <Tab fontSize={{base:"12px", lg:"20px"}}>Commandes Livrée(s)</Tab>
                 <Tab fontSize={{base:"12px", lg:"20px"}} mr={5}>Commandes annulée(s)</Tab>
