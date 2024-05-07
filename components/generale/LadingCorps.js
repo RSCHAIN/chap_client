@@ -52,6 +52,7 @@ import SearchMagg from "../SearchMagg";
 import Reservations from "../Reservations";
 import AllWeb from "../ResultResarch/AllWeb";
 import FavlistMobile from "./FavListsMobile";
+import FavlistWeb from "./FavListsWeb";
 
 
 
@@ -645,8 +646,12 @@ href={
 
                   return (
                     <>
+                    <Flex>
                       <ContainerCard key={key} card={card} />
-                      <Favlist card={card} />
+                      </Flex>
+                      <Flex>
+                      <FavlistWeb Categorie={card} />
+                      </Flex>
                     </>
                   );
                 })}
