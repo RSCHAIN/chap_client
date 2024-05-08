@@ -15,7 +15,7 @@ import {
   SimpleGrid,
   Text,
 } from "@chakra-ui/react";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import { db } from "@/FIREBASE/clientApp";
 import Tested from "./test2";
 import { useEffect } from "react";
@@ -29,11 +29,25 @@ export default function Intermed2() {
   const [check, setCheck] = useState(0);
   const [categorie, setCategorie] = useState();
   const [modalData, setModalData] = useState([]);
+  const [modalData2, setModalData2] = useState([]);
   const [jour,setJour] =useState([])
+
+
+//   const Get = async ()=>{
+  
+//     if (datas==0) {
+//         const q = query(collection(db, "Admin"), where("categorie","==", `${secureLocalStorage.getItem("service")}`),orderBy("organisation"));
+      
+//     const querySnapshot = await getDocs(q);
+//     setModalData2(querySnapshot.docs)
+    
+// }}
+
 
   useEffect(() => {
     setCategorie(secureLocalStorage.getItem("service"));
     setJour(secureLocalStorage.getItem("jour"))
+    // Get()
   }, []);
 
   const recherche = async (terms, categorie) => {
@@ -45,8 +59,35 @@ export default function Intermed2() {
 
     const querySnapshot = await getDocs(q);
 
-    setModalData(querySnapshot.docs);
+    const q2 = query(
+      collection(db, "Admin"),
+      where("codePostal", "==", String(terms).trim()),
+      where("categorie", "==", categorie)
+    );
+
+    const querySnapshot2 = await getDocs(q2);
+
+    const q3 = query(
+      collection(db, "Admin"),
+      where("organisation", "==", String(terms).trim()),
+      where("categorie", "==", categorie)
+    );
+
+    const querySnapshot3 = await getDocs(q3);
+    console.log("querySnapshot",querySnapshot.docs);
+    console.log("querySnapshot2",querySnapshot2.docs);
+    console.log("querySnapshot3",querySnapshot3.docs);
+if (querySnapshot.docs.length) {
+  setModalData(querySnapshot.docs);
+} else if (querySnapshot2.docs.length) {
+  setModalData(querySnapshot2.docs);
+}else {
+  setModalData(querySnapshot3.docs);
+}
+    
   };
+
+ 
 
   return (
     <>
