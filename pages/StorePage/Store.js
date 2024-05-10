@@ -298,7 +298,7 @@ function Store() {
                                             <img className="w-full h-[10rem]" src={item.imageUrl} alt="" />
                                         </div>
                                         <h3 className="uppercase font-bold mb-2 text-xs lg:text-sm">{item.nom}</h3>
-                                        <small className="bg-green-600 p-1 rounded-2xl text-white absolute -top-2 left-0 capitalize">{item.etat}</small>
+                                        <small className="p-1 rounded-2xl text-white absolute -top-2 left-0 capitalize">{item.etat}</small>
                                         <div className="text-yellow-300 mb-2">
                                             <i className="text-xs"><FontAwesomeIcon className="mr-2" icon={faStar} /></i>
                                             <i className="text-xs"><FontAwesomeIcon className="mr-2" icon={faStar} /></i>
@@ -343,7 +343,7 @@ function Store() {
                                                 <img className='h-[10rem]' src={item.imageUrl}/>
                                             </div>
                                             <h3 className="uppercase font-bold mb-2 text-xs lg:text-sm">{item.nom}</h3>
-                                            <small className={`${item.etat === 'Disponible'? 'bg-green-600 ' : 'bg-red-600'} bg-green-600 p-1 rounded-2xl text-white absolute -top-2 left-0 capitalize`}>{item.etat}</small>
+                                            <small className={`${item.etat === 'Disponible'? 'bg-green-600 ' : 'bg-red-600'} p-1 rounded-2xl text-white absolute -top-2 left-0 capitalize`}>{item.etat}</small>
                                             <div className="text-yellow-300 mb-2">
                                                 <i className="text-xs"><FontAwesomeIcon className="mr-2" icon={faStar} /></i>
                                                 <i className="text-xs"><FontAwesomeIcon className="mr-2" icon={faStar} /></i>
@@ -376,7 +376,7 @@ function Store() {
                                                 <img className='h-[10rem]' src={item.imageUrl}/>
                                             </div>
                                             <h3 className="uppercase font-bold mb-2 text-xs lg:text-sm">{item.nom}</h3>
-                                            <small className={`${item.etat === 'Disponible'? 'bg-green-600 ' : 'bg-red-600'} bg-green-600 p-1 rounded-2xl text-white absolute -top-2 left-0 capitalize`}>{item.etat}</small>
+                                            <small className={`${item.etat === 'Disponible'? 'bg-green-600 ' : 'bg-red-600'} p-1 rounded-2xl text-white absolute -top-2 left-0 capitalize`}>{item.etat}</small>
                                             <div className="text-yellow-300 mb-2">
                                                 <i className="text-xs"><FontAwesomeIcon className="mr-2" icon={faStar} /></i>
                                                 <i className="text-xs"><FontAwesomeIcon className="mr-2" icon={faStar} /></i>
@@ -409,7 +409,7 @@ function Store() {
                                                 <img className='h-[10rem]' src={item.imageUrl}/>
                                             </div>
                                             <h3 className="uppercase font-bold mb-2 text-xs lg:text-sm">{item.nom}</h3>
-                                            <small className={`${item.etat === 'Disponible'? 'bg-green-600 ' : 'bg-red-600'} bg-green-600 p-1 rounded-2xl text-white absolute -top-2 left-0 capitalize`}>{item.etat}</small>
+                                            <small className={`${item.etat === 'Disponible'? 'bg-green-600 ' : 'bg-red-600'} p-1 rounded-2xl text-white absolute -top-2 left-0 capitalize`}>{item.etat}</small>
                                             <div className="text-yellow-300 mb-2">
                                                 <i className="text-xs"><FontAwesomeIcon className="mr-2" icon={faStar} /></i>
                                                 <i className="text-xs"><FontAwesomeIcon className="mr-2" icon={faStar} /></i>
@@ -442,7 +442,7 @@ function Store() {
                                                 <img className='h-[10rem]' src={item.imageUrl}/>
                                             </div>
                                             <h3 className="uppercase font-bold mb-2 text-xs lg:text-sm">{item.nom}</h3>
-                                            <small className={`${item.etat === 'Disponible'? 'bg-green-600 ' : 'bg-red-600'} bg-green-600 p-1 rounded-2xl text-white absolute -top-2 left-0 capitalize`}>{item.etat}</small>
+                                            <small className={`${item.etat === 'Disponible'? 'bg-green-600 ' : 'bg-red-600'} p-1 rounded-2xl text-white absolute -top-2 left-0 capitalize`}>{item.etat}</small>
                                             <div className="text-yellow-300 mb-2">
                                                 <i className="text-xs"><FontAwesomeIcon className="mr-2" icon={faStar} /></i>
                                                 <i className="text-xs"><FontAwesomeIcon className="mr-2" icon={faStar} /></i>
@@ -485,7 +485,7 @@ function Store() {
                                             <img className='h-[10rem]' src={item.imageUrl}/>
                                         </div>
                                         <h3 className="uppercase font-bold mb-2 text-xs lg:text-sm">{item.nom}</h3>
-                                        <small className={`${item.etat === 'Disponible'? 'bg-green-600 ' : 'bg-red-600'} bg-green-600 p-1 rounded-2xl text-white absolute -top-2 left-0 capitalize`}>{item.etat}</small>
+                                        <small className={`${item.etat === 'Disponible'? 'bg-green-600 ' : 'bg-red-600'} p-1 rounded-2xl text-white absolute -top-2 left-0 capitalize`}>{item.etat}</small>
                                         <div className="text-yellow-300 mb-2">
                                             <i className="text-xs"><FontAwesomeIcon className="mr-2" icon={faStar} /></i>
                                             <i className="text-xs"><FontAwesomeIcon className="mr-2" icon={faStar} /></i>
