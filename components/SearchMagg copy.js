@@ -20,6 +20,8 @@ import { useState } from "react";
 import { db } from "@/FIREBASE/clientApp";
 import { collection, getCountFromServer, getDocs, limit, orderBy, query, where, startAfter, startAt, endAt } from "firebase/firestore";
 import { checkStoreAvailability } from "@/utils/dates";
+import Head from "next/head";
+
 
 export default function SearchMagg(){
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -114,6 +116,21 @@ export default function SearchMagg(){
 
     return(
         <>
+            <Head>
+                <script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
+                ></script>
+                <script strategy="lazyOnload">
+                {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments)}
+                gtag('js', new Date()); 
+                gtag('config', 'G-RFSVQTGJ87');
+                `}
+                
+                </script>
+            </Head>
         <Box onClick={onOpen} ml={[-4,-4,-4,5,5]} width={["100px","100px","100px","130px","130px"]}   _hover={{
             bgColor: "transparent",
             opacity: "0.7",

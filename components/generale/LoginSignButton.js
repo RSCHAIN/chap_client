@@ -3,6 +3,8 @@ import Showconnex from "../ShowConnexion";
 import { useEffect } from "react";
 import { useState } from "react";
 import secureLocalStorage from "react-secure-storage";
+import Head from "next/head";
+
 
 const LoginSignButton = () => {
     const [posta,setPosta]= useState("")
@@ -12,6 +14,21 @@ const LoginSignButton = () => {
     },[posta])
     return (
         <>
+        <Head>
+                <script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
+                ></script>
+                <script strategy="lazyOnload">
+                {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments)}
+                gtag('js', new Date()); 
+                gtag('config', 'G-RFSVQTGJ87');
+                `}
+                
+                </script>
+            </Head>
         <Flex display={["none","none","none","flex","flex"]}>  
         {/* {posta.length<=4 ? <>  </>:<>
         

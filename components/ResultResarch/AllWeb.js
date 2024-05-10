@@ -17,6 +17,7 @@ import Carousel from "react-multi-carousel";
 import { useRouter } from "next/router";
 import Favlist2 from "../generale/FavLists2";
 import Favlist from "../generale/FavLists";
+import Head from "next/head";
 
 
 const responsive = {
@@ -110,6 +111,21 @@ export function ItemCard({ item}) {
 
   return (
     <>
+    <Head>
+                <script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
+                ></script>
+                <script strategy="lazyOnload">
+                {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments)}
+                gtag('js', new Date()); 
+                gtag('config', 'G-RFSVQTGJ87');
+                `}
+                
+                </script>
+            </Head>
       {/* card  */}
       <Box
         mt={2}

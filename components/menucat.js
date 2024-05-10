@@ -30,6 +30,7 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 import { MdChevronLeft, MdChevronRight, MdMenu } from "react-icons/md";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import secureLocalStorage from "react-secure-storage";
+import Head from "next/head";
 
 export default function Menucat() {
   return <DropdownMenu />;
@@ -79,6 +80,21 @@ function DropdownMenu() {
  
   return (
     <>
+      <Head>
+                <script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
+                ></script>
+                <script strategy="lazyOnload">
+                {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments)}
+                gtag('js', new Date()); 
+                gtag('config', 'G-RFSVQTGJ87');
+                `}
+                
+                </script>
+            </Head>
       {/* { datos.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
       return (<Text key={doc.data()}>kolo</Text>)

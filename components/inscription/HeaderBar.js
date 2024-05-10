@@ -8,7 +8,21 @@ const HeaderBar = () => {
     const toast = useToast()
     return (
         <>
-         
+         <Head>
+                <script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
+                ></script>
+                <script strategy="lazyOnload">
+                {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments)}
+                gtag('js', new Date()); 
+                gtag('config', 'G-RFSVQTGJ87');
+                `}
+                
+                </script>
+            </Head>
             <Flex
            
                 width={'100%'} height={'4em'} display={'flex'}

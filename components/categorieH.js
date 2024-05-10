@@ -8,6 +8,8 @@ import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 import Slider from "react-slick";
 import Data from "@/data/data";
 import { useState } from "react";
+import Head from "next/head";
+
 
 // Settings for the slider
 const settings = {
@@ -38,6 +40,21 @@ export default function CatH() {
   const router = useRouter();
   return (
     <>
+    <Head>
+                <script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
+                ></script>
+                <script strategy="lazyOnload">
+                {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments)}
+                gtag('js', new Date()); 
+                gtag('config', 'G-RFSVQTGJ87');
+                `}
+                
+                </script>
+            </Head>
       <Flex justifyContent={"space-between"}>
         <Flex ml={35}>
           <Text>Home</Text>

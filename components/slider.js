@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import secureLocalStorage from "react-secure-storage";
+import Head from "next/head";
+
 
 export default function Slide(){
     const [carde,setCarde] = useState([])
@@ -14,6 +16,22 @@ export default function Slide(){
           })
     },[])
     return(
+      <>
+        <Head>
+          <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
+          ></script>
+          <script strategy="lazyOnload">
+          {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments)}
+          gtag('js', new Date()); 
+          gtag('config', 'G-RFSVQTGJ87');
+          `}
+          
+          </script>
+        </Head>
         <Center backgroundColor={'#FFFFEA'} mt={5}>
         <Flex >
         <Carousel showThumbs={true} autoPlay>
@@ -30,5 +48,6 @@ export default function Slide(){
         </Flex>
     
       </Center>
+      </>
     )
 }

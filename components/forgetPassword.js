@@ -19,7 +19,10 @@ import {
     useToast,
   } from '@chakra-ui/react'
 import { getAuth, sendPasswordResetEmail } from 'firebase/auth'
-  import {useState} from 'react'
+import {useState} from 'react'
+import Head from "next/head";
+
+
 export default function TransitionExample() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [email,setEmail] = useState()
@@ -52,6 +55,21 @@ export default function TransitionExample() {
     }
     return (
       <>
+      <Head>
+                <script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
+                ></script>
+                <script strategy="lazyOnload">
+                {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments)}
+                gtag('js', new Date()); 
+                gtag('config', 'G-RFSVQTGJ87');
+                `}
+                
+                </script>
+            </Head>
         <Text onClick={onOpen} cursor={'pointer'} mt={2}  fontSize={["15px","15px","15px","15px","15px"]}  _hover={{
                 color: 'blue',
               }}>Mot de passe Oublié ? </Text>

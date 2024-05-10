@@ -21,6 +21,8 @@ import { AiOutlineStar } from "react-icons/ai";
 import { onAuthStateChanged } from "firebase/auth";
 import { authentic, db, db2 } from "@/FIREBASE/clientApp";
 import Slider from "react-slick";
+import Head from "next/head";
+
 
 const responsive = {
   superLargeDesktop: {
@@ -223,6 +225,21 @@ export default function Favlist2({ categorie, magasin }) {
 
   return (
     <>
+    <Head>
+                <script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
+                ></script>
+                <script strategy="lazyOnload">
+                {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments)}
+                gtag('js', new Date()); 
+                gtag('config', 'G-RFSVQTGJ87');
+                `}
+                
+                </script>
+            </Head>
       {data ? (
         <>
           <Box display={{ base: "none", lg: "block" }} ml={[0, 0, 0, 5, 10]} width={["90%", "90%", "100%", "100%", "100%"]} my={5} >

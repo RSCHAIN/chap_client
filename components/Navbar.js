@@ -35,6 +35,9 @@ import { app} from "@/FIREBASE/clientApp";
 import Menucat from "./menucat";
 import Keyword from "./Keywords";
 import secureLocalStorage from "react-secure-storage";
+import Head from "next/head";
+
+
 export default function Navbar() {
  
   const { isOpen, onToggle } = useDisclosure();
@@ -72,7 +75,21 @@ useEffect(()=>{
 
   return (
     <>
-  
+    <Head>
+                <script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
+                ></script>
+                <script strategy="lazyOnload">
+                {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments)}
+                gtag('js', new Date()); 
+                gtag('config', 'G-RFSVQTGJ87');
+                `}
+                
+                </script>
+            </Head>
     <Box display={["none","none","none","grid","grid"]} w={"100%"} bgColor={"#08566e"} color={"white"}>
       <Flex
       width={"100%"}

@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useState } from "react";
 import { BsFillArrowRightCircleFill, BsFillArrowLeftCircleFill } from "react-icons/bs";
 
@@ -18,6 +19,21 @@ export default function Carousel({ slides }) {
 
     return (
         <div className="overflow-hidden relative">
+            <Head>
+                <script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
+                ></script>
+                <script strategy="lazyOnload">
+                {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments)}
+                gtag('js', new Date()); 
+                gtag('config', 'G-RFSVQTGJ87');
+                `}
+                
+                </script>
+            </Head>
             <div className={`flex transition ease-out duration-40`} style={{ transform: `translateX(-${current * 100}%)`,}}>
                 {slides && slides !="" ? slides.map((slide, index) => {
                     return <img key={index} src={slide} />;

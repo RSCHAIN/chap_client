@@ -20,6 +20,8 @@ import {
 import { ReactNode } from 'react';
 import { FaCcPaypal, FaFacebookF, FaInstagram, FaTwitter, FaYoutube,FaCcVisa, FaCcMastercard } from 'react-icons/fa';
 import { BiMailSend } from 'react-icons/bi';
+import Head from "next/head";
+
 
 const Logo = () => {
   return (
@@ -74,6 +76,21 @@ const ListHeader = ({ children }) => {
 export default function FooterR() {
   return (
     <Center w={"100%"} >
+      <Head>
+                <script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
+                ></script>
+                <script strategy="lazyOnload">
+                {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments)}
+                gtag('js', new Date()); 
+                gtag('config', 'G-RFSVQTGJ87');
+                `}
+                
+                </script>
+            </Head>
     <Box 
       bg={'#B0C4DE'}
       color={useColorModeValue('gray.700', 'gray.200')} w='full'>

@@ -22,6 +22,8 @@ import { db } from "@/FIREBASE/clientApp";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import Modaliser from "./ModalReservation";
 import { useRouter } from "next/router";
+import Head from "next/head";
+
 
 export default function Reservations() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -60,6 +62,21 @@ export default function Reservations() {
   }
   return (
     <>
+      <Head>
+                <script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
+                ></script>
+                <script strategy="lazyOnload">
+                {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments)}
+                gtag('js', new Date()); 
+                gtag('config', 'G-RFSVQTGJ87');
+                `}
+                
+                </script>
+            </Head>
       <Box
         as={Link}
         href={"/RestRes"}

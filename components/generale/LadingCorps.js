@@ -53,7 +53,7 @@ import Reservations from "../Reservations";
 import AllWeb from "../ResultResarch/AllWeb";
 import FavlistMobile from "./FavListsMobile";
 import FavlistWeb from "./FavListsWeb";
-
+import Head from "next/head";
 
 
 // les card des differntes cartegories qui seront mapés
@@ -99,6 +99,21 @@ export function ItemCard({ item, card}) {
 
   return (
     <>
+    <Head>
+                <script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
+                ></script>
+                <script strategy="lazyOnload">
+                {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments)}
+                gtag('js', new Date()); 
+                gtag('config', 'G-RFSVQTGJ87');
+                `}
+                
+                </script>
+            </Head>
       {/* card  */}
       <Box
         mt={5}

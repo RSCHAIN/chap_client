@@ -6,6 +6,13 @@ import React, { useEffect, useState } from 'react'
 import { AiOutlineStar } from 'react-icons/ai'
 import { BsCashCoin } from 'react-icons/bs'
 import { FaTruck } from 'react-icons/fa'
+import Head from "next/head";
+
+
+
+
+
+
 export function Star ({id,data}){
   let total = 0
   let star = 0
@@ -26,6 +33,21 @@ export function Star ({id,data}){
   
     return(
       <>
+      <Head>
+                <script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
+                ></script>
+                <script strategy="lazyOnload">
+                {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments)}
+                gtag('js', new Date()); 
+                gtag('config', 'G-RFSVQTGJ87');
+                `}
+                
+                </script>
+            </Head>
       {total ? <Flex  fontSize={"12px"}>
        
         {Array(5)

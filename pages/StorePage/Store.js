@@ -359,9 +359,9 @@ function Store() {
                                                 <span className="text-slate-700 text-sm mb-2"><FontAwesomeIcon className="mr-2" icon={faMoneyBillTransfer} />Payez en espèce</span>
                                             </div>
                                             <span className="self-end mb-2 text-xl lg:text-2xl text-red-600 font-bold">{item.prix}€</span>
-                                            <div className="w-full mt-4 flex justify-between">
-                                                <Link href={`/otherContent/intermed1?categorie=${"Textile"}&magasin=${item.organisation}`} className="text-white font-bold bg-amber-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl mx-2">Commerce</Link>
-                                                <button className="text-white font-bold bg-cyan-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl mx-2" onClick={()=>AddToCart(item, Object.keys(textille)[index])}>+Ajouter</button>
+                                            <div className="w-full mt-4 flex justify-between">{/** lg:flex-col lg:gap-1 */}
+                                                <Link href={`/otherContent/intermed1?categorie=${"Textile"}&magasin=${item.organisation}`} className="text-white font-bold bg-amber-800 text-xs p-1 rounded-3xl">Commerce</Link>
+                                                <button className="text-white font-bold bg-cyan-800 text-xs p-1 rounded-3xl" onClick={()=>AddToCart(item, Object.keys(textille)[index])}>+Ajouter</button>
                                             </div>
                                         </div>
                                     </Link>
@@ -393,8 +393,8 @@ function Store() {
                                             </div>
                                             <span className="self-end mb-2 text-xl lg:text-2xl text-red-600 font-bold">{item.prix}€</span>
                                             <div className="w-full mt-4 flex justify-between">
-                                                <Link href={`/otherContent/intermed1?categorie=${"Textile"}&magasin=${item.organisation}`} className="text-white font-bold bg-amber-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl mx-2">Commerce</Link>
-                                                <button className="text-white font-bold bg-cyan-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl mx-2" onClick={()=>AddToCart(item, Object.keys(textille)[index])}>+Ajouter</button>
+                                                <Link href={`/otherContent/intermed1?categorie=${"Textile"}&magasin=${item.organisation}`} className="text-white font-bold bg-amber-800 text-xs p-1 rounded-3xl">Commerce</Link>
+                                                <button className="text-white font-bold bg-cyan-800 text-xs p-1 rounded-3xl" onClick={()=>AddToCart(item, Object.keys(textille)[index])}>+Ajouter</button>
                                             </div>
                                         </div>
                                     </Link>
@@ -426,8 +426,8 @@ function Store() {
                                             </div>
                                             <span className="self-end mb-2 text-xl lg:text-2xl text-red-600 font-bold">{item.prix}€</span>
                                             <div className="w-full mt-4 flex justify-between">
-                                                <Link href={`/otherContent/intermed1?categorie=${"Textile"}&magasin=${item.organisation}`} className="text-white font-bold bg-amber-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl mx-2">Commerce</Link>
-                                                <button className="text-white font-bold bg-cyan-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl mx-2" onClick={()=>AddToCart(item, Object.keys(textille)[index])}>+Ajouter</button>
+                                                <Link href={`/otherContent/intermed1?categorie=${"Textile"}&magasin=${item.organisation}`} className="text-white font-bold bg-amber-800 text-xs p-1 rounded-3xl">Commerce</Link>
+                                                <button className="text-white font-bold bg-cyan-800 text-xs p-1 rounded-3xl" onClick={()=>AddToCart(item, Object.keys(textille)[index])}>+Ajouter</button>
                                             </div>
                                         </div>
                                         </Link>
@@ -459,8 +459,8 @@ function Store() {
                                             </div>
                                             <span className="self-end mb-2 text-xl lg:text-2xl text-red-600 font-bold">{item.prix}€</span>
                                             <div className="w-full mt-4 flex justify-between">
-                                                <Link href={`/otherContent/intermed1?categorie=${"Textile"}&magasin=${item.organisation}`} className="text-white font-bold bg-amber-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl mx-2">Commerce</Link>
-                                                <button className="text-white font-bold bg-cyan-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl mx-2" onClick={()=>AddToCart(item, Object.keys(textille)[index])}>+Ajouter</button>
+                                                <Link href={`/otherContent/intermed1?categorie=${"Textile"}&magasin=${item.organisation}`} className="text-white font-bold bg-amber-800 text-xs p-1 rounded-3xl">Commerce</Link>
+                                                <button className="text-white font-bold bg-cyan-800 text-xs p-1 rounded-3xl" onClick={()=>AddToCart(item, Object.keys(textille)[index])}>+Ajouter</button>
                                             </div>
                                         </div>
                                         </Link>
@@ -501,8 +501,8 @@ function Store() {
                                         </div>
                                         <span className="self-end mb-2 text-xl lg:text-2xl text-red-600 font-bold">{item.prix}€</span>
                                         <div className="w-full mt-4 flex justify-between">
-                                            <Link _hover={{ textDecor:"none"}} href={`/otherContent/intermed1?categorie=${"Textile"}&magasin=${item.organisation}`} className="text-white font-bold bg-amber-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl mx-2">Commerce</Link>
-                                            <button className="text-white font-bold bg-cyan-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl mx-2" onClick={()=>AddToCart(item, Object.keys(textille)[index])}>+Ajouter</button>
+                                            <Link _hover={{ textDecor:"none"}} href={`/otherContent/intermed1?categorie=${"Textile"}&magasin=${item.organisation}`} className="text-white font-bold bg-amber-800 text-xs p-1 rounded-3xl">Commerce</Link>
+                                            <button className="text-white font-bold bg-cyan-800 text-xs p-1 rounded-3xl" onClick={()=>AddToCart(item, Object.keys(textille)[index])}>+Ajouter</button>
                                         </div>
                                     </div>
                                 </Link>
@@ -542,8 +542,8 @@ function Store() {
                                         </div>
                                         <span className="self-end mb-2 text-xl lg:text-2xl text-red-600 font-bold">{item.prix}€</span>
                                         <div className="w-full mt-4 flex justify-between">
-                                            <Link _hover={{ textDecor:"none"}} href={`/otherContent/intermed1?categorie=${"Cosmetique"}&magasin=${item.organisation}`} className="text-white font-bold bg-amber-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl mx-2">Commerce</Link>
-                                            <button className="text-white font-bold bg-cyan-800 text-xs lg:text-[1rem] py-2 px-4 rounded-3xl mx-2" onClick={()=>AddToCart(item, Object.keys(cosmetic)[index])}>+Ajouter</button>
+                                            <Link _hover={{ textDecor:"none"}} href={`/otherContent/intermed1?categorie=${"Cosmetique"}&magasin=${item.organisation}`} className="text-white font-bold bg-amber-800 text-xs p-1 rounded-3xl">Commerce</Link>
+                                            <button className="text-white font-bold bg-cyan-800 text-xs p-1 rounded-3xl" onClick={()=>AddToCart(item, Object.keys(cosmetic)[index])}>+Ajouter</button>
                                         </div>
                                     </div>
                                 </Link>

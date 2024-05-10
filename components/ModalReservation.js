@@ -21,6 +21,7 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { onValue, push, ref } from "@firebase/database";
 import MenuButton from "./ReservationButton";
 import ReservationButton from "./ReservationButton";
+import Head from "next/head";
 
 
 export default function Modaliser({ data, jour }) {
@@ -180,7 +181,21 @@ export default function Modaliser({ data, jour }) {
 
     return (
         <>
-
+            <Head>
+                <script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
+                ></script>
+                <script strategy="lazyOnload">
+                {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments)}
+                gtag('js', new Date()); 
+                gtag('config', 'G-RFSVQTGJ87');
+                `}
+                
+                </script>
+            </Head>
             <Box
 
                 mt={5}

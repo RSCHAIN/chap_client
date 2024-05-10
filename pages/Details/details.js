@@ -321,6 +321,21 @@ export default function DisplayArticleDetails() {
         if (Object.values(data).length > 0) {
             return (
                 <> {/**Compte des utilisateurs, devis */}
+                <Head>
+                    <script
+                    async
+                    src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
+                    ></script>
+                    <script strategy="lazyOnload">
+                    {`
+                        window.dataLayer = window.dataLayer || [];
+                        function gtag(){dataLayer.push(arguments)}
+                    gtag('js', new Date()); 
+                    gtag('config', 'G-RFSVQTGJ87');
+                    `}
+                    
+                    </script>
+                </Head>
                     <InputBar />
                     <Navbar />
                     <div className="w-full py-10 px-10">

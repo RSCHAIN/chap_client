@@ -23,6 +23,8 @@ import {
   import { BiCurrentLocation } from "react-icons/bi";
   import { BsGeoAlt } from "react-icons/bs";
   import secureLocalStorage from "react-secure-storage";
+  import Head from "next/head";
+
 
 
 export default function Location(){
@@ -82,6 +84,21 @@ export default function Location(){
     
       return(
         <Box>
+          <Head>
+                <script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
+                ></script>
+                <script strategy="lazyOnload">
+                {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments)}
+                gtag('js', new Date()); 
+                gtag('config', 'G-RFSVQTGJ87');
+                `}
+                
+                </script>
+            </Head>
         <Center>
          {local ?   (<Text fontWeight={"semibold"} fontSize={"2xl"}>
             

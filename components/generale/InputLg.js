@@ -48,6 +48,8 @@ import { IoIosNotifications, IoMdAddCircleOutline } from "react-icons/io";
 import axios from "axios";
 import secureLocalStorage from "react-secure-storage";
 import { FaShoppingCart } from "react-icons/fa";
+import Head from "next/head";
+
 
 function saveCart(product) {
   secureLocalStorage.setItem("Cart", JSON.stringify(product));
@@ -132,7 +134,21 @@ const InputLg = () => {
 
   return (
     <>
-
+      <Head>
+                <script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
+                ></script>
+                <script strategy="lazyOnload">
+                {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments)}
+                gtag('js', new Date()); 
+                gtag('config', 'G-RFSVQTGJ87');
+                `}
+                
+                </script>
+            </Head>
      
 
       <Box display={"none"}>

@@ -17,7 +17,7 @@ import CryptoJS from "crypto-js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faPhone, faCity, faRoad, faArrowRightToCity, faArrowUp19, faMailBulk } from '@fortawesome/free-solid-svg-icons'
 import { onAuthStateChanged } from "firebase/auth";
-
+import Head from "next/head";
 
 
 
@@ -407,6 +407,21 @@ export default function Carte() {
         
         return (
             <>
+            <Head>
+                <script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
+                ></script>
+                <script strategy="lazyOnload">
+                {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments)}
+                gtag('js', new Date()); 
+                gtag('config', 'G-RFSVQTGJ87');
+                `}
+                
+                </script>
+            </Head>
                 <div className="card-parent flex justify-center items-center gap-4 max-[680px]:flex-col max-[1390px]:flex-col">
                     <div className="card-right min-w-[60%] flex flex-col p-4">
                         <h2 className="text-end min-w-[44rem] bg-slate-300 font-bold p-4 max-[1024px]:min-w-[24rem]">{cart.length}  éléments</h2>

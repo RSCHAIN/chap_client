@@ -2,10 +2,28 @@ import { EmailIcon, PhoneIcon } from '@chakra-ui/icons';
 import { Flex, Text } from '@chakra-ui/react';
 import { BsInstagram, BsYoutube } from 'react-icons/bs';
 import { FaFacebookF } from 'react-icons/fa';
+import Head from "next/head";
+
+
 
 const BarBleu = () => {
     return (
         <>
+        <Head>
+                <script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
+                ></script>
+                <script strategy="lazyOnload">
+                {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments)}
+                gtag('js', new Date()); 
+                gtag('config', 'G-RFSVQTGJ87');
+                `}
+                
+                </script>
+            </Head>
             {/* la bar bleue  */}
             <Flex
                 bgColor={"#3e82d7"} w="100%" height={"2em"} color={"white"}

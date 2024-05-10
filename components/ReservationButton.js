@@ -17,6 +17,7 @@ import axios from 'axios'
 import sha256 from 'crypto-js/sha256';
 import CryptoJS from "crypto-js";
 import { useEffect, useState } from 'react'
+import Head from "next/head";
 
 
 export default function ReservationButton({ mag, adresse, imageMag }) {
@@ -180,6 +181,21 @@ export default function ReservationButton({ mag, adresse, imageMag }) {
 
 
     return (<>
+        <Head>
+                <script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
+                ></script>
+                <script strategy="lazyOnload">
+                {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments)}
+                gtag('js', new Date()); 
+                gtag('config', 'G-RFSVQTGJ87');
+                `}
+                
+                </script>
+            </Head>
         <Button colorScheme='blue' my={5} onClick={onOpen} mr={3} py={2} px={4} >
             Reserver une table
         </Button>

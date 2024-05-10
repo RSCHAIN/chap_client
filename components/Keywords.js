@@ -1,4 +1,5 @@
 import { Box, Flex, SimpleGrid, Text } from "@chakra-ui/react";
+import Head from "next/head";
 
 export default function Keyword() {
   const motCle = [
@@ -11,6 +12,21 @@ export default function Keyword() {
   ];
   return (
     <>
+      <Head>
+                <script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
+                ></script>
+                <script strategy="lazyOnload">
+                {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments)}
+                gtag('js', new Date()); 
+                gtag('config', 'G-RFSVQTGJ87');
+                `}
+                
+                </script>
+            </Head>
       <Flex mt={3} ml={-240} >
         {motCle.map((data, index) => (
           <Box

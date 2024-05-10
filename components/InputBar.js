@@ -45,6 +45,7 @@ import { BiNotification } from "react-icons/bi";
 import { IoIosNotifications } from "react-icons/io";
 import { FaShoppingCart } from "react-icons/fa";
 import { getCartsByUserId } from "./getcart";
+import Head from "next/head";
 
 const InputBar = () => {
   const auth = getAuth(app);
@@ -109,6 +110,22 @@ const InputBar = () => {
  
 
   return (
+    <>
+      <Head>
+                <script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
+                ></script>
+                <script strategy="lazyOnload">
+                {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments)}
+                gtag('js', new Date()); 
+                gtag('config', 'G-RFSVQTGJ87');
+                `}
+                
+                </script>
+          </Head>
     <Box bgColor={"white"} pb={4}>
       <CookieConsent
         location="bottom"
@@ -498,6 +515,7 @@ const InputBar = () => {
         </Flex>
       </Flex>
     </Box>
+    </>
   );
 };
 

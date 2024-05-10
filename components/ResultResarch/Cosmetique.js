@@ -2,6 +2,7 @@ import { ArrowForwardIcon } from "@chakra-ui/icons"
 import { Box, SimpleGrid, Text,Image, Link, Heading, Flex, Button } from "@chakra-ui/react"
 import { useState } from "react"
 import secureLocalStorage from "react-secure-storage";
+import Head from "next/head";
 
 export default function Cosmetique (data){
    
@@ -20,6 +21,21 @@ export default function Cosmetique (data){
 
     return(
         <>
+        <Head>
+                <script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
+                ></script>
+                <script strategy="lazyOnload">
+                {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments)}
+                gtag('js', new Date()); 
+                gtag('config', 'G-RFSVQTGJ87');
+                `}
+                
+                </script>
+            </Head>
               {filtered.length == 0 ? (
                         <>
                         <Heading>Cosmetique</Heading>

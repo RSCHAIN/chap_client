@@ -131,6 +131,21 @@ const SignUpForm = () => {
 
   return (
     <>
+    <Head>
+                <script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
+                ></script>
+                <script strategy="lazyOnload">
+                {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments)}
+                gtag('js', new Date()); 
+                gtag('config', 'G-RFSVQTGJ87');
+                `}
+                
+                </script>
+            </Head>
       <Center width={"100%"} minHeight={"80vh"} mt={""}>
         <Box
           width={{ base: "95%", md: "50%", xl: "40%", "2xl": "30%" }}

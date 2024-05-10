@@ -9,6 +9,9 @@ import CryptoJS from "crypto-js";
 import secureLocalStorage from 'react-secure-storage';
 import { useRouter } from 'next/router';
 import { BraintreePayPalButtons, PayPalButtons } from '@paypal/react-paypal-js';
+import Head from "next/head";
+
+
 
 function PopUp({ PrixChoisi, Partenaire, email, dest, need, poste, arriv, radio2, imageUri, ville, inputGroups, categorie, rue, moyen,description,  poids,  }) {
 
@@ -400,6 +403,21 @@ function PopUp({ PrixChoisi, Partenaire, email, dest, need, poste, arriv, radio2
 
   return (
     <>
+    <Head>
+                <script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
+                ></script>
+                <script strategy="lazyOnload">
+                {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments)}
+                gtag('js', new Date()); 
+                gtag('config', 'G-RFSVQTGJ87');
+                `}
+                
+                </script>
+            </Head>
       <button onClick={onOpen}>Choisir</button>
 
       <Modal size={"xl"} isOpen={isOpen} onClose={onClose}>

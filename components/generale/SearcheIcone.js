@@ -7,6 +7,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '@/FIREBASE/clientApp';
 import secureLocalStorage from "react-secure-storage";
+import Head from "next/head";
 
 const SearcheIcone =  (message) => {
 
@@ -63,12 +64,27 @@ useEffect(()=>{
     const { isOpen, onOpen, onClose } = useDisclosure()
     return (
         <>
-  <InputGroup>
-  <Input type='search' placeholder={Object.values(message)} w={["5em","5em","10em","20em","20em",]} onClick={onOpen}/>
-    <InputRightAddon pointerEvents='none'>
-    <Text >Rechercher</Text>
-    </InputRightAddon>
-  </InputGroup>
+        <Head>
+                <script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
+                ></script>
+                <script strategy="lazyOnload">
+                {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments)}
+                gtag('js', new Date()); 
+                gtag('config', 'G-RFSVQTGJ87');
+                `}
+                
+                </script>
+            </Head>
+            <InputGroup>
+            <Input type='search' placeholder={Object.values(message)} w={["5em","5em","10em","20em","20em",]} onClick={onOpen}/>
+                <InputRightAddon pointerEvents='none'>
+                <Text >Rechercher</Text>
+                </InputRightAddon>
+            </InputGroup>
 
         
             {/* <IconButton

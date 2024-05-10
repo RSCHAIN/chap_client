@@ -23,6 +23,8 @@ import { app, authentic, db, db2 } from "@/FIREBASE/clientApp";
 import Slider from "react-slick";
 import DisplayFavlistMobileM from "./DisplayFavlistMobileM";
 import { StarIcon } from "@chakra-ui/icons";
+import Head from "next/head";
+
 
 const responsive = {
   superLargeDesktop: {
@@ -91,6 +93,21 @@ export function Star ({id,data}){
   
     return(
       <>
+      <Head>
+                <script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
+                ></script>
+                <script strategy="lazyOnload">
+                {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments)}
+                gtag('js', new Date()); 
+                gtag('config', 'G-RFSVQTGJ87');
+                `}
+                
+                </script>
+            </Head>
       {total ? <Flex mb={10} fontSize={"12px"}>
        
         {Array(5)

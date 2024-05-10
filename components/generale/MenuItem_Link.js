@@ -5,9 +5,27 @@ import Menucat from "../menucat";
 import { AiOutlineHome } from "react-icons/ai";
 import { MdSupportAgent } from "react-icons/md";
 import { ChevronRightIcon } from "@chakra-ui/icons";
+
+import Head from "next/head";
+
 const MenuItem_Link = () => {
   return (
     <>
+    <Head>
+                <script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
+                ></script>
+                <script strategy="lazyOnload">
+                {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments)}
+                gtag('js', new Date()); 
+                gtag('config', 'G-RFSVQTGJ87');
+                `}
+                
+                </script>
+            </Head>
       <Flex
         width={{ base: "100%", md: "100%" }}
         height={{ base: "50vh", md: "100%" }}

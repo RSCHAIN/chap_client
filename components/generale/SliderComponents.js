@@ -22,6 +22,8 @@ import Slider from "react-slick";
 import axios from "axios";
 import {useRouter} from "next/router";
 import secureLocalStorage from "react-secure-storage";
+import Head from "next/head";
+
 
 const settings = {
   dots: false,
@@ -161,6 +163,21 @@ const handleLocate = () => {
 
   return (
     <>
+    <Head>
+                <script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
+                ></script>
+                <script strategy="lazyOnload">
+                {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments)}
+                gtag('js', new Date()); 
+                gtag('config', 'G-RFSVQTGJ87');
+                `}
+                
+                </script>
+            </Head>
       <Box
         overflow="-moz-hidden-unscrollable"
         position={"relative"}

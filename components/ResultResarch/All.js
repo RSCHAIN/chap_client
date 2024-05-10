@@ -13,6 +13,7 @@ import Fret from "./Fret";
 import InputBar from "../InputBar";
 import Navbar from "../Navbar";
 import secureLocalStorage from "react-secure-storage";
+import Head from "next/head";
 
 export default function All (){
     const [postal,setPostal] = useState()
@@ -56,7 +57,21 @@ export default function All (){
     },[postal])
     return(
         <>
-       
+       <Head>
+                <script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
+                ></script>
+                <script strategy="lazyOnload">
+                {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments)}
+                gtag('js', new Date()); 
+                gtag('config', 'G-RFSVQTGJ87');
+                `}
+                
+                </script>
+            </Head>
         
         <Center mt={10} >
         <Box width={"100%"}>

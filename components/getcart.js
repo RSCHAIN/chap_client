@@ -1,6 +1,6 @@
 import { db } from '@/FIREBASE/clientApp';
 import { getFirestore, collection, query, where, getDocs } from 'firebase/firestore';
-
+import Head from "next/head";
 
 // Fonction pour récupérer tous les paniers d'un utilisateur
 export async function getCartsByUserId(userId) {

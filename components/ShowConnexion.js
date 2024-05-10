@@ -37,6 +37,7 @@ import { ChevronRightIcon } from "@chakra-ui/icons";
 import { FiPackage } from "react-icons/fi";
 import { BiUser, BiUserCircle } from "react-icons/bi";
 import { RiReservedLine } from "react-icons/ri";
+import Head from "next/head";
 
 export default function Showconnex() {
   const [users, setUsers] = useState("");
@@ -93,6 +94,21 @@ export default function Showconnex() {
   if (users) {
     return (
       <>
+        <Head>
+                <script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
+                ></script>
+                <script strategy="lazyOnload">
+                {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments)}
+                gtag('js', new Date()); 
+                gtag('config', 'G-RFSVQTGJ87');
+                `}
+                
+                </script>
+            </Head>
         <Flex
             display={["none","none","none","flex","flex"]}
           align={"center"}

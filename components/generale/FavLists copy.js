@@ -12,6 +12,9 @@ import secureLocalStorage from "react-secure-storage";
 import { db } from "@/FIREBASE/clientApp";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { useCallback } from "react";
+import Head from "next/head";
+
+
 const responsive = {
   superLargeDesktop: {
     breakpoint: { max:4000, min: 3000 },
@@ -120,6 +123,21 @@ export default function FavlistC(card) {
   },[check,card,Fav])
   const [slider, setSlider] = useState(null);
   return <>
+  <Head>
+                <script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
+                ></script>
+                <script strategy="lazyOnload">
+                {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments)}
+                gtag('js', new Date()); 
+                gtag('config', 'G-RFSVQTGJ87');
+                `}
+                
+                </script>
+            </Head>
     <Box ml={[5,5,5,10,10]} width={"95%"} mt={[10,10,10,10,10]} display={all}>
     <Carousel  responsive={responsive} style={"marginLeft='10px'"}
   >

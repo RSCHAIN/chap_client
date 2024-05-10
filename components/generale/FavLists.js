@@ -16,6 +16,9 @@ import { FaTruck, FaTruckPickup } from "react-icons/fa";
 import { AiOutlineStar } from "react-icons/ai";
 import { BsCashCoin } from "react-icons/bs";
 import { StarIcon } from "@chakra-ui/icons";
+import Head from "next/head";
+
+
 const responsive = {
   superLargeDesktop: {
     breakpoint: { max:4000, min: 3000 },
@@ -74,6 +77,21 @@ export function Star ({id,data}){
   
     return(
       <>
+      <Head>
+                <script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
+                ></script>
+                <script strategy="lazyOnload">
+                {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments)}
+                gtag('js', new Date()); 
+                gtag('config', 'G-RFSVQTGJ87');
+                `}
+                
+                </script>
+            </Head>
       {total ? <Flex mb={10} fontSize={"12px"}>
        
         {Array(5)

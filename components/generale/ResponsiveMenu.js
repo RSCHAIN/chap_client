@@ -5,7 +5,7 @@ import { HamburgerIcon } from "@chakra-ui/icons";
 import { FaShoppingCart } from "react-icons/fa";
 import { useRouter } from 'next/router';
 import { IoIosNotifications } from 'react-icons/io';
-
+import Head from "next/head";
 
 const ResponsiveMenu = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -13,6 +13,21 @@ const ResponsiveMenu = () => {
     const toast = useToast();
     return (
         <>
+        <Head>
+                <script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
+                ></script>
+                <script strategy="lazyOnload">
+                {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments)}
+                gtag('js', new Date()); 
+                gtag('config', 'G-RFSVQTGJ87');
+                `}
+                
+                </script>
+            </Head>
         <Flex >
         <Flex display={["flex","flex","flex","none","none"]}>
 <Link

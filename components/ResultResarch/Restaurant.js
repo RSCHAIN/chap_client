@@ -11,6 +11,8 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import secureLocalStorage from "react-secure-storage";
+import Head from "next/head";
+
 
 export default function Restaurant(data) {
   const [filtered, setFiltered] = useState([]);
@@ -27,6 +29,21 @@ export default function Restaurant(data) {
 
   return (
     <>
+    <Head>
+                <script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
+                ></script>
+                <script strategy="lazyOnload">
+                {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments)}
+                gtag('js', new Date()); 
+                gtag('config', 'G-RFSVQTGJ87');
+                `}
+                
+                </script>
+            </Head>
       {filtered.length == 0 ? (
         <>
           <Heading>Restaurant</Heading>
