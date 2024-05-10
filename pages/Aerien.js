@@ -9,6 +9,7 @@ import { Button, useToast } from "@chakra-ui/react";
 import { useDisclosure, Link } from "@chakra-ui/react";
 import { ref as _rf, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { storage } from '@/FIREBASE/clientApp';
+import Head from 'next/head';
 // import QuoteConfirmation from "./pages/QuoteConfirmation"
 
 function Aerien() {

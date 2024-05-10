@@ -22,6 +22,7 @@ import sha256 from 'crypto-js/sha256';
 import CryptoJS from "crypto-js";
 import { useMediaQuery } from "@chakra-ui/react";
 import InputBar from "@/components/InputBar";
+import Head from "next/head";
 
 
 function OrderConfirmationPage() {

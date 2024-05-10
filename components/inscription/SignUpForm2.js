@@ -37,6 +37,7 @@ import { doc } from "@firebase/firestore"; // for creating a pointer to our Docu
 import { setDoc } from "firebase/firestore"; // for adding the Document to Collection
 import FooterR from "../footerResponsif";
 import axios from "axios";
+import Head from "next/head";
 
 const SignUpForm = () => {
   const [name, setName] = useState();

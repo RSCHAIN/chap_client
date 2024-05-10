@@ -2,6 +2,7 @@ import { Box, Center, Flex, HStack, Link, Text, useMediaQuery, useToast } from '
 import React from 'react';
 import ResponsiveMenu from '../generale/ResponsiveMenu';
 import MenuItem_Link from '../generale/MenuItem_Link';
+import Head from 'next/head';
 
 const HeaderBar = () => {
     const [isLagerThan768] = useMediaQuery('(min-width: 768px)')
