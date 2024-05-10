@@ -233,8 +233,8 @@ const minute = jours.getMinutes();
 
 
 
-              {(data.horaire != undefined && data.horaire != null)?
-              console.log(Object.values(data.horaire)[parseInt(jours.getDay())],data.organisation) : console.log(data.organisation) }
+              {/* {(data.horaire != undefined && data.horaire != null)?
+              // console.log(Object.values(data.horaire)[parseInt(jours.getDay())],data.organisation) : console.log(data.organisation) } */}
 
 
          {(data.horaire != undefined && data.horaire != null)? (

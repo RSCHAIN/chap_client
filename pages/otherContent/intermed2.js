@@ -51,6 +51,8 @@ export default function Intermed2() {
   }, []);
 
   const recherche = async (terms, categorie) => {
+   
+   try {
     const q = query(
       collection(db, "Admin"),
       where("ville", "==", String(terms).trim()),
@@ -58,6 +60,7 @@ export default function Intermed2() {
     );
 
     const querySnapshot = await getDocs(q);
+<<<<<<< HEAD
 
     const q2 = query(
       collection(db, "Admin"),
@@ -85,6 +88,37 @@ if (querySnapshot.docs.length) {
   setModalData(querySnapshot3.docs);
 }
     
+=======
+   
+    if (querySnapshot.docs.length <0) {
+      const q2 = query(
+        collection(db, "Admin"),
+        where("codePostal", "==", String(terms).trim()),
+        where("categorie", "==", categorie)
+      );
+      const querySnapshot2 = await getDocs(q2);
+      if (querySnapshot2.docs.length <0) {
+        const q3 = query(
+          collection(db, "Admin"),
+          where("organisation", "==", String(terms).trim()),
+          where("categorie", "==", categorie)
+        );
+        const querySnapshot3 = await getDocs(q3);
+        setModalData(querySnapshot3.docs);
+      }else{
+          setModalData(querySnapshot2.docs);
+       }
+      }
+      else{
+        setModalData(querySnapshot.docs);
+     }
+    
+   
+   } catch (error) {
+    
+   }
+   
+>>>>>>> 8796478 (anccin)
   };
 
  

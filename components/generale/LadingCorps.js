@@ -646,9 +646,9 @@ href={
 
                   return (
                     <>
-                    <Flex>
+                   
                       <ContainerCard key={key} card={card} />
-                      </Flex>
+                     
                       <Flex>
                       <FavlistWeb Categorie={card} />
                       </Flex>

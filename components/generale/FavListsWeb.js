@@ -224,10 +224,13 @@ export default function FavlistWeb({Categorie}) {
       if (docs.data().Categorie == Categorie) {
         get(child(dbRef, `${docs.data().Categorie}/${docs.data().Organisation}`)).then((snapshot) => {
           if (snapshot.exists()) {
-            data.push(snapshot.val()); 
+          data.push(Object.values(snapshot.val()));
+          Object.values(snapshot.val()).map((snap)=>{
+
+          }) 
             tout.push(docs.data().Categorie);
-           console.log(Object.keys(snapshot.val())); 
-             
+           console.log("produits",snapshot.val()); 
+
           } else {
             console.log("No data available");
           }
@@ -302,7 +305,7 @@ export default function FavlistWeb({Categorie}) {
     }
 
     // setTout(data.length())
-  }, [check, Fav]);
+  }, [check]);
 
   const [slider, setSlider] = useState(null);
 
@@ -310,10 +313,11 @@ export default function FavlistWeb({Categorie}) {
   const dateExp = date2.setDate(date2.getDate() + 1);
   const dateExp2 = new Date(dateExp);
   const dateExp3 = dateExp2.toLocaleDateString();
-
+  let dat = []
   return (
     <>
-   
+    {/* {dat.concat({...Object.values(data)})} */}
+   {console.log("concat test",{...Object.values(data)} )}
     
       {data ?
        (
@@ -321,9 +325,9 @@ export default function FavlistWeb({Categorie}) {
         {/* <Box display={{base:"none",lg:"block"}} ml={[0, 0, 0, 5, 10]}   width={["90%","90%","100%","100%","100%"]} mt={5} >
           <SimpleGrid columns={[1,1,2,4,4]} >
             {Object.values(data).slice(0,2).map((datas, index) => (
-
-              <Box as="a"  key={index} href={`/Details/details?c=${tout}&m=${data.organisation}&p=${dataK[index]}`}  boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"} mx={[2, 2, 2, 5, 5]} mb={5} bgColor={"white"}>
               
+              <Box as="a"  key={index} href={`/Details/details?c=${tout}&m=${data.organisation}&p=${dataK[index]}`}  boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"} mx={[2, 2, 2, 5, 5]} mb={5} bgColor={"white"}>
+                {console.log("datas",datas)}
                 <Box
                  mx={5}
                  key={data.id}
@@ -445,18 +449,14 @@ export default function FavlistWeb({Categorie}) {
         </Box> */}
 
 
-        <Box display={{base:"flex",lg:"none"}} overflowX={"scroll"}  mt={[0,0,0,10,10]}  bgColor={"white"}>
-        {/* <Carousel responsive={responsive} style={"marginLeft='20px'"}> */}
+        <Box display={{base:"none",lg:"grid"}}   mt={[0,0,0,10,10]}  bgColor={"white"}>
+        <Carousel responsive={responsive} style={"marginLeft='20px'"}>
             {Object.values(data).slice(0,Object.keys(data).length/2).map((datas, index) => (
              <>
-             {/* {console.log("tout",tout)} */}
-             
-             
-              
               <DisplayFavlistMobileM key={index} datass={datas}  datak={Object.keys(datas)} tout={tout[index]}/>
               </>
             ))}
-        {/* </Carousel> */}
+        </Carousel>
         </Box>
         </>
       ) : (
