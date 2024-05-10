@@ -9,6 +9,7 @@ const departAfricolis = ["09/10/2023", "13/10/2023", "16/10/2023", "20/10/2023",
 import { Link } from "@chakra-ui/react";
 
 import PopUp from "@/components/DevisAddon/popUp";
+import Head from 'next/head';
 
 function QuoteConfirmation() {
 
