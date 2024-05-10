@@ -326,14 +326,14 @@ function QuoteConfirmation() {
                                         </div>
                                         <div className="self-end mb-4">
                                             <span className='bg-orange-600 text-xl p-4 text-white rounded-md max-[370px]:text-lg max-[370px]:p-2'>
-                                                {parseFloat(tab1) * 5 +
-                                                    ((parseFloat(tab1) * 5 + parseFloat(PrixPc)+parseFloat(PrixDoc)) * 5 / 100) + parseFloat(PrixPc)+parseFloat(PrixDoc)} €
+                                                {parseFloat(tab1) * 4 +
+                                                    ((parseFloat(tab1) * 4 + parseFloat(PrixPc)+parseFloat(PrixDoc)) * 5 / 100) + parseFloat(PrixPc)+parseFloat(PrixDoc)} €
                                             </span>
                                         </div>
                                     </div>
                                     <button className='bg-orange-600 text-white rounded-sm py-2 px-6'>
-                                        <PopUp PrixChoisi={parseFloat(tab1) * 5 +
-                                            ((parseFloat(tab1) * 5  + parseFloat(PrixPc)+parseFloat(PrixDoc)) * 5/ 100) + parseFloat(PrixPc)+parseFloat(PrixDoc)}
+                                        <PopUp PrixChoisi={parseFloat(tab1) * 4 +
+                                            ((parseFloat(tab1) * 4  + parseFloat(PrixPc)+parseFloat(PrixDoc)) * 5/ 100) + parseFloat(PrixPc)+parseFloat(PrixDoc)}
                                             Partenaire={"CHAP"}
                                             email={emailFromSession}
                                             dest={destFromSession}

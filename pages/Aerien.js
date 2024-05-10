@@ -252,7 +252,7 @@ function Aerien() {
                                         <input type="text" onChange={(e) => {
                                             setPoste(e.target.value), console.log(e.target.value);
                                         }}
-                                            value={poste} placeholder="Code postal ou ville" className="sm:text-sm w-full lg:w-[21rem] border border-slate-800 p-3 rounded-sm" />
+                                            value={poste} placeholder="Ville" className="sm:text-sm w-full lg:w-[21rem] border border-slate-800 p-3 rounded-sm" />
                                     </div>
                                 </div>
                             </div>
@@ -270,7 +270,7 @@ function Aerien() {
                                         <label className="uppercase text-sm" htmlFor="">Ville</label>
                                         <input type="text" onChange={(e) => {
                                             setVille(e.target.value), console.log(e.target.value);
-                                        }} placeholder="Ville ou code postal" className="sm:text-sm w-full lg:w-[21rem] border border-slate-800 p-3 rounded-sm" />
+                                        }} placeholder="Ville" className="sm:text-sm w-full lg:w-[21rem] border border-slate-800 p-3 rounded-sm" />
                                     </div>
                                 </div>
                             </div>
@@ -284,15 +284,34 @@ function Aerien() {
                                     </select>
                                 </div>
                             </div>
+                            {destination == "France" ? 
                             <div className="mt-10">
-                                <span className="text-sm">À</span>
-                                <div className="flex justify-between">
-                                    <select onChange={(e) => { setArrivee(e.target.value), console.log(e.target.value) }} placeholder="Pays" className="w-full p-3 focus:outline-none bg-zinc-100">
-                                        <option value={"Côte D'Ivoire"}>Côte d{"'"}Ivoire</option>
-                                        <option value={"France"}>France</option>
-                                    </select>
-                                </div>
+                            <span className="text-sm">À</span>
+                            <div className="flex justify-between">
+                                <select onChange={(e) => { setArrivee(e.target.value), console.log(e.target.value) }} placeholder="Pays" className="w-full p-3 focus:outline-none bg-zinc-100">
+                                    <option value={"Côte D'Ivoire"}>Côte d{"'"}Ivoire</option>
+                                 
+                                </select>
                             </div>
+                        </div> : (destination == "Côte d'Ivoire" ? 
+                        <div className="mt-10">
+                        <span className="text-sm">À</span>
+                        <div className="flex justify-between">
+                            <select onChange={(e) => { setArrivee(e.target.value), console.log(e.target.value) }} placeholder="Pays" className="w-full p-3 focus:outline-none bg-zinc-100">
+                                
+                                <option value={"France"}>France</option>
+                            </select>
+                        </div>
+                    </div> : <div className="mt-10">
+                        <span className="text-sm">À</span>
+                        <div className="flex justify-between">
+                            <select onChange={(e) => { setArrivee(e.target.value), console.log(e.target.value) }} placeholder="Pays" className="w-full p-3 focus:outline-none bg-zinc-100">
+                                <option value={"Côte D'Ivoire"}>Côte d{"'"}Ivoire</option>
+                                <option value={"France"}>France</option>
+                            </select>
+                        </div>
+                    </div>) }
+                            
                             <div onChange={setRadio2}
                                 value={radio2} className="mt-10">
                                 <h2 className="text-2xl text-center font-bold">Reception du colis par la structure</h2>
