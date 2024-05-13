@@ -163,15 +163,15 @@ const minute = jours.getMinutes();
            
             <Box
               key={index}
-              height={["50%", "20vh", "20vh", "20vh", "20vh"]}
+              height={["20vh", "20vh", "20vh", "20vh", "20vh"]}
               width={{ base: "70%", md: "100%" }}
-              marginBottom={40}
+              marginBottom={{base:40,lg:40}}
               mr={5}
               borderRadius={[10,10,50,50,50]}
             >
                 
               <Link
-                height={"15vh"}
+                height={"20vh"}
                 width={{ base: "80%", md: "30%" }}
                 mt={5}
                 mb={5}

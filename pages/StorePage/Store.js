@@ -263,13 +263,55 @@ function Store() {
             <Box display={{ base: "none", md: "grid" }} mt={10}>
                 <Navbar />
             </Box>
-            <header className="py-10 bg-white">
-                <div className='container mx-auto flex justify-center items-center'>
-                    <div className="lg:w-[80%] lg:m-auto w-ful px-4 lg:px-0">
-                        <Carousel slides={slides} />
+            <section className='african-shop'>
+                <header className="bg-white">
+                    <div className='container mx-auto flex justify-center items-center'>
+                        <div className="lg:w-[80%] lg:m-auto w-ful px-4 lg:px-0">
+                            <Carousel slides={slides} />
+                        </div>
+                    </div>
+                </header>
+                <div className='bg-gray-100 w-full p-4'>
+                    <div className='container mx-auto'>
+                        <div className='flex flex-col gap-10'>
+                            <div className='flex flex-col '>
+                                <div className='flex justify-between'>
+                                    <h2 className='text-3xl font-semibold text-gray-700'>Epicerie</h2>
+                                    <Link className='text-xs font-bold text-gray-600'>Voir plus</Link>
+                                </div>
+                                <div className='grid grid-cols-5 overflow-x-scroll'>
+                                    
+                                </div>
+                            </div>
+                            <div className='flex flex-col '>
+                                <div className='flex justify-between'>
+                                    <h2 className='text-3xl font-semibold text-gray-700'>Cosmetique</h2>
+                                    <Link className='text-xs font-bold text-gray-600'>Voir plus</Link>
+                                </div>
+                            </div>
+                            <div className='flex flex-col '>
+                                <div className='flex justify-between'>
+                                    <h2 className='text-3xl font-semibold text-gray-700'>Textille</h2>
+                                    <Link className='text-xs font-bold text-gray-600'>Voir plus</Link>
+                                </div>
+                                <div className='grid grid-cols-12 overflow-x-scroll'>
+                                    {textille && textille !== " " ?
+                                    Object.values(textille).map((item, index) => (
+                                        <Link className='col-span-3 px-4'>
+                                            <div className='bg-yellow-100 rounded-md flex flex-col'>
+                                                <div className='w-full flex items-center justify-center'>
+                                                    <img className='h-40 object-cover' src={item.imageUrl}/>
+                                                </div>
+                                                <h3>{item.nom}</h3>
+                                            </div>
+                                        </Link>
+                                    )) : (<p>Rien</p>)}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </header>
+            </section>
             
         </>
     )

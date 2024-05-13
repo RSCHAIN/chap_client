@@ -124,7 +124,7 @@ if (querySnapshot.docs.length) {
             <Input
               type="text"
               onChange={(e) => recherche(e.target.value, categorie)}
-              placeholder={"Ville"}
+              placeholder={"Ville, code postal, magasin"}
               w={["12em", "12em", "12em", "20em", "20em"]}
               // onClick={onOpen}
             />
@@ -150,9 +150,9 @@ if (querySnapshot.docs.length) {
            
             <Box
               key={index}
-              height={["50%", "20vh", "20vh", "20vh", "20vh"]}
+              height={["20vh", "20vh", "20vh", "20vh", "20vh"]}
               width={{ base: "70%", md: "45%" }}
-              marginBottom={40}
+              marginBottom={{base:20,lg:40}}
               mr={5}
               borderRadius={[10,10,50,50,50]}
             >
@@ -189,7 +189,7 @@ if (querySnapshot.docs.length) {
                }
               
             </Flex>
-            <Box mt={"-100px"}>
+            <Box mt={{base:"-90px",lg:"-100px"}}>
                 <Text
                   fontSize={"lg"}
                   color={"#fff"}
