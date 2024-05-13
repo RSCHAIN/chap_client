@@ -341,7 +341,7 @@ const LadingCorps = () => {
   const [datas, setDatas] = useState(0);
   const [data, setData] = useState([]);
   const [code, setCode] = useState([]);
-  const [final, setFinal] = useState([""]);
+  const [final, setFinal] = useState([""]) ; 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [check, setCheck] = useState(0);
 
