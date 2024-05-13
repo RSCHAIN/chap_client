@@ -227,6 +227,7 @@ export default function Favlist(card) {
   const dateExp3 = dateExp2.toLocaleDateString();
   
   return <>
+  
     <Box ml={[5,5,5,10,10]} width={"95%"} mt={[0,0,0,10,10]} display={all}>
     <Carousel  responsive={responsive} style={"marginLeft='10px'"}
   >

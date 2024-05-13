@@ -32,7 +32,8 @@ import {
   AccordionButton,
   AccordionIcon,
   AccordionPanel,
-  useBreakpointValue
+  useBreakpointValue,
+  Badge
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
@@ -922,6 +923,39 @@ const tester = [
   
   
                                 >
+                                   {data.etat == "Disponible" ? (
+                      <Box
+                        mt={{base:-1,lg:-5}}
+                        mb={2}
+                        ml={-5}
+                        color={"white"}
+                        fontWeight={600}           
+                        fontSize={"12px"}
+                        borderRadius={25}
+                        px={2}
+                        width={"80px"}
+                        height={"fit-content"}
+                        bgColor="#7ed957"
+                      >
+                        Disponible
+                      </Box>
+                    ) : (
+                      <Box
+                      mt={{base:-1,lg:-5}}
+                      mb={2}
+                      ml={-5}
+                      color={"white"}
+                      fontWeight={600}
+                      fontSize={"12px"}
+                      borderRadius={25}
+                      px={2}
+                      width={"80px"}
+                      height={"fit-content"}
+                      bgColor="red"
+                    >
+                      Rupture
+                    </Box>
+                    )}
                                   <Image
                                     src={data.imageUrl}
                                     alt={data.nom}
