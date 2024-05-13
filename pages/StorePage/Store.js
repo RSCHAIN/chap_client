@@ -283,7 +283,7 @@ function Store() {
                                     <div className="w-full lg:w-1/5 px-4 mt-6 text-white bg-white shadow-md rounded-md relative">
                                         {dissoaCajouProduct && dissoaCajouProduct !== "" ?
                                         Object.values(dissoaCajouProduct).map((item, index) => (
-                                        <Link href={`/Details/details?c=${"Cosmetique"}&m=${item.organisation}&p=${Object.keys(cosmetic)[index]}`} key={index} _hover={{ textDecor:"none"}}
+                                        <Link href={`/Details/details?c=${"Epicerie"}&m=${item.organisation}&p=${Object.keys(dissoaCajouProduct)[index]}`} key={index} _hover={{ textDecor:"none"}}
                                             className="flex flex-col bg-white w-full my-4">
                                             <div className='w-full flex items-center justify-center'>
                                                 <img className='h-[10rem]' src={item.imageUrl}/>
@@ -307,7 +307,7 @@ function Store() {
                                                 <span className="self-end mb-2 text-lg lg:text-xl text-red-600 font-bold">{item.prix}€</span>
                                                 <div className='flex gap-2 lg:gap-0 lg:justify-between items-center'>
                                                     <Link className='bg-green-600 text-white rounded-3xl p-1 text-sm' _hover={{ textDecor:"none"}} href={`/otherContent/intermed1?categorie=${"Cosmetique"}&magasin=${item.organisation}`}>Commerce</Link>
-                                                    <button className='bg-red-600 text-white rounded-3xl p-1 text-sm'>+Ajouter</button>
+                                                    <button onClick={()=>AddToCart(item, Object.keys(dissoaCajouProduct)[index])} className='bg-red-600 text-white rounded-3xl p-1 text-sm'>+Ajouter</button>
                                                 </div>
                                             </div>
                                         </Link>
@@ -318,7 +318,7 @@ function Store() {
                                     <div className="w-full lg:w-1/5 px-4 mt-6 text-white bg-white shadow-md rounded-md relative ">
                                         {nayouProduct && nayouProduct !== "" ?
                                     Object.values(nayouProduct).map((item, index) => (
-                                        <Link href={`/Details/details?c=${"Cosmetique"}&m=${item.organisation}&p=${Object.keys(cosmetic)[index]}`} key={index} _hover={{ textDecor:"none"}}
+                                        <Link href={`/Details/details?c=${"Epicerie"}&m=${item.organisation}&p=${Object.keys(nayouProduct)[index]}`} key={index} _hover={{ textDecor:"none"}}
                                             className="flex flex-col bg-white w-full my-4">
                                             <div className='w-full flex items-center justify-center'>
                                                 <img className='h-[10rem]' src={item.imageUrl}/>
@@ -342,7 +342,7 @@ function Store() {
                                                 <span className="self-end mb-2 text-lg lg:text-xl text-red-600 font-bold">{item.prix}€</span>
                                                 <div className='flex gap-2 lg:gap-0 lg:justify-between items-center'>
                                                     <Link className='bg-green-600 text-white rounded-3xl p-1 text-sm' _hover={{ textDecor:"none"}} href={`/otherContent/intermed1?categorie=${"Cosmetique"}&magasin=${item.organisation}`}>Commerce</Link>
-                                                    <button className='bg-red-600 text-white rounded-3xl p-1 text-sm'>+Ajouter</button>
+                                                    <button onClick={()=>AddToCart(item, Object.keys(nayouProduct)[index])} className='bg-red-600 text-white rounded-3xl p-1 text-sm'>+Ajouter</button>
                                                 </div>
                                             </div>
                                         </Link>
@@ -353,7 +353,7 @@ function Store() {
                                     <div className="w-full lg:w-1/5 px-4 mt-6 text-white bg-white shadow-md rounded-md relative ">
                                         {massyProduct && massyProduct !== "" ?
                                     Object.values(massyProduct).map((item, index) => (
-                                        <Link href={`/Details/details?c=${"Cosmetique"}&m=${item.organisation}&p=${Object.keys(cosmetic)[index]}`} key={index} _hover={{ textDecor:"none"}}
+                                        <Link href={`/Details/details?c=${"Epicerie"}&m=${item.organisation}&p=${Object.keys(epice)[index]}`} key={index} _hover={{ textDecor:"none"}}
                                             className="flex flex-col bg-white w-full my-4">
                                             <div className='w-full flex items-center justify-center'>
                                                 <img className='h-[10rem]' src={item.imageUrl}/>
@@ -377,7 +377,7 @@ function Store() {
                                                 <span className="self-end mb-2 text-lg lg:text-xl text-red-600 font-bold">{item.prix}€</span>
                                                 <div className='flex gap-2 lg:gap-0 lg:justify-between items-center'>
                                                     <Link className='bg-green-600 text-white rounded-3xl p-1 text-sm' _hover={{ textDecor:"none"}} href={`/otherContent/intermed1?categorie=${"Cosmetique"}&magasin=${item.organisation}`}>Commerce</Link>
-                                                    <button className='bg-red-600 text-white rounded-3xl p-1 text-sm'>+Ajouter</button>
+                                                    <button onClick={()=>AddToCart(item, Object.keys(massyProduct)[index])} className='bg-red-600 text-white rounded-3xl p-1 text-sm'>+Ajouter</button>
                                                 </div>
                                             </div>
                                         </Link>
@@ -385,10 +385,10 @@ function Store() {
                                         <p>Aucune donnee</p>
                                     )}
                                     </div>
-                                    <div className="w-full lg:w-1/5 px-4 mt-6 text-white bg-white shadow-md rounded-md relative ">
+                                    <div className="w-full lg:w-1/5 px-4 mt-6 text-white bg-white shadow-md rounded-md relative">
                                         {omarcheGouroProduct && omarcheGouroProduct !== "" ?
                                         Object.values(omarcheGouroProduct).map((item, index) => (
-                                        <Link href={`/Details/details?c=${"Cosmetique"}&m=${item.organisation}&p=${Object.keys(cosmetic)[index]}`} key={index} _hover={{ textDecor:"none"}}
+                                        <Link href={`/Details/details?c=${"Epicerie"}&m=${item.organisation}&p=${Object.keys(omarcheGouroProduct)[index]}`} key={index} _hover={{ textDecor:"none"}}
                                             className="flex flex-col bg-white w-full my-4">
                                             <div className='w-full flex items-center justify-center'>
                                                 <img className='h-[10rem]' src={item.imageUrl}/>
@@ -412,7 +412,7 @@ function Store() {
                                                 <span className="self-end mb-2 text-lg lg:text-xl text-red-600 font-bold">{item.prix}€</span>
                                                 <div className='flex gap-2 lg:gap-0 lg:justify-between items-center'>
                                                     <Link className='bg-green-600 text-white rounded-3xl p-1 text-sm' _hover={{ textDecor:"none"}} href={`/otherContent/intermed1?categorie=${"Cosmetique"}&magasin=${item.organisation}`}>Commerce</Link>
-                                                    <button className='bg-red-600 text-white rounded-3xl p-1 text-sm'>+Ajouter</button>
+                                                    <button onClick={()=>AddToCart(item, Object.keys(omarcheGouroProduct)[index])} className='bg-red-600 text-white rounded-3xl p-1 text-sm'>+Ajouter</button>
                                                 </div>
                                             </div>
                                         </Link>
@@ -452,7 +452,7 @@ function Store() {
                                                 <span className="self-end mb-2 text-lg lg:text-xl text-red-600 font-bold">{item.prix}€</span>
                                                 <div className='flex gap-2 lg:gap-0 lg:justify-between items-center'>
                                                     <Link className='bg-green-600 text-white rounded-3xl p-1 text-sm' _hover={{ textDecor:"none"}} href={`/otherContent/intermed1?categorie=${"Cosmetique"}&magasin=${item.organisation}`}>Commerce</Link>
-                                                    <button className='bg-red-600 text-white rounded-3xl p-1 text-sm'>+Ajouter</button>
+                                                    <button onClick={()=>AddToCart(item, Object.keys(cosmetic)[index])} className='bg-red-600 text-white rounded-3xl p-1 text-sm'>+Ajouter</button>
                                                 </div>
                                             </div>
                                         </Link>
@@ -469,7 +469,7 @@ function Store() {
                                 <div className="flex gap-4 overflow-x-scroll">
                                     {textille && textille !== "" ?
                                     Object.values(textille).map((item, index) => (
-                                        <Link href={`/Details/details?c=${"Cosmetique"}&m=${item.organisation}&p=${Object.keys(cosmetic)[index]}`} key={index} _hover={{ textDecor:"none"}}
+                                        <Link href={`/Details/details?c=${"Textile"}&m=${item.organisation}&p=${Object.keys(textille)[index]}`} key={index} _hover={{ textDecor:"none"}}
                                             className="flex flex-col relative bg-white shadow-md rounded-md w-full lg:w-1/5 my-4">
                                             <div className='w-full flex items-center justify-center'>
                                                 <img className='h-[10rem]' src={item.imageUrl}/>
@@ -491,7 +491,7 @@ function Store() {
                                                 <span className="self-end mb-2 text-lg lg:text-xl text-red-600 font-bold">{item.prix}€</span>
                                                 <div className='flex gap-2 lg:gap-0 lg:justify-between items-center'>
                                                     <Link className='bg-green-600 text-white rounded-3xl p-1 text-sm' _hover={{ textDecor:"none"}} href={`/otherContent/intermed1?categorie=${"Cosmetique"}&magasin=${item.organisation}`}>Commerce</Link>
-                                                    <button className='bg-red-600 text-white rounded-3xl p-1 text-sm'>+Ajouter</button>
+                                                    <button onClick={()=>AddToCart(item, Object.keys(textille)[index])} className='bg-red-600 text-white rounded-3xl p-1 text-sm'>+Ajouter</button>
                                                 </div>
                                             </div>
                                         </Link>
