@@ -325,7 +325,7 @@ export function ContainerCard({ card }) {
             }
           </SimpleGrid>
         </Flex>
-
+        <FavlistWeb Categorie={card} />
         {/* <Favlist2 card={card} /> */}
       </Flex>
     </>
@@ -663,10 +663,10 @@ href={
                     <>
                    
                       <ContainerCard key={key} card={card} />
+                     {/* <Favlist2 card={card} /> */}
+                      
                      
-                      <Flex>
-                      <FavlistWeb Categorie={card} />
-                      </Flex>
+                      
                     </>
                   );
                 })}

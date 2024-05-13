@@ -274,45 +274,236 @@ function Store() {
                 <div className='bg-gray-100 w-full p-4'>
                     <div className='container mx-auto'>
                         <div className='flex flex-col gap-10'>
-                            <div className='flex flex-col '>
+                            <div className='flex flex-col'>
                                 <div className='flex justify-between'>
                                     <h2 className='text-3xl font-semibold text-gray-700'>Epicerie</h2>
-                                    <Link className='text-xs font-bold text-gray-600'>Voir plus</Link>
+                                    <Link href={"/StorePage/EpicerieProducts"} className='text-xs font-bold text-gray-600'>Voir plus</Link>
                                 </div>
-                                <div className='grid grid-cols-5 overflow-x-scroll'>
-                                    
-                                </div>
-                            </div>
-                            <div className='flex flex-col '>
-                                <div className='flex justify-between'>
-                                    <h2 className='text-3xl font-semibold text-gray-700'>Cosmetique</h2>
-                                    <Link className='text-xs font-bold text-gray-600'>Voir plus</Link>
-                                </div>
-                            </div>
-                            <div className='flex flex-col '>
-                                <div className='flex justify-between'>
-                                    <h2 className='text-3xl font-semibold text-gray-700'>Textille</h2>
-                                    <Link className='text-xs font-bold text-gray-600'>Voir plus</Link>
-                                </div>
-                                <div className='grid grid-cols-12 overflow-x-scroll'>
-                                    {textille && textille !== " " ?
-                                    Object.values(textille).map((item, index) => (
-                                        <Link className='col-span-3 px-4'>
-                                            <div className='bg-yellow-100 rounded-md flex flex-col'>
-                                                <div className='w-full flex items-center justify-center'>
-                                                    <img className='h-40 object-cover' src={item.imageUrl}/>
+                                <div className='flex gap-4 overflow-x-scroll'>
+                                    <div className="w-full lg:w-1/5 px-4 mt-6 text-white bg-white shadow-md rounded-md relative">
+                                        {dissoaCajouProduct && dissoaCajouProduct !== "" ?
+                                        Object.values(dissoaCajouProduct).map((item, index) => (
+                                        <Link href={`/Details/details?c=${"Cosmetique"}&m=${item.organisation}&p=${Object.keys(cosmetic)[index]}`} key={index} _hover={{ textDecor:"none"}}
+                                            className="flex flex-col bg-white w-full my-4">
+                                            <div className='w-full flex items-center justify-center'>
+                                                <img className='h-[10rem]' src={item.imageUrl}/>
+                                            </div>
+                                            <div className='flex flex-col gap-1 p-2'>
+                                                <h3 className="text-sm text-gray-700 font-bold">{item.nom}</h3>
+                                                <small className={`${item.etat === 'Disponible'? 'bg-green-600 ' : 'bg-red-600'} p-1 rounded-2xl capitalize text-white absolute -top-2 left-0`}>{item.etat}</small>
+                                                <div className="text-[0.6rem] text-yellow-400 flex items-center">
+                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                    <span className="text-black text-sm">0 avis</span>
                                                 </div>
-                                                <h3>{item.nom}</h3>
+                                                {/* <span className='text-gray-700 my-2 font-semibold text-xs'>{item.organisation}</span> */}
+                                                <div className="flex flex-col mb-2">
+                                                    <span className="text-slate-700 max-[444px]:text-xs text-sm mb-2"><FontAwesomeIcon className="mr-2" icon={faTruck} />Livraison dans toute la France</span>
+                                                    <span className="text-slate-700 text-sm mb-2"><FontAwesomeIcon className="mr-2" icon={faMoneyBillTransfer} />Payez en espèce</span>
+                                                </div>
+                                                <span className="self-end mb-2 text-lg lg:text-xl text-red-600 font-bold">{item.prix}€</span>
+                                                <div className='flex gap-2 lg:gap-0 lg:justify-between items-center'>
+                                                    <Link className='bg-green-600 text-white rounded-3xl p-1 text-sm' _hover={{ textDecor:"none"}} href={`/otherContent/intermed1?categorie=${"Cosmetique"}&magasin=${item.organisation}`}>Commerce</Link>
+                                                    <button className='bg-red-600 text-white rounded-3xl p-1 text-sm'>+Ajouter</button>
+                                                </div>
                                             </div>
                                         </Link>
-                                    )) : (<p>Rien</p>)}
+                                    )): (
+                                        <p>Aucune donnee</p>
+                                    )}
+                                    </div>
+                                    <div className="w-full lg:w-1/5 px-4 mt-6 text-white bg-white shadow-md rounded-md relative ">
+                                        {nayouProduct && nayouProduct !== "" ?
+                                    Object.values(nayouProduct).map((item, index) => (
+                                        <Link href={`/Details/details?c=${"Cosmetique"}&m=${item.organisation}&p=${Object.keys(cosmetic)[index]}`} key={index} _hover={{ textDecor:"none"}}
+                                            className="flex flex-col bg-white w-full my-4">
+                                            <div className='w-full flex items-center justify-center'>
+                                                <img className='h-[10rem]' src={item.imageUrl}/>
+                                            </div>
+                                            <div className='flex flex-col gap-1 p-2'>
+                                                <h3 className="text-sm text-gray-700 font-bold">{item.nom}</h3>
+                                                <small className={`${item.etat === 'Disponible'? 'bg-green-600 ' : 'bg-red-600'} p-1 rounded-2xl capitalize text-white absolute -top-2 left-0`}>{item.etat}</small>
+                                                <div className="text-[0.6rem] text-yellow-400 flex items-center">
+                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                    <span className="text-black text-sm">0 avis</span>
+                                                </div>
+                                                {/* <span className='text-gray-700 my-2 font-semibold text-xs'>{item.organisation}</span> */}
+                                                <div className="flex flex-col mb-2">
+                                                    <span className="text-slate-700 max-[444px]:text-xs text-sm mb-2"><FontAwesomeIcon className="mr-2" icon={faTruck} />Livraison dans toute la France</span>
+                                                    <span className="text-slate-700 text-sm mb-2"><FontAwesomeIcon className="mr-2" icon={faMoneyBillTransfer} />Payez en espèce</span>
+                                                </div>
+                                                <span className="self-end mb-2 text-lg lg:text-xl text-red-600 font-bold">{item.prix}€</span>
+                                                <div className='flex gap-2 lg:gap-0 lg:justify-between items-center'>
+                                                    <Link className='bg-green-600 text-white rounded-3xl p-1 text-sm' _hover={{ textDecor:"none"}} href={`/otherContent/intermed1?categorie=${"Cosmetique"}&magasin=${item.organisation}`}>Commerce</Link>
+                                                    <button className='bg-red-600 text-white rounded-3xl p-1 text-sm'>+Ajouter</button>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    )): (
+                                        <p>Aucune donnee</p>
+                                    )}
+                                    </div>
+                                    <div className="w-full lg:w-1/5 px-4 mt-6 text-white bg-white shadow-md rounded-md relative ">
+                                        {massyProduct && massyProduct !== "" ?
+                                    Object.values(massyProduct).map((item, index) => (
+                                        <Link href={`/Details/details?c=${"Cosmetique"}&m=${item.organisation}&p=${Object.keys(cosmetic)[index]}`} key={index} _hover={{ textDecor:"none"}}
+                                            className="flex flex-col bg-white w-full my-4">
+                                            <div className='w-full flex items-center justify-center'>
+                                                <img className='h-[10rem]' src={item.imageUrl}/>
+                                            </div>
+                                            <div className='flex flex-col gap-1 p-2'>
+                                                <h3 className="text-sm text-gray-700 font-bold">{item.nom}</h3>
+                                                <small className={`${item.etat === 'Disponible'? 'bg-green-600 ' : 'bg-red-600'} p-1 rounded-2xl capitalize text-white absolute -top-2 left-0`}>{item.etat}</small>
+                                                <div className="text-[0.6rem] text-yellow-400 flex items-center">
+                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                    <span className="text-black text-sm">0 avis</span>
+                                                </div>
+                                                {/* <span className='text-gray-700 my-2 font-semibold text-xs'>{item.organisation}</span> */}
+                                                <div className="flex flex-col mb-2">
+                                                    <span className="text-slate-700 max-[444px]:text-xs text-sm mb-2"><FontAwesomeIcon className="mr-2" icon={faTruck} />Livraison dans toute la France</span>
+                                                    <span className="text-slate-700 text-sm mb-2"><FontAwesomeIcon className="mr-2" icon={faMoneyBillTransfer} />Payez en espèce</span>
+                                                </div>
+                                                <span className="self-end mb-2 text-lg lg:text-xl text-red-600 font-bold">{item.prix}€</span>
+                                                <div className='flex gap-2 lg:gap-0 lg:justify-between items-center'>
+                                                    <Link className='bg-green-600 text-white rounded-3xl p-1 text-sm' _hover={{ textDecor:"none"}} href={`/otherContent/intermed1?categorie=${"Cosmetique"}&magasin=${item.organisation}`}>Commerce</Link>
+                                                    <button className='bg-red-600 text-white rounded-3xl p-1 text-sm'>+Ajouter</button>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    )): (
+                                        <p>Aucune donnee</p>
+                                    )}
+                                    </div>
+                                    <div className="w-full lg:w-1/5 px-4 mt-6 text-white bg-white shadow-md rounded-md relative ">
+                                        {omarcheGouroProduct && omarcheGouroProduct !== "" ?
+                                        Object.values(omarcheGouroProduct).map((item, index) => (
+                                        <Link href={`/Details/details?c=${"Cosmetique"}&m=${item.organisation}&p=${Object.keys(cosmetic)[index]}`} key={index} _hover={{ textDecor:"none"}}
+                                            className="flex flex-col bg-white w-full my-4">
+                                            <div className='w-full flex items-center justify-center'>
+                                                <img className='h-[10rem]' src={item.imageUrl}/>
+                                            </div>
+                                            <div className='flex flex-col gap-1 p-2'>
+                                                <h3 className="text-sm text-gray-700 font-bold">{item.nom}</h3>
+                                                <small className={`${item.etat === 'Disponible'? 'bg-green-600 ' : 'bg-red-600'} p-1 rounded-2xl capitalize text-white absolute -top-2 left-0`}>{item.etat}</small>
+                                                <div className="text-[0.6rem] text-yellow-400 flex items-center">
+                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                    <span className="text-black text-sm">0 avis</span>
+                                                </div>
+                                                {/* <span className='text-gray-700 my-2 font-semibold text-xs'>{item.organisation}</span> */}
+                                                <div className="flex flex-col mb-2">
+                                                    <span className="text-slate-700 max-[444px]:text-xs text-sm mb-2"><FontAwesomeIcon className="mr-2" icon={faTruck} />Livraison dans toute la France</span>
+                                                    <span className="text-slate-700 text-sm mb-2"><FontAwesomeIcon className="mr-2" icon={faMoneyBillTransfer} />Payez en espèce</span>
+                                                </div>
+                                                <span className="self-end mb-2 text-lg lg:text-xl text-red-600 font-bold">{item.prix}€</span>
+                                                <div className='flex gap-2 lg:gap-0 lg:justify-between items-center'>
+                                                    <Link className='bg-green-600 text-white rounded-3xl p-1 text-sm' _hover={{ textDecor:"none"}} href={`/otherContent/intermed1?categorie=${"Cosmetique"}&magasin=${item.organisation}`}>Commerce</Link>
+                                                    <button className='bg-red-600 text-white rounded-3xl p-1 text-sm'>+Ajouter</button>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    )): (
+                                        <p>Aucune donnee</p>
+                                    )}
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='flex flex-col'>
+                                <div className='flex justify-between'>
+                                    <h2 className='text-3xl font-semibold text-gray-700'>Cosmetique</h2>
+                                    <Link href={"/StorePage/CosmeticProducts"} className='text-xs font-bold text-gray-600'>Voir plus</Link>
+                                </div>
+                                <div className="flex gap-4 overflow-x-scroll">
+                                    {cosmetic && cosmetic !== "" ?
+                                    Object.values(cosmetic).map((item, index) => (
+                                        <Link  href={`/Details/details?c=${"Cosmetique"}&m=${item.organisation}&p=${Object.keys(cosmetic)[index]}`} key={index} _hover={{ textDecor:"none"}}
+                                            className="flex flex-col relative bg-white shadow-md rounded-md w-full lg:w-1/5 my-4">
+                                            <div className='w-full flex items-center justify-center'>
+                                                <img className='h-[10rem]' src={item.imageUrl}/>
+                                            </div>
+                                            <div className='flex flex-col gap-1 p-2'>
+                                                <h3 className="text-sm text-gray-700 font-bold">{item.nom}</h3>
+                                                <small className={`${item.etat === 'Disponible'? 'bg-green-600 ' : 'bg-red-600'} p-1 rounded-2xl capitalize text-white absolute -top-2 left-0`}>{item.etat}</small>
+                                                <div className="text-[0.6rem] text-yellow-400 flex items-center">
+                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                    <span className="text-black text-sm">0 avis</span>
+                                                </div>
+                                                <span className="text-sm">{item.organisation}</span>
+                                                <span className="text-[0.7rem]">Livré le 31/01/2024</span>
+                                                <span className="text-[0.7rem]"><FontAwesomeIcon className="mr-2" icon={faTruck} />Livraison dans toute la France</span>
+                                                <span className="self-end mb-2 text-lg lg:text-xl text-red-600 font-bold">{item.prix}€</span>
+                                                <div className='flex gap-2 lg:gap-0 lg:justify-between items-center'>
+                                                    <Link className='bg-green-600 text-white rounded-3xl p-1 text-sm' _hover={{ textDecor:"none"}} href={`/otherContent/intermed1?categorie=${"Cosmetique"}&magasin=${item.organisation}`}>Commerce</Link>
+                                                    <button className='bg-red-600 text-white rounded-3xl p-1 text-sm'>+Ajouter</button>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    )): (
+                                        <p>Aucune donnee</p>
+                                    )}
+                                </div>
+                            </div>
+                            <div className='flex flex-col'>
+                                <div className='flex justify-between'>
+                                    <h2 className='text-3xl font-semibold text-gray-700'>Textille</h2>
+                                    <Link href={"/StorePage/TextileProducts"} className='text-xs font-bold text-gray-600'>Voir plus</Link>
+                                </div>
+                                <div className="flex gap-4 overflow-x-scroll">
+                                    {textille && textille !== "" ?
+                                    Object.values(textille).map((item, index) => (
+                                        <Link href={`/Details/details?c=${"Cosmetique"}&m=${item.organisation}&p=${Object.keys(cosmetic)[index]}`} key={index} _hover={{ textDecor:"none"}}
+                                            className="flex flex-col relative bg-white shadow-md rounded-md w-full lg:w-1/5 my-4">
+                                            <div className='w-full flex items-center justify-center'>
+                                                <img className='h-[10rem]' src={item.imageUrl}/>
+                                            </div>
+                                            <div className='flex flex-col gap-1 p-2'>
+                                                <h3 className="text-sm text-gray-700 font-bold">{item.nom}</h3>
+                                                <small className={`${item.etat === 'Disponible'? 'bg-green-600 ' : 'bg-red-600'} p-1 rounded-2xl capitalize text-white absolute -top-2 left-0`}>{item.etat}</small>
+                                                <div className="text-[0.6rem] text-yellow-400 flex items-center">
+                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                    <span className="text-black text-sm">0 avis</span>
+                                                </div>
+                                                <span className="text-sm">{item.organisation}</span>
+                                                <span className="text-[0.7rem]">Livré le 31/01/2024</span>
+                                                <span className="text-[0.7rem]"><FontAwesomeIcon className="mr-2" icon={faTruck} />Livraison dans toute la France</span>
+                                                <span className="self-end mb-2 text-lg lg:text-xl text-red-600 font-bold">{item.prix}€</span>
+                                                <div className='flex gap-2 lg:gap-0 lg:justify-between items-center'>
+                                                    <Link className='bg-green-600 text-white rounded-3xl p-1 text-sm' _hover={{ textDecor:"none"}} href={`/otherContent/intermed1?categorie=${"Cosmetique"}&magasin=${item.organisation}`}>Commerce</Link>
+                                                    <button className='bg-red-600 text-white rounded-3xl p-1 text-sm'>+Ajouter</button>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    )): (
+                                        <p>Aucune donnee</p>
+                                    )}
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-            
         </>
     )
 }

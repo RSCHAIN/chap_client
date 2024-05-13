@@ -147,7 +147,7 @@ useEffect(() =>{
   return (
     <>
    
-   
+   {console.log("datas",datass)}
     { Object.values(datass).map((data,index) => (
         <Box as="a"   key={index} href={`/Details/details?c=${tout}&m=${data.organisation}&p=${datak[index]}`}   mx={[2, 2, 2, 5, 5]} mb={5} bgColor={"white"}>
               

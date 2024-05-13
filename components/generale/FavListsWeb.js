@@ -1,3 +1,4 @@
+`use client`
 import {
   Box,
   Image,
@@ -142,6 +143,7 @@ export function Star ({id,data}){
 
 export default function FavlistWeb({Categorie}) {
   const [data, setData] = useState([]);
+  const [dataT, setDataT] = useState([]);
   const [data1, setData1] = useState([]);
   const [dataK, setDataK] = useState([]);
   const [tout, setTout] = useState([]);
@@ -239,6 +241,7 @@ export default function FavlistWeb({Categorie}) {
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((docs) => {
       if (docs.data().Categorie == Categorie) {
+        console.log("docs.data().Categorie",docs.data().Categorie,docs.data().Organisation)
         get(child(dbRef, `${docs.data().Categorie}/${docs.data().Organisation}`)).then((snapshot) => {
           if (snapshot.exists()) {
           data.push(Object.values(snapshot.val()));
@@ -246,7 +249,7 @@ export default function FavlistWeb({Categorie}) {
 
           }) 
             tout.push(docs.data().Categorie);
-           console.log("produits",snapshot.val()); 
+          //  console.log("produits",snapshot.val()); 
 
           } else {
             console.log("No data available");
@@ -257,7 +260,11 @@ export default function FavlistWeb({Categorie}) {
       }
      
     })
-    
+    data.map((datoo,index) => {
+      datoo.map((d,i)=>{
+       dataT.push(d);
+      })
+    })
   }
 
 
@@ -330,30 +337,30 @@ export default function FavlistWeb({Categorie}) {
   const dateExp = date2.setDate(date2.getDate() + 1);
   const dateExp2 = new Date(dateExp);
   const dateExp3 = dateExp2.toLocaleDateString();
-  let dat = []
+ 
   return (
     <>
-    {/* {dat.concat({...Object.values(data)})} */}
-   {console.log("concat test",{...Object.values(data)} )}
     
-      {data ?
+  {/* {console.log("donnéé",dataT)} */}
+    
+      {dataT ?
        (
          <>
-        {/* <Box display={{base:"none",lg:"block"}} ml={[0, 0, 0, 5, 10]}   width={["90%","90%","100%","100%","100%"]} mt={5} >
-          <SimpleGrid columns={[1,1,2,4,4]} >
-            {Object.values(data).slice(0,2).map((datas, index) => (
-              
-              <Box as="a"  key={index} href={`/Details/details?c=${tout}&m=${data.organisation}&p=${dataK[index]}`}  boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"} mx={[2, 2, 2, 5, 5]} mb={5} bgColor={"white"}>
-                {console.log("datas",datas)}
-                <Box
-                 mx={5}
-                 key={data.id}
-                 maxW={"fit-content"}
-                 // height={"400px"}
-                 my={[0, 0, 0, 5, 5]}
-                 borderRadius="lg"
-                 display={"grid"}
-                 pb={10}
+            <Box width={["90%", "90%", "90%", "80%", "80%"]} display={{ base: "none", lg: "flex" }} my={5} overflowX={"scroll"}>
+            {/* <Box width={"90%"} columns={[1, 1, 2, 5, 5]}  > */}
+              {Object.values(dataT).slice(0, 10).map((data, index) => (
+
+                <Box as="a" key={index} href={`/Details/details?c=${tout[index]}&m=${data.organisation}&p=${(Object.keys(dataT))[index]}`} boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"} mx={[2, 2, 2, 5, 5]} mb={5} bgColor={"white"}>
+
+                  <Box
+                    mx={5}
+                    key={data.id}
+                    maxW={"fit-content"}
+                    // height={"400px"}
+                    my={[0, 0, 0, 5, 5]}
+                    borderRadius="lg"
+                    display={"grid"}
+                    pb={10}
 
                   // bgColor={"white"}
                   // p={5}
@@ -362,119 +369,108 @@ export default function FavlistWeb({Categorie}) {
                   // my={5}
                   // height={"21.25rem"}
                   // width={"13rem"}
-                >
-                  {data.etat == "Disponible" ? (
-                    <Box
-                      mt={-5}
-                      mb={2}
-                      ml={-5}
-                      color={"white"}
-                   
-                      fontSize={"12px"}
-                      borderRadius={25}
-                      px={2}
-                      width={"80px"}
-                      height={"fit-content"}
-                      bgColor="#7ed957"
-                    >
-                      Disponible
+                  >
+                    {data.etat == "Disponible" ? (
+                      <Box
+                        mt={-5}
+                        mb={2}
+                        ml={-5}
+                        color={"white"}
+
+                        fontSize={"12px"}
+                        borderRadius={25}
+                        px={2}
+                        width={"80px"}
+                        height={"fit-content"}
+                        bgColor="#7ed957"
+                      >
+                        Disponible
+                      </Box>
+                    ) : (
+                      <Badge
+                        mt={-5}
+                        mb={2}
+                        ml={-5}
+                        color={"white"}
+
+                        fontSize={"12px"}
+                        borderRadius={25}
+                        px={2}
+                        width={"80px"}
+                        height={"fit-content"}
+                        bgColor="red"
+                      >
+                        Rupture
+                      </Badge>
+                    )}
+                    <Image
+                      height={["150px", "150px", "150px", "150px", "150px"]}
+                      width={["150px", "150px", "150px", "150px", "150px"]}
+                      src={data.imageUrl}
+                      alt={data.nom}
+                    />
+                    <Box height={"fit-content"} >
+                      <Text
+                        width={["150px", "150px", "150px", "180px", "180px"]}
+                        noOfLines={2}
+                        fontSize={"15px"}
+                        fontWeight={700}
+                        lineHeight={1.1}
+                      >
+                        {data.nom}
+                      </Text>
+                      <Text
+                        cursor={"pointer"}
+                        as="a" href={`/otherContent/intermed1?categorie=${tout[index]}&magasin=${data.organisation}`}
+                        fontWeight={"bold"}
+                        width={"fit-content"}
+                        color={"orange.900"}
+                        fontSize={"10px"}
+                      >
+                        {data.organisation}
+                      </Text>
                     </Box>
-                  ) : (
-                    <Badge
-                    mt={-5}
-                    mb={2}
-                    ml={-5}
-                    color={"white"}
-                 
-                    fontSize={"12px"}
-                    borderRadius={25}
-                    px={2}
-                    width={"80px"}
-                    height={"fit-content"}
-                    bgColor="red"
-                    >
-                      Rupture
-                    </Badge>
-                  )}
-                  <Image
-                    height={["150px", "150px", "150px", "150px", "150px"]}
-                    width={["150px", "150px", "150px", "200px", "200px"]}
-                    src={data.imageUrl}
-                    alt={data.nom}
-                  />
-                  <Box height={"fit-content"} >
-                    <Text
-                      width={["150px", "150px", "150px", "200px", "200px"]}
-                      noOfLines={2}
-                      fontSize={"15px"}
-                      fontWeight={700}
-                      lineHeight={1.1}
-                    >
-                      {data.nom}
-                    </Text>
-                    <Text
-                    cursor={"pointer"}
-                     as="a"  href={`/otherContent/intermed1?categorie=${tout}&magasin=${data.organisation}`}
-                      fontWeight={"bold"}
-                      width={"fit-content"}
-                      color={"orange.900"}
-                      fontSize={"10px"}
-                    >
-                      {data.organisation}
-                    </Text>
+                    <Flex>
+                    <Star id={Object.keys(dataT)[index]} data={data1}/>
+                    </Flex>
+                    {data.duree == "Expedié en 24h" ? (
+                      <Text fontWeight={"thin"} fontSize={10}>
+                        Livré le {dateExp3}{" "}
+                      </Text>
+                    ) : (
+                      <Text fontWeight={"thin"} fontStyle={"oblique"} fontSize={"12px"}>{data.duree} </Text>
+                    )}
+                    <Flex>
+                      <FaTruck />
+                      <Tooltip
+                        label={`Prix superieur à 30€ Ou être en île-de-france`}
+                      >
+                        <Flex>
+                          <Text ml={2} fontSize={"10px"} fontWeight={700}>
+                            Livraison gratuite{" "}
+                          </Text>
+                          <Text fontSize={"15px"} mt={-1} color={"red"}>
+                            *
+                          </Text>
+                        </Flex>
+                      </Tooltip>
+                    </Flex>
+
+                    <Flex justifyContent={"space-between"} width={["90%", "80%", "100%", "100%", "100%"]}>
+                      <Text></Text>
+                      <Text
+                        textColor={"blue"} color={"blue.400"} fontWeight={"bold"} fontSize={"15px"}
+                      >
+                        {data.prix}€
+                      </Text>
+                    </Flex>
                   </Box>
-                  <Flex>
-                  <Star id={dataK[index]} data={data1}/>
-                  </Flex>
-                  {data.duree == "Expedié en 24h" ? (
-                    <Text fontWeight={"thin"} fontSize={10}>
-                      Livré le {dateExp3}{" "}
-                    </Text>
-                  ) : (
-                    <Text fontWeight={"thin"} fontStyle={"oblique"} fontSize={"12px"}>{data.duree} </Text>
-                  )}
-                  <Flex>
-                    <FaTruck />
-                    <Tooltip
-                      label={`Prix superieur à 30€ Ou être en île-de-france`}
-                    >
-                      <Flex>
-                        <Text ml={2} fontSize={"10px"} fontWeight={700}>
-                          Livraison gratuite{" "}
-                        </Text>
-                        <Text fontSize={"15px"} mt={-1} color={"red"}>
-                          *
-                        </Text>
-                      </Flex>
-                    </Tooltip>
-                  </Flex>
 
-                  <Flex justifyContent={"space-between"} width={["90%","80%","100%","100%","100%"]}>
-                    <Text></Text>
-                    <Text
-                     textColor={"blue"} color={"blue.400"} fontWeight={"bold"} fontSize={"15px"}  
-                    >
-                      {data.prix}€
-                    </Text>
-                  </Flex>
+
                 </Box>
-               
-               
-              </Box>
-            ))}
-          </SimpleGrid>
-        </Box> */}
-
-
-        <Box display={{base:"none",lg:"grid"}}   mt={[0,0,0,10,10]}  bgColor={"white"}>
-        <Carousel responsive={responsive} style={"marginLeft='20px'"}>
-            {Object.values(data).slice(0,Object.keys(data).length/2).map((datas, index) => (
-             <>
-              <DisplayFavlistMobileM key={index} datass={datas}  datak={Object.keys(datas)} tout={tout[index]}/>
-              </>
-            ))}
-        </Carousel>
-        </Box>
+              ))}
+            {/* </Box> */}
+          </Box>
         </>
       ) : (
         <></>
