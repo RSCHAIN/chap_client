@@ -33,59 +33,79 @@ export default function Intermed2() {
   const [jour,setJour] =useState([])
 
 
-//   const Get = async ()=>{
+  const Get = async (terms)=>{
   
-//     if (datas==0) {
-//         const q = query(collection(db, "Admin"), where("categorie","==", `${secureLocalStorage.getItem("service")}`),orderBy("organisation"));
+    console.log("get");
+        const q = query(collection(db, "Admin"), where("categorie","==", `${secureLocalStorage.getItem("service")}`),orderBy("organisation"));
       
-//     const querySnapshot = await getDocs(q);
-//     setModalData2(querySnapshot.docs)
-    
-// }}
+    const querySnapshot = await getDocs(q);
+    // setModalData2(querySnapshot.docs)
+    querySnapshot.docs.forEach(doc =>{modalData2.push(doc.data())})
+}
 
 
   useEffect(() => {
     setCategorie(secureLocalStorage.getItem("service"));
     setJour(secureLocalStorage.getItem("jour"))
-    // Get()
+    Get()
   }, []);
 
   const recherche = async (terms, categorie) => {
-   
+   console.log(parseInt(terms))
    try {
-    const q = query(
-      collection(db, "Admin"),
-      where("ville", "==", String(terms).trim()),
-      where("categorie", "==", categorie)
-    );
+    // console.log("modaldata2",modalData2)
+    // const result =  modalData2.filter((word) => word.ville.toLowerCase() == terms.toLowerCase());
+    const resultinc =  modalData2.filter((word) => word.ville.toLowerCase().includes(terms.toLowerCase()));
+    // const result2 =  modalData2.filter((word) => word.codePostal == terms);
+    const resultinc2 =  modalData2.filter((word) => word.codePostal.includes(terms));
+    // const result3 =  modalData2.filter((word) => word.organisation.toLowerCase() == terms.toLowerCase());
+    const resultinc3 =  modalData2.filter((word) => word.organisation.toLowerCase().includes(terms.toLowerCase()));
+    if (resultinc.length > 0 && resultinc.length > resultinc2.length) {
+      setModalData(resultinc);
+    }else if (resultinc2.length){
+      setModalData(resultinc2);
+    }else if (resultinc3.length){
+      setModalData(resultinc2);
+    }else {
+      setModalData([]);
+    }
+    // console.log("resultinc",resultinc)
+    // console.log("resultinc2",resultinc2)
+    // console.log("resultinc3",resultinc3)
+    // console.log("result",result)
+//     const q = query(
+//       collection(db, "Admin"),
+//       where("ville", "==", String(terms).trim()),
+//       where("categorie", "==", categorie)
+//     );
 
-    const querySnapshot = await getDocs(q);
+//     const querySnapshot = await getDocs(q);
 
-    const q2 = query(
-      collection(db, "Admin"),
-      where("codePostal", "==", String(terms).trim()),
-      where("categorie", "==", categorie)
-    );
+//     const q2 = query(
+//       collection(db, "Admin"),
+//       where("codePostal", "==", String(terms).trim()),
+//       where("categorie", "==", categorie)
+//     );
 
-    const querySnapshot2 = await getDocs(q2);
+//     const querySnapshot2 = await getDocs(q2);
 
-    const q3 = query(
-      collection(db, "Admin"),
-      where("organisation", "==", String(terms).trim()),
-      where("categorie", "==", categorie)
-    );
+//     const q3 = query(
+//       collection(db, "Admin"),
+//       where("organisation", "==", String(terms).trim()),
+//       where("categorie", "==", categorie)
+//     );
 
-    const querySnapshot3 = await getDocs(q3);
-    console.log("querySnapshot",querySnapshot.docs);
-    console.log("querySnapshot2",querySnapshot2.docs);
-    console.log("querySnapshot3",querySnapshot3.docs);
-if (querySnapshot.docs.length) {
-  setModalData(querySnapshot.docs);
-} else if (querySnapshot2.docs.length) {
-  setModalData(querySnapshot2.docs);
-}else {
-  setModalData(querySnapshot3.docs);
-}
+//     const querySnapshot3 = await getDocs(q3);
+//     console.log("querySnapshot",querySnapshot.docs);
+//     console.log("querySnapshot2",querySnapshot2.docs);
+//     console.log("querySnapshot3",querySnapshot3.docs);
+// if (querySnapshot.docs.length) {
+//   setModalData(querySnapshot.docs);
+// } else if (querySnapshot2.docs.length) {
+//   setModalData(querySnapshot2.docs);
+// }else {
+//   setModalData(querySnapshot3.docs);
+// }
     
    
    } catch (error) {
@@ -98,6 +118,7 @@ if (querySnapshot.docs.length) {
 
   return (
     <>
+    
     <Head>
         <script
           async
@@ -164,7 +185,7 @@ if (querySnapshot.docs.length) {
                
                 mr={{ base: "0%", md: "0%" }}
                 _hover={{ textDecoration: "none" }}
-                href={`/otherContent/intermed1?categorie=${doc.data().categorie}&magasin=${doc.data().organisation}`}
+                href={`/otherContent/intermed1?categorie=${doc.categorie}&magasin=${doc.organisation}`}
               >
                <Box
             height={"100%"}
@@ -184,7 +205,7 @@ if (querySnapshot.docs.length) {
               bg={"rgba(0, 0, 0, 0.277)"}
             >
                {
-                doc.data().imageUrl?(<Image src={doc.data().imageUrl} alt={"image du magasin"} width={"100%"} height={"100%"} borderRadius={25}/>)
+                doc.imageUrl?(<Image src={doc.imageUrl} alt={"image du magasin"} width={"100%"} height={"100%"} borderRadius={25}/>)
                 : <Image src={"https://placehold.co/600x400@3x.png"} alt={"image de remplacement"}/>
                }
               
@@ -196,7 +217,7 @@ if (querySnapshot.docs.length) {
                   textAlign={"center"}
                   fontWeight={"bold"}
                 >
-                  {doc.data().organisation}
+                  {doc.organisation}
                 </Text>
               </Box>
           </Box>
@@ -222,7 +243,7 @@ if (querySnapshot.docs.length) {
               </Box>  */}
               <Box>
                 <Text as={"h4"} pb={5} align={"center"}>
-                    {  doc.data().adresse}
+                    {  doc.adresse}
                 </Text>
               </Box>
               

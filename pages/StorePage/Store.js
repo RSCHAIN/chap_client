@@ -277,14 +277,14 @@ function Store() {
                             <div className='flex flex-col'>
                                 <div className='flex justify-between'>
                                     <h2 className='text-3xl font-semibold text-gray-700'>Epicerie</h2>
-                                    <Link href={"/StorePage/EpicerieProducts"} className='text-xs font-bold text-gray-600'>Voir plus</Link>
+                                    <Link href={"/StorePage/EpicerieProducts"} className='text-xs font-bold text-gray-600 underline'>Voir plus</Link>
                                 </div>
                                 <div className='flex gap-4 overflow-x-scroll'>
-                                    <div className="w-full lg:w-1/5 px-4 mt-6 text-white bg-white shadow-md rounded-md relative">
+                                    <div className="w-full lg:w-1/5 px-4 mt-6 bg-white shadow-md rounded-md relative">
                                         {dissoaCajouProduct && dissoaCajouProduct !== "" ?
                                         Object.values(dissoaCajouProduct).map((item, index) => (
                                         <Link href={`/Details/details?c=${"Epicerie"}&m=${item.organisation}&p=${Object.keys(dissoaCajouProduct)[index]}`} key={index} _hover={{ textDecor:"none"}}
-                                            className="flex flex-col bg-white w-full my-4">
+                                            className="flex flex-col w-full my-4">
                                             <div className='w-full flex items-center justify-center'>
                                                 <img className='h-[10rem]' src={item.imageUrl}/>
                                             </div>
@@ -315,9 +315,9 @@ function Store() {
                                         <p>Aucune donnee</p>
                                     )}
                                     </div>
-                                    <div className="w-full lg:w-1/5 px-4 mt-6 text-white bg-white shadow-md rounded-md relative ">
+                                    <div className="w-full lg:w-1/5 px-4 mt-6 bg-white shadow-md rounded-md relative ">
                                         {nayouProduct && nayouProduct !== "" ?
-                                    Object.values(nayouProduct).map((item, index) => (
+                                        Object.values(nayouProduct).map((item, index) => (
                                         <Link href={`/Details/details?c=${"Epicerie"}&m=${item.organisation}&p=${Object.keys(nayouProduct)[index]}`} key={index} _hover={{ textDecor:"none"}}
                                             className="flex flex-col bg-white w-full my-4">
                                             <div className='w-full flex items-center justify-center'>
@@ -425,7 +425,7 @@ function Store() {
                             <div className='flex flex-col'>
                                 <div className='flex justify-between'>
                                     <h2 className='text-3xl font-semibold text-gray-700'>Cosmetique</h2>
-                                    <Link href={"/StorePage/CosmeticProducts"} className='text-xs font-bold text-gray-600'>Voir plus</Link>
+                                    <Link href={"/StorePage/CosmeticProducts"} className='text-xs font-bold text-gray-600 underline'>Voir plus</Link>
                                 </div>
                                 <div className="flex gap-4 overflow-x-scroll">
                                     {cosmetic && cosmetic !== "" ?
@@ -464,7 +464,7 @@ function Store() {
                             <div className='flex flex-col'>
                                 <div className='flex justify-between'>
                                     <h2 className='text-3xl font-semibold text-gray-700'>Textille</h2>
-                                    <Link href={"/StorePage/TextileProducts"} className='text-xs font-bold text-gray-600'>Voir plus</Link>
+                                    <Link href={"/StorePage/TextileProducts"} className='text-xs font-bold text-gray-600 underline'>Voir plus</Link>
                                 </div>
                                 <div className="flex gap-4 overflow-x-scroll">
                                     {textille && textille !== "" ?

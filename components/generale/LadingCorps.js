@@ -325,7 +325,7 @@ export function ContainerCard({ card }) {
             }
           </SimpleGrid>
         </Flex>
-        <FavlistWeb Categorie={card} />
+        {/* <FavlistWeb Categorie={card} /> */}
         {/* <Favlist2 card={card} /> */}
       </Flex>
     </>
