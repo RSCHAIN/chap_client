@@ -52,7 +52,7 @@ export default function Intermed2() {
 
   const recherche = async (terms, categorie) => {
   //  console.log(parseInt(terms)>0)
-   try {. 
+   try {
     // console.log("modaldata2",modalData2)
     // const result =  modalData2.filter((word) => word.ville.toLowerCase() == terms.toLowerCase());
     const resultinc =  modalData2.filter((word) => word.ville.toLowerCase().includes(terms.toLowerCase()));
