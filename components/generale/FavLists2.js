@@ -242,7 +242,7 @@ export default function Favlist2({ categorie, magasin }) {
             </Head>
       {data ? (
         <>
-          <Box display={{ base: "none", lg: "block" }} ml={[0, 0, 0, 5, 10]} width={["90%", "90%", "90%", "80%", "80%"]} my={5} >
+          <Box display={{ base: "none", lg: "block" }} ml={[0, 0, 0, 5, 10]} width={["90%", "90%", "90%", "100%", "90%"]} my={5} >
             <SimpleGrid columns={[1, 1, 2, 5, 5]} >
               {Object.values(data).slice(0, 5).map((data, index) => (
                 <Box as="a" key={index} href={`/Details/details?c=${tout}&m=${data.organisation}&p=${dataK[index]}`} boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"} mx={[2, 2, 2, 5, 5]} mb={5} bgColor={"white"}>
@@ -306,7 +306,7 @@ export default function Favlist2({ categorie, magasin }) {
                     />
                     <Box height={"fit-content"} >
                       <Text
-                        width={["150px", "150px", "150px", "180px", "180px"]}
+                        width={["150px", "150px", "150px", "fit-content", "fit-content"]}
                         noOfLines={2}
                         fontSize={"15px"}
                         fontWeight={700}
