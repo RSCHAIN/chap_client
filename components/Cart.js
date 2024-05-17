@@ -270,6 +270,7 @@ export default function Carte() {
                 const po = secureLocalStorage.getItem("po")
                 // console.log("po",po)
                 let PrixT = 0;
+                let fraisTotal = 0;
                 
                 const All = userCarts;
 
@@ -277,45 +278,56 @@ export default function Carte() {
                 if (All != null) {
                     All.map((data, index) => {
                         PrixT = (parseFloat(data.orderPrice)* data.orderQte )+ PrixT;
-                    });
-                    setPrix(PrixT);
-                }
-                if (PrixT <= 30) {
-                    setDis("grid");
-                    (po.slice(0, 2) == 91 ||
-                    po.slice(0, 2) == 94 ||
-                    po.slice(0, 2) == 93 ||
-                    po.slice(0, 2) == 92 ||
-                    po.slice(0, 2) == 78 ||
-                    po.slice(0, 2) == 77 ||
-                    po.slice(0, 2) == 75) ?setFrais("2.99") : setFrais("5.99");
-                    
-                } else {
-                    setDis("grid");
-                    if (PrixT < 40 && PrixT > 29) {
-                        setFrais((PrixT * 10) / 100);
-                    } else {
-                        if (PrixT < 51) {
-                            setFrais((PrixT * 9) / 100);
-                        } else {
-                            if (PrixT < 71) {
-                                setFrais((PrixT * 8) / 100);
+                        if (data.Livrable == "CHAP" || data.Livrable == "" || data.Livrable == undefined) {
+                            if ((parseFloat(data.orderPrice)* data.orderQte ) <= 30) {
+                                
+                                (po.slice(0, 2) == 91 ||
+                                po.slice(0, 2) == 94 ||
+                                po.slice(0, 2) == 93 ||
+                                po.slice(0, 2) == 92 ||
+                                po.slice(0, 2) == 78 ||
+                                po.slice(0, 2) == 77 ||
+                                po.slice(0, 2) == 75) ?fraisTotal=2.99+fraisTotal : fraisTotal=5.99+fraisTotal;
+                                
                             } else {
-                                if (PrixT < 81) {
-                                    setFrais((PrixT * 7) / 100);
+                                
+                                if ((parseFloat(data.orderPrice)* data.orderQte ) < 40 && (parseFloat(data.orderPrice)* data.orderQte ) > 29) {
+                                    fraisTotal = (((parseFloat(data.orderPrice)* data.orderQte ) * 10) / 100) + fraisTotal;
                                 } else {
-                                    if (PrixT < 91) {
-                                        setFrais((PrixT * 6) / 100);
+                                    if ((parseFloat(data.orderPrice)* data.orderQte ) < 51) {
+                                        fraisTotal = (((parseFloat(data.orderPrice)* data.orderQte ) * 9) / 100) + fraisTotal;
                                     } else {
-                                        if (90 < PrixT) {
-                                            setFrais((PrixT * 5) / 100);
+                                        if ((parseFloat(data.orderPrice)* data.orderQte ) < 71) {
+                                            fraisTotal = (((parseFloat(data.orderPrice)* data.orderQte ) * 8) / 100) + fraisTotal;
+                                        } else {
+                                            if ((parseFloat(data.orderPrice)* data.orderQte ) < 81) {
+                                                fraisTotal = (((parseFloat(data.orderPrice)* data.orderQte ) * 7) / 100) + fraisTotal;
+                                            } else {
+                                                if ((parseFloat(data.orderPrice)* data.orderQte ) < 91) {
+                                                    fraisTotal = (((parseFloat(data.orderPrice)* data.orderQte ) * 6) / 100) + fraisTotal;
+                                                } else {
+                                                    if (90 < (parseFloat(data.orderPrice)* data.orderQte )) {
+                                                        fraisTotal = (((parseFloat(data.orderPrice)* data.orderQte ) * 5) / 100) + fraisTotal;
+                                                    }
+                                                }
+                                            }
                                         }
                                     }
                                 }
                             }
+                            console.log("frais normal",data.orderPrice* data.orderQte);
+                        }else{
+                            
+                            fraisTotal = parseInt(data.taxe) + fraisTotal;
+                            console.log("frais",((parseFloat(data.orderPrice)* data.orderQte ) * data.taxe)/100);
+                            
                         }
-                    }
+                    });
+                    setPrix(PrixT);
+                    setDis("grid");
+                    setFrais(fraisTotal);
                 }
+               
                 secureLocalStorage.setItem("prix", PrixT);
             } else {
                 // console.log("Aucun panier trouvé pour cet utilisateur.");

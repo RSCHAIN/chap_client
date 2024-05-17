@@ -250,7 +250,9 @@ export default function DisplayArticleDetails() {
                     orderPrice: product.prix,
                     orderOrganisation: product.organisation,
                     orderQte: querySnapshot.docs[0].data().orderQte + 1,
-                    email: email
+                    email: email,
+                    Livrable: product.fournisseur,
+                    taxe: product.taxe
                 });
             }
         } else {
@@ -265,7 +267,9 @@ export default function DisplayArticleDetails() {
                 orderPrice: product.prix,
                 orderOrganisation: product.organisation,
                 orderQte: 1,
-                email: email
+                email: email,
+                Livrable: product.fournisseur,
+                taxe: product.taxe
             });
         }
         } catch (error) {
@@ -445,7 +449,7 @@ export default function DisplayArticleDetails() {
                                         </div>
                                         : null}
                                     <div className="flex flex-col gap-2 mt-4 mb-2">
-                                        <span><FontAwesomeIcon icon={faTruck} className='mr-2' />Expédié par CHAP</span>
+                                        <span><FontAwesomeIcon icon={faTruck} className='mr-2' />Expédié par {(data.fournisseur == "CHAP" || data.fournisseur == "" || data.fournisseur == undefined) ? "CHAP" : data.fournisseur}</span>
                                         <span><FontAwesomeIcon icon={faLocationDot} className='mr-2' />Expédie en 48H</span>
                                         <span className='capitalize'><FontAwesomeIcon icon={faBoxesStacked} className='mr-2' />{data.etat}</span>
                                     </div>
