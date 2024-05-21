@@ -115,7 +115,7 @@ export default function Connexion() {
             isClosable: true,
           })
           router.push("/")
-          router.reload();
+          // router.reload();
         } else {
 
           signOut(authentic);
@@ -216,7 +216,11 @@ export default function Connexion() {
 
   const loginGoogle = async () => {
     try {
-      const response = await signinWithGoogle().then((res) => { secureLocalStorage.setItem("name", response.user.displayName), console.log("donnees google", res) }
+      const response = await signinWithGoogle()
+      .then((res) => { 
+        secureLocalStorage.setItem("name", response.user.displayName),
+        router.push("/")
+    }
       );
 
     } catch (error) {
