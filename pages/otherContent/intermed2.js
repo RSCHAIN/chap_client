@@ -204,8 +204,8 @@ export default function Intermed2() {
               width={"100%"}
               bg={"rgba(0, 0, 0, 0.277)"}
             >
-               {
-                doc.imageUrl?(<Image src={doc.imageUrl} alt={"image du magasin"} width={"100%"} height={"100%"} borderRadius={25}/>)
+              {
+                doc.data().imageUrl && doc.data().imageUrl.length>0?(<Image src={doc.data().imageUrl} alt={"image du magasin"} width={"100%"} height={"100%"} borderRadius={25}/>)
                 : <Image src={"https://placehold.co/600x400@3x.png"} alt={"image de remplacement"}/>
                }
               

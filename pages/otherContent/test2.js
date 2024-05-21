@@ -206,7 +206,10 @@ const minute = jours.getMinutes();
 
            
            
-               <Image src={data.imageUrl} alt={"image du magasin"} width={"100%"} height={"100%"} borderRadius={25}/>
+{
+                data.imageUrl && data.imageUrl.length>0?(<Image src={data.imageUrl} alt={"image du magasin"} width={"100%"} height={"100%"} borderRadius={25}/>)
+                : <Image src={"https://placehold.co/600x400@3x.png"} alt={"image de remplacement"}/>
+               }
               
            
             <Box mt={"-100px"}>
