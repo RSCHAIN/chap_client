@@ -59,16 +59,14 @@ export default function Intermed2() {
     if (terms.length > 0 && terms != null && terms!=" ") {
       // console.log("modaldata2",modalData2)
     // const result =  modalData2.filter((word) => (word.ville != undefined && word.ville && word.ville != null && word.ville != " " && word.ville.length >2) ?console.log(word.ville):console.log("rien"));
-    console.log("resultinc",resultinc)
-    console.log("resultinc2",resultinc2)
-    console.log("resultinc3",resultinc3)
+    
     const resultinc =  modalData2.filter((word) => (word.ville != undefined && word.ville && word.ville != null && word.ville != " " && word.ville.length >2) ? word.ville.toLowerCase().includes(terms.toLowerCase()) : null);
     
     // const result2 =  modalData2.filter((word) => word.codePostal == terms);
 
     const resultinc2 =  modalData2.filter((word) =>(word.codePostal != undefined && word.codePostal && word.codePostal != null && word.codePostal != " " && word.codePostal.length >2) ? word.codePostal.includes(terms) : null);
 
-    // const result3 =  modalData2.filter((word) => word.organisation.toLowerCase() == terms.toLowerCase());
+    // const result3 =  modalData2.filter((word) => word.organisation.tosLowerCase() == terms.toLowerCase());
 
     const resultinc3 =  modalData2.filter((word) =>(word.organisation != undefined && word.organisation && word.organisation != null && word.organisation != " " && word.organisation.length >2) ? word.organisation.toLowerCase().includes(terms.toLowerCase()) : "");
     
@@ -187,7 +185,7 @@ export default function Intermed2() {
           ml={[10, 10, 10, 20, 20]}
         >
          
-          {modalData.map((doc, index) => (
+          {modalData.slice(0,modalData.length/4).map((doc, index) => (
            
             <Box
               key={index}
