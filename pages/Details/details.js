@@ -251,8 +251,8 @@ export default function DisplayArticleDetails() {
                     orderOrganisation: product.organisation,
                     orderQte: querySnapshot.docs[0].data().orderQte + 1,
                     email: email,
-                    Livrable: product.fournisseur,
-                    taxe: product.taxe
+                    livrable: product.fournisseur && product.fournisseur != "CHAP"?product.fournisseur: "CHAP",
+                    taxe: product.taxe ? product.taxe : 0
                 });
             }
         } else {
@@ -268,8 +268,8 @@ export default function DisplayArticleDetails() {
                 orderOrganisation: product.organisation,
                 orderQte: 1,
                 email: email,
-                Livrable: product.fournisseur,
-                taxe: product.taxe
+                livrable: product.fournisseur && product.fournisseur != "CHAP"?product.fournisseur: "CHAP",
+                taxe: product.taxe ? product.taxe : 0
             });
         }
         } catch (error) {
