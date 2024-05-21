@@ -132,7 +132,7 @@ const minute = jours.getMinutes();
         </script>
         </Head>
   
-  
+        {console.log("categorie",secureLocalStorage.getItem("service"))}
     {/* <Flex
       bg="#edf3f8"
       _dark={{

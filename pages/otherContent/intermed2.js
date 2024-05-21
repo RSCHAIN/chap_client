@@ -7,6 +7,7 @@ import {
   Box,
   Center,
   Flex,
+  Heading,
   Image,
   Input,
   InputGroup,
@@ -35,7 +36,7 @@ export default function Intermed2() {
 
   const Get = async (terms)=>{
   
-    console.log("get");
+    // console.log("get");
         const q = query(collection(db, "Admin"), where("categorie","==", `${secureLocalStorage.getItem("service")}`),orderBy("organisation"));
       
     const querySnapshot = await getDocs(q);
@@ -47,31 +48,47 @@ export default function Intermed2() {
   useEffect(() => {
     setCategorie(secureLocalStorage.getItem("service"));
     setJour(secureLocalStorage.getItem("jour"))
-    Get()
-  }, []);
+    Get(secureLocalStorage.getItem("service"))
+  }, [categorie]);
 
   const recherche = async (terms, categorie) => {
-  //  console.log(parseInt(terms)>0)
+    setModalData([]);
+   console.log(parseInt(terms)>0)
+   console.log(modalData2)
    try {
-    // console.log("modaldata2",modalData2)
-    // const result =  modalData2.filter((word) => word.ville.toLowerCase() == terms.toLowerCase());
-    const resultinc =  modalData2.filter((word) => word.ville.toLowerCase().includes(terms.toLowerCase()));
+    if (terms.length > 0 && terms != null && terms!=" ") {
+      // console.log("modaldata2",modalData2)
+    // const result =  modalData2.filter((word) => (word.ville != undefined && word.ville && word.ville != null && word.ville != " " && word.ville.length >2) ?console.log(word.ville):console.log("rien"));
+    console.log("resultinc",resultinc)
+    console.log("resultinc2",resultinc2)
+    console.log("resultinc3",resultinc3)
+    const resultinc =  modalData2.filter((word) => (word.ville != undefined && word.ville && word.ville != null && word.ville != " " && word.ville.length >2) ? word.ville.toLowerCase().includes(terms.toLowerCase()) : null);
+    
     // const result2 =  modalData2.filter((word) => word.codePostal == terms);
-    const resultinc2 =  modalData2.filter((word) => word.codePostal.includes(terms));
+
+    const resultinc2 =  modalData2.filter((word) =>(word.codePostal != undefined && word.codePostal && word.codePostal != null && word.codePostal != " " && word.codePostal.length >2) ? word.codePostal.includes(terms) : null);
+
     // const result3 =  modalData2.filter((word) => word.organisation.toLowerCase() == terms.toLowerCase());
-    const resultinc3 =  modalData2.filter((word) => word.organisation.toLowerCase().includes(terms.toLowerCase()));
+
+    const resultinc3 =  modalData2.filter((word) =>(word.organisation != undefined && word.organisation && word.organisation != null && word.organisation != " " && word.organisation.length >2) ? word.organisation.toLowerCase().includes(terms.toLowerCase()) : "");
+    
+    
     if (resultinc.length > 0 && resultinc.length > resultinc2.length) {
       setModalData(resultinc);
     }else if (resultinc2.length){
       setModalData(resultinc2);
     }else if (resultinc3.length){
-      setModalData(resultinc2);
+      setModalData(resultinc3);
     }else {
       setModalData([]);
     }
-    // console.log("resultinc",resultinc)
-    // console.log("resultinc2",resultinc2)
-    // console.log("resultinc3",resultinc3)
+    console.log("resultinc",resultinc)
+    console.log("resultinc2",resultinc2)
+    console.log("resultinc3",resultinc3)
+
+
+    }
+    
     // console.log("result",result)
 //     const q = query(
 //       collection(db, "Admin"),
@@ -109,7 +126,8 @@ export default function Intermed2() {
     
    
    } catch (error) {
-    
+    // console.log("error",error);
+   
    }
    
   };
@@ -139,6 +157,7 @@ export default function Intermed2() {
         <Navbar />
       </Box>
       <Center mt={5}>
+     
         <Flex justifyContent={"space-between"}>
           {/* <Text mr={5} fontSize={20}>Trouver un magasin</Text><br/> */}
           <InputGroup>
@@ -157,6 +176,7 @@ export default function Intermed2() {
           </InputGroup>
         </Flex>
       </Center>
+      {/* <Heading> {secureLocalStorage.getItem("service")}</Heading> */}
       {modalData.length == 0 ? <Tested /> : <>
       <SimpleGrid
         
