@@ -75,7 +75,7 @@ export default function Intermed2() {
       setModalData(resultinc);
     }else if (resultinc2.length && resultinc2.length > resultinc3.length  && resultinc2.length > resultinc.length){
       setModalData(resultinc2);
-    }else if (resultinc3.length && resultinc.length < resultinc3.length  && resultinc2.length < resultinc3.length){
+    }else if (resultinc3.length && (resultinc.length < resultinc3.length || resultinc.length == resultinc3.length )  && (resultinc2.length < resultinc3.length || resultinc2.length == resultinc3.length )){
       setModalData(resultinc3);
     }else {
       setModalData([]);
@@ -185,7 +185,7 @@ export default function Intermed2() {
           ml={[10, 10, 10, 20, 20]}
         >
          
-          {modalData.slice(0,modalData.length/4).map((doc, index) => (
+          {modalData.slice(0,modalData.length/2).map((doc, index) => (
            
             <Box
               key={index}
