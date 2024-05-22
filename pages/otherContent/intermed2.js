@@ -71,11 +71,11 @@ export default function Intermed2() {
     const resultinc3 =  modalData2.filter((word) =>(word.organisation != undefined && word.organisation && word.organisation != null && word.organisation != " " && word.organisation.length >2) ? word.organisation.toLowerCase().includes(terms.toLowerCase()) : "");
     
     
-    if (resultinc.length > 0 && resultinc.length > resultinc2.length) {
+    if (resultinc.length > 0 && resultinc.length > resultinc2.length && resultinc.length > resultinc3.length) {
       setModalData(resultinc);
-    }else if (resultinc2.length){
+    }else if (resultinc2.length && resultinc2.length > resultinc3.length  && resultinc2.length > resultinc.length){
       setModalData(resultinc2);
-    }else if (resultinc3.length){
+    }else if (resultinc3.length && resultinc.length < resultinc3.length  && resultinc2.length < resultinc3.length){
       setModalData(resultinc3);
     }else {
       setModalData([]);
