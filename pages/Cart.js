@@ -28,13 +28,13 @@ export default function Cart() {
     useEffect(() => {
         onAuthStateChanged(authentic, (user) => {
         if (!user) {
-            router.push("/Choose");
+            router.push("/Connexion");
             // router.reload();
         }else{
             setUser(true)
         }
         });
-    }, [auth, router]);
+    }, [authentic, router]);
   
     const [isLagerThan768] = useMediaQuery("(min-width: 768px)");
 

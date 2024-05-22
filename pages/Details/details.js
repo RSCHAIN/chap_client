@@ -1,4 +1,4 @@
-'use client'
+
 import { Box, Container, Stack, Text, Image, Center, Flex, VStack, Button, Heading, SimpleGrid, StackDivider, List, ListItem, useToast, useDisclosure, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Input, Textarea, Icon, Avatar, Select } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import secureLocalStorage from 'react-secure-storage'
@@ -110,6 +110,7 @@ export function Star({ id, data }) {
 
 export default function DisplayArticleDetails() {
     const router = useRouter();
+
     const { asPath, query } = router;
     const [data, setData] = useState([])
     const [data1, setData1] = useState([])
@@ -174,7 +175,7 @@ export default function DisplayArticleDetails() {
           
         RetreiveProd(query.c, query.m, query.p)
     
-    }, [data, query])
+    }, [data, query,router])
 
     const avis = "Titre de l'avis"
     const [avisTitle, setAvisTitle] = useState("")
@@ -279,19 +280,23 @@ export default function DisplayArticleDetails() {
     }
 
     function AddToCart(product, productKey, color, taille) {
-        onAuthStateChanged(authentic, async (user) => {
+        onAuthStateChanged(authentic,  (user) => {
             if (!user) {
-                toast({
-                    title: "Veuiller vous identifiez, merci!!!",
 
-                    status: "error",
-                    duration: 9000,
-                    isClosable: true,
-                });
+                localStorage.setItem("redirect_url",router.asPath)
                 
-                sessionStorage.setItem("redirect_url",router.asPath)
-                router.push("/Connexion")
-                router.reload();
+                 router.push("/Connexion")
+                  router.reload();
+                // toast({
+                //     title: "Veuiller vous identifiez, merci!!!",
+
+                //     status: "error",
+                //     duration: 9000,
+                //     isClosable: true,
+                // });
+                // redirect('/Connexion')
+                
+                
             } else {
                 try {
                     Exist(productKey, user.email, user.uid,product, color, taille);

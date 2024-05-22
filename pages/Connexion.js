@@ -114,12 +114,15 @@ export default function Connexion() {
             duration: 3000,
             isClosable: true,
           })
-          if ( sessionStorage.getItem("redirect_url")) {
+          if ( localStorage.getItem("redirect_url")) {
+            console.log("okay")
             router.back()
+          }else{
+            router.push("/") 
+            router.reload(); 
           }
          
-          router.push("/") 
-          router.reload(); 
+          
           
           // router.push("/")
           // router.reload();
@@ -275,12 +278,15 @@ export default function Connexion() {
       })
       // router.push("/"); 
       //  router.reload()
-      if ( sessionStorage.getItem("redirect_url")) {
+      if ( localStorage.getItem("redirect_url")) {
+        localStorage.removeItem("redirect_url")
         router.back()
+      }else{
+         router.push("/") 
+      router.reload(); 
       }
      
-      router.push("/") 
-      router.reload(); 
+     
       
       // 
       // console.log("donnees google", res.user.email)
