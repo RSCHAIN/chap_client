@@ -114,7 +114,14 @@ export default function Connexion() {
             duration: 3000,
             isClosable: true,
           })
-          router.push("/")
+          if ( sessionStorage.getItem("redirect_url")) {
+            router.back()
+          }
+         
+          router.push("/") 
+          router.reload(); 
+          
+          // router.push("/")
           // router.reload();
         } else {
 
@@ -205,8 +212,13 @@ export default function Connexion() {
     toast({
       title: "Connexion établie", duration: 9000, status: "success"
     })
-    router.push("/")
-    router.reload()
+    if ( sessionStorage.getItem("redirect_url")) {
+      router.back()
+    }
+   
+    router.push("/") 
+    router.reload(); 
+    
     // handleRedirect()
   }
 
@@ -246,11 +258,12 @@ export default function Connexion() {
       if (docSnap.exists()) {
         secureLocalStorage.setItem("surname", docSnap.data().surname);
         // setVerified("verify")
-       router.push("/"); 
-       router.reload()
+      //  router.push("/"); 
+      //  router.reload()
 
       } else {
        onOpen();
+       return
       }
       
       toast({
@@ -260,7 +273,16 @@ export default function Connexion() {
         duration: 3000,
         isClosable: true,
       })
+      // router.push("/"); 
+      //  router.reload()
+      if ( sessionStorage.getItem("redirect_url")) {
+        router.back()
+      }
+     
+      router.push("/") 
+      router.reload(); 
       
+      // 
       // console.log("donnees google", res.user.email)
         
     }).catch((error) => { })
@@ -451,7 +473,7 @@ export default function Connexion() {
             <Box>
               <Text>Numéro de téléphone :</Text>
               <Input type="number" onChange={(e) => (setNumber(e.target.value))} />
-              <Text>Addresse :</Text>
+              <Text>Adresse :</Text>
               <Input type="text" onChange={(e) => (setAddress(e.target.value))} />
               <Text>Ville:</Text>
               <Input type="text" onChange={(e) => (setVille(e.target.value))} />

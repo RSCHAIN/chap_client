@@ -288,6 +288,10 @@ export default function DisplayArticleDetails() {
                     duration: 9000,
                     isClosable: true,
                 });
+                
+                sessionStorage.setItem("redirect_url",router.asPath)
+                router.push("/Connexion")
+                router.reload();
             } else {
                 try {
                     Exist(productKey, user.email, user.uid,product, color, taille);
