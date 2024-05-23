@@ -117,6 +117,7 @@ export default function DisplayArticleDetails() {
     const [indexed, setIndexed] = useState(0)
     const [taille, setTaille] = useState("Default")
     const [color, setColor] = useState("Default")
+    const [displayed, setDisplayed] = useState("none")
     const [id, setId] = useState("")
     const { isOpen, onOpen, onClose } = useDisclosure()
     const toast = useToast()
@@ -282,18 +283,19 @@ export default function DisplayArticleDetails() {
     function AddToCart(product, productKey, color, taille) {
         onAuthStateChanged(authentic,  (user) => {
             if (!user) {
-
+                
                 localStorage.setItem("redirect_url",router.asPath)
+                
+                router.push("/Connexion")
                 toast({
                     title: "Veuiller vous identifiez, merci!!!",
 
                     status: "error",
                     duration: 9000,
                     isClosable: true,
-                });
-                router.push("/Connexion")
+                }); 
                 router.reload();
-               
+                setDisplayed("block")
                 // redirect('/Connexion')
                 
                 
@@ -440,7 +442,7 @@ export default function DisplayArticleDetails() {
                                                 </div>
                                             </div>
                                             {data.etat == "Indisponible"? <Button bgColor={"red.800"} alignSelf={"end"} _hover={{bgColor:"red.700"}} p={2} w={{base:"full", lg: "10rem"}} color={"white"}  onClick={() => { toast({title:"Produit en rupture",duration:9000,status:"warning"}) }} >Ajouter au panier</Button> : <Button bgColor={"cyan.800"} alignSelf={"end"} _hover={{bgColor:"cyan.700"}} p={2} w={{base:"full", lg: "10rem"}} color={"white"}  onClick={() => { AddToCart(data, id, color, taille) }} >Ajouter au panier</Button>}
-                                            
+                                            <Text display={displayed}>Soucis de redirection, cliquer <a href='/Connexion'>Ici</a></Text>
                                         </div>
                                     </div>
 
