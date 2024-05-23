@@ -1,5 +1,5 @@
 `use client`
-import { Box, Container, Stack, Text, Image, Center, Flex, VStack, Button, Heading, SimpleGrid, StackDivider, List, ListItem, useToast, useDisclosure, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Input, Textarea, Icon, Avatar, Select } from '@chakra-ui/react'
+import { Box, Container, Stack, Text, Image, Center, Flex, VStack, Button, Heading, SimpleGrid, StackDivider, List, ListItem, useToast, useDisclosure, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Input, Textarea, Icon,Link, Avatar, Select } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import secureLocalStorage from 'react-secure-storage'
 import Navbar from "@/components/Navbar";
@@ -21,7 +21,7 @@ import { FacebookIcon, FacebookShareButton, WhatsappIcon, WhatsappShareButton } 
 import Head from "next/head";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMoneyBillTransfer, faTruck, faStar, faMap, faLocation, faLocationDot, faBoxesStacked, faBoxOpen } from '@fortawesome/free-solid-svg-icons'
-import Link from "next/link";
+// import Link from "next/link";
 // import Favlist2 from "../generale/FavLists2";
 import Favlist2 from "../../components/generale/FavLists2"
 
@@ -117,7 +117,7 @@ export default function DisplayArticleDetails() {
     const [indexed, setIndexed] = useState(0)
     const [taille, setTaille] = useState("Default")
     const [color, setColor] = useState("Default")
-    const [displayed, setDisplayed] = useState("none")
+    const [displayed, setDisplayed] = useState("")
     const [id, setId] = useState("")
     const { isOpen, onOpen, onClose } = useDisclosure()
     const toast = useToast()
@@ -173,7 +173,8 @@ export default function DisplayArticleDetails() {
     
     useEffect(() => {
         Fav()
-          
+        // localStorage.setItem("displayed","none")
+        
         RetreiveProd(query.c, query.m, query.p)
     
     }, [data, query,router])
@@ -295,11 +296,12 @@ export default function DisplayArticleDetails() {
                     isClosable: true,
                 }); 
                 router.reload();
-                setDisplayed("block")
+                localStorage.setItem("displayed","block")
                 // redirect('/Connexion')
                 
                 
             } else {
+                localStorage.setItem("displayed","none")
                 try {
                     Exist(productKey, user.email, user.uid,product, color, taille);
                     toast({
@@ -442,7 +444,7 @@ export default function DisplayArticleDetails() {
                                                 </div>
                                             </div>
                                             {data.etat == "Indisponible"? <Button bgColor={"red.800"} alignSelf={"end"} _hover={{bgColor:"red.700"}} p={2} w={{base:"full", lg: "10rem"}} color={"white"}  onClick={() => { toast({title:"Produit en rupture",duration:9000,status:"warning"}) }} >Ajouter au panier</Button> : <Button bgColor={"cyan.800"} alignSelf={"end"} _hover={{bgColor:"cyan.700"}} p={2} w={{base:"full", lg: "10rem"}} color={"white"}  onClick={() => { AddToCart(data, id, color, taille) }} >Ajouter au panier</Button>}
-                                            <Text display={displayed}>Soucis de redirection, cliquer <Link href='/Connexion'>Ici</Link></Text>
+                                            <Text display={displayed}>Soucis de redirection, cliquer <Link href='/Connexion' color='blue' fontWeight={"bold"}>Ici</Link></Text>
                                         </div>
                                     </div>
 
