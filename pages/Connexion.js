@@ -251,6 +251,7 @@ export default function Connexion() {
   
 
   const signinWithGoogle = () => {
+    console.log("connexion")
     signInWithPopup(authentic, provider).then(async (res) => {
       secureLocalStorage.setItem("name", res.user.displayName)
       setUsername(res.user.displayName)
@@ -279,6 +280,7 @@ export default function Connexion() {
       // router.push("/"); 
       //  router.reload()
       if ( localStorage.getItem("redirect_url")) {
+        console.log("Redirection")
         localStorage.removeItem("redirect_url")
         router.back()
       }else{
@@ -289,9 +291,9 @@ export default function Connexion() {
      
       
       // 
-      // console.log("donnees google", res.user.email)
+      console.log("donnees google", res.user.email)
         
-    }).catch((error) => { })
+    }).catch((error) => {})
   }
   return (
     <>

@@ -1,4 +1,4 @@
-
+`use client`
 import { Box, Container, Stack, Text, Image, Center, Flex, VStack, Button, Heading, SimpleGrid, StackDivider, List, ListItem, useToast, useDisclosure, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Input, Textarea, Icon, Avatar, Select } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import secureLocalStorage from 'react-secure-storage'
@@ -284,16 +284,16 @@ export default function DisplayArticleDetails() {
             if (!user) {
 
                 localStorage.setItem("redirect_url",router.asPath)
-                
-                 router.push("/Connexion")
-                  router.reload();
-                // toast({
-                //     title: "Veuiller vous identifiez, merci!!!",
+                toast({
+                    title: "Veuiller vous identifiez, merci!!!",
 
-                //     status: "error",
-                //     duration: 9000,
-                //     isClosable: true,
-                // });
+                    status: "error",
+                    duration: 9000,
+                    isClosable: true,
+                });
+                router.push("/Connexion")
+                router.reload();
+               
                 // redirect('/Connexion')
                 
                 
