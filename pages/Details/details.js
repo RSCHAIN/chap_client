@@ -444,7 +444,7 @@ export default function DisplayArticleDetails() {
                                                 </div>
                                             </div>
                                             {data.etat == "Indisponible"? <Button bgColor={"red.800"} alignSelf={"end"} _hover={{bgColor:"red.700"}} p={2} w={{base:"full", lg: "10rem"}} color={"white"}  onClick={() => { toast({title:"Produit en rupture",duration:9000,status:"warning"}) }} >Ajouter au panier</Button> : <Button bgColor={"cyan.800"} alignSelf={"end"} _hover={{bgColor:"cyan.700"}} p={2} w={{base:"full", lg: "10rem"}} color={"white"}  onClick={() => { AddToCart(data, id, color, taille) }} >Ajouter au panier</Button>}
-                                            <Text display={displayed}>Soucis de redirection, cliquer <Link href='/Connexion' color='blue' fontWeight={"bold"}>Ici</Link></Text>
+                                            <Text display={displayed}>Soucis de redirection? Cliquer <Link href='/Connexion' color='blue' fontWeight={"bold"}>Ici</Link></Text>
                                         </div>
                                     </div>
 

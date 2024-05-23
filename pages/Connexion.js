@@ -282,6 +282,7 @@ export default function Connexion() {
       if ( localStorage.getItem("redirect_url")) {
         console.log("Redirection")
         localStorage.removeItem("redirect_url")
+        localStorage.removeItem("displayed")
         router.back()
       }else{
          router.push("/") 
