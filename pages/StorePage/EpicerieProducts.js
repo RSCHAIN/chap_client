@@ -155,7 +155,7 @@ function EpicerieProducts() {
                             {epicerieDetails && epicerieDetails !== "" ?
                                 Object.values(epicerieDetails).map((order, index) => (
                                     <>
-                                        <Lk _hover={{ textDecor:"none"}} href={`/Details/details?c=${"Epicerie"}&m=${order.organisation}&p=${Object.keys(epicerieDetails)[index]}`} key={index}
+                                        <Lk _hover={{ textDecor:"none"}} href={`/details?c=${"Epicerie"}&m=${order.organisation}&p=${Object.keys(epicerieDetails)[index]}`} key={index}
                                             className="flex flex-col relative bg-white shadow-md rounded-md">
                                                 <div className='w-full flex items-center justify-center'>
                                                     <img className='h-[10rem]' src={order.imageUrl}/>

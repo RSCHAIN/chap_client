@@ -1,5 +1,5 @@
 `use client`
-import { Box, Container, Stack, Text, Image, Center, Flex, VStack, Button, Heading, SimpleGrid, StackDivider, List, ListItem, useToast, useDisclosure, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Input, Textarea, Icon,Link, Avatar, Select } from '@chakra-ui/react'
+import { Box, Container, Stack, Text, Image, Center, Flex, VStack, Button, Heading, SimpleGrid, StackDivider, List, ListItem, useToast, useDisclosure, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Input, Textarea, Icon,Link, Avatar, Select, AbsoluteCenter } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import secureLocalStorage from 'react-secure-storage'
 import Navbar from "@/components/Navbar";
@@ -23,7 +23,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMoneyBillTransfer, faTruck, faStar, faMap, faLocation, faLocationDot, faBoxesStacked, faBoxOpen } from '@fortawesome/free-solid-svg-icons'
 // import Link from "next/link";
 // import Favlist2 from "../generale/FavLists2";
-import Favlist2 from "../../components/generale/FavLists2"
+import Favlist2 from "../components/generale/FavLists2"
 
 
 const settings = {
@@ -117,7 +117,7 @@ export default function DisplayArticleDetails() {
     const [indexed, setIndexed] = useState(0)
     const [taille, setTaille] = useState("Default")
     const [color, setColor] = useState("Default")
-    const [displayed, setDisplayed] = useState("")
+    const [displayed, setDisplayed] = useState(1)
     const [id, setId] = useState("")
     const { isOpen, onOpen, onClose } = useDisclosure()
     const toast = useToast()
@@ -172,12 +172,19 @@ export default function DisplayArticleDetails() {
     }
     
     useEffect(() => {
+        // onAuthStateChanged(authentic,  (user) => {
+        //     if (!user) {
+        //         router.push("/Choose")
+               
+        //         // 
+        //     }
+        // })
         Fav()
         // localStorage.setItem("displayed","none")
-        
+       
         RetreiveProd(query.c, query.m, query.p)
     
-    }, [data, query,router])
+    }, [authentic,data, query,router])
 
     const avis = "Titre de l'avis"
     const [avisTitle, setAvisTitle] = useState("")
@@ -281,7 +288,7 @@ export default function DisplayArticleDetails() {
         
     }
 
-    function AddToCart(product, productKey, color, taille) {
+    function AddToCartW(product, productKey, color, taille) {
         onAuthStateChanged(authentic,  (user) => {
             if (!user) {
                 
@@ -295,13 +302,14 @@ export default function DisplayArticleDetails() {
                     duration: 9000,
                     isClosable: true,
                 }); 
+                
                 router.reload();
-                localStorage.setItem("displayed","block")
+               setDisplayed(0)
                 // redirect('/Connexion')
                 
                 
             } else {
-                localStorage.setItem("displayed","none")
+               
                 try {
                     Exist(productKey, user.email, user.uid,product, color, taille);
                     toast({
@@ -325,6 +333,59 @@ export default function DisplayArticleDetails() {
         })
 
     }
+
+    function AddToCartM(product, productKey, color, taille) {
+        onAuthStateChanged(authentic,  (user) => {
+            if (!user) {
+                setDisplayed(0)
+                localStorage.setItem("redirect_url",router.asPath)
+                
+                // router.push("/Connexion")
+                toast({
+                    title: "Veuiller vous identifiez, merci!!!",
+
+                    status: "error",
+                    duration: 9000,
+                    isClosable: true,
+                }); 
+                
+                // router.reload();
+           
+                // redirect('/Connexion')
+                
+                
+            } else {
+                
+                try {
+                    Exist(productKey, user.email, user.uid,product, color, taille);
+                    toast({
+                        title: "Produit ajouté!!!",
+
+                        status: "success",
+                        duration: 9000,
+                        isClosable: true,
+                    });
+                } catch (error) {
+                    // console.error("Error adding document: ", error);
+                    toast({
+                        title: "veuillez reessayer svp!!!",
+
+                        status: "error",
+                        duration: 9000,
+                        isClosable: true,
+                    });
+                }
+            }
+        })
+
+    }
+    const redirect = () =>{
+        try {
+            router.push(localStorage.getItem("redirect_url"))
+        } catch (error) {
+            router.push("/")
+        }
+    }
     ////ffin fonction de la cart  
     const Preced = () => {
         try {
@@ -334,10 +395,10 @@ export default function DisplayArticleDetails() {
         }
     }
 
-    if (data != null) {
+    if (data != null && displayed >0) {
         if (Object.values(data).length > 0) {
             return (
-                <> {/**Compte des utilisateurs, devis */}
+                <> 
                 <Head>
                     <script
                     async
@@ -443,8 +504,13 @@ export default function DisplayArticleDetails() {
                                                     }
                                                 </div>
                                             </div>
-                                            {data.etat == "Indisponible"? <Button bgColor={"red.800"} alignSelf={"end"} _hover={{bgColor:"red.700"}} p={2} w={{base:"full", lg: "10rem"}} color={"white"}  onClick={() => { toast({title:"Produit en rupture",duration:9000,status:"warning"}) }} >Ajouter au panier</Button> : <Button bgColor={"cyan.800"} alignSelf={"end"} _hover={{bgColor:"cyan.700"}} p={2} w={{base:"full", lg: "10rem"}} color={"white"}  onClick={() => { AddToCart(data, id, color, taille) }} >Ajouter au panier</Button>}
-                                            <Text display={displayed}>Soucis de redirection? Cliquer <Link href='/Connexion' color='blue' fontWeight={"bold"}>Ici</Link></Text>
+                                            {data.etat == "Indisponible"? <Button bgColor={"red.800"} alignSelf={"end"} _hover={{bgColor:"red.700"}} p={2} w={{base:"full", lg: "10rem"}} color={"white"}  onClick={() => { toast({title:"Produit en rupture",duration:9000,status:"warning"}) }} >Ajouter au panier</Button> : <>
+                                            {/* web */}
+                                            <Button bgColor={"cyan.800"} display={{base:"none",lg:"block"}} alignSelf={"end"} _hover={{bgColor:"cyan.700"}} p={2} w={{base:"full", lg: "10rem"}} color={"white"}  onClick={() => { AddToCartW(data, id, color, taille) }} >Ajouter au panier</Button>
+                                            {/* mobile */}
+                                            <Button bgColor={"cyan.800"} display={{base:"block",lg:"none"}} alignSelf={"end"} _hover={{bgColor:"cyan.700"}} p={2} w={{base:"full", lg: "10rem"}} color={"white"}  onClick={() => { AddToCartM(data, id, color, taille) }} >Ajouter au panier</Button>
+                                            </>}
+                                            
                                         </div>
                                     </div>
 
@@ -589,8 +655,12 @@ export default function DisplayArticleDetails() {
         }
     }
     else {
+       
         return (
             <>
+            <Center mt={"30%"} fontSize={"20px"} fontWeight={500}>
+                <Text>Veuillez cliquer <Link href='/Connexion' color={'blue'} fontWeight={"bold"} >ICI</Link> afin d'être redirigé</Text>
+            </Center>
             </>
         )
     }

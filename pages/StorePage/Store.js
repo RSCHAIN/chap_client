@@ -283,7 +283,7 @@ function Store() {
                                     <div className="w-full lg:w-1/5 px-4 mt-6 bg-white shadow-md rounded-md relative">
                                         {dissoaCajouProduct && dissoaCajouProduct !== "" ?
                                         Object.values(dissoaCajouProduct).map((item, index) => (
-                                        <Link href={`/Details/details?c=${"Epicerie"}&m=${item.organisation}&p=${Object.keys(dissoaCajouProduct)[index]}`} key={index} _hover={{ textDecor:"none"}}
+                                        <Link href={`/details?c=${"Epicerie"}&m=${item.organisation}&p=${Object.keys(dissoaCajouProduct)[index]}`} key={index} _hover={{ textDecor:"none"}}
                                             className="flex flex-col w-full my-4">
                                             <div className='w-full flex items-center justify-center'>
                                                 <img className='h-[10rem]' src={item.imageUrl}/>

@@ -350,7 +350,7 @@ export default function FavlistWeb({Categorie}) {
             {/* <Box width={"90%"} columns={[1, 1, 2, 5, 5]}  > */}
               {Object.values(dataT).slice(0, 10).map((data, index) => (
 
-                <Box as="a" key={index} href={`/Details/details?c=${tout[index]}&m=${data.organisation}&p=${(Object.keys(dataT))[index]}`} boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"} mx={[2, 2, 2, 5, 5]} mb={5} bgColor={"white"}>
+                <Box as="a" key={index} href={`/details?c=${tout[index]}&m=${data.organisation}&p=${(Object.keys(dataT))[index]}`} boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"} mx={[2, 2, 2, 5, 5]} mb={5} bgColor={"white"}>
 
                   <Box
                     mx={5}

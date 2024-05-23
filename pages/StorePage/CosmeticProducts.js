@@ -150,7 +150,7 @@ function CosmeticProducts() {
                         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 lg:gap-6">
                             {ordersDatas && ordersDatas !== "" ?
                                 Object.values(ordersDatas).map((order, index) => (
-                                    <Lk _hover={{ textDecor:"none"}}  href={`/Details/details?c=${"Cosmetique"}&m=${order.organisation}&p=${Object.keys(ordersDatas)[index]}`} key={index}
+                                    <Lk _hover={{ textDecor:"none"}}  href={`/details?c=${"Cosmetique"}&m=${order.organisation}&p=${Object.keys(ordersDatas)[index]}`} key={index}
                                         className="flex flex-col relative bg-white shadow-md rounded-md">
                                                 <div className='w-full flex items-center justify-center'>
                                                     <img className='h-[10rem]' src={order.imageUrl}/>

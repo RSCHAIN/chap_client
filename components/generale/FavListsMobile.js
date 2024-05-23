@@ -336,7 +336,7 @@ export default function FavlistMobile() {
           <SimpleGrid columns={[1,1,2,4,4]} >
             {Object.values(data).slice(0,2).map((datas, index) => (
 
-              <Box as="a"  key={index} href={`/Details/details?c=${tout}&m=${data.organisation}&p=${dataK[index]}`}  boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"} mx={[2, 2, 2, 5, 5]} mb={5} bgColor={"white"}>
+              <Box as="a"  key={index} href={`/details?c=${tout}&m=${data.organisation}&p=${dataK[index]}`}  boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"} mx={[2, 2, 2, 5, 5]} mb={5} bgColor={"white"}>
               
                 <Box
                  mx={5}

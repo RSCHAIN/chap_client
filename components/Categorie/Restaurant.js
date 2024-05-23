@@ -897,7 +897,7 @@ const tester = [
                             <Link dis key={key} _hover={{
                               textDecoration: "none"
                             }}
-                              href={`/Details/details?c=${categorie}&m=${data.organisation}&p=${produitKeys[key]}`}
+                              href={`/details?c=${categorie}&m=${data.organisation}&p=${produitKeys[key]}`}
                               onClick={() => {
                                 
                                 secureLocalStorage.setItem("items", data)

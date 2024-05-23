@@ -28,7 +28,7 @@ export default function Cart() {
     useEffect(() => {
         onAuthStateChanged(authentic, (user) => {
         if (!user) {
-            router.push("/Connexion");
+            router.push("/Choose");
             // router.reload();
         }else{
             setUser(true)

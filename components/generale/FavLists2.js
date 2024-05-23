@@ -245,7 +245,7 @@ export default function Favlist2({ categorie, magasin }) {
           <Box display={{ base: "none", lg: "block" }} ml={[0, 0, 0, 5, 10]} width={["90%", "90%", "90%", "100%", "90%"]} my={5} >
             <SimpleGrid columns={[1, 1, 2, 5, 5]} >
               {Object.values(data).slice(0, 5).map((data, index) => (
-                <Box as="a" key={index} href={`/Details/details?c=${tout}&m=${data.organisation}&p=${dataK[index]}`} boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"} mx={[2, 2, 2, 5, 5]} mb={5} bgColor={"white"}>
+                <Box as="a" key={index} href={`/details?c=${tout}&m=${data.organisation}&p=${dataK[index]}`} boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"} mx={[2, 2, 2, 5, 5]} mb={5} bgColor={"white"}>
 
                   <Box
                     mx={5}
@@ -375,7 +375,7 @@ export default function Favlist2({ categorie, magasin }) {
           <Box display={{ base: "grid", lg: "none" }} width={"100%"} mt={[0, 0, 0, 10, 10]} bgColor={"white"}>
             <Carousel responsive={responsive} style={"marginLeft='20px'"}>
               {Object.values(data).slice(0, 6).map((data, index) => (
-                <Box as="a" key={index} href={`/Details/details?c=${tout}&m=${data.organisation}&p=${dataK[index]}`} boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"} mx={[2, 2, 2, 5, 5]} mb={5} bgColor={"white"}>
+                <Box as="a" key={index} href={`/details?c=${tout}&m=${data.organisation}&p=${dataK[index]}`} boxShadow={"rgba(0, 0, 0, 0.24) 0px 3px 8px"} mx={[2, 2, 2, 5, 5]} mb={5} bgColor={"white"}>
 
                   <Box
                     mx={2}
