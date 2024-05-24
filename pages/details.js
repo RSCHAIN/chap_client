@@ -395,7 +395,7 @@ export default function DisplayArticleDetails() {
         }
     }
 
-    if (data != null) {
+    if (data != null && displayed >0) {
         if (Object.values(data).length > 0) {
             return (
                 <> 
@@ -508,7 +508,7 @@ export default function DisplayArticleDetails() {
                                             {/* web */}
                                             <Button bgColor={"cyan.800"} alignSelf={"end"} _hover={{bgColor:"cyan.700"}} p={2} w={{base:"full", lg: "10rem"}} color={"white"}  onClick={() => { AddToCartW(data, id, color, taille) }} >Ajouter au panier</Button>
                                             {/* mobile */}
-                                            {/* <Button bgColor={"cyan.800"} display={{base:"block",lg:"none"}} alignSelf={"end"} _hover={{bgColor:"cyan.700"}} p={2} w={{base:"full", lg: "10rem"}} color={"white"}  onClick={() => { AddToCartM(data, id, color, taille) }} >Ajouter au panier</Button> */}
+                                            <Button bgColor={"cyan.800"} display={{base:"block",lg:"none"}} alignSelf={"end"} _hover={{bgColor:"cyan.700"}} p={2} w={{base:"full", lg: "10rem"}} color={"white"}  onClick={() => { AddToCartM(data, id, color, taille) }} >Ajouter au panier</Button>
                                             </>}
                                             
                                         </div>
@@ -658,9 +658,9 @@ export default function DisplayArticleDetails() {
        
         return (
             <>
-            <Center mt={"30%"} fontSize={"15px"} fontWeight={500}>
+            
                 <Text textAlign={"center"}>Veuillez cliquer <Link href='/Connexion' color={'blue'} fontWeight={"bold"} >ICI</Link> afin d{"'"}être redirigé</Text>
-            </Center>
+           
             </>
         )
     }
