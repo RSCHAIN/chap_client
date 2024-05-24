@@ -659,7 +659,7 @@ export default function DisplayArticleDetails() {
         return (
             <>
             <Center mt={"30%"} fontSize={"20px"} fontWeight={500}>
-                <Text>Veuillez cliquer <Link href='/Connexion' color={'blue'} fontWeight={"bold"} >ICI</Link> afin d{"'"}être redirigé</Text>
+                <Text textAlign={"center"}>Veuillez cliquer <Link href='/Connexion' color={'blue'} fontWeight={"bold"} >ICI</Link> afin d{"'"}être redirigé</Text>
             </Center>
             </>
         )
