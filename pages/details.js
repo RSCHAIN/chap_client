@@ -506,7 +506,7 @@ export default function DisplayArticleDetails() {
                                             </div>
                                             {data.etat == "Indisponible"? <Button bgColor={"red.800"} alignSelf={"end"} _hover={{bgColor:"red.700"}} p={2} w={{base:"full", lg: "10rem"}} color={"white"}  onClick={() => { toast({title:"Produit en rupture",duration:9000,status:"warning"}) }} >Ajouter au panier</Button> : <>
                                             {/* web */}
-                                            <Button bgColor={"cyan.800"} alignSelf={"end"} _hover={{bgColor:"cyan.700"}} p={2} w={{base:"full", lg: "10rem"}} color={"white"}  onClick={() => { AddToCartW(data, id, color, taille) }} >Ajouter au panier</Button>
+                                            <Button bgColor={"cyan.800"} display={{base:"none",lg:"block"}} alignSelf={"end"} _hover={{bgColor:"cyan.700"}} p={2} w={{base:"full", lg: "10rem"}} color={"white"}  onClick={() => { AddToCartW(data, id, color, taille) }} >Ajouter au panier</Button>
                                             {/* mobile */}
                                             <Button bgColor={"cyan.800"} display={{base:"block",lg:"none"}} alignSelf={"end"} _hover={{bgColor:"cyan.700"}} p={2} w={{base:"full", lg: "10rem"}} color={"white"}  onClick={() => { AddToCartM(data, id, color, taille) }} >Ajouter au panier</Button>
                                             </>}
@@ -659,7 +659,7 @@ export default function DisplayArticleDetails() {
         return (
             <>
             
-                <Text textAlign={"center"}>Veuillez cliquer <Link href='/Connexion' color={'blue'} fontWeight={"bold"} >ICI</Link> afin d{"'"}être redirigé</Text>
+                <Text mt={10} textAlign={"center"}>Veuillez cliquer <Link href='/Connexion' color={'blue'} fontWeight={"bold"} >ICI</Link> afin d{"'"}être redirigé</Text>
            
             </>
         )
