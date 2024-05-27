@@ -660,7 +660,9 @@ export default function DisplayArticleDetails() {
             <>
             
                 <Text mt={10} textAlign={"center"}>Veuillez cliquer <Link href='/Connexion' color={'blue'} fontWeight={"bold"} >ICI</Link> afin d{"'"}être redirigé</Text>
-           
+                <Center>
+                    <Image src={"/login.png"} alt="#" width={"100px"} height={"100px"}/>
+                </Center>
             </>
         )
     }
