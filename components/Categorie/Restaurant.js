@@ -643,54 +643,13 @@ const tester = [
       <InputBar />
       <Navbar />
   
-      
-      {/* <SliderComponents2 prod={mag.imageUrl}  /> */}
-    {mag.imageUrl ?( typeof(mag.imageUrl) == 'string' ? 
-          <Image
-          src={mag.imageUrl}
-          display={"block"}
-          alt={`logo de ${mag.organisation}`}
-          width={"100%"}
-          maxHeight={"70vh"}
-          fit={"cover"}
-          bgSize={"cover"} 
-        />
-      :
-      <Box  width={["100%","100%","100%","100%","100%"]}  height={{ base: "xs", md: "xs", lg: "xl" }} mr={3}>
-      <Slider {...settings} ref={(slider) => setSlider(slider)}>
-          {(mag.imageUrl).map((url, index) => (
-            <>
-             <Image
-          src={url}
-          display={"block"}
-          alt={`logo de ${mag.organisation}`}
-          width={"100%"}
-          maxHeight={"60vh"}
-          fit={"cover"}
-          bgSize={"contain"} 
-        />
-            {/* <Box
-              
-              key={index}
-              overflow={"auto"}
-              height={{ base: "xs", md: "xs", lg: "xl" }}
-              minw={{ base: "full", md: "full", lg: "full" }}
-              position="relative"
-              backgroundPosition="center"
-              backgroundRepeat="no-repeat"
-              backgroundSize="contain"
-              backgroundImage={url}
-            ></Box> */}
-            </>
-          ))}</Slider> </Box>)
-  : <></> }
       <Flex width={"100%"} bgColor={"white"} display={["flex","flex","flex","none","none"]} justifyContent={"space-between"} >  
       <Heading  width={"fit-content"}  ></Heading>
       <Flex >
           {/* <Button bgColor={"transparent"} _hover={{
               bgColor:'transparent2'
           }} leftIcon={<FaEdit />}>Avis</Button> */}
-<Accordion defaultIndex={[1]} allowMultiple>
+<Accordion border={"transparent"} defaultIndex={[1]} allowMultiple>
   <AccordionItem>
     <h2>
       <AccordionButton  >
@@ -719,6 +678,47 @@ const tester = [
 
       </Flex>
       </Flex>
+      {/* <SliderComponents2 prod={mag.imageUrl}  /> */}
+    {mag.imageUrl ?( typeof(mag.imageUrl) == 'string' ? 
+          <Image
+          src={mag.imageUrl}
+          display={"block"}
+          alt={`logo de ${mag.organisation}`}
+          width={"100%"}
+          maxHeight={"70vh"}
+          fit={"cover"}
+          bgSize={"cover"} 
+        />
+      :
+      <Box  width={["100%","100%","100%","100%","100%"]}  height={{ base: "35vh", md: "35vh", lg: "60vh" }} mr={3}>
+      <Slider {...settings} ref={(slider) => setSlider(slider)}>
+          {(mag.imageUrl).map((url, index) => (
+            <>
+             <Image
+          src={url}
+          display={"block"}
+          alt={`logo de ${mag.organisation}`}
+          width={"100%"}
+          maxHeight={{base:"35vh",lg:"60vh"}}
+          fit={"fill"}
+          bgSize={"contain"} 
+        />
+            {/* <Box
+              
+              key={index}
+              overflow={"auto"}
+              height={{ base: "xs", md: "xs", lg: "xl" }}
+              minw={{ base: "full", md: "full", lg: "full" }}
+              position="relative"
+              backgroundPosition="center"
+              backgroundRepeat="no-repeat"
+              backgroundSize="contain"
+              backgroundImage={url}
+            ></Box> */}
+            </>
+          ))}</Slider> </Box>)
+  : <></> }
+     
       
   
      
