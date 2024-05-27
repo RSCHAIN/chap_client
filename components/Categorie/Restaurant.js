@@ -660,7 +660,16 @@ const tester = [
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
           {(mag.imageUrl).map((url, index) => (
             <>
-            <Box
+             <Image
+          src={url}
+          display={"block"}
+          alt={`logo de ${mag.organisation}`}
+          width={"100%"}
+          maxHeight={"60vh"}
+          fit={"cover"}
+          bgSize={"contain"} 
+        />
+            {/* <Box
               
               key={index}
               overflow={"auto"}
@@ -671,7 +680,7 @@ const tester = [
               backgroundRepeat="no-repeat"
               backgroundSize="contain"
               backgroundImage={url}
-            ></Box>
+            ></Box> */}
             </>
           ))}</Slider> </Box>)
   : <></> }
@@ -707,17 +716,13 @@ const tester = [
   
 </Accordion>
 
-{/* 
-            <Button bgColor={"transparent"} _hover={{
-              bgColor:'transparent2'
-          }} leftIcon={<MdIosShare />}>Partager</Button> */}
+
       </Flex>
       </Flex>
       
   
      
-       {console.log("imageurl : ",mag)}
-       {console.log(typeof(mag.imageUrl))}
+      
     {/* {categorie == "Restaurant" ? <BoxRestau mag={mag} categorie={categorie}/> : <BoxCommerce mag={mag} categorie={categorie}/>} */}
    <Box bgColor={"white"}>
     <BoxRestau mag={mag}  categorie={categorie} donnee={produit} />

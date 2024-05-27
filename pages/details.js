@@ -467,21 +467,10 @@ export default function DisplayArticleDetails() {
                                     </div>
                                     <div className="flex flex-col lg:flex-row justify-between lg:items-center">
                                         <span className="font-bold uppercase">{data.nom}</span>
-                                        {/* <div className="">
-                                            <span className="text-2xl font-bold">{data.prix} € </span>
-                                            <small className='-mb-2'>TTC</small>
-                                        </div> */}
+                                       
                                     </div>
                                     <div className="-mt-4">
-                                        {/* <small className='text-yellow-300 max-[600px]:'>
-                                            <FontAwesomeIcon icon={faStar} />
-                                            <FontAwesomeIcon icon={faStar} />
-                                            <FontAwesomeIcon icon={faStar} />
-                                            <FontAwesomeIcon icon={faStar} />
-                                            <FontAwesomeIcon icon={faStar} />
-                                        </small>
-                                        <span className='ml-2'>{Object.keys(data1).length} avis</span> */}
-                                        <Star id={query.p} data={data1}/>
+                                       <Star id={query.p} data={data1}/>
                                     </div>
                                     <div className="">
                                         <p>{data.description}</p>
@@ -606,50 +595,7 @@ export default function DisplayArticleDetails() {
                         </ModalContent>
                     </Modal>
                     <FooterR/>
-                    {/* <Center>
-                    <Box mt={2}  >
-                        <Text fontWeight={700} fontSize={"20px"} ml={5}>Produits recommandés</Text>
-                        <Favlist2 categorie={categorie} magasin={magasin} />
-                    </Box>
-                    </Center>
-                    <Box display={["none","none","none","block","block"]}>
-                    <AvisMag mag={magasin} email={mag.email} />
-                    </Box>
-                    <Center bgColor={"white"} >
-                        <SimpleGrid mt={2} columns={[1,1,1,2,2]} ml={['30%','30%','30%','20%','20%']} spacingX={20} display={["none","none","none","flex","flex"]} >
-                        <Box mr={10} display={["none","none","none","block","block"]}>
-                            <StarM2 data={mag.feedback} />
-                        </Box>
-                        <SimpleGrid columns={1}  bgColor={"white"} ml={[0, 0, 0, 10, 10]} >
-                            {mag.feedback ? (Object.values(mag.feedback).map((data) => {
-                            return (<>
-                                <Box width={"400px"} justifyContent={"flex-start"} m={5} ml={0} bgColor={"white"}>
-                                <Flex justifyContent={"start"}>
-                                    <StarAvis data={data.rating} />
-                                    <Text fontWeight={600} ml={10} mt={-1} fontSize={"12px"}>{data.dateDep ?? ""}</Text>
-
-
-                                </Flex>
-                                <Heading fontSize={"15px"}>{data.avisTitle}</Heading>
-                                <Text fontSize={"15px"} fontWeight={"hairline"} fontFamily={"-apple-system"}>{data.avisDesc}</Text>
-                                <Text fontSize={"15px"} fontWeight={"hairline"} fontFamily={"-apple-system"}>{data.usermail}</Text>
-                                </Box>
-                            </>)
-                            }
-                            )
-                            )
-
-                            : <></>}
-                        </SimpleGrid>
-                        <Box mr={10} display={["block","block","block","none","none"]}>
-                            <StarM2 data={mag.feedback} />
-                        </Box>
-                        </SimpleGrid>
-                    </Center>
-                    <Box bgColor={"white"} height={"fit-content"} pb={10} display={["block","block","block","none","none"]}>
-                    <AvisMag mag={magasin} email={mag.email} />
-                    <AffichageComM data={mag}/>
-                    </Box> */}
+                    
                 </>
             )
         }
@@ -667,167 +613,5 @@ export default function DisplayArticleDetails() {
         )
     }
 
-    // if(data != null){
-    //     if(Object.values(data).length>0){
-    //         return (
-    //             <>
-    //                 <Head>
-    //                     <script
-    //                     async
-    //                     src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
-    //                     ></script>
-    //                     <script strategy="lazyOnload">
-    //                     {`
-    //                         window.dataLayer = window.dataLayer || [];
-    //                         function gtag(){dataLayer.push(arguments)}
-    //                     gtag('js', new Date()); 
-    //                     gtag('config', 'G-RFSVQTGJ87');
-    //                     `}
 
-    //                     </script>
-    //                 </Head>
-    //                 <InputBar />
-    //                 <Navbar />
-    //                 <Container maxW={'7xl'}>
-    //                     <SimpleGrid columns={{ base: 1, lg: 2 }} spacing={{ base: 8, md: 10 }} py={{ base: 18, md: 24 }}>
-    //                         <Box>
-    //                             <Image mb={5} alt={'product image'} src={ data.imageUrl[indexed]}
-    //                             w={{ base: '200px', sm: '300px', lg: '600px' }}
-    //                             ml={[10,10,10,10,20]}
-    //                             h={{ base: '200px', sm: '300px', lg: '600px' }}/>
-
-    //                             <Box  width={"500px"} display={["none","none","none","block","block"]}>
-    //                                 {data.imageUrl.length > 1 ?
-    //                                 <Slider {...settings}>
-    //                                     {data.imageUrl.map((image, index) => (
-    //                                         <Image key={index} src={image} width={["100px","100px","100px","150px","150px"]} height={["100px","100px","100px","150px","150px"]} onClick={()=>setIndexed(index)} cursor={"pointer"} alt={`Product Image ${index}`}  px={2}/>
-    //                                     ))}
-    //                                 </Slider> : <> <Image  src={data.imageUrl} width={["100px","100px","100px","150px","150px"]} height={["100px","100px","100px","150px","150px"]} cursor={"pointer"} alt={`Product Image `} /></>} 
-    //                             </Box>
-
-    //                             <Box  width={"350px"} display={["block","block","block","none","none"]}>
-    //                                 {data.imageUrl.length > 1 ?
-    //                                 <Slider {...settings2}>
-    //                                     {data.imageUrl.map((image, index) => (
-    //                                         <Image key={index} src={image} width={["100px","100px","100px","150px","150px"]}  height={["100px","100px","100px","150px","150px"]} onClick={()=>setIndexed(index)} cursor={"pointer"} alt={`Product Image ${index}`}  px={2}/>
-    //                                     ))}
-    //                                 </Slider> : <> <Image  src={data.imageUrl} width={["100px","100px","100px","150px","150px"]} height={["100px","100px","100px","150px","150px"]} cursor={"pointer"} alt={`Product Image `} /></>} 
-    //                             </Box>
-    //                         </Box> 
-    //                         <Stack spacing={{ base: 6, md: 10 }}>
-    //                             <Box as={'header'}>
-    //                                 <Flex py={5}>
-    //                                     <Box mr={5}>
-    //                                         <FacebookShareButton url={`https://www.appchap.fr${router.asPath}`} > 
-    //                                             <FacebookIcon size={32} m round /> 
-    //                                         </FacebookShareButton> 
-    //                                     </Box>
-
-    //                                     <WhatsappShareButton url={`https://www.appchap.fr${router.asPath}`} >  
-    //                                         <WhatsappIcon size={32} round /> 
-    //                                     </WhatsappShareButton> 
-    //                                 </Flex>
-    //                             </Box>
-    //                             <Box as={'header'}>
-    //                                 <Flex mt={5} justifyContent={"space-between"}>  
-    //                                     <Heading mb={5} fontWeight={600} fontSize={"25px"} width={"50%"}> {data.nom} </Heading>
-    //                                     {/* {console.log("data",data)} */}
-    //                                     <Flex>
-    //                                         <Text width={"fit-content"} color={"black"} fontSize={["25px","25px","25px","30px","30px"]} fontWeight={"hairline"} mr={2}>
-    //                                             {data.prix} € 
-    //                                         </Text>
-    //                                         <Text as={"sub"} mt={["20px","20px","20px","30px","30px"]}>TTC</Text>
-    //                                     </Flex>
-    //                                 </Flex>
-    //                                 <Text mb={5} color={'gray.500'} fontSize={'xl'} fontWeight={'300'}>{data.description}</Text>
-    //                             </Box>
-    //                             <Star id={id} data={data1}/>
-    //                             <Stack spacing={{ base: 4, sm: 6 }} direction={'column'} divider={<StackDivider borderColor={'gray.200'} /> }>
-    //                                 <VStack spacing={{ base: 4, sm: 6 }}>
-    //                                     <Flex>
-    //                                         <Text mr={2}>Expédié par </Text>
-    //                                         <Text color={"cyan.700"} fontWeight={"bold"}>CHAP</Text>
-    //                                     </Flex>
-    //                                 </VStack>
-    //                                 {data.taille ? <Box><Text fontSize={'15px'} fontWeight={'700'}>Taille :  </Text>
-    //                                     <Flex textAlign={"center"}  width={"100px"}>
-    //                                         <Select>
-    //                                             {data.taille.map((data,index)=><option key={index} onClick={()=>{setTaille(data)}} cursor={"pointer"} border={"1px solid black"} p={2} mr={10} borderRadius={"25px"}>{data}</option>)}
-    //                                         </Select>
-    //                                     </Flex>
-    //                                     </Box> : 
-    //                                     <></>}
-    //                                 <Box>
-    //                                     <Text fontSize={{ base: '16px', lg: '18px' }} fontWeight={'700'}mb={'4'}>
-    //                                         <u>Détails du produit</u>
-    //                                     </Text>
-
-    //                                     <List spacing={2}>
-    //                                         <ListItem>
-    //                                             <Text as={'span'} fontSize={"15px"}fontWeight={'bold'}>
-    //                                             Quantité:
-    //                                             </Text>{' '}
-    //                                             {data.quantite}
-    //                                         </ListItem>
-    //                                         <ListItem>
-    //                                             <Text as={'span'}  fontSize={"15px"}fontWeight={'bold'}>
-    //                                             Origine:
-    //                                             </Text>{' '}
-    //                                             {data.origine}
-    //                                         </ListItem>
-    //                                         <ListItem width={"fit-content"} display={"flex"}>
-    //                                             <Text as={'span'} mr={2}  fontSize={"15px"} fontWeight={'bold'}>
-    //                                             Etat:
-    //                                             </Text>{' '}
-    //                                             <Text  textTransform={"capitalize"}>{data.etat}</Text>
-    //                                         </ListItem>
-    //                                     </List>
-    //                                 </Box>
-    //                             </Stack>
-    //                             <Center display={"grid"}>
-    //                                 <Button className={"button-85"} onClick={()=>{AddToCart(data,id,color,taille)}}>
-    //                                     Ajouter au panier
-    //                                 </Button>
-
-    //                                 <Flex mt={2} ml={5}>
-    //                                     <Text mr={2}>Expédié en  </Text>
-    //                                     <Text color={"green"}>48H</Text>
-    //                                 </Flex>
-    //                             </Center>
-                              
-    //                         </Stack>
-    //                     </SimpleGrid>
-    //                 </Container>
-                    
-    //                 <FooterR/>
-    //             </>
-    //         )
-    //     }
-    // }
-    // else{
-    //     return(
-    //         <>
-    //             <Head>
-    //                 <script
-    //                 async
-    //                 src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
-    //                 ></script>
-    //                 <script strategy="lazyOnload">
-    //                 {`
-    //                     window.dataLayer = window.dataLayer || [];
-    //                     function gtag(){dataLayer.push(arguments)}
-    //                 gtag('js', new Date()); 
-    //                 gtag('config', 'G-RFSVQTGJ87');
-    //                 `}
-
-    //                 </script>
-    //             </Head>
-    //             <Navbar/>
-    //             <Center display={"grid"}>
-    //                 <Text fontWeight={700} mb={5}>Produit introuvable</Text>
-    //                 <Button fontWeight={600} ml={-5} bgColor={"transparent"} _hover={{bgColor:"transparent"}} fontSize={"20px"} color={"blue.700"} onClick={()=>Preced()}>Page précedente</Button>
-    //             </Center>
-    //         </>
-    //     )
-    // }
 }
