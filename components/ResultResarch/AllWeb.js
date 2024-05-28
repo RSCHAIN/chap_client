@@ -274,7 +274,7 @@ setResult("flex")
 )
 
 ):
-<Center w={"full"} ><Text textAlign={"center"} fontWeight={600}>Aucun commerce près de chez vous</Text></Center>}
+<Center w={"full"} ><Text textAlign={"center"} fontWeight={600}>  Aucun commerce connu près de chez vous</Text></Center>}
     
 
         

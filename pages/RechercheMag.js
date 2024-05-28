@@ -87,7 +87,7 @@ export default function RechercheMag() {
       setResult(data.docs)
     } else {
       setResult([]);
-      setFound("Aucun commerce trouvé");
+      setFound("  Aucun commerce connu près de chez vous");
     }
   };
 
@@ -116,7 +116,7 @@ export default function RechercheMag() {
           });
         } else {
           setResult([]);
-          setFound("Aucun commerce trouvé");
+          setFound("  Aucun commerce connu près de chez vous");
         }
       } else if (cityInputValue.length > 3) {
         let all = (
@@ -142,7 +142,7 @@ export default function RechercheMag() {
           });
         } else {
           setResult([]);
-          setFound("Aucun commerce trouvé");
+          setFound("  Aucun commerce connu près de chez vous");
         }
       } else if (postalCodeInputValue.length > 3) {
         let all = (
@@ -168,7 +168,7 @@ export default function RechercheMag() {
           });
         } else {
           setResult([]);
-          setFound("Aucun commerce trouvé");
+          setFound("  Aucun commerce connu près de chez vous");
         }
       }
     } else {
@@ -199,7 +199,7 @@ export default function RechercheMag() {
           setResult(data.docs)
         } else {
           setResult([]);
-          setFound("Aucun commerce trouvé");
+          setFound("  Aucun commerce connu près de chez vous");
         }
       } else if (cityInputValue.length > 3) {
         let all = (
@@ -224,7 +224,7 @@ export default function RechercheMag() {
           setResult(data.docs)
         } else {
           setResult([]);
-          setFound("Aucun commerce trouvé");
+          setFound("  Aucun commerce connu près de chez vous");
         }
       } else if (postalCodeInputValue.length > 3) {
         let all = (
@@ -249,7 +249,7 @@ export default function RechercheMag() {
           setResult(data.docs)
         } else {
           setResult([]);
-          setFound("Aucun commerce trouvé");
+          setFound("  Aucun commerce connu près de chez vous");
         }
       }
     }

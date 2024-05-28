@@ -39,7 +39,7 @@ export default function Textile (data){
               {filtered.length == 0 ? (
                         <>
                         <Heading>Textile</Heading>
-                         Aucun commerce de disponible pres de chez vous </>
+                        Aucun commerce connu près de chez vous </>
                       ) : (
                         <>
                        <Flex

@@ -39,7 +39,7 @@ export default function Fret (data){
               {filtered.length == 0 ? (
                         <>
                         <Heading>Fret</Heading>
-                         Aucun commerce de disponible pres de chez vous </>
+                        Aucun commerce connu près de chez vous </>
                       ) : (
                         <>
                        <Flex

@@ -122,7 +122,7 @@ useEffect(()=>{
                             />
                         </InputGroup>
                         
-                        {modalData.length == 0 ?<> Aucun Commerce de disponible</> : <>
+                        {modalData.length == 0 ?<>   Aucun commerce connu près de chez vous</> : <>
                             <SimpleGrid columns={2}>
                                 {modalData.map((doc,index)=>(
                                     <Box key={index}  m={2} mt={5} as={Link}  onClick={() => {

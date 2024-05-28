@@ -39,7 +39,7 @@ export default function Cosmetique (data){
               {filtered.length == 0 ? (
                         <>
                         <Heading>Cosmetique</Heading>
-                         Aucun commerce de disponible pres de chez vous </>
+                        Aucun commerce connu près de chez vous </>
                       ) : (
                         <>
                        <Flex
