@@ -58,7 +58,7 @@ export default function handler(req, res) {
             <p align="center" style="margin-bottom:0cm; text-align:center; line-height:normal"><b><span
                   style="font-size:12.0pt; ">&nbsp;</span></b></p>
             <p align="center" style="margin-bottom:0cm; text-align:center; line-height:normal"><span
-                style="font-size: 12pt; " >Bonjour -----,</span><span
+                style="font-size: 12pt; " >Bonjour  ${req.body.email},</span><span
                 style="font-size:12.0pt"></span></p>
             <p align="center" style="margin-bottom:0cm; text-align:center; line-height:normal"><span
                 style="font-size:12.0pt">&nbsp;</span></p>
