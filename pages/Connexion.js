@@ -464,7 +464,7 @@ export default function Connexion() {
                       </Button>
 
                     </Center>
-                    <Center display={"grid"} >
+                    {/* <Center display={"grid"} >
                       <Button mb={2}
                         width={"fit-content"} borderBottom={"2px solid black"}
                         leftIcon={<FaFacebook />}
@@ -481,7 +481,7 @@ export default function Connexion() {
                         Connexion avec Facebook
                       </Button>
 
-                    </Center>
+                    </Center> */}
                     <Box position='relative' padding='5'>
                       <Divider />
                       <AbsoluteCenter bg='white' px='4'>
