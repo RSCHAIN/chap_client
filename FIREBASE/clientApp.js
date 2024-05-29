@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import { FacebookAuthProvider } from "firebase/auth";
 import { getDatabase } from "firebase/database";
 import { getFirestore} from "firebase/firestore";
 import { getStorage } from 'firebase/storage';
@@ -23,10 +24,14 @@ const firebaseConfig = {
     appId: "1:991388025559:web:7778779d2400f23bf22692",
     measurementId: "G-RFSVQTGJ87"
 };
+const provider2 = new FacebookAuthProvider();
 const provider = new GoogleAuthProvider();
 provider.setCustomParameters({
     prompt:"select_account"
 });
+provider2.setCustomParameters({
+    'display': 'popup'
+  });
 
 
 
@@ -36,4 +41,5 @@ const db2 = getDatabase(app)
 const db = getFirestore(app)
 const storage = getStorage(); 
 const authentic= getAuth(app);
-export {app,db,db2,authentic,storage,provider}
+authentic.useDeviceLanguage();
+export {app,db,db2,authentic,storage,provider,provider2}

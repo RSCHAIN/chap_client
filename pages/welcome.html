@@ -1,16 +1,4 @@
-import nodemailer from "nodemailer";
-
-export default function handler(req, res) {
-  const email = process.env.EMAIL;
-  const pass = process.env.EMAIL_PASS;
-
-  const message2 = {
-    from: email,
-    to:`${req.body.email}`,
-    subject: "Bienvenue sur CHAP",
-    text: `${req.body.message}`,
-    html: `
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -246,29 +234,3 @@ export default function handler(req, res) {
 </html>
 
 
-`,
-  };
-
-
-  let transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: email,
-      pass,
-    },
-  });
-
-  if (req.method === "POST") {
-    transporter.sendMail(message2, (err, info) => {
-      if (err) {
-        res.status(404).json({
-          error: `Connection refused at ${err}`,
-        });
-      } else {
-        res.status(250).json({
-          success: `Message delivered to ${info.accepted}`,
-        });
-      }
-    });
-  }
-}
