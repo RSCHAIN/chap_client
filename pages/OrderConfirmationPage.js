@@ -366,12 +366,12 @@ function OrderConfirmationPage() {
 
             set(rf(db2, `Commandes/${idCom}${hash}`), {
                 cartlist: Cart,
-                payment: moyen,
+                payment: "Espèce",
                 commandeId: `${idCom}${hash}`,
-                livraison: methodPayment,
-                modelivraison: methodPayment,
+                livraison: "Espèce",
+                modelivraison: "En agence",
                 email,
-                way: methodPayment,
+                way: "Espèce",
                 address: lieu,
                 status: "En attente",
                 ville: ville,
@@ -381,10 +381,10 @@ function OrderConfirmationPage() {
                 lieu: lieu,
                 receveur: nom,
                 numero: numero,
-                jour: getDeliveryDay,
-                paiement: methodPayment,
-                modePaiement: methodPayment,
-                moment: getDeliveryDay,
+                // jour: getDeliveryDay,
+                paiement: "Espèce",
+                modePaiement: "Espèce",
+                // moment: getDeliveryDay,
                 dateCommande,
                 subtotalPrice: `€${prix}`,
                 totalPrice: `€${parseFloat(prix + parseFloat(frais)).toFixed(2)}`,
@@ -423,7 +423,88 @@ function OrderConfirmationPage() {
             setNumero("");
             // router.reload();
         }
+        async function saveCommande4({ownerCard}) {
 
+            let email = sessionStorage.getItem("email");
+            let Cart = cart;
+            const dat = new Date;
+
+            const year = dat.getUTCFullYear();
+            const day = dat.getUTCDate();
+            const month = dat.getUTCMonth() + 1;
+            const hours = dat.getUTCHours();
+            const minutes = dat.getUTCMinutes();
+            const seconds = dat.getUTCSeconds();
+
+            const idCom = generateCustomKey();
+
+
+            const hashDigest = sha256(idCom).toString(CryptoJS.enc.Hex);
+
+            const hash = hashDigest.slice(0, 3).toString()
+
+            const dateCommande = `${day}/${month}/${year}`
+
+            set(rf(db2, `Commandes/${idCom}${hash}`), {
+                cartlist: Cart,
+                payment: "Paypal",
+                commandeId: `${idCom}${hash}`,
+                livraison: "Paypal",
+                modelivraison: "Paypal",
+                email,
+                ownerCard,
+                way: "Paypal",
+                address: lieu,
+                status: "Réglée",
+                ville: ville,
+                rue: rue,
+                code_postal: postal,
+                batiment: batiment,
+                lieu: lieu,
+                receveur: nom,
+                numero: numero,
+                // jour: getDeliveryDay,
+                paiement: "Paypal",
+                modePaiement: "Paypal",
+                // moment: getDeliveryDay,
+                dateCommande,
+                subtotalPrice: `€${prix}`,
+                totalPrice: `€${parseFloat(prix + parseFloat(frais)).toFixed(2)}`,
+                createdAt: serverTimestamp()
+            }
+            );
+
+
+            await axios
+                .post("/api/sendmail", {
+                    adresse: lieu,
+                    commandeId: `${idCom}${hash}`,
+                    email: email.toString(),
+                    way: way,
+                    paiement: moyen,
+                    adresse: secureLocalStorage.getItem("addresse"),
+                    paiement: moyen,
+                    name: secureLocalStorage.getItem("name"),
+                    product: Cart,
+                    totalPrice: `€${parseFloat(prix + parseFloat(frais)).toFixed(2)}`,
+                    frais: parseFloat(frais).toFixed(2)
+                })
+                .then((response) => {
+                    toast({
+                        title: "SUCCES",
+                        description: `merci pour la confiance`,
+                        status: "success",
+                        duration: 9000,
+                        isClosable: true,
+                    });
+                })
+                .catch((error) => { });
+            await DeleteAll()
+            setLieu("");
+            setNom("");
+            setNumero("");
+            // router.reload();
+        }
       
         return (
             <>
@@ -530,7 +611,7 @@ function OrderConfirmationPage() {
                                                             duration: 9000,
                                                             isClosable: true,
                                                         });
-                                                        saveCommande3()
+                                                        saveCommande4({ownerCard: details.payer.name.given_name})
                                                         await DeleteAll()
 
                                                     });
