@@ -11,23 +11,33 @@ export default function handler(req, res) {
     text: `${req.body.message}`,
     html: `
     <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Email de bienvenue AppChap</title>
 </head>
 <style>
-
+@media screen and (min-width: 600px) {
   .center {
-  margin: auto;
-  width: 50%;
- 
-  padding: 10px;
-}
+    margin: auto;
+    width: 50%;
+   
+    padding: 10px;
+  }
+  }
+  @media screen and (max-width: 600px) {
+    .centered {
+      margin: auto;
+      width: 50%;
+     
+      padding: 10px;
+    }
+    }
+  
 </style>
 <body >
-  <div class="center">
+  <div class="center centered">
     <table class="center" cellspacing="0" cellpadding="0" style="border-collapse:collapse ">
       <tbody >
         <tr >

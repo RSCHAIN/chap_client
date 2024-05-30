@@ -143,7 +143,7 @@ const [width9, setWidth9] = useState("1px");
                         setEmail(userCredential.user.email);
                         // router.back()
                         signOut(authentic);
-                        alert("Verifier vos Emails svp");
+                        alert(`Veuillez consulter vos mails pour valider votre inscription. \nNB: N'hésitez pas à consulter vos spams si vous ne recevez pas le mail de validation`);
                         toast({
                           title: "SUCCES.",
                           description: "INSCRIPTION VALIDEE",

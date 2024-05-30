@@ -147,7 +147,7 @@ export default function Connexion() {
           // console.log("VEUILLEZ VERIFIER VOS INFOS DE CONNEXION");
           toast({
             title: "ACCES REFUSE.",
-            description: "VEUILLEZ VERIFIER VOS ACCES",
+            description: "Utilisateur introuvable, veuillez vous inscrire.∂",
             status: "error",
             duration: 9000,
             isClosable: true,
@@ -156,8 +156,8 @@ export default function Connexion() {
           errorMessage == "Firebase: Error (auth/too-many-requests)."
         ) {
           toast({
-            title: "TROP DE TENTATIVES.",
-            description: "VEUILLEZ REESAYER PLUS TARD",
+            title: "Trop de tentatives.",
+            description: "Veuillez reessayer plus tard",
             status: "error",
             duration: 9000,
             isClosable: true,
@@ -171,7 +171,8 @@ export default function Connexion() {
               duration: 9000,
               isClosable: true,
             });
-          } else {
+          } 
+          else {
             if (errorMessage == "Firebase: Error (auth/invalid-email).") {
               toast({
                 title: "MOT DE PASSE/IDENTIFIANT INCORRECT",
@@ -182,8 +183,8 @@ export default function Connexion() {
               });
             } else {
               toast({
-                title: "VEUILLEZ VERIFIER VOS ACCES",
-                description: "VEUILLEZ VERIFIER VOS ACCES",
+                title: "Mot de passe ou identifiant inconnu ",
+                description: "Veuillez verifier vos informations.",
                 status: "error",
                 duration: 9000,
                 isClosable: true,

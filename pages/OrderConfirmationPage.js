@@ -530,7 +530,7 @@ function OrderConfirmationPage() {
                                                             duration: 9000,
                                                             isClosable: true,
                                                         });
-
+                                                        saveCommande3()
                                                         await DeleteAll()
 
                                                     });
