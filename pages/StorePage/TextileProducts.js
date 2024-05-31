@@ -87,7 +87,7 @@ function TextileProducts() {
                                                         <span className="text-black text-sm">0 avis</span>
                                                     </div>
                                                     <span className="text-sm">{order.organisation}</span>
-                                                    <span className="text-[0.7rem]">Livraison maximum 48h en île-de-France</span>
+                                                    <span className="text-[0.7rem]">Livraison en 48h en île-de-France</span>
                                                     <span className="text-[0.7rem]"><FontAwesomeIcon className="mr-2" icon={faTruck} />Livraison dans toute la France</span>
                                                     <span className="self-end mb-2 text-xl lg:text-2xl text-red-600 font-bold">{order.prix}€</span>
                                                 </div>

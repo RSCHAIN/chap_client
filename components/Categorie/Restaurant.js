@@ -690,7 +690,7 @@ const tester = [
           bgSize={"cover"} 
         />
       :
-      <Box  width={["100%","100%","100%","100%","100%"]}  height={{ base: "35vh", md: "35vh", lg: "60vh" }} mr={3}>
+      <Box  width={["100%","100%","100%","100%","100%"]}  height={{ base: "35vh", md: "35vh", lg: "70vh" }} mr={3}>
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
           {(mag.imageUrl).map((url, index) => (
             <>
@@ -698,10 +698,10 @@ const tester = [
           src={url}
           display={"block"}
           alt={`logo de ${mag.organisation}`}
-          width={"100%"}
-          maxHeight={{base:"35vh",lg:"60vh"}}
-          fit={"fill"}
-          bgSize={"contain"} 
+          width={"100vw"}
+          maxHeight={{base:"35vh",lg:"70vh"}}
+          fit={"contain"}
+          bgSize={"cover"} 
         />
             {/* <Box
               
