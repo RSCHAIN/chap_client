@@ -614,7 +614,7 @@ export default function Connexion() {
         <Box   className=' h-screen w-screen'>
             <Text pt={{base:"50%",lg:10}} textAlign={"center"}>Veuillez cliquer <Link href='/' color={'blue'} fontWeight={"bold"} >ICI</Link> afin d{"'"}être redirigé</Text>
             <Center>
-                {/* <Image src={"/login.png"} alt="#" width={"100px"} height={"100px"}/> */}
+                <Image src={"/userin.jpg"} alt="#" width={"100px"} height={"100px"}/>
             </Center>
             </Box>
         </>
