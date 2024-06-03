@@ -318,7 +318,7 @@ function Store() {
                                     <div className="w-full lg:w-1/5 px-4 mt-6 bg-white shadow-md rounded-md relative ">
                                         {nayouProduct && nayouProduct !== "" ?
                                         Object.values(nayouProduct).map((item, index) => (
-                                        <Link href={`/Details/details?c=${"Epicerie"}&m=${item.organisation}&p=${Object.keys(nayouProduct)[index]}`} key={index} _hover={{ textDecor:"none"}}
+                                        <Link href={`/details?c=${"Epicerie"}&m=${item.organisation}&p=${Object.keys(nayouProduct)[index]}`} key={index} _hover={{ textDecor:"none"}}
                                             className="flex flex-col bg-white w-full my-4">
                                             <div className='w-full flex items-center justify-center'>
                                                 <img className='h-[10rem]' src={item.imageUrl}/>
@@ -353,7 +353,7 @@ function Store() {
                                     <div className="w-full lg:w-1/5 px-4 mt-6 text-white bg-white shadow-md rounded-md relative ">
                                         {massyProduct && massyProduct !== "" ?
                                     Object.values(massyProduct).map((item, index) => (
-                                        <Link href={`/Details/details?c=${"Epicerie"}&m=${item.organisation}&p=${Object.keys(epice)[index]}`} key={index} _hover={{ textDecor:"none"}}
+                                        <Link href={`/details?c=${"Epicerie"}&m=${item.organisation}&p=${Object.keys(epice)[index]}`} key={index} _hover={{ textDecor:"none"}}
                                             className="flex flex-col bg-white w-full my-4">
                                             <div className='w-full flex items-center justify-center'>
                                                 <img className='h-[10rem]' src={item.imageUrl}/>
@@ -388,7 +388,7 @@ function Store() {
                                     <div className="w-full lg:w-1/5 px-4 mt-6 text-white bg-white shadow-md rounded-md relative">
                                         {omarcheGouroProduct && omarcheGouroProduct !== "" ?
                                         Object.values(omarcheGouroProduct).map((item, index) => (
-                                        <Link href={`/Details/details?c=${"Epicerie"}&m=${item.organisation}&p=${Object.keys(omarcheGouroProduct)[index]}`} key={index} _hover={{ textDecor:"none"}}
+                                        <Link href={`/details?c=${"Epicerie"}&m=${item.organisation}&p=${Object.keys(omarcheGouroProduct)[index]}`} key={index} _hover={{ textDecor:"none"}}
                                             className="flex flex-col bg-white w-full my-4">
                                             <div className='w-full flex items-center justify-center'>
                                                 <img className='h-[10rem]' src={item.imageUrl}/>
@@ -430,7 +430,7 @@ function Store() {
                                 <div className="flex gap-4 overflow-x-scroll">
                                     {cosmetic && cosmetic !== "" ?
                                     Object.values(cosmetic).map((item, index) => (
-                                        <Link  href={`/Details/details?c=${"Cosmetique"}&m=${item.organisation}&p=${Object.keys(cosmetic)[index]}`} key={index} _hover={{ textDecor:"none"}}
+                                        <Link  href={`/details?c=${"Cosmetique"}&m=${item.organisation}&p=${Object.keys(cosmetic)[index]}`} key={index} _hover={{ textDecor:"none"}}
                                             className="flex flex-col relative bg-white shadow-md rounded-md w-full lg:w-1/5 my-4">
                                             <div className='w-full flex items-center justify-center'>
                                                 <img className='h-[10rem]' src={item.imageUrl}/>
@@ -469,7 +469,7 @@ function Store() {
                                 <div className="flex gap-4 overflow-x-scroll">
                                     {textille && textille !== "" ?
                                     Object.values(textille).map((item, index) => (
-                                        <Link href={`/Details/details?c=${"Textile"}&m=${item.organisation}&p=${Object.keys(textille)[index]}`} key={index} _hover={{ textDecor:"none"}}
+                                        <Link href={`/details?c=${"Textile"}&m=${item.organisation}&p=${Object.keys(textille)[index]}`} key={index} _hover={{ textDecor:"none"}}
                                             className="flex flex-col relative bg-white shadow-md rounded-md w-full lg:w-1/5 my-4">
                                             <div className='w-full flex items-center justify-center'>
                                                 <img className='h-[10rem]' src={item.imageUrl}/>
