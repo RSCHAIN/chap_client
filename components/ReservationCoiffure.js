@@ -34,9 +34,9 @@ export default function ReservationCoiff({ mag, adresse, imageMag, categorie,pro
     const toast = useToast()
     const [loader, setLoader] = useState(false)
 
-    const horaire = ["12:00 - 14:00", "14:00 - 16:00", "16:00 - 18:00", "18:00 - 20:00", "20:00 - 22:00", "22:00 - 24:00"]
-    const [colour, setColour] = useState(["white", "white", "white", "white", "white", "white"])
-    const [tcolour, setTColour] = useState(["black", "black", "black", "black", "black", "black"])
+    const horaire = ["10:00 - 10:30","10:30 - 11:00","11:00 - 11:30","11:30 - 12:00","12:00 - 12:30", "12:30 - 13:00", "13:00 - 13:30", "13:30 - 14:00", "14:00 - 14:30", "14:30 - 15:00","15:00 - 15:30","15:30 - 16:00","16:00 - 16:30","16:30 - 17:00","17:00 - 17:30", "17:30 - 18:00", "18:00 - 18:30", "18:30 - 19:00", "19:00 - 19:30", "19:30 - 20:00"]
+    const [colour, setColour] = useState(["white", "white", "white", "white", "white", "white","white", "white", "white", "white", "white", "white","white", "white", "white", "white", "white", "white", "white", "white"])
+    const [tcolour, setTColour] = useState(["black", "black", "black", "black", "black", "black","black", "black", "black", "black", "black", "black","black", "black", "black", "black", "black", "black", "black", "black"])
 
     function generateCustomKey() {
         // Obtenez le timestamp actuel en millisecondes
@@ -191,8 +191,8 @@ export default function ReservationCoiff({ mag, adresse, imageMag, categorie,pro
                         <Text color>heure :</Text>
                         <Box bgColor={"white"} width={"100%"} pl={10} height={"fit-content"} py={2} border={"1px solid black"} mt={2} borderRadius={"5px"}>
 
-                            <SimpleGrid columns={2} >
-                            {horaire.map((data, index) => <Text p={2} color={tcolour[index]} borderRadius={"25px"} w={"fit-content"} key={index} onClick={() => { handleSaveHours(data,index) }}bgColor={colour[index]}>{data < 10 ? `0${data}` : data}</Text>)}
+                            <SimpleGrid  columns={3} >
+                            {horaire.map((data, index) => <Text p={2} cursor={"pointer"} color={tcolour[index]} borderRadius={"25px"} w={"fit-content"} key={index} onClick={() => { handleSaveHours(data,index) }}bgColor={colour[index]}>{data < 10 ? `0${data}` : data}</Text>)}
                             </SimpleGrid>
 
                         </Box>
