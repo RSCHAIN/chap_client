@@ -615,7 +615,7 @@ export default function Connexion() {
         <Center pt={{base:"50%",lg:10}}>
                 <Image src={"/userin.jpg"} alt="#" width={"100px"} height={"100px"}/>
             </Center>
-            <Text  textAlign={"center"}>Veuillez cliquer <Link href='/' color={'blue'} fontWeight={"bold"} >ici</Link>  afin d'être redirigé, si vous n'êtes pas redirigé automatiquement  </Text>
+            <Text  textAlign={"center"}>Veuillez cliquer <Link href='/' color={'blue'} fontWeight={"bold"} >ici</Link>  afin d{"‘"}être redirigé, si vous n{"‘"}êtes pas redirigé automatiquement  </Text>
           
             </Box>
         </>
