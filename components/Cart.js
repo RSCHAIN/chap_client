@@ -279,47 +279,62 @@ export default function Carte() {
                     All.map((data, index) => {
                         PrixT = (parseFloat(data.orderPrice)* data.orderQte )+ PrixT;
                         if (data.Livrable == "CHAP" || data.Livrable == "" || data.Livrable == undefined) {
-                            if ((parseFloat(data.orderPrice)* data.orderQte ) <= 30) {
+                            if ((po.slice(0, 2) == 91 ||
+                            po.slice(0, 2) == 94 ||
+                            po.slice(0, 2) == 93 ||
+                            po.slice(0, 2) == 92 ||
+                            po.slice(0, 2) == 78 ||
+                            po.slice(0, 2) == 77 ||
+                            po.slice(0, 2) == 75)) {
+                                if ((parseFloat(data.orderPrice)* data.orderQte ) <= 30) {
                                 
-                                (po.slice(0, 2) == 91 ||
-                                po.slice(0, 2) == 94 ||
-                                po.slice(0, 2) == 93 ||
-                                po.slice(0, 2) == 92 ||
-                                po.slice(0, 2) == 78 ||
-                                po.slice(0, 2) == 77 ||
-                                po.slice(0, 2) == 75) ?fraisTotal=2.99+fraisTotal : fraisTotal=5.99+fraisTotal;
-                                
-                            } else {
-                                
-                                if ((parseFloat(data.orderPrice)* data.orderQte ) < 40 && (parseFloat(data.orderPrice)* data.orderQte ) > 29) {
-                                    fraisTotal = (((parseFloat(data.orderPrice)* data.orderQte ) * 10) / 100) + fraisTotal;
-                                } else {
-                                    if ((parseFloat(data.orderPrice)* data.orderQte ) < 51) {
-                                        fraisTotal = (((parseFloat(data.orderPrice)* data.orderQte ) * 9) / 100) + fraisTotal;
-                                    } else {
-                                        if ((parseFloat(data.orderPrice)* data.orderQte ) < 71) {
-                                            fraisTotal = (((parseFloat(data.orderPrice)* data.orderQte ) * 8) / 100) + fraisTotal;
-                                        } else {
-                                            if ((parseFloat(data.orderPrice)* data.orderQte ) < 81) {
-                                                fraisTotal = (((parseFloat(data.orderPrice)* data.orderQte ) * 7) / 100) + fraisTotal;
-                                            } else {
-                                                if ((parseFloat(data.orderPrice)* data.orderQte ) < 91) {
-                                                    fraisTotal = (((parseFloat(data.orderPrice)* data.orderQte ) * 6) / 100) + fraisTotal;
-                                                } else {
-                                                    if (90 < (parseFloat(data.orderPrice)* data.orderQte )) {
-                                                        fraisTotal = (((parseFloat(data.orderPrice)* data.orderQte ) * 5) / 100) + fraisTotal;
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
+                                    fraisTotal=2.99+fraisTotal
+                                   
+                               } else {
+                                   
+                                   if ((parseFloat(data.orderPrice)* data.orderQte ) < 40 && (parseFloat(data.orderPrice)* data.orderQte ) > 29) {
+                                       fraisTotal = (((parseFloat(data.orderPrice)* data.orderQte ) * 10) / 100) + fraisTotal;
+                                   } else {
+                                       if ((parseFloat(data.orderPrice)* data.orderQte ) < 51) {
+                                           fraisTotal = (((parseFloat(data.orderPrice)* data.orderQte ) * 9) / 100) + fraisTotal;
+                                       } else {
+                                           if ((parseFloat(data.orderPrice)* data.orderQte ) < 71) {
+                                               fraisTotal = (((parseFloat(data.orderPrice)* data.orderQte ) * 8) / 100) + fraisTotal;
+                                           } else {
+                                               if ((parseFloat(data.orderPrice)* data.orderQte ) < 81) {
+                                                   fraisTotal = (((parseFloat(data.orderPrice)* data.orderQte ) * 7) / 100) + fraisTotal;
+                                               } else {
+                                                   if ((parseFloat(data.orderPrice)* data.orderQte ) < 91) {
+                                                       fraisTotal = (((parseFloat(data.orderPrice)* data.orderQte ) * 6) / 100) + fraisTotal;
+                                                   } else {
+                                                       if (90 < (parseFloat(data.orderPrice)* data.orderQte )) {
+                                                           fraisTotal = (((parseFloat(data.orderPrice)* data.orderQte ) * 5) / 100) + fraisTotal;
+                                                       }
+                                                   }
+                                               }
+                                           }
+                                       }
+                                   }
+                               } 
+
                             }
-                            console.log("frais normal",data.orderPrice* data.orderQte);
+                            else{
+                                if ((parseFloat(data.orderPrice)* data.orderQte ) <= 60) {
+                                
+                                    fraisTotal=9.99+fraisTotal
+                                   
+                               } else {
+                                   
+                                   
+                                       fraisTotal = (((parseFloat(data.orderPrice)* data.orderQte ) * 15) / 100) + fraisTotal;
+                                   }
+                            }
+                           
+                            // console.log("frais normal",data.orderPrice* data.orderQte);
                         }else{
                             
                             fraisTotal = parseInt(data.taxe) + fraisTotal;
-                            console.log("frais",((parseFloat(data.orderPrice)* data.orderQte ) * data.taxe)/100);
+                            // console.log("frais",((parseFloat(data.orderPrice)* data.orderQte ) * data.taxe)/100);
                             
                         }
                     });
