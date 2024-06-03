@@ -151,7 +151,7 @@ const [width9, setWidth9] = useState("1px");
                           duration: 3000,
                           isClosable: true,
                         });
-                        router.push("/");
+                        router.push("/Connexion");
                       })
                       .catch((error) => {
                         // throw error;
