@@ -78,7 +78,7 @@ function PopUp({ PrixChoisi, Partenaire, email, dest, need, poste, arriv, radio2
           router.back();
         } else {
 
-          signOut(auth);
+          signOut(authentic);
 
           setVerif(true);
 

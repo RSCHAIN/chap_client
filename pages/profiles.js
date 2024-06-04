@@ -18,6 +18,7 @@ import {
   getAuth,
   onAuthStateChanged,
   sendEmailVerification,
+  sendPasswordResetEmail,
   signOut,
   updateEmail,
 } from "firebase/auth";
@@ -137,6 +138,23 @@ export default function Profiles() {
     });
   });
   }
+
+  const ResetPasswords = async () => {
+    await sendPasswordResetEmail(authentic,email).then(()=>{
+      toast({
+        title: "Mail envoyé",
+        description: "Veuillez verifiez vos mails!!",
+        status: "success",
+        duration: 10000,
+        isClosable: true,
+      });
+      signOut(authentic);
+      router.push("/")
+      router.reload()
+     }).catch((error)=>{})
+  };
+
+
   const [isLagerThan768] = useMediaQuery("(min-width: 768px)");
 
 
@@ -255,7 +273,11 @@ export default function Profiles() {
                 <Button onClick={()=>updateLang()} bgColor={"cyan.800"} color="white">Mettre à jour</Button>
               </Flex>
             </Center>
-
+            <Center>
+              <Flex mt={10}>
+                <Button onClick={()=>ResetPasswords()} colorScheme={"red"}>Reinitialiser le mot de passe</Button>
+              </Flex>
+            </Center>
             {/* <Center>
               <Flex mt={10}>
                 <Button onClick={()=>sendVerif()} bgColor={"cyan.800"} color="white">Verifier</Button>

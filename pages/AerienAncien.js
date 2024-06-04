@@ -110,7 +110,7 @@ function MyComponent() {
           });
           router.back();
         } else {
-          signOut(auth);
+          signOut(authentic);
 
           setVerif(true);
         }

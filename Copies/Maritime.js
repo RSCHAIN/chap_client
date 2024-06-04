@@ -118,7 +118,7 @@ function MyComponent2() {
           router.back();
         } else {
           // sendEmailVerification(auth.currentUser)
-          signOut(auth);
+          signOut(authentic);
           // toast({
           //   title: "Email Non Verifié.",
           //   description: "Verifier Vos Mails Afin De Confirmer La Transaction",

@@ -24,6 +24,8 @@ import { faMoneyBillTransfer, faTruck, faStar, faMap, faLocation, faLocationDot,
 // import Link from "next/link";
 // import Favlist2 from "../generale/FavLists2";
 import Favlist2 from "../components/generale/FavLists2"
+import { FaClosedCaptioning } from 'react-icons/fa';
+import { GrClose } from 'react-icons/gr';
 
 
 const settings = {
@@ -118,6 +120,7 @@ export default function DisplayArticleDetails() {
     const [taille, setTaille] = useState("Default")
     const [color, setColor] = useState("Default")
     const [displayed, setDisplayed] = useState(1)
+    const [added, setAdded] = useState(0)
     const [id, setId] = useState("")
     const { isOpen, onOpen, onClose } = useDisclosure()
     const toast = useToast()
@@ -319,6 +322,7 @@ export default function DisplayArticleDetails() {
                         duration: 9000,
                         isClosable: true,
                     });
+                    setAdded(1);
                 } catch (error) {
                     // console.error("Error adding document: ", error);
                     toast({
@@ -365,6 +369,7 @@ export default function DisplayArticleDetails() {
                         duration: 9000,
                         isClosable: true,
                     });
+                    setAdded(1);
                 } catch (error) {
                     // console.error("Error adding document: ", error);
                     toast({
@@ -395,7 +400,7 @@ export default function DisplayArticleDetails() {
         }
     }
 
-    if (data != null && displayed >0) {
+    if (data != null && displayed >0 && added == 0 ) {
         if (Object.values(data).length > 0) {
             return (
                 <> 
@@ -599,6 +604,46 @@ export default function DisplayArticleDetails() {
                 </>
             )
         }
+    }
+    else if(added>0){
+        return (
+            <>
+            <Head>
+                    <script
+                    async
+                    src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
+                    ></script>
+                    <script strategy="lazyOnload">
+                    {`
+                        window.dataLayer = window.dataLayer || [];
+                        function gtag(){dataLayer.push(arguments)}
+                    gtag('js', new Date()); 
+                    gtag('config', 'G-RFSVQTGJ87');
+                    `}
+                    
+                    </script>
+                </Head>
+            <Box rowGap={5}  className=' h-screen w-screen'>
+            
+                    
+                <Flex mt={5} justifyContent={"space-around"}>
+                <Center>
+                    <Heading fontSize={{base:"15px",lg:"25px"}}>Achat bien enregistré</Heading>    
+                </Center>  
+                {/* <Box display={{base:"block",lg:"none"}}> 
+                <GrClose  onClick={()=>setAdded(0)}/>
+                </Box> */}
+                </Flex>
+                <Text textAlign={"center"}>Le produit a été enregistré</Text>
+                <Center>
+                <Box rowGap={5} columnGap={5} display={{base:"grid",lg:"flex"}} >
+                <Button  _hover={{bgColor:"transparent"}} onClick={()=>setAdded(0)} bgColor={"transparent"} border={"2px solid black"} > Continuer vos achats</Button>
+                <Button  _hover={{bgColor:"transparent"}} colorScheme={"cyan"} as={Link} href='/Cart' bgColor={"transparent"} border={"2px solid black"} > Accéder au panier</Button>
+                </Box>
+                </Center>
+                </Box>
+            </>
+        )
     }
     else {
        

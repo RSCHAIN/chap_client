@@ -31,7 +31,7 @@ import {
   sendEmailVerification,
   signOut,
 } from "firebase/auth";
-import { app } from "@/FIREBASE/clientApp";
+import { app, authentic } from "@/FIREBASE/clientApp";
 import { getFirestore } from "firebase/firestore";
 import { doc } from "@firebase/firestore"; // for creating a pointer to our Document
 import { setDoc } from "firebase/firestore"; // for adding the Document to Collection
@@ -86,7 +86,7 @@ const SignUpForm = () => {
           // console.log(userCredential.user);
           setEmail(userCredential.user.email);
           // router.back()
-          signOut(auth);
+          signOut(authentic);
           alert("Verifier vos Emails svp");
           toast({
             title: "SUCCES.",

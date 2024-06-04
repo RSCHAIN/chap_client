@@ -92,7 +92,7 @@ function PopUp({
           router.back();
         } else {
 
-          signOut(auth);
+          signOut(authentic);
 
           setVerif(true);
 
