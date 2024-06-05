@@ -394,6 +394,7 @@ export default function Resto({ categorie, magasin }) {
  
   ///Variable de la modal 
   const [heures, setHeures] = useState("")
+  const [indexed, setIndexed] = useState(0)
   const [couvert, setCouvert] = useState("")
   const [numero, setNumero] = useState("")
   const [detailsLink, setDetailsLink] = useState("")
@@ -690,12 +691,10 @@ const tester = [
           bgSize={"cover"} 
         />
       :
-      <Box  width={["100%","100%","100%","100%","100%"]}  height={{ base: "35vh", md: "35vh", lg: "70vh" }} mr={3}>
-      <Slider {...settings} ref={(slider) => setSlider(slider)}>
-          {(mag.imageUrl).map((url, index) => (
-            <>
+      <Box>
+     
              <Image
-          src={url}
+          src={mag.imageUrl[indexed]}
           display={"block"}
           alt={`logo de ${mag.organisation}`}
           width={"100vw"}
@@ -703,20 +702,30 @@ const tester = [
           fit={"contain"}
           bgSize={"cover"} 
         />
-            {/* <Box
+        <Flex>
+          {mag.imageUrl.map((url,index)=>{
+            return(
+              <Image className='h-20 w-20' key={index} src={url} onClick={() => setIndexed(index)} cursor={"pointer"} alt={`Product Image ${index}`} px={2} />
+            )
+          })}
+        </Flex>
+</Box>
+
+          //   {/* <Box
               
-              key={index}
-              overflow={"auto"}
-              height={{ base: "xs", md: "xs", lg: "xl" }}
-              minw={{ base: "full", md: "full", lg: "full" }}
-              position="relative"
-              backgroundPosition="center"
-              backgroundRepeat="no-repeat"
-              backgroundSize="contain"
-              backgroundImage={url}
-            ></Box> */}
-            </>
-          ))}</Slider> </Box>)
+          //     key={index}
+          //     overflow={"auto"}
+          //     height={{ base: "xs", md: "xs", lg: "xl" }}
+          //     minw={{ base: "full", md: "full", lg: "full" }}
+          //     position="relative"
+          //     backgroundPosition="center"
+          //     backgroundRepeat="no-repeat"
+          //     backgroundSize="contain"
+          //     backgroundImage={url}
+          //   ></Box> */}
+          //   {/* </> */}
+          // {/* ))}</Slider> </Box>
+        ) 
   : <></> }
      
       

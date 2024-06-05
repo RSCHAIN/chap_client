@@ -26,6 +26,8 @@ import { faMoneyBillTransfer, faTruck, faStar, faMap, faLocation, faLocationDot,
 import Favlist2 from "../components/generale/FavLists2"
 import { FaClosedCaptioning } from 'react-icons/fa';
 import { GrClose } from 'react-icons/gr';
+import FavlistMobile from '@/components/generale/FavListsMobile';
+
 
 
 const settings = {
@@ -426,7 +428,7 @@ export default function DisplayArticleDetails() {
                             <div className="left w-full lg:w-2/6">
                                 <div className="img w-5/6 lg:">
                                     <div className="img-main w-full flex items-center justify-center">{/** border border-cyan-500 */}
-                                        <Image className='w-4/6 lg:w-[40rem] ' src={data.imageUrl[indexed]} alt="" />
+                                        <Image className='w-4/6 lg:w-[40rem] ' src={data.imageUrl[indexed]} alt="flyers magasin" />
                                     </div>
                                     <div className="img-cards flex items-center">
                                         {/* <div className="h-20 w-20 border">
@@ -623,7 +625,8 @@ export default function DisplayArticleDetails() {
                     
                     </script>
                 </Head>
-            <Box rowGap={5}  className=' h-screen w-screen'>
+                
+            <Box mt={"40vh"} rowGap={5} >
             
                     
                 <Flex mt={5} justifyContent={"space-around"}>
@@ -633,8 +636,13 @@ export default function DisplayArticleDetails() {
                 {/* <Box display={{base:"block",lg:"none"}}> 
                 <GrClose  onClick={()=>setAdded(0)}/>
                 </Box> */}
+                
                 </Flex>
-                <Text textAlign={"center"}>Le produit a été enregistré</Text>
+                <Text textAlign={"left"} fontSize={{base:"sm",lg:"lg"}} fontWeight={"bold"}>Ceci pourrait vous interessé</Text>
+                {/* <Favlist2 categorie={"Textile"} magasin={"magasin"} /> */}
+                <FavlistMobile/>
+                {/* <Favlist2 categorie={"Epicerie"} magasin={"magasin"} /> */}
+                
                 <Center>
                 <Box rowGap={5} columnGap={5} display={{base:"grid",lg:"flex"}} >
                 <Button  _hover={{bgColor:"transparent"}} onClick={()=>setAdded(0)} bgColor={"transparent"} border={"2px solid black"} > Continuer vos achats</Button>
@@ -642,6 +650,7 @@ export default function DisplayArticleDetails() {
                 </Box>
                 </Center>
                 </Box>
+                
             </>
         )
     }

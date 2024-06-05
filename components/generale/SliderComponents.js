@@ -68,6 +68,7 @@ const SliderComponents = () => {
   const top = useBreakpointValue({ base: "90%", md: "50%" });
   const side = useBreakpointValue({ base: "30%", md: "10px" });
   const cardsweb = [
+    "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/Restaurant%2FAbidjan-Paris%2Flogo%2FAbjparweb.png?alt=media&token=0f44ceed-cafa-49ef-90a4-21d69ff39585",
     "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/slider%2FNayouWeb.png?alt=media&token=724d98cf-bbfe-4908-9f59-3236500985a1",
     "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/slider%2FdissoaWeb.png?alt=media&token=bd96d67c-36d1-4542-90f8-1041b8f3358a",
     "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/slider%2FgriffeWeb.png?alt=media&token=08642fee-4fbb-49dc-b3a1-17fd8d8d7187",
@@ -82,6 +83,7 @@ const SliderComponents = () => {
     
   ];
   const cardsmobile = [
+    "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/Restaurant%2FAbidjan-Paris%2Flogo%2FabjparisWeb.png?alt=media&token=b69690e3-9d40-4cc6-bf6b-9001408593c3",
     "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/slider%2Fakonyemobile.png?alt=media&token=a435aa26-608a-4bd5-bd05-a9ea87305658",
     "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/slider%2FdissoaMobile.png?alt=media&token=42a16825-187d-4cb7-ae57-b0cba3ec87be",
     "https://firebasestorage.googleapis.com/v0/b/appchapfinal.appspot.com/o/slider%2FgriffeMobile.png?alt=media&token=cb88ad48-899f-4e90-8012-df32397e4507",
