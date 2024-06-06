@@ -625,14 +625,14 @@ export default function DisplayArticleDetails() {
                     
                     </script>
                 </Head>
-                
+                <Center>
+                    <Heading fontSize={{base:"20px",lg:"30px"}}>Achat bien enregistré</Heading>    
+                </Center> 
             <Box mt={"40vh"} rowGap={5} >
             
                     
                 <Flex mt={5} justifyContent={"space-around"}>
-                <Center>
-                    <Heading fontSize={{base:"15px",lg:"25px"}}>Achat bien enregistré</Heading>    
-                </Center>  
+                
                 {/* <Box display={{base:"block",lg:"none"}}> 
                 <GrClose  onClick={()=>setAdded(0)}/>
                 </Box> */}
