@@ -98,7 +98,7 @@ export default function Carte() {
                         po.slice(0, 2) == 92 ||
                         po.slice(0, 2) == 78 ||
                         po.slice(0, 2) == 77 ||
-                        po.slice(0, 2) == 75) ?setFrais("2.99") : setFrais("5.99");
+                        po.slice(0, 2) == 75) ?setFrais("2.99") : setFrais("9.99");
                 
                     } else {
                         setDis("grid");
@@ -286,29 +286,29 @@ export default function Carte() {
                             po.slice(0, 2) == 78 ||
                             po.slice(0, 2) == 77 ||
                             po.slice(0, 2) == 75)) {
-                                if ((parseFloat(data.orderPrice)* data.orderQte ) <= 30) {
+                                if ((parseFloat(PrixT) ) <= 30) {
                                 
-                                    fraisTotal=2.99+fraisTotal
+                                    fraisTotal=2.99
                                    
                                } else {
                                    
-                                   if ((parseFloat(data.orderPrice)* data.orderQte ) < 40 && (parseFloat(data.orderPrice)* data.orderQte ) > 29) {
-                                       fraisTotal = (((parseFloat(data.orderPrice)* data.orderQte ) * 10) / 100) + fraisTotal;
+                                   if (parseFloat(PrixT)  < 40 && parseFloat(PrixT)  > 29) {
+                                       fraisTotal = ((parseFloat(PrixT)  * 10) / 100) 
                                    } else {
-                                       if ((parseFloat(data.orderPrice)* data.orderQte ) < 51) {
-                                           fraisTotal = (((parseFloat(data.orderPrice)* data.orderQte ) * 9) / 100) + fraisTotal;
+                                       if (parseFloat(PrixT)  < 51) {
+                                           fraisTotal = ((parseFloat(PrixT)  * 9) / 100) 
                                        } else {
-                                           if ((parseFloat(data.orderPrice)* data.orderQte ) < 71) {
-                                               fraisTotal = (((parseFloat(data.orderPrice)* data.orderQte ) * 8) / 100) + fraisTotal;
+                                           if (parseFloat(PrixT)  < 71) {
+                                               fraisTotal = ((parseFloat(PrixT)  * 8) / 100) 
                                            } else {
-                                               if ((parseFloat(data.orderPrice)* data.orderQte ) < 81) {
-                                                   fraisTotal = (((parseFloat(data.orderPrice)* data.orderQte ) * 7) / 100) + fraisTotal;
+                                               if (parseFloat(PrixT)  < 81) {
+                                                   fraisTotal = ((parseFloat(PrixT)  * 7) / 100) 
                                                } else {
-                                                   if ((parseFloat(data.orderPrice)* data.orderQte ) < 91) {
-                                                       fraisTotal = (((parseFloat(data.orderPrice)* data.orderQte ) * 6) / 100) + fraisTotal;
+                                                   if (parseFloat(PrixT)  < 91) {
+                                                       fraisTotal = ((parseFloat(PrixT)  * 6) / 100) 
                                                    } else {
-                                                       if (90 < (parseFloat(data.orderPrice)* data.orderQte )) {
-                                                           fraisTotal = (((parseFloat(data.orderPrice)* data.orderQte ) * 5) / 100) + fraisTotal;
+                                                       if (90 < parseFloat(PrixT) ) {
+                                                           fraisTotal = ((parseFloat(PrixT)  * 5) / 100) 
                                                        }
                                                    }
                                                }
@@ -319,14 +319,14 @@ export default function Carte() {
 
                             }
                             else{
-                                if ((parseFloat(data.orderPrice)* data.orderQte ) <= 60) {
+                                if (parseFloat(PrixT)  <= 60) {
                                 
-                                    fraisTotal=9.99+fraisTotal
+                                    fraisTotal=9.99
                                    
                                } else {
                                    
                                    
-                                       fraisTotal = (((parseFloat(data.orderPrice)* data.orderQte ) * 15) / 100) + fraisTotal;
+                                       fraisTotal = ((parseFloat(PrixT)  * 15) / 100)
                                    }
                             }
                            
