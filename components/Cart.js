@@ -288,7 +288,7 @@ export default function Carte() {
                             po.slice(0, 2) == 75)) {
                                 if ((parseFloat(PrixT) ) <= 30) {
                                 
-                                    fraisTotal=2.99
+                                    fraisTotal=3.99
                                    
                                } else {
                                    
