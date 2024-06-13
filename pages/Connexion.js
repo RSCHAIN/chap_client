@@ -272,10 +272,20 @@ export default function Connexion() {
         // setVerified("verify")
       //  router.push("/"); 
       //  router.reload()
-
+      if ( localStorage.getItem("redirect_url")) {
+        // console.log("Redirection")
+        localStorage.removeItem("redirect_url")
+        localStorage.removeItem("displayed")
+        router.back()
+      }else{
+         router.push("/") 
+         router.reload(); 
+      }
       } else {
-       onOpen();
-       return
+        console.log("dans le else")
+       
+       onOpen()
+       
       }
       
       toast({
@@ -285,22 +295,7 @@ export default function Connexion() {
         duration: 3000,
         isClosable: true,
       })
-      // router.push("/"); 
-      //  router.reload()
-      if ( localStorage.getItem("redirect_url")) {
-        // console.log("Redirection")
-        localStorage.removeItem("redirect_url")
-        localStorage.removeItem("displayed")
-        router.back()
-      }else{
-         router.push("/") 
-      router.reload(); 
-      }
      
-     
-      
-      // 
-      console.log("donnees google", res.user.email)
         
     }).catch((error) => {})
   }
@@ -373,9 +368,35 @@ export default function Connexion() {
   }
 
   useEffect(()=>{
-    onAuthStateChanged(authentic,  (user) => {
+    onAuthStateChanged(authentic, async (user) => {
           if (user) {
-              setConnected(1)
+            console.log("user",user.email)
+              
+            const docRef = doc(db, "Utilisateurs/" + user.email);
+            const docSnap = await getDoc(docRef);
+      
+            if (docSnap.exists()) {
+              setConnected(1) 
+              secureLocalStorage.setItem("surname", docSnap.data().surname);
+              // setVerified("verify")
+            //  router.push("/"); 
+            //  router.reload()
+            if ( localStorage.getItem("redirect_url")) {
+              // console.log("Redirection")
+              localStorage.removeItem("redirect_url")
+              localStorage.removeItem("displayed")
+              router.back()
+            }else{
+               router.push("/") 
+               router.reload(); 
+            }
+            } else {
+              console.log("dans le else")
+             
+             onOpen()
+             
+            }
+            
           }
       })
   },[authentic,connected])
