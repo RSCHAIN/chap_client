@@ -282,6 +282,7 @@ try{
         </Script>
         
     {/* <Text>{query.categorie }</Text> */}
+    {/* <Text>{query.magasin }</Text> */}
     {/* {query ?  <Restaurant categorie={query.categorie} magasin={query.magasin}/>:<></> } */}
     <Restaurant categorie={query.categorie} magasin={query.magasin}/>
     {/* <Text>{query.magasin}</Text> */}

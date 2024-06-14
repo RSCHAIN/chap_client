@@ -1182,10 +1182,9 @@ function AddToCart(product,productKey) {
                         <Flex  >
                 <FaTruckPickup />
                 <Tooltip label={`Livraison à partir de 2,99€`} >
-                  <Flex>
-                <Text ml={2} fontSize={"10px"} fontWeight={700}>Livraison partout en France </Text>
-                <Text fontSize={"15px"} mt={-1} color={"red"}>*</Text>
-                </Flex>
+                <Text ml={2} fontSize={"10px"} fontWeight={700}>
+                          Livraison partout en France{" "}<span className=' text-base text-red-700'>*</span>
+                        </Text>
                 </Tooltip>
               </Flex>
                         <Flex width={"90%"} justifyContent={"space-between"}>

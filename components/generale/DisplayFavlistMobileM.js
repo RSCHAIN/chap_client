@@ -251,14 +251,12 @@ useEffect(() =>{
                     <Tooltip
                       label={`Prix superieur à 30€ Ou être en île-de-france`}
                     >
-                      <Flex>
+                      
                         <Text ml={2} fontSize={"10px"} fontWeight={700}>
-                          Livraison partout en France{" "}
+                          Livraison partout en France{" "}<span className=' text-base text-red-700'>*</span>
                         </Text>
-                        <Text fontSize={"15px"} mt={-1} color={"red"}>
-                          *
-                        </Text>
-                      </Flex>
+                        
+                      
                     </Tooltip>
                   </Flex>
 

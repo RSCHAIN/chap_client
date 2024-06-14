@@ -83,8 +83,8 @@ export default function Connexion() {
   const auth = getAuth(app);
   const router = useRouter();
   const toast = useToast();
-  
- 
+
+
 
 
   const getTime = () => {
@@ -119,18 +119,18 @@ export default function Connexion() {
             duration: 3000,
             isClosable: true,
           })
-          if ( localStorage.getItem("redirect_url")) {
+          if (localStorage.getItem("redirect_url")) {
             // console.log("Redirection")
             localStorage.removeItem("redirect_url")
             localStorage.removeItem("displayed")
             router.back()
-          }else{
-             router.push("/") 
-          router.reload(); 
+          } else {
+            router.push("/")
+            router.reload();
           }
-         
-          
-          
+
+
+
           // router.push("/")
           // router.reload();
         } else {
@@ -175,7 +175,7 @@ export default function Connexion() {
               duration: 9000,
               isClosable: true,
             });
-          } 
+          }
           else {
             if (errorMessage == "Firebase: Error (auth/invalid-email).") {
               toast({
@@ -209,11 +209,11 @@ export default function Connexion() {
     const _user = doc(db, `Utilisateurs/${email.toString()}`);
     // structure the todo data
     const Users = {
-      name:username,
-      number:phoneNumber,
+      name: username,
+      number: phoneNumber,
       address,
       email,
-    
+
       ville,
       code,
 
@@ -223,13 +223,13 @@ export default function Connexion() {
     toast({
       title: "Connexion établie", duration: 9000, status: "success"
     })
-    if ( sessionStorage.getItem("redirect_url")) {
+    if (sessionStorage.getItem("redirect_url")) {
       router.back()
     }
-   
-    router.push("/") 
-    router.reload(); 
-    
+
+    router.push("/")
+    router.reload();
+
     // handleRedirect()
   }
 
@@ -240,11 +240,11 @@ export default function Connexion() {
   const loginGoogle = async () => {
     try {
       const response = await signinWithGoogle()
-      .then((res) => { 
-        secureLocalStorage.setItem("name", response.user.displayName),
-        router.push("/")
-    }
-      );
+        .then((res) => {
+          secureLocalStorage.setItem("name", response.user.displayName),
+            router.push("/")
+        }
+        );
 
     } catch (error) {
 
@@ -256,7 +256,7 @@ export default function Connexion() {
   }
 
 
-  
+
 
   const signinWithGoogle = () => {
     // console.log("connexion")
@@ -270,24 +270,24 @@ export default function Connexion() {
       if (docSnap.exists()) {
         secureLocalStorage.setItem("surname", docSnap.data().surname);
         // setVerified("verify")
-      //  router.push("/"); 
-      //  router.reload()
-      if ( localStorage.getItem("redirect_url")) {
-        // console.log("Redirection")
-        localStorage.removeItem("redirect_url")
-        localStorage.removeItem("displayed")
-        router.back()
-      }else{
-         router.push("/") 
-         router.reload(); 
-      }
+        //  router.push("/"); 
+        //  router.reload()
+        if (localStorage.getItem("redirect_url")) {
+          // console.log("Redirection")
+          localStorage.removeItem("redirect_url")
+          localStorage.removeItem("displayed")
+          router.back()
+        } else {
+          router.push("/")
+          router.reload();
+        }
       } else {
         console.log("dans le else")
-       
-       onOpen()
-       
+
+        onOpen()
+
       }
-      
+
       toast({
         title: "ACCES AUTORISE.",
         description: "Bon Achat",
@@ -295,9 +295,9 @@ export default function Connexion() {
         duration: 3000,
         isClosable: true,
       })
-     
-        
-    }).catch((error) => {})
+
+
+    }).catch((error) => { })
   }
   const signinWithFacebook = () => {
     // console.log("connexion")
@@ -319,7 +319,7 @@ export default function Connexion() {
     //   //  onOpen();
     //   //  return
     //   // }
-      
+
     //   toast({
     //     title: "ACCES AUTORISE.",
     //     description: "Bon Achat",
@@ -338,68 +338,68 @@ export default function Connexion() {
     //      router.push("/") 
     //   router.reload(); 
     //   }
-     
-     
-      
+
+
+
     //   // 
     //   // console.log("donnees google", res.user.email)
-        
+
     // }).catch((error) => {})
     signInWithRedirect(auth, provider2);
     getRedirectResult(auth)
-  .then((result) => {
-    // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-    const credential = FacebookAuthProvider.credentialFromResult(result);
-    const token = credential.accessToken;
+      .then((result) => {
+        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+        const credential = FacebookAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
 
-    const user = result.user;
-    // IdP data available using getAdditionalUserInfo(result)
-    // ...
-  }).catch((error) => {
-    // Handle Errors here.
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // The email of the user's account used.
-    const email = error.customData.email;
-    // AuthCredential type that was used.
-    const credential = FacebookAuthProvider.credentialFromError(error);
-    // ...
-  });
+        const user = result.user;
+        // IdP data available using getAdditionalUserInfo(result)
+        // ...
+      }).catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // AuthCredential type that was used.
+        const credential = FacebookAuthProvider.credentialFromError(error);
+        // ...
+      });
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     onAuthStateChanged(authentic, async (user) => {
-          if (user) {
-            console.log("user",user.email)
-              
-            const docRef = doc(db, "Utilisateurs/" + user.email);
-            const docSnap = await getDoc(docRef);
-      
-            if (docSnap.exists()) {
-              setConnected(1) 
-              secureLocalStorage.setItem("surname", docSnap.data().surname);
-              // setVerified("verify")
-            //  router.push("/"); 
-            //  router.reload()
-            if ( localStorage.getItem("redirect_url")) {
-              // console.log("Redirection")
-              localStorage.removeItem("redirect_url")
-              localStorage.removeItem("displayed")
-              router.back()
-            }else{
-               router.push("/") 
-               router.reload(); 
-            }
-            } else {
-              console.log("dans le else")
-             
-             onOpen()
-             
-            }
-            
+      if (user) {
+        console.log("user", user.email)
+
+        const docRef = doc(db, "Utilisateurs/" + user.email);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          setConnected(1)
+          secureLocalStorage.setItem("surname", docSnap.data().surname);
+          // setVerified("verify")
+          //  router.push("/"); 
+          //  router.reload()
+          if (localStorage.getItem("redirect_url")) {
+            // console.log("Redirection")
+            localStorage.removeItem("redirect_url")
+            localStorage.removeItem("displayed")
+            router.back()
+          } else {
+            router.push("/")
+            router.reload();
           }
-      })
-  },[authentic,connected])
+        } else {
+          console.log("dans le else")
+
+          onOpen()
+
+        }
+
+      }
+    })
+  }, [authentic, connected])
 
 
   if (connected == 0) {
@@ -417,13 +417,13 @@ export default function Connexion() {
              gtag('js', new Date()); 
              gtag('config', 'G-RFSVQTGJ87');
              `}
-  
+
           </script>
         </Head>
         <InputBar />
         {isLagerThan768 ? <Navbar></Navbar> : <></>}
         {/* <Navbar /> */}
-  
+
         <Center display={"grid"} height={"fit-content"} mb={40}>
           {verif ? (
             <Alert status="error" w={"fit-content"}>
@@ -461,13 +461,13 @@ export default function Connexion() {
           // boxShadow={"0px 4px 24px "}
           >
             <SimpleGrid columns={[1, 1, 1, 2, 2]}>
-              <Box h={[300, 300, 300, 500, 500]}>
+              <Box px={{base:"30%",lg:0}} h={[200, 200, 300, 500, 500]}>
                 <Image
-                  h={[300, 300, 300, 500, 500]}
+                  h={[200, 200, 300, 500, 500]}
                   alt={"logo"}
-                  width={[350, 350, 400, 650, 650]}
+                  width={[300, 300, 400, 650, 650]}
                   src="/logo1.png"
-  
+
                 />
               </Box>
               <Center>
@@ -483,11 +483,11 @@ export default function Connexion() {
                       <Text display={["none", "none", "none", "grid", "grid"]}>
                         Connectez-vous á votre compte
                       </Text>
-                      <Center display={"grid"} >
+                      <Center  display={"grid"} >
                         <Button mb={2}
                           width={"fit-content"} borderBottom={"2px solid black"}
                           leftIcon={<FaGoogle />}
-  
+
                           // borderRadius={"50px"}
                           bgColor={"#fff"}
                           color={"black"}
@@ -499,7 +499,7 @@ export default function Connexion() {
                         >
                           Connexion avec Google
                         </Button>
-  
+
                       </Center>
                       {/* <Center display={"grid"} >
                         <Button mb={2}
@@ -553,10 +553,10 @@ export default function Connexion() {
         </InputRightElement> */}
                         </InputGroup>
                       </Center>
-  
+
                       <TransitionExample />
                       <Box display={"grid"}>
-                        <Center display={"grid"} width={"100%"}>
+                        <Center display={"grid"} width={{base:"75%",lg:"100%"}}>
                           <Button
                             ml={10}
                             mb={2}
@@ -567,12 +567,12 @@ export default function Connexion() {
                             _hover={{
                               bg: "#08566e",
                             }}
-  
+
                             onClick={() => loginUSer()}
                           >
                             Connexion{" "}
                           </Button>
-  
+
                         </Center>
                         <Button
                           as={Link}
@@ -585,24 +585,24 @@ export default function Connexion() {
                         >
                           Pas de compte?  Créer un compte
                         </Button>
-  
+
                       </Box>
-  
+
                     </Stack>
-  
+
                   </FormControl>
                 </Box>
               </Center>
             </SimpleGrid>
           </Flex>
         </Center>
-  
-  
+
+
         <Modal isOpen={isOpen} onClose={onClose}>
-  
+
           <ModalContent>
             <ModalHeader>Informations supplémentaires</ModalHeader>
-  
+
             <ModalBody>
               <Box>
                 <Text>Numéro de téléphone :</Text>
@@ -615,32 +615,32 @@ export default function Connexion() {
                 <Input type="number" maxLength={5} onChange={(e) => (setCode(e.target.value))} />
               </Box>
             </ModalBody>
-  
+
             <ModalFooter>
               <Button colorScheme='blue' mr={3} onClick={() => { handleSaved() }}>
                 Enregistrer
               </Button>
-  
+
             </ModalFooter>
           </ModalContent>
         </Modal>
-  
-  
+
+
       </>
     );
   } else {
-       
+
     return (
-        <>
-        <Box   className=' h-screen w-screen'>
-        <Center pt={{base:"50%",lg:10}}>
-                <Image src={"/userin.jpg"} alt="#" width={"100px"} height={"100px"}/>
-            </Center>
-            <Text  textAlign={"center"}>Veuillez cliquer <Link href='/' color={'blue'} fontWeight={"bold"} >ici</Link>  afin d{"‘"}être redirigé, si vous n{"‘"}êtes pas redirigé automatiquement  </Text>
-          
-            </Box>
-        </>
+      <>
+        <Box className=' h-screen w-screen'>
+          <Center pt={{ base: "50%", lg: 10 }}>
+            <Image src={"/userin.jpg"} alt="#" width={"100px"} height={"100px"} />
+          </Center>
+          <Text textAlign={"center"}>Veuillez cliquer <Link href='/' color={'blue'} fontWeight={"bold"} >ici</Link>  afin d{"‘"}être redirigé, si vous n{"‘"}êtes pas redirigé automatiquement  </Text>
+
+        </Box>
+      </>
     )
-}
-  
+  }
+
 }
