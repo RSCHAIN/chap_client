@@ -45,6 +45,7 @@ import {
 import { useEffect, useState } from "react";
 import {
   getAuth,
+  getRedirectResult,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
@@ -299,72 +300,74 @@ export default function Connexion() {
 
     }).catch((error) => { })
   }
+
+  
   const signinWithFacebook = () => {
     // console.log("connexion")
-    // signInWithPopup(authentic, provider2).then(async (res) => {
-    //   console.log(res.user)
-    //   // secureLocalStorage.setItem("name", res.user.displayName)
-    //   // setUsername(res.user.displayName)
-    //   // setEmail(res.user.email)
-    //   // const docRef = doc(db, "Utilisateurs/" + res.user.email);
-    //   // const docSnap = await getDoc(docRef);
+    signInWithPopup(authentic, provider2).then(async (res) => {
+      console.log(res.user)
+      secureLocalStorage.setItem("name", res.user.displayName)
+      setUsername(res.user.displayName)
+      setEmail(res.user.email)
+      const docRef = doc(db, "Utilisateurs/" + res.user.email);
+      const docSnap = await getDoc(docRef);
 
-    //   // if (docSnap.exists()) {
-    //   //   secureLocalStorage.setItem("surname", docSnap.data().surname);
-    //   //   // setVerified("verify")
-    //   // //  router.push("/"); 
-    //   // //  router.reload()
+      if (docSnap.exists()) {
+        secureLocalStorage.setItem("surname", docSnap.data().surname);
+        // setVerified("verify")
+      //  router.push("/"); 
+      //  router.reload()
+      if ( localStorage.getItem("redirect_url")) {
+        // console.log("Redirection")
+        localStorage.removeItem("redirect_url")
+        localStorage.removeItem("displayed")
+        router.back()
+      }else{
+         router.push("/") 
+      router.reload(); 
+      }
+      } else {
+       onOpen();
+       return
+      }
 
-    //   // } else {
-    //   //  onOpen();
-    //   //  return
-    //   // }
-
-    //   toast({
-    //     title: "ACCES AUTORISE.",
-    //     description: "Bon Achat",
-    //     status: "success",
-    //     duration: 3000,
-    //     isClosable: true,
-    //   })
-    //   // router.push("/"); 
-    //   //  router.reload()
-    //   if ( localStorage.getItem("redirect_url")) {
-    //     // console.log("Redirection")
-    //     localStorage.removeItem("redirect_url")
-    //     localStorage.removeItem("displayed")
-    //     router.back()
-    //   }else{
-    //      router.push("/") 
-    //   router.reload(); 
-    //   }
+      toast({
+        title: "ACCES AUTORISE.",
+        description: "Bon Achat",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      })
+      // router.push("/"); 
+      //  router.reload()
+   
 
 
 
-    //   // 
-    //   // console.log("donnees google", res.user.email)
+      // 
+      // console.log("donnees google", res.user.email)
 
-    // }).catch((error) => {})
-    signInWithRedirect(auth, provider2);
-    getRedirectResult(auth)
-      .then((result) => {
-        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-        const credential = FacebookAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
+    }).catch((error) => {})
+    // signInWithRedirect(auth, provider2);
+    // getRedirectResult(auth)
+    //   .then((result) => {
+    //     // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+    //     const credential = FacebookAuthProvider.credentialFromResult(result);
+    //     const token = credential.accessToken;
 
-        const user = result.user;
-        // IdP data available using getAdditionalUserInfo(result)
-        // ...
-      }).catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.customData.email;
-        // AuthCredential type that was used.
-        const credential = FacebookAuthProvider.credentialFromError(error);
-        // ...
-      });
+    //     const user = result.user;
+    //     // IdP data available using getAdditionalUserInfo(result)
+    //     // ...
+    //   }).catch((error) => {
+    //     // Handle Errors here.
+    //     const errorCode = error.code;
+    //     const errorMessage = error.message;
+    //     // The email of the user's account used.
+    //     const email = error.customData.email;
+    //     // AuthCredential type that was used.
+    //     const credential = FacebookAuthProvider.credentialFromError(error);
+    //     // ...
+    //   });
   }
 
   useEffect(() => {
@@ -498,6 +501,24 @@ export default function Connexion() {
                           onClick={signinWithGoogle}
                         >
                           Connexion avec Google
+                        </Button>
+
+                      </Center>
+                      <Center  display={"grid"} >
+                        <Button mb={2}
+                          width={"fit-content"} borderBottom={"2px solid black"}
+                          leftIcon={<FaGoogle />}
+
+                          // borderRadius={"50px"}
+                          bgColor={"#fff"}
+                          color={"black"}
+                          _hover={{
+                            bg: "#ccf",
+                          }}
+                          border={"1px solid black"}
+                          onClick={signinWithFacebook}
+                        >
+                          Connexion avec Facebook
                         </Button>
 
                       </Center>

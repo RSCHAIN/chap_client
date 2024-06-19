@@ -144,6 +144,7 @@ const [width9, setWidth9] = useState("1px");
                         // router.back()
                         signOut(authentic);
                         alert(`Veuillez consulter vos mails pour valider votre inscription. \nNB: N'hésitez pas à consulter vos spams si vous ne recevez pas le mail de validation`);
+                        router.push("/Connexion")
                         toast({
                           title: "SUCCES.",
                           description: "INSCRIPTION VALIDEE",
@@ -151,7 +152,7 @@ const [width9, setWidth9] = useState("1px");
                           duration: 3000,
                           isClosable: true,
                         });
-                        router.push("/Connexion");
+                        router.push("/Connexion")
                       })
                       .catch((error) => {
                         // throw error;
