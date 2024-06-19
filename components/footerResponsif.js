@@ -126,6 +126,9 @@ export default function FooterR() {
           Tel : 0033(0)605799059
           </Text>
           <Text>
+          Siret: 85026907700028
+          </Text>
+          <Text>
           E-mail : support@rschain.net
           </Text>
             </Box>
