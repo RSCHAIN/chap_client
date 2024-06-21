@@ -18,10 +18,11 @@ export default function Document() {
         <meta property="og:url" content=""></meta>
       </Head>
 
-      <body>
+      <body className="relative">
        
         <Main />
         <NextScript />
+        
       </body>
     </Html>
   );

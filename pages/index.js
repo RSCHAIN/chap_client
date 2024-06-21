@@ -37,6 +37,7 @@ import { useRouter } from "next/router";
 import { MdLocationOn } from "react-icons/md";
 import {RiSendPlaneLine} from "react-icons/ri"
 import secureLocalStorage from "react-secure-storage";
+import Confidential from "@/components/Confidential";
 
 
 export default function Home() {
@@ -140,7 +141,7 @@ const [code,setCode] = useState([]);
     })
   }
   return (
-    <>
+    <Box className="relative">
       {/* <BarBleu /> */}
       <Head>
         <script
@@ -219,8 +220,9 @@ const [code,setCode] = useState([]);
               </Box>
             </Center>
       <LadingCorps />
-
+      
       <FooterR />
-    </>
+      <Confidential/>
+    </Box>
   );
 }
