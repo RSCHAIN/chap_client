@@ -40,6 +40,12 @@ import axios from "axios";
 import Head from "next/head";
 
 const SignUpForm = () => {
+
+
+const [redirect,setRedirect] = useState(true);
+const [redirectError,setRedirectError] = useState("Si vous n'êtes pas redirigé veuillez cliquer");
+
+
 /// couleur des differents elements
 const [color1, setColor1] = useState("gray.400");
 const [color2, setColor2] = useState("gray.400");
@@ -137,6 +143,7 @@ const [width9, setWidth9] = useState("1px");
                         await axios.post("/api/SendWelcome", {
                           message: "Bienvenue Sur CHAP",
                           email: userCredential.user.email,
+                          username:name
                         });
                         await sendEmailVerification(userCredential.user);
                         // console.log(userCredential.user);
@@ -144,6 +151,7 @@ const [width9, setWidth9] = useState("1px");
                         // router.back()
                         signOut(authentic);
                         alert(`Veuillez consulter vos mails pour valider votre inscription. \nNB: N'hésitez pas à consulter vos spams si vous ne recevez pas le mail de validation`);
+                        
                         router.push("/Connexion")
                         toast({
                           title: "SUCCES.",
@@ -152,6 +160,8 @@ const [width9, setWidth9] = useState("1px");
                           duration: 3000,
                           isClosable: true,
                         });
+                        setRedirect(true);
+                        setRedirectError("Veuillez consulter vos mails pour valider votre inscription. \nNB: N'hésitez pas à consulter vos spams si vous ne recevez pas le mail de validation et procéder à votre authentification")
                         router.push("/Connexion")
                       })
                       .catch((error) => {
@@ -161,6 +171,8 @@ const [width9, setWidth9] = useState("1px");
                         //   console.log(errorMessage)
                         //   console.log(errorCode)
                         if (errorCode == "auth/email-already-in-use") {
+                          setColor7("red")
+                setWidth7("3px")
                           // console.log("VEUILLEZ VERIFIER VOS INFOS DE CONNEXION");
                           toast({
                             title: "VEUILLEZ VOUS CONNECTER",
@@ -171,6 +183,8 @@ const [width9, setWidth9] = useState("1px");
                           });
                         }
                       })
+                      setRedirect(true);
+                      setRedirectError("Veuillez vous connectez en cliquant ");
                       router.push("/Connexion");
 
 
@@ -279,241 +293,246 @@ const [width9, setWidth9] = useState("1px");
   const terms = " En continuant, vous acceptez nos "
   const welcome = "Bienvenue sur la page d'inscription";
 
-  return (
-    <>
-      <Head>
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
-        ></script>
-        <script strategy="lazyOnload">
-          {`
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){dataLayer.push(arguments)}
-                gtag('js', new Date()); 
-                gtag('config', 'G-RFSVQTGJ87');
-                `}
-
-        </script>
-      </Head>
-      <Center width={"100%"} minHeight={"80vh"} mt={""}>
-        <Box
-          width={{ base: "95%", md: "50%", xl: "40%", "2xl": "30%" }}
-          height={{ base: "fit-content" }}
-
-        >
-          <Text fontWeight={"bold"} fontSize={"2xl"}>
-            Bonjour!
-          </Text>
-          <Text fontWeight={"light"}>{welcome}</Text>
-          <Stack spacing={5} marginTop={"1em"} width={{ base: "100%" }}>
-            {/* le nom  */}
-            <InputGroup>
-              <InputLeftElement pointerEvents="none">
-                <FontAwesomeIcon icon={faAdd} color={"gray"} />
-              </InputLeftElement>
-              <Input
-                type="text"
-                onChange={(ev) => setName(ev.target.value)}
-                placeholder="Nom"
-                _placeholder={{ color: "gray.400" }}
-                variant={"outline"}
-                color={color1}
-                borderColor={color1}
-                borderRadius={"full"}
-                borderWidth={width1}
-                required
-              />
-            </InputGroup>
-
-            {/* le prenom */}
-            <InputGroup>
-              <InputLeftElement pointerEvents="none">
-                <FontAwesomeIcon icon={faAdd} color={"gray"} />
-              </InputLeftElement>
-              <Input
-                required
-                type="text"
-                onChange={(ev) => setSurname(ev.target.value)}
-                placeholder="Prenom"
-                _placeholder={{ color: "gray.400" }}
-                variant={"outline"}
-                color={color2}
-                borderColor={color2}
-                borderWidth={width2}
-                borderRadius={"full"}
-              />
-            </InputGroup>
-
-            {/* le telephone  */}
-            <InputGroup>
-              <InputLeftElement pointerEvents="none">
-                <FontAwesomeIcon icon={faPhone} color={"gray"} />
-              </InputLeftElement>
-              <Input
-                type="number"
-                required
-                onChange={(ev) => setNumber(ev.target.value)}
-                placeholder="Telephone"
-                _placeholder={{ color: "gray.400" }}
-                variant={"outline"}
-                color={color3}
-                borderColor={color3}
-                borderWidth={width3}
-                borderRadius={"full"}
-              />
-            </InputGroup>
-
-            {/* le adresse */}
-            <InputGroup>
-              <InputLeftElement pointerEvents="none">
-                <FontAwesomeIcon icon={faHome} color={"gray"} />
-              </InputLeftElement>
-              <Input
-                type="text"
-                required
-                onChange={(ev) => setAdress(ev.target.value)}
-                placeholder="Adresse"
-                _placeholder={{ color: "gray.400" }}
-                variant={"outline"}
-                color={color4}
-                borderColor={color4}
-                borderWidth={width4}
-                borderRadius={"full"}
-              />
-            </InputGroup>
-
-            <InputGroup>
-              <InputLeftElement pointerEvents="none">
-                <FontAwesomeIcon icon={faHome} color={"gray"} />
-              </InputLeftElement>
-              <Input
-                type="text"
-                required
-                onChange={(ev) => setCode(ev.target.value)}
-                placeholder="Code postal"
-                _placeholder={{ color: "gray.400" }}
-                variant={"outline"}
-                color={color5}
-                borderColor={color5}
-                borderWidth={width5}
-                borderRadius={"full"}
-              />
-            </InputGroup>
-            <InputGroup>
-              <InputLeftElement pointerEvents="none">
-                <FontAwesomeIcon icon={faHome} color={"gray"} />
-              </InputLeftElement>
-              <Input
-                type="text"
-                required
-                onChange={(ev) => setVille(ev.target.value)}
-                placeholder="Ville"
-                _placeholder={{ color: "gray.400" }}
-                variant={"outline"}
-                color={color6}
-                borderColor={color6}
-                borderWidth={width6}
-                borderRadius={"full"}
-              />
-            </InputGroup>
-
-            {/* le Email  */}
-            <InputGroup>
-              <InputLeftElement pointerEvents="none">
-                <FontAwesomeIcon icon={faEnvelope} color={"gray"} />
-              </InputLeftElement>
-              <Input
-                type="text"
-                required
-                onChange={(ev) =>
-                  setEmail(ev.target.value.trim().toLowerCase())
-                }
-                placeholder="Email"
-                _placeholder={{ color: "gray.400" }}
-                variant={"outline"}
-                color={color7}
-                borderColor={color7}
-                borderWidth={width7}
-                borderRadius={"full"}
-              />
-            </InputGroup>
-
-            {/* mot de passe */}
-            <InputGroup>
-              <InputLeftElement pointerEvents="none">
-                <FontAwesomeIcon icon={faLock} color={"gray"} />
-              </InputLeftElement>
-              <Input
-                required
-                type={show ? "text" : "password"}
-                placeholder="mot de passe"
-                _placeholder={{ color: "gray.400" }}
-                onChange={(ev) => setPassword(ev.target.value)}
-                variant={"outline"}
-                color={color8}
-                borderColor={color8}
-                borderWidth={width8}
-                borderRadius={"full"}
-              />
-              <InputRightElement width="4.5rem">
-                <Button h="1.75rem" size="sm" onClick={handleClick}>
-                  {show ? "Hide" : "Show"}
-                </Button>
-              </InputRightElement>
-            </InputGroup>
-
-            {/* confimer mot de passe */}
-            <InputGroup>
-              <InputLeftElement pointerEvents="none">
-                <FontAwesomeIcon icon={faLock} color={"gray"} />
-              </InputLeftElement>
-              <Input
-                required
-                onChange={(ev) => setPassword2(ev.target.value)}
-                type={show ? "text" : "password"}
-                placeholder="confimer  mot de passe"
-                _placeholder={{ color: "gray.400" }}
-                variant={"outline"}
-                color={color9}
-                borderWidth={width9}
-                borderColor={color9}
-                borderRadius={"full"}
-              />
-              <InputRightElement width="4.5rem">
-                <Button h="1.75rem" size="sm" onClick={handleClick}>
-                  {show ? "Hide" : "Show"}
-                </Button>
-              </InputRightElement>
-            </InputGroup>
-          </Stack>
-          <Button
-            colorScheme="blue"
-            variant="solid"
-            mt={"2em"}
-            // borderRadius={"full"}
-            width={"100%"}
-            onClick={() => createUSer()}
-            bgColor={"#08566e"}
-            _hover={{
-              bgColor: "#08566e",
-            }}
+  if (redirect == false) {
+    return (
+      <>
+        <Head>
+          <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-RFSVQTGJ87"
+          ></script>
+          <script strategy="lazyOnload">
+            {`
+                      window.dataLayer = window.dataLayer || [];
+                      function gtag(){dataLayer.push(arguments)}
+                  gtag('js', new Date()); 
+                  gtag('config', 'G-RFSVQTGJ87');
+                  `}
+  
+          </script>
+        </Head>
+        <Center width={"100%"} minHeight={"80vh"} mt={""}>
+          <Box
+            width={{ base: "95%", md: "50%", xl: "40%", "2xl": "30%" }}
+            height={{ base: "fit-content" }}
+  
           >
-            Inscription
-          </Button>
-          <Text width={{ md: "350px", lg: "480px" }} pb={20} ml={5}>
-            {terms}<Link href="/Terms" color={"blue"} _hover={{ textDecoration: "none" }}>Termes et Conditions.</Link>{terms1}
-
-          </Text>
-        </Box>
-      </Center>
-
-
-
-
-      <FooterR />
-    </>
-  );
+            <Text fontWeight={"bold"} fontSize={"2xl"}>
+              Bonjour!
+            </Text>
+            <Text fontWeight={"light"}>{welcome}</Text>
+            <Stack spacing={5} marginTop={"1em"} width={{ base: "100%" }}>
+              {/* le nom  */}
+              <InputGroup>
+                <InputLeftElement pointerEvents="none">
+                  <FontAwesomeIcon icon={faAdd} color={"gray"} />
+                </InputLeftElement>
+                <Input
+                  type="text"
+                  onChange={(ev) => setName(ev.target.value)}
+                  placeholder="Nom"
+                  _placeholder={{ color: "gray.400" }}
+                  variant={"outline"}
+                  color={color1}
+                  borderColor={color1}
+                  borderRadius={"full"}
+                  borderWidth={width1}
+                  required
+                />
+              </InputGroup>
+  
+              {/* le prenom */}
+              <InputGroup>
+                <InputLeftElement pointerEvents="none">
+                  <FontAwesomeIcon icon={faAdd} color={"gray"} />
+                </InputLeftElement>
+                <Input
+                  required
+                  type="text"
+                  onChange={(ev) => setSurname(ev.target.value)}
+                  placeholder="Prenom"
+                  _placeholder={{ color: "gray.400" }}
+                  variant={"outline"}
+                  color={color2}
+                  borderColor={color2}
+                  borderWidth={width2}
+                  borderRadius={"full"}
+                />
+              </InputGroup>
+  
+              {/* le telephone  */}
+              <InputGroup>
+                <InputLeftElement pointerEvents="none">
+                  <FontAwesomeIcon icon={faPhone} color={"gray"} />
+                </InputLeftElement>
+                <Input
+                  type="number"
+                  required
+                  onChange={(ev) => setNumber(ev.target.value)}
+                  placeholder="Telephone"
+                  _placeholder={{ color: "gray.400" }}
+                  variant={"outline"}
+                  color={color3}
+                  borderColor={color3}
+                  borderWidth={width3}
+                  borderRadius={"full"}
+                />
+              </InputGroup>
+  
+              {/* le adresse */}
+              <InputGroup>
+                <InputLeftElement pointerEvents="none">
+                  <FontAwesomeIcon icon={faHome} color={"gray"} />
+                </InputLeftElement>
+                <Input
+                  type="text"
+                  required
+                  onChange={(ev) => setAdress(ev.target.value)}
+                  placeholder="Adresse"
+                  _placeholder={{ color: "gray.400" }}
+                  variant={"outline"}
+                  color={color4}
+                  borderColor={color4}
+                  borderWidth={width4}
+                  borderRadius={"full"}
+                />
+              </InputGroup>
+  
+              <InputGroup>
+                <InputLeftElement pointerEvents="none">
+                  <FontAwesomeIcon icon={faHome} color={"gray"} />
+                </InputLeftElement>
+                <Input
+                  type="text"
+                  required
+                  onChange={(ev) => setCode(ev.target.value)}
+                  placeholder="Code postal"
+                  _placeholder={{ color: "gray.400" }}
+                  variant={"outline"}
+                  color={color5}
+                  borderColor={color5}
+                  borderWidth={width5}
+                  borderRadius={"full"}
+                />
+              </InputGroup>
+              <InputGroup>
+                <InputLeftElement pointerEvents="none">
+                  <FontAwesomeIcon icon={faHome} color={"gray"} />
+                </InputLeftElement>
+                <Input
+                  type="text"
+                  required
+                  onChange={(ev) => setVille(ev.target.value)}
+                  placeholder="Ville"
+                  _placeholder={{ color: "gray.400" }}
+                  variant={"outline"}
+                  color={color6}
+                  borderColor={color6}
+                  borderWidth={width6}
+                  borderRadius={"full"}
+                />
+              </InputGroup>
+  
+              {/* le Email  */}
+              <InputGroup>
+                <InputLeftElement pointerEvents="none">
+                  <FontAwesomeIcon icon={faEnvelope} color={"gray"} />
+                </InputLeftElement>
+                <Input
+                  type="text"
+                  required
+                  onChange={(ev) =>
+                    setEmail(ev.target.value.trim().toLowerCase())
+                  }
+                  placeholder="Email"
+                  _placeholder={{ color: "gray.400" }}
+                  variant={"outline"}
+                  color={color7}
+                  borderColor={color7}
+                  borderWidth={width7}
+                  borderRadius={"full"}
+                />
+              </InputGroup>
+  
+              {/* mot de passe */}
+              <InputGroup>
+                <InputLeftElement pointerEvents="none">
+                  <FontAwesomeIcon icon={faLock} color={"gray"} />
+                </InputLeftElement>
+                <Input
+                  required
+                  type={show ? "text" : "password"}
+                  placeholder="mot de passe"
+                  _placeholder={{ color: "gray.400" }}
+                  onChange={(ev) => setPassword(ev.target.value)}
+                  variant={"outline"}
+                  color={color8}
+                  borderColor={color8}
+                  borderWidth={width8}
+                  borderRadius={"full"}
+                />
+                <InputRightElement width="4.5rem">
+                  <Button h="1.75rem" size="sm" onClick={handleClick}>
+                    {show ? "Hide" : "Show"}
+                  </Button>
+                </InputRightElement>
+              </InputGroup>
+  
+              {/* confimer mot de passe */}
+              <InputGroup>
+                <InputLeftElement pointerEvents="none">
+                  <FontAwesomeIcon icon={faLock} color={"gray"} />
+                </InputLeftElement>
+                <Input
+                  required
+                  onChange={(ev) => setPassword2(ev.target.value)}
+                  type={show ? "text" : "password"}
+                  placeholder="confimer  mot de passe"
+                  _placeholder={{ color: "gray.400" }}
+                  variant={"outline"}
+                  color={color9}
+                  borderWidth={width9}
+                  borderColor={color9}
+                  borderRadius={"full"}
+                />
+                <InputRightElement width="4.5rem">
+                  <Button h="1.75rem" size="sm" onClick={handleClick}>
+                    {show ? "Hide" : "Show"}
+                  </Button>
+                </InputRightElement>
+              </InputGroup>
+            </Stack>
+            <Button
+              colorScheme="blue"
+              variant="solid"
+              mt={"2em"}
+              // borderRadius={"full"}
+              width={"100%"}
+              onClick={() => createUSer()}
+              bgColor={"#08566e"}
+              _hover={{
+                bgColor: "#08566e",
+              }}
+            >
+              Inscription
+            </Button>
+            <Text width={{ md: "350px", lg: "480px" }}fontSize={{base:"10px",lg:"15px"}} pb={20} ml={5}>
+              {terms}<Link href="/Terms" color={"blue"} _hover={{ textDecoration: "none" }}>Termes et Conditions.</Link>{terms1}
+  
+            </Text>
+          </Box>
+        </Center>
+  
+  
+  
+  
+        <FooterR />
+      </>
+    )
+  } else {
+    return(<Center mt={40}><Text>{redirectError} <Link href="/Connexion" color={"blue"}>ici</Link></Text></Center>)
+  }
+  
 };
 
 export default SignUpForm;

@@ -81,6 +81,7 @@ const SignUpForm = () => {
           await axios.post("/api/SendWelcome",{
             message: "Bienvenue Sur CHAP",
             email:userCredential.user.email,
+            username:name
           });
           await sendEmailVerification(userCredential.user);
           // console.log(userCredential.user);
