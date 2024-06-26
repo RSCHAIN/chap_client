@@ -275,10 +275,12 @@ export default function Connexion() {
         //  router.reload()
         if (localStorage.getItem("redirect_url")) {
           // console.log("Redirection")
+          setConnected(1)
           localStorage.removeItem("redirect_url")
           localStorage.removeItem("displayed")
           router.back()
         } else {
+          setConnected(1)
           router.push("/")
           router.reload();
         }
@@ -390,6 +392,7 @@ export default function Connexion() {
             localStorage.removeItem("displayed")
             router.back()
           } else {
+            setConnected(1)
             router.push("/")
             router.reload();
           }
