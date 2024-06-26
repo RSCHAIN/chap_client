@@ -271,13 +271,13 @@ function AddToCart(product,productKey) {
     }else{
       try {
        await  Exist(productKey,user.email,product);
-        toast({
-          title: "Produit ajouté!!!",
+         // toast({
+        //   title: "Produit ajouté!!!",
 
-          status: "success",
-          duration: 9000,
-          isClosable: true,
-        });
+        //   status: "success",
+        //   duration: 9000,
+        //   isClosable: true,
+        // });
       } catch (error) {
         
       }

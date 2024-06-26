@@ -42,7 +42,7 @@ import Head from "next/head";
 const SignUpForm = () => {
 
 
-const [redirect,setRedirect] = useState(true);
+const [redirect,setRedirect] = useState(false);
 const [redirectError,setRedirectError] = useState("Si vous n'êtes pas redirigé veuillez cliquer");
 
 
@@ -516,7 +516,7 @@ const [width9, setWidth9] = useState("1px");
             >
               Inscription
             </Button>
-            <Text width={{ md: "350px", lg: "480px" }}fontSize={{base:"10px",lg:"15px"}} pb={20} ml={5}>
+            <Text width={{ md: "350px", lg: "480px" }}fontSize={{base:"8px",lg:"15px"}} pb={20} ml={5}>
               {terms}<Link href="/Terms" color={"blue"} _hover={{ textDecoration: "none" }}>Termes et Conditions.</Link>{terms1}
   
             </Text>

@@ -302,13 +302,13 @@ function AddToCart(product,productKey,color,taille) {
     }else{
       try {
         Exist(productKey,user.email,product,color,taille);
-        toast({
-          title: "Produit ajouté!!!",
+         // toast({
+        //   title: "Produit ajouté!!!",
 
-          status: "success",
-          duration: 9000,
-          isClosable: true,
-        });
+        //   status: "success",
+        //   duration: 9000,
+        //   isClosable: true,
+        // });
       } catch (error) {
         // console.error("Error adding document: ", error);
         toast({

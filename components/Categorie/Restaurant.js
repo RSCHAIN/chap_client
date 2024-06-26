@@ -482,13 +482,7 @@ const [ShowLoad,setShowLoad] = useState("block")
       } else {
         try {
           await Exist(productKey, user.email, user.uid, product);
-         toast({
-            title: "Produit ajouté!!!",
-
-            status: "success",
-            duration: 9000,
-            isClosable: true,
-          });
+       
           
           setTimeout(function() {
             router.reload();
