@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     Modal,
     ModalOverlay,
@@ -15,11 +15,18 @@ import {
   } from '@chakra-ui/react'
 
 
-
+ 
 function PopupAppMobile() {
     const { isOpen, onOpen, onClose } = useDisclosure()
+   
     useEffect(()=>{
-        onOpen();
+        if (JSON.parse(localStorage.getItem("showed")) && JSON.parse(localStorage.getItem("showed")) == true) {
+           
+        }else{
+            onOpen()  // Show the modal when component loads for the first time
+        }
+        localStorage.setItem("showed",true) 
+        
     },[])
   return (
    <>

@@ -40,6 +40,7 @@ function Store() {
     const [dissoaCajouProduct, setDissoaCajouProduct] = useState([])
     const [nayouProduct, setNayouProduct] = useState([])
     const [omarcheGouroProduct, setOmarcheGouroProduct] = useState([])
+    const [test, setTest] = useState()
 
     const getEpicerieMarkets = async () => {
         // const starCountRef = ref(db2, "/All Products");
@@ -67,7 +68,7 @@ function Store() {
                 Object.entries(massyProduct).slice(0, 1)
             );
             setMassyProduct(sliced)
-                console.log("massyProduct ::: ", massyProduct)
+                // console.log("massyProduct ::: ", massyProduct)
             for(let epice in massyProduct) {
                 setProductImg(massyProduct[epice].imageUrl)
             }
@@ -82,7 +83,7 @@ function Store() {
                 Object.entries(omarcheGouroProduct).slice(0, 1)
             );
             setOmarcheGouroProduct(sliced)
-                console.log("omarcheGouroProduct ::: ", omarcheGouroProduct)
+                // console.log("omarcheGouroProduct ::: ", omarcheGouroProduct)
             for(let epice in omarcheGouroProduct) {
                 setProductImg(omarcheGouroProduct[epice].imageUrl)
             }
@@ -98,7 +99,7 @@ function Store() {
                 Object.entries(nayouProduct).slice(0, 1)
             );
             setNayouProduct(sliced)
-                console.log("nayouProduct ::: ", nayouProduct)
+                // console.log("nayouProduct ::: ", nayouProduct)
             for(let epice in nayouProduct) {
                 setProductImg(nayouProduct[epice].imageUrl)
             }
@@ -113,12 +114,28 @@ function Store() {
                 Object.entries(dissoaCajouProduct).slice(0, 1)
             );
             setDissoaCajouProduct(sliced)
-                console.log("dissoaCajouProduct ::: ", dissoaCajouProduct)
+                // console.log("dissoaCajouProduct ::: ", dissoaCajouProduct)
             for(let epice in dissoaCajouProduct) {
                 setProductImg(dissoaCajouProduct[epice].imageUrl)
             }
         });
     };
+
+    // const Test = () => {
+    //     const starCountRef = ref(db2, "/Epicerie");
+    //     onValue(starCountRef, (snapshot) => {
+    //         const test = snapshot.val()
+    //         console.log("vall :: ", snapshot.val() )
+    //         console.log("testtttt :: ", Object.values(test));
+    //         const sliced = Object.fromEntries(
+    //             Object.entries(test).slice(0, 5)
+    //         );
+    //         setTest(Object.values(sliced))
+    //         // for(let t in test) {
+    //         //     console.log("t de test ::: ", test[t]);
+    //         // }
+    //     });
+    // }
 
     const getCosmeticMarkets = async () => {
         const starCountRef = ref(db2, "/Cosmetique/O'marche Gouro(Cosmetique)");
@@ -144,6 +161,7 @@ function Store() {
             const sliced = Object.fromEntries(
                 Object.entries(textille).slice(0, 5)
             );
+            console.log("sliced ::: ", sliced);
             setTextille(sliced)
 
             // for(let epice in epicerie) {
@@ -153,9 +171,26 @@ function Store() {
         });
 
     }
-
+    const getAllEpicerieMarkets = async () => {
+        // let datas = ref(db2, "/Epicerie/Massy Market");
+        let datas = ref(db2, "/courseEpicerie");
+        onValue(datas, snapshot => {
+            const data = snapshot.val()
+            const sliced = Object.fromEntries(
+                Object.entries(data).slice(0, 5)
+            );
+            setTest(Object.values(sliced))
+            // setEpicerieDetails(data)
+            // console.log("les datas ::: ", data);
+            // for(let epice in data) {
+            //     // console.log("epicerie[epice] ::", data[epice].imageUrl);
+            //     setImage(data[epice].imageUrl)
+            // }
+        })
+    }
     
     useEffect(() => {
+        getAllEpicerieMarkets()
         getEpicerieMarkets()
         MassyMarket()
         Nayou()
@@ -165,7 +200,7 @@ function Store() {
         OmarcheGouro()
     }, [])
 
-    console.log("epice ::: ", epice.id);
+    // console.log("epice ::: ", epice.id);
 
     async function Exist(productKey, email, uid, product) {
         const cartRef = collection(db, 'orders'); // Supposons que la collection se nomme 'carts'.
@@ -176,8 +211,8 @@ function Store() {
         if (querySnapshot.size === 1) {
           const cartDoc = querySnapshot.docs[0];
           const cartData = cartDoc.data();
-          console.log(cartData)
-          console.log(querySnapshot.docs[0].data().orderQte)
+        //   console.log(cartData)
+        //   console.log(querySnapshot.docs[0].data().orderQte)
           const itemIndex = Object.values(cartData).find((item) => item.productId === productKey);
           if (itemIndex !== -1) {
             await updateDoc(cartDoc.ref, {
@@ -238,7 +273,7 @@ function Store() {
                 isClosable: true,
               });
             } catch (error) {
-                console.log(error);
+                // console.log(error);
             }
     
           }
@@ -274,7 +309,7 @@ function Store() {
                 <div className='bg-gray-100 w-full p-4'>
                     <div className='container mx-auto'>
                         <div className='flex flex-col gap-10'>
-                            <div className='flex flex-col'>
+                            {/* <div className='flex flex-col'>
                                 <div className='flex justify-between'>
                                     <h2 className='text-3xl font-semibold text-gray-700'>Epicerie</h2>
                                     <Link href={"/StorePage/EpicerieProducts"} className='text-xs font-bold text-gray-600 underline'>Voir plus</Link>
@@ -299,16 +334,16 @@ function Store() {
                                                     <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
                                                     <span className="text-black text-sm">0 avis</span>
                                                 </div>
-                                                {/* <span className='text-gray-700 my-2 font-semibold text-xs'>{item.organisation}</span> */}
+                                                <span className='text-gray-700 my-2 font-semibold text-xs'>{item.organisation}</span>
                                                 <div className="flex flex-col mb-2">
                                                     <span className="text-slate-700 max-[444px]:text-xs text-sm mb-2"><FontAwesomeIcon className="mr-2" icon={faTruck} />Livraison dans toute la France</span>
                                                     <span className="text-slate-700 text-sm mb-2"><FontAwesomeIcon className="mr-2" icon={faMoneyBillTransfer} />Payez en espèce</span>
                                                 </div>
                                                 <span className="self-end mb-2 text-lg lg:text-xl text-red-600 font-bold">{item.prix}€</span>
-                                                {/* <div className='flex gap-2 lg:gap-0 lg:justify-between items-center'>
+                                                <div className='flex gap-2 lg:gap-0 lg:justify-between items-center'>
                                                     <Link className='bg-green-600 text-white rounded-3xl p-1 text-sm' _hover={{ textDecor:"none"}} href={`/otherContent/intermed1?categorie=${"Cosmetique"}&magasin=${item.organisation}`}>Commerce</Link>
                                                     <button onClick={()=>AddToCart(item, Object.keys(dissoaCajouProduct)[index])} className='bg-red-600 text-white rounded-3xl p-1 text-sm'>+Ajouter</button>
-                                                </div> */}
+                                                </div>
                                             </div>
                                         </Link>
                                     )): (
@@ -334,16 +369,16 @@ function Store() {
                                                     <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
                                                     <span className="text-black text-sm">0 avis</span>
                                                 </div>
-                                                {/* <span className='text-gray-700 my-2 font-semibold text-xs'>{item.organisation}</span> */}
+                                                enlevé <span className='text-gray-700 my-2 font-semibold text-xs'>{item.organisation}</span>
                                                 <div className="flex flex-col mb-2">
                                                     <span className="text-slate-700 max-[444px]:text-xs text-sm mb-2"><FontAwesomeIcon className="mr-2" icon={faTruck} />Livraison dans toute la France</span>
                                                     <span className="text-slate-700 text-sm mb-2"><FontAwesomeIcon className="mr-2" icon={faMoneyBillTransfer} />Payez en espèce</span>
                                                 </div>
                                                 <span className="self-end mb-2 text-lg lg:text-xl text-red-600 font-bold">{item.prix}€</span>
-                                                {/* <div className='flex gap-2 lg:gap-0 lg:justify-between items-center'>
+                                                enlevé <div className='flex gap-2 lg:gap-0 lg:justify-between items-center'>
                                                     <Link className='bg-green-600 text-white rounded-3xl p-1 text-sm' _hover={{ textDecor:"none"}} href={`/otherContent/intermed1?categorie=${"Cosmetique"}&magasin=${item.organisation}`}>Commerce</Link>
                                                     <button onClick={()=>AddToCart(item, Object.keys(nayouProduct)[index])} className='bg-red-600 text-white rounded-3xl p-1 text-sm'>+Ajouter</button>
-                                                </div> */}
+                                                </div>
                                             </div>
                                         </Link>
                                     )): (
@@ -369,16 +404,16 @@ function Store() {
                                                     <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
                                                     <span className="text-black text-sm">0 avis</span>
                                                 </div>
-                                                {/* <span className='text-gray-700 my-2 font-semibold text-xs'>{item.organisation}</span> */}
+                                                <span className='text-gray-700 my-2 font-semibold text-xs'>{item.organisation}</span>
                                                 <div className="flex flex-col mb-2">
                                                     <span className="text-slate-700 max-[444px]:text-xs text-sm mb-2"><FontAwesomeIcon className="mr-2" icon={faTruck} />Livraison dans toute la France</span>
                                                     <span className="text-slate-700 text-sm mb-2"><FontAwesomeIcon className="mr-2" icon={faMoneyBillTransfer} />Payez en espèce</span>
                                                 </div>
                                                 <span className="self-end mb-2 text-lg lg:text-xl text-red-600 font-bold">{item.prix}€</span>
-                                                {/* <div className='flex gap-2 lg:gap-0 lg:justify-between items-center'>
+                                                <div className='flex gap-2 lg:gap-0 lg:justify-between items-center'>
                                                     <Link className='bg-green-600 text-white rounded-3xl p-1 text-sm' _hover={{ textDecor:"none"}} href={`/otherContent/intermed1?categorie=${"Cosmetique"}&magasin=${item.organisation}`}>Commerce</Link>
                                                     <button onClick={()=>AddToCart(item, Object.keys(massyProduct)[index])} className='bg-red-600 text-white rounded-3xl p-1 text-sm'>+Ajouter</button>
-                                                </div> */}
+                                                </div>
                                             </div>
                                         </Link>
                                     )): (
@@ -404,16 +439,16 @@ function Store() {
                                                     <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
                                                     <span className="text-black text-sm">0 avis</span>
                                                 </div>
-                                                {/* <span className='text-gray-700 my-2 font-semibold text-xs'>{item.organisation}</span> */}
+                                                <span className='text-gray-700 my-2 font-semibold text-xs'>{item.organisation}</span>
                                                 <div className="flex flex-col mb-2">
                                                     <span className="text-slate-700 max-[444px]:text-xs text-sm mb-2"><FontAwesomeIcon className="mr-2" icon={faTruck} />Livraison dans toute la France</span>
                                                     <span className="text-slate-700 text-sm mb-2"><FontAwesomeIcon className="mr-2" icon={faMoneyBillTransfer} />Payez en espèce</span>
                                                 </div>
                                                 <span className="self-end mb-2 text-lg lg:text-xl text-red-600 font-bold">{item.prix}€</span>
-                                                {/* <div className='flex gap-2 lg:gap-0 lg:justify-between items-center'>
+                                                <div className='flex gap-2 lg:gap-0 lg:justify-between items-center'>
                                                     <Link className='bg-green-600 text-white rounded-3xl p-1 text-sm' _hover={{ textDecor:"none"}} href={`/otherContent/intermed1?categorie=${"Cosmetique"}&magasin=${item.organisation}`}>Commerce</Link>
                                                     <button onClick={()=>AddToCart(item, Object.keys(omarcheGouroProduct)[index])} className='bg-red-600 text-white rounded-3xl p-1 text-sm'>+Ajouter</button>
-                                                </div> */}
+                                                </div>
                                             </div>
                                         </Link>
                                     )): (
@@ -421,7 +456,49 @@ function Store() {
                                     )}
                                     </div>
                                 </div>
+                            </div> */}
+
+                            <div className='flex flex-col'>
+                                <div className='flex justify-between'>
+                                    <h2 className='text-3xl font-semibold text-gray-700'>Epicerie</h2>
+                                    <Link href={"/StorePage/EpicerieProducts"} className='text-xs font-bold text-gray-600 underline'>Voir plus</Link>
+                                </div>
+                                <div className="flex gap-4 overflow-x-scroll">
+                                    {test && test !== "" ?
+                                    Object.values(test).map((item, index) => (
+                                        <Link  href={`/details?c=${"Epicerie"}&m=${item.organisation}&p=${Object.keys(test)[index]}`} key={index} _hover={{ textDecor:"none"}}
+                                            className="flex flex-col relative bg-white shadow-md rounded-md w-full lg:w-1/5 my-4">
+                                            <div className='w-full flex items-center justify-center'>
+                                                <img className='h-[10rem]' src={item.imageUrl}/>
+                                            </div>
+                                            <div className='flex flex-col gap-1 p-2'>
+                                                <h3 className="text-sm text-gray-700 font-bold">{item.nom}</h3>
+                                                <small className={`${item.etat === 'Disponible'? 'bg-green-600 ' : 'bg-red-600'} p-1 rounded-2xl capitalize text-white absolute -top-2 left-0`}>{item.etat}</small>
+                                                <div className="text-[0.6rem] text-yellow-400 flex items-center">
+                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                    <span className="text-black text-sm">0 avis</span>
+                                                </div>
+                                                <span className="text-sm">{item.organisation}</span>
+                                                <span className="text-[0.7rem]">Livré le 31/01/2024</span>
+                                                <span className="text-[0.7rem]"><FontAwesomeIcon className="mr-2" icon={faTruck} />Livraison dans toute la France</span>
+                                                <span className="self-end mb-2 text-lg lg:text-xl text-red-600 font-bold">{item.prix}€</span>
+                                                {/* <div className='flex gap-2 lg:gap-0 lg:justify-between items-center'>
+                                                    <Link className='bg-green-600 text-white rounded-3xl p-1 text-sm' _hover={{ textDecor:"none"}} href={`/otherContent/intermed1?categorie=${"Cosmetique"}&magasin=${item.organisation}`}>Commerce</Link>
+                                                    <button onClick={()=>AddToCart(item, Object.keys(cosmetic)[index])} className='bg-red-600 text-white rounded-3xl p-1 text-sm'>+Ajouter</button>
+                                                </div> */}
+                                            </div>
+                                        </Link>
+                                    )): (
+                                        <p>Aucune donnee</p>
+                                    )}
+                                </div>
                             </div>
+
+
                             <div className='flex flex-col'>
                                 <div className='flex justify-between'>
                                     <h2 className='text-3xl font-semibold text-gray-700'>Cosmetique</h2>
