@@ -59,7 +59,6 @@ export default function Carte() {
     const [numero, setNumero] = useState("NON DEFINI ");
     const [nom, setNom] = useState(" NON DEFINI");
     const [prix, setPrix] = useState();
-    const { isOpen, onOpen, onClose } = useDisclosure();
     const path =usePathname()
     
 
