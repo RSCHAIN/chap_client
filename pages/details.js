@@ -364,13 +364,13 @@ export default function DisplayArticleDetails() {
                 
                 try {
                     Exist(productKey, user.email, user.uid,product, color, taille);
-                    toast({
-                        title: "Produit ajouté!!!",
+                    // toast({
+                    //     title: "Produit ajouté!!!",
 
-                        status: "success",
-                        duration: 9000,
-                        isClosable: true,
-                    });
+                    //     status: "success",
+                    //     duration: 9000,
+                    //     isClosable: true,
+                    // });
                     setAdded(1);
                 } catch (error) {
                     // console.error("Error adding document: ", error);
@@ -628,7 +628,7 @@ export default function DisplayArticleDetails() {
                 <Center>
                     <Heading fontSize={{base:"20px",lg:"30px"}}>Achat bien enregistré</Heading>    
                 </Center> 
-            <Box mt={"40vh"} rowGap={5} >
+            <Box mt={"20vh"} rowGap={5} >
             
                     
                 <Flex mt={5} justifyContent={"space-around"}>

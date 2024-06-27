@@ -23,9 +23,9 @@ function PopupAppMobile() {
     },[])
   return (
    <>
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal isOpen={isOpen} onClose={onClose} >
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent borderRadius={"5px"} >
           <ModalHeader><Center>Disponible sur  APPSTORE</Center></ModalHeader>
           <ModalCloseButton />
           <ModalBody >
