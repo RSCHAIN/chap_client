@@ -38,6 +38,7 @@ import { MdLocationOn } from "react-icons/md";
 import {RiSendPlaneLine} from "react-icons/ri"
 import secureLocalStorage from "react-secure-storage";
 import Confidential from "@/components/Confidential";
+import PopupAppMobile from "@/components/popupAppMobile";
 
 
 export default function Home() {
@@ -142,6 +143,7 @@ const [code,setCode] = useState([]);
   }
   return (
     <Box className="relative">
+
       {/* <BarBleu /> */}
       <Head>
         <script
@@ -158,9 +160,12 @@ const [code,setCode] = useState([]);
           
         </script>
         </Head>
+        
       <InputBar />
       {isLagerThan768 ? <Navbar></Navbar> : <></>}
+      
       <Box width={"100%"} height={"3em"} mb={10}   display={["grid","grid","grid","none","none"]}>
+      <PopupAppMobile/>
         <Center>  <Text fontSize={"25px"} color={"cyan.800"} fontWeight={"semibold"} fontFamily={"system-ui"}>Bienvenue sur Chap</Text></Center>
     
       </Box>
@@ -222,7 +227,7 @@ const [code,setCode] = useState([]);
       <LadingCorps />
       
       <FooterR />
-      <Confidential/>
+      {/* <Confidential/> */}
     </Box>
   );
 }

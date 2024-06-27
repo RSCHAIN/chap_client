@@ -74,6 +74,9 @@ export default function Connexion() {
   const [isLagerThan768] = useMediaQuery("(min-width: 768px)");
   const [password, setPassword] = useState("");
   const [connected, setConnected] = useState(0);
+  const [redirectLink, setRedirectLink] = useState("/");
+
+
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [phoneNumber, setNumber] = useState("");
@@ -278,11 +281,11 @@ export default function Connexion() {
           setConnected(1)
           localStorage.removeItem("redirect_url")
           localStorage.removeItem("displayed")
-          router.back()
+          // router.back()
         } else {
           setConnected(1)
-          router.push("/")
-          router.reload();
+          // router.push("/")
+          // router.reload();
         }
       } else {
         console.log("dans le else")
@@ -388,13 +391,14 @@ export default function Connexion() {
           //  router.reload()
           if (localStorage.getItem("redirect_url")) {
             // console.log("Redirection")
+            setRedirectLink(localStorage.getItem("redirect_url"))
             localStorage.removeItem("redirect_url")
             localStorage.removeItem("displayed")
-            router.back()
+            // router.back()
           } else {
             setConnected(1)
-            router.push("/")
-            router.reload();
+            // router.push("/")
+            // router.reload();
           }
         } else {
           console.log("dans le else")
@@ -660,7 +664,7 @@ export default function Connexion() {
           <Center pt={{ base: "50%", lg: 10 }}>
             <Image src={"/userin.jpg"} alt="#" width={"100px"} height={"100px"} />
           </Center>
-          <Text textAlign={"center"}>Veuillez cliquer <Link href='/' color={'blue'} fontWeight={"bold"} >ici</Link>  afin d{"‘"}être redirigé, si vous n{"‘"}êtes pas redirigé automatiquement  </Text>
+          <Text textAlign={"center"}>Veuillez cliquer <Link href={redirectLink} color={'blue'} fontWeight={"bold"} >ici</Link>  afin d{"‘"}être redirigé, si vous n{"‘"}êtes pas redirigé automatiquement  </Text>
 
         </Box>
       </>

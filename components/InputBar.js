@@ -128,21 +128,26 @@ const InputBar = () => {
           </Head>
     <Box bgColor={"white"} pb={4}>
       <CookieConsent
+      
         location="bottom"
         buttonText="J'accepte"
         cookieName="CNSTMTCOOKIE"
         declineButtonText="Je Refuse"
-        style={{ background: "#2B373B" }}
+        style={{ background: "#FFFFFF",color:"black" }}
         buttonStyle={{
+          padding:10,
           backgroundColor: "#00CCBC",
-          fontSize: "13px",
+          fontSize: "15px",
           color: "white",
         }}
         expires={3}
         enableDeclineButton
       >
-        Nous utilisons des cookies dans le but de personnaliser, d’améliorer
-        notre contenu et nos services et de diffuser des publicités pertinentes.
+        <div>
+        <p className=' lg:text-3xl default:text-lg font-bold font-sans  '> Paramètres de confidentialité</p>
+        <p className='lg:text-lg default:text-xs'> <b>Notre site Web protège vos données à caractère personnel conformément au règlement général de protection des données (RGPD) de l{"'"}Union européenne. Nous traiterons vos données personnelles </b>sur la base de votre consentement préalable et uniquement aux fins spécifiques. Vous pouvez consentir au traitement de vos données à des fins spécifiques ci-dessous en cliquant sur « Je suis d{"'"}accord ».
+        </p>
+        </div>
       </CookieConsent>
       <Flex
       display={["none","none","none","none","none"]}
