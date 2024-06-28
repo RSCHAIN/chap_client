@@ -23,7 +23,7 @@ function PopupAppMobile() {
         if (JSON.parse(localStorage.getItem("showed")) && JSON.parse(localStorage.getItem("showed")) == true) {
            
         }else{
-            onOpen()  // Show the modal when component loads for the first time
+            // onOpen()  // Show the modal when component loads for the first time
         }
         localStorage.setItem("showed",true) 
         
