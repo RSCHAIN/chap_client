@@ -280,6 +280,7 @@ export default function Carte() {
                         if (data.Livrable == "CHAP" || data.Livrable == "" || data.Livrable == undefined) {
                             if ((po.slice(0, 2) == 91 ||
                             po.slice(0, 2) == 94 ||
+                            po.slice(0, 2) == 95 ||
                             po.slice(0, 2) == 93 ||
                             po.slice(0, 2) == 92 ||
                             po.slice(0, 2) == 78 ||
@@ -522,3 +523,11 @@ export default function Carte() {
     }
     
 }
+
+
+
+
+
+
+
+

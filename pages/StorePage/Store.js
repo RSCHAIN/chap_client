@@ -36,106 +36,37 @@ function Store() {
     const [epice, setEpice] = useState([])
     const [textille, setTextille] = useState([])
     const [cosmetic, setCosmetic] = useState([])
-    const [massyProduct, setMassyProduct] = useState([])
-    const [dissoaCajouProduct, setDissoaCajouProduct] = useState([])
-    const [nayouProduct, setNayouProduct] = useState([])
-    const [omarcheGouroProduct, setOmarcheGouroProduct] = useState([])
+    
     const [test, setTest] = useState()
 
+    // const getEpicerieMarkets = async () => {
+    //     // const starCountRef = ref(db2, "/All Products");
+    //     // const starCountRef = ref(db2, "/Epicerie/Massy Market");
+    //     const starCountRef = ref(db2, "/Epicerie");
+    //     onValue(starCountRef, (snapshot) => {
+    //         const epicerie = snapshot.val()
+    //         const sliced = Object.fromEntries(
+    //             Object.entries(epicerie).slice(0, 5)
+    //         );
+    //         setEpice(sliced)
+    //             // console.log(epicerie)
+    //         for(let epice in epicerie) {
+    //             setProductImg(epicerie[epice].imageUrl)
+    //         }
+            
+    //     });
+    // };
+
     const getEpicerieMarkets = async () => {
-        // const starCountRef = ref(db2, "/All Products");
-        const starCountRef = ref(db2, "/Epicerie/Massy Market");
-        // const starCountRef = ref(db2, "/Epicerie");
-        onValue(starCountRef, (snapshot) => {
+        let data = ref(db2, "/courseEpicerie");
+        onValue(data, (snapshot) => {
             const epicerie = snapshot.val()
             const sliced = Object.fromEntries(
                 Object.entries(epicerie).slice(0, 5)
             );
-            setEpice(sliced)
-                // console.log(epicerie)
-            for(let epice in epicerie) {
-                setProductImg(epicerie[epice].imageUrl)
-            }
-            
-        });
-    };
-
-    const MassyMarket = () => {
-        const starCountRef = ref(db2, "/Epicerie/Massy Market");
-        onValue(starCountRef, (snapshot) => {
-            const massyProduct = snapshot.val()
-            const sliced = Object.fromEntries(
-                Object.entries(massyProduct).slice(0, 1)
-            );
-            setMassyProduct(sliced)
-                // console.log("massyProduct ::: ", massyProduct)
-            for(let epice in massyProduct) {
-                setProductImg(massyProduct[epice].imageUrl)
-            }
+        setEpice(Object.values(sliced))
         });
     }
-
-    const OmarcheGouro = () => {
-        const starCountRef = ref(db2, "/Epicerie/O'marche Gouro(Epicerie)");
-        onValue(starCountRef, (snapshot) => {
-            const omarcheGouroProduct = snapshot.val()
-            const sliced = Object.fromEntries(
-                Object.entries(omarcheGouroProduct).slice(0, 1)
-            );
-            setOmarcheGouroProduct(sliced)
-                // console.log("omarcheGouroProduct ::: ", omarcheGouroProduct)
-            for(let epice in omarcheGouroProduct) {
-                setProductImg(omarcheGouroProduct[epice].imageUrl)
-            }
-        });
-    }
-
-    const Nayou = () => {
-        // const starCountRef = ref(db2, "/Epicerie/Massy Market");
-        const starCountRef = ref(db2, "/Epicerie/Nayou");
-        onValue(starCountRef, (snapshot) => {
-            const nayouProduct = snapshot.val()
-            const sliced = Object.fromEntries(
-                Object.entries(nayouProduct).slice(0, 1)
-            );
-            setNayouProduct(sliced)
-                // console.log("nayouProduct ::: ", nayouProduct)
-            for(let epice in nayouProduct) {
-                setProductImg(nayouProduct[epice].imageUrl)
-            }
-        });
-    }
-    const DissoaCajou = () => {
-        // const starCountRef = ref(db2, "/Epicerie/Massy Market");
-        const starCountRef = ref(db2, "/Epicerie/Dissoa Cajou");
-        onValue(starCountRef, (snapshot) => {
-            const dissoaCajouProduct = snapshot.val()
-            const sliced = Object.fromEntries(
-                Object.entries(dissoaCajouProduct).slice(0, 1)
-            );
-            setDissoaCajouProduct(sliced)
-                // console.log("dissoaCajouProduct ::: ", dissoaCajouProduct)
-            for(let epice in dissoaCajouProduct) {
-                setProductImg(dissoaCajouProduct[epice].imageUrl)
-            }
-        });
-    };
-
-    // const Test = () => {
-    //     const starCountRef = ref(db2, "/Epicerie");
-    //     onValue(starCountRef, (snapshot) => {
-    //         const test = snapshot.val()
-    //         console.log("vall :: ", snapshot.val() )
-    //         console.log("testtttt :: ", Object.values(test));
-    //         const sliced = Object.fromEntries(
-    //             Object.entries(test).slice(0, 5)
-    //         );
-    //         setTest(Object.values(sliced))
-    //         // for(let t in test) {
-    //         //     console.log("t de test ::: ", test[t]);
-    //         // }
-    //     });
-    // }
 
     const getCosmeticMarkets = async () => {
         const starCountRef = ref(db2, "/Cosmetique/O'marche Gouro(Cosmetique)");
@@ -192,15 +123,10 @@ function Store() {
     useEffect(() => {
         getAllEpicerieMarkets()
         getEpicerieMarkets()
-        MassyMarket()
-        Nayou()
-        DissoaCajou()
+        
         getCosmeticMarkets()
         getTextilleMarkets()
-        OmarcheGouro()
     }, [])
-
-    // console.log("epice ::: ", epice.id);
 
     async function Exist(productKey, email, uid, product) {
         const cartRef = collection(db, 'orders'); // Supposons que la collection se nomme 'carts'.
@@ -281,6 +207,8 @@ function Store() {
     
     }
 
+    console.log("epice ::: ", epice);
+
     return (
         <>
             <Head>
@@ -298,7 +226,7 @@ function Store() {
             <Box display={{ base: "none", md: "grid" }} mt={10}>
                 <Navbar />
             </Box>
-            <section className='african-shop'>
+            <section className='african-shop py-10 bg-gray-100 w-full'>
                 <header className="bg-white">
                     <div className='container mx-auto flex justify-center items-center'>
                         <div className="lg:w-[80%] lg:m-auto w-ful px-4 lg:px-0">
@@ -306,362 +234,116 @@ function Store() {
                         </div>
                     </div>
                 </header>
-                <div className='bg-gray-100 w-full p-4'>
-                    <div className='container mx-auto'>
-                        <div className='flex flex-col gap-10'>
-                            {/* <div className='flex flex-col'>
-                                <div className='flex justify-between'>
-                                    <h2 className='text-3xl font-semibold text-gray-700'>Epicerie</h2>
-                                    <Link href={"/StorePage/EpicerieProducts"} className='text-xs font-bold text-gray-600 underline'>Voir plus</Link>
-                                </div>
-                                <div className='flex gap-4 overflow-x-scroll'>
-                                    <div className="w-full lg:w-1/5 px-4 mt-6 bg-white shadow-md rounded-md relative">
-                                        {dissoaCajouProduct && dissoaCajouProduct !== "" ?
-                                        Object.values(dissoaCajouProduct).map((item, index) => (
-                                        <Link href={`/details?c=${"Epicerie"}&m=${item.organisation}&p=${Object.keys(dissoaCajouProduct)[index]}`} key={index} _hover={{ textDecor:"none"}}
-                                            className="flex flex-col w-full my-4">
-                                            <div className='w-full flex items-center justify-center'>
-                                                <img className='h-[10rem]' src={item.imageUrl}/>
+                <div className='flex flex-col gap-10 py-10 container mx-auto px-4 lg:px-0'>
+                    <div className="flex flex-col py-10 px-10">
+                        <div className='flex justify-between items-center'>
+                            <h2 className="text-2xl lg:text-4xl tracking-[0.1rem] font-bold">Epicérie</h2>
+                            <Link className="text-xs lg:text-sm font-bold underline" href={"/StorePage/EpicerieProducts"}>Voir plus</Link>
+                        </div>
+                        <div class="flex overflow-x-scroll py-10"> {/** hide-scroll-bar */}
+                            {epice.map((item, index) => (
+                                <div key={index} class="flex flex-nowrap">
+                                    <div class="inline-block px-3">
+                                        <div class="w-72 h-72 max-w-xs p-4 overflow-hidden rounded-md shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out relative">
+                                            <div className='flex justify-center items-center'>
+                                                <img key={index} className='h-32 w-52' src={item.imageUrl}/>
                                             </div>
-                                            <div className='flex flex-col gap-1 p-2'>
-                                                <h3 className="text-sm text-gray-700 font-bold">{item.nom}</h3>
-                                                <small className={`${item.etat === 'Disponible'? 'bg-green-600 ' : 'bg-red-600'} p-1 rounded-2xl capitalize text-white absolute -top-2 left-0`}>{item.etat}</small>
-                                                <div className="text-[0.6rem] text-yellow-400 flex items-center">
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <span className="text-black text-sm">0 avis</span>
-                                                </div>
-                                                <span className='text-gray-700 my-2 font-semibold text-xs'>{item.organisation}</span>
-                                                <div className="flex flex-col mb-2">
-                                                    <span className="text-slate-700 max-[444px]:text-xs text-sm mb-2"><FontAwesomeIcon className="mr-2" icon={faTruck} />Livraison dans toute la France</span>
-                                                    <span className="text-slate-700 text-sm mb-2"><FontAwesomeIcon className="mr-2" icon={faMoneyBillTransfer} />Payez en espèce</span>
-                                                </div>
-                                                <span className="self-end mb-2 text-lg lg:text-xl text-red-600 font-bold">{item.prix}€</span>
-                                                <div className='flex gap-2 lg:gap-0 lg:justify-between items-center'>
-                                                    <Link className='bg-green-600 text-white rounded-3xl p-1 text-sm' _hover={{ textDecor:"none"}} href={`/otherContent/intermed1?categorie=${"Cosmetique"}&magasin=${item.organisation}`}>Commerce</Link>
-                                                    <button onClick={()=>AddToCart(item, Object.keys(dissoaCajouProduct)[index])} className='bg-red-600 text-white rounded-3xl p-1 text-sm'>+Ajouter</button>
-                                                </div>
+                                            <h3 className='text-sm font-semibold'>{item.nom}</h3>
+                                            <small className={`${item.etat === 'Disponible'? 'bg-green-600 ' : 'bg-red-600'} p-1 text-white absolute -top-2 left-0 capitalize`}>{item.etat}</small>
+                                            <div className="text-yellow-300 text-xs">
+                                                <i className="text-[0.5rem]"><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                <i className="text-[0.5rem]"><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                <i className="text-[0.5rem]"><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                <i className="text-[0.5rem]"><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                <i className="text-[0.5rem]"><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                <span className="text-black text-xs">0 avis</span>
                                             </div>
-                                        </Link>
-                                    )): (
-                                        <p>Aucune donnee</p>
-                                    )}
-                                    </div>
-                                    <div className="w-full lg:w-1/5 px-4 mt-6 bg-white shadow-md rounded-md relative ">
-                                        {nayouProduct && nayouProduct !== "" ?
-                                        Object.values(nayouProduct).map((item, index) => (
-                                        <Link href={`/details?c=${"Epicerie"}&m=${item.organisation}&p=${Object.keys(nayouProduct)[index]}`} key={index} _hover={{ textDecor:"none"}}
-                                            className="flex flex-col bg-white w-full my-4">
-                                            <div className='w-full flex items-center justify-center'>
-                                                <img className='h-[10rem]' src={item.imageUrl}/>
+                                            <span className='text-sm font-semibold'>{item.organisation}</span>
+                                            <div className="flex flex-col text-xs">
+                                                <span className=""><FontAwesomeIcon className="mr-1" icon={faTruck} />Livraison dans toute la France</span>
+                                                <span className=""><FontAwesomeIcon className="mr-1" icon={faMoneyBillTransfer} />Payez en espèce</span>
                                             </div>
-                                            <div className='flex flex-col gap-1 p-2'>
-                                                <h3 className="text-sm text-gray-700 font-bold">{item.nom}</h3>
-                                                <small className={`${item.etat === 'Disponible'? 'bg-green-600 ' : 'bg-red-600'} p-1 rounded-2xl capitalize text-white absolute -top-2 left-0`}>{item.etat}</small>
-                                                <div className="text-[0.6rem] text-yellow-400 flex items-center">
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <span className="text-black text-sm">0 avis</span>
-                                                </div>
-                                                enlevé <span className='text-gray-700 my-2 font-semibold text-xs'>{item.organisation}</span>
-                                                <div className="flex flex-col mb-2">
-                                                    <span className="text-slate-700 max-[444px]:text-xs text-sm mb-2"><FontAwesomeIcon className="mr-2" icon={faTruck} />Livraison dans toute la France</span>
-                                                    <span className="text-slate-700 text-sm mb-2"><FontAwesomeIcon className="mr-2" icon={faMoneyBillTransfer} />Payez en espèce</span>
-                                                </div>
-                                                <span className="self-end mb-2 text-lg lg:text-xl text-red-600 font-bold">{item.prix}€</span>
-                                                enlevé <div className='flex gap-2 lg:gap-0 lg:justify-between items-center'>
-                                                    <Link className='bg-green-600 text-white rounded-3xl p-1 text-sm' _hover={{ textDecor:"none"}} href={`/otherContent/intermed1?categorie=${"Cosmetique"}&magasin=${item.organisation}`}>Commerce</Link>
-                                                    <button onClick={()=>AddToCart(item, Object.keys(nayouProduct)[index])} className='bg-red-600 text-white rounded-3xl p-1 text-sm'>+Ajouter</button>
-                                                </div>
+                                            <div className='flex justify-end'>
+                                                <span className="text-lg text-red-600">{item.prix}€</span>
                                             </div>
-                                        </Link>
-                                    )): (
-                                        <p>Aucune donnee</p>
-                                    )}
-                                    </div>
-                                    <div className="w-full lg:w-1/5 px-4 mt-6 text-white bg-white shadow-md rounded-md relative ">
-                                        {massyProduct && massyProduct !== "" ?
-                                    Object.values(massyProduct).map((item, index) => (
-                                        <Link href={`/details?c=${"Epicerie"}&m=${item.organisation}&p=${Object.keys(epice)[index]}`} key={index} _hover={{ textDecor:"none"}}
-                                            className="flex flex-col bg-white w-full my-4">
-                                            <div className='w-full flex items-center justify-center'>
-                                                <img className='h-[10rem]' src={item.imageUrl}/>
-                                            </div>
-                                            <div className='flex flex-col gap-1 p-2'>
-                                                <h3 className="text-sm text-gray-700 font-bold">{item.nom}</h3>
-                                                <small className={`${item.etat === 'Disponible'? 'bg-green-600 ' : 'bg-red-600'} p-1 rounded-2xl capitalize text-white absolute -top-2 left-0`}>{item.etat}</small>
-                                                <div className="text-[0.6rem] text-yellow-400 flex items-center">
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <span className="text-black text-sm">0 avis</span>
-                                                </div>
-                                                <span className='text-gray-700 my-2 font-semibold text-xs'>{item.organisation}</span>
-                                                <div className="flex flex-col mb-2">
-                                                    <span className="text-slate-700 max-[444px]:text-xs text-sm mb-2"><FontAwesomeIcon className="mr-2" icon={faTruck} />Livraison dans toute la France</span>
-                                                    <span className="text-slate-700 text-sm mb-2"><FontAwesomeIcon className="mr-2" icon={faMoneyBillTransfer} />Payez en espèce</span>
-                                                </div>
-                                                <span className="self-end mb-2 text-lg lg:text-xl text-red-600 font-bold">{item.prix}€</span>
-                                                <div className='flex gap-2 lg:gap-0 lg:justify-between items-center'>
-                                                    <Link className='bg-green-600 text-white rounded-3xl p-1 text-sm' _hover={{ textDecor:"none"}} href={`/otherContent/intermed1?categorie=${"Cosmetique"}&magasin=${item.organisation}`}>Commerce</Link>
-                                                    <button onClick={()=>AddToCart(item, Object.keys(massyProduct)[index])} className='bg-red-600 text-white rounded-3xl p-1 text-sm'>+Ajouter</button>
-                                                </div>
-                                            </div>
-                                        </Link>
-                                    )): (
-                                        <p>Aucune donnee</p>
-                                    )}
-                                    </div>
-                                    <div className="w-full lg:w-1/5 px-4 mt-6 text-white bg-white shadow-md rounded-md relative">
-                                        {omarcheGouroProduct && omarcheGouroProduct !== "" ?
-                                        Object.values(omarcheGouroProduct).map((item, index) => (
-                                        <Link href={`/details?c=${"Epicerie"}&m=${item.organisation}&p=${Object.keys(omarcheGouroProduct)[index]}`} key={index} _hover={{ textDecor:"none"}}
-                                            className="flex flex-col bg-white w-full my-4">
-                                            <div className='w-full flex items-center justify-center'>
-                                                <img className='h-[10rem]' src={item.imageUrl}/>
-                                            </div>
-                                            <div className='flex flex-col gap-1 p-2'>
-                                                <h3 className="text-sm text-gray-700 font-bold">{item.nom}</h3>
-                                                <small className={`${item.etat === 'Disponible'? 'bg-green-600 ' : 'bg-red-600'} p-1 rounded-2xl capitalize text-white absolute -top-2 left-0`}>{item.etat}</small>
-                                                <div className="text-[0.6rem] text-yellow-400 flex items-center">
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <span className="text-black text-sm">0 avis</span>
-                                                </div>
-                                                <span className='text-gray-700 my-2 font-semibold text-xs'>{item.organisation}</span>
-                                                <div className="flex flex-col mb-2">
-                                                    <span className="text-slate-700 max-[444px]:text-xs text-sm mb-2"><FontAwesomeIcon className="mr-2" icon={faTruck} />Livraison dans toute la France</span>
-                                                    <span className="text-slate-700 text-sm mb-2"><FontAwesomeIcon className="mr-2" icon={faMoneyBillTransfer} />Payez en espèce</span>
-                                                </div>
-                                                <span className="self-end mb-2 text-lg lg:text-xl text-red-600 font-bold">{item.prix}€</span>
-                                                <div className='flex gap-2 lg:gap-0 lg:justify-between items-center'>
-                                                    <Link className='bg-green-600 text-white rounded-3xl p-1 text-sm' _hover={{ textDecor:"none"}} href={`/otherContent/intermed1?categorie=${"Cosmetique"}&magasin=${item.organisation}`}>Commerce</Link>
-                                                    <button onClick={()=>AddToCart(item, Object.keys(omarcheGouroProduct)[index])} className='bg-red-600 text-white rounded-3xl p-1 text-sm'>+Ajouter</button>
-                                                </div>
-                                            </div>
-                                        </Link>
-                                    )): (
-                                        <p>Aucune donnee</p>
-                                    )}
+                                        </div>
                                     </div>
                                 </div>
-                            </div> */}
-
-                            {/* <div className='flex flex-col'>
-                                <div className='flex justify-between'>
-                                    <h2 className='text-3xl font-semibold text-gray-700'>Epicerie</h2>
-                                    <Link href={"/StorePage/EpicerieProducts"} className='text-xs font-bold text-gray-600 underline'>Voir plus</Link>
-                                </div>
-                                <div className="flex gap-4 overflow-x-scroll">
-                                    {test && test !== "" ?
-                                    Object.values(test).map((item, index) => (
-                                        <Link  href={`/details?c=${"Epicerie"}&m=${item.organisation}&p=${Object.keys(test)[index]}`} key={index} _hover={{ textDecor:"none"}}
-                                            className="flex flex-col relative bg-white shadow-md rounded-md w-full lg:w-1/5 my-4">
-                                            <div className='w-full flex items-center justify-center'>
-                                                <img className='h-[10rem]' src={item.imageUrl}/>
+                            ))}
+                        </div>
+                    </div>
+                    <div className="flex flex-col py-10 px-10">
+                        <div className='flex justify-between items-center'>
+                            <h2 className="text-2xl lg:text-4xl tracking-[0.1rem] font-bold">Cosmétique</h2>
+                            <Link className="text-xs lg:text-sm font-bold underline" href={"/StorePage/EpicerieProducts"}>Voir plus</Link>
+                        </div>
+                        <div class="flex overflow-x-scroll py-10"> {/** hide-scroll-bar */}
+                            {Object.values(cosmetic).map((item, index) => (
+                                <div key={index} class="flex flex-nowrap">
+                                    <div class="inline-block px-3">
+                                        <div class="w-72 h-72 max-w-xs p-4 overflow-hidden rounded-md shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out relative">
+                                            <div className='flex justify-center items-center'>
+                                                <img key={index} className='h-32 w-52' src={item.imageUrl}/>
                                             </div>
-                                            <div className='flex flex-col gap-1 p-2'>
-                                                <h3 className="text-sm text-gray-700 font-bold">{item.nom}</h3>
-                                                <small className={`${item.etat === 'Disponible'? 'bg-green-600 ' : 'bg-red-600'} p-1 rounded-2xl capitalize text-white absolute -top-2 left-0`}>{item.etat}</small>
-                                                <div className="text-[0.6rem] text-yellow-400 flex items-center">
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <span className="text-black text-sm">0 avis</span>
-                                                </div>
-                                                <span className="text-sm">{item.organisation}</span>
-                                                <span className="text-[0.7rem]">Livré le 31/01/2024</span>
-                                                <span className="text-[0.7rem]"><FontAwesomeIcon className="mr-2" icon={faTruck} />Livraison dans toute la France</span>
-                                                <span className="self-end mb-2 text-lg lg:text-xl text-red-600 font-bold">{item.prix}€</span>
-                                                supp <div className='flex gap-2 lg:gap-0 lg:justify-between items-center'>
-                                                    <Link className='bg-green-600 text-white rounded-3xl p-1 text-sm' _hover={{ textDecor:"none"}} href={`/otherContent/intermed1?categorie=${"Cosmetique"}&magasin=${item.organisation}`}>Commerce</Link>
-                                                    <button onClick={()=>AddToCart(item, Object.keys(cosmetic)[index])} className='bg-red-600 text-white rounded-3xl p-1 text-sm'>+Ajouter</button>
-                                                </div>
+                                            <h3 className='text-sm font-semibold'>{item.nom}</h3>
+                                            <small className={`${item.etat === 'Disponible'? 'bg-green-600 ' : 'bg-red-600'} p-1 text-white absolute -top-2 left-0 capitalize`}>{item.etat}</small>
+                                            <div className="text-yellow-300 text-xs">
+                                                <i className="text-[0.5rem]"><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                <i className="text-[0.5rem]"><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                <i className="text-[0.5rem]"><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                <i className="text-[0.5rem]"><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                <i className="text-[0.5rem]"><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                <span className="text-black text-xs">0 avis</span>
                                             </div>
-                                        </Link>
-                                    )): (
-                                        <p>Aucune donnee</p>
-                                    )}
-                                </div>
-                            </div> */}
-
-
-                            <div className='flex flex-col'>
-                                <div className='flex justify-between'>
-                                    <h2 className='text-3xl font-semibold text-gray-700'>Epicerie</h2>
-                                    <Link href={"/StorePage/EpicerieProducts"} className='text-xs font-bold text-gray-600 underline'>Voir plus</Link>
-                                </div>
-                                <div className="flex gap-4 overflow-x-scroll">
-                                {test && test !== "" ?
-                                    Object.values(test).map((item, index) => (
-                                        <Link  href={`/details?c=${"Epicerie"}&m=${item.organisation}&p=${Object.keys(test)[index]}`} key={index} _hover={{ textDecor:"none"}}
-                                            className="flex flex-col relative bg-white shadow-md rounded-md w-full lg:w-1/5 my-4">
-                                            <div className='w-full flex items-center justify-center'>
-                                                <img className='h-[10rem] object-cover' src={item.imageUrl}/>
+                                            <span className='text-sm font-semibold'>{item.organisation}</span>
+                                            <div className="flex flex-col text-xs">
+                                                <span className=""><FontAwesomeIcon className="mr-1" icon={faTruck} />Livraison dans toute la France</span>
+                                                <span className=""><FontAwesomeIcon className="mr-1" icon={faMoneyBillTransfer} />Payez en espèce</span>
                                             </div>
-                                            <div className='flex flex-col gap-1 p-2'>
-                                                <h3 className="text-sm text-gray-700 font-bold">{item.nom}</h3>
-                                                <small className={`${item.etat === 'Disponible'? 'bg-green-600 ' : 'bg-red-600'} p-1 rounded-2xl capitalize text-white absolute -top-2 left-0`}>{item.etat}</small>
-                                                <div className="text-[0.6rem] text-yellow-400 flex items-center">
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <span className="text-black text-sm">0 avis</span>
-                                                </div>
-                                                <span className="text-sm">{item.organisation}</span>
-                                                <span className="text-[0.7rem]">Livré le 31/01/2024</span>
-                                                <span className="text-[0.7rem]"><FontAwesomeIcon className="mr-2" icon={faTruck} />Livraison dans toute la France</span>
-                                                <span className="self-end mb-2 text-lg lg:text-xl text-red-600 font-bold">{item.prix}€</span>
-                                                {/* <div className='flex gap-2 lg:gap-0 lg:justify-between items-center'>
-                                                    <Link className='bg-green-600 text-white rounded-3xl p-1 text-sm' _hover={{ textDecor:"none"}} href={`/otherContent/intermed1?categorie=${"Cosmetique"}&magasin=${item.organisation}`}>Commerce</Link>
-                                                    <button onClick={()=>AddToCart(item, Object.keys(cosmetic)[index])} className='bg-red-600 text-white rounded-3xl p-1 text-sm'>+Ajouter</button>
-                                                </div> */}
+                                            <div className='flex justify-end'>
+                                                <span className="text-lg text-red-600">{item.prix}€</span>
                                             </div>
-                                        </Link>
-                                    )): (
-                                        <p>Aucune donnee</p>
-                                    )}
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-
-                            <div className='flex flex-col'>
-                                <div className='flex justify-between'>
-                                    <h2 className='text-3xl font-semibold text-gray-700'>Cosmetique</h2>
-                                    <Link href={"/StorePage/CosmeticProducts"} className='text-xs font-bold text-gray-600 underline'>Voir plus</Link>
-                                </div>
-                                <div className="flex gap-4 overflow-x-scroll">
-                                    {cosmetic && cosmetic !== "" ?
-                                    Object.values(cosmetic).map((item, index) => (
-                                        <Link  href={`/details?c=${"Cosmetique"}&m=${item.organisation}&p=${Object.keys(cosmetic)[index]}`} key={index} _hover={{ textDecor:"none"}}
-                                            className="flex flex-col relative bg-white shadow-md rounded-md w-full lg:w-1/5 my-4">
-                                            <div className='w-full flex items-center justify-center'>
-                                                <img className='h-[10rem]' src={item.imageUrl}/>
+                            ))}
+                        </div>
+                    </div>
+                    <div className="flex flex-col py-10 px-10">
+                        <div className='flex justify-between items-center'>
+                            <h2 className="text-2xl lg:text-4xl tracking-[0.1rem] font-bold">Textile</h2>
+                            <Link className="text-xs lg:text-sm font-bold underline" href={"/StorePage/EpicerieProducts"}>Voir plus</Link>
+                        </div>
+                        <div class="flex overflow-x-scroll py-10"> {/** hide-scroll-bar */}
+                            {Object.values(textille).map((item, index) => (
+                                <div key={index} class="flex flex-nowrap">
+                                    <div class="inline-block px-3">
+                                        <div class="w-72 h-72 max-w-xs p-4 overflow-hidden rounded-md shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out relative">
+                                            <div className='flex justify-center items-center'>
+                                                <img key={index} className='h-32 w-52' src={item.imageUrl}/>
                                             </div>
-                                            <div className='flex flex-col gap-1 p-2'>
-                                                <h3 className="text-sm text-gray-700 font-bold">{item.nom}</h3>
-                                                <small className={`${item.etat === 'Disponible'? 'bg-green-600 ' : 'bg-red-600'} p-1 rounded-2xl capitalize text-white absolute -top-2 left-0`}>{item.etat}</small>
-                                                <div className="text-[0.6rem] text-yellow-400 flex items-center">
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <span className="text-black text-sm">0 avis</span>
-                                                </div>
-                                                <span className="text-sm">{item.organisation}</span>
-                                                <span className="text-[0.7rem]">Livré le 31/01/2024</span>
-                                                <span className="text-[0.7rem]"><FontAwesomeIcon className="mr-2" icon={faTruck} />Livraison dans toute la France</span>
-                                                <span className="self-end mb-2 text-lg lg:text-xl text-red-600 font-bold">{item.prix}€</span>
-                                                {/* <div className='flex gap-2 lg:gap-0 lg:justify-between items-center'>
-                                                    <Link className='bg-green-600 text-white rounded-3xl p-1 text-sm' _hover={{ textDecor:"none"}} href={`/otherContent/intermed1?categorie=${"Cosmetique"}&magasin=${item.organisation}`}>Commerce</Link>
-                                                    <button onClick={()=>AddToCart(item, Object.keys(cosmetic)[index])} className='bg-red-600 text-white rounded-3xl p-1 text-sm'>+Ajouter</button>
-                                                </div> */}
+                                            <h3 className='text-sm font-semibold'>{item.nom}</h3>
+                                            <small className={`${item.etat === 'Disponible'? 'bg-green-600 ' : 'bg-red-600'} p-1 text-white absolute -top-2 left-0 capitalize`}>{item.etat}</small>
+                                            <div className="text-yellow-300 text-xs">
+                                                <i className="text-[0.5rem]"><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                <i className="text-[0.5rem]"><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                <i className="text-[0.5rem]"><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                <i className="text-[0.5rem]"><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                <i className="text-[0.5rem]"><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
+                                                <span className="text-black text-xs">0 avis</span>
                                             </div>
-                                        </Link>
-                                    )): (
-                                        <p>Aucune donnee</p>
-                                    )}
-                                </div>
-                            </div>
-
-
-
-                            <div className='flex flex-col'>
-                                <div className='flex justify-between'>
-                                    <h2 className='text-3xl font-semibold text-gray-700'>Textile</h2>
-                                    <Link href={"/StorePage/TextileProducts"} className='text-xs font-bold text-gray-600 underline'>Voir plus</Link>
-                                </div>
-                                <div className="flex gap-4 overflow-x-scroll">
-                                {textille && textille !== "" ?
-                                    Object.values(textille).map((item, index) => (
-                                        <Link href={`/details?c=${"Textile"}&m=${item.organisation}&p=${Object.keys(textille)[index]}`} key={index} _hover={{ textDecor:"none"}}
-                                            className="flex flex-col relative bg-white shadow-md rounded-md w-full lg:w-1/5 my-4">
-                                            <div className='w-full flex items-center justify-center'>
-                                                <img className='h-[10rem] object-cover' src={item.imageUrl}/>
+                                            <span className='text-sm font-semibold'>{item.organisation}</span>
+                                            <div className="flex flex-col text-xs">
+                                                <span className=""><FontAwesomeIcon className="mr-1" icon={faTruck} />Livraison dans toute la France</span>
+                                                <span className=""><FontAwesomeIcon className="mr-1" icon={faMoneyBillTransfer} />Payez en espèce</span>
                                             </div>
-                                            <div className='flex flex-col gap-1 p-2'>
-                                                <h3 className="text-sm text-gray-700 font-bold">{item.nom}</h3>
-                                                <small className={`${item.etat === 'Disponible'? 'bg-green-600 ' : 'bg-red-600'} p-1 rounded-2xl capitalize text-white absolute -top-2 left-0`}>{item.etat}</small>
-                                                <div className="text-[0.6rem] text-yellow-400 flex items-center">
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <span className="text-black text-sm">0 avis</span>
-                                                </div>
-                                                <span className="text-sm">{item.organisation}</span>
-                                                <span className="text-[0.7rem]">Livré le 31/01/2024</span>
-                                                <span className="text-[0.7rem]"><FontAwesomeIcon className="mr-2" icon={faTruck} />Livraison dans toute la France</span>
-                                                <span className="self-end mb-2 text-lg lg:text-xl text-red-600 font-bold">{item.prix}€</span>
-                                                {/* <div className='flex gap-2 lg:gap-0 lg:justify-between items-center'>
-                                                    <Link className='bg-green-600 text-white rounded-3xl p-1 text-sm' _hover={{ textDecor:"none"}} href={`/otherContent/intermed1?categorie=${"Cosmetique"}&magasin=${item.organisation}`}>Commerce</Link>
-                                                    <button onClick={()=>AddToCart(item, Object.keys(cosmetic)[index])} className='bg-red-600 text-white rounded-3xl p-1 text-sm'>+Ajouter</button>
-                                                </div> */}
+                                            <div className='flex justify-end'>
+                                                <span className="text-lg text-red-600">{item.prix}€</span>
                                             </div>
-                                        </Link>
-                                    )): (
-                                        <p>Aucune donnee</p>
-                                    )}
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-
-
-                            
-                            {/* <div className='flex flex-col'>
-                                <div className='flex justify-between'>
-                                    <h2 className='text-3xl font-semibold text-gray-700'>Textille</h2>
-                                    <Link href={"/StorePage/TextileProducts"} className='text-xs font-bold text-gray-600 underline'>Voir plus</Link>
-                                </div>
-                                <div className="flex gap-4 overflow-x-scroll">
-                                    {textille && textille !== "" ?
-                                    Object.values(textille).map((item, index) => (
-                                        <Link href={`/details?c=${"Textile"}&m=${item.organisation}&p=${Object.keys(textille)[index]}`} key={index} _hover={{ textDecor:"none"}}
-                                            className="flex flex-col relative bg-white shadow-md rounded-md w-full lg:w-1/5 my-4">
-                                            <div className='w-full flex items-center justify-center'>
-                                                <img className='h-[10rem]' src={item.imageUrl}/>
-                                            </div>
-                                            <div className='flex flex-col gap-1 p-2'>
-                                                <h3 className="text-sm text-gray-700 font-bold">{item.nom}</h3>
-                                                <small className={`${item.etat === 'Disponible'? 'bg-green-600 ' : 'bg-red-600'} p-1 rounded-2xl capitalize text-white absolute -top-2 left-0`}>{item.etat}</small>
-                                                <div className="text-[0.6rem] text-yellow-400 flex items-center">
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <i className=""><FontAwesomeIcon className="mr-1" icon={faStar} /></i>
-                                                    <span className="text-black text-sm">0 avis</span>
-                                                </div>
-                                                <span className="text-sm">{item.organisation}</span>
-                                                <span className="text-[0.7rem]">Livré le 31/01/2024</span>
-                                                <span className="text-[0.7rem]"><FontAwesomeIcon className="mr-2" icon={faTruck} />Livraison dans toute la France</span>
-                                                <span className="self-end mb-2 text-lg lg:text-xl text-red-600 font-bold">{item.prix}€</span>
-                                                supp <div className='flex gap-2 lg:gap-0 lg:justify-between items-center'>
-                                                    <Link className='bg-green-600 text-white rounded-3xl p-1 text-sm' _hover={{ textDecor:"none"}} href={`/otherContent/intermed1?categorie=${"Cosmetique"}&magasin=${item.organisation}`}>Commerce</Link>
-                                                    <button onClick={()=>AddToCart(item, Object.keys(textille)[index])} className='bg-red-600 text-white rounded-3xl p-1 text-sm'>+Ajouter</button>
-                                                </div>
-                                            </div>
-                                        </Link>
-                                    )): (
-                                        <p>Aucune donnee</p>
-                                    )}
-                                </div>
-                            </div> */}
+                            ))}
                         </div>
                     </div>
                 </div>
