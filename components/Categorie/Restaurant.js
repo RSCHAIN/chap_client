@@ -33,7 +33,7 @@ import {
   AccordionIcon,
   AccordionPanel,
   useBreakpointValue,
-  Badge
+  Badge,IconButton
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
@@ -57,7 +57,7 @@ import {
   BsTelephoneOutboundFill,
 } from "react-icons/bs";
 import Mapped from "./Map";
-import { BiWorld } from "react-icons/bi";
+import { BiLeftArrowAlt, BiRightArrowAlt, BiWorld } from "react-icons/bi";
 import Favlist2 from "../generale/FavLists2";
 import FooterR from "../footerResponsif";
 import { IoMdAddCircle } from "react-icons/io";
@@ -685,25 +685,86 @@ const tester = [
           bgSize={"cover"} 
         />
       :
-      <Box>
+
+
+      <Box  position={'relative'} height={'600px'} width={'full'} overflow={'hidden'}>
+      {/* CSS files for react-slick */}
+      <link
+        rel="stylesheet"
+        type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+      />
+      <link
+        rel="stylesheet"
+        type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+      />
+      {/* Left Icon */}
+      <IconButton
+        aria-label="left-arrow"
+        colorScheme="messenger"
+        borderRadius="full"
+        position="absolute"
+        left={side}
+        top={top}
+        transform={'translate(0%, -50%)'}
+        zIndex={2}
+        onClick={() => slider?.slickPrev()}>
+        <BiLeftArrowAlt />
+      </IconButton>
+      {/* Right Icon */}
+      <IconButton
+        aria-label="right-arrow"
+        colorScheme="messenger"
+        borderRadius="full"
+        position="absolute"
+        right={side}
+        top={top}
+        transform={'translate(0%, -50%)'}
+        zIndex={2}
+        onClick={() => slider?.slickNext()}>
+        <BiRightArrowAlt />
+      </IconButton>
+      {/* Slider */}
+      <Slider {...settings} ref={(slider) => setSlider(slider)}>
+        {mag.imageUrl.map((url, index) => (
+          <Box
+          
+            key={index}
+            height={'xl'}
+          
+            position="relative"
+            backgroundPosition="center"
+            backgroundRepeat="no-repeat"
+            backgroundSize="contain"
+            backgroundImage={`url(${url})`}
+          />
+        ))}
+      </Slider>
+    </Box>
+
+
+
+
+//       <Box>
      
-             <Image
-          src={mag.imageUrl[indexed]}
-          display={"block"}
-          alt={`logo de ${mag.organisation}`}
-          width={"100vw"}
-          maxHeight={{base:"35vh",lg:"70vh"}}
-          fit={"contain"}
-          bgSize={"cover"} 
-        />
-        <Flex>
-          {mag.imageUrl.map((url,index)=>{
-            return(
-              <Image className='h-20 w-20' key={index} src={url} onClick={() => setIndexed(index)} cursor={"pointer"} alt={`Product Image ${index}`} px={2} />
-            )
-          })}
-        </Flex>
-</Box>
+//              <Image
+//           src={mag.imageUrl[indexed]}
+//           display={"block"}
+//           alt={`logo de ${mag.organisation}`}
+//           width={"100vw"}
+//           maxHeight={{base:"35vh",lg:"70vh"}}
+//           fit={"contain"}
+//           bgSize={"cover"} 
+//         />
+//         <Flex>
+//           {mag.imageUrl.map((url,index)=>{
+//             return(
+//               <Image className='h-20 w-20' key={index} src={url} onClick={() => setIndexed(index)} cursor={"pointer"} alt={`Product Image ${index}`} px={2} />
+//             )
+//           })}
+//         </Flex>
+// </Box>
 
           //   {/* <Box
               

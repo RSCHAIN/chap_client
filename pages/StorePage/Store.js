@@ -242,11 +242,11 @@ function Store() {
                         </div>
                         <div class="flex overflow-x-scroll py-10"> {/** hide-scroll-bar */}
                             {epice.map((item, index) => (
-                                <div key={index} class="flex flex-nowrap">
+                                <Link _hover={{ textDecor:"none"}} href={`/details?c=${"Epicerie"}&m=${item.organisation}&p=${Object.keys(epice)[index]}`} key={index} className="flex flex-nowrap">
                                     <div class="inline-block px-3">
                                         <div class="w-72 h-72 max-w-xs p-4 overflow-hidden rounded-md shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out relative">
                                             <div className='flex justify-center items-center'>
-                                                <img key={index} className='h-32 w-52' src={item.imageUrl}/>
+                                                <img key={index} className='h-[8rem]' src={item.imageUrl}/>
                                             </div>
                                             <h3 className='text-sm font-semibold'>{item.nom}</h3>
                                             <small className={`${item.etat === 'Disponible'? 'bg-green-600 ' : 'bg-red-600'} p-1 text-white absolute -top-2 left-0 capitalize`}>{item.etat}</small>
@@ -268,22 +268,22 @@ function Store() {
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </Link>
                             ))}
                         </div>
                     </div>
                     <div className="flex flex-col py-10 px-10">
                         <div className='flex justify-between items-center'>
                             <h2 className="text-2xl lg:text-4xl tracking-[0.1rem] font-bold">Cosmétique</h2>
-                            <Link className="text-xs lg:text-sm font-bold underline" href={"/StorePage/EpicerieProducts"}>Voir plus</Link>
+                            <Link className="text-xs lg:text-sm font-bold underline" href={"/StorePage/CosmeticProducts"}>Voir plus</Link>
                         </div>
                         <div class="flex overflow-x-scroll py-10"> {/** hide-scroll-bar */}
                             {Object.values(cosmetic).map((item, index) => (
-                                <div key={index} class="flex flex-nowrap">
+                                <Link _hover={{ textDecor:"none" }} href={`/details?c=${"Cosmetique"}&m=${item.organisation}&p=${Object.keys(cosmetic)[index]}`} key={index} className="flex flex-nowrap">
                                     <div class="inline-block px-3">
                                         <div class="w-72 h-72 max-w-xs p-4 overflow-hidden rounded-md shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out relative">
                                             <div className='flex justify-center items-center'>
-                                                <img key={index} className='h-32 w-52' src={item.imageUrl}/>
+                                                <img key={index} className='h-[8rem]' src={item.imageUrl}/>
                                             </div>
                                             <h3 className='text-sm font-semibold'>{item.nom}</h3>
                                             <small className={`${item.etat === 'Disponible'? 'bg-green-600 ' : 'bg-red-600'} p-1 text-white absolute -top-2 left-0 capitalize`}>{item.etat}</small>
@@ -305,22 +305,23 @@ function Store() {
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </Link>
                             ))}
                         </div>
                     </div>
                     <div className="flex flex-col py-10 px-10">
                         <div className='flex justify-between items-center'>
                             <h2 className="text-2xl lg:text-4xl tracking-[0.1rem] font-bold">Textile</h2>
-                            <Link className="text-xs lg:text-sm font-bold underline" href={"/StorePage/EpicerieProducts"}>Voir plus</Link>
+                            <Link className="text-xs lg:text-sm font-bold underline" href={"/StorePage/TextileProducts"}>Voir plus</Link>
                         </div>
                         <div class="flex overflow-x-scroll py-10"> {/** hide-scroll-bar */}
                             {Object.values(textille).map((item, index) => (
-                                <div key={index} class="flex flex-nowrap">
+                                <Link _hover={{ textDecor:"none" }} href={`/details?c=${"Textile"}&m=${item.organisation}&p=${Object.keys(textille)[index]}`} key={index} className="flex flex-nowrap">
+
                                     <div class="inline-block px-3">
                                         <div class="w-72 h-72 max-w-xs p-4 overflow-hidden rounded-md shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out relative">
                                             <div className='flex justify-center items-center'>
-                                                <img key={index} className='h-32 w-52' src={item.imageUrl}/>
+                                                <img key={index} className='h-[8rem]' src={item.imageUrl}/>
                                             </div>
                                             <h3 className='text-sm font-semibold'>{item.nom}</h3>
                                             <small className={`${item.etat === 'Disponible'? 'bg-green-600 ' : 'bg-red-600'} p-1 text-white absolute -top-2 left-0 capitalize`}>{item.etat}</small>
@@ -342,7 +343,7 @@ function Store() {
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </Link>
                             ))}
                         </div>
                     </div>
